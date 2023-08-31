@@ -1,14 +1,14 @@
-<section class="footer_one home5">
-    <div class="container">
+<section class="footer_one home3">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pr0 pl0">
-                <div class="footer_about_widget home5">
+            <div class="col-sm-6 col-md-6 col-lg col-xl">
+                <div class="footer_about_widget home3">
                     <h4>About Site</h4>
                     <p>We’re reimagining how you buy, sell and rent. It’s now easier to get into a place you love. So let’s do this, together.</p>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                <div class="footer_qlink_widget home5">
+            <div class="col-sm-6 col-md-6 col-lg col-xl">
+                <div class="footer_qlink_widget home3">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
                         <li><a href="#">About Us</a></li>
@@ -19,8 +19,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                <div class="footer_contact_widget home5">
+            <div class="col-sm-6 col-md-6 col-lg col-xl">
+                <div class="footer_contact_widget home3">
                     <h4>Contact Us</h4>
                     <ul class="list-unstyled">
                         <li><a href="#">info@findhouse.com</a></li>
@@ -31,8 +31,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                <div class="footer_social_widget home5">
+            <div class="col-sm-6 col-md-6 col-lg col-xl">
+                <div class="footer_social_widget home3">
                     <h4>Follow us</h4>
                     <ul class="mb30">
                         <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -42,8 +42,12 @@
                         <li class="list-inline-item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
                         <li class="list-inline-item"><a href="#"><i class="fa fa-google"></i></a></li>
                     </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg col-xl">
+                <div class="footer_social_widget home3">
                     <h4>Subscribe</h4>
-                    <form class="footer_mailchimp_form home5">
+                    <form class="footer_mailchimp_form home3">
                          <div class="form-row align-items-center">
                             <div class="col-auto">
                                 <input type="email" class="form-control mb-2" id="inlineFormInput" placeholder="Your email">

@@ -13,12 +13,20 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name')->comment('이름');
+            $table->string('email')->unique()->comment('이메일');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->comment('패스워드');
+            $table->string('file')->nullable()->comment('프로필사진파일');
+            $table->string('company')->nullable()->comment('회사명');
+            $table->string('position')->nullable()->comment('직책');
+            $table->string('phone')->nullable()->comment('연락처');
+            $table->string('zip_code',10)->nullable()->comment('우편번호');
+            $table->string('address',255)->nullable()->comment('주소');
+            $table->string('address_detail',255)->nullable()->comment('상세주소');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

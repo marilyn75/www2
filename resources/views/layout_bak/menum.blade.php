@@ -9,11 +9,11 @@
                 @endguest
                 @auth
 
-                    <a class="mobile-menu-reg-link" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{ showProfileImage() }}" width="45" height="45"> <span class="dn-1199">{{ Auth::user()->name }}</span></a>
+                    <a class="mobile-menu-reg-link" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{ ('images/team/e1.png') }}" alt="e1.png"> <span class="dn-1199">{{ Auth::user()->name }}</span></a>
                     <div class="dropdown-menu">
                         <div class="user_setting_content">
                             <a class="dropdown-item" href="{{ route('changepw') }}">비밀번호 변경</a>
-                            <a class="dropdown-item" href="{{ route('profile') }}">회원정보 수정</a>
+                            <a class="dropdown-item" href="#">My Profile</a>
                             <a class="dropdown-item" href="#">Messages</a>
                             <a class="dropdown-item" href="#">Purchase history</a>
                             <a class="dropdown-item" href="#">Help</a>

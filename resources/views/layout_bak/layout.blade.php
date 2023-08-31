@@ -24,11 +24,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="{{ url('js/common.js') }}"></script>
 </head>
-<body>
+<body class="maxw1600 m0a">
 <div class="wrapper">
 	<div class="preloader"></div>
 
@@ -170,14 +167,14 @@
 	<!-- Main Header Nav For Mobile -->
 	@include('layout.menum')
 
-	@yield('content')	
+    @yield('content')
 
 	<!-- Our Footer -->
 	@include('layout.footer')
 
 	<!-- Our Footer Bottom Area -->
 	@include('layout.bottom')
-<a class="scrollToHome home7" href="#"><i class="flaticon-arrows"></i></a>
+<a class="scrollToHome text-thm3" href="#"><i class="flaticon-arrows"></i></a>
 </div>
 <!-- Wrapper End -->
 <script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
@@ -196,8 +193,8 @@
 <script type="text/javascript" src="{{ url('js/jquery.counterup.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/slider.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/pricing-slider.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/timepicker.js') }}"></script>
-<script type="text/javascript" src="{{ url('js/smartuploader.js') }}"></script>
 <!-- Custom script for all pages --> 
 <script type="text/javascript" src="{{ url('js/script.js') }}"></script>
 </body>

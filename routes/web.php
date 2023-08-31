@@ -26,4 +26,24 @@ Route::get('/welcome', function () {
 
 Route::get('/', function () {
     return view('index');
+})->name('main');
+
+// 관리자
+require __DIR__.'/admin.php';
+
+// 회원관련
+Route::prefix('/member')->group(function(){
+    Route::get('register', [App\Http\Controllers\Member\RegisterController::class, 'index'])->name('register')->middleware('guest');
+    Route::post('register', [App\Http\Controllers\Member\RegisterController::class, 'store'])->middleware('guest');
+
+    Route::get('changepw', [App\Http\Controllers\Member\ChangePasswordController::class, 'index'])->name('changepw')->middleware('auth');
+    Route::post('changepw', [App\Http\Controllers\Member\ChangePasswordController::class, 'update'])->middleware('auth');
+
+    Route::get('profile', [App\Http\Controllers\Member\ProfileController::class, 'index'])->name('profile')->middleware('auth');
+    Route::post('profile', [App\Http\Controllers\Member\ProfileController::class, 'update'])->middleware('auth');
 });
+
+Route::get('login',[App\Http\Controllers\Member\LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login',[App\Http\Controllers\Member\LoginController::class, 'login'])->middleware('guest');
+
+Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout'])->name('logout');
