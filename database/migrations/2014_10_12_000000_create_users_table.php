@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('is_admin')->default(0)->comment('관리자여부');
             $table->string('name')->comment('이름');
             $table->string('email')->unique()->comment('이메일');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->comment('패스워드');
+            $table->string('password')->nullable()->comment('패스워드');
             $table->string('file')->nullable()->comment('프로필사진파일');
             $table->string('company')->nullable()->comment('회사명');
             $table->string('position')->nullable()->comment('직책');

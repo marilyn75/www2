@@ -47,3 +47,6 @@ Route::get('login',[App\Http\Controllers\Member\LoginController::class, 'index']
 Route::post('login',[App\Http\Controllers\Member\LoginController::class, 'login'])->middleware('guest');
 
 Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout'])->name('logout');
+
+Route::get('social/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'login'])->name('social.login');
+Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'callback'])->name('social.callback');

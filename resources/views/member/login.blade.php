@@ -50,10 +50,10 @@
                         </div>
                         <div class="row mt40">
                             <div class="col-lg">
-                                <button type="submit" class="btn btn-block color-white bgc-fb mb0"><i class="fa fa-facebook float-left mt5"></i> Facebook</button>
+                                <a href="{{ route('social.login','naver') }}" class="btn btn-block color-white bgc-naver mb0"><i class="fa fa-facebook float-left mt5"></i> Naver</a>
                             </div>
                             <div class="col-lg">
-                                <button type="submit" class="btn btn2 btn-block color-white bgc-gogle mb0"><i class="fa fa-google float-left mt5"></i> Google</button>
+                                <button type="submit" class="btn btn2 btn-block color-black bgc-kakao mb0"><i class="fa fa-google float-left mt5"></i> Kakao</button>
                             </div>
                         </div>
                     </form>

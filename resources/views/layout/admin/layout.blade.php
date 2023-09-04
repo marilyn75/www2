@@ -8,11 +8,11 @@
 <meta name="description" content="FindHouse - Real Estate HTML Template">
 <meta name="CreativeLayers" content="ATFN">
 <!-- css file -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/dashbord_navitaion.css">
+<link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url('css/style.css') }}">
+<link rel="stylesheet" href="{{ url('css/dashbord_navitaion.css') }}">
 <!-- Responsive stylesheet -->
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- Title -->
 <title>FindHouse - Real Estate HTML Template</title>
 <!-- Favicon -->
@@ -26,26 +26,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="{{ url('js/common.js') }}"></script>
-</head>
-<body>
-<div class="wrapper">
-	<div class="preloader"></div>
 
-	<!-- Main Header -->
-	@include('layout.admin.header')
-
-	<!-- Main Header Nav For Mobile -->
-	@include('layout.admin.menum')
-
-    <!-- Main Header Nav For Web -->
-    @include('layout.admin.menu')
-
-    @yield('content')
-	
-<a class="scrollToHome" href="#"><i class="flaticon-arrows"></i></a>
-</div>
 <!-- Wrapper End -->
 <script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>
@@ -70,5 +51,31 @@
 <script type="text/javascript" src="{{ url('js/dashboard-script.js') }}"></script>
 <!-- Custom script for all pages --> 
 <script type="text/javascript" src="{{ url('js/script.js') }}"></script>
+
+<script type="text/javascript" src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="{{ url('js/common.js') }}"></script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="preloader"></div>
+
+	<!-- Main Header -->
+	@include('layout.admin.header')
+
+	<!-- Main Header Nav For Mobile -->
+	@include('layout.admin.menum')
+
+    <!-- Main Header Nav For Web -->
+    @include('layout.admin.menu')
+
+    @yield('content')
+	
+<a class="scrollToHome" href="#"><i class="flaticon-arrows"></i></a>
+</div>
+
 </body>
 </html>
