@@ -4,10 +4,8 @@
 
 <script>
     $(document).ready(function(){
-        alert('a');
         var table = new DataTable('#tblList');
     });
-    
 </script>
 <section class="our-dashbord dashbord bgc-f7 pb50">
     <div class="container-fluid">

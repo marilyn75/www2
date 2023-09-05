@@ -8,7 +8,7 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
         return view('admin.dashboard');
     })->name('admin');
 
-    Route::get('/member', function(){
-        return view('admin.member');
-    })->name('admin.member');
+    Route::get('/users', function(){
+        return view('admin.users');
+    })->name('admin.users');
 });
