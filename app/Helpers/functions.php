@@ -11,7 +11,12 @@ if (!function_exists('showProfileImage')) {
             else
                 return asset('/files/profile/' . auth()->user()->file);
         } else {
-            return asset('/images/user-placeholder.png');
+            $socialAccount = auth()->user()->socialAccounts()->first();
+            if(!empty($socialAccount)){
+                return $socialAccount->avatar;
+            }else{
+                return asset('/images/user-placeholder.png');
+            }
         }
     }
 }

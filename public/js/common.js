@@ -1,3 +1,4 @@
+// 주소검색창
 function openSearchZipcode(){
     new daum.Postcode({
         oncomplete: function(data) {
@@ -46,3 +47,12 @@ function openSearchZipcode(){
         }
     }).open();
 }
+
+// 날짜 형식
+function dateFormat(date) {
+	let dateFormat2 = date.getFullYear() +
+		'-' + ( (date.getMonth()+1) <= 9 ? "0" + (date.getMonth()+1) : (date.getMonth()+1) )+
+		'-' + ( (date.getDate()) <= 9 ? "0" + (date.getDate()) : (date.getDate()) );
+	return dateFormat2;
+}
+

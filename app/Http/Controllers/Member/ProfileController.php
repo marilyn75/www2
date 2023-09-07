@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Http\Class\UserClass;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,51 +34,8 @@ class ProfileController extends Controller
 
         $this->validate($request, $rules, $customMessages);
 
-        // 프로필 사진 업로드
-        if(!empty($data['file'])){
-            if(auth()->user()->file !== null){  // 기존 파일 삭제
-                unlink(public_path() . "/files/profile/" . auth()->user()->file);
-            }
-            
-
-            $image = Image::make($data['file']);
-            // 이미지의 너비와 높이 가져오기
-            $originalWidth = $image->width();
-            $originalHeight = $image->height();
-
-            // 리사이즈할 크기 계산
-            if ($originalWidth < $originalHeight) {
-                // 가로가 짧은 경우
-                $resizedWidth = 260;
-                $resizedHeight = intval(260 * $originalHeight / $originalWidth);
-            } else {
-                // 세로가 짧은 경우
-                $resizedHeight = 260;
-                $resizedWidth = intval(260 * $originalWidth / $originalHeight);
-            }
-
-            // 이미지 리사이즈
-            $image->resize($resizedWidth, $resizedHeight);
-
-            // 260x260으로 자르기
-            $image->crop(260, 260);
-
-            $extension = $data['file']->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $image->save(public_path() . '/files/profile/' . $filename);
-        }
-
-        $user = Auth::user();
-        User::where('id',$user->id)->update([
-            'name' => $data['name'],
-            'company' => $data['company'],
-            'position' => $data['position'],
-            'phone' => $data['phone'],
-            'zip_code' => $data['zip_code'],
-            'address' => $data['address'],
-            'address_detail' => $data['address_detail'],
-            'file' => $filename,
-        ]);
+        $UserClass = new UserClass(auth()->user()->id);
+        $UserClass->update($request);
 
         return back()
             ->with('success_message','회원정보가 변경 되었습니다.');
