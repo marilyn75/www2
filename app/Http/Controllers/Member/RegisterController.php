@@ -17,20 +17,7 @@ class RegisterController extends Controller
         $data = $request->all();
 
         // 유효성 검사
-        $rules = [
-            'name' => 'required|max:20',
-            'email' => 'required|email|max:255',
-            'password' => 'required|max:30|confirmed'
-        ];
-
-        $customMessages = [
-            'email.required' => '이메일 항목은 필수 입니다.',
-            'email.email' => '유효하지 않은 이메일입니다.',
-            'password.required' => '비밀번호 항목은 필수 입니다.',
-            'password.confirmed' => '비밀번호가 일치하지 않습니다.',
-        ];
-
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, User::$rules['register']);
 
         $saveData = [
             'name' => $data['name'],

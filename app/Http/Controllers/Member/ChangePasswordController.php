@@ -19,18 +19,7 @@ class ChangePasswordController extends Controller
         $data = $request->all();
 
         // 유효성 검사
-        $rules = [
-            'curr_password' => 'required|max:30',
-            'password' => 'required|max:30|confirmed'
-        ];
-
-        $customMessages = [
-            'curr_password.required' => '현재 비밀번호 항목은 필수 입니다.',
-            'password.required' => '변경할 비밀번호 항목은 필수 입니다.',
-            'password.confirmed' => '비밀번호가 일치하지 않습니다.',
-        ];
-
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, User::$rules['changepassword']);
 
         $user = Auth::user();
 

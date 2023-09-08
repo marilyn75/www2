@@ -36,18 +36,7 @@ class UsersController extends Controller
 
     public function update(Request $request){
         // 유효성 검사
-        $rules = [
-            'name' => 'required|max:20',
-            'email' => 'required|email|max:255',
-        ];
-
-        $customMessages = [
-            'name.required' => '이름 항목은 필수 입니다.',
-            'email.required' => '이메일 항목은 필수 입니다.',
-            'email.email' => '유효하지 않은 이메일입니다.',
-        ];
-
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, User::$rules['update']);
 
         $UserClass = new UserClass($request->id);
         $UserClass->update($request);
@@ -65,16 +54,7 @@ class UsersController extends Controller
 
     public function changepassword(Request $request){
         // 유효성 검사
-        $rules = [
-            'password' => 'required|max:30|confirmed'
-        ];
-
-        $customMessages = [
-            'password.required' => '변경할 비밀번호 항목은 필수 입니다.',
-            'password.confirmed' => '비밀번호가 일치하지 않습니다.',
-        ];
-
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, User::$rules['admin_changepassword']);
 
         $UserClass = new UserClass($request->id);
         $UserClass->changepassword($request);

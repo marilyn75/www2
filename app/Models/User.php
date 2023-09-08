@@ -53,6 +53,32 @@ class User extends Authenticatable
         return $this->hasMany(SocialAccount::class);
     }
 
-
-
+    // 유효성 검사 조건
+    public static $rules = [
+        // 회원가입
+        'register' => [
+            'name' => 'required|max:20',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6|max:30|confirmed'
+        ],
+        // 패스워드변경
+        'changepassword' => [
+            'curr_password' => 'required|min:6|max:30',
+            'password' => 'required|min:6|max:30|confirmed'
+        ],
+        // 회원정보변경
+        'update' => [
+            'name' => 'required|max:20',
+            'email' => 'required|email|max:255',
+        ],
+        // 로그인
+        'login' => [
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6|max:30',
+        ],
+        // 회원관리 패스워드변경
+        'admin_changepassword' => [
+            'password' => 'required|min:6|max:30|confirmed'
+        ],
+    ];
 }

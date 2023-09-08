@@ -21,18 +21,7 @@ class ProfileController extends Controller
         $data = $request->all();
 
         // 유효성 검사
-        $rules = [
-            'name' => 'required|max:20',
-            'email' => 'required|email|max:255',
-        ];
-
-        $customMessages = [
-            'name.required' => '이름 항목은 필수 입니다.',
-            'email.required' => '이메일 항목은 필수 입니다.',
-            'email.email' => '유효하지 않은 이메일입니다.',
-        ];
-
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, User::$rules['update']);
 
         $UserClass = new UserClass(auth()->user()->id);
         $UserClass->update($request);

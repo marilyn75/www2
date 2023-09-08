@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -15,18 +16,7 @@ class LoginController extends Controller
     public function login(Request $request){
         $data = $request->all();
 
-        $rules = [
-            'email' => 'required|email|max:255',
-            'password' => 'required|max:30'
-        ];
-
-        $customMessages = [
-            'email.required' => '이메일 항목은 필수 입니다.',
-            'email.email' => '유효하지 않은 이메일입니다.',
-            'password.required' => '비밀번호 항목은 필수 입니다.',
-        ];
-
-        $this->validate($request, $rules, $customMessages);
+        $this->validate($request, User::$rules['login']);
 
         if(Auth::guard('web')->attempt(['email'=>$data['email'], 'password'=>$data['password']])){
             // Remember Admin Email & Password with cookies
