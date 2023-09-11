@@ -53,7 +53,7 @@
                                 <a href="{{ route('social.login','naver') }}" class="btn btn-block color-white bgc-naver mb0"><i class="fa fa-facebook float-left mt5"></i> Naver</a>
                             </div>
                             <div class="col-lg">
-                                <button type="submit" class="btn btn2 btn-block color-black bgc-kakao mb0"><i class="fa fa-google float-left mt5"></i> Kakao</button>
+                                <a href="{{ route('social.login','kakao') }}" class="btn btn2 btn-block color-black bgc-kakao mb0"><i class="fa fa-google float-left mt5"></i> Kakao</a>
                             </div>
                         </div>
                     </form>

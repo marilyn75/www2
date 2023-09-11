@@ -51,7 +51,7 @@ class SocialController extends Controller
                 'email' => $socialUser->email,
                 'name' => $socialUser->name,
                 // 'password' => '',/
-                'file' => $socialUser->avatar,
+                // 'file' => $socialUser->avatar,
                 'email_verified_at' => now(),
                 'phone' => $socialUser->mobile,
             ]);

@@ -1,6 +1,8 @@
 <?php
 
+use DragonCode\Contracts\Cashier\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 $menuItems = [
     ['name' => '홈', 'url' => '/'],
@@ -50,3 +52,9 @@ Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout
 
 Route::get('social/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'login'])->name('social.login');
 Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'callback'])->name('social.callback');
+
+// 세션생성용
+Route::post('redirect-after-session', function(){
+    Session::put('condition', $_REQUEST['data']);
+    return $_REQUEST['url'];
+})->name('redirect-after-session');

@@ -8,6 +8,13 @@
 
 @include('include.messagebox')
 
+<script>
+    $(document).on('click', '.btnList', function(){
+        location.href="{{ route('admin.users') }}";
+        return false;
+    });
+</script>
+
 <form action="{{ url(route('admin.users.update')) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="id" value="{{ $data->id }}">
@@ -72,6 +79,9 @@
                     </div>
                 </div>
                 <div class="col-xl-12 text-right">
+                    <div class="my_profile_setting_input float-left fn-520">
+                        <button class="btn btn3 btn-dark btnList">List</button>
+                    </div>
                     <div class="my_profile_setting_input">
                         <button class="btn btn2">Update Profile</button>
                     </div>
@@ -106,6 +116,9 @@
                     </div>
                 </div>
                 <div class="col-xl-12">
+                    <div class="my_profile_setting_input float-left fn-520">
+                        <button class="btn btn3 btn-dark btnList">List</button>
+                    </div>
                     <div class="my_profile_setting_input float-right fn-520">
                         <button class="btn btn2">Update Password</button>
                     </div>

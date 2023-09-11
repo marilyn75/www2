@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Class\UserClass;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
@@ -15,18 +16,26 @@ class UsersController extends Controller
     private $page_comment = "회원정보를 관리 합니다.";
 
     public function index(){
-        return view('admin.users.index');
+        $condition = "";
+        if(session()->has('condition')){
+            $condition = session('condition');
+            session()->forget('condition');
+        }
+        
+
+        return view('admin.users.index', compact('condition'));
     }
 
     public function getTableData(Request $request){
         if($request->ajax()){
             $data = User::select('id', 'name', 'email')
-                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at');
+                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at')
+                ->orderBy('id', 'desc');
             return DataTables::of($data)->toJson();
         }
     }
 
-    public function edit($id){
+    public function edit($id, Request $request){
         $UserClass = new UserClass($id);
         // $data = User::find($id);
         //dd($data->socialAccounts()->count());
