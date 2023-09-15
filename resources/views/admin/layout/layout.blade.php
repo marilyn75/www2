@@ -54,13 +54,13 @@
               <div class="col-sm-12 col-lg-8 col-xl-10 maxw100flex-992">
                   <div class="row">
                     <div class="col-lg-4 col-xl-4 mb10">
-                      <div class="breadcrumb_content style2 mb30-991">
-                          <h2 class="breadcrumb_title">@yield('page-title')</h2>
-                          <p>@yield('page-comment')</p>
-                      </div>
-                  </div>
-
-                      <div class="col-lg-12">
+                        <div class="breadcrumb_content style2 mb30-991">
+                            <h2 class="breadcrumb_title">@yield('page-title')</h2>
+                            <p>@yield('page-comment')</p>
+                        </div>
+                    </div>
+    @yield("search")
+                    <div class="col-lg-12">
                           
 
 

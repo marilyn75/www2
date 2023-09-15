@@ -213,5 +213,8 @@ return [
         'updated_at'               => '에 업데이트됨',
         'username'                 => '유저네임',
         'year'                     => '년',
+
+        'board_name'               => '게시판명',
+        
     ],
 ];

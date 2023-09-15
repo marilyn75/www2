@@ -46,6 +46,14 @@ class UsersTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_데이터테이블용_데이터를_불러올_수_있다(): void
+    {
+        $user = User::factory(5)->create();
+        $response = $this->getJson(route('admin.users.data'), ['X-Requested-With' => 'XMLHttpRequest']);
+        $response->assertJson(['draw'=>0]);
+        //$response->assertJson(['']);
+    }
+
     public function test_회원정보수정_페이지에_접근할_수_있다(): void
     {
         $user = User::factory()->create();
