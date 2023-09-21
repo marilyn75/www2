@@ -74,7 +74,7 @@ class BoardConfsTest extends TestCase
             ->assertStatus(302);
     }
 
-    public function test_회원정보수정_페이지에_접근할_수_있다(): void
+    public function test_게시판설정수정_페이지에_접근할_수_있다(): void
     {
         $board_conf = BoardConf::factory()->create();
         $response = $this->get(route('admin.board-confs.edit',$board_conf->id));
@@ -110,7 +110,7 @@ class BoardConfsTest extends TestCase
         $board_conf = BoardConf::factory()->create();
 
         // Ajax Post 요청, 데이터 삭제처리 호출
-        $response = $this->json('POST', route('admin.board-confs.destory', $board_conf->id), ['_token'=>csrf_token()]);
+        $response = $this->json('POST', route('admin.board-confs.destroy', $board_conf->id), ['_token'=>csrf_token()]);
 
         $response->assertStatus(200);
 

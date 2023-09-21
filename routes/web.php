@@ -53,8 +53,20 @@ Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout
 Route::get('social/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'login'])->name('social.login');
 Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'callback'])->name('social.callback');
 
-// 세션생성용
-Route::post('redirect-after-session', function(){
-    Session::put('condition', $_REQUEST['data']);
-    return $_REQUEST['url'];
-})->name('redirect-after-session');
+
+// 공통 routes  //////////////////////////////////
+Route::prefix('/common')->group(function(){
+    // 세션생성용
+    Route::post('redirect-after-session', function(){
+        Session::put('condition', $_REQUEST['data']);
+        return $_REQUEST['url'];
+    })->name('common.redirect-after-session');
+
+    // 임시파일 업로드
+    Route::post('multiFileUpload/upload', [App\Http\Controllers\Common\TmpFilesController::class, 'upload'])->name('common.file.upload');
+
+    // 임시파일 다운로드
+    Route::get('multiFileUpload/download/{filename}', [App\Http\Controllers\Common\TmpFilesController::class, 'download'])->name('common.file.download');
+    // 임시파일 보기
+    Route::get('multiFileUpload/view/{filename}', [App\Http\Controllers\Common\TmpFilesController::class, 'view'])->name('common.file.view');
+});

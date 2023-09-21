@@ -86,7 +86,7 @@ class UsersTest extends TestCase
         $this->assertDatabaseHas('users', $payload);
         $data = User::find($user->id);
         $filename = $data->file;
-        if(!empty($filename))    unlink(public_path()."/files/profile/".$filename); // 테스트 파일 삭제
+        if(!empty($filename))    unlink(public_path("/files/profile/".$filename)); // 테스트 파일 삭제
 
         $response->assertSessionHas('success_message','회원정보가 변경 되었습니다.')
             ->assertStatus(302);
@@ -97,7 +97,7 @@ class UsersTest extends TestCase
         $user = User::factory()->create();
 
         // Ajax Post 요청, 데이터 삭제처리 호출
-        $response = $this->json('POST', route('admin.users.destory', $user->id), ['_token'=>csrf_token()]);
+        $response = $this->json('POST', route('admin.users.destroy', $user->id), ['_token'=>csrf_token()]);
 
         $response->assertStatus(200);
 

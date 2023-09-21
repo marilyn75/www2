@@ -10,6 +10,8 @@ class BoardConf extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public $timestamps = true;
+
     protected $fillable = [
         'board_name', 
         'skin',

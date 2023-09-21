@@ -54,7 +54,7 @@
 
             $.ajax({
                 type: 'post',
-                url : "{{ route('redirect-after-session') }}",
+                url : "{{ route('common.redirect-after-session') }}",
                 data: {'_token': '{{ csrf_token() }}', 'url' : url, data: params},
                 dataType: 'text', 
                 success: function(r){

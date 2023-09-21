@@ -11,6 +11,7 @@ class BoardData extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = "board_datas";
+    public $timestamps = true;
     protected $fillable = [
         'board_id',
         'title',
@@ -33,8 +34,14 @@ class BoardData extends Model
     ];
 
     public function conf(){
-        return $this->belongsTo(BoardConf::class);
+        return $this->belongsTo(BoardConf::class, 'board_id');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class,'created_user_id');
+    }
 
+    public function files(){
+        return $this->hasMany(BoardFile::class);
+    }
 }

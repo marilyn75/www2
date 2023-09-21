@@ -106,7 +106,7 @@ class UserClass{
 
     }
 
-    public function destory(){
+    public function destroy(){
         $user = $this->model->first();
 
         if(!empty($user->file)){

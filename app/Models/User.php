@@ -53,6 +53,10 @@ class User extends Authenticatable
         return $this->hasMany(SocialAccount::class);
     }
 
+    public function hasSocialAccount(){
+        return $this->hasMany(SocialAccount::class)->count();
+    }
+
     // 유효성 검사 조건
     public static $rules = [
         // 회원가입

@@ -8,8 +8,8 @@ $(function() {
 
 	    // When a new file is selected
 	    $file.on('change', function(event){
-	      var fileName = $file.val().split( '\\' ).pop(),
-	          tmppath = URL.createObjectURL(event.target.files[0]);
+	      var fileName = $file.val().split( '\\' ).pop();
+	    //   var tmppath = URL.createObjectURL(event.target.files[0]);
 	      //Check successfully selection
 	      if( fileName ){
 	        $label

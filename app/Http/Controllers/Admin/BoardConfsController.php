@@ -81,7 +81,7 @@ class BoardConfsController extends Controller
             ->with('success_message','게시판 설정이 수정되었습니다.');
     }
 
-    public function destory($id){
+    public function destroy($id){
         BoardConf::find($id)->delete();
 
         return json_encode(['result'=>true, 'message'=>'삭제 되었습니다.']);

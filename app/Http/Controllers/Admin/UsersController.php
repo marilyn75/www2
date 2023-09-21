@@ -54,9 +54,9 @@ class UsersController extends Controller
             ->with('success_message','회원정보가 변경 되었습니다.');
     }
 
-    public function destory($id){
+    public function destroy($id){
         $UserClass = new UserClass($id);
-        $UserClass->destory();
+        $UserClass->destroy();
 
         return json_encode(['result'=>true, 'message'=>'삭제 되었습니다.']);
     }

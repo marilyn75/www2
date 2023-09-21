@@ -37,7 +37,7 @@
                 {
                     "data":"title",
                     "render": function(data, type, row) {
-                        return '<a href="{{ route('admin.board', $id) }}/' + row.id + '">' + data + '</a>';
+                        return '<a href="{{ route('admin.board.show') }}/' + row.id + '" class="btn-view">' + data + '</a>';
                     }
                 },
                 {"data":"writer"},
@@ -47,7 +47,6 @@
                     "render": function(data, type, row) {
                         // 수정 및 삭제 버튼 생성 및 이벤트 핸들러 설정
                         return '<ul class="view_edit_delete_list mb0">' +
-                               '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="게시물 보기"><a href="#" class="btn-view" data-id="'+data.id+'"><span class="flaticon-invoice"></span></a></li>' +
                                '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="수정"><a href="#" class="btn-edit" data-id="'+data.id+'"><span class="flaticon-edit"></span></a></li>' +
                                '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="삭제"><a href="#" class="btn-delete" data-id="'+data.id+'"><span class="flaticon-garbage"></span></a></li>' +
                                '</ul>';
@@ -65,12 +64,7 @@
         
         $(".table")
         .on("click",".btn-view",function(){   // 게시물 보기 처리
-            var id = $(this).data('id');
-            location.href = "{{ route('admin.board') }}/"+id;
-        })
-        .on("click",".btn-edit",function(){     // 수정버튼 처리
-            var id = $(this).data('id');
-            var url = "{{ route('admin.board-confs') }}/edit/" + id;
+            var url = this.href;
             //var params = "keyword=" + table.search() + "&page_size=" + table.page.len() + "&page=" + table.page.info().page;
             var params = {
                 'keyword' : table.search(),
@@ -81,7 +75,34 @@
 
             $.ajax({
                 type: 'post',
-                url : "{{ route('redirect-after-session') }}",
+                url : "{{ route('common.redirect-after-session') }}",
+                data: {'_token': '{{ csrf_token() }}', 'url' : url, data: params},
+                dataType: 'text', 
+                success: function(r){
+                    //작업이 성공적으로 발생했을 경우
+                    location.href = r;
+                },
+                error:function(e){  
+                    //에러가 났을 경우 실행시킬 코드
+                    console.log(e);
+                }
+            });
+            return false;
+        })
+        .on("click",".btn-edit",function(){     // 수정버튼 처리
+            var id = $(this).data('id');
+            var url = "{{ route('admin.board') }}/edit/" + id;
+            //var params = "keyword=" + table.search() + "&page_size=" + table.page.len() + "&page=" + table.page.info().page;
+            var params = {
+                'keyword' : table.search(),
+                'page_size' :  table.page.len(),
+                'page' :  table.page.info().page,
+            };
+            //location.href = url + "?" + params;
+
+            $.ajax({
+                type: 'post',
+                url : "{{ route('common.redirect-after-session') }}",
                 data: {'_token': '{{ csrf_token() }}', 'url' : url, data: params},
                 dataType: 'text', 
                 success: function(r){
@@ -100,14 +121,14 @@
             var id = $(this).data('id');
             var pageNumber = table.page.info().page;
             Swal.fire({
-                title: '탈퇴처리 하시겠습니까?',
-                text: '탈퇴처리 후 복구가 불가합니다. 신중하세요.',
+                title: '삭제 하시겠습니까?',
+                text: '삭제처리 후 복구가 불가합니다. 신중하세요.',
                 icon: 'warning',
                 
                 showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
                 confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
                 cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-                confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+                confirmButtonText: '삭제', // confirm 버튼 텍스트 지정
                 cancelButtonText: '취소', // cancel 버튼 텍스트 지정
                 
                 reverseButtons: true, // 버튼 순서 거꾸로
@@ -118,13 +139,13 @@
                 if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
                     $.ajax({
                         type: 'post',
-                        url : "{{ route('admin.board-confs') }}" + "/delete/"+id,
+                        url : "{{ route('admin.board') }}" + "/delete/"+id,
                         data: {'_token': '{{ csrf_token() }}'},
                         dataType: 'json', 
                         success: function(r){
                             //작업이 성공적으로 발생했을 경우
                             if(r.result==true){
-                                Swal.fire(r.message, '화끈하시네요~!', 'success');
+                                Swal.fire(r.message, '게시글이 삭제 되었습니다.', 'success');
                                 // 데이터테이블 리로드
                                 // table.ajax.reload(); // 데이터 테이블 다시 로드
                                 table.page(pageNumber).draw(false);
