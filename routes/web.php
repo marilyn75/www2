@@ -53,6 +53,9 @@ Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout
 Route::get('social/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'login'])->name('social.login');
 Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'callback'])->name('social.callback');
 
+Route::get('board/{id}', [App\Http\Controllers\Web\BoardController::class, 'index'])->name('board');
+Route::get('board/data/{id}', [App\Http\Controllers\Web\BoardController::class, 'getTableData'])->name('board.data');
+Route::get('board/view/{id?}', [App\Http\Controllers\Web\BoardController::class, 'show'])->name('board.show');
 
 // 공통 routes  //////////////////////////////////
 Route::prefix('/common')->group(function(){

@@ -57,8 +57,8 @@ class BoardClass{
     public function datalist(){
         $data = BoardData::select('id', 'title', 'writer')
                 ->where('board_id',$this->board_id)
-                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at')
-                ->orderBy('id', 'desc');
+                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at');
+                // ->orderBy('id', 'desc');
             
         return DataTables::of($data)->toJson();
     }

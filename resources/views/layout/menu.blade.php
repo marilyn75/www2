@@ -23,7 +23,19 @@
 			<!-- Responsive Menu Structure-->
 			<!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
 			<ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
+				@foreach ((new \App\Http\Class\MenuClass())->getMenus() as $menu)
 				<li>
+					<a href="{{ $menu['link'] }}" @if(!empty($menu['target'])) target="{{ $menu['target'] }}" @endif ><span class="title">{{ $menu['txt'] }}</span></a>
+					@if(!empty($menu['submenu']))
+					<ul>
+						@foreach ($menu['submenu'] as $submenu)
+						<li><a href="{{ $submenu['link'] }}" @if(!empty($submenu['target'])) target="{{ $submenu['target'] }}" @endif ><span class="title">{{ $submenu['txt'] }}</span></a></li>
+						@endforeach
+					</ul>
+					@endif
+				</li>
+				@endforeach
+				{{-- <li>
 					<a href="#"><span class="title">Home</span></a>
 					<!-- Level Two-->
 					<ul>
@@ -167,7 +179,7 @@
 				</li>
 				<li class="last">
 					<a href="page-contact.html"><span class="title">Contact</span></a>
-				</li>
+				</li> --}}
 				@guest
                 <li class="list-inline-item list_s">
                     {{-- <a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg text-thm3">Login/Register</span></a> --}}
