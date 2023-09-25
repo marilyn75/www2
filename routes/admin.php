@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BoardConfsController;
 use App\Http\Controllers\Admin\BoardDatasControll;
+use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Models\BoardConf;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,7 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::get('/board/edit/{id}', [BoardDatasControll::class, 'edit'])->name('admin.board.edit');
     Route::post('/board/edit/{id}', [BoardDatasControll::class, 'update'])->name('admin.board.update');
     Route::post('/board/delete/{id}', [BoardDatasControll::class, 'destroy'])->name('admin.board.destroy');
+    
+    // 메뉴관리
+    Route::get('/menus', [MenusController::class, 'index'])->name('admin.menus');
 });
