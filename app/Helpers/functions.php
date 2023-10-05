@@ -107,3 +107,26 @@ if (!function_exists('fileIcon')) {
         return "/images/Common/ficon/" . $icon_file;
     }
 }
+
+// 날짜형식
+if (!function_exists('formatCreatedAt')) {
+    function formatCreatedAt($created_at) {
+        // 입력된 created_at 문자열을 날짜 객체로 변환
+        $date = new DateTime($created_at);
+    
+        // 현재 시간을 구합니다
+        $now = new DateTime();
+    
+        // 날짜 차이 계산
+        $interval = $now->diff($date);
+    
+        // 오늘, 어제, 또는 날짜 형식에 따라 출력
+        if ($interval->d == 0) {
+            return '오늘, ' . $date->format('H:i');
+        } elseif ($interval->d == 1) {
+            return '어제, ' . $date->format('H:i');
+        } else {
+            return $date->format('Y.m.d H:i');
+        }
+    }
+}

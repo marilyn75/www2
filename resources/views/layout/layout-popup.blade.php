@@ -10,14 +10,19 @@
 <!-- css file -->
 <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url('css/style.css') }}">
-<link rel="stylesheet" href="{{ url('css/dashbord_navitaion.css') }}">
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- Title -->
 <title>FindHouse - Real Estate HTML Template</title>
 <!-- Favicon -->
-<link href="images/favicon.ico" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
-<link href="images/favicon.ico" sizes="128x128" rel="shortcut icon" />
+<link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+<link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" />
+
+<script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>
+
+<script type="text/javascript" src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,80 +31,24 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-<script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
-<script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>
-
-<script type="text/javascript" src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
-<script type="text/javascript" src="{{ url('js/common.js') }}"></script>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="{{ url('js/common.js') }}"></script>
 </head>
 <body>
 <div class="wrapper">
 	<div class="preloader"></div>
 
-	<!-- Main Header -->
-	@include('admin.layout.header')
-
-	<!-- Main Header Nav For Mobile -->
-	@include('admin.layout.menum')
-
-    <!-- Main Header Nav For Web -->
-    @include('admin.layout.menu')
-
-    <section class="our-dashbord dashbord bgc-f7 pb50">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-3 col-xl-2 dn-992 pl0"></div>
-              <div class="col-sm-12 col-lg-8 col-xl-10 maxw100flex-992">
-                  <div class="row">
-                    <div class="col-lg-4 col-xl-4 mb10">
-                        <div class="breadcrumb_content style2 mb30-991">
-                            <h2 class="breadcrumb_title">@yield('page-title')</h2>
-                            <p>@yield('page-comment')</p>
-                        </div>
-                    </div>
-    @yield("search")
-                    <div class="col-lg-12">
-                          
-
-
-    @yield('content')
-
-
-
-                                  
-                    </div>
-                </div>
-                <div class="row mt10">
-                    <div class="col-lg-12">
-                        <div class="copyright-widget text-center">
-                            <p>© 2020 Find House. Made with love.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-	
-<a class="scrollToHome" href="#"><i class="flaticon-arrows"></i></a>
+	@yield('content')	
+<a class="scrollToHome home7" href="#"><i class="flaticon-arrows"></i></a>
 </div>
+
 <!-- Wrapper End -->
-
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<!-- SweetAlert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
 <script type="text/javascript" src="{{ url('js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/jquery.mmenu.all.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/ace-responsive-menu.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/bootstrap-select.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/isotop.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/snackbar.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/simplebar.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/parallax.js') }}"></script>
@@ -107,13 +56,10 @@
 <script type="text/javascript" src="{{ url('js/jquery-scrolltofixed-min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/jquery.counterup.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/wow.min.js') }}"></script>
-<script type="text/javascript" src="{{ url('js/progressbar.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/slider.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/timepicker.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/smartuploader.js') }}"></script>
-<script type="text/javascript" src="{{ url('js/dashboard-script.js') }}"></script>
 <!-- Custom script for all pages --> 
 <script type="text/javascript" src="{{ url('js/script.js') }}"></script>
-
 </body>
 </html>

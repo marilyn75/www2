@@ -62,7 +62,12 @@ class MenuClass{
                         'link'=>'http://www2.gbbinc.co.kr/page-ui-element.html',
                         'target'=>'_blank'
                     ],
-
+                    [
+                        'code'=>'4_3',
+                        'txt'=>'Flaticon Demo', 
+                        'link'=>'http://www2.gbbinc.co.kr/fonts/font/flaticon.html',
+                        'target'=>'_blank'
+                    ],
                 ]
             ],
         ];

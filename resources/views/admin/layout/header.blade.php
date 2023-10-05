@@ -5,8 +5,8 @@
             <!-- Menu Toggle btn-->
 
             <a href="#" class="navbar_brand float-left dn-smd">
-                <img class="logo1 img-fluid" src="{{ assert('images/header-logo2.png') }}" alt="header-logo.png">
-                <img class="logo2 img-fluid" src="{{ assert('images/header-logo2.png') }}" alt="header-logo2.png">
+                <img class="logo1 img-fluid" src="{{ asset('images/header-logo2.png') }}" alt="header-logo.png">
+                <img class="logo2 img-fluid" src="{{ asset('images/header-logo2.png') }}" alt="header-logo2.png">
             </a>
             <!-- Responsive Menu Structure-->
             <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->

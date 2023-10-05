@@ -3,7 +3,7 @@
     <li class="header"><img src="{{ asset('images/header-logo.png') }}" alt="header-logo2.png"></li>
     <li class="title"><span>Main</span></li>
     <li class="treeview"><a href="{{ route('admin') }}"><i class="flaticon-layers"></i><span> Dashboard</span></a></li>
-    <li class="treeview"><a href="page-message.html"><i class="flaticon-envelope"></i><span> Message</span></a></li>
+    <li class="treeview"><a href="{{ route('admin.chat') }}"><i class="flaticon-envelope"></i><span> Message</span></a></li>
     <li class="title"><span>Manage Listings</span></li>
     <li><a href="{{ route('admin.users') }}"><i class="flaticon-user-1"></i> <span>회원관리</span></a></li>
     <li><a href="{{ route('admin.menus') }}"><i class="flaticon-filter-results-button"></i> <span>메뉴관리</span></a></li>

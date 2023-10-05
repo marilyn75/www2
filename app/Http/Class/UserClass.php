@@ -2,6 +2,7 @@
 
 namespace App\Http\Class;
 
+use App\Models\ChatChannel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -10,11 +11,13 @@ use Intervention\Image\Facades\Image;
 
 class UserClass{
 
+    private $id;
     private $model;
     private $file_path;
 
     public function __construct($id)
     {
+        $this->id = $id;
         $this->model = User::where('id',$id);
         $this->file_path = public_path() . "/files/profile/";
     }
@@ -34,6 +37,31 @@ class UserClass{
         }
 
         return $data;
+    }
+
+    public function getProfileAsset(){
+        return $this->data()->profile_file;
+    }
+
+    // 해당 유저의 마지막 채팅 메세지
+    public function getLastChatMessages(){
+        return $this->model->first()->chatUserChannels->first()->messages->last()->message;
+    }
+
+    public function getChatChannel(){
+        return $this->model->first()->chatUserChannels->first()->channel->channel;
+    }
+
+    public function getNotReadChatMessagesCount(){
+        $modelUserChannel = $this->model->first()->chatUserChannels->first();
+        if(empty($modelUserChannel)) return 0;
+        $channel = $modelUserChannel->channel->channel;
+        return ChatChannel::where('channel',$channel)->first()->users->where('user_id','!=',$this->id)->first()->messages->where('is_read',0)->count();
+    }
+
+    public function getNotReadChatMessagesCount2(){ // 관리자모드의 유저 메세지 안읽은 수
+        $channel = ($this->model->first()->chatUserChannels->first()->channel->channel);
+        return ChatChannel::where('channel',$channel)->first()->users->where('user_id',$this->id)->first()->messages->where('is_read',0)->count();
     }
 
     public function update(Request $request){

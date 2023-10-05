@@ -57,6 +57,10 @@ class User extends Authenticatable
         return $this->hasMany(SocialAccount::class)->count();
     }
 
+    public function chatUserChannels(){
+        return $this->hasMany(ChatUser::class, 'user_id')->with('channel');
+    }
+
     // 유효성 검사 조건
     public static $rules = [
         // 회원가입

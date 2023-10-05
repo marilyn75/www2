@@ -53,6 +53,10 @@
 	@include('layout.bottom')
 <a class="scrollToHome home7" href="#"><i class="flaticon-arrows"></i></a>
 </div>
+
+<!-- 채팅 아이콘 -->
+<x-ChatIcon />
+
 <!-- Wrapper End -->
 <script type="text/javascript" src="{{ url('js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/bootstrap.min.js') }}"></script>

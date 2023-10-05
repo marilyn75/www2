@@ -57,6 +57,13 @@ Route::get('board/{id}', [App\Http\Controllers\Web\BoardController::class, 'inde
 Route::get('board/data/{id}', [App\Http\Controllers\Web\BoardController::class, 'getTableData'])->name('board.data');
 Route::get('board/view/{id?}', [App\Http\Controllers\Web\BoardController::class, 'show'])->name('board.show');
 
+
+
+// 채팅
+Route::get('/chat/{channel?}', [App\Http\Controllers\Member\ChatController::class, 'index'])->name('chat');
+Route::post('/chat/broadcast', [App\Http\Controllers\Member\ChatController::class, 'broadcast'])->name('chat.broadcast')->middleware('auth');
+Route::post('/chat/receive', [App\Http\Controllers\Member\ChatController::class, 'receive'])->name('chat.receive')->middleware('auth');
+
 // 공통 routes  //////////////////////////////////
 Route::prefix('/common')->group(function(){
     // 세션생성용

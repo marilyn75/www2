@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BoardConfsController;
 use App\Http\Controllers\Admin\BoardDatasControll;
 use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Member\ChatController;
 use App\Models\BoardConf;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,8 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::get('/', function(){
         return view('admin.dashboard');
     })->name('admin');
+
+    Route::get('/chat/{channel?}', [ChatController::class, 'admin'])->name('admin.chat');
 
     Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
     Route::get('/users/data', [UsersController::class, 'getTableData'])->name('admin.users.data');

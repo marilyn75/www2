@@ -56,3 +56,9 @@ function dateFormat(date) {
 	return dateFormat2;
 }
 
+//새창 열기
+function openWindow(url,width,height,winName){
+	if(winName==undefined) var winName = "";
+	var w = window.open(url,winName,"width="+width+",height="+height+",scrollbars=yes");
+	w.focus();
+}
