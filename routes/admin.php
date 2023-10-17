@@ -44,5 +44,13 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::post('/board/delete/{id}', [BoardDatasControll::class, 'destroy'])->name('admin.board.destroy');
     
     // 메뉴관리
-    Route::get('/menus', [MenusController::class, 'index'])->name('admin.menus');
+    Route::get('/menus/{p_id}/{c_id?}', [MenusController::class, 'index'])->where('p_id', '[0-9]+')->name('admin.menus');
+    Route::get('/menus/create/{id?}', [MenusController::class, 'create'])->name('admin.menus.create');
+    Route::post('/menus/store/{id?}', [MenusController::class, 'store'])->name('admin.menus.store');
+    Route::get('/menus/edit/{id?}', [MenusController::class, 'edit'])->name('admin.menus.edit');
+    Route::post('/menus/edit/{id?}', [MenusController::class, 'update'])->name('admin.menus.update');
+    Route::post('/menus/delete/{id?}', [MenusController::class, 'destroy'])->name('admin.menus.destroy');
+    Route::post('/menus/sort', [MenusController::class, 'sort'])->name('admin.menus.sort');
+    Route::get('/menus/sort/edit/{id?}', [MenusController::class, 'sort_edit'])->name('admin.menus.sort.edit');
+    Route::post('/menus/option', [MenusController::class, 'option'])->name('admin.menus.option');
 });

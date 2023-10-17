@@ -12462,6 +12462,12 @@ a.btn.btn_error{
   height: 260px;
   text-align: center;
 }
+
+.wrap-custom-file.menu {
+  width: 768px;
+  height: 200px;
+}
+
 .wrap-custom-file input[type="file"] {
   position: absolute;
   top: 0;

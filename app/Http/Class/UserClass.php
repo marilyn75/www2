@@ -56,7 +56,9 @@ class UserClass{
         $modelUserChannel = $this->model->first()->chatUserChannels->first();
         if(empty($modelUserChannel)) return 0;
         $channel = $modelUserChannel->channel->channel;
-        return ChatChannel::where('channel',$channel)->first()->users->where('user_id','!=',$this->id)->first()->messages->where('is_read',0)->count();
+        $chatUser = ChatChannel::where('channel',$channel)->first()->users->where('user_id','!=',$this->id)->first();
+        if(empty($chatUser)) return 0;
+        return $chatUser->messages->where('is_read',0)->count();
     }
 
     public function getNotReadChatMessagesCount2(){ // 관리자모드의 유저 메세지 안읽은 수

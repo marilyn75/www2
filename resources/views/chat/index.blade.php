@@ -1,5 +1,7 @@
 @extends('layout.layout-popup')
 
+@section('page-title', '문의 채팅창')
+
 @section('content')
 
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>

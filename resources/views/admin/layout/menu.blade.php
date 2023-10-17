@@ -6,7 +6,13 @@
     <li class="treeview"><a href="{{ route('admin.chat') }}"><i class="flaticon-envelope"></i><span> Message</span></a></li>
     <li class="title"><span>Manage Listings</span></li>
     <li><a href="{{ route('admin.users') }}"><i class="flaticon-user-1"></i> <span>회원관리</span></a></li>
-    <li><a href="{{ route('admin.menus') }}"><i class="flaticon-filter-results-button"></i> <span>메뉴관리</span></a></li>
+    <li class="treeview">
+      <a href="#n"><i class="flaticon-filter-results-button"></i> <span>메뉴관리</span><i class="fa fa-angle-down pull-right"></i></a>
+      <ul class="treeview-menu">
+        <li><a href="{{ route('admin.menus',1) }}"><i class="fa fa-circle"></i> PC</a></li>
+        <li><a href="{{ route('admin.menus',2) }}"><i class="fa fa-circle"></i> MOBILE</a></li>
+      </ul>
+    </li>
     <li><a href="{{ route('admin.board-confs') }}"><i class="flaticon-document"></i> <span>게시판관리</span></a></li>
     <li class="treeview">
       <a href="page-my-properties.html"><i class="flaticon-home"></i> <span>My Properties</span><i class="fa fa-angle-down pull-right"></i></a>
