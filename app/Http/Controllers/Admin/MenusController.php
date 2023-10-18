@@ -6,6 +6,7 @@ use App\Models\Menu;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BoardConf;
 use Intervention\Image\Facades\Image;
 
 class MenusController extends Controller
@@ -37,7 +38,9 @@ class MenusController extends Controller
             $path .= $menu->title;
         }
 
-        return view('admin.menu.create',compact('id', 'path'));
+        $board = BoardConf::orderBy('board_name', 'desc')->get();
+
+        return view('admin.menu.create',compact('id', 'path', 'board'));
     }
 
     // 메뉴 추가 처리
@@ -80,7 +83,7 @@ class MenusController extends Controller
             $image->save(public_path('files/menu/') . $filename);
         }
         
-        $newMenuItem = new Menu([
+        $menuData = [
             'code' => $data['code'],
             'title' => $data['title'],
             'type' => $data['type'],
@@ -90,7 +93,10 @@ class MenusController extends Controller
             'created_ip' => $request->ip(),
             'updated_user_id' => auth()->user()->id,
             'updated_ip' => $request->ip(),
-        ]);
+        ];
+        if($data['type']=="B")  $menuData['board_id'] = $data['board_id'];
+
+        $newMenuItem = new Menu($menuData);
 
         // 컨텐츠 저장
         if($data['type']=="C"){
@@ -127,7 +133,9 @@ class MenusController extends Controller
             $path .= $menu->title;
         }
 
-        return view('admin.menu.edit', compact('id', 'path', 'menu'));
+        $board = BoardConf::orderBy('board_name', 'desc')->get();
+
+        return view('admin.menu.edit', compact('id', 'path', 'menu', 'board'));
     }
 
     public function update($id, Request $request){
@@ -179,7 +187,7 @@ class MenusController extends Controller
             }
         }
 
-        $model->update([
+        $menuData = [
             'code' => $data['code'],
             'title' => $data['title'],
             'type' => $data['type'],
@@ -187,7 +195,11 @@ class MenusController extends Controller
             'top_image' => $filename,
             'updated_user_id' => auth()->user()->id,
             'updated_ip' => $request->ip(),
-        ]);
+        ];
+
+        if($data['type']=="B")  $menuData['board_id'] = $data['board_id'];
+
+        $model->update($menuData);
 
         // 컨텐츠 저장
         if($data['type']=="C"){

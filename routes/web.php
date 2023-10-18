@@ -80,3 +80,6 @@ Route::prefix('/common')->group(function(){
     // 임시파일 보기
     Route::get('multiFileUpload/view/{filename}', [App\Http\Controllers\Common\TmpFilesController::class, 'view'])->name('common.file.view');
 });
+
+Route::get('/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');
+Route::get('/page/view/{id}', [App\Http\Controllers\Web\PageController::class, 'view'])->name('page.view');

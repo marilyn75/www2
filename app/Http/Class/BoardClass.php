@@ -26,6 +26,11 @@ class BoardClass{
         $this->conf = $this->getConf();
     }
 
+    // 게시판 목록
+    public function getBoardList(){
+        return BoardConf::orderBy('board_name', 'asc')->get();
+    }
+
     // 환경설정값
     public function getConf(){
         if(empty($this->conf)){

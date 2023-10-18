@@ -55,6 +55,10 @@
                             <label for="type_C"><span class="radio-label"></span> 컨텐츠</label>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="radio">
+                            <input id="type_B" name="type" type="radio" value="B" @if($menu->type=='B') checked @endif>
+                            <label for="type_B"><span class="radio-label"></span> 게시판</label>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="radio">
                             <input id="type_L" name="type" type="radio" value="L" @if($menu->type=='L') checked @endif>
                             <label for="type_L"><span class="radio-label"></span> 링크</label>
                         </div>&nbsp;&nbsp;&nbsp;
@@ -65,19 +69,6 @@
                     </div>
                 </div>
             </div>
-            
-            {{-- <div class="col-lg-6 col-xl-6">
-                <div class="my_profile_setting_input form-group">
-                    <label for="file_type">연결게시판</label>
-                    <input type="text" class="form-control" id="file_type" name="file_type">
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-6">
-                <div class="my_profile_setting_input form-group">
-                    <label for="file_size">연결컨텐츠</label>
-                    <input type="number" class="form-control" id="file_size" name="file_size" value="2097152">
-                </div>
-            </div> --}}
 
             <div class="col-lg-6 col-xl-6 @if($menu->type!='L') d-none @endif type-addInput" id="addInputL">
                 <div class="my_profile_setting_input form-group">
@@ -92,6 +83,21 @@
                     <textarea class="form-control" id="content" rows="7" name="content">@if(!empty($menu->content)) {{ $menu->content->content }} @endif</textarea>
                 </div>
             </div>
+
+            <div class="col-lg-6 col-xl-6 @if($menu->type!='B') d-none @endif type-addInput" id="addInputB">
+                <div class="my_profile_setting_input form-group">
+                    <label for="board_id">연결게시판</label>
+                    <div>
+                    <select name="board_id" id="board_id">
+                        <option value="">게시판을 선택하세요.</option>
+                        @foreach ($board as $_bd)
+                        <option value="{{ $_bd->id }}" @if ($menu->board_id==$_bd->id) selected @endif>{{ $_bd->board_name }}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
+            </div>
+
             {{-- <div class="col-lg-6 col-xl-6">
                 <div class="my_profile_setting_input form-group">
                     <label for="file_total_size">링크 TARGET</label>

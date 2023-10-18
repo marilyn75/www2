@@ -55,6 +55,10 @@
                             <label for="type_C"><span class="radio-label"></span> 컨텐츠</label>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="radio">
+                            <input id="type_B" name="type" type="radio" value="B">
+                            <label for="type_B"><span class="radio-label"></span> 게시판</label>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="radio">
                             <input id="type_L" name="type" type="radio" value="L">
                             <label for="type_L"><span class="radio-label"></span> 링크</label>
                         </div>&nbsp;&nbsp;&nbsp;
@@ -89,6 +93,20 @@
                 <div class="my_profile_setting_input form-group">
                     <label for="file_total_size">컨텐츠 내용</label>
                     <textarea class="form-control" id="content" rows="7" name="content">{{ old('content') }}</textarea>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-xl-6 d-none type-addInput" id="addInputB">
+                <div class="my_profile_setting_input form-group">
+                    <label for="board_id">연결게시판</label>
+                    <div>
+                    <select name="board_id" id="board_id">
+                        <option value="">게시판을 선택하세요.</option>
+                        @foreach ($board as $_bd)
+                        <option value="{{ $_bd->id }}">{{ $_bd->board_name }}</option>
+                        @endforeach
+                    </select>
+                    </div>
                 </div>
             </div>
 

@@ -27,7 +27,7 @@ class BoardDatasControll extends Controller
 
         $board_exist = $BoardClass->isExist();
         $board_name = $BoardClass->getBoardName();
-        $board_list = $this->getBoardList();
+        $board_list = $BoardClass->getBoardList();
 
         return view('admin.board.index',compact('board_exist', 'id', 'board_name', 'board_list', 'condition'));
     }
@@ -36,10 +36,6 @@ class BoardDatasControll extends Controller
         if($request->ajax()){   
             return (new BoardClass($id))->datalist();
         }
-    }
-
-    private function getBoardList(){
-        return BoardConf::orderBy('board_name', 'asc')->get();
     }
 
     /**
