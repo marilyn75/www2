@@ -6,35 +6,25 @@
 <script>
     $(document).ready(function(){
         var table = new DataTable('.table',{
-            "ajax":"{{ route('admin.board') }}/data/{{ $id }}",
+            "ajax":"{{ route('board.data', $id) }}",
             "columns":[
                 {"data":"id"},
                 {
                     "data":"title",
                     "render": function(data, type, row) {
-                        return '<a href="{{ route('admin.board.show') }}/' + row.id + '" class="btn-view">' + data + '</a>';
+                        return '<a href="' + docURL.url + '?mode=view&bid=' + row.id + '" class="btn-view">' + data + '</a>';
                     }
                 },
                 {"data":"writer"},
                 {"data": "formatted_created_at", "searchable" : false},
-                {
-                    "data": null,
-                    "render": function(data, type, row) {
-                        // 수정 및 삭제 버튼 생성 및 이벤트 핸들러 설정
-                        return '<ul class="view_edit_delete_list mb0">' +
-                               '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="수정"><a href="#" class="btn-edit" data-id="'+data.id+'"><span class="flaticon-edit"></span></a></li>' +
-                               '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="삭제"><a href="#" class="btn-delete" data-id="'+data.id+'"><span class="flaticon-garbage"></span></a></li>' +
-                               '</ul>';
-                    },
-                    "orderable": false,
-                }
             ],
             processing: true,
             serverSide: true,
             //info:false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Korean.json",
-            }
+            },
+            order:[[0, 'desc']],
         });
         
         $(".table")
@@ -166,7 +156,6 @@
                     <th scope="col">제목</th>
                     <th scope="col">작성자</th>
                     <th scope="col">등록일시</th>
-                    <th scope="col">관리</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -176,9 +165,12 @@
 
         </div>
     </div>
+    @auth
     <div class="pck_chng_btn text-right mt50">
-        <a href="{{ route('admin.board.create', $id) }}"><button class="btn btn-lg btn-thm">글쓰기</button></a>
+        <a href="{{ route('page', $page->id) }}?mode=write"><button class="btn btn-lg btn-thm">글쓰기</button></a>
     </div>
+    @endauth
+    
 </div>
 
 @endif

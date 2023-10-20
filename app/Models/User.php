@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->hasMany(SocialAccount::class);
     }
 
-    public function hasSocialAccount(){
+    public function hasSocialAccounts(){
         return $this->hasMany(SocialAccount::class)->count();
     }
 

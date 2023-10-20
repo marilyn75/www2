@@ -4,13 +4,6 @@ use DragonCode\Contracts\Cashier\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
-$menuItems = [
-    ['name' => '홈', 'url' => '/'],
-    ['name' => '소개', 'url' => '/about'],
-    ['name' => '서비스', 'url' => '/services'],
-    // 추가적인 메뉴 항목들을 필요에 따라 배열에 추가합니다.
-];
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,9 +46,8 @@ Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout
 Route::get('social/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'login'])->name('social.login');
 Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'callback'])->name('social.callback');
 
-Route::get('board/{id}', [App\Http\Controllers\Web\BoardController::class, 'index'])->name('board');
-Route::get('board/data/{id}', [App\Http\Controllers\Web\BoardController::class, 'getTableData'])->name('board.data');
-Route::get('board/view/{id?}', [App\Http\Controllers\Web\BoardController::class, 'show'])->name('board.show');
+
+
 
 
 
@@ -82,4 +74,5 @@ Route::prefix('/common')->group(function(){
 });
 
 Route::get('/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');
-Route::get('/page/view/{id}', [App\Http\Controllers\Web\PageController::class, 'view'])->name('page.view');
+Route::post('/page/{id}', [App\Http\Controllers\Web\PageController::class, 'store'])->name('page.store');
+Route::get('board/data/{id}', [App\Http\Controllers\Web\BoardController::class, 'getTableData'])->name('board.data');

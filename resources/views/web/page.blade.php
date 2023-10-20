@@ -31,7 +31,7 @@
             @if ($page->type == 'C')
             <x-menu-content :page="$page" />
             @elseif ($page->type == 'B')
-            <x-menu-board />
+            <x-menu-board :page="$page" :request="$request" />
             @elseif ($page->type == 'W')
             <x-menu-wait />
             @endif

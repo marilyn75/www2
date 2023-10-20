@@ -31,7 +31,7 @@ class Menu extends Model
 
     // 유효성 검사 조건
     public static $rules = [
-        'title' => 'required|max:10',
+        'title' => 'required|max:20',
         'code' => 'required|unique:menus,code',
     ];
 

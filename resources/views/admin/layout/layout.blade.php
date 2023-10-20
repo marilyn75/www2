@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <script type="text/javascript" src="{{ url('js/common.js') }}"></script>
+<script src="{{ url('js/docurl.js') }}"></script>
 
 </head>
 <body>

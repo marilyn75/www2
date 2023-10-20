@@ -35,6 +35,7 @@
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="{{ url('js/common.js') }}"></script>
+    <script src="{{ url('js/docurl.js') }}"></script>
 
     <style>
         /* 팝업 컨테이너 스타일 */

@@ -125,7 +125,7 @@ class BoardClass{
         // 프로필 사진
         if(!empty($data->user)){
             if(empty($data->user->file)){
-                if(!is_null($data->user->socialAccounts))
+                if($data->user->hasSocialAccounts() > 0)
                     $data->photo = $data->user->socialAccounts()->first()->avatar;
                 else
                     $data->photo = '/images/user-placeholder.png';
