@@ -94,7 +94,7 @@
                             <ul class="board-view-filelist">
                                 @foreach ($data->attachFiles as $file)
                                 <li>
-                                    <a href="{{ route('admin.board.filedownload', $file->id) }}" target="_blank">
+                                    <a href="{{ route('board.filedownload', $file->id) }}" target="_blank">
                                         <span>
                                             <img src="{{ fileIcon($file->filename_org) }}" alt="hwp 파일" org_width="19" org_height="23" isinit="true"> {{ $file->filename_org }} ({{ formatBytes($file->filesize) }})
                                         </span>

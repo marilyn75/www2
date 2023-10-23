@@ -74,5 +74,9 @@ Route::prefix('/common')->group(function(){
 });
 
 Route::get('/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');
-Route::post('/page/{id}', [App\Http\Controllers\Web\PageController::class, 'store'])->name('page.store');
-Route::get('board/data/{id}', [App\Http\Controllers\Web\BoardController::class, 'getTableData'])->name('board.data');
+Route::post('/page/store/{id}', [App\Http\Controllers\Web\PageController::class, 'store'])->name('page.store');
+Route::post('/page/update/{id}', [App\Http\Controllers\Web\PageController::class, 'update'])->name('page.update');
+Route::post('/page/destroy/{id}', [App\Http\Controllers\Web\PageController::class, 'destroy'])->name('page.destroy');
+
+Route::get('board/data/{id}', [App\Http\Controllers\Admin\BoardDatasControll::class, 'getTableData'])->name('board.data');
+Route::get('/board/file-download/{file_id}', [App\Http\Controllers\Admin\BoardDatasControll::class, 'download'])->name('board.filedownload');

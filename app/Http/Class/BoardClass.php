@@ -283,9 +283,11 @@ class BoardClass{
     // 게시글 삭제
     public function destroy(){
         // 첨부파일 데이터 삭제
-        $files = $this->post->files;
-        foreach($files as $_f){
-            $_f->delete();
+        if(!empty($this->post->files)){
+            $files = $this->post->files;
+            foreach($files as $_f){
+                $_f->delete();
+            }
         }
 
         $this->post->delete();

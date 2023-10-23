@@ -6,7 +6,7 @@
     });
 
     $(document).on('click', '.btnEdit', function(){
-        location.href="{{ route('admin.board.edit', $data->id) }}";
+        location.href="{{ route('page', $page->id) }}?mode=edit&bid={{ $data->id }}";
         return false;
     });
 
@@ -30,23 +30,13 @@
             if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
                 $.ajax({
                     type: 'post',
-                    url : "{{ route('admin.board.destroy', $data->id) }}",
+                    url : "{{ route('page.destroy', $page->id) }}?board_data_id={{ $data->id }}",
                     data: {'_token': '{{ csrf_token() }}'},
                     async: false,
                     dataType: 'json', 
                     success: function(r){
-                        location.href="{{ route('admin.board', $data->board_id) }}";
-                        // //작업이 성공적으로 발생했을 경우
-                        // if(r.result==true){
-                        //     Swal.fire(r.message, '게시글이 삭제 되었습니다.', 'success')
-                        //     .then((result) => {
-                        //         if (result.isConfirmed) {
-                        //             // 목록으로 이동
-                        //             location.href="{{ route('admin.board', $data->board_id) }}";
-                        //         }
-                        //     });
-                            
-                        // }
+                        location.href="{{ route('page', $page->id) }}";
+
                     },
                     error:function(e){  
                         //에러가 났을 경우 실행시킬 코드
@@ -87,7 +77,7 @@
                             <ul class="board-view-filelist">
                                 @foreach ($data->attachFiles as $file)
                                 <li>
-                                    <a href="{{ route('admin.board.filedownload', $file->id) }}" target="_blank">
+                                    <a href="{{ route('board.filedownload', $file->id) }}" target="_blank">
                                         <span>
                                             <img src="{{ fileIcon($file->filename_org) }}" alt="hwp 파일" org_width="19" org_height="23" isinit="true"> {{ $file->filename_org }} ({{ formatBytes($file->filesize) }})
                                         </span>
@@ -145,8 +135,8 @@
                 <button class="btn btn1 btnList">목록</button>
             </div>
             <div class="my_profile_setting_input">
-                {{-- <button class="btn btn2 btnEdit">수정</button>
-                <button class="btn btn3 btnDelete">삭제</button> --}}
+                <button class="btn btn2 btnEdit">수정</button>
+                <button class="btn btn3 btnDelete">삭제</button>
             </div>
         </div>
     </div>

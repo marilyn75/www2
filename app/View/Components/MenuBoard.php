@@ -45,9 +45,10 @@ class MenuBoard extends Component
             case "write":
                 $return = $this->create();
                 break;
-            case "store":
-                $return = $this->store();
+            case "edit":
+                $return = $this->edit();
                 break;
+
         }
 
         return $return;
@@ -68,7 +69,9 @@ class MenuBoard extends Component
 
         $data = $this->BoardClass->getViewData();
 
-        return view('components.menu-board-view', compact('board_name', 'data'));
+        $page = $this->page;
+
+        return view('components.menu-board-view', compact('board_name', 'data', 'page'));
     }
 
     private function create(){
@@ -108,12 +111,19 @@ class MenuBoard extends Component
         return view('components.menu-board-create', compact('board_name', 'id', 'conf', 'ss_id', '_MULTIFILE', 'page'));
     }
 
-    private function store(){
-        $BoardClass = new BoardClass($this->page->board_id);
-        $BoardClass->store($this, $this->request);
+    private function edit(){
+        $board_name = $this->BoardClass->getBoardName();
 
-        return back()
-            ->with('success_message','게시글이 등록 되었습니다.');
+        $data = $this->BoardClass->getViewData($this->request);
+
+        $conf = $this->BoardClass->getConf();
+        
+        $_MULTIFILE = $data->_multifile;
+        $ss_id = ($this->request->old('ss_id'))?$this->request->old('ss_id'):md5(uniqid());
+
+        $page = $this->page;
+
+        return view('components.menu-board-create',  compact('board_name', 'data', 'conf', '_MULTIFILE', 'ss_id', 'page'));
     }
 
 }

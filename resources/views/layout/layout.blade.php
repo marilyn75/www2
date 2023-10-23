@@ -58,6 +58,9 @@
 <!-- 채팅 아이콘 -->
 <x-ChatIcon />
 
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- Wrapper End -->
 <script type="text/javascript" src="{{ url('js/popper.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/bootstrap.min.js') }}"></script>

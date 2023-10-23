@@ -23,7 +23,7 @@
             debug : false
             , post_parameters : [ 
                 { name : "module" , value : "board" } ,
-                { name : "board_conf_id" , value : "{{ $id }}" } ,
+                { name : "board_conf_id" , value : "{{ $page->board_id }}" } ,
                 { name : "file_ss_id" , value : $('#ss_id').val() } 
             ]
             ,limit_max_file_cnt : {{ $conf->file_num }}
@@ -73,23 +73,28 @@
         return false;
     });
 </script>
-
+@if (empty($data))
 <form action="{{ route('page.store', $page->id) }}" method="POST">
+@else
+<form action="{{ route('page.update', $page->id) }}" method="POST">
+@endif
+
     @csrf
     <input type="hidden" name="board_id" value="{{ $page->board_id }}">
+    @if (!empty($data)) <input type="hidden" name="board_data_id" value="{{ $data->id }}"> @endif
     <div class="my_dashboard_review mb40">
         <div class="row">
             <div class="col-lg-12">
                 <h4 class="mb30">글쓰기</h4>
                 <div class="my_profile_setting_input form-group">
                     <label for="title">제목</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                    <input type="text" class="form-control" id="title" name="title" value="@if(empty($data)) {{ old('title') }} @else {{ $data->title }} @endif">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="my_profile_setting_textarea">
                     <label for="content">내용</label>
-                    <textarea class="form-control" id="content" rows="7" name="content">{{ old('content') }}</textarea>
+                    <textarea class="form-control" id="content" rows="7" name="content">@if(empty($data)) {{ old('content') }} @else {{ $data->content }} @endif</textarea>
                 </div>
             </div>
 

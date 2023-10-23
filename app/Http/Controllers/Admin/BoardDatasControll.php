@@ -12,6 +12,16 @@ use Illuminate\Http\Request;
 
 class BoardDatasControll extends Controller
 {
+
+    private $isAdminPath = false;
+    private $prefixPath = "";
+
+    public function __construct(Request $request)
+    {
+        $referer = $request->fullUrl();
+        $this->isAdminPath = (boolean)strpos($referer, '/admin/');
+        if($this->isAdminPath)  $this->prefixPath = "admin.";
+    }
     /**
      * Display a listing of the resource.
      */
@@ -27,9 +37,10 @@ class BoardDatasControll extends Controller
 
         $board_exist = $BoardClass->isExist();
         $board_name = $BoardClass->getBoardName();
-        $board_list = $BoardClass->getBoardList();
+        $board_list = null;
+        if($this->isAdminPath)  $board_list = $BoardClass->getBoardList();
 
-        return view('admin.board.index',compact('board_exist', 'id', 'board_name', 'board_list', 'condition'));
+        return view($this->prefixPath . 'board.index',compact('board_exist', 'id', 'board_name', 'board_list', 'condition'));
     }
 
     public function getTableData(Request $request, $id){
@@ -75,7 +86,7 @@ class BoardDatasControll extends Controller
             }
         }
 
-        return view('admin.board.create', compact('board_name', 'id', 'conf', 'ss_id', '_MULTIFILE'));
+        return view($this->prefixPath . 'board.create', compact('board_name', 'id', 'conf', 'ss_id', '_MULTIFILE'));
     }
 
     /**
@@ -100,7 +111,7 @@ class BoardDatasControll extends Controller
 
         $data = $BoardClass->getViewData();
 
-        return view('admin.board.view', compact('board_name', 'data'));
+        return view($this->prefixPath . 'board.view', compact('board_name', 'data'));
     }
 
     public function download($file_id){
@@ -122,7 +133,7 @@ class BoardDatasControll extends Controller
         $_MULTIFILE = [];
         $ss_id = ($request->old('ss_id'))?$request->old('ss_id'):md5(uniqid());
 
-        return view('admin.board.edit', compact('board_name', 'data', 'id', 'conf', '_MULTIFILE', 'ss_id'));
+        return view($this->prefixPath . 'board.edit', compact('board_name', 'data', 'id', 'conf', '_MULTIFILE', 'ss_id'));
     }
 
     /**

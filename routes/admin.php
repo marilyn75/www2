@@ -38,7 +38,6 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::get('/board/create/{id}', [BoardDatasControll::class, 'create'])->name('admin.board.create');
     Route::post('/board/store/{id}', [BoardDatasControll::class, 'store'])->name('admin.board.store');
     Route::get('/board/view/{id?}', [BoardDatasControll::class, 'show'])->name('admin.board.show');
-    Route::get('/board/file-download/{file_id}', [BoardDatasControll::class, 'download'])->name('admin.board.filedownload');
     Route::get('/board/edit/{id}', [BoardDatasControll::class, 'edit'])->name('admin.board.edit');
     Route::post('/board/edit/{id}', [BoardDatasControll::class, 'update'])->name('admin.board.update');
     Route::post('/board/delete/{id}', [BoardDatasControll::class, 'destroy'])->name('admin.board.destroy');

@@ -95,11 +95,12 @@ class MenuBoardTest extends TestCase
             'board_id' => 1,
             'title' => Str::limit(fake()->sentence(), 30),
             'content' => fake()->paragraph(5),
+            'ss_id' => $ss_id,
             'tmpfile_idx' => [1],
         ];
 
-        $response = $this->post(route('page',3)."?mode=store", $payload);
-        unset($payload['tmpfile_idx'], $payload['board_id']);
+        $response = $this->post(route('page.store',3)."?mode=store", $payload);
+        unset($payload['tmpfile_idx'], $payload['board_id'], $payload['ss_id']);
         $this->assertDatabaseHas('board_datas', $payload);
         $this->assertDatabaseHas('board_files', ['filename' => $tmp_file->filename]);
 
@@ -121,47 +122,56 @@ class MenuBoardTest extends TestCase
 
     }
 
-    // public function test_게시글수정_페이지에_접근할_수_있다(): void
-    // {
-    //     $board_data = BoardData::first();
-    //     $response = $this->get(route('admin.board.edit',$board_data->id));
-    //     $response->assertStatus(200);
-    // }
+    public function test_게시글수정_페이지에_접근할_수_있다(): void
+    {
+        $board_data = BoardData::first();
+        $response = $this->get(route('page',3) . "?mode=edit&bid=" . $board_data->id);
+        $response->assertStatus(200)
+            ->assertSee($board_data->title);
+    }
 
-    // public function test_게시글을_수정_할_수_있다(): void
-    // {
-    //     $board_data = BoardData::first();
+    public function test_게시글을_수정_할_수_있다(): void
+    {
+        $board_data = BoardData::first();
 
-    //     $payload = [
-    //         'title' => Str::limit(fake()->sentence(), 30),
-    //         'content' => fake()->paragraph(5),
-    //     ];
+        $payload = [
+            'board_id' => 1,
+            'board_data_id' => 1,
+            'title' => Str::limit(fake()->sentence(), 30),
+            'content' => fake()->paragraph(5),
+        ];
 
-    //     $response = $this->post(route('admin.board.update',$board_data->id),$payload);
-        
-    //     $this->assertDatabaseHas('board_datas', $payload);
+        $response = $this->post(route('page.update',3),$payload);
+        unset($payload['board_id'], $payload['board_data_id']);
+        $this->assertDatabaseHas('board_datas', $payload);
        
-    //     $response->assertSessionHas('success_message','게시글이 수정 되었습니다.')
-    //         ->assertStatus(302);
-    // }
+        $response->assertSessionHas('success_message','게시글이 수정 되었습니다.')
+            ->assertStatus(302);
+    }
 
-    // public function test_게시글을_삭제_할_수_있다(): void
-    // {
-    //     $board_data = BoardData::first();
+    public function test_게시글을_삭제_할_수_있다(): void
+    {
+        $board_data = BoardData::first();
 
-    //     // Ajax Post 요청, 데이터 삭제처리 호출
-    //     $response = $this->json('POST', route('admin.board.destroy', $board_data->id), ['_token'=>csrf_token()]);
+        $payload = [
+            '_token' => csrf_token(),
+            'board_id' => $board_data->board_id,
+            'board_data_id' => $board_data->id,
+        ];
 
-    //     $response->assertStatus(200);
+        // Ajax Post 요청, 데이터 삭제처리 호출
+        $response = $this->json('POST', route('page.destroy', 3), $payload);
 
-    //     // 리턴값 확인
-    //     $response->assertJsonFragment(['result'=>true]);
+        $response->assertStatus(200);
 
-    //     // 데이터베이스에서 삭제된 것을 확인
-    //     $this->assertDatabaseMissing('board_datas', ['id' => $board_data->id, 'deleted_at'=>null]);
+        // 리턴값 확인
+        $response->assertJsonFragment(['result'=>true]);
 
-    //     // 첨부파일 데엍 삭제 확인
-    //     $this->assertDatabaseMissing('board_files', ['board_data_id' => $board_data->id, 'deleted_at'=>null]);
-    // }
+        // 데이터베이스에서 삭제된 것을 확인
+        $this->assertDatabaseMissing('board_datas', ['id' => $board_data->id, 'deleted_at'=>null]);
+
+        // 첨부파일 데엍 삭제 확인
+        $this->assertDatabaseMissing('board_files', ['board_data_id' => $board_data->id, 'deleted_at'=>null]);
+    }
 
 }
