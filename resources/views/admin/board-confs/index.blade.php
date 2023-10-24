@@ -23,6 +23,7 @@
                                '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="게시물 보기"><a href="#" class="btn-view" data-id="'+data.id+'"><span class="flaticon-invoice"></span></a></li>' +
                                '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="수정"><a href="#" class="btn-edit" data-id="'+data.id+'"><span class="flaticon-edit"></span></a></li>' +
                                '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="삭제"><a href="#" class="btn-delete" data-id="'+data.id+'"><span class="flaticon-garbage"></span></a></li>' +
+                               '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="권한설정"><a href="#" class="btn-permission" data-id="'+data.id+'"><span class="flaticon-login"></span></a></li>' +
                                '</ul>';
                     },
                     "orderable": false,
@@ -46,6 +47,34 @@
         .on("click",".btn-edit",function(){     // 수정버튼 처리
             var id = $(this).data('id');
             var url = "{{ route('admin.board-confs') }}/edit/" + id;
+            //var params = "keyword=" + table.search() + "&page_size=" + table.page.len() + "&page=" + table.page.info().page;
+            var params = {
+                'keyword' : table.search(),
+                'page_size' :  table.page.len(),
+                'page' :  table.page.info().page,
+            };
+            //location.href = url + "?" + params;
+
+            $.ajax({
+                type: 'post',
+                url : "{{ route('common.redirect-after-session') }}",
+                data: {'_token': '{{ csrf_token() }}', 'url' : url, data: params},
+                dataType: 'text', 
+                success: function(r){
+                    //작업이 성공적으로 발생했을 경우
+                    location.href = r;
+                },
+                error:function(e){  
+                    //에러가 났을 경우 실행시킬 코드
+                    console.log(e);
+                }
+            });
+
+            return false;
+        })
+        .on("click",".btn-permission",function(){     // 권한설정버튼 처리
+            var id = $(this).data('id');
+            var url = "{{ route('admin.board-confs.permission') }}/" + id;
             //var params = "keyword=" + table.search() + "&page_size=" + table.page.len() + "&page=" + table.page.info().page;
             var params = {
                 'keyword' : table.search(),

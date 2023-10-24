@@ -29,8 +29,7 @@ class UsersController extends Controller
     public function getTableData(Request $request){
         if($request->ajax()){
             $data = User::select('id', 'name', 'email')
-                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at')
-                ->orderBy('id', 'desc');
+                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at');
             return DataTables::of($data)->toJson();
         }
     }

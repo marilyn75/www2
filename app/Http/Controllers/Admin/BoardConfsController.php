@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Class\BoardClass;
 use DataTables;
 use App\Http\Controllers\Controller;
 use App\Models\BoardConf;
+use App\Models\BoardPermission;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class BoardConfsController extends Controller
 {
@@ -85,5 +88,44 @@ class BoardConfsController extends Controller
         BoardConf::find($id)->delete();
 
         return json_encode(['result'=>true, 'message'=>'삭제 되었습니다.']);
+    }
+
+    public function permission($id){
+        $roles = Role::where('name', '!=', 'SuperAdmin')->get();
+        $columns = BoardClass::$arrCloumns;
+        $permissionData = BoardPermission::where('board_id', $id)->get();
+        $data = null;
+        foreach($permissionData as $_per){
+            $data[$_per['role']] = $_per;
+        }
+        
+        return view('admin.board-confs.permission', compact('roles', 'id', 'columns', 'data'));
+    }
+
+    public function permission_save($id, Request $request){
+        $data = $request->all();
+
+        foreach($data['role'] as $_i=>$_data){
+            $saveData['board_id'] = $id;
+            $saveData['role'] = $_data;
+            foreach(BoardClass::$arrCloumns as $__column){
+                $saveData[$__column] = intval($data[$__column][$_i]);
+            }
+            $saveData['updated_user_id'] = auth()->user()->id;
+            $saveData['updated_ip'] = $request->ip();
+
+            if(BoardPermission::where(['board_id' => $id, 'role' => $saveData['role']])->count()==0){
+                $saveData['created_user_id'] = auth()->user()->id;
+                $saveData['created_ip'] = $request->ip();
+
+                BoardPermission::create($saveData);
+            }else{
+                unset($saveData['board_id']);
+                BoardPermission::where(['board_id' => $id, 'role' => $saveData['role']])->update($saveData);
+            }
+        }
+
+        return back()
+            ->with('success_message','게시판 권한설정이 저장되었습니다.');
     }
 }

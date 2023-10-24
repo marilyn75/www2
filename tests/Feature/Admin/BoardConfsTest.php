@@ -2,12 +2,14 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Http\Class\BoardClass;
 use App\Models\BoardConf;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Role;
 
 class BoardConfsTest extends TestCase
 {
@@ -19,6 +21,9 @@ class BoardConfsTest extends TestCase
         // 테스트용 가짜 관리자 생성 및 로그인
         $user = User::factory()->state(['is_admin'=>1])->create();
         $this->actingAs($user);
+
+        // 테스트용 게시판 설정 생성
+        BoardConf::factory(5)->create();
     }
     
     public function test_관리자가_아닌_경우_접근이_불가하다(): void
@@ -76,7 +81,7 @@ class BoardConfsTest extends TestCase
 
     public function test_게시판설정수정_페이지에_접근할_수_있다(): void
     {
-        $board_conf = BoardConf::factory()->create();
+        $board_conf = BoardConf::inRandomOrder()->first();
         $response = $this->get(route('admin.board-confs.edit',$board_conf->id));
         $response->assertStatus(200);
     }
@@ -107,7 +112,7 @@ class BoardConfsTest extends TestCase
 
     public function test_게시판을_삭제_할_수_있다(): void
     {
-        $board_conf = BoardConf::factory()->create();
+        $board_conf = BoardConf::inRandomOrder()->first();
 
         // Ajax Post 요청, 데이터 삭제처리 호출
         $response = $this->json('POST', route('admin.board-confs.destroy', $board_conf->id), ['_token'=>csrf_token()]);
@@ -119,5 +124,50 @@ class BoardConfsTest extends TestCase
 
         // 데이터베이스에서 삭제된 것을 확인
         $this->assertDatabaseMissing('board_confs', ['id' => $board_conf->id, 'deleted_at'=>null]);
+    }
+
+    public function test_게시판_권한관리_페이지에_접근_할_수_있다(): void
+    {
+        // 테스트용 Role 생성
+        Role::create(['name' => 'Agent'])->create(['name' => 'User']);
+
+        $board_conf = BoardConf::inRandomOrder()->first();
+
+        $response = $this->get(route('admin.board-confs.permission', $board_conf->id));
+
+        $response->assertStatus(200)
+            ->assertSee('Agent')->assertSee('User');
+    }
+
+    public function test_게시판_권한관리_설정을_변경_할_수_있다(): void
+    {
+        // 테스트용 Role 생성
+        Role::create(['name' => 'Agent'])->create(['name' => 'User']);
+
+        $board_conf = BoardConf::inRandomOrder()->first();
+
+        $payload = [
+            'role' => ['Agent', 'User', 'Guest'],
+        ];
+
+        foreach(BoardClass::$arrCloumns as $_column){
+            $payload[$_column] = [rand(0, 1), rand(0, 1), rand(0, 1)];
+        }
+        
+        $response = $this->post(route('admin.board-confs.permission.save', $board_conf->id), $payload);
+
+        foreach($payload['role'] as $_i=>$_data){
+            unset($hasData);
+            $hasData['board_id'] = $board_conf->id;
+            $hasData['role'] = $_data;
+            foreach(BoardClass::$arrCloumns as $__column){
+                $hasData[$__column] = $payload[$__column][$_i];
+            }
+            
+            $this->assertDatabaseHas('board_permissions', $hasData);
+        }
+
+        $response->assertSessionHas('success_message','게시판 권한설정이 저장되었습니다.')
+            ->assertStatus(302);
     }
 }

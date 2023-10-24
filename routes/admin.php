@@ -32,6 +32,10 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::post('/board-confs/edit', [BoardConfsController::class, 'update'])->name('admin.board-confs.update');
     Route::post('/board-confs/delete/{id}', [BoardConfsController::class, 'destroy'])->name('admin.board-confs.destroy');
 
+    // 게시판 권한 관리
+    Route::get('/board-confs/permission/{id?}', [BoardConfsController::class, 'permission'])->name('admin.board-confs.permission');
+    Route::post('/board-confs/permission/save/{id}', [BoardConfsController::class, 'permission_save'])->name('admin.board-confs.permission.save');
+
     // 게시물 관리
     Route::get('/board/{id?}',[BoardDatasControll::class, 'index'])->name('admin.board');
     Route::get('/board/data/{id}', [BoardDatasControll::class, 'getTableData'])->name('admin.board.data');

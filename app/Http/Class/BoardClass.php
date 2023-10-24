@@ -15,6 +15,9 @@ class BoardClass{
     private $post;
     private $board_id;
 
+    public static $arrCloumns = ['write', 'list', 'read', 'read_secret', 'edit_own', 'edit_all', 'delete_own', 'delete_all', 'comment_write', 
+    'comment_read', 'comment_read_secret', 'comment_edit_own', 'comment_edit_all', 'comment_delete_own', 'comment_delete_all', 'file_upload', 'file_download'];
+
     public function __construct($board_id=null, $id=null)
     {
         $this->board_id = $board_id;
