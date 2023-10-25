@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\BoardConfsController;
 use App\Http\Controllers\Admin\BoardDatasControll;
+use App\Http\Controllers\Admin\CommonCodeController;
 use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Member\ChatController;
 use App\Models\BoardConf;
+use App\Models\CommonCode;
 use Illuminate\Support\Facades\Route;
 
 // 관리자 페이지
@@ -56,4 +58,14 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::post('/menus/sort', [MenusController::class, 'sort'])->name('admin.menus.sort');
     Route::get('/menus/sort/edit/{id?}', [MenusController::class, 'sort_edit'])->name('admin.menus.sort.edit');
     Route::post('/menus/option', [MenusController::class, 'option'])->name('admin.menus.option');
+
+    // 공통코드관리
+    Route::get('/codes/{p_id?}/{c_id?}', [CommonCodeController::class, 'index'])->where('p_id', '[0-9]+')->name('admin.codes');
+    Route::get('/codes/create/{id?}', [CommonCodeController::class, 'create'])->name('admin.codes.create');
+    Route::post('/codes/store/{id?}', [CommonCodeController::class, 'store'])->name('admin.codes.store');
+    Route::get('/codes/edit/{id?}', [CommonCodeController::class, 'edit'])->name('admin.codes.edit');
+    Route::post('/codes/edit/{id?}', [CommonCodeController::class, 'update'])->name('admin.codes.update');
+    Route::post('/codes/delete/{id?}', [CommonCodeController::class, 'destroy'])->name('admin.codes.destroy');
+    Route::post('/codes/sort', [CommonCodeController::class, 'sort'])->name('admin.codes.sort');
+    Route::get('/codes/sort/edit/{id?}', [CommonCodeController::class, 'sort_edit'])->name('admin.codes.sort.edit');
 });
