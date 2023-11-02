@@ -59,6 +59,10 @@
                             <label for="type_B"><span class="radio-label"></span> 게시판</label>
                         </div>&nbsp;&nbsp;&nbsp;
                         <div class="radio">
+                            <input id="type_P" name="type" type="radio" value="P" @if($menu->type=='P') checked @endif>
+                            <label for="type_P"><span class="radio-label"></span> 프로그램</label>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="radio">
                             <input id="type_L" name="type" type="radio" value="L" @if($menu->type=='L') checked @endif>
                             <label for="type_L"><span class="radio-label"></span> 링크</label>
                         </div>&nbsp;&nbsp;&nbsp;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Menu;
 use DragonCode\Contracts\Cashier\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -73,10 +74,12 @@ Route::prefix('/common')->group(function(){
     Route::get('multiFileUpload/view/{filename}', [App\Http\Controllers\Common\TmpFilesController::class, 'view'])->name('common.file.view');
 });
 
-Route::get('/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');
+Route::match(['get', 'post'], '/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');
 Route::post('/page/store/{id}', [App\Http\Controllers\Web\PageController::class, 'store'])->name('page.store');
 Route::post('/page/update/{id}', [App\Http\Controllers\Web\PageController::class, 'update'])->name('page.update');
 Route::post('/page/destroy/{id}', [App\Http\Controllers\Web\PageController::class, 'destroy'])->name('page.destroy');
+Route::post('/page/ajax/{id}', [App\Http\Controllers\Web\PageController::class, 'ajax'])->name('page.ajax');
 
 Route::get('board/data/{id}', [App\Http\Controllers\Admin\BoardDatasControll::class, 'getTableData'])->name('board.data');
 Route::get('/board/file-download/{file_id}', [App\Http\Controllers\Admin\BoardDatasControll::class, 'download'])->name('board.filedownload');
+

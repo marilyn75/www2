@@ -32,6 +32,8 @@
             <x-menu-content :page="$page" />
             @elseif ($page->type == 'B')
             <x-menu-board :page="$page" :request="$request" />
+            @elseif ($page->type == 'P')
+            <x-module-sale :page="$page" :request="$request" />
             @elseif ($page->type == 'W')
             <x-menu-wait />
             @endif

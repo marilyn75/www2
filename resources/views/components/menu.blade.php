@@ -40,5 +40,5 @@
         </div>
     </li>
     @endauth
-    <li class="list-inline-item add_listing"><a href="page-add-new-property.html"><span class="flaticon-plus"></span><span class="dn-lg"> 매물등록</span></a></li>
+    <li class="list-inline-item add_listing"><a href="{{ route('page', 18) }}?mode=create"><span class="flaticon-plus"></span><span class="dn-lg"> 매물등록</span></a></li>
 </ul>
