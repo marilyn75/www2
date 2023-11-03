@@ -66,7 +66,7 @@
     @csrf
     <input type="hidden" name="tmp_id" value="{{ $data['tmp_id'] }}">
     <input type="hidden" name="step" value="2">
-    <input type="hidden" name="saleType" value="{{ old('saleType') }}">
+    <input type="hidden" name="saleType" value="{{ $data['saleType'] }}">
     <input type="hidden" name="saleTypeTxt" value="{{ old('saleTypeTxt') }}">
 <div class="w-100">
     <div class="row">
@@ -82,7 +82,7 @@
                         <div class="ui_kit_radiobox">
                             @foreach ($tradeType as $_item)
                             <div class="radio">
-                                <input id="tradeType{{ $_item['id'] }}" value="{{ $_item['id'] }}" name="tradeType" type="radio" >
+                                <input id="tradeType{{ $_item['id'] }}" value="{{ $_item['id'] }}" name="tradeType" type="radio" @if ($_item['id']==$data['tradeType']) checked @endif >
                                 <label for="tradeType{{ $_item['id'] }}"><span class="radio-label"></span> {{ $_item['title'] }}</label>
                             </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             @endforeach

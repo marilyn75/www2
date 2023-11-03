@@ -2,16 +2,20 @@
 
 namespace App\View\Components;
 
-use App\Http\Class\CommonCodeClass;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\View\Component;
+use App\Http\Class\CommonCodeClass;
+use App\Http\Class\SaleClass;
+use App\Models\Sale;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Session;
 
 class ModuleSale extends Component
 {
     private $page;
     private $request;
+    private $cls;
     /**
      * Create a new component instance.
      */
@@ -19,6 +23,7 @@ class ModuleSale extends Component
     {
         $this->page = $page;
         $this->request = $request;
+        $this->cls = new SaleClass;
     }
 
     /**
@@ -62,40 +67,48 @@ class ModuleSale extends Component
 
         switch($data['step']){
             case "": case "1":
-                if(empty($data['tmp_id'])){
-                    $data['tmp_id'] = uniqid();
-                }
+                $data['tmp_id'] = $this->cls->getTmpId();
 
                 $CommonCodeClass = new CommonCodeClass;
                 $tradeType = $CommonCodeClass->getChildrenFormFirstCodeText('거래유형');
                 $saleType = $CommonCodeClass->getChildrenFormFirstCodeText('매물유형');
+
+                $db_data = $this->cls->getDataFromTmpId($data['tmp_id']);
+                if(empty($db_data)){
+                    $data['tradeType'] = old('trade_type');
+                    $data['saleType'] = old('sale_type');
+                }else{
+                    $data['tradeType'] = $db_data['trade_type'];
+                    $data['saleType'] = $db_data['sale_type'];
+                }
+                
+                
+
+                debug('tmpid',$data['tmp_id'],$db_data);
                 
                 return view('components.module-sale-create-step1', compact('tradeType', 'saleType', 'page', 'data', 'uri'));
                 break;
             case "2":
-                $data['tmp_id'] = uniqid();
+                $this->cls->postSetp1($this->request);
                 return view('components.module-sale-create-step2', compact('page', 'data', 'uri'));
                 break;
             case "3":
-                $data['tmp_id'] = uniqid();
                 return view('components.module-sale-create-step3', compact('page', 'data', 'uri'));
                 break;
             case "4":
-                $data['tmp_id'] = uniqid();
                 return view('components.module-sale-create-step4', compact('page', 'data', 'uri'));
                 break;
             case "5":
-                $data['tmp_id'] = uniqid();
                 return view('components.module-sale-create-step5', compact('page', 'data', 'uri'));
                 break;
             case "6":
-                $data['tmp_id'] = uniqid();
                 return view('components.module-sale-create-step6', compact('page', 'data', 'uri'));
                 break;
             case "7":
-                $data['tmp_id'] = uniqid();
                 return view('components.module-sale-create-step7', compact('page', 'data', 'uri'));
                 break;
         }
+
+        
     }
 }
