@@ -22,7 +22,12 @@ class Menu extends Component
      */
     public function render(): View|Closure|string
     {
+        if(ModelsMenu::isBroken()){
+            // $data = ModelsMenu::countErrors();
+            ModelsMenu::fixTree();
+        }
         $model = ModelsMenu::defaultOrder()->withDepth()->descendantsOf(1)->toTree();
+
         $menus = [];
         foreach($model as $_mn){
             $item = $this->mkItem($_mn);

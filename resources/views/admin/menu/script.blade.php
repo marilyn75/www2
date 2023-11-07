@@ -16,7 +16,7 @@
 
     $(document).on("change", "input[name='type']", function(){
         var type = this.value;
-
+        console.log(type);
         $(".type-addInput").hide();
         // alert($("#addInput-" + type).html());
         $("#addInput" + type).removeClass("d-none");

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('top_image')->nullable()->comment('상단이미지');
             $table->unsignedBigInteger('board_id')->nullable()->comment('연결 게시판 아이디');
             $table->unsignedBigInteger('content_id')->nullable()->comment('연결 컨텐츠 아이디');
+            $table->string('program_module')->nullable()->comment('프로그램 연결 모듈명');
             $table->string('url')->nullable()->comment('링크url');
             $table->string('target',10)->nullable()->comment('링크target');
             $table->tinyInteger('is_use')->default(1)->comment('사용여부');

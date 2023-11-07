@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Class\MenuClass;
 use App\Models\Menu;
 use App\Models\Content;
 use Illuminate\Http\Request;
@@ -11,6 +12,13 @@ use Intervention\Image\Facades\Image;
 
 class MenusController extends Controller
 {
+    private $cls;
+
+    public function __construct()
+    {
+        $this->cls = new MenuClass;
+    }
+
     public function index($p_id=null, $c_id=null){
         $model = Menu::where('parent_id', $p_id);
         $parentMenus = $model->get();
@@ -38,9 +46,10 @@ class MenusController extends Controller
             $path .= $menu->title;
         }
 
-        $board = BoardConf::orderBy('board_name', 'desc')->get();
+        $board = $this->cls->getBoardConfList();
+        $module = $this->cls->getProgramModuleList();
 
-        return view('admin.menu.create',compact('id', 'path', 'board'));
+        return view('admin.menu.create',compact('id', 'path', 'board', 'module'));
     }
 
     // 메뉴 추가 처리
@@ -95,6 +104,7 @@ class MenusController extends Controller
             'updated_ip' => $request->ip(),
         ];
         if($data['type']=="B")  $menuData['board_id'] = $data['board_id'];
+        if($data['type']=="P")  $menuData['program_module'] = $data['program_module'];
 
         $newMenuItem = new Menu($menuData);
 
@@ -133,13 +143,15 @@ class MenusController extends Controller
             $path .= $menu->title;
         }
 
-        $board = BoardConf::orderBy('board_name', 'desc')->get();
+        $board = $this->cls->getBoardConfList();
+        $module = $this->cls->getProgramModuleList();
 
-        return view('admin.menu.edit', compact('id', 'path', 'menu', 'board'));
+        return view('admin.menu.create', compact('id', 'path', 'menu', 'board', 'module'));
     }
 
     public function update($id, Request $request){
         $data = $request->all();
+        
         // 유효성 검사
         $rules = Menu::$rules;
         $rules['code'] .= ",".$id;
@@ -193,11 +205,13 @@ class MenusController extends Controller
             'type' => $data['type'],
             'url' => $data['url'],
             'top_image' => $filename,
+
+            'board_id' => $data['board_id'],
+            'program_module' => $data['program_module'],
+
             'updated_user_id' => auth()->user()->id,
             'updated_ip' => $request->ip(),
-        ];
-
-        if($data['type']=="B")  $menuData['board_id'] = $data['board_id'];
+        ];        
 
         $model->update($menuData);
 

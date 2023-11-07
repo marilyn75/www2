@@ -16,7 +16,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         @foreach ($arrLocation as $loc)
-                        <li class="breadcrumb-item active" aria-current="page">{{ $loc }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $loc }} </li>
                         @endforeach
                     </ol>
                 </div>
@@ -33,7 +33,10 @@
             @elseif ($page->type == 'B')
             <x-menu-board :page="$page" :request="$request" />
             @elseif ($page->type == 'P')
-            <x-module-sale :page="$page" :request="$request" />
+                @php
+                    $module = "Module".$page->program_module;
+                @endphp
+            <x-dynamic-component :component="$module" :page="$page" :request="$request"/>
             @elseif ($page->type == 'W')
             <x-menu-wait />
             @endif

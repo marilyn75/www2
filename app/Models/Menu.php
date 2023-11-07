@@ -20,6 +20,7 @@ class Menu extends Model
         'top_image',
         'board_id',
         'content_id',
+        'program_module',
         'url',
         'target',
         'is_use',
