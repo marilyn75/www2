@@ -8,9 +8,6 @@
         $start = $data->lastPage() - $length + 1;
     } 
     $max = $start + $length;
-
-    debug("lastPage",$data->lastPage());
-    debug("max",$max);
 @endphp
 
 <div class="col-lg-12 mt20">

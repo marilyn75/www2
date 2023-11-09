@@ -283,48 +283,60 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($data as $_sale)
+            @foreach ($data as $_item)
+            @php
+                $_data = $_item->sale;
+                if($_data->tradeType=="임대"){
+                    $printPrice = number_format($_data->l_depPrice)."/".number_format($_data->l_monPrice);
+                }else{
+                    $printPrice = number_format($_data->salePrice);
+                }
+
+                $arrAddr = explode(",",$_data->_addr);
+                $addr = trim($arrAddr[0]);
+                if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
+
+                $arrPrpos = explode(",",$_data->_prposAreaNm);
+                $prpos = trim($arrPrpos[0]);
+
+                $bd = $_data->building->first();
+                $floorInfo = "";
+                if(!empty($bd)){
+                    if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
+                    $floorInfo .= $bd->bd_grndFlrCnt."F";
+                }
+            @endphp
             <div class="col-md-6 col-lg-6">
-                <div class="feat_property home7 style3 bdrrn">
+                <div class="feat_property home7 style3 bdrrn" onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $_item->idx }}'">
                     <div class="thumb">
-                        <img class="img-whp" @if(empty($_sale->sale->files->first()->filename)) src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg" @else src="{{ "https://www.gbbinc.co.kr/_Data/SaleNew/".$_sale->sale->files->first()->filename }}" @endif">
+                        <img class="img-whp" @if(empty($_data->files->first()->filename)) src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg" @else src="{{ "https://www.gbbinc.co.kr/_Data/SaleNew/".$_data->files->first()->filename }}" @endif">
                         <div class="thmb_cntnt">
                             <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#">{{ $_sale->sale->tradeType }}</a></li>
+                                <li class="list-inline-item"><a href="#">{{ $_data->tradeType }}</a></li>
                                 <li class="list-inline-item dn"></li>
                                 {{-- <li class="list-inline-item"><a href="#">추천매물</a></li> --}}
                             </ul>
                             <ul class="icon mb0">
-                                <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-                                <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
+                                <li class="list-inline-item dn"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
+                                <li class="list-inline-item dn"><a href="#"><span class="flaticon-heart"></span></a></li>
                             </ul>
-                            <a class="fp_price" href="#">{{ $_sale->sale->tradeType }} {{ number_format($_sale->sale->salePrice) }}<small>만원</small></a>
+                            <a class="fp_price" href="#">{{ $_data->tradeType }} {{ $printPrice }}<small>만원</small></a>
                         </div>
                     </div>
                     <div class="details">
                         <div class="tc_content">
-                            <p class="text-thm">{{ $_sale->sale->saleTypeTxt }}</p>
-                            <h4>{{ $_sale->sale->review }}</h4>
-                            @php
-                                $arrAddr = explode(",",$_sale->sale->_addr);
-                                $addr = trim($arrAddr[0]);
-                                if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
-
-                                $arrPrpos = explode(",",$_sale->sale->_prposAreaNm);
-                                $prpos = trim($arrPrpos[0]);
-
-                                $bd = $_sale->sale->building->first();
-                                $floorInfo = "";
-                                if(!empty($bd)){
-                                    if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
-                                    $floorInfo .= $bd->bd_grndFlrCnt."F";
-                                }
-                            @endphp
+                            <p class="text-thm">{{ $_data->saleTypeTxt }}</p>
+                            <h4>{{ $_data->review }}</h4>
                             <p><span class="flaticon-placeholder"></span>{{ $addr }}</p>
                             <ul class="prop_details mb0">
-                                <li class="list-inline-item"><a href="#">{{ $prpos }} {{ number_format($_sale->sale->_lndpclAr_sum) }}㎡</a></li>
-                                @if (strpos($_sale->sale->saleTypeTxt,"토지")===false)
-                                <li class="list-inline-item"><a href="#">{{ $floorInfo }} 연{{ number_format($_sale->sale->_area) }}㎡</a></li>    
+                                @if(strpos($_data->saleTypeTxt,"분양상가")!==false)
+                                    <li class="list-inline-item"><a href="#">{{ $prpos }} {{ $floorInfo }}</a></li>
+                                    <li class="list-inline-item"><a href="#"> 분양{{ number_format($_data->_area) }}㎡ 전유{{ number_format($_data->_area) }}㎡ </a></li>  
+                                @else
+                                    <li class="list-inline-item"><a href="#">{{ $prpos }} {{ number_format($_data->_lndpclAr_sum) }}㎡</a></li>
+                                    @if (strpos($_data->saleTypeTxt,"토지")===false)
+                                    <li class="list-inline-item"><a href="#">{{ $floorInfo }} 연{{ number_format($_data->_area) }}㎡</a></li>    
+                                    @endif
                                 @endif
                                 
                             </ul>

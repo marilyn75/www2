@@ -24,4 +24,8 @@ class IntraSale extends Model
     public function building(){
         return $this->hasMany(IntraSaleBd::class, 's_idx');
     }
+
+    public function users(){
+        return $this->hasMany(IntraSaleUser::class, 's_idx')->where('chkescape',0)->with('sawon');
+    }
 }

@@ -23,7 +23,9 @@ class SaleTest extends TestCase
 
         // 테스트용 메뉴생성
         $arrMenu = [
-            ['code'=>'salereg', 'title'=>'매물등록', 'type'=>'P', 'top_image'=>null, 'board_id'=>null, 'content_id'=>null, 'url'=>null, 'is_use'=>1,],
+            ['code'=>'salereg', 'title'=>'인트라넷매물', 'type'=>'P', 'top_image'=>null, 
+            'board_id'=>null, 'content_id'=>null, 'program_module'=>'Sale', 
+            'url'=>null, 'is_use'=>1,],
         ];
 
         Menu::rebuildSubtree(Menu::find(1), $arrMenu);
