@@ -301,10 +301,21 @@
 
                 $bd = $_data->building->first();
                 $floorInfo = "";
+                $area_b = "";
+                $area_j = "";
                 if(!empty($bd)){
                     if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
                     $floorInfo .= $bd->bd_grndFlrCnt."F";
+
+                    // 분양, 전유면적
+                    if(!empty($bd->hos->first()->details)){
+                        $hoDetail = $bd->hos->first()->details;
+                        $area_b = number_format($hoDetail->sum('hodt_area'),2);
+                        $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
+                        // debug($area_b,$area_j);
+                    }
                 }
+                
             @endphp
             <div class="col-md-6 col-lg-6">
                 <div class="feat_property home7 style3 bdrrn" onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $_item->idx }}'">
@@ -329,9 +340,9 @@
                             <h4>{{ $_data->review }}</h4>
                             <p><span class="flaticon-placeholder"></span>{{ $addr }}</p>
                             <ul class="prop_details mb0">
-                                @if(strpos($_data->saleTypeTxt,"분양상가")!==false)
+                                @if(!empty($area_b))
                                     <li class="list-inline-item"><a href="#">{{ $prpos }} {{ $floorInfo }}</a></li>
-                                    <li class="list-inline-item"><a href="#"> 분양{{ number_format($_data->_area) }}㎡ 전유{{ number_format($_data->_area) }}㎡ </a></li>  
+                                    <li class="list-inline-item"><a href="#"> 분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡ </a></li>  
                                 @else
                                     <li class="list-inline-item"><a href="#">{{ $prpos }} {{ number_format($_data->_lndpclAr_sum) }}㎡</a></li>
                                     @if (strpos($_data->saleTypeTxt,"토지")===false)

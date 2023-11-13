@@ -18,7 +18,16 @@
         if(!empty($bd)){
             if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
             $floorInfo .= $bd->bd_grndFlrCnt."F";
+
+            // 분양, 전유면적
+            if(!empty($bd->hos->first()->details)){
+                $hoDetail = $bd->hos->first()->details;
+                $area_b = number_format($hoDetail->sum('hodt_area'),2);
+                $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
+                // debug($area_b,$area_j);
+            }
         }
+
     @endphp
     <div class="col-lg-8">
         <div class="single_product_grid row">
@@ -102,8 +111,8 @@
 
                             <ul class="list_details">
                                 <li><a href="#"><i class="fa fa-check mr10"></i> {{ $prpos }}</a></li>
-                                @if(strpos($data->saleTypeTxt,"분양상가")!==false)
-                                <li><a href="#"><i class="fa fa-check mr10"></i> 분양{{ number_format($data->_area) }}㎡ 전유{{ number_format($data->_area) }}㎡ </a></li>  
+                                @if(!empty($area_b))
+                                <li><a href="#"><i class="fa fa-check mr10"></i> 분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡ </a></li>  
                                 @else
                                 <li><a href="#"><i class="fa fa-check mr10"></i> 토지면적 {{ number_format($data->_lndpclAr_sum) }}㎡</a></li>
                                     @if (strpos($data->saleTypeTxt,"토지")===false)
@@ -253,30 +262,56 @@
             </div>
         </div>
     </div>
+    
     <div class="col-lg-4">
-        <div class="sidebar_search_widget">
-            <div class="blog_search_widget">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Here" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><span class="flaticon-magnifying-glass"></span></button>
+        <div class="sidebar_listing_list">
+            <div class="sidebar_advanced_search_widget">
+                <div class="sl_creator">
+                    <h4 class="mb25">중개사정보</h4>
+                    <div class="media">
+                        <img class="mr-3" src="http://gbbinc.co.kr/_Data/Member/{{ $data->users->first()->sawon->mb_photo }}" style="width:90px;height:90px">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb0">{{ $data->users->first()->sawon->user_name }} {{ @$data->users->first()->sawon->info->duty }}</h5>
+                            <p class="mb0">{{ @$data->users->first()->sawon->info->sosok }}</p>
+                            <p class="mb0">{{ @$data->users->first()->sawon->info->office_line }}</p>
+                            <a class="text-thm" href="#">View My Listing</a>
+                          </div>
                     </div>
                 </div>
+                <ul class="sasw_list mb0">
+                    <li class="search_area">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Your Name">
+                        </div>
+                    </li>
+                    <li class="search_area">
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="exampleInputName2" placeholder="Phone">
+                        </div>
+                    </li>
+                    <li class="search_area">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
+                        </div>
+                    </li>
+                    <li class="search_area">
+                        <div class="form-group">
+                            <textarea id="form_message" name="form_message" class="form-control required" rows="5" required="required" placeholder="문의하실 내용을 입력하세요."></textarea>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="search_option_button">
+                            <button type="submit" class="btn btn-block btn-thm">문의하기</button>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="terms_condition_widget">
-            <h4 class="title">중개사정보</h4>
-            <div class="media">
-                <img class="align-self-start mr-3" src="http://gbbinc.co.kr/_Data/Member/{{ $data->users->first()->sawon->mb_photo }}" width="90px">
-                <div class="media-body">
-                    <h5 class="mt-0 post_title">{{ $data->users->first()->sawon->user_name }} {{ @$data->users->first()->sawon->info->duty }}</h5>
-                    <a href="#">{{ @$data->users->first()->sawon->info->sosok }}</a>
-                    <div>{{ @$data->users->first()->sawon->info->office_line }}</div>
-                </div>
-            </div>
-        </div>
+
         <div class="sidebar_recent_product">
             <h4 class="title">오늘 본 매물</h4>
+            @if(empty($todayViewSales))
+            @else
             @foreach ($todayViewSales as $_data)
             @php
                 $sale = $_data->sale;
@@ -305,6 +340,6 @@
                 </div>
             </div>
             @endforeach
-            
+            @endif
         </div>
     </div>
