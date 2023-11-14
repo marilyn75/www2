@@ -56,12 +56,38 @@ class MenuBoard extends Component
 
     private function index(){
         $id=$this->page->board_id;
+        $rss_url = $this->page->rss_url;
         $board_exist = $this->BoardClass->isExist();
         $board_name = $this->BoardClass->getBoardName();
         $board_list = $this->BoardClass->getBoardList();
         $page = $this->page;
-        
-        return view('components.menu-board', compact('board_exist', 'id', 'page'));
+
+        if($id)
+            return view('components.menu-board', compact('board_exist', 'id', 'page'));
+        else{
+            $xml = simplexml_load_file($rss_url);
+
+            $data = [];
+            foreach($xml->channel->item as $_post){
+                if((string)$_post->category=="꿈꾸는 아빠 부동산 이야기" || (string)$_post->category=="[블챌] 체크인 챌린지" || (string)$_post->category=="일상") continue;
+
+                $data[] = [
+                    "category"=>(string)$_post->category,
+                    "title"=>addslashes((string)$_post->title),
+                    "link"=>(string)$_post->link,
+                    "description"=>addslashes((string)$_post->description),
+                    "pubDate"=>formatCreatedAt((string)$_post->pubDate),
+                    "tag"=>(string)$_post->tag,
+                    
+                ];
+            }
+
+            debug($data);
+            debug(json_encode($data));
+            $data = json_encode($data, JSON_UNESCAPED_UNICODE);
+            // dd($data);
+            return view('components.menu-rssboard', compact('data', 'id', 'page'));
+        }
     }
 
     private function show(){

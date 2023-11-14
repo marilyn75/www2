@@ -22,6 +22,7 @@ class Menu extends Model
         'content_id',
         'program_module',
         'url',
+        'rss_url',
         'target',
         'is_use',
         'created_user_id',

@@ -2,7 +2,7 @@
     .img-whp{width:360px;height:287px;}
 </style>
 
-<div class="row my_dashboard_review">
+
     <div class="col-lg-4 col-xl-4">
         <div class="sidebar_listing_list dn-991">
             <div class="sidebar_advanced_search_widget">
@@ -359,4 +359,3 @@
             <x-pagination :data="$data" />
         </div>
     </div>
-</div>

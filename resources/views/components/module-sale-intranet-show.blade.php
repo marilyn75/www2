@@ -273,7 +273,7 @@
                         <div class="media-body">
                             <h5 class="mt-0 mb0">{{ $data->users->first()->sawon->user_name }} {{ @$data->users->first()->sawon->info->duty }}</h5>
                             <p class="mb0">{{ @$data->users->first()->sawon->info->sosok }}</p>
-                            <p class="mb0">{{ @$data->users->first()->sawon->info->office_line }}</p>
+                            <p class="mb0">1833-{{ @$data->users->first()->sawon->info->office_line }}</p>
                             <a class="text-thm" href="#">View My Listing</a>
                           </div>
                     </div>

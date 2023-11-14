@@ -97,6 +97,7 @@ class MenusController extends Controller
             'title' => $data['title'],
             'type' => $data['type'],
             'url' => $data['url'],
+            'rss_url' => $data['rss_url'],
             'top_image' => $filename,
             'created_user_id' => auth()->user()->id,
             'created_ip' => $request->ip(),
@@ -204,10 +205,11 @@ class MenusController extends Controller
             'title' => $data['title'],
             'type' => $data['type'],
             'url' => $data['url'],
+            'rss_url' => $data['rss_url'],
             'top_image' => $filename,
 
-            'board_id' => $data['board_id'],
-            'program_module' => $data['program_module'],
+            'board_id' => @$data['board_id'],
+            'program_module' => @$data['program_module'],
 
             'updated_user_id' => auth()->user()->id,
             'updated_ip' => $request->ip(),

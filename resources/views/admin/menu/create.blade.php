@@ -106,14 +106,23 @@
 
             <div class="col-lg-6 col-xl-6 @if(empty($menu) || $menu->type!='B') d-none @endif type-addInput" id="addInputB">
                 <div class="my_profile_setting_input form-group">
-                    <label for="board_id">연결게시판</label>
-                    <div>
+                    <input type="radio" name="board_type" id="board_type1" value="board" @if(empty($menu) || !empty($menu->board_id)) checked @endif  onclick="$('.board_opt').hide();$('#board_id_sel').show();">
+                    <label for="board_type1">게시판연결</label>
+
+                    <input type="radio" name="board_type" id="board_type2" value="rss" onclick="$('.board_opt').hide();$('#board_rss').show();">
+                    <label for="board_type2">RSS연결</label>
+
+                    <div class="board_opt" id="board_id_sel">
                     <select name="board_id" id="board_id">
                         <option value="">게시판을 선택하세요.</option>
                         @foreach ($board as $_bd)
                         <option value="{{ $_bd->id }}" @if (!empty($menu) && $menu->board_id==$_bd->id) selected @endif>{{ $_bd->board_name }}</option>
                         @endforeach
                     </select>
+                    </div>
+
+                    <div class="board_opt" id="board_rss" style="display: none;">
+                        <input type="text" class="form-control" id="rss_url" name="rss_url" value="@if(empty($menu)){{ old('rss_url') }}@else{{ $menu->rss_url }}@endif" placeholder="RSS 주소를 입력하세요.">
                     </div>
                 </div>
             </div>
