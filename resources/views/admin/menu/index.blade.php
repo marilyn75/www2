@@ -30,14 +30,14 @@
                     </span>
                 </div>
                 <div class="bt-wr fr">
-                    <button type="button" onclick="frmMenuList1.submit()" class=""><span
+                    <button type="button" onclick="frmMenuList1.action='{{ route('admin.menus.option') }}';frmMenuList1.submit()" class=""><span
                             class=''>옵션<br />수정</span></button>
-                    <button type="button" onclick="siteMenuCtrls.menuSort(1);" class=""><span
+                    <button type="button" onclick="frmMenuList1.submit()" class=""><span
                             class=''>순서<br />저장</span></button>
                 </div>
             </div>
 
-            <form name="frmMenuList1" id="frmMenuList1" method="post" action="{{ route('admin.menus.option') }}">
+            <form name="frmMenuList1" id="frmMenuList1" method="post" action="{{ route('admin.menus.sort') }}">
                 @csrf
                 <input type="hidden" name="gubun" value="left">
                 <input type="hidden" name="root" value="{{ $p_id }}">
@@ -45,7 +45,8 @@
                 <ul class="menu-list menu-mlist">
                 @foreach ($parentMenus as $_menu)
                     <li>
-                        <input type="hidden" name="mn_code[]" value="Setting" />
+                        <input type="hidden" name="id[]" value="{{ $_menu->id }}">
+                        <input type='hidden' name='depth[]' value='{{ $_menu->depth - 1 }}' />
                         <div class="li-wr">
                             <span class="is-mntype mntype-{{ strtolower($_menu->type) }}"></span>
 
@@ -124,9 +125,9 @@
                     </div>
                     <div class="bt-wr fr">
 
-                        <button type="button" onclick="siteMenuCtrls.menuOptEdit(2);" class=""><span
+                        <button type="button" onclick="frmMenuList2.action='{{ route('admin.menus.option') }}';frmMenuList2.submit()" class=""><span
                                 class=''>옵션수정</span></button>
-                        <button type="button" onclick="siteMenuCtrls.menuSort(2);" class=""><span
+                        <button type="button" onclick="frmMenuList2.submit()" class=""><span
                                 class=''>순서저장</span></button>
                     </div>
                 @endif

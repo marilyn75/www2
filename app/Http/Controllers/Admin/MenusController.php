@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Models\BoardConf;
 use Intervention\Image\Facades\Image;
 
+use function Psy\debug;
+
 class MenusController extends Controller
 {
     private $cls;
@@ -20,7 +22,7 @@ class MenusController extends Controller
     }
 
     public function index($p_id=null, $c_id=null){
-        $model = Menu::where('parent_id', $p_id);
+        $model = Menu::where('parent_id', $p_id)->defaultOrder();
         $parentMenus = $model->get();
         $subMenus = null;
         $currMenu = null;
@@ -97,7 +99,7 @@ class MenusController extends Controller
             'title' => $data['title'],
             'type' => $data['type'],
             'url' => $data['url'],
-            'rss_url' => $data['rss_url'],
+            'rss_url' => @$data['rss_url'],
             'top_image' => $filename,
             'created_user_id' => auth()->user()->id,
             'created_ip' => $request->ip(),
@@ -205,7 +207,7 @@ class MenusController extends Controller
             'title' => $data['title'],
             'type' => $data['type'],
             'url' => $data['url'],
-            'rss_url' => $data['rss_url'],
+            'rss_url' => @$data['rss_url'],
             'top_image' => $filename,
 
             'board_id' => @$data['board_id'],
@@ -294,11 +296,11 @@ class MenusController extends Controller
 
         $tree = [];
         foreach ($data["id"] as $i => $id) {
-            $depth = $data["depth"][$i];
+            $depth = $data["depth"][$i]*1;
             $node = $arrDescendents[$id];
             // array_push($node, ["children" => []]);
             // $node = ["id" => $id, "children" => []];
-            if ($depth == 1) {
+            if ($depth == 1 || $depth == -1) {
                 $tree[] = $node;
             } else {
                 $parent =& $tree[array_key_last($tree)];
@@ -308,13 +310,36 @@ class MenusController extends Controller
                 $parent['children'][] = $node;
             }
         }
-//  dd($tree);
-        $result = Menu::rebuildSubtree(Menu::find($data['root']), $tree, true);
+
+        if(!empty($data['gubun']) && $data['gubun']=="left"){
+            foreach($tree as $_i=>$_node){
+                $tree[$_i]['children'] = Menu::descendantsOf($tree[$_i]['id'])->toTree()->toArray();
+            }
+            $this->removeTreeInfo($tree);
+        }  
+     
+
+        $result = Menu::rebuildSubtree(Menu::find($data['root']), $tree);
+
         // dd($result);
 
         return back()
             ->with('success_message','메뉴순서가 수정 되었습니다.'.$result);
         
+    }
+
+    private function removeTreeInfo(array &$tree){
+        foreach ($tree as $key => &$node) {
+            if (isset($node['children']) && is_array($node['children'])) {
+                // 재귀 호출을 통해 하위 노드에서도 검사
+                $this->removeTreeInfo($node['children']);
+                
+                // parent_id를 가진 노드 제거
+                if (isset($node['parent_id'])) {
+                    unset($node['_lft'], $node['_rgt'], $node['parent_id']);
+                }
+            }
+        }
     }
 
     // 옵션 일괄수정

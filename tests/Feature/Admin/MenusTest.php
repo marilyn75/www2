@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Admin;
 
-use App\Models\Menu;
 use Tests\TestCase;
+use App\Models\Menu;
 use App\Models\User;
+use App\Models\Content;
 use Illuminate\Http\UploadedFile;
+use Intervention\Image\Facades\Image;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -19,6 +21,8 @@ class MenusTest extends TestCase
         // 테스트용 가짜 관리자 생성 및 로그인
         $user = User::factory()->state(['is_admin'=>1])->create();
         $this->actingAs($user);
+
+        
 
     }
 
@@ -161,29 +165,22 @@ class MenusTest extends TestCase
 
     public function test_메뉴순서를_일괄_수정_할_수_있다(): void
     {
-        // Menu::factory()->state(['parent_id'=>1])->count(1)->create();
-        // $menu = Menu::orderBy('id', 'desc')->first();
+        Menu::factory()->state(['parent_id'=>1])->count(1)->create();
+        $menu = Menu::orderBy('id', 'desc')->first();
 
-        // Menu::factory()->state(['parent_id'=>$menu->id])->count(3)->create();
+        $newMenus = Menu::factory()->state(['parent_id'=>$menu->id])->count(3)->create();
+        foreach($newMenus as $_mn){
+            $ids[] = $_mn->id;
+        }
 
-        // $tree = Menu::descendantsOf(1)->toTree();
-        // $arr = [
-        //     3 => [5,6],
-        //     4,
-        // ];
+        $tree = Menu::descendantsOf(1)->toTree();
+        dd($tree->toArray());
+        
+        
 
-        // // foreach($arr as $_k=>$id){
-        // //     $new[] = $tree[$id];
-        // //     if($arr[$_k])
-        // // }
-
-        // function setNode($id){
-
-        // }
-
-        // $r = Menu::rebuildSubtree(Menu::find(1), $tree);
-        // print_r($r);
-        // dd($tree);
+        $r = Menu::rebuildSubtree(Menu::find(1), $tree);
+        print_r($r);
+        dd($tree);
     }
 
     public function test_메뉴옵션을_일괄_수정_할_수_있다(): void
@@ -191,21 +188,25 @@ class MenusTest extends TestCase
         Menu::factory()->state(['parent_id'=>1])->count(1)->create();
         $menu = Menu::orderBy('id', 'desc')->first();
 
-        Menu::factory()->state(['parent_id'=>$menu->id])->count(3)->create();
-// dd(Menu::get()->toTree()->toArray());
+        $newMenus = Menu::factory()->state(['parent_id'=>$menu->id])->count(3)->create();
+
+        foreach($newMenus as $_mn){
+            $ids[] = $_mn->id;
+        }
+        
         $payload = [
             'gubun' => 'left',
-            'root' => 3,
-            'chk_use' => [5],
+            'root' => $menu->id,
+            'chk_use' => [$ids[1]],
         ];
 
         $response = $this->post(route('admin.menus.option'), $payload);
 
-        $compareData = ['id'=> 4, 'is_use' => 0];
+        $compareData = ['id'=> $ids[0], 'is_use' => 0];
         $this->assertDatabaseHas('menus', $compareData);
-        $compareData = ['id'=> 5, 'is_use' => 1];
+        $compareData = ['id'=> $ids[1], 'is_use' => 1];
         $this->assertDatabaseHas('menus', $compareData);
-        $compareData = ['id'=> 6, 'is_use' => 0];
+        $compareData = ['id'=> $ids[2], 'is_use' => 0];
         $this->assertDatabaseHas('menus', $compareData);
 
         $response->assertSessionHas('success_message','옵션이 수정 되었습니다.')
