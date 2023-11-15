@@ -26,7 +26,7 @@ class Menu extends Component
             // $data = ModelsMenu::countErrors();
             ModelsMenu::fixTree();
         }
-        $model = ModelsMenu::defaultOrder()->withDepth()->descendantsOf(1)->toTree();
+        $model = ModelsMenu::where('is_use',1)->defaultOrder()->withDepth()->descendantsOf(1)->toTree();
 
         $menus = [];
         foreach($model as $_mn){

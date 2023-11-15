@@ -2,10 +2,31 @@
 
 @section('content')
 
+{{-- 메뉴 이미지가 있는 경우 --}}
+@if (!empty($bg))
+<section class="inner_page_breadcrumb" style="background-image: url('/files/menu/{{ $bg }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="breadcrumb_content">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        @foreach ($arrLocation as $loc)
+                        <li class="breadcrumb-item active" aria-current="page">{{ $loc }}</li>
+                        @endforeach
+                    </ol>
+                    <h4 class="breadcrumb_title">{{ end($arrLocation) }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
 <!-- Inner Page Breadcrumb -->
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container">
-
+        @empty($bg)
         <div class="row">
             <div class="col-lg-6">
                 <div class="dn db-991">
@@ -24,6 +45,7 @@
                 </div>
             </div>
         </div>
+        @endempty
 
         <div class="row">
             @if ($page->type == 'C')

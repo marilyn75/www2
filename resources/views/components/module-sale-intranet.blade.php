@@ -1,5 +1,6 @@
 <style>
-    .img-whp{width:360px;height:287px;}
+    /* .img-whp{width:360px;height:287px;} */
+    .img-whp{width:340px;height:215px;}
 </style>
 
 
@@ -318,7 +319,7 @@
                 
             @endphp
             <div class="col-md-6 col-lg-6">
-                <div class="feat_property home7 style3 bdrrn" onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $_item->idx }}'">
+                <div class="feat_property home7 style4 bdrrn" onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $_item->idx }}'">
                     <div class="thumb">
                         <img class="img-whp" @if(empty($_data->files->first()->filename)) src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg" @else src="{{ "https://www.gbbinc.co.kr/_Data/SaleNew/".$_data->files->first()->filename }}" @endif">
                         <div class="thmb_cntnt">
