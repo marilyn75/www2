@@ -1,4 +1,4 @@
-<ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
+<ul id="respMenu" class="ace-responsive-menu text-left" data-menu-style="horizontal">
     @foreach ($menus as $menu)
     <li>
         <a href="{{ $menu['link'] }}" @if(!empty($menu['target'])) target="{{ $menu['target'] }}" @endif ><span class="title">{{ $menu['txt'] }}</span></a>
@@ -12,11 +12,13 @@
     </li>
     @endforeach
     
+
+    {{-- <li class="list-inline-item add_listing"><a href="{{ route('page', 18) }}?mode=create"><span class="flaticon-plus"></span><span class="dn-lg"> 매물등록</span></a></li> --}}
+    <li><a href="{{ route('page', 18) }}?mode=create"><span class="title enter_span">매물등록</span></a></li>
     @guest
-    <li class="list-inline-item list_s">
-        {{-- <a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg text-thm3">Login/Register</span></a> --}}
-        <a href="{{ route('login') }}" class="btn flaticon-user" > <span class="dn-lg text-thm3">Login/Register</span></a>
-    </li>    
+    <li class="list-inline-item list_s float-right aaa">
+        <a href=""{{ route('login') }}" class="btn flaticon-user login_head"> <span class="log_sp">로그인</span></a>
+    </li>
     @endguest
 
     @auth
@@ -40,5 +42,4 @@
         </div>
     </li>
     @endauth
-    <li class="list-inline-item add_listing"><a href="{{ route('page', 18) }}?mode=create"><span class="flaticon-plus"></span><span class="dn-lg"> 매물등록</span></a></li>
 </ul>

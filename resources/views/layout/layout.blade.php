@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="ko">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,10 +13,12 @@
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- Title -->
-<title>FindHouse - Real Estate HTML Template</title>
+<title>GYEMOIM INC.</title>
 <!-- Favicon -->
 <link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
 <link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" />
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>
@@ -35,6 +37,7 @@
 <script src="{{ url('js/common.js') }}"></script>
 <script src="{{ url('js/docurl.js') }}"></script>
 </head>
+
 <body>
 <div class="wrapper">
 	<div class="preloader"></div>

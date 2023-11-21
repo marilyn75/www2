@@ -27,7 +27,7 @@
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container">
         @empty($bg)
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-6">
                 <div class="dn db-991">
                     <div id="main2">
@@ -42,6 +42,17 @@
                         @endforeach
                     </ol>
                     <h2 class="breadcrumb_title">{{ end($arrLocation) }}</h2>
+                </div>
+            </div>
+        </div> --}}
+
+        <div class="row">
+            <div class="col-lg-6 top-filt">
+                <div class="breadcrumb_content style2 breadcrumb_content_w">
+                    <h2 class="breadcrumb_title breadcrumb_title_w">{{ implode(" / ", $arrLocation) }}</h2>
+                </div>
+                <div>
+                    <button id="open2" class="filter_btn mont  filter_open_btn filter_btn_w"><i class="ri-equalizer-line"></i>Filter</button>
                 </div>
             </div>
         </div>
