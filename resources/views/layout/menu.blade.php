@@ -1,5 +1,5 @@
 @if (Request::is('/'))
-<header class="header-nav menu_style_home_one home7 navbar-scrolltofixed stricky main-menu">
+<header class="header-nav menu_style_home_one style2 home10 navbar-scrolltofixed stricky main-menu main-menu_w">
 @else
 <header class="header-nav menu_style_home_one style2 home10 navbar-scrolltofixed stricky main-menu main-menu_w">
 @endif
@@ -16,9 +16,9 @@
 					<span class="icon-bar"></span>
 				</button>
 			</div>
-			<a href="{{ route('main') }}" class="navbar_brand float-left dn-smd">
-				<img class="logo1 img-fluid" src="{{ asset('images/logo_test.png') }}" alt="header-logo.png">
-				<img class="logo2 img-fluid" src="{{ asset('images/logo_test.png') }}" alt="header-logo2.png">
+			<a href="{{ route('main') }}" class="navbar_brand float-left dn-smd navbar_brand_w">
+				<img class="logo1 img-fluid" src="{{ asset('images/new_logo.png') }}" alt="header-logo.png">
+				<img class="logo2 img-fluid" src="{{ asset('images/new_logo.png') }}" alt="header-logo2.png">
 			</a>
 			<!-- Responsive Menu Structure-->
 			<!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->

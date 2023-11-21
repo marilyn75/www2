@@ -5,7 +5,7 @@
 {{-- 메뉴 이미지가 있는 경우 --}}
 @if (!empty($bg))
 <section class="inner_page_breadcrumb" style="background-image: url('/files/menu/{{ $bg }}')">
-    <div class="container">
+    <div class="container container_w">
         <div class="row">
             <div class="col-xl-6">
                 <div class="breadcrumb_content">
@@ -25,7 +25,7 @@
 
 <!-- Inner Page Breadcrumb -->
 <section class="our-listing bgc-f7 pb30-991">
-    <div class="container">
+    <div class="container container_w">
         @empty($bg)
         {{-- <div class="row">
             <div class="col-lg-6">

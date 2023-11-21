@@ -3,7 +3,7 @@
     <li>
         <a href="{{ $menu['link'] }}" @if(!empty($menu['target'])) target="{{ $menu['target'] }}" @endif ><span class="title">{{ $menu['txt'] }}</span></a>
         @if(!empty($menu['submenu']))
-        <ul>
+        <ul class="sub_menu">
             @foreach ($menu['submenu'] as $submenu)
             <li><a href="{{ $submenu['link'] }}" @if(!empty($submenu['target'])) target="{{ $submenu['target'] }}" @endif ><span class="title">{{ $submenu['txt'] }}</span></a></li>
             @endforeach
@@ -22,15 +22,22 @@
     @endguest
 
     @auth
-    <li class="user_setting">
+    <li class="user_setting user_setting_w float-right">
         <div class="dropdown">
-            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{ showProfileImage() }}" width="45" height="45"> <span class="dn-1199">{{ Auth::user()->name }}</span></a>
-            <div class="dropdown-menu">
-                <div class="user_set_header">
-                    <img class="float-left" src="{{ showProfileImage() }}" width="45" height="45">
-                    <p>{{ Auth::user()->name }} <br><span class="address">{{ Auth::user()->email }}</span></p>
+            <a class="btn dropdown-toggle my_log_hd" href="#" data-toggle="dropdown">
+                <div class="head_img_w">
+                    <img src="{{ showProfileImage() }}" width="50" height="50"> 
                 </div>
-                <div class="user_setting_content">
+                <span class="dn-1199">{{ Auth::user()->name }}</span>
+            </a>
+            <div class="dropdown-menu">
+                <div class="user_set_header user_set_header_w">
+                    <div class="head_img_w">
+                        <img class="float-left" src="{{ showProfileImage() }}" width="50" height="50">
+                    </div>
+                    <p>{{ Auth::user()->name }} <br><span class="address mont">{{ Auth::user()->email }}</span></p>
+                </div>
+                <div class="user_setting_content user_setting_content_w">
                     <a class="dropdown-item text-dark" href="{{ route('changepw') }}">비밀번호 변경</a>
                     <a class="dropdown-item text-dark" href="{{ route('profile') }}">회원정보 수정</a>
                     <a class="dropdown-item text-dark" href="#">Messages</a>

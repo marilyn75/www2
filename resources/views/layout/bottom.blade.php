@@ -1,4 +1,4 @@
-<section class="footer_middle_area home5 pt30 pb30">
+<!-- <section class="footer_middle_area home5 pt30 pb30">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-xl-6">
@@ -20,4 +20,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
