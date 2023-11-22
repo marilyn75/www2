@@ -25,6 +25,16 @@ class CommonCodeClass{
         return CommonCode::where(['parent_id' => $id, 'is_use'=>1])->select('id','title')->get()->toArray();
     }
 
+    public static function getChildrenTreeFormFirstCodeText($code_text){
+        $id = CommonCode::where([
+            'parent_id' => null,
+            'is_use' => 1,
+            'title' => $code_text
+        ])->pluck('id')[0];
+
+        return CommonCode::descendantsOf($id)->where('is_use',1)->toTree()->toArray();
+    }
+
     public static function getChildrenFromId($id){
         return CommonCode::where(['parent_id' => $id, 'is_use'=>1])->select('id','title')->get()->toArray();
     }

@@ -9,9 +9,14 @@
 @include('include.messagebox')
 
 @if (empty($code))
-<form action="{{ route('admin.codes.store', $id) }}" method="POST">
+<script>
+    $(document).ready(function(){
+        frm.title.focus();
+    });
+</script>
+<form name="frm" action="{{ route('admin.codes.store', $id) }}" method="POST">
 @else
-<form action="{{ route('admin.codes.update', $id) }}" method="POST">
+<form name="frm" action="{{ route('admin.codes.update', $id) }}" method="POST">
 @endif
     @csrf
     <div class="my_dashboard_review mb40">

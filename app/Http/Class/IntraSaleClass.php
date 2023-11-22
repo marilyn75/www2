@@ -50,7 +50,7 @@ class IntraSaleClass{
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
 
-        $return['bdArea'] = number_format($return['bdArea'],2);
+        $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);
         $return['landArea'] = number_format($return['landArea'],2);
 
         $bd = $data->sale->building->first();

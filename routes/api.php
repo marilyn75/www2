@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Class\CommonCodeClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\AddrSearchController;
@@ -21,3 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // 주소검색
 Route::get('/search', [AddrSearchController::class,'search'])->name('AddrSearch');
+
+// 매물옵션코드
+Route::get('/saleOptionCodes', function(){
+    $codes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');
+
+    return $codes;
+});
