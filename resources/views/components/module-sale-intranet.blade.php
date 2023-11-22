@@ -662,7 +662,7 @@
             <div class="grid_list_search_result search_result_w">
                 <div class="">
                     <div class="left_area tac-xsd">
-                        <p>검색결과 <span class="mont point_c">9</span>건</p>
+                        <p>검색결과 <span class="mont point_c">{{ number_format($data->total()) }}</span>건</p>
                     </div>
                 </div>
                 <div class="">
@@ -689,44 +689,17 @@
         <!-- 검색결과 end -->
 
         <div class="row">
-            @foreach ($data as $_item)
+            @foreach ($data as $_data)
             @php
-                $_data = $_item->sale;
-                if($_data->tradeType=="임대"){
-                    $printPrice = number_format($_data->l_depPrice)."/".number_format($_data->l_monPrice);
-                }else{
-                    $printPrice = number_format($_data->salePrice);
-                }
-
-                $arrAddr = explode(",",$_data->_addr);
-                $addr = trim($arrAddr[0]);
-                if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
-
-                $arrPrpos = explode(",",$_data->_prposAreaNm);
-                $prpos = trim($arrPrpos[0]);
-
-                $bd = $_data->building->first();
-                $floorInfo = "";
-                $area_b = "";
-                $area_j = "";
-                if(!empty($bd)){
-                    if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
-                    $floorInfo .= $bd->bd_grndFlrCnt."F";
-
-                    // 분양, 전유면적
-                    if(!empty($bd->hos->first()->details)){
-                        $hoDetail = $bd->hos->first()->details;
-                        $area_b = number_format($hoDetail->sum('hodt_area'),2);
-                        $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
-                        // debug($area_b,$area_j);
-                    }
-                }
+                
+                $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
+        
                 
             @endphp
-            <div class="col-sm-6 col-md-6 col-lg-6" onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $_item->idx }}'">
+            <div class="col-sm-6 col-md-6 col-lg-6" onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $printData['idx'] }}'">
                 <div class="feat_property home7 style4 bdrrn feat_property_w">
                     <div class="thumb">
-                        <img class="img-whp" @if(empty($_data->files->first()->filename)) src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg" @else src="{{ "https://www.gbbinc.co.kr/_Data/SaleNew/".$_data->files->first()->filename }}" @endif">
+                        <img class="img-whp" src="{{ $printData['img'] }}">
                         <div class="thmb_cntnt">
                             <ul class="tag mb0">
                                 <li class="list-inline-item"><a href="#"><i
@@ -738,35 +711,34 @@
                     </div>
                     <div class="details details_w">
                         <div class="tc_content tc_content_w">
-                            <p class="text-thm">{{ $_data->saleTypeTxt }}</p>
-                            <h4>{{ $_data->title }} 제목부분</h4>
+                            <p class="text-thm">{{ $printData['saleType'] }}</p>
+                            <h4>{{ $printData['title'] }}</h4>
                             <!-- <ul class="prop_details mb0">
                             <li class="list-inline-item"><i class="ri-building-line"></i><a href="#">일반상업지 1,000㎡</a></li>
                             <li class="list-inline-item"><a href="#">B1/15F 연10,000㎡</a></li>
                         </ul> -->
                         @if(!empty($area_b))
                             <div class="text-inf-w">
-                                <p class="text-inf"><i class="ri-building-line"></i>{{ $prpos }} {{ $floorInfo }}</p>
+                                <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['prposAreaNm'] }} {{ $printData['floorInfo'] }}</p>
                                 <p class="text-inf"><i class="ri-building-line"></i>분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡</p>
                             </div>
                         @else
                             <div class="text-inf-w">
-                                <p class="text-inf"><i class="ri-building-line"></i>{{ $prpos }} {{ number_format($_data->_lndpclAr_sum) }}㎡</p>
+                                <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['prposAreaNm'] }} {{ $printData['landArea'] }}㎡</p>
                                 @if (strpos($_data->saleTypeTxt,"토지")===false)
-                                <p class="text-inf"><i class="ri-building-line"></i>{{ $floorInfo }} 연{{ number_format($_data->_area) }}㎡</p>
+                                <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}} 연{{ $printData['bdArea'] }}㎡</p>
                                 @endif
                             </div>
                         @endif
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $addr }}</p>
-                            <p class="text-thm price_w">{{ $_data->tradeType }} <span class="mont">{{ $printPrice }}</span> 만원</p>
+                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $printData['address'] }}</p>
+                            <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
                         </div>
                         <div class="fp_footer fp_footer_w">
                             <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img
-                                            src="images/property/AI4.PNG" alt="AI4.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">(주)부동산중개법인개벽</a></li>
+                                <li class="list-inline-item"><a href="#"><img src="{{ $printData['sawon_photo'] }}" style="width: 40px; height: 40px;"></a></li>
+                                <li class="list-inline-item"><a href="#">{{ $printData['sawon_name'] }} {{ $printData['sawon_sosok'] }}</a></li>
                             </ul>
-                            <p class="fp_pdate mont">1 day ago</p>
+                            <p class="fp_pdate mont">{{ $printData['print_data'] }}</p>
                         </div>
                     </div>
                 </div>

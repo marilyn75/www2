@@ -26,6 +26,6 @@ class IntraSale extends Model
     }
 
     public function users(){
-        return $this->hasMany(IntraSaleUser::class, 's_idx')->where('chkescape',0)->with('sawon');
+        return $this->hasMany(IntraSaleUser::class, 's_idx')->where('chkescape',0)->orderBy('chk_master','desc')->with('sawon');
     }
 }

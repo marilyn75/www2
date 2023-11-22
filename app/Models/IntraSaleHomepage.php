@@ -18,4 +18,8 @@ class IntraSaleHomepage extends Model
     public function sale(){
         return $this->belongsTo(IntraSale::class,'s_idx');
     }
+
+    public function files(){
+        return $this->hasMany(IntraModuleFile::class, 'parentIDX')->where('file_code','homepage.files');
+    }
 }

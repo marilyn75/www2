@@ -19,7 +19,7 @@ class IntraSaleClass{
     }
 
     public function getListData($itemNum=6){
-        return IntraSaleHomepage::orderBy('reg_date','desc')->paginate($itemNum);
+        return IntraSaleHomepage::where('isDone',1)->orderBy('reg_date','desc')->paginate($itemNum);
     }
 
     public function getData($idx){
@@ -28,6 +28,60 @@ class IntraSaleClass{
         $data->printAddr = $arrAddr[0];
 
         return $data;
+    }
+
+    // 출력용 데이터 가공
+    static public function getPrintData($data){
+        $return = $data->toArray();
+
+        $return['saleTypeFull'] = $data->saleTypeTxt;
+        $return['saleType'] = trim(explode(">",$data->saleTypeTxt)[1]);        
+
+        if($data->tradeType=="임대"){
+            $return['price'] = number_format($data->l_depPrice)."/".number_format($data->l_monPrice);
+        }else{
+            $return['price'] = number_format($data->salePrice);
+        }
+
+        $return['img'] = (empty($data->files->first()->filename))?"/images/noimg.jpg":"http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename;
+
+        $arrAddr = explode("|",$data->addr);
+        $addr = trim($arrAddr[0]);
+        if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
+        $return['address'] = $addr;
+
+        $return['bdArea'] = number_format($return['bdArea'],2);
+        $return['landArea'] = number_format($return['landArea'],2);
+
+        $bd = $data->sale->building->first();
+        $floorInfo = "";
+        $area_b = "";
+        $area_j = "";
+        if(!empty($bd)){
+            if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
+            $floorInfo .= $bd->bd_grndFlrCnt."F";
+
+            // 분양, 전유면적
+            if(!empty($bd->hos->first()->details)){
+                $hoDetail = $bd->hos->first()->details;
+                $area_b = number_format($hoDetail->sum('hodt_area'),2);
+                $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
+                // debug($area_b,$area_j);
+            }
+        }
+        $return['floorInfo'] = $floorInfo;
+
+        $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
+        $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
+        $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
+        $return['sawon_duty'] = $data->sale->users->first()->sawon->info->duty;
+        $return['sawon_sosok'] = $data->sale->users->first()->sawon->info->sosok;
+
+        $return['print_data'] = formatCreatedAt2($data->reg_date);
+
+        debug($data->sale->users->first()->sawon);
+
+        return $return;
     }
 
     public function todayViewSaleSetCookie($idx){

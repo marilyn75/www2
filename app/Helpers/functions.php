@@ -130,3 +130,36 @@ if (!function_exists('formatCreatedAt')) {
         }
     }
 }
+
+// 날짜형식2
+if (!function_exists('formatCreatedAt2')) {
+    function formatCreatedAt2($created_at, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($created_at);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+
+        $string = array(
+            'y' => '년',
+            'm' => '개월',
+            'w' => '주',
+            'd' => '일',
+            'h' => '시간',
+            'i' => '분',
+            's' => '초',
+        );
+
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' 전' : '방금 전';
+    }
+}

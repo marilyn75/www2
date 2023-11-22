@@ -44,7 +44,7 @@ class ModuleSaleIntranet extends Component
 
     public function index(){
         $data = $this->cls->getListData();
-
+        debug($data);
         return view('components.module-sale-intranet', compact('data'));
     }
 
