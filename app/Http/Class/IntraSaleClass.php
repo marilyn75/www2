@@ -18,8 +18,19 @@ class IntraSaleClass{
         
     }
 
-    public function getListData($itemNum=6){
-        return IntraSaleHomepage::where('isDone',1)->orderBy('reg_date','desc')->paginate($itemNum);
+    public function getListData($request, $itemNum=6){
+        $data = $request->all();
+
+        $model = IntraSaleHomepage::where('isDone',1);
+
+        if($data['sort']){
+            $arrSort = explode(" ", $data['sort']);
+            $model->orderBy($arrSort[0],$arrSort[1]);
+        }else{
+            $model->orderBy('reg_date','desc');
+        }
+
+        return $model->paginate($itemNum);
     }
 
     public function getData($idx){
