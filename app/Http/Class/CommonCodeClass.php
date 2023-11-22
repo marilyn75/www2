@@ -32,7 +32,13 @@ class CommonCodeClass{
             'title' => $code_text
         ])->pluck('id')[0];
 
-        return CommonCode::descendantsOf($id)->where('is_use',1)->toTree()->toArray();
+        $data = CommonCode::descendantsOf($id)->where('is_use',1)->toTree()->toArray();
+        foreach($data as $_dt){
+            foreach($_dt['children'] as $_child)
+            $return[$_dt['title']][] = $_child['title'];
+        }
+
+        return $return;
     }
 
     public static function getChildrenFromId($id){
