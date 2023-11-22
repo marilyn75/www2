@@ -717,10 +717,10 @@
                             <li class="list-inline-item"><i class="ri-building-line"></i><a href="#">일반상업지 1,000㎡</a></li>
                             <li class="list-inline-item"><a href="#">B1/15F 연10,000㎡</a></li>
                         </ul> -->
-                        @if(!empty($area_b))
+                        @if(!empty($printData['area_b']))
                             <div class="text-inf-w">
                                 <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['prposAreaNm'] }} {{ $printData['floorInfo'] }}</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡</p>
+                                <p class="text-inf"><i class="ri-building-line"></i>분양{{ $printData['area_b'] }}㎡ 전유{{ $printData['area_j'] }}㎡</p>
                             </div>
                         @else
                             <div class="text-inf-w">

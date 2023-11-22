@@ -19,7 +19,7 @@ class IntraSawonClass{
         
     }
 
-    public function getListData($itemNum=6){
+    public function getListData($itemNum=8){
         return IntraMember::where([
             'mb_out'=>0,
             'auth_gr'=>'M01_D01',
