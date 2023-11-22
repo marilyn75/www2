@@ -30,18 +30,17 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
 @endphp
 <div class="col-lg-8">
     <div class="single_product_grid row single_product_grid_w">
-        <div class="single_product_slider col-lg-6 pl0 pr0">
+        <div class="single_product_slider col-sm-6 col-md-6 col-lg-6 pl0 pr0 single_product_slider_w">
             @if($data->files->count()==0)
             <div class="item">
                 <div class="sps_content">
                     <div class="thumb">
                         <div class="single_product ">
                             <div class="single_item">
-                                <div class="thumb"><img class="img-fluid"
+                                <div class="thumb detail_img_crop"><img class="img-fluid"
                                         src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg"></div>
                             </div>
-                            <a class="product_popup popup-img"
-                                href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
+                            <a class="product_popup popup-img" href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
                                 <i class="ri-zoom-in-line"></i>
                             </a>
                         </div>
@@ -53,11 +52,10 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                     <div class="thumb">
                         <div class="single_product">
                             <div class="single_item">
-                                <div class="thumb"><img class="img-fluid"
+                                <div class="thumb detail_img_crop"><img class="img-fluid"
                                         src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg"></div>
                             </div>
-                            <a class="product_popup popup-img"
-                                href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
+                            <a class="product_popup popup-img" href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
                                 <i class="ri-zoom-in-line"></i>
                             </a>
                         </div>
@@ -70,7 +68,7 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                     <div class="thumb">
                         <div class="single_product">
                             <div class="single_item">
-                                <div class="thumb"><img class="img-fluid"
+                                <div class="thumb detail_img_crop"><img class="img-fluid"
                                         src="https://www.gbbinc.co.kr/_Data/SaleNew/{{ $data->files->first()->filename }}">
                                 </div>
                             </div>
@@ -87,11 +85,10 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                     <div class="thumb">
                         <div class="single_product">
                             <div class="single_item">
-                                <div class="thumb"><img class="img-fluid"
+                                <div class="thumb detail_img_crop"><img class="img-fluid"
                                         src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg"></div>
                             </div>
-                            <a class="product_popup popup-img"
-                                href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
+                            <a class="product_popup popup-img" href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
                                 <i class="ri-zoom-in-line"></i>
                             </a>
                         </div>
@@ -119,25 +116,29 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
             @endforeach
             @endauth
         </div>
-        <div class="col-lg-6">
+        <div class="col-sm-6 col-md-6 col-lg-6 detail_top_inf">
             <div class="sps_content">
                 <div class="content">
                     <div class="shop_single_product_details">
-                        <div class="tag">{{ $data->tradeType }}</div>
-                        <div class="tag">{{ $data->saleTypeTxt }}</div>
-                        <h4 class="title">{{ $addr }}</h4>
-                        <div class="sspd_price mb25">{{ $printPrice }}만원</div>
-                        <p class="mb20">{!! nl2br($data->review) !!}</p>
+                        <div class="tag detail_t_tag">{{ $data->tradeType }}</div>
+                        <div>
+                            <div>
+                                <div class="tag detail_type">{{ $data->saleTypeTxt }}</div>
+                                <h4 class="title">{{ $addr }}</h4>
+                            </div>
+                            <div class="detail_price mb15"><span class="mont">{{ $printPrice }}</span> 만원</div>
+                            <!-- <p class="mb20">{!! nl2br($data->review) !!}</p> -->
+                        </div>
 
-                        <ul class="list_details">
-                            <li><a href="#"><i class="fa fa-check mr10"></i> {{ $prpos }}</a></li>
+                        <ul class="list_details list_details_w">
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> {{ $prpos }}</a></li>
                             @if(!empty($area_b))
-                            <li><a href="#"><i class="fa fa-check mr10"></i> 분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡ </a></li>
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡ </a></li>
                             @else
-                            <li><a href="#"><i class="fa fa-check mr10"></i> 토지면적
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 토지면적
                                     {{ number_format($data->_lndpclAr_sum) }}㎡</a></li>
                             @if (strpos($data->saleTypeTxt,"토지")===false)
-                            <li><a href="#"><i class="fa fa-check mr10"></i> 연면적 {{ number_format($data->_area) }}㎡</a>
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 연면적 {{ number_format($data->_area) }}㎡</a>
                             </li>
                             @endif
                             @endif
@@ -157,37 +158,14 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="listing_single_description description_w">
                                 <h4 class="mb20">상세내용</h4>
+                                <!-- <p class="mb20">{!! nl2br($data->review) !!}</p> -->
+
                                 <p class="mb25">
-                                    대중교통 이용이 편리한 단지에요. 단지 정문에서 도보로 1분 거리에 마을버스정류장이 있어서 동네 곳곳을 편리하게
-                                    이동할 수 있습니다. 그리고 도보 1분 거리에 할인마트가 있어서 여러가지 물건들과 식품들을 합리적이고 가성비 좋은
-                                    가격에 구입할 수 있어요.
-
-                                    또한 주변으로 학군이 형성되어 있는 단지에요. 도보 10분 거리 이내에 금사중학교, 금정전자공업고등학교,
-                                    부산경호고등학교가 있어서 학교 선택의 폭이 넓습니다. 그리고 단지와 거리가 가까워서 학생들의 통학이 아주 편리하다는
-                                    장점도 있어요. 그리고 주변 녹지환경도 좋습니다. 도보 10분 거리에 등산로가 있어서 날 좋은 휴일에 편하게 등산을
-                                    할 수 있어요.
-
-                                    대중교통이 편리하고 조용한 분위기의 단지이기 때문에 노년층 분들께 추천할만 한 단지입니다.
+                                    {!! nl2br($data->review) !!}
                                 </p>
-                                <p class="gpara second_para mt10 mb10">대중교통 이용이 편리한
-                                    단지에요. 단지 정문에서 도보로 1분 거리에 마을버스정류장이 있어서 동네 곳곳을 편리하게 이동할 수 있습니다.
-                                    그리고 도보 1분 거리에 할인마트가 있어서 여러가지 물건들과 식품들을 합리적이고 가성비 좋은 가격에 구입할 수
-                                    있어요.
-                                </p>
+                                
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
-                                        <p class="mt10 mb10">
-                                            대중교통 이용이 편리한 단지에요. 단지 정문에서 도보로 1분 거리에 마을버스정류장이 있어서 동네
-                                            곳곳을 편리하게 이동할 수 있습니다. 그리고 도보 1분 거리에 할인마트가 있어서 여러가지 물건들과
-                                            식품들을 합리적이고 가성비 좋은 가격에 구입할 수 있어요.
-
-                                            또한 주변으로 학군이 형성되어 있는 단지에요. 도보 10분 거리 이내에 금사중학교,
-                                            금정전자공업고등학교, 부산경호고등학교가 있어서 학교 선택의 폭이 넓습니다. 그리고 단지와 거리가
-                                            가까워서 학생들의 통학이 아주 편리하다는 장점도 있어요. 그리고 주변 녹지환경도 좋습니다. 도보
-                                            10분 거리에 등산로가 있어서 날 좋은 휴일에 편하게 등산을 할 수 있어요.
-
-                                            대중교통이 편리하고 조용한 분위기의 단지이기 때문에 노년층 분들께 추천할만 한 단지입니다.
-                                        </p>
                                         <p class="mt10 mb10">
                                             대중교통 이용이 편리한 단지에요. 단지 정문에서 도보로 1분 거리에 마을버스정류장이 있어서 동네
                                             곳곳을 편리하게 이동할 수 있습니다. 그리고 도보 1분 거리에 할인마트가 있어서 여러가지 물건들과
@@ -217,74 +195,50 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <h4 class="mb10">매물정보</h4>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6">
-                                        <ul class="list-inline-item">
+                                        <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>매물유형 :</p>
+                                                <p>상가건물</p>
                                             </li>
                                             <li>
                                                 <p>지목 :</p>
+                                                <p>대</p>
                                             </li>
                                             <li>
                                                 <p>연면적 :</p>
+                                                <p class="mont">99,999㎥ (30,249p)</p>
                                             </li>
                                             <li>
                                                 <p>주구조 :</p>
+                                                <p>철근 콘크리트 구조</p>
                                             </li>
                                             <li>
                                                 <p>주차시설 :</p>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-inline-item">
-                                            <li>
-                                                <p><span>상가건물</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>대</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>99,999㎥ (30,249p)</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>철근 콘크리트구조</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>주차 1대</span></p>
+                                                <p>주차 1대</p>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6">
-                                        <ul class="list-inline-item">
+                                        <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>대지면적 :</p>
+                                                <p class="mont">11,111㎡ (3,361p)</p>
                                             </li>
                                             <li>
                                                 <p>용도지역 :</p>
+                                                <p>일반상업지</p>
                                             </li>
                                             <li>
                                                 <p>건물용도 :</p>
+                                                <p>제1종근린생활시설</p>
                                             </li>
                                             <li>
                                                 <p>규모 :</p>
+                                                <p>지하 1층 / 지상 10층</p>
                                             </li>
                                             <li>
                                                 <p>승강기 :</p>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-inline-item">
-                                            <li>
-                                                <p><span>11,111㎡ (3,361p)</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>일반상업지</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>제1종근린생활시설</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>지하 1층 / 지상 10층</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>승강기 1대</span></p>
+                                                <p>승강기 1대</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -296,50 +250,34 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <h4 class="mb10">추가설명</h4>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6">
-                                        <ul class="list-inline-item">
+                                        <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>사용승인일 :</p>
+                                                <p class="mont">2023-12-01</p>
                                             </li>
                                             <li>
                                                 <p>입주정보 :</p>
+                                                <p>즉시입주</p>
                                             </li>
                                             <li>
                                                 <p>월관리비 :</p>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-inline-item">
-                                            <li>
-                                                <p><span>2023-12-01</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>즉시입주</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>관리비 없음</span></p>
+                                                <p>관리비 없음</p>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6">
-                                        <ul class="list-inline-item">
+                                        <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>방향 :</p>
+                                                <p>남동향</p>
                                             </li>
                                             <li>
                                                 <p>방 / 화장실 :</p>
+                                                <p>방 1개 / 욕실 1개</p>
                                             </li>
                                             <li>
                                                 <p>난방방식 :</p>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-inline-item">
-                                            <li>
-                                                <p><span>남동향</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>방 1개 / 욕실 1개</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>개별난방</span></p>
+                                                <p>개별난방</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -351,38 +289,26 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <h4 class="mb10">가격정보</h4>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6">
-                                        <ul class="list-inline-item">
+                                        <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>매매가격 :</p>
+                                                <p>매매 <span class="mont">13,000</span>만원</p>
                                             </li>
                                             <li>
                                                 <p>융자금 :</p>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-inline-item">
-                                            <li>
-                                                <p><span>매매 13,000만원</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>융자금 없음</span></p>
+                                                <p>융자금 없음</p>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-6">
-                                        <ul class="list-inline-item">
+                                        <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>월세현황 :</p>
+                                                <p>보증금 1,000만원 / 월세1,000만원</p>
                                             </li>
                                             <li>
                                                 <p>예상 수익률 :</p>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-inline-item">
-                                            <li>
-                                                <p><span>보증금 1,000만원 / 월세1,000만원</span></p>
-                                            </li>
-                                            <li>
-                                                <p><span>1.11%</span></p>
+                                                <p class="mont">1.11%</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -782,7 +708,7 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                             <div class="application_statics">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="chart_circle_doughnut mt30 chart_w">
+                                        <div class="chart_circle_doughnut chart_w">
                                             <h4>구매비용 계산기</h4>
                                             <!-- <canvas class="mt50 mb50" id="myChart"></canvas> -->
 
@@ -1069,9 +995,9 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
 </div> -->
 
 <!-- 수정 -->
-<div class="contact_bar">
-    <div class="contact_bx">
-        <div class="sidebar_listing_list">
+<div class="col-lg-4">
+
+        <div class="sidebar_listing_list sidebar_listing_list_w">
             <div class="sidebar_advanced_search_widget">
                 <div class="sl_creator sl_creator_w">
                     <h4 class="mb20">중개사정보</h4>
@@ -1085,7 +1011,8 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                             <p class="mb0 media-detail">{{ @$data->users->first()->sawon->info->sosok }}</p>
                             <h5 class="mt-0">{{ $data->users->first()->sawon->user_name }}
                                 {{ @$data->users->first()->sawon->info->duty }}</h5>
-                            <p class="mb0 mont media-call">Tel. 1833-{{ @$data->users->first()->sawon->info->office_line }}
+                            <p class="mb0 mont media-call">Tel.
+                                1833-{{ @$data->users->first()->sawon->info->office_line }}
                             </p>
                         </div>
                     </div>
@@ -1145,7 +1072,8 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
             $addr = trim($arrAddr[0]);
             if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
             @endphp
-            <div class="media media_w" style="cursor: pointer" onclick="location.href='?mode=show&idx={{ $_data->idx }}'">
+            <div class="media media_w" style="cursor: pointer"
+                onclick="location.href='?mode=show&idx={{ $_data->idx }}'">
                 <img class="align-self-start" src="{{ $img }}">
                 <div class="media-body today_inf">
                     <h5 class="mt-0 mb-0">{{ $sale->saleTypeTxt }}</h5>
@@ -1156,6 +1084,6 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
             @endforeach
             @endif
         </div>
-    </div>
+
 
 </div>
