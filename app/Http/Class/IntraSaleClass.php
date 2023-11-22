@@ -23,7 +23,7 @@ class IntraSaleClass{
 
         $model = IntraSaleHomepage::where('isDone',1);
 
-        if($data['sort']){
+        if(!empty($data['sort'])){
             $arrSort = explode(" ", $data['sort']);
             $model->orderBy($arrSort[0],$arrSort[1]);
         }else{
