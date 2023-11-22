@@ -9938,7 +9938,7 @@ a.btn.btn_error{
   width: 45px;
 }
 .mbp_pagination ul.page_navigation li.active .page-link {
-  background-color: #ff5a5f;
+  background-color: #385F8D;
   color: #ffffff;
 }
 .event_counter_plugin_container{
@@ -10174,7 +10174,6 @@ a.btn.btn_error{
 .sidebar_recent_product .title,
 .sidebar_feature_listing .title{
   font-size: 18px;
-  font-family: "Nunito";
   color: #484848;
   font-weight: bold;
   line-height: 1.2;
@@ -10192,7 +10191,6 @@ a.btn.btn_error{
 .sidebar_recent_product .media .media-body .post_title,
 .sidebar_feature_listing .media .media-body .post_title{
   font-size: 16px;
-  font-family: "Nunito";
   color: #484848;
   font-weight: bold;
   line-height: 1.2;
@@ -10200,14 +10198,12 @@ a.btn.btn_error{
 .sidebar_recent_product .media .media-body a,
 .sidebar_feature_listing .media .media-body a{
   font-size: 16px;
-  font-family: "Nunito";
   color: rgb(255, 90, 95);
   font-weight: bold;
   line-height: 1.2;
 }
 .sidebar_feature_listing .media .media-body ul li{
   font-size: 14px;
-  font-family: "Nunito";
   color: #484848;
   line-height: 1.2;
   margin-right: 0;
@@ -16702,7 +16698,7 @@ input[type="range"] {
 .text-sub-loc i {margin-right: 5px;}
 .detail_img_w { display: grid; }
 .contact_bar { position: sticky; }
-.contact_bx { width:376px; height: 608px; position: sticky; top: 21px; }
+.contact_bx { width:376px; height: 1000px; position: sticky; top: 125px; }
 .sl_creator_w h4 { font-size: 20px; font-weight: 600; }
 .profile_crop { border-radius: 10px; overflow: hidden; object-fit: cover; width: 90px; height: 90px; }
 .media_w { gap: 20px; align-items: center; }
@@ -16735,6 +16731,18 @@ input[type="range"] {
 .chart_w h4{ color: #000; font-size: 20px; font-weight: 600; }
 .contact_btn { display: none; z-index: 999; position: fixed; bottom: 80px; right: 80px; width: 100px; height: 100px; background: #385F8D; border-radius: 50px; }
 .contact_bx_modal { width: 100%; height: auto; border: none; margin: 0; padding: 15px 20px; }
+.media-detail { color: #385F8D !important; font-weight: 600 !important; }
+.media-call { font-weight: 500; }
+.today_pro h4 { font-size: 20px; font-weight: 600; }
+.detail_emp_btns { display: flex; gap: 10px; }
+.detail_emp_btns .btn{ margin: 0; }
+.detail_emp_btns .btn:first-child { background: #fff; border: 1px solid #385F8D; color: #385F8D; }
+.detail_emp_btns .btn:first-child:hover{ background: #385F8D; color: #fff; }
+.today_loc { font-size: 14px; color: rgb(72,72,72); line-height: 1.5; font-weight: 500; margin-top: 2px; margin-bottom: 5px; }
+.today_inf h5{ font-size: 16px; color: rgb(72, 72, 72); font-weight: bold; line-height: 1.2; }
+.today_inf a {  color: #385F8D !important; font-weight: 600 !important; }
+.single_product_grid_w { padding: 30px; }
+
 
 
 /* main */
@@ -16795,7 +16803,7 @@ input[type="range"] {
 .all_bx .btn { width: 85px; height: 35px; padding: 0; line-height: 35px; }
 .inside_main h4{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600 !important; }
 .mm-slideout { z-index: 0; }
-.chat-icon button{ width: 120px; height: 120px; border: none; position: fixed; right: 90px; bottom: 75px; border-radius: 100px; background: #385F8D; display: grid; align-items: center; padding: 20px 0; cursor: pointer; }
+.chat-icon button{ width: 120px; height: 120px; border: none; position: fixed; right: 90px; bottom: 75px; border-radius: 100px; background: #385F8D; display: grid; align-items: center; padding: 20px 0; cursor: pointer; filter: drop-shadow(0px 0px 10px rgba(56, 95, 141, 0.25)); z-index: 999; }
 .chat-icon p { color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; line-height: 20px; }
 .click_chat::after { content: ''; display: block; height: 1px; background: #fff; width: 30px; margin: 0 auto; margin-top: 1px; }
 
@@ -16803,11 +16811,13 @@ input[type="range"] {
 /* employee/ */
 .employ_box { display: grid; justify-items: center; background: #F0F0F0; padding: 20px !important; margin-bottom: 30px; border-radius: 10px; }
 .empl-img-w { width: 150px; height: 150px; border-radius: 100px; overflow: hidden; }
+.empl-img-w img { height: 150px; }
 .employ_inf { display: grid; justify-items: center; margin-top: 15px; }
 .employ_inf p { margin: 0; }
 .employ_inf p:last-child { font-size: 20px; font-weight: 600; }
 .employ_inf p:first-child { font-size: 16px; font-weight: 600; color: #385F8D; }
 .employ_call { display: flex; gap: 5px; margin-top: 15px; }
+.employ_call p { margin: 0; font-weight: 600; font-size: 16px; }
 .employ_call i{ color: #000; }
 .employ_call button{ margin: 0; font-weight: 600; font-size: 16px; }
 

@@ -1,5 +1,8 @@
 <style>
-    .img-whp {width: 340px; height: 260px;}
+.img-whp {
+    width: 340px;
+    height: 260px;
+}
 </style>
 
 <div class="col-md-12 col-lg-12">
@@ -28,8 +31,8 @@
         </div>
     </div>
     <div class="row">
-    @foreach ($data as $_sawon)
-        <div class="col-md-6 col-lg-4">
+        @foreach ($data as $_sawon)
+        <!-- <div class="col-md-6 col-lg-4">
             <div class="feat_property home7 agent">
                 <div class="thumb">
                     <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
@@ -63,10 +66,27 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <!-- 수정 -->
+        <div class="col-sm-4 col-md-4 col-lg-3">
+            <a class="employ_box" href="#">
+                <div class="empl-img-w">
+                    <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
+                </div>
+                <div class="employ_inf">
+                    <p>{{ @$_sawon->info->sosok }}</p>
+                    <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }}</p>
+                </div>
+                <div class="employ_call">
+                    <i class="ri-phone-line"></i>
+                    <p class="mont">1833 {{ @$_sawon->info->office_line }}</p>
+                </div>
+            </a>
         </div>
-    @endforeach
-        
-    <x-pagination :data="$data" />
+        @endforeach
+
+        <x-pagination :data="$data" />
         {{-- <div class="col-lg-12 mt20">
             <div class="mbp_pagination">
                 <ul class="page_navigation">
