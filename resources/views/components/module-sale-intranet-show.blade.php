@@ -704,52 +704,6 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 pl-0 pr-0">
-                            <div class="application_statics">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="chart_circle_doughnut chart_w">
-                                            <h4>구매비용 계산기</h4>
-                                            <!-- <canvas class="mt50 mb50" id="myChart"></canvas> -->
-
-                                            <script type="text/javascript">
-                                            google.charts.load("current", {
-                                                packages: ["corechart"]
-                                            });
-                                            google.charts.setOnLoadCallback(drawChart);
-
-                                            function drawChart() {
-                                                var data = google.visualization
-                                                    .arrayToDataTable([
-                                                        ['Task', 'Hours per Day'],
-                                                        ['매매대금', 11],
-                                                        ['보증금', 2],
-                                                        ['융자금', 2],
-                                                        ['취득세', 2],
-                                                        ['추후논의', 7]
-                                                    ]);
-
-                                                var options = {
-                                                    // title: 'My Daily Activities',
-                                                    pieHole: 0.4,
-                                                    colors: ['#385F8D', '#547EAE', '#729BCB',
-                                                        '#92B5DE', '#C0D9F5'
-                                                    ]
-                                                };
-
-                                                var chart = new google.visualization.PieChart(
-                                                    document.getElementById('donutchart'));
-                                                chart.draw(data, options);
-                                            }
-                                            </script>
-
-                                            <div id="donutchart" style="width: auto; height: 400px;"></div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-lg-12 pl-0 pr-0 similar">
                             <h4 class="mt30 mb30">관련매물</h4>
                         </div>

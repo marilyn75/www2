@@ -16732,6 +16732,7 @@ input[type="range"] {
 .single_product_slider_w{ display: grid !important; gap: 20px; }
 .detail_list li{ display: flex; flex-wrap: wrap; }
 .detail_list li p:first-child { width: 100px; }
+.single_product_slider.owl-theme .owl-dots .owl-dot:first-child span { margin-right: 10px !important; }
 
 
 
