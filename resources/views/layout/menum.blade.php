@@ -3,7 +3,7 @@
         <div class="header stylehome1">
             <div class="d-flex justify-content-between">
                 <a class="mobile-menu-trigger" href="#menu"><img src="{{ asset('images/dark-nav-icon.svg') }}" alt=""></a>
-                <a class="nav_logo_img" href="index.html"><img class="img-fluid mt20" src="{{ asset('images/header-logo2.png') }}" alt="header-logo2.png"></a>
+                <a class="nav_logo_img" href="index.html"><img class="img-fluid mt20" src="{{ asset('images/new_logo.png') }}" alt="new_logo.png"></a>
                 @guest
                 <a class="mobile-menu-reg-link" href="{{ route('login') }}"><span class="flaticon-user"></span></a>    
                 @endguest

@@ -1,183 +1,86 @@
 <div class="col-md-12 col-lg-8">
     <div class="row">
         <div class="col-lg-12">
-            <div class="breadcrumb_content style2 mt30-767 mb30-767">
-                <h2 class="breadcrumb_title">송대훈 부장</h2>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="feat_property list style2 agent">
-                <div class="thumb">
+            <div class="feat_property list style2 agent agent_bx">
+                <div class="thumb agent_thumb">
                     <img class="img-whp" src="images/team/11.jpg" alt="11.jpg">
-                    <div class="thmb_cntnt">
-                        <ul class="tag mb0">
-                            <li class="list-inline-item dn"></li>
-                            <li class="list-inline-item"><a href="#">2 Listings</a></li>
-                        </ul>
-                    </div>
                 </div>
-                <div class="details">
-                    <div class="tc_content">
-                        <h4>Christopher Pakulla</h4>
-                        <p class="text-thm">Agent</p>
-                        <ul class="prop_details mb0">
-                            <li><a href="#">Office: 134 456 3210</a></li>
-                            <li><a href="#">Mobile: 891 456 9874</a></li>
-                            <li><a href="#">Fax: 342 654 1258</a></li>
-                            <li><a href="#">Email: pakulla@findhouse.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="fp_footer">
-                        <ul class="fp_meta float-left mb0">
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li class="list-inline-item"><a href="#"><i class="fa fa-google"></i></a></li>
-                        </ul>
-                        <div class="fp_pdate float-right text-thm">View My Listings <i class="fa fa-angle-right"></i></div>
+                <div class="details details_w">
+                    <div class="tc_content agent_inf">
+                        <p>중개보조원</p>
+                        <h4>송대훈 부장</h4>
+                        <p class="mont">Tel. 1833-8977</p>
+                        <p>" 전문적이고 친절한 공인중개사 직원으로, 부동산 거래에 대한 전문지식과 고객서비스에 최선을 다하는 자부심을 가지고 있습니다. "</p>
                     </div>
                 </div>
             </div>
-            <div class="shop_single_tab_content style2 mt30">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <div class="shop_single_tab_content style2 mt40 agent_bot_bx">
+                <ul class="nav nav-tabs mb20" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+                        <a class="nav-link active" id="listing-tab" data-toggle="tab" href="#listing" role="tab"
+                            aria-controls="listing" aria-selected="false">등록매물</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="listing-tab" data-toggle="tab" href="#listing" role="tab" aria-controls="listing" aria-selected="false">Listing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
+                        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                            aria-controls="review" aria-selected="false">리뷰</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent2">
-                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                        <div class="product_single_content">
-                            <div class="mbp_pagination_comments">
-                                <div class="mbp_first media">
-                                    <div class="media-body">
-                                        <p class="mb25">Evans Tower very high demand corner junior one bedroom plus a large balcony boasting full open NYC views. You need to see the views to believe them. Mint condition with new hardwood floors. Lots of closets plus washer and dryer.</p>
-                                        <p class="mt10 mb0">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade row pl15 pl0-1199 pr15 pr0-1199" id="listing" role="tabpanel" aria-labelledby="listing-tab">
-                        <div class="col-lg-12">
-                            <div class="feat_property list style2 hvr-bxshd bdrrn mb10 mt20">
-                                <div class="thumb">
+                    <div class="tab-pane fade row pl15 pl0-1199 pr15 pr0-1199 show active agent_enter" id="listing" role="tabpanel"
+                        aria-labelledby="listing-tab">
+                        <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
+                            <div class="feat_property list style2 hvr-bxshd bdrrn agent_list">
+                                <div class="thumb agent_thumb">
                                     <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-                                    <div class="thmb_cntnt">
-                                        <ul class="icon mb0">
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
-                                <div class="details">
-                                    <div class="tc_content">
-                                        <div class="dtls_headr">
-                                            <ul class="tag">
-                                                <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                                <li class="list-inline-item"><a href="#">Featured</a></li>
-                                            </ul>
-                                            <a class="fp_price" href="#">$13,000<small>/mo</small></a>
+                                <div class="details details_w">
+                                    <div class="tc_content tc_content_w agent_content">
+                                        <p class="text-thm type">상가건물</p>
+                                        <h4>최고의 선택, 밸류업</h4>
+                                        <div class="text-inf-w text-inf_main">
+                                            <p class="text-inf"><i class="ri-split-cells-horizontal"></i>일반상업지 1,000㎡</p>
+                                            <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
                                         </div>
-                                        <p class="text-thm">Apartment</p>
-                                        <h4>Renovated Apartment</h4>
-                                        <p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-                                        <ul class="prop_details mb0">
-                                            <li class="list-inline-item"><a href="#">Beds: 4</a></li>
-                                            <li class="list-inline-item"><a href="#">Baths: 2</a></li>
-                                            <li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="fp_footer">
-                                        <ul class="fp_meta float-left mb0">
-                                            <li class="list-inline-item"><a href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></a></li>
-                                            <li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-                                        </ul>
-                                        <div class="fp_pdate float-right">4 years ago</div>
+                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
+                                        <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="feat_property list style2 hvr-bxshd bdrrn mb10">
-                                <div class="thumb">
-                                    <img class="img-whp" src="images/property/fp3.jpg" alt="fp3.jpg">
-                                    <div class="thmb_cntnt">
-                                        <ul class="icon mb0">
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-                                        </ul>
-                                    </div>
+                        <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
+                            <div class="feat_property list style2 hvr-bxshd bdrrn mb10 mt20 agent_list">
+                                <div class="thumb agent_thumb">
+                                    <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
                                 </div>
-                                <div class="details">
-                                    <div class="tc_content">
-                                        <div class="dtls_headr">
-                                            <ul class="tag">
-                                                <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                                <li class="list-inline-item"><a href="#">Featured</a></li>
-                                            </ul>
-                                            <a class="fp_price" href="#">$13,000<small>/mo</small></a>
+                                <div class="details details_w">
+                                    <div class="tc_content tc_content_w agent_content">
+                                        <p class="text-thm type">상가건물</p>
+                                        <h4>최고의 선택, 밸류업</h4>
+                                        <div class="text-inf-w text-inf_main">
+                                            <p class="text-inf"><i class="ri-split-cells-horizontal"></i>일반상업지 1,000㎡</p>
+                                            <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
                                         </div>
-                                        <p class="text-thm">Apartment</p>
-                                        <h4>Luxury Family Home</h4>
-                                        <p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-                                        <ul class="prop_details mb0">
-                                            <li class="list-inline-item"><a href="#">Beds: 4</a></li>
-                                            <li class="list-inline-item"><a href="#">Baths: 2</a></li>
-                                            <li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="fp_footer">
-                                        <ul class="fp_meta float-left mb0">
-                                            <li class="list-inline-item"><a href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></a></li>
-                                            <li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-                                        </ul>
-                                        <div class="fp_pdate float-right">4 years ago</div>
+                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
+                                        <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="feat_property list style2 hvr-bxshd bdrrn">
-                                <div class="thumb">
-                                    <img class="img-whp" src="images/property/fp2.jpg" alt="fp2.jpg">
-                                    <div class="thmb_cntnt">
-                                        <ul class="icon mb0">
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
-                                        </ul>
-                                    </div>
+                        <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
+                            <div class="feat_property list style2 hvr-bxshd bdrrn mb10 mt20 agent_list">
+                                <div class="thumb agent_thumb">
+                                    <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
                                 </div>
-                                <div class="details">
-                                    <div class="tc_content">
-                                        <div class="dtls_headr">
-                                            <ul class="tag">
-                                                <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                                <li class="list-inline-item"><a href="#">Featured</a></li>
-                                            </ul>
-                                            <a class="fp_price" href="#">$13,000<small>/mo</small></a>
+                                <div class="details details_w">
+                                    <div class="tc_content tc_content_w agent_content">
+                                        <p class="text-thm type">상가건물</p>
+                                        <h4>최고의 선택, 밸류업</h4>
+                                        <div class="text-inf-w text-inf_main">
+                                            <p class="text-inf"><i class="ri-split-cells-horizontal"></i>일반상업지 1,000㎡</p>
+                                            <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
                                         </div>
-                                        <p class="text-thm">Apartment</p>
-                                        <h4>Gorgeous Villa Bay View</h4>
-                                        <p><span class="flaticon-placeholder"></span> 1421 San Pedro St, Los Angeles, CA 90015</p>
-                                        <ul class="prop_details mb0">
-                                            <li class="list-inline-item"><a href="#">Beds: 4</a></li>
-                                            <li class="list-inline-item"><a href="#">Baths: 2</a></li>
-                                            <li class="list-inline-item"><a href="#">Sq Ft: 5280</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="fp_footer">
-                                        <ul class="fp_meta float-left mb0">
-                                            <li class="list-inline-item"><a href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></a></li>
-                                            <li class="list-inline-item"><a href="#">Ali Tufan</a></li>
-                                        </ul>
-                                        <div class="fp_pdate float-right">4 years ago</div>
+                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
+                                        <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
                                     </div>
                                 </div>
                             </div>
@@ -185,85 +88,8 @@
                     </div>
                     <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="product_single_content">
-                            <div class="mbp_pagination_comments">
-                                <ul class="total_reivew_view">
-                                    <li class="list-inline-item sub_titles">896 Reviews</li>
-                                    <li class="list-inline-item">
-                                        <ul class="star_list">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="list-inline-item avrg_review">( 4.5 out of 5 )</li>
-                                    <li class="list-inline-item write_review">Write a Review</li>
-                                </ul>
-                                <div class="mbp_first media">
-                                    <img src="images/testimonial/1.png" class="mr-3" alt="1.png">
-                                    <div class="media-body">
-                                        <h4 class="sub_title mt-0">Diana Cooper
-                                            <div class="sspd_review dif">
-                                                <ul class="ml10">
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"></li>
-                                                </ul>
-                                            </div>
-                                        </h4>
-                                        <a class="sspd_postdate fz14" href="#">December 28, 2020</a>
-                                        <p class="mt10">Beautiful home, very picturesque and close to everything in jtree! A little warm for a hot weekend, but would love to come back during the cooler seasons!</p>
-                                    </div>
-                                </div>
-                                <div class="custom_hr"></div>
-                                <div class="mbp_first media">
-                                    <img src="images/testimonial/2.png" class="mr-3" alt="2.png">
-                                    <div class="media-body">
-                                        <h4 class="sub_title mt-0">Ali Tufan
-                                            <div class="sspd_review dif">
-                                                <ul class="ml10">
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li class="list-inline-item"></li>
-                                                </ul>
-                                            </div>
-                                        </h4>
-                                        <a class="sspd_postdate fz14" href="#">December 28, 2020</a>
-                                        <p class="mt10">Beautiful home, very picturesque and close to everything in jtree! A little warm for a hot weekend, but would love to come back during the cooler seasons!</p>
-                                    </div>
-                                </div>
-                                <div class="custom_hr"></div>
-                                <div class="mbp_comment_form style2">
-                                    <h4>Write a Review</h4>
-                                    <ul class="sspd_review">
-                                        <li class="list-inline-item">
-                                            <ul class="mb0">
-                                                <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                                <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="list-inline-item review_rating_para">Your Rating & Review</li>
-                                    </ul>
-                                    <form class="comments_form">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Review Title">
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="12" placeholder="Your Review"></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-thm">Submit Review <span class="flaticon-right-arrow-1"></span></button>
-                                    </form>
-                                </div>
+                            <div class="mbp_pagination_comments agent_review">
+                                <p><i class="ri-information-line"></i>준비중입니다</p>
                             </div>
                         </div>
                     </div>
@@ -272,170 +98,79 @@
         </div>
     </div>
 </div>
-<div class="col-lg-4 col-xl-4">
-    <div class="sidebar_listing_grid1">
-        <div class="sidebar_listing_list">
-            <div class="sidebar_advanced_search_widget">
-                <h4 class="mb25">Contact Christopher Pakulla</h4>
-                <ul class="sasw_list mb0">
-                    <li class="search_area">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Your Name">
-                        </div>
-                    </li>
-                    <li class="search_area">
-                        <div class="form-group">
-                            <input type="number" class="form-control" id="exampleInputName2" placeholder="Phone">
-                        </div>
-                    </li>
-                    <li class="search_area">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
-                        </div>
-                    </li>
-                    <li class="search_area">
-                        <div class="form-group">
-                            <textarea id="form_message" name="form_message" class="form-control required" rows="5" required="required" placeholder="Your Message"></textarea>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="search_option_button">
-                            <button type="submit" class="btn btn-block btn-thm">Search</button>
-                        </div>
-                    </li>
-                </ul>
+<div class="col-lg-4">
+
+    <div class="sidebar_listing_list sidebar_listing_list_w">
+        <div class="sidebar_advanced_search_widget">
+            <div class="sl_creator sl_creator_w">
+                <h4 class="mb20">지금 바로 문의해보세요!</h4>
             </div>
-        </div>
-        <div class="terms_condition_widget">
-            <h4 class="title">Featured Properties</h4>
-            <div class="sidebar_feature_property_slider">
-                <div class="item">
-                    <div class="feat_property home7 agent">
-                        <div class="thumb">
-                            <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-                            <div class="thmb_cntnt">
-                                <ul class="tag mb0">
-                                    <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                    <li class="list-inline-item"><a href="#">Featured</a></li>
-                                </ul>
-                                <a class="fp_price" href="#">$13,000<small>/mo</small></a>
-                                <h4 class="posr color-white">Renovated Apartment</h4>
-                            </div>
-                        </div>
+            <ul class="sasw_list mb0 sasw_list_w">
+                <li class="search_area">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="이름을 입력하세요">
                     </div>
-                </div>
-                <div class="item">
-                    <div class="feat_property home7 agent">
-                        <div class="thumb">
-                            <img class="img-whp" src="images/property/fp2.jpg" alt="fp2.jpg">
-                            <div class="thmb_cntnt">
-                                <ul class="tag mb0">
-                                    <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                    <li class="list-inline-item"><a href="#">Featured</a></li>
-                                </ul>
-                                <a class="fp_price" href="#">$13,000<small>/mo</small></a>
-                                <h4 class="posr color-white">Renovated Apartment</h4>
-                            </div>
-                        </div>
+                </li>
+                <li class="search_area">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="번호를 입력하세요">
                     </div>
-                </div>
-                <div class="item">
-                    <div class="feat_property home7 agent">
-                        <div class="thumb">
-                            <img class="img-whp" src="images/property/fp3.jpg" alt="fp3.jpg">
-                            <div class="thmb_cntnt">
-                                <ul class="tag mb0">
-                                    <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                    <li class="list-inline-item"><a href="#">Featured</a></li>
-                                </ul>
-                                <a class="fp_price" href="#">$13,000<small>/mo</small></a>
-                                <h4 class="posr color-white">Renovated Apartment</h4>
-                            </div>
-                        </div>
+                </li>
+                <li class="search_area">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail" placeholder="이메일을 입력하세요">
                     </div>
-                </div>
-                <div class="item">
-                    <div class="feat_property home7 agent">
-                        <div class="thumb">
-                            <img class="img-whp" src="images/property/fp4.jpg" alt="fp4.jpg">
-                            <div class="thmb_cntnt">
-                                <ul class="tag mb0">
-                                    <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                    <li class="list-inline-item"><a href="#">Featured</a></li>
-                                </ul>
-                                <a class="fp_price" href="#">$13,000<small>/mo</small></a>
-                                <h4 class="posr color-white">Renovated Apartment</h4>
-                            </div>
-                        </div>
+                </li>
+                <li class="search_area">
+                    <div class="form-group">
+                        <textarea id="form_message" name="form_message" class="form-control required" rows="3"
+                            required="required" placeholder="문의하실 내용을 입력하세요."></textarea>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="feat_property home7 agent">
-                        <div class="thumb">
-                            <img class="img-whp" src="images/property/fp5.jpg" alt="fp5.jpg">
-                            <div class="thmb_cntnt">
-                                <ul class="tag mb0">
-                                    <li class="list-inline-item"><a href="#">For Rent</a></li>
-                                    <li class="list-inline-item"><a href="#">Featured</a></li>
-                                </ul>
-                                <a class="fp_price" href="#">$13,000<small>/mo</small></a>
-                                <h4 class="posr color-white">Renovated Apartment</h4>
-                            </div>
-                        </div>
+                </li>
+                <li>
+                    <div class="search_option_button detail_emp_btns">
+                        <button class="btn btn-block btn-thm btn-thm_w">자세히보기</button>
+                        <button type="submit" class="btn btn-block btn-thm btn-thm_w">문의하기</button>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="terms_condition_widget">
-            <h4 class="title">Categories Property</h4>
-            <div class="widget_list">
-                <ul class="list_details">
-                    <li><a href="#"><i class="fa fa-caret-right mr10"></i>Apartment <span class="float-right">6 properties</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right mr10"></i>Condo <span class="float-right">12 properties</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right mr10"></i>Family House <span class="float-right">8 properties</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right mr10"></i>Modern Villa <span class="float-right">26 properties</span></a></li>
-                    <li><a href="#"><i class="fa fa-caret-right mr10"></i>Town House <span class="float-right">89 properties</span></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="sidebar_feature_listing">
-            <h4 class="title">Recently Viewed</h4>
-            <div class="media">
-                <img class="align-self-start mr-3" src="images/blog/fls1.jpg" alt="fls1.jpg">
-                <div class="media-body">
-                    <h5 class="mt-0 post_title">Nice Room With View</h5>
-                    <a href="#">$13,000/<small>/mo</small></a>
-                    <ul class="mb0">
-                        <li class="list-inline-item">Beds: 4</li>
-                        <li class="list-inline-item">Baths: 2</li>
-                        <li class="list-inline-item">Sq Ft: 5280</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="media">
-                <img class="align-self-start mr-3" src="images/blog/fls2.jpg" alt="fls2.jpg">
-                <div class="media-body">
-                    <h5 class="mt-0 post_title">Villa called Archangel</h5>
-                    <a href="#">$13,000<small>/mo</small></a>
-                    <ul class="mb0">
-                        <li class="list-inline-item">Beds: 4</li>
-                        <li class="list-inline-item">Baths: 2</li>
-                        <li class="list-inline-item">Sq Ft: 5280</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="media">
-                <img class="align-self-start mr-3" src="images/blog/fls3.jpg" alt="fls3.jpg">
-                <div class="media-body">
-                    <h5 class="mt-0 post_title">Sunset Studio</h5>
-                    <a href="#">$13,000<small>/mo</small></a>
-                    <ul class="mb0">
-                        <li class="list-inline-item">Beds: 4</li>
-                        <li class="list-inline-item">Baths: 2</li>
-                        <li class="list-inline-item">Sq Ft: 5280</li>
-                    </ul>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </div>
+
+    <div class="sidebar_recent_product today_pro">
+        <h4 class="mb20">오늘 본 매물</h4>
+        @if(empty($todayViewSales))
+        @else
+        @foreach ($todayViewSales as $_data)
+        @php
+        $sale = $_data->sale;
+        if($sale->files->count()==0){
+        $img = "https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg";
+        }else{
+        $img = "https://www.gbbinc.co.kr/_Data/SaleNew/".$sale->files->first()->filename;
+        }
+
+        if($sale->tradeType=="임대"){
+        $printPrice = number_format($sale->l_depPrice)."/".number_format($sale->l_monPrice);
+        }else{
+        $printPrice = number_format($sale->salePrice);
+        }
+
+        $arrAddr = explode(",",$sale->_addr);
+        $addr = trim($arrAddr[0]);
+        if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
+        @endphp
+        <div class="media media_w" style="cursor: pointer" onclick="location.href='?mode=show&idx={{ $_data->idx }}'">
+            <img class="align-self-start" src="{{ $img }}">
+            <div class="media-body today_inf">
+                <h5 class="mt-0 mb-0">{{ $sale->saleTypeTxt }}</h5>
+                <div class="today_loc">{{ $addr }}</div>
+                <a href="#">{{ $sale->tradeType }} <span class="mont">{{ $printPrice }}</span> 만원</a>
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+
+
 </div>

@@ -4356,7 +4356,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   box-shadow: 0px 0px 30px 0px rgba(19, 19, 28, 0.12);
 }
 .feat_property .thumb{
-  background-color: #1d293e;
+  background-color: #f9f9f9;
   border-radius: 8px;
   display: -webkit-flex;
   display: -moz-flex;
@@ -16126,16 +16126,16 @@ ul.total_reivew_view .star_list li:last-child a{
 }
 .shop_single_tab_content .nav-tabs .nav-link{
   border: none;
-  font-size: 18px;
-  font-family: "Nunito";
-  color: #484848;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1.2;
-  padding: .5rem 0;
+  color: #000;
 }
 .shop_single_tab_content .nav-tabs .nav-link.active{
-  border-bottom: 1px solid #ff5a5f;
-  color: #ff5a5f;
+  background: #385F8D;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px;
 }
 .mbp_comment_form.style2{
   padding: 10px 30px 30px;
@@ -16150,7 +16150,6 @@ ul.total_reivew_view .star_list li:last-child a{
 .mbp_comment_form.style2 h4,
 .bsp_reveiw_wrt h4{
   font-size: 18px;
-  font-family: "Nunito";
   color: #484848;
   font-weight: bold;
   line-height: 1.2;
@@ -16162,7 +16161,6 @@ ul.total_reivew_view .star_list li:last-child a{
 .mbp_comment_form.style2 .sspd_review .review_rating_para,
 .review_star li p{
   font-size: 14px;
-  font-family: "Nunito";
   color: #484848;
   line-height: 1.714;
   padding-left: 10px;
@@ -16194,7 +16192,6 @@ ul.total_reivew_view .star_list li:last-child a{
   border: 1px solid #ebebeb;
   border-radius: 8px;
   font-size: 14px;
-  font-family: "Nunito";
   color: #484848;
   line-height: 1.2;
   height: 52px;
@@ -16208,7 +16205,6 @@ ul.total_reivew_view .star_list li:last-child a{
   border-radius: 8px;
   color: #484848;
   font-size: 14px;
-  font-family: "Nunito";
   line-height: 1.2;
   margin-bottom: 20px;
   padding: 20px;
@@ -16223,7 +16219,6 @@ ul.total_reivew_view .star_list li:last-child a{
   box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   color: #ffffff;
   font-size: 16px;
-  font-family: "Nunito";
   font-weight: bold;
   height: 50px;
   line-height: 35px;
@@ -16258,7 +16253,6 @@ ul.total_reivew_view .star_list li:last-child a{
 }
 .become_instructor_container .titles{
   color: #484848;
-  font-family: nunito;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
@@ -16323,20 +16317,17 @@ button.gm-ui-hover-effect:focus {
 }
 .gm-style-iw-d h5{
   font-size: 14px;
-  font-family: "Nunito";
   color: #ff5a5f;
   line-height: 1.2;
 }
 .gm-style-iw-d h4 {
   font-size: 16px;
-  font-family: "Nunito";
   color: #484848;
   font-weight: bold;
   line-height: 1.2;
 }
 .gm-style-iw-d p {
   font-size: 14px;
-  font-family: "Nunito";
   color: #484848;
   line-height: 1.2;
 }
@@ -16348,7 +16339,6 @@ button.gm-ui-hover-effect:focus {
 #slider-range-value2{
   color: #006c70;
   font-size: 16px;
-  font-family: "Nunito";
   font-weight: bold;
   line-height: 1.2;
 }
@@ -16462,7 +16452,7 @@ button.gm-ui-hover-effect:focus {
 
 
 .mont { font-family: 'Montserrat', sans-serif; }
-.point_c { color: #385F8D; }
+.point_c { color: #385F8D !important; }
 .p_c1 { background: #01B3FF !important; border: 1px solid #01B3FF !important; }
 .p_c2 { background: #FFC701; }
 .blog_c { color: #3A8D38 !important; }
@@ -16652,6 +16642,7 @@ input[type="range"] {
   z-index: 1;
   top: 4px;
 }
+.sawon_crop { width: 40px; height: 40px; border-radius: 40px; overflow: hidden; }
 
 
 
@@ -16800,7 +16791,7 @@ input[type="range"] {
 .click_chat::after { content: ''; display: block; height: 1px; background: #fff; width: 30px; margin: 0 auto; margin-top: 1px; }
 
 
-/* employee/ */
+/* employee */
 .employ_box { display: grid; justify-items: center; background: #F0F0F0; padding: 20px !important; margin-bottom: 30px; border-radius: 10px; }
 .empl-img-w { width: 150px; height: 150px; border-radius: 100px; overflow: hidden; }
 .empl-img-w img { height: 150px; }
@@ -16812,6 +16803,31 @@ input[type="range"] {
 .employ_call p { margin: 0; font-weight: 600; font-size: 16px; }
 .employ_call i{ color: #000; }
 .employ_call button{ margin: 0; font-weight: 600; font-size: 16px; }
+
+
+/* employee detail */
+.agent_bx { padding: 20px; }
+.agent_thumb { margin: 0 !important; width: 250px !important; height: 190px !important; }
+.agent_bx .details { padding-top: 20px; }
+.agent_inf p { font-size: 16px !important; color: #000 !important; font-weight: 500; margin: 0;}
+.agent_inf p:first-child { color: #385F8D !important; font-weight: 600; margin-bottom: 3px; }
+.agent_inf p:last-child { word-break: keep-all; line-height: 22px !important; margin-top: 20px; color: #828282 !important; }
+.agent_inf h4 { font-size: 20px !important; margin-bottom: 13px; }
+.agent_bot_bx { background: transparent; border: none;}
+.agent_bot_bx .nav-tabs { border: none; gap: 8px; }
+.agent_bot_bx .nav-tabs li.nav-item { padding: 0; }
+.agent_list { padding: 20px; margin: 0; }
+.agent_content .text-thm{ color: #385F8D !important; font-weight: 600; font-size: 16px !important; }
+.agent_content h4 { font-size: 20px !important; margin-bottom: 15px !important; }
+.agent_content .type { margin-bottom: 3px !important; }
+.agent_content p { margin: 0; font-size: 16px !important; }
+.agent_content .price_w { margin-top: 20px; }
+.agent_content .text-inf-w p{ font-size: 16px !important; }
+.agent_content i{ margin-right: 5px; }
+.agent_review { padding: 50px 20px; }
+.agent_review i { margin-right: 5px; }
+.agent_review p { font-size: 16px; color: #828282; text-align: center; margin: 0; }
+
 
 
 /* header */
@@ -16845,6 +16861,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .user_setting_w .dropdown-menu .user_setting_content { padding: 10px 0; }
 .sub_menu li a span { font-size: 18px; }
 .user_setting_content_w a { font-size: 18px !important; padding: 0 10px !important; }
+.nav_logo_img img{ height: 45px; }
 
 
 /* footer */
@@ -16919,14 +16936,15 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .feat_property_w .details .fp_footer .fp_pdate { font-size: 14px; }
   .contact_btn { right: 15px; }
   .home-seven { height: 400px; }
-  .home_w { margin-top: 175px; z-index: 20; }
-  .main_tit h2 { font-size: 50px; line-height: 70px;}
-  .main_tit { top: -105px; }
+  .home_w { margin-top: 175px !important; z-index: 20; }
+  .main_tit h2 { font-size: 46px; line-height: 60px;}
+  .main_tit { top: -90px; }
   .home_w .home_content { padding: 95px 0 0 !important; }
   .home_search_w ul { width: 90%; }
   .home_search_w .search_option_two .dropdown.bootstrap-select .dropdown-toggle .filter-option { font-size: 16px; }
-  .home_search_w .form-control { font-size: 16px; }
+  .home_search_w .form-control { font-size: 14px; }
   .home_search_w ul li .search_option_button button { background: transparent; width: 40px !important; font-size: 18px; border: none; color: #385F8D; font-weight: 700; }
+  .home_content.home7 { padding: 105px 0 0 !important; }
   .subtit h2 { font-size: 24px; }
   .subtit p { font-size: 20px; }
   .hot_subtit { margin-bottom: 50px; }
@@ -16938,6 +16956,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .our-hot-offer { height: 300px; }
   .chat-icon button { width: 100px; height: 100px; right: 60px; gap: 5px; }
   .chat-icon p { font-size: 12px; line-height: 18px; }
+  .agent_enter { padding: 0 15px !important; }
 }
 @media (max-width: 575.98px) {
   .text-inf-w { display: flex; gap: 15px; }
@@ -16962,10 +16981,10 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
     font-size: 14px;
   }
   .home_bx .home_search_w .search_option_two .dropdown.bootstrap-select>.dropdown-toggle{
-    width: 90px; height: 45px;
+    width: 90px !important; height: 45px !important;
   }
-  .home_search_w .search_option_two { margin-bottom: 0; }
-  .home_search_w .form-control { font-size: 14px; width: 205px !important; height: 45px; }
+  .home_search_w .search_option_two { margin-bottom: 0 !important; }
+  .home_search_w .form-control { font-size: 14px; height: 45px !important; }
   .home_search_w ul li .search_option_button button { width: 30px !important; font-size: 16px; }
   .home_search_w ul li .search_option_button button:hover { border: none; background: none; }
   .subtit h2 { font-size: 20px; }
@@ -16997,6 +17016,16 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .sidebar_listing_list_w{ padding: 20px; }
   .today_pro { padding: 20px !important; }
   .chat-icon button { right: 18px; }
+  .agent_bx .details { padding: 0; margin-top: 20px; }
+  .agent_bx .agent_thumb { display: block; width: 100% !important; }
+  .agent_list .agent_thumb { display: block; width: 100% !important; }
+  .agent_list .details { padding: 0; margin-top: 20px; }
+  .agent_content .text-inf-w { display: grid !important; gap: 3px; }
+  .agent_content { margin: 0 !important; }
+
+}
+@media (max-width: 520.98px) {
+  .home_search_w ul { display: grid; }
 }
 @media (max-width: 380px) {
   .breadcrumb_title_w { font-size: 24px; }
@@ -17014,7 +17043,6 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .feat_property_w .details .tc_content .price_w { font-size: 18px; }
   .feat_property_w .details .fp_footer .fp_pdate { font-size: 12px; }
   .subfilter_w ul { font-size: 14px; }
-  .home_search_w ul { display: grid; }
   .employ_prof_w { width: 70px; height: 70px; }
   .employ_name p { font-size: 14px; }
   .top-filt { align-items: center; }
@@ -17026,4 +17054,10 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .text-inf-w { display: grid; gap: 0; }
   .search_result_w { padding: 0 20px; }
   .subfilter_w ul { gap: 0; }
+  .agent_bx { padding: 15px; }
+  .agent_inf h4 { margin-bottom: 10px; }
+  .agent_inf p:last-child { margin-top: 15px; }
+  .agent_list { padding: 15px; }
+  .agent_content h4 { margin-bottom: 10px !important; }
+  .sidebar_listing_list_w { padding: 15px; }
 }

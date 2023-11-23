@@ -436,7 +436,7 @@
 	.dropdown-content{height: 450px;top: 200px;}
 	.dropdown-content:before{left: -10%;}
 	.mega_dropdown_content_closer h5{margin-top: 10px;text-align: center !important;}
-	.home_content{padding: 300px 0 400px !important;}
+	.home_content{padding: 300px 0 400px ;}
 	.home_content.home4{padding: 350px 0 40px !important;}
 	.home_content.listing{padding: 40px 0 !important;}
 	.home_content.listing.slider_style{padding: 480px 0 0 !important;}
@@ -645,7 +645,7 @@
 	.feat_property .details .fp_footer .fp_pdate{float: right !important;margin-top: 12px;}
 	.our_hotoffer{margin-bottom: 30px;}
 	.home1-advnc-search.home7{display: table;padding: 0 15px;position: relative;width: 100%;}
-	.home_content.home7{padding: 250px 0 0 !important;}
+	.home_content.home7{padding: 250px 0 0}
 	.tes-nav img{margin: 0 !important;}
 	.testimonial_item .details{padding: 0;}
 	.bs_carousel .main_title,
@@ -865,7 +865,7 @@
 	.home1-advnc-search.home7 ul li:nth-child(2),
 	.home1-advnc-search.home7 .search_option_two .dropdown.bootstrap-select>.dropdown-toggle{width: 100%;}
 	.home_content.home7 .home-text{display: block;}
-	.home_content.home7{padding: 200px 0 !important;}
+	.home_content.home7{padding: 200px 0 ;}
 	.small_dropdown2.home10 .dd_content2{left: 15px;top: 250px;}
 	.home10-mainslider .home-content{padding-top: 0;margin-top: 0;}
 	.sidebar_switch{z-index: 1;}
@@ -1062,7 +1062,7 @@
 	.home_content.home6{padding: 150px 0 0 0 !important;}
 	.home_adv_srch_opt.home6{margin-top: 20px;}
 	.feat_property .details .fp_footer .fp_pdate{margin-left: 0;}
-	.home_content.home7{padding: 170px 0 !important;}
+	.home_content.home7{padding: 170px 0 ;}
 	.bs_carousel .main_title{font-size: 40px !important;}
 	.home1-advnc-search.home9{height: auto;text-align: center;}
 	.home1-advnc-search.home9 ul li{width: 90%;}

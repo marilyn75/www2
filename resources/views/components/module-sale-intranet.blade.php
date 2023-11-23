@@ -728,12 +728,12 @@
                         </ul> -->
                         @if(!empty($printData['area_b']))
                             <div class="text-inf-w">
-                                <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['prposAreaNm'] }} {{ $printData['floorInfo'] }}</p>
+                                <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }} {{ $printData['floorInfo'] }}</p>
                                 <p class="text-inf"><i class="ri-building-line"></i>분양{{ $printData['area_b'] }}㎡ 전유{{ $printData['area_j'] }}㎡</p>
                             </div>
                         @else
                             <div class="text-inf-w">
-                                <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['prposAreaNm'] }} {{ $printData['landArea'] }}㎡</p>
+                                <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }} {{ $printData['landArea'] }}㎡</p>
                                 @if (strpos($_data->saleTypeTxt,"토지")===false)
                                 <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}} 연{{ $printData['bdArea'] }}㎡</p>
                                 @endif
@@ -744,10 +744,10 @@
                         </div>
                         <div class="fp_footer fp_footer_w">
                             <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="{{ $printData['sawon_photo'] }}" style="width: 40px; height: 40px;"></a></li>
+                                <li class="list-inline-item sawon_crop"><a href="#"><img src="{{ $printData['sawon_photo'] }}" style="width: 40px; height: 40px;"></a></li>
                                 <li class="list-inline-item"><a href="#">{{ $printData['sawon_name'] }} {{ $printData['sawon_sosok'] }}</a></li>
                             </ul>
-                            <p class="fp_pdate mont">{{ $printData['print_data'] }}</p>
+                            <p class="fp_pdate">{{ $printData['print_data'] }}</p>
                         </div>
                     </div>
                 </div>

@@ -7,12 +7,12 @@
 <meta name="keywords" content="advanced search custom, agency, agent, business, clean, corporate, directory, google maps, homes, listing, membership packages, property, real estate, real estate agent, realestate agency, realtor">
 <meta name="description" content="FindHouse - Real Estate HTML Template">
 <meta name="CreativeLayers" content="ATFN">
+<!-- Responsive stylesheet -->
+<link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- css file -->
 <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url('css/style.css') }}">
 <link rel="stylesheet" href="{{ url('css/dashbord_navitaion.css') }}">
-<!-- Responsive stylesheet -->
-<link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- Title -->
 <title>FindHouse - Real Estate HTML Template</title>
 <!-- Favicon -->

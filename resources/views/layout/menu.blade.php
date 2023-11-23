@@ -9,7 +9,7 @@
 		<nav>
 			<!-- Menu Toggle btn-->
 			<div class="menu-toggle">
-				<img class="nav_logo_img img-fluid" src="{{ asset('images/header-logo.png') }}" alt="header-logo.png">
+				<img class="nav_logo_img img-fluid" src="{{ asset('images/new_logo.png') }}" alt="header-logo.png">
 				<button type="button" id="menu-btn">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
