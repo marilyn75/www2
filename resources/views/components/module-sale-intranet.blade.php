@@ -3,7 +3,7 @@
     .img-whp{width:340px;height:215px;}
 </style>
 
-<form name="frm" action="{{ $data->path() }}" method="post">
+<form name="frm" action="{{ $data->path() }}" method="post" class="row">
     @csrf
     <input type="hidden" name="page" value="1">
     <input type="hidden" name="sort" value="reg_date desc">
