@@ -49,7 +49,7 @@ class IntraSaleClass{
         $return['saleType'] = trim(explode(">",$data->saleTypeTxt)[1]);        
 
         if($data->tradeType=="임대"){
-            $return['price'] = number_format($data->l_depPrice)."/".number_format($data->l_monPrice);
+            $return['price'] = number_format($data->depPrice)." / ".number_format($data->monPrice);
         }else{
             $return['price'] = number_format($data->salePrice);
         }

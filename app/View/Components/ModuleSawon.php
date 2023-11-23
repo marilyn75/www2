@@ -31,7 +31,10 @@ class ModuleSawon extends Component
         switch($this->request->mode){
             case "":
                 $return = $this->index();
-                break;
+            break;
+            case "view":
+                $return = $this->show();
+            break;
 
         }
 
@@ -43,5 +46,10 @@ class ModuleSawon extends Component
         debug($data);
         
         return view('components.module-sawon', compact('data'));
+    }
+
+    public function show(){
+        $data = null;
+        return view('components.module-sawon-show', compact('data'));
     }
 }
