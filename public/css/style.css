@@ -7393,7 +7393,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .inner_page_breadcrumb .breadcrumb_title {
   font-size: 40px;
-  font-family: "Nunito";
   color: #ffffff;
   font-weight: bold;
   line-height: 1.2;
@@ -9049,7 +9048,6 @@ a.btn.btn_error{
   border-radius: 8px;
   color: #484848;
   font-size: 14px;
-  font-family: "Nunito";
   height: 52px;
   line-height: 1.2;
 }
@@ -9070,7 +9068,6 @@ a.btn.btn_error{
   -o-box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   color: #ffffff;
-  font-family: "Nunito";
   font-size: 16px;
   font-weight: bold;
   height: 50px;
@@ -9124,7 +9121,6 @@ a.btn.btn_error{
   box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   color: #ffffff;
   font-size: 16px;
-  font-family: "Nunito";
   height: 50px;
 }
 /*== Question Widget Faq Page ==*/
@@ -9402,8 +9398,9 @@ a.btn.btn_error{
   color: #ffffff;
 }
 .alert.alart_style_four{
-  background-color: #ff8480;
+  background-color: #385F8D;
   color: #ffffff;
+  margin-bottom: 30px;
 }
 .ui_kit_button .btn {
   border-radius: 4px;
@@ -16882,6 +16879,65 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .modal-dialog { margin-top: 140px; }
 
 
+/* login */
+.log_sign_pd { padding: 80px 0 100px; }
+.sign_up_form.inner_page, .login_form.inner_page { padding: 0 38px 0; }
+.log_sing_intro h3 { color: #000; font-size: 28px; font-weight: 500; }
+.log_sing_intro p { color: #828282; font-size: 18px; font-weight: 400; }
+.login_form_w.inner_page .form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-radius: 0px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.login_form_w .btn-log{
+  border-radius: 10px;
+  background: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  font-weight: 500;
+  box-shadow: none;
+  font-size: 18px;
+  height: 70px;
+  margin-bottom: 20px;
+}
+.login_form_w .btn-log:hover { background: #385F8D; color: #fff; }
+.log_bot { display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 40px; }
+.log_bot a { color: #000; font-size: 16px; text-decoration: none; }
+.log_bar { width: 1px; height: 12px; background: #000; }
+.social_btn .sns { border: 1px solid #d9d9d9; border-radius: 10px; }
+.sns { padding: 20px 0; position: relative;}
+.sns p{ margin: 0; text-align: center; color: #000; font-size: 18px;font-weight: 500; }
+.social_btn { display: grid; gap: 12px; }
+.sns_n img { width: 22px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);}
+.sns_k img { height: 21px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
+
+.log_sing_intro .text-thm { margin-left: 12px; text-decoration: underline; color: #385F8D !important; font-weight: 500; }
+.sign_up_form_w.inner_page .form-control{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-radius: 0px;
+  font-size: 18px;
+}
+.sign_up_form_w .btn-log{
+  border-radius: 10px;
+  background: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  font-weight: 500;
+  box-shadow: none;
+  font-size: 18px;
+  height: 70px;
+  margin-top: 60px;
+}
+.sign_up_form_w .btn-log:hover{ background: #385F8D; color: #fff; }
+
+
+
+
+
+
 @media (max-width: 1599.98px) {
   .feat_property_w .details .tc_content .price_w { margin-top: 12px; }
   .prof { gap: 20px; }
@@ -17023,6 +17079,8 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .agent_content .text-inf-w { display: grid !important; gap: 3px; }
   .agent_content { margin: 0 !important; }
 
+  .sign_up_form.inner_page, .login_form.inner_page { padding: 0; }
+
 }
 @media (max-width: 520.98px) {
   .home_search_w ul { display: grid; }
@@ -17047,6 +17105,17 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .employ_name p { font-size: 14px; }
   .top-filt { align-items: center; }
   .all_bx .btn { font-size: 14px; font-weight: 500; width: 40px; height: auto; line-height: auto; background: transparent; border: none; color: #385F8D; }
+
+  .log_sing_intro h3 { font-size: 24px; }
+  .log_sing_intro p { font-size: 16px; }
+  .login_form_w .btn-log { font-size: 16px; height: 60px; }
+  .log_bot { gap: 10px; }
+  .login_form_w .btn-log { margin-bottom: 15px !important; }
+  .sns { padding: 15px 0; }
+  .sns p { font-size: 16px; }
+  .sns_n img { width: 20px; }
+
+
 }
 
 
