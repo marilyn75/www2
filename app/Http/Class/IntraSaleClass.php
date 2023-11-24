@@ -34,9 +34,7 @@ class IntraSaleClass{
     }
 
     public function getData($idx){
-        $data = IntraSaleHomepage::find($idx)->sale;
-        $arrAddr = explode(",", $data->_addr);
-        $data->printAddr = $arrAddr[0];
+        $data = IntraSaleHomepage::find($idx);
 
         return $data;
     }
@@ -54,6 +52,15 @@ class IntraSaleClass{
             $return['price'] = number_format($data->salePrice);
         }
 
+        $return['imgs'] = [];
+        foreach($data->files as $_img){
+            $return['imgs'][] = "http://test.gbbinc.co.kr/_Data/Homepage/".$_img->filename;
+        }
+        if(count($return['imgs'])==0){
+            $return['imgs'][] = "/images/noimg.jpg";
+        }
+        // $return['imgs'][] = "/images/noimg.jpg";
+
         $return['img'] = (empty($data->files->first()->filename))?"/images/noimg.jpg":"http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename;
 
         $arrAddr = explode("|",$data->addr);
@@ -62,24 +69,51 @@ class IntraSaleClass{
         $return['address'] = $addr;
 
         $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);
-        $return['landArea'] = number_format($return['landArea'],2);
+        $return['bdArea_py'] = (empty($return['bdArea']))?"":number_format(doubleval($return['bdArea']) * 0.3025 ,2);
+        $return['landArea'] = (empty($return['landArea']))?"":number_format($return['landArea'],2);
+        $return['landArea_py'] = (empty($return['landArea']))?"":number_format(doubleval($return['landArea']) * 0.3025 ,2);
 
-        $bd = $data->sale->building->first();
-        $floorInfo = "";
-        $area_b = "";
-        $area_j = "";
-        if(!empty($bd)){
-            if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
-            $floorInfo .= $bd->bd_grndFlrCnt."F";
+        $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:$return['totPkngCnt']."대";
+        $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음")?$return['rideUseElvtCnt']:$return['rideUseElvtCnt']."대";
 
-            // 분양, 전유면적
-            if(!empty($bd->hos->first()->details)){
-                $hoDetail = $bd->hos->first()->details;
-                $area_b = number_format($hoDetail->sum('hodt_area'),2);
-                $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
-                // debug($area_b,$area_j);
+        if($return['movein']!="즉시입주"){
+            $arrMovein = explode(" ", $return['movein']);
+            $arrYmd = explode("-", $arrMovein[0]);
+
+            if(!empty($arrYmd[2])){
+                $movein = $arrMovein[0];
+            }else{
+                $movein = $arrYmd[0]."년 ";
+                if(!empty($arrYmd[1]))  $movein .= $arrYmd[1]."월 ";
+
+                $movein .= @$arrMovein[1];
             }
+            $return['movein'] = $movein;
         }
+
+        $return['movein_nego'] = ($return['movein_nego']=='1')?"(협의가능)":"";
+
+        // $bd = $data->sale->building->first();
+        // $floorInfo = "";
+        // $area_b = "";
+        // $area_j = "";
+        // if(!empty($bd)){
+        //     if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
+        //     $floorInfo .= $bd->bd_grndFlrCnt."F";
+
+        //     // 분양, 전유면적
+        //     if(!empty($bd->hos->first()->details)){
+        //         $hoDetail = $bd->hos->first()->details;
+        //         $area_b = number_format($hoDetail->sum('hodt_area'),2);
+        //         $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
+        //         // debug($area_b,$area_j);
+        //     }
+        // }
+        // $return['floorInfo'] = $floorInfo;
+
+        $floorInfo = "";
+        if(intval($data->ugrndFlrCnt) > 0) $floorInfo = "B".$data->ugrndFlrCnt."/";
+        $floorInfo .= $data->grndFlrCnt."F";
         $return['floorInfo'] = $floorInfo;
 
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
@@ -87,10 +121,9 @@ class IntraSaleClass{
         $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
         $return['sawon_duty'] = $data->sale->users->first()->sawon->info->duty;
         $return['sawon_sosok'] = $data->sale->users->first()->sawon->info->sosok;
+        $return['sawon_office_line'] = $data->sale->users->first()->sawon->info->office_line;
 
         $return['print_data'] = formatCreatedAt2($data->reg_date);
-
-        debug($data->sale->users->first()->sawon);
 
         return $return;
     }

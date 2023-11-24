@@ -37,12 +37,12 @@ class IntraSaleTest extends TestCase
     public function test_인트라넷매물_뷰페이지를_볼_수_있다(): void
     {
         // 인트라넷 데이터
-        $data = IntraSaleHomepage::where('is_confirm',1)->first();
+        $data = IntraSaleHomepage::where('isDone',1)->first();
 
         $params = ['mode'=>'show', 'idx'=>$data->idx];
-        $response = $this->get(route('page',3), $params)
-            ->assertSee($data->sale->saleTypeTxt);
+        $response = $this->get(route('page',3), $params);
         
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertSeeText($data->saleType);
     }
 }

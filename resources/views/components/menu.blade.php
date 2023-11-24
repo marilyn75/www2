@@ -17,7 +17,7 @@
     <li><a href="{{ route('page', 18) }}?mode=create"><span class="title enter_span">매물등록</span></a></li>
     @guest
     <li class="list-inline-item list_s float-right aaa">
-        <a href=""{{ route('login') }}" class="btn flaticon-user login_head"> <span class="log_sp">로그인</span></a>
+        <a href="{{ route('login') }}" class="btn flaticon-user login_head"> <span class="log_sp">로그인</span></a>
     </li>
     @endguest
 

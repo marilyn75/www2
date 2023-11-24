@@ -21,6 +21,10 @@ class IntraSale extends Model
         return $this->hasMany(IntraModuleFile::class, 'parentIDX')->where('file_code','SaleNew.files');
     }
 
+    public function lands(){
+        return $this->hasMany(IntraSaleLand::class, 's_idx');
+    }
+
     public function building(){
         return $this->hasMany(IntraSaleBd::class, 's_idx');
     }

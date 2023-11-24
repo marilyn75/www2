@@ -1,112 +1,24 @@
-@php
-if($data->tradeType=="임대"){
-$printPrice = number_format($data->l_depPrice)."/".number_format($data->l_monPrice);
-}else{
-$printPrice = number_format($data->salePrice);
-}
-
-$arrAddr = explode(",",$data->_addr);
-$addr = trim($arrAddr[0]);
-if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
-
-$arrPrpos = explode(",",$data->_prposAreaNm);
-$prpos = trim($arrPrpos[0]);
-
-$bd = $data->building->first();
-$floorInfo = "";
-if(!empty($bd)){
-if(intval($bd->bd_ugrndFlrCnt) > 0) $floorInfo = "B".$bd->bd_ugrndFlrCnt."/";
-$floorInfo .= $bd->bd_grndFlrCnt."F";
-
-// 분양, 전유면적
-if(!empty($bd->hos->first()->details)){
-$hoDetail = $bd->hos->first()->details;
-$area_b = number_format($hoDetail->sum('hodt_area'),2);
-$area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->value('hodt_area'),2);
-// debug($area_b,$area_j);
-}
-}
-
-@endphp
+<script>
+    $(window).on('load',function(){
+        $('.owl-dot').each(function(index) {
+            
+            var imageUrl = $(".single_product_grid .img-fluid").eq(index+2).attr('src');
+            $(this).find('span').css('background-image', 'url(' + imageUrl + ')');
+        });
+    });
+</script>
 <div class="col-lg-8">
     <div class="single_product_grid row single_product_grid_w">
-        <div class="single_product_slider col-sm-6 col-md-6 col-lg-6 pl0 pr0 single_product_slider_w">
-            @if($data->files->count()==0)
-            <div class="item">
-                <div class="sps_content">
-                    <div class="thumb">
-                        <div class="single_product ">
-                            <div class="single_item">
-                                <div class="thumb detail_img_crop"><img class="img-fluid"
-                                        src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg"></div>
-                            </div>
-                            <a class="product_popup popup-img" href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
-                                <i class="ri-zoom-in-line"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="@if(count($printData['imgs'])>1) single_product_slider @endif col-sm-6 col-md-6 col-lg-6 pl0 pr0 single_product_slider_w">
+            @foreach ($printData['imgs'] as $_img)
             <div class="item">
                 <div class="sps_content">
                     <div class="thumb">
                         <div class="single_product">
                             <div class="single_item">
-                                <div class="thumb detail_img_crop"><img class="img-fluid"
-                                        src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg"></div>
+                                <div class="thumb"><img class="img-fluid" src="{{ $_img }}"></div>
                             </div>
-                            <a class="product_popup popup-img" href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
-                                <i class="ri-zoom-in-line"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @elseif ($data->files->count()==1)
-            <div class="item">
-                <div class="sps_content">
-                    <div class="thumb">
-                        <div class="single_product">
-                            <div class="single_item">
-                                <div class="thumb detail_img_crop"><img class="img-fluid"
-                                        src="https://www.gbbinc.co.kr/_Data/SaleNew/{{ $data->files->first()->filename }}">
-                                </div>
-                            </div>
-                            <a class="product_popup popup-img"
-                                href="https://www.gbbinc.co.kr/_Data/SaleNew/{{ $data->files->first()->filename }}">
-                                <i class="ri-zoom-in-line"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="sps_content">
-                    <div class="thumb">
-                        <div class="single_product">
-                            <div class="single_item">
-                                <div class="thumb detail_img_crop"><img class="img-fluid"
-                                        src="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg"></div>
-                            </div>
-                            <a class="product_popup popup-img" href="https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg">
-                                <i class="ri-zoom-in-line"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @else
-            @foreach ($data->files as $_file)
-            <div class="item">
-                <div class="sps_content">
-                    <div class="thumb">
-                        <div class="single_product">
-                            <div class="single_item">
-                                <div class="thumb"><img class="img-fluid"
-                                        src="https://www.gbbinc.co.kr/_Data/SaleNew/{{ $_file->filename }}"></div>
-                            </div>
-                            <a class="product_popup popup-img"
-                                href="https://www.gbbinc.co.kr/_Data/SaleNew/{{ $_file->filename }}">
+                            <a class="product_popup popup-img" href="{{ $_img }}">
                                 <i class="ri-zoom-in-line"></i>
                             </a>
                         </div>
@@ -114,31 +26,29 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                 </div>
             </div>
             @endforeach
-            @endauth
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6 detail_top_inf">
             <div class="sps_content">
                 <div class="content">
                     <div class="shop_single_product_details">
-                        <div class="tag detail_t_tag">{{ $data->tradeType }}</div>
+                        <div class="tag detail_t_tag">{{ $printData['tradeType'] }}</div>
                         <div>
                             <div>
-                                <div class="tag detail_type">{{ $data->saleTypeTxt }}</div>
-                                <h4 class="title">{{ $addr }}</h4>
+                                <div class="tag detail_type">{{ $printData['saleType'] }}</div>
+                                <h4 class="title">{{ $printData['address'] }}</h4>
                             </div>
-                            <div class="detail_price mb15"><span class="mont">{{ $printPrice }}</span> 만원</div>
-                            <!-- <p class="mb20">{!! nl2br($data->review) !!}</p> -->
+                            <div class="detail_price mb15"><span class="mont">{{ $printData['price'] }}</span> 만원</div>
                         </div>
 
                         <ul class="list_details list_details_w">
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> {{ $prpos }}</a></li>
-                            @if(!empty($area_b))
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 분양{{ $area_b }}㎡ 전유{{ $area_j }}㎡ </a></li>
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> {{ $printData['prposAreaNm'] }}</a></li>
+                            @if(!empty($printData['area_b']))
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 분양{{ $printData['area_b'] }}㎡ 전유{{ $printData['area_j'] }}㎡ </a></li>
                             @else
                             <li><a href="#"><i class="ri-checkbox-circle-line"></i> 토지면적
-                                    {{ number_format($data->_lndpclAr_sum) }}㎡</a></li>
+                                    {{ $printData['landArea'] }}㎡</a></li>
                             @if (strpos($data->saleTypeTxt,"토지")===false)
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 연면적 {{ number_format($data->_area) }}㎡</a>
+                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 연면적 {{ $printData['bdArea'] }}㎡</a>
                             </li>
                             @endif
                             @endif
@@ -158,10 +68,9 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="listing_single_description description_w">
                                 <h4 class="mb20">상세내용</h4>
-                                <!-- <p class="mb20">{!! nl2br($data->review) !!}</p> -->
 
                                 <p class="mb25">
-                                    {!! nl2br($data->review) !!}
+                                    {!! nl2br($printData['description']) !!}
                                 </p>
                                 
                                 <div class="collapse" id="collapseExample">
@@ -198,23 +107,31 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>매물유형 :</p>
-                                                <p>상가건물</p>
+                                                <p>{{ $printData['saleType'] }}</p>
                                             </li>
                                             <li>
                                                 <p>지목 :</p>
-                                                <p>대</p>
+                                                <p>{{ $printData['lndcgrCodeNm'] }}</p>
                                             </li>
+                                            @if(!empty($printData['area_b']))
+                                            <li>
+                                                <p>분양/전유면적 :</p>
+                                                <p class="mont">{{ $printData['area_b'] }}㎥ ({{ $printData['bdArea_py'] }}p) / {{ $printData['area_j'] }}㎥ ({{ $printData['bdArea_py'] }}p)</p>
+                                            </li>
+                                            @else
                                             <li>
                                                 <p>연면적 :</p>
-                                                <p class="mont">99,999㎥ (30,249p)</p>
+                                                <p class="mont">{{ $printData['bdArea'] }}㎥ ({{ $printData['bdArea_py'] }}p)</p>
                                             </li>
+                                            @endif
+                                            
                                             <li>
                                                 <p>주구조 :</p>
-                                                <p>철근 콘크리트 구조</p>
+                                                <p>{{ $printData['strctCdNm'] }}</p>
                                             </li>
                                             <li>
                                                 <p>주차시설 :</p>
-                                                <p>주차 1대</p>
+                                                <p>주차 {{ $printData['parkingCnt'] }}</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -222,23 +139,23 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>대지면적 :</p>
-                                                <p class="mont">11,111㎡ (3,361p)</p>
+                                                <p class="mont">{{ $printData['landArea'] }}㎥ ({{ $printData['landArea_py'] }}p)</p>
                                             </li>
                                             <li>
                                                 <p>용도지역 :</p>
-                                                <p>일반상업지</p>
+                                                <p>{{ $printData['prposAreaNm'] }}</p>
                                             </li>
                                             <li>
                                                 <p>건물용도 :</p>
-                                                <p>제1종근린생활시설</p>
+                                                <p>{{ $printData['mainPurpsCdNm'] }}</p>
                                             </li>
                                             <li>
                                                 <p>규모 :</p>
-                                                <p>지하 1층 / 지상 10층</p>
+                                                <p>지하 {{ $printData['ugrndFlrCnt'] }}층 / 지상 {{ $printData['grndFlrCnt'] }}층</p>
                                             </li>
                                             <li>
                                                 <p>승강기 :</p>
-                                                <p>승강기 1대</p>
+                                                <p>승강기 {{ $printData['ElvtCnt'] }}</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -253,11 +170,11 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>사용승인일 :</p>
-                                                <p class="mont">2023-12-01</p>
+                                                <p class="mont">{{ $printData['UseAprDay'] }}</p>
                                             </li>
                                             <li>
                                                 <p>입주정보 :</p>
-                                                <p>즉시입주</p>
+                                                <p>{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</p>
                                             </li>
                                             <li>
                                                 <p>월관리비 :</p>
@@ -269,11 +186,11 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>방향 :</p>
-                                                <p>남동향</p>
+                                                <p>{{ $printData['direction'] }}향</p>
                                             </li>
                                             <li>
                                                 <p>방 / 화장실 :</p>
-                                                <p>방 1개 / 욕실 1개</p>
+                                                <p>방 {{ $printData['room_num'] }}개 / 욕실 {{ $printData['restroom_num'] }}개</p>
                                             </li>
                                             <li>
                                                 <p>난방방식 :</p>
@@ -602,7 +519,7 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                     <h4>지도</h4>
                                     <p class="float-right">
                                         <i class="ri-map-pin-2-line"></i>
-                                        부산광역시 연제구 연산동
+                                        {{ $printData['address'] }}
                                     </p>
                                 </div>
                                 <!-- <div class="property_video p0">
@@ -615,8 +532,12 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                                             </div>
                                                         </div>
                                                     </div> -->
-                                <div id="map" style="width:auto;height:400px;"></div>
-                                <script type="text/javascript"
+                                <div id="map" style="width:auto;height:400px;">
+                                @if (!empty($mapUrl))
+                                    <img src="{{ $mapUrl }}">
+                                @endif
+                                </div>
+                                {{-- <script type="text/javascript"
                                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc1139f406efd84978d1195e3a874a45">
                                 </script>
                                 <script>
@@ -627,81 +548,64 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                                 };
 
                                 var map = new kakao.maps.Map(container, options);
-                                </script>
+                                </script> --}}
                             </div>
                         </div>
 
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="whats_nearby mt30 nearby_w">
                                 <h4 class="mb10">근처시설</h4>
+
+                                @if(!empty($data['infra']['교육시설']))
                                 <div class="education_distance mb15 education_w">
                                     <h5><i class="ri-school-line"></i> 교육시설
                                     </h5>
+                                @foreach ($data['infra']['교육시설'] as $_row)
                                     <div class="single_line single_w">
-                                        <p class="para">연산초등학교</p>
+                                        <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
-                                                <p>220m</p>
+                                                <p>{{ number_format($_row['distance']) }}m</p>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="single_line single_w">
-                                        <p class="para">양정초등학교</p>
-                                        <ul class="review">
-                                            <li class="list-inline-item">
-                                                <p>520m</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="single_line single_w">
-                                        <p class="para">연제초등학교</p>
-                                        <ul class="review">
-                                            <li class="list-inline-item">
-                                                <p>840m</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                @endforeach
                                 </div>
+                                @endif
+
+                                @if(!empty($data['infra']['주변시설']))
                                 <div class="education_distance mb15 style2 education_w">
                                     <h5><i class="ri-store-line"></i> 주변시설
                                     </h5>
+                                @foreach ($data['infra']['주변시설'] as $_row)
                                     <div class="single_line single_w">
-                                        <p class="para">이마트 연제점</p>
+                                        <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
-                                                <p>200m</p>
+                                                <p>{{ number_format($_row['distance']) }}m</p>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="single_line single_w">
-                                        <p class="para">부산이비인후과의원</p>
-                                        <ul class="review">
-                                            <li class="list-inline-item">
-                                                <p>480m</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                @endforeach
                                 </div>
+                                @endif
+
+                                @if(!empty($data['infra']['교통정보']))
                                 <div class="education_distance style3 education_w">
                                     <h5><i class="ri-bus-2-line"></i> 교통정보
                                     </h5>
+                                @foreach ($data['infra']['교통정보'] as $_row)
                                     <div class="single_line single_w">
-                                        <p class="para">연산역</p>
+                                        <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
-                                                <p>100m</p>
+                                                <p>{{ number_format($_row['distance']) }}m</p>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="single_line single_w">
-                                        <p class="para">거제역</p>
-                                        <ul class="review">
-                                            <li class="list-inline-item">
-                                                <p>500m</p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                @endforeach
                                 </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-12 pl-0 pr-0 similar">
@@ -863,92 +767,7 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
     </section>
 </div>
 
-<!-- <div class="col-lg-4">
-    <div class="sidebar_listing_list">
-        <div class="sidebar_advanced_search_widget">
-            <div class="sl_creator">
-                <h4 class="mb25">중개사정보</h4>
-                <div class="media">
-                    <img class="mr-3"
-                        src="http://gbbinc.co.kr/_Data/Member/{{ $data->users->first()->sawon->mb_photo }}"
-                        style="width:90px;height:90px">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb0">{{ $data->users->first()->sawon->user_name }}
-                            {{ @$data->users->first()->sawon->info->duty }}</h5>
-                        <p class="mb0">{{ @$data->users->first()->sawon->info->sosok }}</p>
-                        <p class="mb0">1833-{{ @$data->users->first()->sawon->info->office_line }}</p>
-                        <a class="text-thm" href="#">View My Listing</a>
-                    </div>
-                </div>
-            </div>
-            <ul class="sasw_list mb0">
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Your Name">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="number" class="form-control" id="exampleInputName2" placeholder="Phone">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <textarea id="form_message" name="form_message" class="form-control required" rows="5"
-                            required="required" placeholder="문의하실 내용을 입력하세요."></textarea>
-                    </div>
-                </li>
-                <li>
-                    <div class="search_option_button">
-                        <button type="submit" class="btn btn-block btn-thm">문의하기</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="sidebar_recent_product">
-        <h4 class="title">오늘 본 매물</h4>
-        @if(empty($todayViewSales))
-        @else
-        @foreach ($todayViewSales as $_data)
-        @php
-        $sale = $_data->sale;
-        if($sale->files->count()==0){
-        $img = "https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg";
-        }else{
-        $img = "https://www.gbbinc.co.kr/_Data/SaleNew/".$sale->files->first()->filename;
-        }
-
-        if($sale->tradeType=="임대"){
-        $printPrice = number_format($sale->l_depPrice)."/".number_format($sale->l_monPrice);
-        }else{
-        $printPrice = number_format($sale->salePrice);
-        }
-
-        $arrAddr = explode(",",$sale->_addr);
-        $addr = trim($arrAddr[0]);
-        if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
-        @endphp
-        <div class="media" style="cursor: pointer" onclick="location.href='?mode=show&idx={{ $_data->idx }}'">
-            <img class="align-self-start mr-3" src="{{ $img }}">
-            <div class="media-body">
-                <h5 class="mt-0 post_title">{{ $sale->saleTypeTxt }}</h5>
-                <div class="small">{{ $addr }}</div>
-                <a href="#">{{ $sale->tradeType }} {{ $printPrice }}만원</a>
-            </div>
-        </div>
-        @endforeach
-        @endif
-    </div>
-</div> -->
-
-<!-- 수정 -->
+<!-- 중개사정보 -->
 <div class="col-lg-4">
 
         <div class="sidebar_listing_list sidebar_listing_list_w">
@@ -958,15 +777,15 @@ $area_j = number_format($hoDetail->where('hodt_exposPubuseGbCdNm','전유')->val
                     <div class="media media_w">
                         <div class="profile_crop">
                             <img class="mr-3"
-                                src="http://gbbinc.co.kr/_Data/Member/{{ $data->users->first()->sawon->mb_photo }}"
+                                src="{{ $printData['sawon_photo'] }}"
                                 style="width:90px;height:90px">
                         </div>
                         <div class="media-body">
-                            <p class="mb0 media-detail">{{ @$data->users->first()->sawon->info->sosok }}</p>
-                            <h5 class="mt-0">{{ $data->users->first()->sawon->user_name }}
-                                {{ @$data->users->first()->sawon->info->duty }}</h5>
+                            <p class="mb0 media-detail">{{ $printData['sawon_sosok'] }}</p>
+                            <h5 class="mt-0">{{ $printData['sawon_name'] }}
+                                {{ $printData['sawon_duty'] }}</h5>
                             <p class="mb0 mont media-call">Tel.
-                                1833-{{ @$data->users->first()->sawon->info->office_line }}
+                                1833-{{ $printData['sawon_office_line'] }}
                             </p>
                         </div>
                     </div>

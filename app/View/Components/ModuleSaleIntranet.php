@@ -3,7 +3,7 @@
 namespace App\View\Components;
 
 use App\Http\Class\IntraSaleClass;
-use App\Models\IntraSaleHomepage;
+use App\Http\Class\IntraSaleItemClass;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -49,8 +49,18 @@ class ModuleSaleIntranet extends Component
     }
 
     public function show(){
-        $data = $this->cls->getData($this->request->idx);
-        debug($data);
+        $clsIntraSaleItem = new IntraSaleItemClass($this->request->idx);
+
+        $data = $clsIntraSaleItem->getData();
+        // dd($data);
+
+        // 지도
+        $kko_xy = $clsIntraSaleItem->getKKOxy();
+        $mapUrl = $clsIntraSaleItem->getMapUrl($kko_xy['x'], $kko_xy['y']);
+
+        // 주변 시설
+        $data['infra'] = $clsIntraSaleItem->getNearInfra($kko_xy['x'], $kko_xy['y']);
+
         // 오늘 본 매물 키 쿠키저장
         $this->cls->todayViewSaleSetCookie($this->request->idx);
 
@@ -59,7 +69,9 @@ class ModuleSaleIntranet extends Component
 
         $skin = 'components.module-sale-intranet-show';
         if(!empty($this->request->skin))    $skin .= $this->request->skin;
-        
-        return view($skin, compact('data','todayViewSales'));
+
+        $printData = $this->cls->getPrintData($data);
+     
+        return view($skin, compact('data', 'printData','todayViewSales', 'mapUrl'));
     }
 }
