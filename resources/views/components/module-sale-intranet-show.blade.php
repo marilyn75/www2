@@ -34,7 +34,7 @@
                         <div class="tag detail_t_tag">{{ $printData['tradeType'] }}</div>
                         <div>
                             <div>
-                                <div class="tag detail_type">{{ $printData['saleType'] }}</div>
+                                <div class="tag detail_type">{{ $printData['category'] }}</div>
                                 <h4 class="title">{{ $printData['address'] }}</h4>
                             </div>
                             <div class="detail_price mb15"><span class="mont">{{ $printData['price'] }}</span> 만원</div>
@@ -107,7 +107,7 @@
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>매물유형 :</p>
-                                                <p>{{ $printData['saleType'] }}</p>
+                                                <p>{{ $printData['category'] }}</p>
                                             </li>
                                             <li>
                                                 <p>지목 :</p>
@@ -205,15 +205,18 @@
                                     <div class="col-lg-12">
                                         <h4 class="mb10">가격정보</h4>
                                     </div>
+
+                                    @if ($printData['tradeType']=="매매")
+
                                     <div class="col-md-6 col-lg-6 col-xl-6">
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>매매가격 :</p>
-                                                <p>매매 <span class="mont">13,000</span>만원</p>
+                                                <p>매매 <span class="mont">{{ $printData['price'] }}</span>만원</p>
                                             </li>
                                             <li>
                                                 <p>융자금 :</p>
-                                                <p>융자금 없음</p>
+                                                <p>{{ (empty($printData['loanPrice']))?"없음":$printData['loanPrice']."만원"; }}</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -221,7 +224,7 @@
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>월세현황 :</p>
-                                                <p>보증금 1,000만원 / 월세1,000만원</p>
+                                                <p>보증금 {{ $printData['depPrice_st'] }}만원 / 월세 {{ $printData['monPrice_st'] }}만원</p>
                                             </li>
                                             <li>
                                                 <p>예상 수익률 :</p>
@@ -229,6 +232,28 @@
                                             </li>
                                         </ul>
                                     </div>
+
+                                    @else
+
+                                    <div class="col-md-6 col-lg-6 col-xl-6">
+                                        <ul class="list-inline-item detail_list">
+                                            <li>
+                                                <p>보증금 :</p>
+                                                <p><span class="mont">{{ $printData['depPrice'] }}</span>만원</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-6">
+                                        <ul class="list-inline-item detail_list">
+                                            <li>
+                                                <p>월세 :</p>
+                                                <p><span class="mont">{{ $printData['monPrice'] }}</span>만원</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                
+                                    @endif
+                                    
                                 </div>
                             </div>
                         </div>
