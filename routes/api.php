@@ -29,3 +29,10 @@ Route::get('/saleOptionCodes', function(){
 
     return $codes;
 });
+
+// 카테고리코드
+Route::get('/saleCategoryCodes', function(){
+    $codes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물유형');
+
+    return $codes;
+});
