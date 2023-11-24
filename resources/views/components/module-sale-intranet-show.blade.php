@@ -170,7 +170,7 @@
                                         <ul class="list-inline-item detail_list">
                                             <li>
                                                 <p>사용승인일 :</p>
-                                                <p class="mont">{{ $printData['UseAprDay'] }}</p>
+                                                <p class="mont">{{ $printData['useAprDay'] }}</p>
                                             </li>
                                             <li>
                                                 <p>입주정보 :</p>
