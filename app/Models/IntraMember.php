@@ -16,4 +16,8 @@ class IntraMember extends Model
     public function info(){
         return $this->hasOne(IntraMemberInfo::class,'s_user_key', 'user_key');
     }
+
+    public function homepageSales(){
+        return $this->hasMany(IntraSaleHomepage::class, 'user_id', 'user_id')->where('isDone',1);
+    }
 }

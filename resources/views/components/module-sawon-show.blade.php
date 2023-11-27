@@ -3,14 +3,14 @@
         <div class="col-lg-12">
             <div class="feat_property list style2 agent agent_bx">
                 <div class="thumb agent_thumb">
-                    <img class="img-whp" src="images/team/11.jpg" alt="11.jpg">
+                    <img class="img-whp" src="{{ $data['photo'] }}">
                 </div>
                 <div class="details details_w">
                     <div class="tc_content agent_inf">
-                        <p>중개보조원</p>
-                        <h4>송대훈 부장</h4>
-                        <p class="mont">Tel. 1833-8977</p>
-                        <p>" 전문적이고 친절한 공인중개사 직원으로, 부동산 거래에 대한 전문지식과 고객서비스에 최선을 다하는 자부심을 가지고 있습니다. "</p>
+                        <p>{{ $data['sosok'] }}</p>
+                        <h4>{{ $data['user_name'] }} {{ $data['duty'] }}</h4>
+                        <p class="mont">Tel. 1833-{{ $data['office_line'] }}</p>
+                        <p>" {{ $data['slogan'] }} " <br>" 전문적이고 친절한 공인중개사 직원으로, 부동산 거래에 대한 전문지식과 고객서비스에 최선을 다하는 자부심을 가지고 있습니다. "</p>
                     </div>
                 </div>
             </div>
@@ -26,66 +26,51 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent2">
-                    <div class="tab-pane fade row pl15 pl0-1199 pr15 pr0-1199 show active agent_enter" id="listing" role="tabpanel"
-                        aria-labelledby="listing-tab">
+                    {{-- 등록매물 s --}}
+                    <div class="tab-pane fade row pl15 pl0-1199 pr15 pr0-1199 show active agent_enter" id="listing" role="tabpanel" aria-labelledby="listing-tab">
+                        @if (empty($data['sales']))
+                        <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
+                            <div class="product_single_content">
+                                <div class="mbp_pagination_comments agent_review">
+                                    <p><i class="ri-information-line"></i>등록된 매물이 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                            @foreach ($data['sales'] as $_sale)
                         <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
                             <div class="feat_property list style2 hvr-bxshd bdrrn agent_list">
                                 <div class="thumb agent_thumb">
-                                    <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
+                                    <img class="img-whp" src="{{ $_sale['img'] }}" >
                                 </div>
                                 <div class="details details_w">
                                     <div class="tc_content tc_content_w agent_content">
-                                        <p class="text-thm type">상가건물</p>
-                                        <h4>최고의 선택, 밸류업</h4>
-                                        <div class="text-inf-w text-inf_main">
-                                            <p class="text-inf"><i class="ri-split-cells-horizontal"></i>일반상업지 1,000㎡</p>
-                                            <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                                        </div>
-                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                                        <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
+                                        <p class="text-thm type">{{ $_sale['category'] }}</p>
+                                        <h4>{{ $_sale['title'] }}</h4>
+                                        @if(!empty($_sale['area_b']))
+                                            <div class="text-inf-w text-inf_main">
+                                                <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $_sale['prposAreaNm'] }} {{ $_sale['floorInfo'] }}</p>
+                                                <p class="text-inf"><i class="ri-building-line"></i>분양{{ $_sale['area_b'] }}㎡ 전유{{ $_sale['area_j'] }}㎡</p>
+                                            </div>
+                                        @else
+                                            <div class="text-inf-w text-inf_main">
+                                                <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $_sale['prposAreaNm'] }} {{ $_sale['landArea'] }}㎡</p>
+                                                @if (strpos($_sale['category'],"토지")===false)
+                                                <p class="text-inf"><i class="ri-building-line"></i>{{ $_sale['floorInfo']}} 연{{ $_sale['bdArea'] }}㎡</p>
+                                                @endif
+                                            </div>
+                                        @endif
+                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $_sale['address'] }}</p>
+                                        <p class="text-thm price_w">{{ $_sale['tradeType'] }} <span class="mont">{{ $_sale['price'] }}</span> 만원</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
-                            <div class="feat_property list style2 hvr-bxshd bdrrn mb10 mt20 agent_list">
-                                <div class="thumb agent_thumb">
-                                    <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-                                </div>
-                                <div class="details details_w">
-                                    <div class="tc_content tc_content_w agent_content">
-                                        <p class="text-thm type">상가건물</p>
-                                        <h4>최고의 선택, 밸류업</h4>
-                                        <div class="text-inf-w text-inf_main">
-                                            <p class="text-inf"><i class="ri-split-cells-horizontal"></i>일반상업지 1,000㎡</p>
-                                            <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                                        </div>
-                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                                        <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
-                            <div class="feat_property list style2 hvr-bxshd bdrrn mb10 mt20 agent_list">
-                                <div class="thumb agent_thumb">
-                                    <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-                                </div>
-                                <div class="details details_w">
-                                    <div class="tc_content tc_content_w agent_content">
-                                        <p class="text-thm type">상가건물</p>
-                                        <h4>최고의 선택, 밸류업</h4>
-                                        <div class="text-inf-w text-inf_main">
-                                            <p class="text-inf"><i class="ri-split-cells-horizontal"></i>일반상업지 1,000㎡</p>
-                                            <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                                        </div>
-                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                                        <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        
+                        @endif
                     </div>
+                    {{-- 등록매물 e --}}
                     <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="product_single_content">
                             <div class="mbp_pagination_comments agent_review">

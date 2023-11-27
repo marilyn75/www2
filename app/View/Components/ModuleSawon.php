@@ -49,7 +49,10 @@ class ModuleSawon extends Component
     }
 
     public function show(){
-        $data = null;
+        $data = $this->cls->getData($this->request->idx);
+        $data = $this->cls->getPrintData($data);
+        debug($data);
+
         return view('components.module-sawon-show', compact('data'));
     }
 }
