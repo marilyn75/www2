@@ -24,7 +24,8 @@
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Korean.json",
             },
-            order:[[0, 'desc']],
+            // order:[[0, 'desc']],
+            ordering : false,
         });
         
         $(".table")

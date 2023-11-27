@@ -6474,7 +6474,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .my_profile_setting_input .form-control::placeholder{
   font-size: 14px;
-  font-family: "Nunito";
   color: rgb(72, 72, 72);
   line-height: 1.2;
 }
@@ -6490,7 +6489,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   -o-box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   font-size: 16px;
-  font-family: "Nunito";
   color: rgb(255, 90, 95);
   font-weight: bold;
   line-height: 1.2;
@@ -6511,7 +6509,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   -o-box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   font-size: 16px;
-  font-family: "Nunito";
   color: rgb(255, 255, 255);
   font-weight: bold;
   line-height: 1.2;
@@ -6532,7 +6529,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   -o-box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   box-shadow:0px 1px 4px 0px rgba(255, 90, 95, 0.3);
   font-size: 16px;
-  font-family: "Nunito";
   color: rgb(255, 255, 255);
   font-weight: bold;
   line-height: 1.2;
@@ -6546,7 +6542,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .my_profile_setting_input2 label{
   font-size: 14px;
-  font-family: "Open Sans";
   color: rgb(10, 10, 10);
   line-height: 1.2;
 }
@@ -6557,7 +6552,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   border-radius: 8px;
   background-color: rgb(236, 236, 236);
   font-size: 16px;
-  font-family: "Nunito";
   color: rgb(72, 72, 72);
   font-weight: bold;
   line-height: 1.2;
@@ -6568,7 +6562,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   border-radius: 5px;
   background-color: rgb(36, 65, 231);
   font-size: 15px;
-  font-family: "Open Sans";
   color: #ffffff;
   line-height: 1.2;
   height: 55px;
@@ -6628,7 +6621,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .courses_list_content .feat_property.list .details .tc_content p{
   font-size: 14px;
-  font-family: "Open Sans";
   color: rgb(126, 126, 126);
   line-height: 1.714;
 }
@@ -6746,7 +6738,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .hvr_img_box_container .overlay .details h5 {
   color: #484848;
-  font-family: "Nunito SemiBold";
   font-size: 18px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -6798,7 +6789,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .funfact_one .details .timer,
 .funfact_one .details ul li{
   color: #ffffff;
-  font-family: 'Nunito', sans-serif;
   font-size: 30px;
   font-weight: bold;
   margin-right: -2px;
@@ -7054,7 +7044,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 /*== Footer Widget ==*/
 .footer_about_widget p{
   font-size: 14px;
-  font-family: "Nunito";
   color: #8a99b3;
   line-height: 2.143;
   margin-bottom: 0;
@@ -7110,7 +7099,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .footer_contact_widget.home6 h4,
 .footer_social_widget.home6 h4,
 .footer_apps_widget.home6 h4{
-  font-family: "Nunito";
   color: #484848;
   font-weight: bold;
   line-height: 1.333;
@@ -7122,7 +7110,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .footer_qlink_widget li a,
 .footer_contact_widget li a{
   font-size: 14px;
-  font-family: "Nunito";
   color: #8a99b3;
   line-height: 2.429;
   -webkit-transition: all 0.3s ease 0s;
@@ -7195,7 +7182,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .logo-widget span{
   color: #ffffff;
-  font-family: 'Nunito', sans-serif;
   font-size: 22px;
   font-weight: bold;
   padding-left: 15px;
@@ -7221,7 +7207,6 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 .footer_menu_widget ul li a{
   font-size: 14px;
-  font-family: "Nunito";
   color: #8a99b3;
   line-height: 2.143;
 }
@@ -16938,7 +16923,61 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .sign_up_form_w .btn-log:hover{ background: #385F8D; color: #fff; }
 
 
+/* 게시물 */
+.packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th{
+  background: #F0F0F0;
+  color: #000;
+}
+.packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th:first-child{
+  border-radius: 10px 0 0 10px;
+}
+.packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th:last-child{
+  border-radius: 0px 10px 10px 0;
+}
+/* .packages_table .table td, .packages_table .table th, .savesearched_table .table td, .savesearched_table .table th, .property_table .table td, .property_table .table th:first-child{
+  border: none;
+} */
 
+.packages_table .table tbody tr:first-child{ border: none !important; }
+.packages_table .table, .savesearched_table .table, .property_table .table {
+  border: none;
+  border-radius: 0;
+}
+
+.table td, .table th { border: none; border-bottom: 1px solid #dee2e6; }
+
+
+/* 공지사항 */
+.my_profile_setting_input .btn1 { 
+  border: 2px solid #385F8D;
+  box-shadow: none;
+  color: #385F8D; 
+}
+.my_profile_setting_input .btn1:hover {  
+  background: #385F8D;
+  color: #fff;
+}
+.my_profile_setting_input .btn2 {
+  background: #385f8d;
+  border: 1px solid #385f8d;
+}
+.my_profile_setting_input .btn2:hover {
+  background: #fff;
+  border: 2px solid #385f8d;
+  color: #385f8d;
+}
+.mbp_pagination_tab .pag_prev a:hover, .mbp_pagination_tab .pag_next a:hover {
+  background: #385f8d;
+}
+
+.inner_page_breadcrumb { background-repeat: round; }
+.intro_imgs { display: flex; justify-content: space-between; }
+.core h2 { color: #000; margin-bottom: 45px; }
+.intro_txt { font-size: 20px; color: #000; font-weight: 500; }
+.intro_contact h2 { color: #000; margin-bottom: 45px; }
+.intro_contact ul li { display: flex; }
+.intro_contact ul li p { color: #000; font-size: 20px; font-weight: 500; }
+.intro_contact ul li p:first-child { width: 130px; }
 
 
 
