@@ -719,7 +719,7 @@
                     </div>
                     <div class="details details_w">
                         <div class="tc_content tc_content_w">
-                            <p class="text-thm">{{ $printData['saleType'] }}</p>
+                            <p class="text-thm">{{ $printData['category'] }}</p>
                             <h4>{{ $printData['title'] }}</h4>
                             <!-- <ul class="prop_details mb0">
                             <li class="list-inline-item"><i class="ri-building-line"></i><a href="#">일반상업지 1,000㎡</a></li>
@@ -733,7 +733,7 @@
                         @else
                             <div class="text-inf-w">
                                 <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }} {{ $printData['landArea'] }}㎡</p>
-                                @if (strpos($_data->saleTypeTxt,"토지")===false)
+                                @if (strpos($printData['category'],"토지")===false)
                                 <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}} 연{{ $printData['bdArea'] }}㎡</p>
                                 @endif
                             </div>

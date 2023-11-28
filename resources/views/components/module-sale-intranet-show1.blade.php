@@ -8,75 +8,17 @@ $(window).on('load', function() {
 });
 </script>
 <div class="col-lg-8">
-    <!-- <div class="single_product_grid row single_product_grid_w">
-        <div
-            class="@if(count($printData['imgs'])>1) single_product_slider @endif col-sm-6 col-md-6 col-lg-6 pl0 pr0 single_product_slider_w">
-            @foreach ($printData['imgs'] as $_img)
-            <div class="item">
-                <div class="sps_content">
-                    <div class="thumb detail_b_thumb">
-                        <div class="single_product">
-                            <div class="single_item">
-                                <div class="thumb detail_b_thumb"><img class="img-fluid" src="{{ $_img }}"></div>
-                            </div>
-                            <a class="product_popup popup-img" href="{{ $_img }}">
-                                <i class="ri-zoom-in-line"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-6 detail_top_inf">
-            <div class="sps_content">
-                <div class="content">
-                    <div class="shop_single_product_details">
-                        <div class="tag detail_t_tag">{{ $printData['tradeType'] }}</div>
-                        <div>
-                            <div>
-                                <div class="tag detail_type">{{ $printData['category'] }}</div>
-                                <h4 class="title">{{ $printData['address'] }}</h4>
-                            </div>
-                            <div class="detail_price mb15"><span class="mont">{{ $printData['price'] }}</span> 만원</div>
-                        </div>
-
-                        <ul class="list_details list_details_w">
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> {{ $printData['prposAreaNm'] }}</a>
-                            </li>
-                            @if(!empty($printData['area_b']))
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 분양{{ $printData['area_b'] }}㎡
-                                    전유{{ $printData['area_j'] }}㎡ </a></li>
-                            @else
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 토지면적
-                                    {{ $printData['landArea'] }}㎡</a></li>
-                            @if (strpos($printData['category'],"토지")===false)
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 연면적 {{ $printData['bdArea'] }}㎡</a>
-                            </li>
-                            @endif
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+    
     <!-- 수정 -->
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
             <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
-                <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite"
-                    style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
-                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 730px;">
-                        <img src="/images/property/building02.png" alt="">
+                <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
+                    @foreach ($printData['imgs'] as $_img)
+                    <div class="swiper-slide" role="group" style="width: 730px;">
+                        <img src="{{ $_img }}" alt="" style="width: 730px; height: 560px;">
                     </div>
-                    <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3" style="width: 730px;">
-                        <img src="/images/property/building03.png" alt="">
-                    </div>
-                    <div class="swiper-slide" role="group" aria-label="3 / 3" style="width: 730px;">
-                        <img src="/images/property/building04.png" alt="">
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
                     aria-controls="swiper-wrapper-bd129101b3b69f5107" aria-disabled="false">
