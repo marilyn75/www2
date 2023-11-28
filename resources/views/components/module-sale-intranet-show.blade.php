@@ -8,7 +8,7 @@ $(window).on('load', function() {
 });
 </script>
 <div class="col-lg-8">
-    <!-- <div class="single_product_grid row single_product_grid_w">
+    <div class="single_product_grid row single_product_grid_w">
         <div
             class="@if(count($printData['imgs'])>1) single_product_slider @endif col-sm-6 col-md-6 col-lg-6 pl0 pr0 single_product_slider_w">
             @foreach ($printData['imgs'] as $_img)
@@ -60,77 +60,8 @@ $(window).on('load', function() {
                 </div>
             </div>
         </div>
-    </div> -->
-
-    <!-- 수정 -->
-    <div class="detail_img">
-        <div class="col-lg-12 single_product_grid row single_product_grid_w">
-            <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
-                <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite"
-                    style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
-                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 730px;">
-                        <img src="/images/property/building02.png" alt="">
-                    </div>
-                    <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3" style="width: 730px;">
-                        <img src="/images/property/building03.png" alt="">
-                    </div>
-                    <div class="swiper-slide" role="group" aria-label="3 / 3" style="width: 730px;">
-                        <img src="/images/property/building04.png" alt="">
-                    </div>
-                </div>
-                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
-                    aria-controls="swiper-wrapper-bd129101b3b69f5107" aria-disabled="false">
-                    <p class="mont">NEXT</p>
-                </div>
-                <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button"
-                    aria-label="Previous slide" aria-controls="swiper-wrapper-bd129101b3b69f5107" aria-disabled="true">
-                    <p class="mont">PREV</p>
-                </div>
-                <div class="swiper-pagination mont swiper-pagination-fraction swiper-pagination-horizontal"><span
-                        class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">3</span>
-                </div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-            </div>
-
-            <!-- Initialize Swiper -->
-            <script>
-            var swiper = new Swiper(".mySwiper", {
-                pagination: {
-                    el: ".swiper-pagination",
-                    type: "fraction",
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-            });
-            </script>
-
-            <div class="detail_info">
-                <div class="de_info_left">
-                    <p>{{ $printData['category'] }}</p>
-                    <h3>{{ $printData['address'] }}</h3>
-                    <ul>
-                        <li><a href="#">{{ $printData['prposAreaNm'] }}</a>
-                        </li>
-                        @if(!empty($printData['area_b']))
-                        <li><a href="#">분양{{ $printData['area_b'] }}㎡
-                                전유{{ $printData['area_j'] }}㎡ </a></li>
-                        @else
-                        <li><a href="#">토지면적
-                                {{ $printData['landArea'] }}㎡</a></li>
-                        @if (strpos($printData['category'],"토지")===false)
-                        <li><a href="#">연면적 {{ $printData['bdArea'] }}㎡</a>
-                        </li>
-                        @endif
-                        @endif
-                    </ul>
-                </div>
-                <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
-            </div>
-
-        </div>
     </div>
+
     <!-- Agent Single Grid View -->
     <section class="our-agent-single bgc-f7 pb30-991">
         <div class="container container_w">
@@ -260,7 +191,7 @@ $(window).on('load', function() {
                                         <p>방 / 화장실 :</p>
                                         <p>방 {{ $printData['room_num'] }}개 / 욕실 {{ $printData['restroom_num'] }}개</p>
                                     </li>
-
+                                    
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>난방방식 :</p>
                                         <p>개별난방</p>
@@ -330,7 +261,7 @@ $(window).on('load', function() {
                                         </a>
                                     </li>
                                     @endforeach
-
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -675,8 +606,7 @@ $(window).on('load', function() {
                 </li>
                 <li>
                     <div class="search_option_button detail_emp_btns">
-                        <a class="btn btn-block btn-thm btn-thm_w"
-                            href="{{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}">자세히보기</a>
+                        <a class="btn btn-block btn-thm btn-thm_w" href="{{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}">자세히보기</a>
                         <button type="submit" class="btn btn-block btn-thm btn-thm_w">문의하기</button>
                     </div>
                 </li>
