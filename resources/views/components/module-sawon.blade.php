@@ -85,9 +85,12 @@
                     <i class="ri-phone-line"></i>
                     <p class="mont">1833 {{ @$_sawon->info->office_line }}</p>
                 </div>
+                @if ($_sawon->homepage_sales_count > 0)
                 <div class="sales_count">
                     <p>{{ $_sawon->homepage_sales_count }} 건</p>
                 </div>
+                @endif
+                
             </a>
         </div>
         @endforeach
