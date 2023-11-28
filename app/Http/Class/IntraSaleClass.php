@@ -132,8 +132,9 @@ class IntraSaleClass{
 
         $return['print_data'] = formatCreatedAt2($data->reg_date);
 
-        // 카테고리가 주거인지 체크용
+        // 카테고리 체크용
         $return['isJugeo'] = strpos($return['category'],'주거') === 0;
+        $return['isToji'] = strpos($return['category'],'토지') !== false;
 
         return $return;
     }

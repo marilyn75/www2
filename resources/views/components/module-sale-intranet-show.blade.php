@@ -123,6 +123,9 @@ $(window).on('load', function() {
                                         <p>용도지역 :</p>
                                         <p>{{ $printData['prposAreaNm'] }}</p>
                                     </li>
+
+                                    @if ($printData['isToji']==false)
+
                                     @if(!empty($printData['area_b']))
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>분양/전유면적 :</p>
@@ -157,8 +160,11 @@ $(window).on('load', function() {
                                         <p>승강기 {{ $printData['ElvtCnt'] }}</p>
                                     </li>
 
+                                    @endif
+
                                 </ul>
                             </div>
+                            @if ($printData['isToji']==false)
                             <div class="additional_details additional_w">
                                 <div class="col-lg-12 pl-0 pr-0">
                                     <h4 class="mb10">추가설명</h4>
@@ -172,6 +178,7 @@ $(window).on('load', function() {
                                         <p>입주정보 :</p>
                                         <p>{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</p>
                                     </li>
+                                    @if ($printData['isJugeo']==true)
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월관리비 :</p>
                                         <p>관리비 없음</p>
@@ -189,8 +196,10 @@ $(window).on('load', function() {
                                         <p>난방방식 :</p>
                                         <p>개별난방</p>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
+                            @endif
                             <div class="additional_details additional_w">
                                 <div class="col-lg-12 pl-0 pr-0">
                                     <h4 class="mb10">가격정보</h4>
@@ -221,14 +230,14 @@ $(window).on('load', function() {
 
 
                                 @else
-                                <ul class="list-inline-item detail_list">
+                                <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>보증금 :</p>
-                                        <p><span class="mont">{{ $printData['depPrice'] }}</span>만원</p>
+                                        <p><span class="mont">{{ number_format($printData['depPrice']) }}</span>만원</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월세 :</p>
-                                        <p><span class="mont">{{ $printData['monPrice'] }}</span>만원</p>
+                                        <p><span class="mont">{{ number_format($printData['monPrice']) }}</span>만원</p>
                                     </li>
                                 </ul>
 
