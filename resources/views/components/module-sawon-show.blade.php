@@ -85,77 +85,9 @@
 </div>
 <div class="col-lg-4">
 
-    <div class="sidebar_listing_list sidebar_listing_list_w">
-        <div class="sidebar_advanced_search_widget">
-            <div class="sl_creator sl_creator_w">
-                <h4 class="mb20">지금 바로 문의해보세요!</h4>
-            </div>
-            <ul class="sasw_list mb0 sasw_list_w">
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="이름을 입력하세요">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="번호를 입력하세요">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail" placeholder="이메일을 입력하세요">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <textarea id="form_message" name="form_message" class="form-control required" rows="3"
-                            required="required" placeholder="문의하실 내용을 입력하세요."></textarea>
-                    </div>
-                </li>
-                <li>
-                    <div class="search_option_button detail_emp_btns">
-                        <button class="btn btn-block btn-thm btn-thm_w">자세히보기</button>
-                        <button type="submit" class="btn btn-block btn-thm btn-thm_w">문의하기</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <x-inquirybox type="default" :printData="$data" />
 
-    <div class="sidebar_recent_product today_pro">
-        <h4 class="mb20">오늘 본 매물</h4>
-        @if(empty($todayViewSales))
-        @else
-        @foreach ($todayViewSales as $_data)
-        @php
-        $sale = $_data->sale;
-        if($sale->files->count()==0){
-        $img = "https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg";
-        }else{
-        $img = "https://www.gbbinc.co.kr/_Data/SaleNew/".$sale->files->first()->filename;
-        }
-
-        if($sale->tradeType=="임대"){
-        $printPrice = number_format($sale->l_depPrice)."/".number_format($sale->l_monPrice);
-        }else{
-        $printPrice = number_format($sale->salePrice);
-        }
-
-        $arrAddr = explode(",",$sale->_addr);
-        $addr = trim($arrAddr[0]);
-        if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
-        @endphp
-        <div class="media media_w" style="cursor: pointer" onclick="location.href='?mode=show&idx={{ $_data->idx }}'">
-            <img class="align-self-start" src="{{ $img }}">
-            <div class="media-body today_inf">
-                <h5 class="mt-0 mb-0">{{ $sale->saleTypeTxt }}</h5>
-                <div class="today_loc">{{ $addr }}</div>
-                <a href="#">{{ $sale->tradeType }} <span class="mont">{{ $printPrice }}</span> 만원</a>
-            </div>
-        </div>
-        @endforeach
-        @endif
-    </div>
+    <x-today-view-sales />
 
 
 </div>

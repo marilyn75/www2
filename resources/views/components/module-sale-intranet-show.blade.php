@@ -72,23 +72,20 @@ $(window).on('load', function() {
                             <div class="listing_single_description description_w">
                                 <h4 class="mb20">상세내용</h4>
 
-                                <p class="mb25">
-                                    {!! nl2br($printData['description']) !!}
+                                <p class="mb10">
+                                    {!! $printData['description_1'] !!}
                                 </p>
-
+                                @if (!empty($printData['description_2']))
+                                <p class="gpara second_para white_goverlay mt10 mb10">
+                                    {{ $printData['description_2'] }}
+                                </p>    
+                                
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
                                         <p class="mt10 mb10">
-                                            대중교통 이용이 편리한 단지에요. 단지 정문에서 도보로 1분 거리에 마을버스정류장이 있어서 동네
-                                            곳곳을 편리하게 이동할 수 있습니다. 그리고 도보 1분 거리에 할인마트가 있어서 여러가지 물건들과
-                                            식품들을 합리적이고 가성비 좋은 가격에 구입할 수 있어요.
-
-                                            또한 주변으로 학군이 형성되어 있는 단지에요. 도보 10분 거리 이내에 금사중학교,
-                                            금정전자공업고등학교, 부산경호고등학교가 있어서 학교 선택의 폭이 넓습니다. 그리고 단지와 거리가
-                                            가까워서 학생들의 통학이 아주 편리하다는 장점도 있어요. 그리고 주변 녹지환경도 좋습니다. 도보
-                                            10분 거리에 등산로가 있어서 날 좋은 휴일에 편하게 등산을 할 수 있어요.
-
-                                            대중교통이 편리하고 조용한 분위기의 단지이기 때문에 노년층 분들께 추천할만 한 단지입니다.
+            
+                                                {!! $printData['description_3'] !!}
+            
                                         </p>
                                     </div>
                                 </div>
@@ -98,6 +95,7 @@ $(window).on('load', function() {
                                         더보기 <i class="ri-arrow-down-s-line"></i>
                                     </a>
                                 </p>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-12 pl-0 pr-0">
@@ -128,9 +126,12 @@ $(window).on('load', function() {
 
                                     @if(!empty($printData['area_b']))
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>분양/전유면적 :</p>
-                                        <p class="mont">{{ $printData['area_b'] }}㎥ ({{ $printData['bdArea_py'] }}p) /
-                                            {{ $printData['area_j'] }}㎥ ({{ $printData['bdArea_py'] }}p)</p>
+                                        <p>분양면적 :</p>
+                                        <p class="mont">{{ $printData['area_b'] }}㎥ ({{ $printData['area_b_py'] }}p)</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>전유면적 :</p>
+                                        <p class="mont">{{ $printData['area_j'] }}㎥ ({{ $printData['area_j_py'] }}p)</p>
                                     </li>
                                     @else
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
@@ -564,55 +565,7 @@ $(window).on('load', function() {
 <!-- 중개사정보 / 오늘 본 매물-->
 <div class="col-lg-4">
 
-    <div class="sidebar_listing_list sidebar_listing_list_w">
-        <div class="sidebar_advanced_search_widget">
-            <div class="sl_creator sl_creator_w">
-                <h4 class="mb20">중개사정보</h4>
-                <div class="media media_w">
-                    <div class="profile_crop">
-                        <img class="mr-3" src="{{ $printData['sawon_photo'] }}" style="width:90px;height:90px">
-                    </div>
-                    <div class="media-body">
-                        <p class="mb0 media-detail">{{ $printData['sawon_sosok'] }}</p>
-                        <h5 class="mt-0">{{ $printData['sawon_name'] }}
-                            {{ $printData['sawon_duty'] }}</h5>
-                        <p class="mb0 mont media-call">Tel.
-                            1833-{{ $printData['sawon_office_line'] }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <ul class="sasw_list mb0 sasw_list_w">
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="이름을 입력하세요">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="번호를 입력하세요">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail" placeholder="이메일을 입력하세요">
-                    </div>
-                </li>
-                <li class="search_area">
-                    <div class="form-group">
-                        <textarea id="form_message" name="form_message" class="form-control required" rows="3"
-                            required="required" placeholder="문의하실 내용을 입력하세요."></textarea>
-                    </div>
-                </li>
-                <li>
-                    <div class="search_option_button detail_emp_btns">
-                        <a class="btn btn-block btn-thm btn-thm_w" href="{{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}">자세히보기</a>
-                        <button type="submit" class="btn btn-block btn-thm btn-thm_w">문의하기</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <x-inquirybox type="photo" :printData="$printData" />
 
     <x-today-view-sales />
 

@@ -79,6 +79,9 @@ class IntraSaleClass{
         $return['landArea'] = (empty($return['landArea']))?"":number_format($return['landArea'],2);
         $return['landArea_py'] = (empty($return['landArea']))?"":number_format(doubleval($return['landArea']) * 0.3025 ,2);
 
+        $return['area_b_py'] = (empty($return['area_b']))?"":number_format(doubleval($return['area_b']) * 0.3025 ,2);
+        $return['area_j_py'] = (empty($return['area_j']))?"":number_format(doubleval($return['area_j']) * 0.3025 ,2);
+
         $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:$return['totPkngCnt']."대";
         $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음")?$return['rideUseElvtCnt']:$return['rideUseElvtCnt']."대";
 
@@ -121,6 +124,20 @@ class IntraSaleClass{
         if(intval($data->ugrndFlrCnt) > 0) $floorInfo = "B".$data->ugrndFlrCnt."/";
         $floorInfo .= $data->grndFlrCnt."F";
         $return['floorInfo'] = $floorInfo;
+
+
+        $return['description_1'] = "";
+        $return['description_2'] = "";
+        $return['description_3'] = "";
+        $return['description_arr'] = explode("\n",$return['description']);
+        foreach($return['description_arr'] as $i=>$_txt){
+            if($i<=1)   $return['description_1'] .= "<p>".$_txt."</p>";
+            else    $return['description_3'] .= "<p>".$_txt."</p>";
+            if($i > 1 && $i <= 4)   $return['description_2'] .= $_txt;
+        }
+
+        
+
 
         $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
