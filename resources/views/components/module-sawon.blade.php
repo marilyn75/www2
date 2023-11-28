@@ -86,7 +86,7 @@
                     <p class="mont">1833 {{ @$_sawon->info->office_line }}</p>
                 </div>
                 <div class="sales_count">
-                    <p>매물 {{ $_sawon->homepage_sales_count }}건</p>
+                    <p>{{ $_sawon->homepage_sales_count }} 건</p>
                 </div>
             </a>
         </div>
