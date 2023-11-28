@@ -5,6 +5,10 @@
 }
 </style>
 
+<form name="frm" action="{{ $data->path() }}" method="post" class="row">
+    @csrf
+    <input type="hidden" name="page" value="1">
+
 <div class="col-md-12 col-lg-12">
     <div class="row">
         <div class="grid_list_search_result style2">
@@ -17,12 +21,11 @@
                 <div class="right_area style2 text-right">
                     <ul>
                         <li class="list-inline-item"><span class="shrtby">Sort by:</span>
-                            <select class="selectpicker show-tick">
-                                <option>Featured First</option>
-                                <option>Featured 2nd</option>
-                                <option>Featured 3rd</option>
-                                <option>Featured 4th</option>
-                                <option>Featured 5th</option>
+                            <select class="selectpicker show-tick" name="sort" onchange="frm.page.value=1;frm.submit();">
+                                <option value="reg_date|desc" @if (@$_POST['sort']=="reg_date|desc") selected @endif>최신순</option>
+                                <option value="reg_date" @if (@$_POST['sort']=="reg_date") selected @endif>오래된순</option>
+                                <option value="user_name" @if (@$_POST['sort']=="user_name") selected @endif>이름순</option>
+                                <option value="homepage_sales_count|desc" @if (@$_POST['sort']=="homepage_sales_count|desc") selected @endif>매물많은순</option>
                             </select>
                         </li>
                     </ul>
@@ -76,7 +79,7 @@
                 </div>
                 <div class="employ_inf">
                     <p>{{ @$_sawon->info->sosok }}</p>
-                    <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }}</p>
+                    <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }} ({{ $_sawon->homepage_sales_count }})</p>
                 </div>
                 <div class="employ_call">
                     <i class="ri-phone-line"></i>
@@ -108,3 +111,4 @@
         </div> --}}
     </div>
 </div>
+</form>

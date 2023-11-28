@@ -24,7 +24,8 @@ class IntraSaleClass{
         $model = IntraSaleHomepage::where('isDone',1);
 
         if(!empty($data['sort'])){
-            $arrSort = explode(" ", $data['sort']);
+            $arrSort = explode("|", $data['sort']);
+            if(empty($arrSort[1])) $arrSort[1] = 'asc';
             $model->orderBy($arrSort[0],$arrSort[1]);
         }else{
             $model->orderBy('reg_date','desc');
@@ -64,7 +65,8 @@ class IntraSaleClass{
         $return['img'] = (empty($data->files->first()->filename))?"/images/noimg.jpg":"http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename;
 
         $arrAddr = explode("|",$data->addr);
-        $addr = trim($arrAddr[0]);
+        $arrAddress = explode(" ", $arrAddr[0]);
+        $addr = trim($arrAddress[0])." ".trim($arrAddress[1])." ".trim($arrAddress[2]);
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
 

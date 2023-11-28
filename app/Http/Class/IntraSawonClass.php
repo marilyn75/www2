@@ -19,11 +19,25 @@ class IntraSawonClass{
         
     }
 
-    public function getListData($itemNum=8){
-        return IntraMember::where([
+    public function getListData($request, $itemNum=8){
+        $data = $request->all();
+
+        $model = IntraMember::where([
             'mb_out'=>0,
             'auth_gr'=>'M01_D01',
-            ])->orderBy('reg_date','asc')->paginate($itemNum);
+            ])->withCount('homepageSales');
+
+        if(!empty($data['sort'])){
+            $arrSort = explode("|", $data['sort']);
+            if(empty($arrSort[1])) $arrSort[1] = 'asc';
+            $model->orderBy($arrSort[0],$arrSort[1]);
+            debug('order',$arrSort);            
+        }else{
+            $model->orderBy('reg_date','desc');
+        }
+
+        return $model->paginate($itemNum);
+            
     }
 
     public function getData($idx){

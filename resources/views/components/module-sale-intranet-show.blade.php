@@ -724,7 +724,7 @@ $(window).on('load', function() {
     </section>
 </div>
 
-<!-- 중개사정보 -->
+<!-- 중개사정보 / 오늘 본 매물-->
 <div class="col-lg-4">
 
     <div class="sidebar_listing_list sidebar_listing_list_w">
@@ -777,40 +777,6 @@ $(window).on('load', function() {
         </div>
     </div>
 
-    <div class="sidebar_recent_product today_pro">
-        <h4 class="mb20">오늘 본 매물</h4>
-        @if(empty($todayViewSales))
-        @else
-        @foreach ($todayViewSales as $_data)
-        @php
-        $sale = $_data->sale;
-        if($sale->files->count()==0){
-        $img = "https://www.gbbinc.co.kr/mng/_Img/thumb_noimg.jpg";
-        }else{
-        $img = "https://www.gbbinc.co.kr/_Data/SaleNew/".$sale->files->first()->filename;
-        }
-
-        if($sale->tradeType=="임대"){
-        $printPrice = number_format($sale->l_depPrice)."/".number_format($sale->l_monPrice);
-        }else{
-        $printPrice = number_format($sale->salePrice);
-        }
-
-        $arrAddr = explode(",",$sale->_addr);
-        $addr = trim($arrAddr[0]);
-        if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
-        @endphp
-        <div class="media media_w" style="cursor: pointer" onclick="location.href='?mode=show&idx={{ $_data->idx }}'">
-            <img class="align-self-start" src="{{ $img }}">
-            <div class="media-body today_inf">
-                <h5 class="mt-0 mb-0">{{ $sale->saleTypeTxt }}</h5>
-                <div class="today_loc">{{ $addr }}</div>
-                <a href="#">{{ $sale->tradeType }} <span class="mont">{{ $printPrice }}</span> 만원</a>
-            </div>
-        </div>
-        @endforeach
-        @endif
-    </div>
-
+    <x-today-view-sales />
 
 </div>

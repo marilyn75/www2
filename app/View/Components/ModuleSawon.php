@@ -42,7 +42,7 @@ class ModuleSawon extends Component
     }
 
     public function index(){
-        $data = $this->cls->getListData();
+        $data = $this->cls->getListData($this->request);
         debug($data);
         
         return view('components.module-sawon', compact('data'));

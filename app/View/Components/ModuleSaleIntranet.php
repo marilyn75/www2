@@ -64,14 +64,12 @@ class ModuleSaleIntranet extends Component
         // 오늘 본 매물 키 쿠키저장
         $this->cls->todayViewSaleSetCookie($this->request->idx);
 
-        // 오늘 본 매물 데이터
-        $todayViewSales = $this->cls->getTodayViewSales();
 
         $skin = 'components.module-sale-intranet-show';
         if(!empty($this->request->skin))    $skin .= $this->request->skin;
 
         $printData = $this->cls->getPrintData($data);
      
-        return view($skin, compact('data', 'printData','todayViewSales', 'mapUrl'));
+        return view($skin, compact('data', 'printData', 'mapUrl'));
     }
 }

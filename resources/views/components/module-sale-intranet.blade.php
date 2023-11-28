@@ -6,7 +6,6 @@
 <form name="frm" action="{{ $data->path() }}" method="post" class="row">
     @csrf
     <input type="hidden" name="page" value="1">
-    <input type="hidden" name="sort" value="reg_date desc">
 
 <!-- mobile filter -->
 <div class="row">
@@ -682,9 +681,9 @@
                                 </select>
                             </li> --}}
                             <li class="list-inline-item">
-                                <select class="selectpicker show-tick" onchange="frm.sort.value=this.value;frm.submit();">
-                                    <option value="reg_date desc" @if (@$_POST['sort']=="reg_date desc") selected @endif>최신순</option>
-                                    <option value="reg_date asc" @if (@$_POST['sort']=="reg_date asc") selected @endif>오래된순</option>
+                                <select class="selectpicker show-tick" name="sort" onchange="frm.sort.value=this.value;frm.submit();">
+                                    <option value="reg_date|desc" @if (@$_POST['sort']=="reg_date|desc") selected @endif>최신순</option>
+                                    <option value="reg_date" @if (@$_POST['sort']=="reg_date") selected @endif>오래된순</option>
                                     {{-- <option value="zzim desc" @if ($_POST['sort']=="zzim desc") selected @endif>찜하기순</option>
                                     <option value="price desc" @if ($_POST['sort']=="price desc") selected @endif>높은가격순</option>
                                     <option value="price asc" @if ($_POST['sort']=="price asc") selected @endif>낮은가격순</option> --}}
