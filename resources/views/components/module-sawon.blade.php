@@ -5,7 +5,7 @@
 }
 </style>
 
-<form name="frm" action="{{ $data->path() }}" method="post" class="row">
+<form name="frm" action="{{ $data->path() }}" method="post" class="row pl-3 pr-3">
     @csrf
     <input type="hidden" name="page" value="1">
 
@@ -79,11 +79,14 @@
                 </div>
                 <div class="employ_inf">
                     <p>{{ @$_sawon->info->sosok }}</p>
-                    <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }} ({{ $_sawon->homepage_sales_count }})</p>
+                    <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }}</p>
                 </div>
                 <div class="employ_call">
                     <i class="ri-phone-line"></i>
                     <p class="mont">1833 {{ @$_sawon->info->office_line }}</p>
+                </div>
+                <div class="sales_count">
+                    <p>매물 {{ $_sawon->homepage_sales_count }}건</p>
                 </div>
             </a>
         </div>
