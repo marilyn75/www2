@@ -50,7 +50,7 @@ $(window).on('load', function() {
                             @else
                             <li><a href="#"><i class="ri-checkbox-circle-line"></i> 토지면적
                                     {{ $printData['landArea'] }}㎡</a></li>
-                            @if (strpos($data->saleTypeTxt,"토지")===false)
+                            @if (strpos($printData['category'],"토지")===false)
                             <li><a href="#"><i class="ri-checkbox-circle-line"></i> 연면적 {{ $printData['bdArea'] }}㎡</a>
                             </li>
                             @endif
@@ -169,21 +169,22 @@ $(window).on('load', function() {
                                         <p class="mont">{{ $printData['useAprDay'] }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>방향 :</p>
-                                        <p>{{ $printData['direction'] }}향</p>
-                                    </li>
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>입주정보 :</p>
                                         <p>{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</p>
-                                    </li>
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>방 / 화장실 :</p>
-                                        <p>방 {{ $printData['room_num'] }}개 / 욕실 {{ $printData['restroom_num'] }}개</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월관리비 :</p>
                                         <p>관리비 없음</p>
                                     </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>방향 :</p>
+                                        <p>{{ $printData['direction'] }}향</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>방 / 화장실 :</p>
+                                        <p>방 {{ $printData['room_num'] }}개 / 욕실 {{ $printData['restroom_num'] }}개</p>
+                                    </li>
+                                    
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>난방방식 :</p>
                                         <p>개별난방</p>
@@ -204,17 +205,17 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월세현황 :</p>
-                                        <p>보증금 {{ $printData['depPrice_st'] }}만원 / 월세
-                                            {{ $printData['monPrice_st'] }}만원</p>
+                                        <p>보증금 {{ number_format($printData['depPrice_st']) }}만원 / 월세
+                                            {{ number_format($printData['monPrice_st']) }}만원</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>융자금 :</p>
-                                        <p>{{ (empty($printData['loanPrice']))?"없음":$printData['loanPrice']."만원"; }}
+                                        <p>{{ (empty($printData['loanPrice']))?"없음":number_format($printData['loanPrice'])."만원"; }}
                                         </p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>예상 수익률 :</p>
-                                        <p class="mont">1.11%</p>
+                                        <p class="mont">{{ $printData['rate'] }}%</p>
                                     </li>
                                 </ul>
 
@@ -235,241 +236,68 @@ $(window).on('load', function() {
 
                             </div>
                         </div>
-
+                        @if($printData['isJugeo'])
+                        @if(!empty($printData['optCodes']['생활시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">
                                 <div class="col-lg-12">
                                     <h4 class="mb15">생활시설</h4>
                                 </div>
                                 <ul class="order_list list-inline-item order_list_w row">
+                                    @foreach ($printData['optCodes']['생활시설'] as $_item)
                                     <li class="col-md-6 col-lg-3 col-xl-3">
                                         <a href="#">
                                             <i class="ri-checkbox-line"></i>
-                                            <p>침대</p>
+                                            <p>{{ $_item }}</p>
                                         </a>
                                     </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>책상</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>옷장</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>붙박이장</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>식탁</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>쇼파</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>신발장</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3 ">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>냉장고</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>세탁기</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>건조기</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3 ">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>샤워부스</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3 ">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>욕조</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>비데</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>싱크대</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>식기세척기</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>가스레인지</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>TV</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>레인지</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>전자레인지</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>가스오픈</p>
-                                        </a>
-                                    </li>
+                                    @endforeach
+                                    
                                 </ul>
                             </div>
                         </div>
+                        @endif
+                        @if(!empty($printData['optCodes']['보안시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">
                                 <div class="col-lg-12">
                                     <h4 class="mb15">보안시설</h4>
                                 </div>
                                 <ul class="order_list list-inline-item order_list_w row">
+                                    @foreach ($printData['optCodes']['보안시설'] as $_item)
                                     <li class="col-md-6 col-lg-3 col-xl-3">
                                         <a href="#">
                                             <i class="ri-checkbox-line"></i>
-                                            <p>경비원</p>
+                                            <p>{{ $_item }}</p>
                                         </a>
                                     </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>비디오폰</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>인터폰</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>카드키</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>cctv</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>사설경비</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3 ">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>현관보안</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>방범창</p>
-                                        </a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
+                        @endif
+                        @if(!empty($printData['optCodes']['기타시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">
                                 <div class="col-lg-12">
                                     <h4 class="mb15">기타시설</h4>
                                 </div>
                                 <ul class="order_list list-inline-item order_list_w row">
+                                    @foreach ($printData['optCodes']['기타시설'] as $_item)
                                     <li class="col-md-6 col-lg-3 col-xl-3">
                                         <a href="#">
                                             <i class="ri-checkbox-line"></i>
-                                            <p>엘리베이터</p>
+                                            <p>{{ $_item }}</p>
                                         </a>
                                     </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>화재경보기</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>베란다</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>테라스</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>마당</p>
-                                        </a>
-                                    </li>
-                                    <li class="col-md-6 col-lg-3 col-xl-3">
-                                        <a href="#">
-                                            <i class="ri-checkbox-line"></i>
-                                            <p>무인택배함</p>
-                                        </a>
-                                    </li>
+                                    @endforeach
                                 </ul>
 
 
                             </div>
                         </div>
-
+                        @endif
+                        @endif
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 map_w">
                                 <div class="map_top_w mb20">
@@ -490,8 +318,8 @@ $(window).on('load', function() {
                                                         </div>
                                                     </div> -->
                                 <div id="map" style="width:auto;height:400px;">
-                                    @if (!empty($mapUrl))
-                                    <img src="{{ $mapUrl }}">
+                                    @if (!empty($printData['mapUrl']))
+                                    <img src="{{ $printData['mapUrl'] }}">
                                     @endif
                                 </div>
                                 {{-- <script type="text/javascript"
@@ -513,11 +341,11 @@ $(window).on('load', function() {
                             <div class="whats_nearby mt30 nearby_w">
                                 <h4 class="mb10">근처시설</h4>
 
-                                @if(!empty($data['infra']['교육시설']))
+                                @if(!empty($printData['infra']['교육시설']))
                                 <div class="education_distance mb15 education_w">
                                     <h5><i class="ri-school-line"></i> 교육시설
                                     </h5>
-                                    @foreach ($data['infra']['교육시설'] as $_row)
+                                    @foreach ($printData['infra']['교육시설'] as $_row)
                                     <div class="single_line single_w">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
@@ -530,11 +358,11 @@ $(window).on('load', function() {
                                 </div>
                                 @endif
 
-                                @if(!empty($data['infra']['주변시설']))
+                                @if(!empty($printData['infra']['주변시설']))
                                 <div class="education_distance mb15 style2 education_w">
                                     <h5><i class="ri-store-line"></i> 주변시설
                                     </h5>
-                                    @foreach ($data['infra']['주변시설'] as $_row)
+                                    @foreach ($printData['infra']['주변시설'] as $_row)
                                     <div class="single_line single_w">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
@@ -547,11 +375,11 @@ $(window).on('load', function() {
                                 </div>
                                 @endif
 
-                                @if(!empty($data['infra']['교통정보']))
+                                @if(!empty($printData['infra']['교통정보']))
                                 <div class="education_distance style3 education_w">
                                     <h5><i class="ri-bus-2-line"></i> 교통정보
                                     </h5>
-                                    @foreach ($data['infra']['교통정보'] as $_row)
+                                    @foreach ($printData['infra']['교통정보'] as $_row)
                                     <div class="single_line single_w">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
@@ -769,7 +597,7 @@ $(window).on('load', function() {
                 </li>
                 <li>
                     <div class="search_option_button detail_emp_btns">
-                        <button class="btn btn-block btn-thm btn-thm_w">자세히보기</button>
+                        <a class="btn btn-block btn-thm btn-thm_w" href="{{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}">자세히보기</a>
                         <button type="submit" class="btn btn-block btn-thm btn-thm_w">문의하기</button>
                     </div>
                 </li>

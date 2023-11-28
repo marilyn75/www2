@@ -44,6 +44,10 @@ class IntraSaleClass{
     static public function getPrintData($data){
         $return = $data->toArray();
 
+        // 수익률 계산 : (월세 * 12) / (매매가격 - 보증금)
+        $return['rate'] = (intval($data->monPrice_st)==0)?0:round(((($data->monPrice_st * 12) / ($data->salePrice - $data->depPrice_st)) * 100), 2);
+
+
         $return['saleTypeFull'] = $data->saleTypeTxt;
         $return['saleType'] = trim(explode(">",$data->saleTypeTxt)[1]);        
 
@@ -118,6 +122,7 @@ class IntraSaleClass{
         $floorInfo .= $data->grndFlrCnt."F";
         $return['floorInfo'] = $floorInfo;
 
+        $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
         $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
         $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
@@ -126,6 +131,9 @@ class IntraSaleClass{
         $return['sawon_office_line'] = $data->sale->users->first()->sawon->info->office_line;
 
         $return['print_data'] = formatCreatedAt2($data->reg_date);
+
+        // 카테고리가 주거인지 체크용
+        $return['isJugeo'] = strpos($return['category'],'주거') === 0;
 
         return $return;
     }
@@ -155,5 +163,58 @@ class IntraSaleClass{
 
             return $data;
         }
+    }
+
+    // 지도 url
+    public function getMapUrl($localX, $localY){
+        $kko_xy = (new KakaoApiClass)->getKKOTranscoord($localX, $localY);
+
+        $x = intval($kko_xy["documents"][0]["x"]);
+		$y = intval($kko_xy["documents"][0]["y"]);
+
+        return "https://www.gbbinc.co.kr/Share/map.php?x=".$x."&y=".$y."&w=720&h=400";
+    }
+
+    // 근처시설
+    public function getNearInfra($x, $y){
+
+        // MT1	대형마트
+        // CS2	편의점
+        // PS3	어린이집, 유치원
+        // SC4	학교
+        // AC5	학원
+        // PK6	주차장
+        // OL7	주유소, 충전소
+        // SW8	지하철역
+        // BK9	은행
+        // CT1	문화시설
+        // AG2	중개업소
+        // PO3	공공기관
+        // AT4	관광명소
+        // AD5	숙박
+        // FD6	음식점
+        // CE7	카페
+        // HP8	병원
+        // PM9	약국
+        $clsKkoApi = new KakaoApiClass;
+
+        $r_data['category'] = 'SC4';
+        $r_data['x'] = $x;
+        $r_data['y'] = $y;
+        $r_data['radius'] = 2000; // 반경 00m
+        $r_data['size'] = 5;
+
+        $response = $clsKkoApi->getLocalSearchCategory($r_data);
+        $data['교육시설'] = $response['documents'];
+
+        $r_data['category'] = 'MT1,HP8';
+        $response = $clsKkoApi->getLocalSearchCategory($r_data);
+        $data['주변시설'] = $response['documents'];
+
+        $r_data['category'] = 'SW8';
+        $response = $clsKkoApi->getLocalSearchCategory($r_data);
+        $data['교통정보'] = $response['documents'];
+
+        return $data;
     }
 }

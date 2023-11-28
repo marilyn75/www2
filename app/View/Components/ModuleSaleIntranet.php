@@ -2,12 +2,12 @@
 
 namespace App\View\Components;
 
-use App\Http\Class\IntraSaleClass;
-use App\Http\Class\IntraSaleItemClass;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Http\Class\IntraSaleClass;
+use App\Http\Class\CommonCodeClass;
+use Illuminate\Contracts\View\View;
 
 class ModuleSaleIntranet extends Component
 {
@@ -49,27 +49,31 @@ class ModuleSaleIntranet extends Component
     }
 
     public function show(){
-        $clsIntraSaleItem = new IntraSaleItemClass($this->request->idx);
 
-        $data = $clsIntraSaleItem->getData();
-        // dd($data);
+        $data = $this->cls->getData($this->request->idx);
+        $printData = $this->cls->getPrintData($data);
+
+        $printData['optCodes'] = [];
+        $optCodes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');
+        foreach($optCodes as $_k=>$_item){
+            foreach($_item as $_v)
+                if(in_array($_v, explode("|",$printData['options'])) !== false) $printData['optCodes'][$_k][] = $_v;
+        }
 
         // 지도
-        $kko_xy = $clsIntraSaleItem->getKKOxy();
-        $mapUrl = $clsIntraSaleItem->getMapUrl($kko_xy['x'], $kko_xy['y']);
+        $printData['mapUrl'] = $this->cls->getMapUrl($data->sale->lands[0]->localX, $data->sale->lands[0]->localY);
 
         // 주변 시설
-        $data['infra'] = $clsIntraSaleItem->getNearInfra($kko_xy['x'], $kko_xy['y']);
-
+        $printData['infra'] = $this->cls->getNearInfra($data->sale->lands[0]->localX, $data->sale->lands[0]->localY);
+    
         // 오늘 본 매물 키 쿠키저장
         $this->cls->todayViewSaleSetCookie($this->request->idx);
 
 
         $skin = 'components.module-sale-intranet-show';
         if(!empty($this->request->skin))    $skin .= $this->request->skin;
-
-        $printData = $this->cls->getPrintData($data);
-     
-        return view($skin, compact('data', 'printData', 'mapUrl'));
+        
+        debug($printData);
+        return view($skin, compact('printData'));
     }
 }
