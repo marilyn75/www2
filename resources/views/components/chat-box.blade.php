@@ -1,5 +1,5 @@
 <div class="inbox_chatting_box">
-    <ul class="chatting_content">
+    <ul class="chatting_content chatting_content_w">
         {{-- @include('chat.receive', ['message'=>'무엇을 도와드릴까요?', 'profile'=>$_msg['profile']]) --}}
 
         @if($messages)
@@ -16,8 +16,8 @@
 <div class="mi_text">
     <div class="message_input">
         <form class="form-inline">
-            <input class="form-control" type="text" placeholder="Enter text here..." aria-label="Search" autocomplete="off" id="message" name="message">
-            <button class="btn" type="submit">Send Message</button>
+            <input class="form-control" type="text" placeholder="Message..." aria-label="Search" autocomplete="off" id="message" name="message">
+            <button class="btn" type="submit"><img src="/images/chat/send.png" alt=""></button>
         </form>
     </div>
 </div>

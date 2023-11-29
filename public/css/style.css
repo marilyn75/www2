@@ -11953,12 +11953,11 @@ a.btn.btn_error{
   background-color: #f7f7f7;
   border: 1px solid #f7f7f7;
   border-radius: 3px;
-  color: #484848;
-  font-size: 14px;
-  font-family: "Open Sans";
+  font-size: 16px;
   margin-bottom: 0;
-  padding: 10px 15px;
-  max-width: 290px;
+  padding: 20px 24px;
+  /* max-width: 290px; */
+  font-weight: 500;
 }
 .inbox_chatting_box .chatting_content li.media.reply {
   float: right;
@@ -11971,8 +11970,9 @@ a.btn.btn_error{
   border-radius: 3px;
   background-color: #eef1ff;
   color: #484848;
-  max-width: 320px;
-  padding: 10px 15px;
+  /* max-width: 320px; */
+  padding: 20px 24px;
+  font-weight: 400;
 }
 .message_container .message_input {
   background-color: #f9fafc;
@@ -17055,6 +17055,46 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 /* 준비중페이지 */
 .service_r { font-size: 30px; color: #000; line-height: 43px; }
 .mobile_serv { display: none; }
+
+
+/* 실시간 문의 */
+.message_container_w { border: none; }
+.user_heading_w { 
+  text-align: center; 
+  background: transparent !important;
+  border: none;
+  border-bottom: none !important;
+}
+.user_heading_w .wrap h3 { 
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+ }
+.chatting_content_w { background: #fff; border-radius: 15px; }
+.inbox_chatting_box .chatting_content li.media .media-body p  { background: #F7F7FF; border-radius: 50px 50px 50px 0px; }
+.inbox_chatting_box .chatting_content li.media.reply .media-body p { background: #385f8d; color: #fff; border-radius: 50px 50px 0 50px; }
+.inbox_chatting_box .chatting_content li.media .media-body .date_time { 
+  color: #828282;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 7px;
+ }
+ .message_container .message_input form input.form-control { z-index: 1; background: #F7F7FF; border-radius: 50px; }
+ .message_container .message_input form button.btn { z-index: 2; width: auto; height: auto; background: #385f8d; border-radius: 50px; }
+ .message_container .message_input { background: transparent; bottom: -60px; }
+ .message_input:before { 
+  background-color: #ffffff;
+  bottom: -32px;
+  content: "";
+  left: -30px;
+  position: absolute;
+  right: -30px;
+  top: 0;
+  z-index: 0;
+  border-radius: 0 0 15px 15px;
+  }
+  .chat_padding { height: 100vh; }
+
 
 
 

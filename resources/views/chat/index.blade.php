@@ -8,17 +8,17 @@
 
 @if (auth()->check())
 <!-- Our LogIn Register -->
-<section class="our-log bgc-fa">
+<section class="our-log bgc-fa chat_padding">
     <div class="container">
         <div class="row">
 
             <div class="col-xl-12" style="height: 100%">
-                <div class="message_container">
-                    <div class="user_heading">
+                <div class="message_container message_container_w">
+                    <div class="user_heading user_heading_w">
                         <a href="#">
                             <div class="wrap">
                                 <span class="contact-status online"></span>
-                                관리자에게 문의
+                                <h3>실시간 문의</h3>
                                 {{-- <img class="img-fluid" src="images/team/s5.jpg" alt="s5.jpg"/>
                                 <div class="meta">
                                     <h5 class="name">Joanne Davies</h5>
