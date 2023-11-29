@@ -91,5 +91,8 @@
 <script type="text/javascript" src="{{ url('js/smartuploader.js') }}"></script>
 <!-- Custom script for all pages --> 
 <script type="text/javascript" src="{{ url('js/script.js') }}"></script>
+
+<script type="text/javascript" src="{{ url('js/lib/common.simple.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/lib/formcheck.js') }}"></script>
 </body>
 </html>
