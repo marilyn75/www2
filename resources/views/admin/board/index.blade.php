@@ -51,7 +51,7 @@
                                '    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="삭제"><a href="#" class="btn-delete" data-id="'+data.id+'"><span class="flaticon-garbage"></span></a></li>' +
                                '</ul>';
                     },
-                    "orderable": false,
+                    "orderable": true,
                 }
             ],
             processing: true,

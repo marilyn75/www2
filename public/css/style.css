@@ -299,10 +299,8 @@ address {
   background-color: rgba(0, 0, 0, .9);
   bottom: 0;
   content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+
+  
 }
 .sign_up_modal.modal .close:focus{
   outline: none;
@@ -16987,12 +16985,14 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   height: 70px;
   margin-top: 60px;
 }
+.dataTables_filter label { color: #000; }
 .sign_up_form_w .btn-log:hover{ background: #385F8D; color: #fff; }
+
 
 
 /* 게시물 */
 .packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th{
-  background: #F0F0F0;
+  background: #F9f9f9;
   color: #000;
 }
 .packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th:first-child{
@@ -17011,8 +17011,19 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   border-radius: 0;
 }
 
-.table td, .table th { border: none; border-bottom: 1px solid #dee2e6; }
-
+/* .table td, .table th { border: none; border-bottom: 1px solid #dee2e6; }
+table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_desc:before, table.dataTable thead>tr>th.sorting_asc_disabled:before, table.dataTable thead>tr>th.sorting_desc_disabled:before, table.dataTable thead>tr>td.sorting:before, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_desc:before, table.dataTable thead>tr>td.sorting_asc_disabled:before, table.dataTable thead>tr>td.sorting_desc_disabled:before{
+  content: '' !important;
+  background-image: url('../images/arrow_line.png');
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+}
+table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:after{
+  content: '' !important;
+  display: none !important;
+}
+ */
 
 /* 공지사항 */
 .my_profile_setting_input .btn1 { 
@@ -17036,6 +17047,23 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .mbp_pagination_tab .pag_prev a:hover, .mbp_pagination_tab .pag_next a:hover {
   background: #385f8d;
 }
+.dataTables_wrapper .dataTables_filter input { 
+  border: none !important;
+  background: #f9f9f9 !important;
+  padding: 8px !important;
+  margin-left: 10px !important;
+  border-radius: 10px !important;
+  height: 41px !important;
+ }
+ .dataTables_wrapper .dataTables_length select { 
+  border: none !important; 
+  background: #f9f9f9 !important; 
+  padding: 10px !important; 
+  border-radius: 10px !important; 
+  margin-left: 7px !important; 
+}
+.dataTables_length label { color: #000; }
+
 
 /* 회사소개 */
 .inner_page_breadcrumb { background-repeat: round; }
@@ -17317,3 +17345,4 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   .sidebar_listing_list_w { padding: 15px; }
   .mobile_serv { font-size: 16px; }
 }
+
