@@ -61,6 +61,8 @@ class ModuleSaleIntranet extends Component
         }
 
         // 지도
+        $printData['localX'] = $data->sale->lands[0]->localX;
+        $printData['localY'] = $data->sale->lands[0]->localY;
         $printData['mapUrl'] = $this->cls->getMapUrl($data->sale->lands[0]->localX, $data->sale->lands[0]->localY);
 
         // 주변 시설
@@ -72,8 +74,8 @@ class ModuleSaleIntranet extends Component
 
         $skin = 'components.module-sale-intranet-show';
         if(!empty($this->request->skin))    $skin .= $this->request->skin;
-        
-        debug($printData);
+
+        //debug($printData);
         return view($skin, compact('printData'));
     }
 }

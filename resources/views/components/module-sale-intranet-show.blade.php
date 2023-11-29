@@ -5,7 +5,18 @@ $(window).on('load', function() {
         var imageUrl = $(".single_product_grid .img-fluid").eq(index + 2).attr('src');
         $(this).find('span').css('background-image', 'url(' + imageUrl + ')');
     });
+
+    $(document).on("click", ".nearby-infra", function(){
+        console.log('marker click');
+        var x = $(this).data('x');
+        var y = $(this).data('y');
+
+        // 마커 하나를 지도위에 표시합니다 
+        addMarker(new kakao.maps.LatLng(y, x));
+    });
 });
+
+
 </script>
 <div class="col-lg-8">
     <div class="single_product_grid row single_product_grid_w">
@@ -317,35 +328,14 @@ $(window).on('load', function() {
                                         {{ $printData['address'] }}
                                     </p>
                                 </div>
-                                <!-- <div class="property_video p0">
-                                                        <div class="thumb">
-                                                            <div class="h400" id="map-canvas"></div>
-                                                            <div class="overlay_icon">
-                                                                <a href="#"><img class="map_img_icon"
-                                                                        src="images/header-logo.png"
-                                                                        alt="header-logo.png"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
-                                <div id="map" style="width:auto;height:400px;">
-                                    @if (!empty($printData['mapUrl']))
-                                    <img src="{{ $printData['mapUrl'] }}">
-                                    @endif
-                                </div>
-                                {{-- <script type="text/javascript"
-                                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc1139f406efd84978d1195e3a874a45">
-                                </script>
-                                <script>
-                                var container = document.getElementById('map');
-                                var options = {
-                                    center: new kakao.maps.LatLng(35.1691, 129.0704),
-                                    level: 3
-                                };
+                  
+                                
+                                <x-kko_map :printData="$printData" />
 
-                                var map = new kakao.maps.Map(container, options);
-                                </script> --}}
                             </div>
                         </div>
+
+                        
 
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="whats_nearby mt30 nearby_w">
@@ -356,7 +346,7 @@ $(window).on('load', function() {
                                     <h5><i class="ri-school-line"></i> 교육시설
                                     </h5>
                                     @foreach ($printData['infra']['교육시설'] as $_row)
-                                    <div class="single_line single_w">
+                                    <div class="single_line single_w nearby-infra edu" data-x="{{ $_row['x'] }}" data-y="{{ $_row['y'] }}">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
@@ -373,7 +363,7 @@ $(window).on('load', function() {
                                     <h5><i class="ri-store-line"></i> 주변시설
                                     </h5>
                                     @foreach ($printData['infra']['주변시설'] as $_row)
-                                    <div class="single_line single_w">
+                                    <div class="single_line single_w nearby-infra near" data-x="{{ $_row['x'] }}" data-y="{{ $_row['y'] }}">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
@@ -390,7 +380,7 @@ $(window).on('load', function() {
                                     <h5><i class="ri-bus-2-line"></i> 교통정보
                                     </h5>
                                     @foreach ($printData['infra']['교통정보'] as $_row)
-                                    <div class="single_line single_w">
+                                    <div class="single_line single_w nearby-infra traffic" data-x="{{ $_row['x'] }}" data-y="{{ $_row['y'] }}">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
