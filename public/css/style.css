@@ -17025,6 +17025,27 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 }
  */
 
+ .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  background: #385f8d !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  line-height: 40px;
+ }
+ .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .paginate_button.current:active, .paginate_button.current:focus {
+  background: #385f8d !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  line-height: 40px;
+ }
+
 /* 공지사항 */
 .my_profile_setting_input .btn1 { 
   border: 2px solid #385F8D;

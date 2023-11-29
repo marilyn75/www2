@@ -9,9 +9,6 @@
 <meta name="CreativeLayers" content="ATFN">
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{ url('css/responsive.css') }}">
-<!-- css file -->
-<link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ url('css/style.css') }}">
 <!-- Title -->
 <title>GYEMOIM INC.</title>
 <!-- Favicon -->
@@ -44,6 +41,10 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="{{ url('js/common.js') }}"></script>
 <script src="{{ url('js/docurl.js') }}"></script>
+
+<!-- css file -->
+<link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url('css/style.css') }}">
 </head>
 
 <body>
