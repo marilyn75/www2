@@ -17241,20 +17241,13 @@ code {
   backdrop-filter: blur(15px);
  }
 
- .snackbar-container .action { background: transparent !important; font-weight: 500 !important; font-size: 16px !important; color: #000 !important; margin: 0 !important; display: flex !important; align-items: center !important; gap: 5px; }
- .snackbar-container .action::before{
-  content: '';
-  background-image: url('../images/snack_chk.png');
-  width: 18px;
-  height: 18px;
-  background-size: contain;
-  display: inline-block;
- }
+ .snackbar-container .action { line-height: 23px; margin-left: 5px !important; background: transparent !important; font-weight: 500 !important; font-size: 16px !important; color: #000 !important; display: flex !important; align-items: center !important; gap: 5px; }
+
  .snackbar-container { justify-content: flex-start !important; padding: 25px !important; }
  .snackbar-pos.bottom-left { bottom: 30px !important; left: 50% !important; transform: translateY(-50%) !important; }
-
-
-
+ .snackbar-container .action:active, .snackbar-container .action:focus { border: none !important; outline: none !important; }
+ .snackbar-pos.bottom-center { bottom: 30px !important; }
+ .snackbar-pos.top-center { top: 100px !important; }
 
 
 

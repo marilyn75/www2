@@ -87,12 +87,13 @@ function lpad(str, padLen, padStr) {
 function sbAlert(msg, type){
 
     var options = { 
-        text:'알림', 
+        text:'<img src="/images/snack_chk.png" alt="Icon">', 
         pos: 'bottom-center',
+        
     }
 
     if(type=="warning"){
-        options.text = '경고';
+        options.text = '<img src="/images/warn.png" alt="Icon">';
         options.pos = 'top-center';
     }
 
