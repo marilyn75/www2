@@ -44,8 +44,12 @@ class ModuleSaleIntranet extends Component
 
     public function index(){
         $data = $this->cls->getListData($this->request);
-        debug($data);
-        return view('components.module-sale-intranet', compact('data'));
+
+        // 관심매물 ids
+        $result = $this->cls->getFavorites();
+        $favorites = $result->getData();
+
+        return view('components.module-sale-intranet', compact('data', 'favorites'));
     }
 
     public function show(){

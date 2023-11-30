@@ -21,7 +21,7 @@
 
             // if(flag=="add") $child.addClass('on');
             // else            $child.removeClass('on');
-            sbAlert(r.msg);
+            sbAlert(r.message);
         }
 
         return false;
@@ -708,7 +708,11 @@
                                     <!-- 찜하기 전 -->
                                     <li class="list-inline-item">
                                         <button class="heart_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
-                                            <i class="ri-heart-3-line on"></i>
+                                            @if (in_array($printData['idx'], $favorites))
+                                            <i class="ri-heart-3-fill"></i>
+                                            @else
+                                            <i class="ri-heart-3-line"></i>
+                                            @endif
                                         </button>
                                     </li>
 

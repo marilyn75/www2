@@ -119,7 +119,7 @@ function doAjax(url, params){
         dataType: 'json', 
         success: function(jsonData){
             if(jsonData.result==false){
-                sbAlert(jsonData.msg, 'warning');
+                sbAlert(jsonData.message, 'warning');
             }
             json = jsonData;
         },

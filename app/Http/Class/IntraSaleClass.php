@@ -4,6 +4,7 @@ namespace App\Http\Class;
 
 use App\Models\Sale;
 use App\Models\CommonCode;
+use App\Models\UserSaleFavorite;
 use App\Models\IntraSaleHomepage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -234,5 +235,45 @@ class IntraSaleClass{
         $data['교통정보'] = $response['documents'];
 
         return $data;
+    }
+
+    // 관심매물처리
+    public function addFavorite($request){
+        $data = $request->all();
+
+        if(!auth()->check()){
+            $result = ResultClass::fail('로그인 후 이용하세요.');
+        }else{
+            if($data['flag']=="add"){
+                $response = UserSaleFavorite::create([
+                    'user_id' => auth()->user()->id,
+                    'sale_id' => $data['id'],
+                ]);
+                if($response->id)   $result = ResultClass::success('관심매물로 담겼습니다.');
+                else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
+            }else{
+                $response = UserSaleFavorite::where([
+                    'user_id' => auth()->user()->id,
+                    'sale_id' => $data['id'],
+                ])->delete();
+                if($response)   $result = ResultClass::success('관심매물 해제 되었습니다.');
+                else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
+            }
+        }
+
+        return $result;
+    }
+
+    // 관심매물 ids
+    public function getFavorites(){
+        if(!auth()->check()) $result = ResultClass::fail('');
+
+        $data = UserSaleFavorite::where('user_id', auth()->user()->id)->get();
+        $ids = [];
+        foreach($data as $_dt)  $ids[] = $_dt->sale_id;
+
+        $result = ResultClass::success('', $ids);
+
+        return $result;
     }
 }

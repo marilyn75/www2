@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('sale_id')->comment('매물키값');
                         
             $table->timestamps();
-            $table->softDeletes();
 
             $table->comment('관심매물');
         });
