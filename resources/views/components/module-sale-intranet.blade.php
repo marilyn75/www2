@@ -6,6 +6,28 @@
 }
 </style>
 
+<script>
+    function addFavorite(obj, id){
+        var $child = $(obj).children();
+        
+        var flag = ($child.hasClass('ri-heart-3-line')) ? "add" : "remove";
+        var params = {id:id, flag:flag};
+
+        var r = doAjax('{{ route('common.ajax.addFavorite') }}',params);
+    
+        if(r.result){
+            if(flag=="add") $child.removeClass('ri-heart-3-line').addClass('ri-heart-3-fill');
+            else            $child.removeClass('ri-heart-3-fill').addClass('ri-heart-3-line');
+
+            // if(flag=="add") $child.addClass('on');
+            // else            $child.removeClass('on');
+            sbAlert(r.msg);
+        }
+
+        return false;
+    }
+</script>
+
 <form name="frm" action="{{ $data->path() }}" method="post" class="row">
     @csrf
     <input type="hidden" name="page" value="1">
@@ -666,12 +688,7 @@
             </div>
         </div>
         <!-- 검색결과 end -->
-        <script>
-        function showAlert() {
-            Snackbar.show({ actionText: '관심매물에 담겼습니다.', });
-            return false;
-        }
-        </script>
+        
         <div class="row">
             @foreach ($data as $_data)
             @php
@@ -690,7 +707,7 @@
 
                                     <!-- 찜하기 전 -->
                                     <li class="list-inline-item">
-                                        <button class="heart_btn" onclick="return showAlert()">
+                                        <button class="heart_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
                                             <i class="ri-heart-3-line"></i>
                                         </button>
                                     </li>

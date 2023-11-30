@@ -82,3 +82,50 @@ function lpad(str, padLen, padStr) {
     str = str.length >= padLen ? str.substring(0, padLen) : str;
     return str;
 }
+
+// 스낵바
+function sbAlert(msg, type){
+
+    var options = { 
+        text:'알림', 
+        pos: 'bottom-center',
+    }
+
+    if(type=="warning"){
+        options.text = '경고';
+        options.pos = 'top-center';
+    }
+
+    options.actionText = msg;
+    
+    Snackbar.show(options);
+}
+
+// ajax 처리
+function doAjax(url, params){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var json = null;
+    $.ajax({
+        type: 'post',
+        async: false,
+        url : url,
+        data: params,
+        dataType: 'json', 
+        success: function(jsonData){
+            if(jsonData.result==false){
+                sbAlert(jsonData.msg, 'warning');
+            }
+            json = jsonData;
+        },
+        error:function(e){  
+            //에러가 났을 경우 실행시킬 코드
+            console.log(e);
+        }
+    });
+    return json;
+}

@@ -72,6 +72,10 @@ Route::prefix('/common')->group(function(){
     Route::get('multiFileUpload/download/{filename}', [App\Http\Controllers\Common\TmpFilesController::class, 'download'])->name('common.file.download');
     // 임시파일 보기
     Route::get('multiFileUpload/view/{filename}', [App\Http\Controllers\Common\TmpFilesController::class, 'view'])->name('common.file.view');
+
+
+    // ajax 처리
+    Route::match(['get', 'post'], '/ajax', [App\Http\Controllers\Common\AjaxController::class, 'addFavorite'])->name('common.ajax.addFavorite');
 });
 
 Route::match(['get', 'post'], '/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');

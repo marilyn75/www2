@@ -7,6 +7,7 @@
 <meta name="keywords" content="advanced search custom, agency, agent, business, clean, corporate, directory, google maps, homes, listing, membership packages, property, real estate, real estate agent, realestate agency, realtor">
 <meta name="description" content="FindHouse - Real Estate HTML Template">
 <meta name="CreativeLayers" content="ATFN">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- Title -->
