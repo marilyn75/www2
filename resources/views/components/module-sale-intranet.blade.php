@@ -713,10 +713,7 @@
                             <div class="tc_content tc_content_w">
                                 <p class="text-thm">{{ $printData['category'] }}</p>
                                 <h4>{{ $printData['title'] }}</h4>
-                                <!-- <ul class="prop_details mb0">
-                            <li class="list-inline-item"><i class="ri-building-line"></i><a href="#">일반상업지 1,000㎡</a></li>
-                            <li class="list-inline-item"><a href="#">B1/15F 연10,000㎡</a></li>
-                        </ul> -->
+
                                 @if(!empty($printData['area_b']))
                                 <div class="text-inf-w">
                                     <p class="text-inf"><i
@@ -742,11 +739,11 @@
                             </div>
                             <div class="fp_footer fp_footer_w">
                                 <ul class="fp_meta float-left mb0 fp_meta_w">
-                                    <li class="list-inline-item sawon_crop"><a href="#"><img
+                                    <li class="list-inline-item sawon_crop"><img
                                                 src="{{ $printData['sawon_photo'] }}"
-                                                style="width: 40px; height: 40px;"></a></li>
-                                    <li class="list-inline-item"><a href="#">{{ $printData['sawon_name'] }}
-                                            {{ $printData['sawon_sosok'] }}</a></li>
+                                                style="width: 40px; height: 40px;"></li>
+                                    <li class="list-inline-item">{{ $printData['sawon_name'] }}
+                                            {{ $printData['sawon_sosok'] }}</li>
                                 </ul>
                                 <p class="fp_pdate">{{ $printData['print_data'] }}</p>
                             </div>
