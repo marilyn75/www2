@@ -6,7 +6,7 @@ $(window).on('load', function() {
         $(this).find('span').css('background-image', 'url(' + imageUrl + ')');
     });
 
-    $(document).on("click", ".nearby-infra", function(){
+    $(document).on("click", ".nearby-infra", function() {
         console.log('marker click');
         var x = $(this).data('x');
         var y = $(this).data('y');
@@ -15,8 +15,6 @@ $(window).on('load', function() {
         addMarker(new kakao.maps.LatLng(y, x));
     });
 });
-
-
 </script>
 <div class="col-lg-8">
     <div class="single_product_grid row single_product_grid_w">
@@ -77,8 +75,8 @@ $(window).on('load', function() {
     <section class="our-agent-single bgc-f7 pb30-991">
         <div class="container container_w">
             <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <div class="row">
+                <div class="col-md-12 col-lg-12 pl-0 pr-0">
+                    <div class="row pl10 pr10">
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="listing_single_description description_w">
                                 <h4 class="mb20">상세내용</h4>
@@ -89,14 +87,14 @@ $(window).on('load', function() {
                                 @if (!empty($printData['description_2']))
                                 <p class="gpara second_para white_goverlay mt10 mb10">
                                     {{ $printData['description_2'] }}
-                                </p>    
-                                
+                                </p>
+
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
                                         <p class="mt10 mb10">
-            
-                                                {!! $printData['description_3'] !!}
-            
+
+                                            {!! $printData['description_3'] !!}
+
                                         </p>
                                     </div>
                                 </div>
@@ -203,7 +201,7 @@ $(window).on('load', function() {
                                         <p>방 / 화장실 :</p>
                                         <p>방 {{ $printData['room_num'] }}개 / 욕실 {{ $printData['restroom_num'] }}개</p>
                                     </li>
-                                    
+
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>난방방식 :</p>
                                         <p>개별난방</p>
@@ -273,7 +271,7 @@ $(window).on('load', function() {
                                         </a>
                                     </li>
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -328,25 +326,47 @@ $(window).on('load', function() {
                                         {{ $printData['address'] }}
                                     </p>
                                 </div>
-                  
-                                
+
+
                                 <x-kko_map :printData="$printData" />
 
                             </div>
                         </div>
 
-                        
+
 
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="whats_nearby mt30 nearby_w">
-                                <h4 class="mb10">근처시설</h4>
+                                <h4 class="mb10">근처시설
+                                <i class="ri-information-line" data-toggle="tooltip"
+                                        data-placement="top" data-original-title="근처시설을 클릭해보세요"></i>
+                                </h4>                        
+                                <script>
+                                $(document).ready(function() {
+
+                                    //Tooltip, activated by hover event
+                                    $("body").tooltip({
+                                            selector: "[data-toggle='tooltip']",
+                                            container: "body"
+                                        })
+                                        //Popover, activated by clicking
+                                        .popover({
+                                            selector: "[data-toggle='popover']",
+                                            container: "body",
+                                            html: true
+                                        });
+                                    //They can be chained like the example above (when using the same selector).
+
+                                });
+                                </script>
 
                                 @if(!empty($printData['infra']['교육시설']))
                                 <div class="education_distance mb15 education_w">
                                     <h5><i class="ri-school-line"></i> 교육시설
                                     </h5>
                                     @foreach ($printData['infra']['교육시설'] as $_row)
-                                    <div class="single_line single_w nearby-infra edu" data-x="{{ $_row['x'] }}" data-y="{{ $_row['y'] }}">
+                                    <div class="single_line single_w nearby-infra edu" data-x="{{ $_row['x'] }}"
+                                        data-y="{{ $_row['y'] }}">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
@@ -363,7 +383,8 @@ $(window).on('load', function() {
                                     <h5><i class="ri-store-line"></i> 주변시설
                                     </h5>
                                     @foreach ($printData['infra']['주변시설'] as $_row)
-                                    <div class="single_line single_w nearby-infra near" data-x="{{ $_row['x'] }}" data-y="{{ $_row['y'] }}">
+                                    <div class="single_line single_w nearby-infra near" data-x="{{ $_row['x'] }}"
+                                        data-y="{{ $_row['y'] }}">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">
@@ -380,7 +401,8 @@ $(window).on('load', function() {
                                     <h5><i class="ri-bus-2-line"></i> 교통정보
                                     </h5>
                                     @foreach ($printData['infra']['교통정보'] as $_row)
-                                    <div class="single_line single_w nearby-infra traffic" data-x="{{ $_row['x'] }}" data-y="{{ $_row['y'] }}">
+                                    <div class="single_line single_w nearby-infra traffic" data-x="{{ $_row['x'] }}"
+                                        data-y="{{ $_row['y'] }}">
                                         <p class="para">{{ $_row['place_name'] }}</p>
                                         <ul class="review">
                                             <li class="list-inline-item">

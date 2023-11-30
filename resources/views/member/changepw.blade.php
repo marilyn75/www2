@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-lg-6 offset-lg-3">
-                <div class="sign_up_form inner_page">
+                <div class="sign_up_form inner_page change_pw">
                     <div class="heading">
                         <h3 class="text-center">비밀번호를 변경하세요.</h3>
                         {{-- <p class="text-center">이미 계정이 있습니까?<a class="text-thm" href="{{ route('login') }}"> &nbsp;&nbsp;&nbsp; Login</a></p> --}}

@@ -16669,8 +16669,9 @@ input[type="range"] {
 .map_w i { color: #385F8D;}
 .map_top_w { display: flex; align-items: baseline; justify-content: space-between; }
 .nearby_w h4 { font-size: 20px; color: #000; font-weight: 600; }
+.nearby_w i { color: #385f8d; }
 .education_w h5 { color: #000; font-weight: 600; color: #385F8D; }
-.single_w .para { line-height: 2; font-size: 16px; }
+.single_w .para { line-height: 2; font-size: 16px; cursor: pointer;}
 .single_w .list-inline-item p { font-size: 16px; margin: 0; }
 .detail_top { padding: 0 20px; }
 .similar h4 { color: #000; font-size: 20px; font-weight: 600; }
@@ -17061,6 +17062,16 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   padding: 0;
   line-height: 40px;
  }
+ .paginate_button:hover {
+  border-radius: 30px !important;
+  background:  !important;
+  border: none !important;
+}
+.paginate_button:active {
+  background: #385f8d !important;
+  border-radius: 30px !important;
+  border: none !important;
+}
 
 /* 공지사항 */
 .my_profile_setting_input .btn1 { 
@@ -17100,7 +17111,6 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   margin-left: 7px !important; 
 }
 .dataTables_length label { color: #000; }
-
 
 /* 회사소개 */
 .inner_page_breadcrumb { background-repeat: round; }
@@ -17157,6 +17167,104 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   .chat_padding { height: 100vh; }
 
 
+/* tooltip */
+  .ole,
+.elo {
+  background: rgb(200,240,255);
+  padding: 6px 36px;
+  display: inline-block;
+  font-size: 1.2em;
+  border-radius: 4px;
+  border:0;
+  cursor: pointer;
+  color: #000;
+}
+
+.ole:hover,
+.elo:hover {
+  background: dodgerblue;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  box-shadow: 0 0 0 #555;
+}
+
+.multiple_elements {
+  padding: 30px 0 10px 0;
+  text-align: center;
+}
+
+/*customizing tooltip color*/
+/*right tooltip*/
+.tooltip.right > .tooltip-arrow {
+  border-right-color: dodgerblue;
+}
+
+/*bottom tooltip*/
+.tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: dodgerblue;
+}
+
+/*top tooltip*/
+.tooltip.top > .tooltip-arrow {
+  border-top-color: dodgerblue;
+}
+
+/*left tooltip*/
+.tooltip.left > .tooltip-arrow {
+  border-left-color: dodgerblue;
+}
+
+/*tooltip inner*/
+.tooltip > .tooltip-inner {
+  background: #385f8d;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+code {
+  color: royalblue;
+  background-color: azure;
+}
+.bs-tooltip-auto[x-placement^=top] .arrow::before, .bs-tooltip-top .arrow::before{
+  border-top-color: #385f8d;
+}
+
+
+/* snackbar */ 
+.snackbar-container { 
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.09);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+  color: #385f8d !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(15px);
+ }
+
+ .snackbar-container .action { background: transparent !important; font-weight: 500 !important; font-size: 16px !important; color: #000 !important; margin: 0 !important; display: flex !important; align-items: center !important; gap: 5px; }
+ .snackbar-container .action::before{
+  content: '';
+  background-image: url('../images/snack_chk.png');
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  display: inline-block;
+ }
+ .snackbar-container { justify-content: flex-start !important; padding: 25px !important; }
+ .snackbar-pos.bottom-left { bottom: 30px !important; left: 50% !important; transform: translateY(-50%) !important; }
+
+
+
+
+
+
+
+@media (max-width:640px) {
+  .ole,
+  .elo {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
 
 
 @media (max-width: 1599.98px) {
@@ -17212,6 +17320,7 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   .service_img { text-align: center; }
   .service_img img { height: 300px; }
   .mobile_serv { display: block; }
+  .feat_property_w .thumb .img-whp { width: 100% !important; }
 
 }
 @media (max-width: 867.98px) {
@@ -17252,7 +17361,7 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 
 }
 @media (max-width: 575.98px) {
-  .text-inf-w { display: flex; gap: 15px; }
+  /* .text-inf-w { display: flex; gap: 15px; } */
   .feat_property_w .details .tc_content .price_w { font-size: 16px; }
   .search_result_w { display: flex !important; justify-content: space-between;}
   .subfilter_w ul{ display: flex; gap: 15px; }
