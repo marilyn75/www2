@@ -19,7 +19,7 @@
         </div>
         @else
         <div class="sl_creator sl_creator_w">
-            <h4 class="mb20">지금 바로 문의해보세요!</h4>
+            <h4 class="mb20" onclick="$alertLoading();">지금 바로 문의해보세요!</h4>
         </div>
         @endif
 
@@ -49,7 +49,9 @@
             <li>
                 <div class="search_option_button detail_emp_btns">
                     @if ($type=='photo')<a class="btn btn-block btn-thm btn-thm_w" href="{{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}">자세히보기</a>@endif
-                    <button type="submit" class="btn btn-block btn-thm btn-thm_w"><span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>문의하기
+                    <button type="submit" class="btn btn-block btn-thm btn-thm_w" onclick="$alertLoadingClose();">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        문의하기
                     </button>
                 </div>
             </li>

@@ -45,6 +45,17 @@
 <!-- css file -->
 <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url('css/style.css') }}">
+<style>
+	/* 로딩용 */
+	.layout-msgpop-wr {position:fixed;z-index:9999;top:0px;left:0px;right:0px;bottom:0px;width:100%;height:100%;}
+	.layout-msgpop-wr .back {position:fixed;top:0px;left:0px;right:0px;bottom:0px;width:100%;height:100%;background-color:rgba(0, 0, 0, .8);cursor:default;}
+	.layout-msgpop-wr .msgpop-wr {position:absolute;width:auto;height:auto;background:#FFF;border-radius:1.5em;box-shadow:3px 3px 15px rgba(33,33,33,0.5);border:1px solid #333;overflow:hidden;}
+	.layout-msgpop-wr .msgpop-wr .msgpop-tit {padding:0.75em 1.5em;background:#eaeaea;line-height:1em;}
+	.layout-msgpop-wr .msgpop-wr .msgpop-tit em {font-style:normal;}
+	.layout-msgpop-wr .msgpop-wr .msgpop-cont {text-align:center;padding:2em 1em;}
+
+	.pop_windoc_box .popErrorBox {background:#FFF;border-radius:15px;width:100%;height:100%;}
+</style>
 </head>
 
 <body>
@@ -94,6 +105,7 @@
 <script type="text/javascript" src="{{ url('js/script.js') }}"></script>
 
 <script type="text/javascript" src="{{ url('js/lib/common.simple.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/lib/common.msgPopup.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/lib/formcheck.js') }}"></script>
 </body>
 </html>

@@ -324,7 +324,7 @@ function $alertLoading(msg){
 
 	if(msg==undefined) var msg = "데이터 처리중입니다.";
 	var printMsg = msg.replace(/\b\n\b/i,'<br/>');
-	var msgHTML = "<div class='popErrorBox'><div class='popErrorMsg'><div class=''><img src='/_Img/Common/loading_img01.gif' alt=''/> <span id='alertloadingmsg'>"+printMsg+"</span></div></div><div class='popErrorBtns'></div></div>";
+	var msgHTML = "<div class='popErrorBox'><div class='popErrorMsg'><div class=''><img src='/images/Common/loading_img01.gif' alt=''/> <span id='alertloadingmsg'>"+printMsg+"</span></div></div><div class='popErrorBtns'></div></div>";
 
 	$("body").msgPopup({"message":msgHTML,"width":300,"height":120});
 

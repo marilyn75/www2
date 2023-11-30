@@ -83,3 +83,7 @@ Route::post('/page/ajax/{id}', [App\Http\Controllers\Web\PageController::class, 
 Route::get('board/data/{id}', [App\Http\Controllers\Admin\BoardDatasControll::class, 'getTableData'])->name('board.data');
 Route::get('/board/file-download/{file_id}', [App\Http\Controllers\Admin\BoardDatasControll::class, 'download'])->name('board.filedownload');
 
+
+Route::get('/test', function(){
+    return view('test');
+});
