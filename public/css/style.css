@@ -16450,11 +16450,19 @@ button.gm-ui-hover-effect:focus {
   width: 45px;
   background: rgb(0, 0, 0, 0.3);
 }
+.heart_btn {
+  border: none;
+  color: #Fff;
+  border-radius: 30px;
+  height: 45px;
+  width: 45px;
+  background: rgb(0, 0, 0, 0.3);
+}
 .feat_property_w .thumb .thmb_cntnt ul.tag li:last-child, .feat_property_w.home8 ul.tag li:last-child, .properti_city.home6 .thumb .thmb_cntnt ul.tag li:last-child, .feat_property_w.list .dtls_headr ul.tag li:last-child{
   background: rgb(0, 0, 0, 0.3);
 }
 .feat_property_w .thumb .thmb_cntnt ul.tag li:first-child, .feat_property_w.home8 ul.tag li:first-child, .properti_city.home6 .thumb .thmb_cntnt ul.tag li:first-child, .feat_property_w.list .dtls_headr ul.tag li:first-child{
-  background: rgb(255, 255, 255, 0.3);
+  background: transparent;
 }
 .feat_property_w .thumb .thmb_cntnt ul.tag li a, .feat_property_w .thumb .thmb_cntnt ul.tag li span, .properti_city.home6 .thumb .thmb_cntnt ul.tag li a, .feat_property_w.home8 ul.tag li a, .feat_property_w.list ul.tag li a{
   font-size: 16px;

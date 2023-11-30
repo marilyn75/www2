@@ -690,16 +690,16 @@
 
                                     <!-- 찜하기 전 -->
                                     <li class="list-inline-item">
-                                        <a onclick="return showAlert()">
+                                        <button class="heart_btn" onclick="return showAlert()">
                                             <i class="ri-heart-3-line"></i>
-                                        </a>
+                                        </button>
                                     </li>
 
                                     <!-- 찜 하고 나서 -->
                                     <!-- <li class="list-inline-item">
-                                        <a onclick="return showAlert()">
+                                        <button class="heart_btn" onclick="return showAlert()">
                                             <i class="ri-heart-3-fill"></i>
-                                        </a>
+                                        </button>
                                     </li> -->
 
                                     <li class="list-inline-item">
