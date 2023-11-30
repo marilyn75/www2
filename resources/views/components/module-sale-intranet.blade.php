@@ -708,7 +708,7 @@
                                     <!-- 찜하기 전 -->
                                     <li class="list-inline-item">
                                         <button class="heart_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
-                                            @if (in_array($printData['idx'], $favorites))
+                                            @if (!empty($favorites) && in_array($printData['idx'], $favorites))
                                             <i class="ri-heart-3-fill"></i>
                                             @else
                                             <i class="ri-heart-3-line"></i>

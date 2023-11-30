@@ -266,14 +266,12 @@ class IntraSaleClass{
 
     // 관심매물 ids
     public function getFavorites(){
-        if(!auth()->check()) $result = ResultClass::fail('');
+        if(!auth()->check()) return ResultClass::fail('');
 
         $data = UserSaleFavorite::where('user_id', auth()->user()->id)->get();
         $ids = [];
         foreach($data as $_dt)  $ids[] = $_dt->sale_id;
 
-        $result = ResultClass::success('', $ids);
-
-        return $result;
+        return ResultClass::success('', $ids);
     }
 }
