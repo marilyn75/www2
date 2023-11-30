@@ -45,6 +45,7 @@
 <!-- css file -->
 <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url('css/style.css') }}">
+<link rel="stylesheet" href="{{ url('css/snackbar.min.css') }}">
 <style>
 	/* 로딩용 */
 	.layout-msgpop-wr {position:fixed;z-index:9999;top:0px;left:0px;right:0px;bottom:0px;width:100%;height:100%;}

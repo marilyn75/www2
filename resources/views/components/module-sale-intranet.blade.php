@@ -668,7 +668,7 @@
         <!-- 검색결과 end -->
         <script>
         function showAlert() {
-            alert("관심상품에 담겼습니다.");
+            Snackbar.show({ actionText: '관심매물에 담겼습니다.', });
             return false;
         }
         </script>
