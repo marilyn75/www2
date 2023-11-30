@@ -36,7 +36,7 @@
                         <form action="{{ url(route('changepw')) }}" method="POST">
                             @csrf
                              <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" disabled readonly style="background-color: #88888888;">
+                                <input type="email" class="form-control mont email_bx" id="email" name="email" value="{{ Auth::user()->email }}" disabled readonly style="background-color: #88888888;">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="curr_password" name="curr_password" placeholder="현재 비밀번호">

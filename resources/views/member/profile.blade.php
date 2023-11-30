@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="sign_up_form inner_page">
+                <div class="sign_up_form inner_page sign_up_form_w">
                     <div class="heading">
                         <h3 class="text-center">회원정보를 수정하세요.</h3>
                         {{-- <p class="text-center">이미 계정이 있습니까?<a class="text-thm" href="{{ route('login') }}"> &nbsp;&nbsp;&nbsp; Login</a></p> --}}

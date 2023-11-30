@@ -17006,6 +17006,27 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .sign_up_form_w .btn-log:hover{ background: #385F8D; color: #fff; }
 
 
+/* 비밀번호 찾기 */
+.change_pw h3 { text-align: left !important; color: #000; font-size: 28px; font-weight: 500; }
+.email_bx { border-radius: 5px !important; background: #385f8d !important; color: #fff !important; border: none !important;}
+.change_pw.inner_page .form-control{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  border-radius: 0px;
+  font-size: 18px;
+}
+.change_pw .btn-log {
+  border-radius: 10px;
+  background: #D9D9D9;
+  border: 1px solid #D9D9D9;
+  font-weight: 500;
+  box-shadow: none;
+  font-size: 18px;
+  height: 70px;
+  margin-top: 60px;
+}
+.change_pw .btn-log:hover{ background: #385F8D; color: #fff; }
 
 /* 게시물 */
 .packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th{
@@ -17064,7 +17085,7 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
  }
  .paginate_button:hover {
   border-radius: 30px !important;
-  background:  !important;
+  background: #385f8d !important;
   border: none !important;
 }
 .paginate_button:active {
@@ -17193,26 +17214,6 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   text-align: center;
 }
 
-/*customizing tooltip color*/
-/*right tooltip*/
-.tooltip.right > .tooltip-arrow {
-  border-right-color: dodgerblue;
-}
-
-/*bottom tooltip*/
-.tooltip.bottom > .tooltip-arrow {
-  border-bottom-color: dodgerblue;
-}
-
-/*top tooltip*/
-.tooltip.top > .tooltip-arrow {
-  border-top-color: dodgerblue;
-}
-
-/*left tooltip*/
-.tooltip.left > .tooltip-arrow {
-  border-left-color: dodgerblue;
-}
 
 /*tooltip inner*/
 .tooltip > .tooltip-inner {
