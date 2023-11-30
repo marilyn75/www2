@@ -16459,6 +16459,13 @@ button.gm-ui-hover-effect:focus {
   background: rgb(0, 0, 0, 0.3);
   cursor: pointer;
 }
+.heart_btn:active {
+  outline: none;
+  border: transparent;
+}
+.heart_btn:focus {
+  outline: none;
+}
 .feat_property_w .thumb .thmb_cntnt ul.tag li:last-child, .feat_property_w.home8 ul.tag li:last-child, .properti_city.home6 .thumb .thmb_cntnt ul.tag li:last-child, .feat_property_w.list .dtls_headr ul.tag li:last-child{
   background: rgb(0, 0, 0, 0.3);
 }
