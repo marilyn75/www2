@@ -708,7 +708,7 @@
                                     <!-- 찜하기 전 -->
                                     <li class="list-inline-item">
                                         <button class="heart_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
-                                            <i class="ri-heart-3-line"></i>
+                                            <i class="ri-heart-3-line on"></i>
                                         </button>
                                     </li>
 
