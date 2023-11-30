@@ -1,7 +1,7 @@
 <style>
 /* .img-whp{width:360px;height:287px;} */
 .img-whp {
-    width: 340px;
+    width: 370px !important;
     height: 215px;
 }
 </style>
@@ -666,7 +666,12 @@
             </div>
         </div>
         <!-- 검색결과 end -->
-
+        <script>
+        function showAlert() {
+            alert("관심상품에 담겼습니다.");
+            return false;
+        }
+        </script>
         <div class="row">
             @foreach ($data as $_data)
             @php
@@ -675,66 +680,79 @@
 
 
             @endphp
-            <div class="col-sm-6 col-md-6 col-lg-6"
-                onclick="document.location.href='{{ $data->path() }}?mode=show&idx={{ $printData['idx'] }}'">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="{{ $printData['img'] }}">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="" onclick="showAlert()"><i class="ri-heart-3-line"></i></a></li>
-                                <li class="list-inline-item"><a href=" "><i class="ri-thumb-up-fill"></i></a></li>
-                            </ul>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <a href="{{ $data->path() }}?mode=show&idx={{ $printData['idx'] }}">
+                    <div class="feat_property home7 style4 bdrrn feat_property_w">
+                        <div class="thumb">
+                            <img class="img-whp" src="{{ $printData['img'] }}">
+                            <div class="thmb_cntnt">
+                                <ul class="tag mb0">
+
+                                    <!-- 찜하기 전 -->
+                                    <li class="list-inline-item">
+                                        <a onclick="return showAlert()">
+                                            <i class="ri-heart-3-line"></i>
+                                        </a>
+                                    </li>
+
+                                    <!-- 찜 하고 나서 -->
+                                    <!-- <li class="list-inline-item">
+                                        <a onclick="return showAlert()">
+                                            <i class="ri-heart-3-fill"></i>
+                                        </a>
+                                    </li> -->
+
+                                    <li class="list-inline-item">
+                                        <i class="ri-thumb-up-fill"></i>
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
-                        <script>
-                        function showAlert() {
-                            alert("관심상품에 담겼습니다.");
-                        }
-                        </script>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">{{ $printData['category'] }}</p>
-                            <h4>{{ $printData['title'] }}</h4>
-                            <!-- <ul class="prop_details mb0">
+                        <div class="details details_w">
+                            <div class="tc_content tc_content_w">
+                                <p class="text-thm">{{ $printData['category'] }}</p>
+                                <h4>{{ $printData['title'] }}</h4>
+                                <!-- <ul class="prop_details mb0">
                             <li class="list-inline-item"><i class="ri-building-line"></i><a href="#">일반상업지 1,000㎡</a></li>
                             <li class="list-inline-item"><a href="#">B1/15F 연10,000㎡</a></li>
                         </ul> -->
-                            @if(!empty($printData['area_b']))
-                            <div class="text-inf-w">
-                                <p class="text-inf"><i
-                                        class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
-                                    {{ $printData['floorInfo'] }}</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>분양{{ $printData['area_b'] }}㎡
-                                    전유{{ $printData['area_j'] }}㎡</p>
-                            </div>
-                            @else
-                            <div class="text-inf-w">
-                                <p class="text-inf"><i
-                                        class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
-                                    {{ $printData['landArea'] }}㎡</p>
-                                @if (strpos($printData['category'],"토지")===false)
-                                <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}}
-                                    연{{ $printData['bdArea'] }}㎡</p>
+                                @if(!empty($printData['area_b']))
+                                <div class="text-inf-w">
+                                    <p class="text-inf"><i
+                                            class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
+                                        {{ $printData['floorInfo'] }}</p>
+                                    <p class="text-inf"><i class="ri-building-line"></i>분양{{ $printData['area_b'] }}㎡
+                                        전유{{ $printData['area_j'] }}㎡</p>
+                                </div>
+                                @else
+                                <div class="text-inf-w">
+                                    <p class="text-inf"><i
+                                            class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
+                                        {{ $printData['landArea'] }}㎡</p>
+                                    @if (strpos($printData['category'],"토지")===false)
+                                    <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}}
+                                        연{{ $printData['bdArea'] }}㎡</p>
+                                    @endif
+                                </div>
                                 @endif
+                                <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $printData['address'] }}</p>
+                                <p class="text-thm price_w">{{ $printData['tradeType'] }} <span
+                                        class="mont">{{ $printData['price'] }}</span> 만원</p>
                             </div>
-                            @endif
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $printData['address'] }}</p>
-                            <p class="text-thm price_w">{{ $printData['tradeType'] }} <span
-                                    class="mont">{{ $printData['price'] }}</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item sawon_crop"><a href="#"><img
-                                            src="{{ $printData['sawon_photo'] }}"
-                                            style="width: 40px; height: 40px;"></a></li>
-                                <li class="list-inline-item"><a href="#">{{ $printData['sawon_name'] }}
-                                        {{ $printData['sawon_sosok'] }}</a></li>
-                            </ul>
-                            <p class="fp_pdate">{{ $printData['print_data'] }}</p>
+                            <div class="fp_footer fp_footer_w">
+                                <ul class="fp_meta float-left mb0 fp_meta_w">
+                                    <li class="list-inline-item sawon_crop"><a href="#"><img
+                                                src="{{ $printData['sawon_photo'] }}"
+                                                style="width: 40px; height: 40px;"></a></li>
+                                    <li class="list-inline-item"><a href="#">{{ $printData['sawon_name'] }}
+                                            {{ $printData['sawon_sosok'] }}</a></li>
+                                </ul>
+                                <p class="fp_pdate">{{ $printData['print_data'] }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             @endforeach

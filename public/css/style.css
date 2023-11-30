@@ -16439,8 +16439,8 @@ button.gm-ui-hover-effect:focus {
 .search_result_w .bootstrap-select>.dropdown-toggle { background: transparent; }
 .plr-0 { padding: 0; }
 .list-inline-item i {  font-size: 22px; line-height: 46px; }
-.list-inline-item:nth-child(2) i { color: #FFC700; font-size: 20px; line-height: 45px; }
-.full-heart { color: #E93C3C; }
+.ri-thumb-up-fill { font-size: 18px !important; color: #FFC700; }
+.ri-heart-3-fill { color: #E93C3C; }
 
 .search_result_w .right_area ul li .filter-option-inner-inner { font-size: 16px; color: #000; font-weight: 600; }
 .feat_property.home7.style3 .details .tc_content_w { padding: 0; position: relative; }
@@ -16448,10 +16448,10 @@ button.gm-ui-hover-effect:focus {
   border-radius: 30px;
   height: 45px;
   width: 45px;
-  background-color: #FF6801;
+  background: rgb(0, 0, 0, 0.3);
 }
 .feat_property_w .thumb .thmb_cntnt ul.tag li:last-child, .feat_property_w.home8 ul.tag li:last-child, .properti_city.home6 .thumb .thmb_cntnt ul.tag li:last-child, .feat_property_w.list .dtls_headr ul.tag li:last-child{
-  background: rgb(255, 255, 255, 0.3);
+  background: rgb(0, 0, 0, 0.3);
 }
 .feat_property_w .thumb .thmb_cntnt ul.tag li:first-child, .feat_property_w.home8 ul.tag li:first-child, .properti_city.home6 .thumb .thmb_cntnt ul.tag li:first-child, .feat_property_w.list .dtls_headr ul.tag li:first-child{
   background: rgb(255, 255, 255, 0.3);
