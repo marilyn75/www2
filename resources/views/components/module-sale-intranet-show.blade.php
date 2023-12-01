@@ -5,72 +5,74 @@ $(window).on('load', function() {
         var imageUrl = $(".single_product_grid .img-fluid").eq(index + 2).attr('src');
         $(this).find('span').css('background-image', 'url(' + imageUrl + ')');
     });
-
-    $(document).on("click", ".nearby-infra", function() {
-        console.log('marker click');
-        var x = $(this).data('x');
-        var y = $(this).data('y');
-
-        // 마커 하나를 지도위에 표시합니다 
-        addMarker(new kakao.maps.LatLng(y, x));
-    });
 });
 </script>
 <div class="col-lg-8">
-    <div class="single_product_grid row single_product_grid_w">
-        <div
-            class="@if(count($printData['imgs'])>1) single_product_slider @endif col-sm-6 col-md-6 col-lg-6 pl0 pr0 single_product_slider_w">
-            @foreach ($printData['imgs'] as $_img)
-            <div class="item">
-                <div class="sps_content">
-                    <div class="thumb detail_b_thumb">
-                        <div class="single_product">
-                            <div class="single_item">
-                                <div class="thumb detail_b_thumb"><img class="img-fluid" src="{{ $_img }}"></div>
-                            </div>
-                            <a class="product_popup popup-img" href="{{ $_img }}">
-                                <i class="ri-zoom-in-line"></i>
-                            </a>
-                        </div>
+    
+    <!-- 수정 -->
+    <div class="detail_img">
+        <div class="col-lg-12 single_product_grid row single_product_grid_w">
+            <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+                <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
+                    @foreach ($printData['imgs'] as $_img)
+                    <div class="swiper-slide" role="group" style="width: 730px;">
+                        <img src="{{ $_img }}" alt="" style="width: 730px; height: 560px;">
                     </div>
+                    @endforeach
                 </div>
+                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
+                    aria-controls="swiper-wrapper-bd129101b3b69f5107" aria-disabled="false">
+                    <p class="mont">NEXT</p>
+                </div>
+                <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button"
+                    aria-label="Previous slide" aria-controls="swiper-wrapper-bd129101b3b69f5107" aria-disabled="true">
+                    <p class="mont">PREV</p>
+                </div>
+                <div class="swiper-pagination mont swiper-pagination-fraction swiper-pagination-horizontal"><span
+                        class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">3</span>
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
-            @endforeach
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-6 detail_top_inf">
-            <div class="sps_content">
-                <div class="content">
-                    <div class="shop_single_product_details">
-                        <div class="tag detail_t_tag">{{ $printData['tradeType'] }}</div>
-                        <div>
-                            <div>
-                                <div class="tag detail_type">{{ $printData['category'] }}</div>
-                                <h4 class="title">{{ $printData['address'] }}</h4>
-                            </div>
-                            <div class="detail_price mb15"><span class="mont">{{ $printData['price'] }}</span> 만원</div>
-                        </div>
 
-                        <ul class="list_details list_details_w">
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> {{ $printData['prposAreaNm'] }}</a>
-                            </li>
-                            @if(!empty($printData['area_b']))
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 분양{{ $printData['area_b'] }}㎡
-                                    전유{{ $printData['area_j'] }}㎡ </a></li>
-                            @else
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 토지면적
-                                    {{ $printData['landArea'] }}㎡</a></li>
-                            @if (strpos($printData['category'],"토지")===false)
-                            <li><a href="#"><i class="ri-checkbox-circle-line"></i> 연면적 {{ $printData['bdArea'] }}㎡</a>
-                            </li>
-                            @endif
-                            @endif
-                        </ul>
-                    </div>
+            <!-- Initialize Swiper -->
+            <script>
+            var swiper = new Swiper(".mySwiper", {
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "fraction",
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+            </script>
+
+            <div class="detail_info">
+                <div class="de_info_left">
+                    <p>{{ $printData['category'] }}</p>
+                    <h3>{{ $printData['address'] }}</h3>
+                    <ul>
+                        <li><a href="#">{{ $printData['prposAreaNm'] }}</a>
+                        </li>
+                        @if(!empty($printData['area_b']))
+                        <li><a href="#">분양{{ $printData['area_b'] }}㎡
+                                전유{{ $printData['area_j'] }}㎡ </a></li>
+                        @else
+                        <li><a href="#">토지면적
+                                {{ $printData['landArea'] }}㎡</a></li>
+                        @if (strpos($printData['category'],"토지")===false)
+                        <li><a href="#">연면적 {{ $printData['bdArea'] }}㎡</a>
+                        </li>
+                        @endif
+                        @endif
+                    </ul>
                 </div>
+                <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
             </div>
+
         </div>
     </div>
-
     <!-- Agent Single Grid View -->
     <section class="our-agent-single bgc-f7 pb30-991">
         <div class="container container_w">
@@ -422,10 +424,10 @@ $(window).on('load', function() {
                             @foreach ($relatedSales as $_data)
                             @php
 
-                            $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
+                            $_printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
 
                             @endphp
-                            <x-item-sale-intranet type='related' :printData="$printData" />
+                            <x-item-sale-intranet type='related' :printData="$_printData" />
 
                             @endforeach
                         </div>

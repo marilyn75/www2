@@ -139,7 +139,7 @@ class IntraSaleClass{
 
         
 
-
+// dd('중개사정보',$data->sale->users->first()->sawon->user_name);
         $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
         $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
@@ -221,7 +221,7 @@ class IntraSaleClass{
         $r_data['category'] = 'SC4';
         $r_data['x'] = $x;
         $r_data['y'] = $y;
-        $r_data['radius'] = 2000; // 반경 00m
+        $r_data['radius'] = 1000; // 반경 00m
         $r_data['size'] = 5;
 
         $response = $clsKkoApi->getLocalSearchCategory($r_data);
