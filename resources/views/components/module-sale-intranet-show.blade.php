@@ -12,11 +12,33 @@ $(window).on('load', function() {
     <!-- 수정 -->
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
+        <div class="detail_info">
+                <div class="de_info_left">
+                    <p>{{ $printData['category'] }}</p>
+                    <h3>{{ $printData['address'] }}</h3>
+                    <ul>
+                        <li><a href="#">{{ $printData['prposAreaNm'] }}</a>
+                        </li>
+                        @if(!empty($printData['area_b']))
+                        <li><a href="#">분양{{ $printData['area_b'] }}㎡
+                                전유{{ $printData['area_j'] }}㎡ </a></li>
+                        @else
+                        <li><a href="#">토지면적
+                                {{ $printData['landArea'] }}㎡</a></li>
+                        @if (strpos($printData['category'],"토지")===false)
+                        <li><a href="#">연면적 {{ $printData['bdArea'] }}㎡</a>
+                        </li>
+                        @endif
+                        @endif
+                    </ul>
+                </div>
+                <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
+            </div>
             <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
                 <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
                     @foreach ($printData['imgs'] as $_img)
-                    <div class="swiper-slide" role="group" style="width: 730px;">
-                        <img src="{{ $_img }}" alt="" style="width: 730px; height: 560px;">
+                    <div class="swiper-slide" role="group" >
+                        <img src="{{ $_img }}" alt="" style="width: 730px; height: 424px;">
                     </div>
                     @endforeach
                 </div>
@@ -47,29 +69,6 @@ $(window).on('load', function() {
                 },
             });
             </script>
-
-            <div class="detail_info">
-                <div class="de_info_left">
-                    <p>{{ $printData['category'] }}</p>
-                    <h3>{{ $printData['address'] }}</h3>
-                    <ul>
-                        <li><a href="#">{{ $printData['prposAreaNm'] }}</a>
-                        </li>
-                        @if(!empty($printData['area_b']))
-                        <li><a href="#">분양{{ $printData['area_b'] }}㎡
-                                전유{{ $printData['area_j'] }}㎡ </a></li>
-                        @else
-                        <li><a href="#">토지면적
-                                {{ $printData['landArea'] }}㎡</a></li>
-                        @if (strpos($printData['category'],"토지")===false)
-                        <li><a href="#">연면적 {{ $printData['bdArea'] }}㎡</a>
-                        </li>
-                        @endif
-                        @endif
-                    </ul>
-                </div>
-                <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
-            </div>
 
         </div>
     </div>

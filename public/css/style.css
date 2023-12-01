@@ -16598,7 +16598,7 @@ swiper-slide img {
   justify-content: space-between;
   width: 100%;
   align-items: flex-end; 
-  margin-top: 30px; 
+  margin-bottom: 15px; 
 }
 .de_info_left p { font-size: 18px; color: #385F8D; font-weight: 500; margin: 0; }
 .de_info_left h3 { font-size: 24px; color: #000;  }
@@ -17249,7 +17249,10 @@ code {
   .prof { display: flex; }
   .employ_name p { text-align: left; font-size: 16px; }
   .detail_img_crop img { height: 280px !important; }
-  .single_product_grid_w { flex-direction: column-reverse; padding: 20px; margin-bottom: 0 !important; }
+  
+  /* 원인 */
+  /* .single_product_grid_w { flex-direction: column-reverse; padding: 20px; margin-bottom: 0 !important; } */
+  
   .detail_top_inf { padding: 0; }
   /* .detail_img_crop { width: 330px; height: 245px; } */
   .detail_t_tag { font-size: 14px; padding: 2px 0; margin-bottom: 10px; width: 55px; }
@@ -17290,6 +17293,7 @@ code {
   .fight h2 { font-size: 24px; margin-bottom: 15px; }
 
 
+  
 }
 @media (max-width: 520.98px) {
   .home_search_w ul { display: grid; }
