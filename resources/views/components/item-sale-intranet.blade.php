@@ -16,11 +16,12 @@
                                     @endif
                                 </button>
                             </li>
-                        @endif
+                        
 
-                        <li class="list-inline-item">
-                            <i class="ri-thumb-up-fill"></i>
-                        </li>
+                            <li class="list-inline-item">
+                                <i class="ri-thumb-up-fill"></i>
+                            </li>
+                        @endif
                     </ul>
                 </div>
 

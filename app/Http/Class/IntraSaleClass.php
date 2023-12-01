@@ -312,15 +312,25 @@ class IntraSaleClass{
         $addr2 = $arrAddress[0] . " " . $arrAddress[1];
         $addr1 = $arrAddress[0];
 
-        $data = IntraSaleHomepage::query()
-            ->orderByRaw("case when category = '" .$sale['category']. "' then 0 when category like '" .$arrCategory[0]. "%' then 1 else 2 end") // 매물유형조건
-            // ->orderByRaw("abs(salePrice)")
-            ->orderByRaw("case when SUBSTRING_INDEX(addr, ' ', 3) = '" .$addr3. "' then 0 when SUBSTRING_INDEX(addr, ' ', 2) = '" .$addr2. "' then 1 when SUBSTRING_INDEX(addr, ' ', 1) = '" .$addr1. "' then 2 else 3 end")
-            ->take(4)
+        // 평당가격 쿼리
+        $qry['price_per_py'] = "round(case when category like '%분양상가' then salePrice / (area_b / 3.3) else salePrice / (landArea / 3.3) end)";
+
+        $model = IntraSaleHomepage::where('idx','!=',$sale['idx'])
+            ->orderByRaw("case when category = '" .$sale['category']. "' then 0 when category like '" .$arrCategory[0]. "%' then 1 else 2 end"); // 매물유형조건
+        
+        if($sale['tradeType']=="임대"){
+            
+        }else{
+            $model->orderByRaw("abs(".$qry['price_per_py']." - ".$sale['salePrice'].")");
+        }
+
+        $model->orderByRaw("case when SUBSTRING_INDEX(addr, ' ', 3) = '" .$addr3. "' then 0 when SUBSTRING_INDEX(addr, ' ', 2) = '" .$addr2. "' then 1 when SUBSTRING_INDEX(addr, ' ', 1) = '" .$addr1. "' then 2 else 3 end");    // 소재지 조건
+
+        $data = $model->take(4)
             ->get();
 
         // debug($sale);
-        // debug($data->toArray());
+        debug($data);
 
         return $data;
     }
