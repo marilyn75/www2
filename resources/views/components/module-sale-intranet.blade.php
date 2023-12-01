@@ -1,10 +1,3 @@
-<style>
-/* .img-whp{width:360px;height:287px;} */
-.img-whp {
-    width: 370px !important;
-    height: 215px;
-}
-</style>
 
 <script>
     function addFavorite(obj, id){
