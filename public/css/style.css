@@ -16967,14 +16967,29 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 .dataTables_length label { color: #000; }
 
 /* 회사소개 */
+.intro_tit { color: #000; margin-bottom: 45px; line-height: 40px; }
 .inner_page_breadcrumb { background-repeat: round; }
-.intro_imgs { display: flex; justify-content: space-between; }
+.intro_imgs { display: flex; justify-content: space-between; gap: 10px; }
 .core h2 { color: #000; margin-bottom: 45px; }
 .intro_txt { font-size: 20px; color: #000; font-weight: 500; word-break: keep-all; }
 .intro_contact h2 { color: #000; margin-bottom: 45px; }
 .intro_contact ul li { display: flex; }
 .intro_contact ul li p { color: #000; font-size: 20px; font-weight: 500; }
 .intro_contact ul li p:first-child { width: 130px; }
+
+
+/* about us */
+.about_content { border-radius: 10px; overflow: hidden; }
+.about_us h2{ font-size: 30px; color: #000; margin-bottom: 45px; }
+.why_chose_us.style2:hover .icon { background: linear-gradient(90deg, #388D8D 0%, #1A4173 100%) !important; }
+.why_chose_us.style2:hover:before { background: #385f8d; }
+.why_chose_us .details { margin-top: 25px; }
+.why_chose_us .details h4 { color: #000; font-size: 20px; font-weight: 500; }
+.why_chose_us .details p { color: #000; font-size: 20px; font-weight: 500; }
+.why_chose_us .details p span { color: #385f8d; font-size: 28px; font-weight: 700; }
+.vision h2 { color: #000; margin-bottom: 45px; }
+.fight h2 { color: #000; margin-bottom: 45px; }
+
 
 
 /* 준비중페이지 */
@@ -17180,6 +17195,8 @@ code {
   .chat-icon p { font-size: 12px; line-height: 18px; }
   .agent_enter { padding: 0 15px !important; }
   .intro_imgs img { height: 245px; }
+  .about_top .intro_txt { font-size: 16px; }
+
 }
 @media (max-width: 767.98px) {
 
@@ -17259,6 +17276,18 @@ code {
   .service_img img { height: auto; }
   .mobile_serv { font-size: 24px; }
 
+  .intro_tit { font-size: 24px; margin-bottom: 15px; line-height: 35px; }
+  .intro_tit span { font-size: 24px !important; }
+  .intro_txt { font-size: 18px; }
+  .core h2 { font-size: 24px; margin-bottom: 15px; }
+  .intro_contact h2 { font-size: 24px; margin-bottom: 15px; }
+  .intro_contact ul li { display: grid; }
+  .intro_contact ul li p { font-size: 18px; }
+  .about_us h2 { line-height: 35px; font-size: 24px; margin-bottom: 15px; word-break: auto-phrase; }
+  .vision h2 { font-size: 24px; margin-bottom: 15px; }
+  .fight h2 { font-size: 24px; margin-bottom: 15px; }
+
+
 }
 @media (max-width: 520.98px) {
   .home_search_w ul { display: grid; }
@@ -17294,15 +17323,7 @@ code {
   .sns p { font-size: 16px; }
   .sns_n img { width: 20px; }
 
-  .intro_tit span { font-size: 24px !important; }
-  .intro_tit { margin: 0; }
-  .intro_txt { font-size: 18px; }
-  .core h2 { font-size: 24px; margin-bottom: 30px; }
-  .intro_contact h2 { font-size: 24px; margin-bottom: 30px; }
-  .intro_contact ul li p{ font-size: 18px; }
-  .intro_contact ul li { display: grid; }
-  .mobile_serv { font-size: 18px; }
-  .service_r { margin-bottom: 30px; }
+
 }
 
 
@@ -17317,5 +17338,17 @@ code {
   .agent_content h4 { margin-bottom: 10px !important; }
   .sidebar_listing_list_w { padding: 15px; }
   .mobile_serv { font-size: 16px; }
+
+  .intro_tit { font-size: 20px; }
+  .intro_tit span { font-size: 20px !important; }
+  .core h2 { font-size: 20px; }
+  .intro_contact h2 { font-size: 20px; }
+  .intro_txt { font-size: 14px; }
+  .intro_contact ul li p { font-size: 14px; margin: 0; }
+  .about_us h2 { font-size: 20px; }
+  .about_top .intro_txt { font-size: 14px; }
+  .why_chose_us .details p span { font-size: 25px; }
+  .vision h2 { font-size: 20px; }
+  .fight h2 { font-size: 20px; }
 }
 
