@@ -635,19 +635,21 @@ function ErrMsg(el, type, form) {
 
     var 	focus_target = el;
     var focus_target_id="";
+    var errMsg = "";
+
     switch(type) { 
         case "ssame": 
                 var sameFld = getDataAttribute(el,"ssame");
                 //eval("var samename = (form."+el.ssame+".hname) ? form."+el.ssame+".hname : form."+el.ssame+".name");
                  var samename = getDataAttribute($("[name='"+sameFld+"']",form),"hname") ;
                 if(typeof(samename)!="undefined"){
-                alert("'"+ name + "' 항목은 '" + samename + "' 항목과 같아야 합니다."); 
+                    errMsg = "'"+ name + "' 항목은 '" + samename + "' 항목과 같아야 합니다."; 
                 }else{
-                    alert("'"+ name + "' 항목의 입력값을 확인해주시기 바랍니다."); 
+                    errMsg = "'"+ name + "' 항목의 입력값을 확인해주시기 바랍니다."; 
                 }
                 break; 
         case "email": 
-                alert("'"+ name + "'의 형식이 올바르지 않습니다."); 
+                errMsg = "'"+ name + "'의 형식이 올바르지 않습니다."; 
                 break;  
         case "dchk": 
                 focus_target_id = el.dchkid;
@@ -655,134 +657,138 @@ function ErrMsg(el, type, form) {
                     focus_target_id = getDataAttribute(el,"dchkid2");
                 }
                 focus_target = document.getElementById(focus_target_id);
-                alert("이미 사용중인 "+ name + " 이거나, 중복확인을 하지 않으셨습니다."); 
+                errMsg = "이미 사용중인 "+ name + " 이거나, 중복확인을 하지 않으셨습니다."; 
                 break;
         case "domain": 
-                alert("'"+ name + "'의 형식이 올바르지 않습니다\n\nhttp://로 시작하는 도메인을 입력하세요"); 
+                errMsg = "'"+ name + "'의 형식이 올바르지 않습니다\n\nhttp://로 시작하는 도메인을 입력하세요."; 
                 break; 
         case "phone": 
-                alert("'"+ name + "'의 형식이 올바르지 않습니다\n02-1234-5678형식으로 입력하세요"); 
+                errMsg = "'"+ name + "'의 형식이 올바르지 않습니다\n02-1234-5678형식으로 입력하세요."; 
                 break; 
         case "money": 
-                alert("'"+ name + "' 항목은 숫자만(소수점포함) 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 숫자만(소수점포함) 입력하실 수 있습니다.";
                 break;
         case "number": 
-                alert("'"+ name + "' 항목은 숫자만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 숫자만 입력하실 수 있습니다.";
                 break;
         case "float": 
-                alert("'"+ name + "' 항목은 숫자만(소수점포함) 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 숫자만(소수점포함) 입력하실 수 있습니다.";
                 break;
         case "year": 
-                alert("'"+ name + "' 항목은 년도를 4자리 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 년도를 4자리 숫자로만 입력하실 수 있습니다.";
                 break;
         case "month1": 
-                alert("'"+ name + "' 항목은 1~12까지의 날짜(월)을 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 1~12까지의 날짜(월)을 숫자로만 입력하실 수 있습니다.";
                 break;
         case "month2": 
-                alert("'"+ name + "' 항목은 01~12까지의 날짜(월)을 2자리 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 01~12까지의 날짜(월)을 2자리 숫자로만 입력하실 수 있습니다.";
                 break;
         case "day1": 
-                alert("'"+ name + "' 항목은 1~31까지의 날짜(일)을 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 1~31까지의 날짜(일)을 숫자로만 입력하실 수 있습니다.";
                 break;
         case "day2": 
-                alert("'"+ name + "' 항목은 01~31까지의 날짜(일)을 2자리 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 01~31까지의 날짜(일)을 2자리 숫자로만 입력하실 수 있습니다.";
                 break;
         case "hour1": 
-                alert("'"+ name + "' 항목은 0~24까지의 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 0~24까지의 숫자로만 입력하실 수 있습니다.";
                 break;
         case "hour2": 
-                alert("'"+ name + "' 항목은 00~24까지의 2자리 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 00~24까지의 2자리 숫자로만 입력하실 수 있습니다.";
                 break;
         case "shour1": 
-                alert("'"+ name + "' 항목은 0~12까지의 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 0~12까지의 숫자로만 입력하실 수 있습니다.";
                 break;
         case "shour2": 
-                alert("'"+ name + "' 항목은 00~12까지의 2자리 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 00~12까지의 2자리 숫자로만 입력하실 수 있습니다.";
                 break;
         case "time1": 
-                alert("'"+ name + "' 항목은 0~59까지의 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 0~59까지의 숫자로만 입력하실 수 있습니다.";
                 break;
         case "time2": 
-                alert("'"+ name + "' 항목은 00~59까지의 2자리 숫자로만 입력하실 수 있습니다.");
+                errMsg = "'"+ name + "' 항목은 00~59까지의 2자리 숫자로만 입력하실 수 있습니다.";
                 break;
         case "hangul": 
-                alert("'"+ name + "' 항목은 한글만 입력할 수 있습니다"); 
+                errMsg = "'"+ name + "' 항목은 한글만 입력할 수 있습니다."; 
                 break; 
         case "english": 
-                alert("'"+ name + "' 항목은 영문만 입력하실 수 있습니다"); 
+                errMsg = "'"+ name + "' 항목은 영문만 입력하실 수 있습니다."; 
                 break; 
         case "idpass": 
-                alert("'"+ name + "' 항목은 영문, 숫자, _ 만 입력하실 수 있습니다"); 
+                errMsg = "'"+ name + "' 항목은 영문, 숫자, _ 만 입력하실 수 있습니다."; 
                 break; 
 
         case "mincheck": 
                 if(getDataAttribute(el,"grname")!=undefined && getDataAttribute(el,"grname")!="" ){
                     name = getDataAttribute(el,"grname");
                 }
-                alert("'"+ name + "' 항목은 " + getDataAttribute(el,"mincheck") + "개 이상 선택해주시기 바랍니다."); 
+                errMsg = "'"+ name + "' 항목은 " + getDataAttribute(el,"mincheck") + "개 이상 선택해주시기 바랍니다."; 
                 break; 
         case "maxcheck": 
                 if(getDataAttribute(el,"grname")!=undefined && getDataAttribute(el,"grname")!="" ){
                     name = getDataAttribute(el,"grname");
                 }
-                alert("'"+ name + "' 항목은 최대 " + getDataAttribute(el,"maxcheck") + "개까지만 선택가능 합니다."); 
+                errMsg = "'"+ name + "' 항목은 최대 " + getDataAttribute(el,"maxcheck") + "개까지만 선택가능 합니다."; 
                 break; 
         case "mincount": 
-                alert("'"+ name + "' 항목은 " + getDataAttribute(el,"mincount") + " 이상이어야 합니다."); 
+                errMsg = "'"+ name + "' 항목은 " + getDataAttribute(el,"mincount") + " 이상이어야 합니다."; 
                 break; 
         case "minlength": 
-                alert("'"+ name + "' 항목은 " + getDataAttribute(el,"minlength") + "자 이상이어야 합니다."); 
+                errMsg = "'"+ name + "' 항목은 " + getDataAttribute(el,"minlength") + "자 이상이어야 합니다."; 
                 break; 
         case "minsize": 
-                alert("'"+ name + "' 항목은 " + getDataAttribute(el,"minsize") + "자 이상이어야 합니다."); 
+                errMsg = "'"+ name + "' 항목은 " + getDataAttribute(el,"minsize") + "자 이상이어야 합니다."; 
                 break; 
         case "maxsize": 
-                alert("'"+ name + "' 항목은 " + getDataAttribute(el,"maxsize") + "자 이하이어야 합니다."); 
+                errMsg = "'"+ name + "' 항목은 " + getDataAttribute(el,"maxsize") + "자 이하이어야 합니다."; 
                 break; 
         case "maxlength": 
-                alert("'"+ name + "' 항목은 " + getDataAttribute(el,"maxlength") + "자 이하이어야 합니다."); 
+                errMsg = "'"+ name + "' 항목은 " + getDataAttribute(el,"maxlength") + "자 이하이어야 합니다."; 
                 break; 
         case "ssn": 
-                alert("주민등록번호가 올바르지 않습니다."); 
+                errMsg = "주민등록번호가 올바르지 않습니다."; 
                 break; 
         case "binno": 
-                alert("사업자등록번호가 올바르지 않습니다."); 
+                errMsg = "사업자등록번호가 올바르지 않습니다."; 
                 break; 
         case "nospace": 
-                alert("'"+ name+"' 항목에는 빈칸이 올 수 없습니다."); 
+                errMsg = "'"+ name+"' 항목에는 빈칸이 올 수 없습니다."; 
                 break; 
         case "check": 
-                alert("'"+ name+"' (을)를 체크해 주세요"); 
+                errMsg = "'"+ name+"' (을)를 체크해 주세요."; 
 
                 break;
         case "radio": 
-                alert("'"+ name+"' (을)를 선택해 주세요"); 
+                errMsg = "'"+ name+"' (을)를 선택해 주세요."; 
 
                 break;
         case "file":
-                alert("'"+ name+"' (을)를 첨부해 주세요"); 
+                errMsg = "'"+ name+"' (을)를 첨부해 주세요."; 
                 break;
         case "noqt":
-                alert("'"+ name+"' 항목에 큰따옴표는 입력불가능합니다."); 
+                errMsg = "'"+ name+"' 항목에 큰따옴표는 입력불가능합니다."; 
                 break;
         case "searchstr":
-                alert("'"+ name+"' 항목에 입력불가능한 문자가 포함되어 있습니다."); 
+                errMsg = "'"+ name+"' 항목에 입력불가능한 문자가 포함되어 있습니다."; 
                 break;
         default: 
                 //if (getDataAttribute(el,"title")!="" && getDataAttribute(el,"title")!=null)
                 //{
                 //	alert(getDataAttribute(el,"title"));
                 //}else{
-                    alert("'"+ name + "' 항목은 필수입니다."); 
+                    errMsg = "'"+ name + "' 항목은 필수입니다."; 
                 //}
-                break; 
-    } 
+                break;  
+    }
+
+    // alert(errMsg);
+    sbAlert(errMsg, 'validation');
+
     try{
 
-    if (focus_target.style.display!="none" && focus_target.type!="hidden")
-    {
-                focus_target.focus(); 
-    }
+        if (focus_target.style.display!="none" && focus_target.type!="hidden")
+        {
+                    focus_target.focus(); 
+        }
     }catch(e){
     }
 

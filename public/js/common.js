@@ -86,13 +86,21 @@ function lpad(str, padLen, padStr) {
 // 스낵바
 function sbAlert(msg, type){
 
+    // 기본 (알림)
     var options = { 
         text:'<img src="/images/snack_chk.png" alt="Icon">', 
         pos: 'bottom-center',
         
     }
 
+    // 경고
     if(type=="warning"){
+        options.text = '<img src="/images/warn.png" alt="Icon">';
+        options.pos = 'top-center';
+    }
+
+    // 유효성검사
+    if(type=="validation"){
         options.text = '<img src="/images/warn.png" alt="Icon">';
         options.pos = 'top-center';
     }
