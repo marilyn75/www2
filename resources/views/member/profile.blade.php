@@ -26,77 +26,84 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="sign_up_form inner_page sign_up_form_w">
-                    <div class="heading">
-                        <h3 class="text-center">회원정보를 수정하세요.</h3>
-                        {{-- <p class="text-center">이미 계정이 있습니까?<a class="text-thm" href="{{ route('login') }}"> &nbsp;&nbsp;&nbsp; Login</a></p> --}}
+                    <div class="heading log_sing_intro">
+                        <h3>회원정보를 수정하세요.</h3>
+                        {{-- <p class="text-center">이미 계정이 있습니까?<a class="text-thm" href="{{ route('login') }}">
+                        &nbsp;&nbsp;&nbsp; Login</a></p> --}}
                     </div>
                     <div class="details">
                         @include('include.messagebox')
-                        	
+
                         <form action="{{ url(route('profile')) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-4">
                                     <div class="wrap-custom-file">
-                                        <input type="file" name="file" id="image1" accept=".gif, .jpg, .jpeg, .png" value="" />
-                                        <label  for="image1" style="background-image: url('{{ showProfileImage() }}');">
-                                              <span><i class="flaticon-download"></i> Upload Photo </span>
+                                        <input type="file" name="file" id="image1" accept=".gif, .jpg, .jpeg, .png"
+                                            value="" />
+                                        <label for="image1" style="background-image: url('{{ showProfileImage() }}');">
+                                            <span><i class="ri-upload-line"></i></span>
                                         </label>
                                     </div>
-                                    <p>*minimum 260px x 260px</p>
+                                    <p>*최소 260px x 260px</p>
                                 </div>
-                                <div class="col-lg-6 col-xl-6">
-                                    <div class="my_profile_setting_input form-group">
-                                        <label for="name">이름</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
+                                <div class="col-lg-8">
+                                    <div class="col-lg-12">
+                                        <div class="my_profile_setting_input form-group">
+                                            <label for="name">이름</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                value="{{ Auth::user()->name }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-xl-6">
-                                    <div class="my_profile_setting_input form-group">
-                                        <label for="email">이메일</label>
-                                        <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
+                                    <div class="col-lg-12">
+                                        <div class="my_profile_setting_input form-group">
+                                            <label for="email">이메일</label>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                value="{{ Auth::user()->email }}" readonly>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-xl-6">
+                                    <!-- <div class="col-lg-6 col-xl-6">
                                     <div class="my_profile_setting_input form-group">
                                         <label for="company">회사명</label>
                                         <input type="text" class="form-control" id="company" name="company" value="{{ Auth::user()->company }}">
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-xl-6">
+                                </div> -->
+                                    <!-- <div class="col-lg-6 col-xl-6">
                                     <div class="my_profile_setting_input form-group">
                                         <label for="position">직책</label>
                                         <input type="text" class="form-control" id="position" name="position" value="{{ Auth::user()->position }}">
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-xl-6">
-                                    <div class="my_profile_setting_input form-group">
-                                        <label for="phone">연락처</label>
-                                        <input type="text" class="form-control" id="phone" name="phone" value="{{ Auth::user()->phone }}">
+                                </div> -->
+                                    <div class="col-lg-12">
+                                        <div class="my_profile_setting_input form-group">
+                                            <label for="phone">연락처</label>
+                                            <input type="text" class="form-control" id="phone" name="phone"
+                                                value="{{ Auth::user()->phone }}">
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div class="col-xl-12">
-                                    <div class="my_profile_setting_textarea">
-                                        <label for="address">주소</label>
-                                        <input type="text" class="form-control" id="address" name="address" readonly onclick="openSearchZipcode()" value="{{ Auth::user()->address }}">
-                                        <input type="hidden" id="zip_code" name="zip_code" value="{{ Auth::user()->zip_code }}">
+
+                                    <div class="col-xl-12">
+                                        <div class="my_profile_setting_textarea">
+                                            <label for="address">주소</label>
+                                            <input type="text" class="form-control" id="address" name="address" readonly
+                                                onclick="openSearchZipcode()" value="{{ Auth::user()->address }}">
+                                            <input type="hidden" id="zip_code" name="zip_code"
+                                                value="{{ Auth::user()->zip_code }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-12">
+                                    <!-- <div class="col-xl-12">
                                     <div class="my_profile_setting_textarea">
                                         <label for="address_detail">상세주소</label>
                                         <input type="text" class="form-control" id="address_detail" name="address_detail" value="{{ Auth::user()->address_detail }}">
                                     </div>
-                                </div>
-              
-
+                                </div> -->
                                 <div class="col-xl-12 text-center">
                                     <div class="my_profile_setting_input">
-                                        <button class="btn btn2">Update Profile</button>
+                                        <button class="btn btn2">수정하기</button>
                                     </div>
                                 </div>
-                                
+                                </div>
+
                             </div>
                         </form>
                     </div>
