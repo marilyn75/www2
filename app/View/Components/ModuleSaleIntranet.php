@@ -15,6 +15,9 @@ class ModuleSaleIntranet extends Component
     private $request;
     private $cls;
 
+    public $printData;
+    public $relatedSales;
+
     /**
      * Create a new component instance.
      */
@@ -75,11 +78,14 @@ class ModuleSaleIntranet extends Component
         // 오늘 본 매물 키 쿠키저장
         $this->cls->todayViewSaleSetCookie($this->request->idx);
 
+        // 관련매물
+        $this->relatedSales = $this->cls->getRelatedSales($printData);
 
         $skin = 'components.module-sale-intranet-show';
         if(!empty($this->request->skin))    $skin .= $this->request->skin;
 
+        $this->printData = $printData;
         //debug($printData);
-        return view($skin, compact('printData'));
+        return view($skin);
     }
 }

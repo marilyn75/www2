@@ -153,6 +153,7 @@ class IntraSaleClass{
         // 카테고리 체크용
         $return['isJugeo'] = strpos($return['category'],'주거') === 0;
         $return['isToji'] = strpos($return['category'],'토지') !== false;
+        $return['isSangeop'] = !$return['isToji'] && strpos($return['category'],'상업') === 0;
 
         return $return;
     }
@@ -273,5 +274,54 @@ class IntraSaleClass{
         foreach($data as $_dt)  $ids[] = $_dt->sale_id;
 
         return ResultClass::success('', $ids);
+    }
+
+    // 관련매물
+    /*
+        관련매물 조건정리
+
+        상업용 매물
+        매물유형 ≥ 매매가격 ≥ 지역(소재지) ≥ 용도지역(토지) ≥ 사용승인일(최근순) ≥ 수익율 > 이하 같은 매물유형 중 클릭수 많은 매물
+
+        주거용 매물 
+        매물유형 ≥ 매매가격 ≥ 지역(소재지) ≥ 방갯수 ≥ 사용승인일(최근순) > 이하 같은 매물유형 중 클릭수 많은 매물
+
+        토지 매물
+        매물유형 ≥ 매매가격 ≥ 지역(소재지) ≥ 용도지역(토지) ≥ 이하 같은 매물유형 중 클릭수 많은 매물
+
+        기타의 경우
+        매매가격 ≥ 지역(소재지) ≥ 용도지역(토지) ≥ 면적(330㎡ 범위내) > 이하 클릭수 많은 매물
+
+        예외처리
+        매물유형에 관계없이 클릭수가 많은 매물
+
+
+
+        매매가격 범위(기준이 되는 물건의 3.3㎡당 가격 ±100만원) 
+        |
+        지역(같은 동 기준)
+        |
+        용도지역(같은 용도지역 기준)
+        |
+        사용승인일(기준이 되는 물건의 ±1년)
+    */
+    public function getRelatedSales($sale){
+        $arrCategory = explode(" > ", $sale['category']);
+        $arrAddress = explode(" ", $sale['address']);
+        $addr3 = $arrAddress[0] . " " . $arrAddress[1] . " " . $arrAddress[2];
+        $addr2 = $arrAddress[0] . " " . $arrAddress[1];
+        $addr1 = $arrAddress[0];
+
+        $data = IntraSaleHomepage::query()
+            ->orderByRaw("case when category = '" .$sale['category']. "' then 0 when category like '" .$arrCategory[0]. "%' then 1 else 2 end") // 매물유형조건
+            // ->orderByRaw("abs(salePrice)")
+            ->orderByRaw("case when SUBSTRING_INDEX(addr, ' ', 3) = '" .$addr3. "' then 0 when SUBSTRING_INDEX(addr, ' ', 2) = '" .$addr2. "' then 1 when SUBSTRING_INDEX(addr, ' ', 1) = '" .$addr1. "' then 2 else 3 end")
+            ->take(4)
+            ->get();
+
+        // debug($sale);
+        // debug($data->toArray());
+
+        return $data;
     }
 }
