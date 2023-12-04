@@ -16786,6 +16786,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   display: inline-block;
   margin-left: 10px;
 }
+.ftnum p::after { display: none !important; }
 
 /* modal */
 .modal-dialog { margin-top: 140px; }
@@ -17001,6 +17002,14 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 .why_chose_us .details p span { color: #385f8d; font-size: 28px; font-weight: 700; }
 .vision h2 { color: #000; margin-bottom: 45px; }
 .fight h2 { color: #000; margin-bottom: 45px; }
+
+
+/* 추천매물 */
+.top_cate { justify-content: center; gap: 45px; }
+.cate_bg { cursor: pointer; width: 112px; height: 112px; background: #fff; border-radius: 150px; display: flex; align-items: center; justify-content: center; }
+.cate_bg:hover{ border: 5px solid #fff; outline: 5px solid #385F8D; }
+.cate_bg img { width: 92px; }
+.cate_wrap p { font-size: 18px; text-align: center; font-weight: 500; margin-top: 10px; }
 
 
 
@@ -17327,6 +17336,9 @@ code {
   .intro_imgs img { height: 245px; }
   .about_top .intro_txt { font-size: 16px; }
 
+  .top_cate { gap: 35px; }
+  .cate_bg { width: 75px; height: 75px; }
+  .cate_bg img { width: 61px; }
 }
 @media (max-width: 767.98px) {
 

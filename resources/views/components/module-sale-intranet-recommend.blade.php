@@ -4,10 +4,10 @@
     <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container container_w">
-        <section class="row top_cate">
+        <section class="row top_cate pt-0">
             <div class="cate_wrap">
                 <div class="cate_bg">
-                    <img src="images/top_cate/busanilbo.png" alt="">
+                    <img src="/images/top_cate/busanilbo.png" alt="">
                 </div>
                 <p>부산일보</p>
             </div>
