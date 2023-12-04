@@ -27,7 +27,12 @@ class IntraSaleClass{
         if(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
             if(empty($arrSort[1])) $arrSort[1] = 'asc';
-            $model->orderBy($arrSort[0],$arrSort[1]);
+
+            if($arrSort[0]=="salePrice"){
+                $model->orderByRaw("cast(salePrice as UNSIGNED) ".$arrSort[1]);
+            }else{
+                $model->orderBy($arrSort[0],$arrSort[1]);
+            }
         }else{
             $model->orderBy('reg_date','desc');
         }

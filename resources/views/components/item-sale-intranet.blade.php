@@ -9,7 +9,7 @@
                             <!-- 찜하기 전 -->
                             <li class="list-inline-item">
                                 <button class="heart_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
-                                    @if (!empty($favorites) && in_array($printData['idx'], $favorites))
+                                    @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
                                     <i class="ri-heart-3-fill"></i>
                                     @else
                                     <i class="ri-heart-3-line"></i>
@@ -17,10 +17,11 @@
                                 </button>
                             </li>
                         
-
+                            @if($printData['isRecom']==1)
                             <li class="list-inline-item">
                                 <i class="ri-thumb-up-fill"></i>
                             </li>
+                            @endif
                         @endif
                     </ul>
                 </div>
