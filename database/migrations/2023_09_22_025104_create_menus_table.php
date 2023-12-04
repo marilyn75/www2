@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('board_id')->nullable()->comment('연결 게시판 아이디');
             $table->unsignedBigInteger('content_id')->nullable()->comment('연결 컨텐츠 아이디');
             $table->string('program_module')->nullable()->comment('프로그램 연결 모듈명');
+            $table->string('params')->nullable()->comment('파라메터');
             $table->string('url')->nullable()->comment('링크url');
             $table->string('rss_url')->nullable()->comment('rss url');
             $table->string('target',10)->nullable()->comment('링크target');

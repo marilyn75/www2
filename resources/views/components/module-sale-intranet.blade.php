@@ -669,8 +669,8 @@
                                     <option value="reg_date|desc" @if (@$_POST['sort']=="reg_date|desc" ) selected @endif>최신순</option>
                                     <option value="reg_date" @if (@$_POST['sort']=="reg_date" ) selected @endif>오래된순</option>
                                     <option value="isRecom|desc" @if (@$_POST['sort']=="isRecom|desc" ) selected @endif>추천순</option>
-                                    <option value="salePrice|desc" @if ($_POST['sort']=="salePrice|desc") selected @endif>높은가격순</option>
-                                    <option value="salePrice" @if ($_POST['sort']=="salePrice") selected @endif>낮은가격순</option>
+                                    <option value="salePrice|desc" @if (@$_POST['sort']=="salePrice|desc") selected @endif>높은가격순</option>
+                                    <option value="salePrice" @if (@$_POST['sort']=="salePrice") selected @endif>낮은가격순</option>
                                     {{-- <option value="zzim desc" @if ($_POST['sort']=="zzim desc") selected @endif>찜하기순</option>
                                     <option value="price desc" @if ($_POST['sort']=="price desc") selected @endif>높은가격순</option>
                                     <option value="price asc" @if ($_POST['sort']=="price asc") selected @endif>낮은가격순</option> --}}

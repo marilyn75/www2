@@ -49,7 +49,7 @@
         <div class="row">
             <div class="col-lg-6 top-filt">
                 <div class="breadcrumb_content style2 breadcrumb_content_w">
-                    <h2 class="breadcrumb_title breadcrumb_title_w">{{ implode(" / ", $arrLocation) }}</h2>
+                    <h2 class="breadcrumb_title breadcrumb_title_w">Home / {{ implode(" / ", $arrLocation) }}</h2>
                 </div>
                 <div>
                     <button id="open2" class="filter_btn mont  filter_open_btn filter_btn_w"><i class="ri-equalizer-line"></i>Filter</button>
