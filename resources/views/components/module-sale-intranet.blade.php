@@ -655,7 +655,7 @@
                 </div>
                 <div class="">
                     <div class="right_area text-right tac-xsd subfilter_w">
-                        <ul>
+                        <ul class="sub_filt">
                             {{-- <li class="list-inline-item">
                                 <select class="selectpicker show-tick">
                                     <option>최신순</option>
@@ -676,7 +676,20 @@
                                     <option value="price asc" @if ($_POST['sort']=="price asc") selected @endif>낮은가격순</option> --}}
                                 </select>
                             </li>
+                            <li>
+                                <div class="button r" id="button-1">
+          <input type="checkbox" class="checkbox" />
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
+                            </li>
+                            <!-- <input type="checkbox" checked data-toggle="toggle" data-on="㎡" data-off="평"> -->
                         </ul>
+
+
+        
+     
+
                     </div>
                 </div>
             </div>
