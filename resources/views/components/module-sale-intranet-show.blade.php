@@ -8,11 +8,11 @@ $(window).on('load', function() {
 });
 </script>
 <div class="col-lg-8">
-    
+
     <!-- 수정 -->
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
-        <div class="detail_info">
+            <div class="detail_info">
                 <div class="de_info_left">
                     <p>{{ $printData['category'] }}</p>
                     <h3>{{ $printData['address'] }}</h3>
@@ -35,10 +35,11 @@ $(window).on('load', function() {
                 <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
             </div>
             <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
-                <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
+                <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite"
+                    style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
                     @foreach ($printData['imgs'] as $_img)
-                    <div class="swiper-slide" role="group" >
-                        <img src="{{ $_img }}" alt="" style="width: 730px; height: 424px;">
+                    <div class="swiper-slide" role="group">
+                        <img src="{{ $_img }}" alt="">
                     </div>
                     @endforeach
                 </div>
@@ -417,7 +418,7 @@ $(window).on('load', function() {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 similar">
+                            <div class="col-lg-12 similar similar_w">
                                 <h4 class="mt30 mb30">관련매물</h4>
                             </div>
                             @foreach ($relatedSales as $_data)
