@@ -138,6 +138,11 @@
                         @endforeach
                     </select>
                     </div>
+
+                    <label for="program_module">파라메터</label>
+                    <div>
+                    <input type="text" name="params" id="params" class="w100" value="@if(empty($menu)){{ old('params') }}@else{{ $menu->params }}@endif">
+                    </div>
                 </div>
             </div>
 

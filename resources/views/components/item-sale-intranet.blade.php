@@ -1,4 +1,8 @@
+@if ($type=="recommend")
+<div class="col-lg-4">
+@else
 <div class="col-sm-6 col-md-6 col-lg-6">
+@endif
     <a href="?mode=show&idx={{ $printData['idx'] }}">
         <div class="feat_property home7 style4 bdrrn feat_property_w">
             <div class="thumb">

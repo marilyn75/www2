@@ -35,6 +35,7 @@ class ModuleSaleIntranet extends Component
     {
         switch($this->request->mode){
             case "":
+            case "recommend":
                 $return = $this->index();
                 break;
             case "show":
@@ -52,7 +53,10 @@ class ModuleSaleIntranet extends Component
         $result = $this->cls->getFavorites();
         $favorites = $result->getData();
 
-        return view('components.module-sale-intranet', compact('data', 'favorites'));
+        if($this->request->mode=="recommend")
+            return view('components.module-sale-intranet-recommend', compact('data', 'favorites'));
+        else
+            return view('components.module-sale-intranet', compact('data', 'favorites'));
     }
 
     public function show(){

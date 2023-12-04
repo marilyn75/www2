@@ -107,7 +107,10 @@ class MenusController extends Controller
             'updated_ip' => $request->ip(),
         ];
         if($data['type']=="B")  $menuData['board_id'] = $data['board_id'];
-        if($data['type']=="P")  $menuData['program_module'] = $data['program_module'];
+        if($data['type']=="P"){
+            $menuData['program_module'] = $data['program_module'];
+            $menuData['params'] = $data['params'];
+        }
 
         $newMenuItem = new Menu($menuData);
 
@@ -212,6 +215,7 @@ class MenusController extends Controller
 
             'board_id' => @$data['board_id'],
             'program_module' => @$data['program_module'],
+            'params' => @$data['params'],
 
             'updated_user_id' => auth()->user()->id,
             'updated_ip' => $request->ip(),

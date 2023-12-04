@@ -21,6 +21,7 @@ class Menu extends Model
         'board_id',
         'content_id',
         'program_module',
+        'params',
         'url',
         'rss_url',
         'target',

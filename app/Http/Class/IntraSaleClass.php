@@ -23,6 +23,9 @@ class IntraSaleClass{
         $data = $request->all();
 
         $model = IntraSaleHomepage::where('isDone',1);
+        if($request['mode']=="recommend"){
+            $model = $model->where('isRecom',1);
+        }
 
         if(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
