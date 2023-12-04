@@ -678,10 +678,10 @@
                             </li>
                             <li>
                                 <div class="button r" id="button-1">
-          <input type="checkbox" class="checkbox" />
-          <div class="knobs"></div>
-          <div class="layer"></div>
-        </div>
+                                    <input type="checkbox" class="checkbox" />
+                                    <div class="knobs"></div>
+                                    <div class="layer"></div>
+                                </div>
                             </li>
                             <!-- <input type="checkbox" checked data-toggle="toggle" data-on="㎡" data-off="평"> -->
                         </ul>
