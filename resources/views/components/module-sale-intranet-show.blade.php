@@ -1,7 +1,6 @@
 <script>
 $(window).on('load', function() {
     $('.owl-dot').each(function(index) {
-
         var imageUrl = $(".single_product_grid .img-fluid").eq(index + 2).attr('src');
         $(this).find('span').css('background-image', 'url(' + imageUrl + ')');
     });

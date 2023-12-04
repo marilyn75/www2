@@ -16469,6 +16469,7 @@ input[type="range"] {
 
 
 /* detail_page */
+.breadcrumb_title_w { font-size: 18px; color: #505050; font-weight: 600; }
 .detail_title { display: flex; align-items: center; justify-content: space-between;}
 .detail_title h2 { font-size: 24px; color: #385F8D; }
 .small_bx { margin: 0; }
