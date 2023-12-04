@@ -55,6 +55,7 @@ class IntraSawonClass{
         $return['photo'] = (empty($return['photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['photo'];
 
         $return['slogan'] = $data->info->slogan;
+        $return['introduce'] = $data->info->introduce;
 
         $sales = $data->homepageSales;
         $clsIntraSale = new IntraSaleClass;

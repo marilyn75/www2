@@ -10,7 +10,8 @@
                         <p>{{ $data['sosok'] }}</p>
                         <h4>{{ $data['user_name'] }} {{ $data['duty'] }}</h4>
                         <p class="mont">Tel. 1833-{{ $data['office_line'] }}</p>
-                        <p>" {{ $data['slogan'] }} " <br>" 전문적이고 친절한 공인중개사 직원으로, 부동산 거래에 대한 전문지식과 고객서비스에 최선을 다하는 자부심을 가지고 있습니다. "</p>
+                        @if($data['slogan'])<p>" {{ $data['slogan'] }} " </p>@endif
+                        @if($data['introduce'])<p>" {{ $data['introduce'] }} "</p>@endif
                     </div>
                 </div>
             </div>
