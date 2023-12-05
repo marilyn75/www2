@@ -238,7 +238,7 @@ $(window).on('load', function() {
                                 <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>매매가격 :</p>
-                                        <p>매매 <span class="mont">{{ $printData['price'] }}</span>만원</p>
+                                        <p class="mont">매매 {{ $printData['price'] }} 만원</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월세현황 :</p>
@@ -261,11 +261,11 @@ $(window).on('load', function() {
                                 <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>보증금 :</p>
-                                        <p><span class="mont">{{ number_format($printData['depPrice']) }}</span>만원</p>
+                                        <p class="mont">{{ number_format($printData['depPrice']) }} 만원</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월세 :</p>
-                                        <p><span class="mont">{{ number_format($printData['monPrice']) }}</span>만원</p>
+                                        <p class="mont">{{ number_format($printData['monPrice']) }} 만원</p>
                                     </li>
                                 </ul>
 

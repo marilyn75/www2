@@ -16707,7 +16707,7 @@ swiper-slide img {
 
 
 /* employee */
-.employ_box { display: grid; justify-items: center; background: #F0F0F0; padding: 20px !important; margin-bottom: 30px; border-radius: 10px; position: relative; }
+.employ_box { display: grid; justify-items: center; height: 285px; background: #F0F0F0; padding: 20px !important; margin-bottom: 30px; border-radius: 10px; position: relative; }
 .empl-img-w { width: 130px; height: 130px; border-radius: 100px; overflow: hidden; }
 .empl-img-w img { height: 130px; }
 .employ_inf { display: grid; justify-items: center; margin-top: 15px; }
@@ -16720,6 +16720,8 @@ swiper-slide img {
 .employ_call button{ margin: 0; font-weight: 600; font-size: 16px; }
 .sales_count { position: absolute; right: 10px; top: 10px; background: #385f8d; padding: 8px 13px; border-radius: 50px; }
 .sales_count p { color: #fff; margin: 0; font-size: 14px; line-height: normal; }
+.sawon_form { display: contents; }
+
 
 
 /* employee detail */
@@ -16994,8 +16996,9 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 .core h2 { color: #000; margin-bottom: 45px; }
 .intro_txt { font-size: 20px; color: #000; font-weight: 500; word-break: keep-all; }
 .intro_contact h2 { color: #000; margin-bottom: 45px; }
+.intro_contact ul { margin-top: 40px; }
 .intro_contact ul li { display: flex; }
-.intro_contact ul li p { color: #000; font-size: 20px; font-weight: 500; }
+.intro_contact ul li p { color: #000; font-size: 20px; font-weight: 500; margin: 0; }
 .intro_contact ul li p:first-child { width: 130px; }
 
 
@@ -17363,14 +17366,14 @@ code {
   .bootstrap-select.show-tick .dropdown-menu li a span.text { margin-right: 0; }
   .small_imgs { gap: 20px; }
   .big_img { display: none; }
-  .de_info_pr { font-size: 18px; line-height: normal; }
+  .de_info_pr { font-size: 18px; line-height: normal; margin: 0; }
   .swiper-button-next p { font-size: 10px; }
   .swiper-button-next { width: 50px !important; height: 50px !important; line-height: 50px !important; }
   .swiper-button-prev p { font-size: 10px; }
   .swiper-button-prev { width: 50px !important; height: 50px !important; line-height: 50px !important; }
   .swiper-pagination span { font-size: 12px; }
   .detail_img .single_product_grid { padding: 20px; }
-  .detail_info { margin-bottom: 5px; }
+  .detail_info { margin-bottom: 10px; }
   .description_w h4 { font-size: 18px;  }
   .description_w p { font-size: 14px; line-height: normal; }
   .additional_w h4 { font-size: 18px; margin-bottom: 15px; }
@@ -17477,10 +17480,11 @@ code {
   .about_us h2 { line-height: 35px; font-size: 24px; margin-bottom: 15px; word-break: auto-phrase; }
   .vision h2 { font-size: 24px; margin-bottom: 15px; }
   .fight h2 { font-size: 24px; margin-bottom: 15px; }
-
-
-
+  .detail_info { display: grid; justify-content: normal; }
+  .de_info_right { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; }
+  .detail_btn { width: 35px; height: 35px; }
   
+
 }
 @media (max-width: 520.98px) {
   .home_search_w ul { display: grid; }

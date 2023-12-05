@@ -5,22 +5,22 @@
 }
 </style>
 
-<form name="frm" action="{{ $data->path() }}" method="post" class="row pl-3 pr-3">
+<form name="frm" action="{{ $data->path() }}" method="post" class="row pl-3 pr-3 sawon_form">
     @csrf
     <input type="hidden" name="page" value="1">
 
 <div class="col-md-12 col-lg-12">
     <div class="row">
-        <div class="grid_list_search_result style2">
-            <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
+        <div class="grid_list_search_result search_result_w">
+            <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3 pl-0 pr-0">
                 <div class="left_area">
-                    <p>{{ number_format($data->total()) }} Search results</p>
+                    <p>검색결과 <span class="mont point_c">{{ number_format($data->total()) }}</span>건</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="right_area style2 text-right">
                     <ul>
-                        <li class="list-inline-item"><span class="shrtby">Sort by:</span>
+                        <li class="list-inline-item">
                             <select class="selectpicker show-tick" name="sort" onchange="frm.page.value=1;frm.submit();">
                                 <option value="reg_date|desc" @if (@$_POST['sort']=="reg_date|desc") selected @endif>최신순</option>
                                 <option value="reg_date" @if (@$_POST['sort']=="reg_date") selected @endif>오래된순</option>
