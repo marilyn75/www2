@@ -19,6 +19,18 @@
 
         return false;
     }
+
+    $(document).on('change', '#transArea', function(){
+        if(this.checked){
+            $('.area').each(function(){
+                $(this).html($(this).data('py'));
+            });
+        }else{
+            $('.area').each(function(){
+                $(this).html($(this).data('m2'));
+            });
+        }
+    });
 </script>
 
 <form name="frm" action="{{ $data->path() }}" method="post" class="row">
@@ -678,7 +690,7 @@
                             </li>
                             <li>
                                 <div class="button r" id="button-1">
-                                    <input type="checkbox" class="checkbox" />
+                                    <input type="checkbox" class="checkbox" id="transArea" />
                                     <div class="knobs"></div>
                                     <div class="layer"></div>
                                 </div>

@@ -83,10 +83,12 @@ class IntraSaleClass{
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
 
-        $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);
         $return['bdArea_py'] = (empty($return['bdArea']))?"":number_format(doubleval($return['bdArea']) * 0.3025 ,2);
-        $return['landArea'] = (empty($return['landArea']))?"":number_format($return['landArea'],2);
+        $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);
+        
         $return['landArea_py'] = (empty($return['landArea']))?"":number_format(doubleval($return['landArea']) * 0.3025 ,2);
+        $return['landArea'] = (empty($return['landArea']))?"":number_format($return['landArea'],2);
+        
 
         $return['area_b_py'] = (empty($return['area_b']))?"":number_format(doubleval($return['area_b']) * 0.3025 ,2);
         $return['area_j_py'] = (empty($return['area_j']))?"":number_format(doubleval($return['area_j']) * 0.3025 ,2);

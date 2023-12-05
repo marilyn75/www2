@@ -41,17 +41,17 @@
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
                             {{ $printData['floorInfo'] }}
                         </p>
-                        <p class="text-inf"><i class="ri-building-line"></i>분양{{ $printData['area_b'] }}㎡
-                            전유{{ $printData['area_j'] }}㎡</p>
+                        <p class="text-inf"><i class="ri-building-line"></i>분양<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
+                            전유<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span></p>
                     </div>
                     @else
                     <div class="text-inf-w">
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
-                            {{ $printData['landArea'] }}㎡
+                            <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span>
                         </p>
                         @if (strpos($printData['category'],"토지")===false)
                         <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}}
-                            연{{ $printData['bdArea'] }}㎡</p>
+                            연<span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></p>
                         @endif
                     </div>
                     @endif
