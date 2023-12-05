@@ -16610,6 +16610,14 @@ swiper-slide img {
 .de_info_left h3 { font-size: 24px; color: #000;  }
 .de_info_left ul li a{ font-size: 18px; color: #000; }
 .de_info_pr { font-size: 24px; color: #385F8D; font-weight: 600; }
+.de_info_right { display: grid; justify-items: end; gap: 15px; }
+
+.detail_btn { cursor: pointer; background: #f8f8f8; border: none; border-radius: 5px; width: 40px; height: 40px; }
+.detail_btn:active { outline: none; border: transparent; }
+.detail_btn:focus { outline: none; }
+.detail_btn i { color: #000; }
+.detail_btn_w .fill_heart { color: #E93C3C; }
+
 
 
 /* error page */

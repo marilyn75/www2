@@ -31,7 +31,24 @@ $(window).on('load', function() {
                         @endif
                     </ul>
                 </div>
-                <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
+                <div class="de_info_right">
+                    <div class="detail_btn_w">
+                        <button class="detail_btn">
+                            <i class="ri-arrow-left-right-line"></i>
+                        </button>
+
+                        <!-- 찜하기 전 -->
+                        <button class="heart_btn detail_btn on">
+                            <i class="ri-heart-3-line"></i>
+                        </button>
+                        <!-- 찜한 후 -->
+                        <!-- <button class="heart_btn detail_btn">
+                            <i class="ri-heart-3-fill fill_heart"></i>
+                        </button> -->
+
+                    </div>
+                    <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
+                </div>
             </div>
             <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
                 <div class="swiper-wrapper" id="swiper-wrapper-bd129101b3b69f5107" aria-live="polite"
