@@ -16704,6 +16704,16 @@ swiper-slide img {
 .chat-icon button{ width: 120px; height: 120px; border: none; position: fixed; right: 90px; bottom: 75px; border-radius: 100px; background: #385F8D; display: grid; align-items: center; padding: 20px 0; cursor: pointer; filter: drop-shadow(0px 0px 10px rgba(56, 95, 141, 0.25)); z-index: 999; }
 .chat-icon p { color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; line-height: 20px; }
 .click_chat::after { content: ''; display: block; height: 1px; background: #fff; width: 30px; margin: 0 auto; margin-top: 1px; }
+.main_news h5 { font-size: 20px; color: #000; line-height: 26px; word-break: keep-all; margin-bottom: 10px; }
+.main_news p { color: #828282; font-weight: 500; font-size: 16px; }
+.mn_nws_img { margin-top: 25px !important; border-radius: 10px; margin-top: 20px; background: #F0F0F0; height: 215px; line-height: 215px; text-align: center; }
+.tit_btn { display: flex; justify-content: space-between; align-items: center; }
+.more_btn { cursor: pointer; background: transparent; border: none; height: 45px; border-radius: 5px; font-weight: 500; }
+.more_btn:active { outline: none; border: transparent; }
+.more_btn:focus { outline: none; }
+.more_btn i{ margin-left: 12px; }
+
+
 
 
 /* employee */
@@ -17013,6 +17023,7 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 .why_chose_us .details p span { color: #385f8d; font-size: 28px; font-weight: 700; }
 .vision h2 { color: #000; margin-bottom: 45px; }
 .fight h2 { color: #000; margin-bottom: 45px; }
+.mt_txt { font-size: 24px; font-weight: 600; color: #385f8d; }
 
 
 /* 추천매물 */
