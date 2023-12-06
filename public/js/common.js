@@ -86,6 +86,8 @@ function lpad(str, padLen, padStr) {
 // 스낵바
 function sbAlert(msg, type){
 
+    // msg = msg.replace(/\\N/g, '<br>');
+
     // 기본 (알림)
     var options = { 
         text:'<img src="/images/snack_chk.png" alt="Icon">', 

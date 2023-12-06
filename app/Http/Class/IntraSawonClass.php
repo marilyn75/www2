@@ -3,10 +3,13 @@
 namespace App\Http\Class;
 
 use App\Models\Sale;
+use GuzzleHttp\Client;
 use App\Models\CommonCode;
 use App\Models\IntraMember;
+use App\Models\IntraBoardDefault;
 use App\Models\IntraSaleHomepage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;
 
@@ -63,6 +66,55 @@ class IntraSawonClass{
             $return['sales'][] = $clsIntraSale->getPrintData($_sale);
         }
 
+        $return['sawon_user_id'] = $data->user_id;
         return $return;
+    }
+
+    // 중개사에게 문의하기 
+    public function sendInquiry($request){
+
+        $apiUrl = "http://test.gbbinc.co.kr/Share/api.php";
+
+        $client = new Client();
+
+        $subject = $request->name ."님의 문의글";
+        if(!empty($request->p_code))    $subject .= " (물건번호 : ".$request->p_code.")";
+        $postData = [
+            'site_code' => 'mng',
+            'board_code' => 'inquiry',
+            'b_subject' => $subject,
+            'b_content' => $request->message,
+            // 'b_content_s' => $request->message,
+            'b_content_type' => 'T',
+            'reg_ip' => $request->ip(),
+            'reg_name' => $request->name,
+            'reg_user_id' => (auth()->check())?auth()->user()->id:'',
+            'b_hp' => $request->phone,
+            'b_email' => $request->email,
+            'b_free1' => $request->user_id,  // 중개사아이디
+            'b_free2' => $request->p_code,  // 물건번호
+            'b_free3' => $request->s_idx,  // 물건 idx
+            'reg_pwd' => 'inquiry',
+        ];
+        try {
+            // POST 요청 보내기
+            // $response = $client->post($apiUrl,$postData);
+            $response = Http::asForm()->post($apiUrl,$postData);
+
+            // 응답 내용 가져오기
+            $data = json_decode($response->getBody(), true);
+            debug($data);
+            // 여기에서 $data를 가공하거나 필요에 따라 처리합니다.
+
+            // return response()->json($data);
+            if($data['result'])
+                return ResultClass::success('문의 내용이 전달 되었습니다. 담당자 확인 후 연락드리겠습니다.');
+            else
+                return ResultClass::fail('문의하기 실패.');
+        } catch (\Exception $e) {
+            // 에러 처리
+            // return response()->json(['error' => $e->getMessage()], 500);
+            return ResultClass::fail('문의하기 실패.');
+        }
     }
 }

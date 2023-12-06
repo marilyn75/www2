@@ -41,6 +41,8 @@ class ModuleSaleIntranet extends Component
             case "show":
                 $return = $this->show();
                 break;
+            case "sendInquiry":
+                $return = $this->sendInquiry();
         }
 
         return $return;
@@ -91,5 +93,10 @@ class ModuleSaleIntranet extends Component
         $this->printData = $printData;
         //debug($printData);
         return view($skin);
+    }
+
+    public function sendInquiry(){
+        echo "ok!";
+        return "ok";
     }
 }

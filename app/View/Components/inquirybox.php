@@ -16,7 +16,9 @@ class inquirybox extends Component
     public function __construct($type, $printData)
     {
         $this->type = (empty($type))?"default":$type;
-        $this->type = $printData;
+        $this->printData = $printData;
+
+        debug($this->printData);
     }
 
     /**

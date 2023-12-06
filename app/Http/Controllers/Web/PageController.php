@@ -9,6 +9,7 @@ use App\Http\Class\MenuClass;
 
 use App\Http\Class\BoardClass;
 use App\Http\Class\CommonCodeClass;
+use App\Http\Class\IntraSawonClass;
 use App\Http\Class\SaleClass;
 use App\Http\Controllers\Controller;
 use App\Models\CommonCode;
@@ -20,6 +21,11 @@ class PageController extends Controller
     }
 
     public function index($id, Request $request){
+
+        if($request->prcCode=="ajax"){
+            return $this->ajax($id, $request);
+        }
+
         $page = Menu::find($id);
         $MenuClass = new MenuClass;
         $arrLocation = $MenuClass->getLocationArr($id);
@@ -73,6 +79,10 @@ class PageController extends Controller
         if($request->mode=="getChildrenFromId"){
             $data = CommonCodeClass::getChildrenFromId($request->code_id);
             return json_encode($data);
+        }elseif($request->mode=="sendInquiry"){
+            $cls = new IntraSawonClass;
+            $reslut = $cls->sendInquiry($request);
+            return $reslut->jsonResult();
         }
     }
     

@@ -151,6 +151,7 @@ class IntraSaleClass{
 
 // dd('중개사정보',$data->sale->users->first()->sawon->user_name);
         $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
+        $return['sawon_user_id'] = $data->sale->users->first()->sawon->user_id;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
         $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
         $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
