@@ -26,7 +26,7 @@
         </div>
     </div><!-- /.mobile-menu -->
     <nav id="menu" class="stylehome1">
-        <ul>
+        <!-- <ul>
             <li><span>Home</span>
                 <ul>
                     <li><a href="index.html">Home 1</a></li>
@@ -139,6 +139,42 @@
             <li><a href="page-login.html"><span class="flaticon-user"></span> Login</a></li>
             <li><a href="page-register.html"><span class="flaticon-edit"></span> Register</a></li>
             <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm circle" href="#"><span class="flaticon-plus"></span> Create Listing</a></li>
+        </ul> -->
+
+        <!-- 수정 -->
+        <ul>
+            <li class="mmenu_logo"><img src="/images/mmenu_logo.png" alt=""></li>
+            <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm" href="#">로그인</a></li>
+            <li><span>매물</span>
+            </li>
+            <li><span>추천매물</span></li>
+            <li><span>인사이드</span>
+                <ul>
+                    <li><span class="mont">NEWS</span>
+                        <ul>
+                            <li><a href="page-dashboard.html">Dashboard</a></li>
+                            <li><a href="page-my-properties.html">My Properties</a></li>
+                            <li><a href="page-add-new-property.html">Add New Property</a></li>
+                        </ul>
+                    </li>
+                    <li><span class="mont">BLOG</span>
+                        <ul>
+                            <li><a href="page-listing-single-v1.html">Single V1</a></li>
+                            <li><a href="page-listing-single-v2.html">Single V2</a></li>
+                            <li><a href="page-listing-single-v3.html">Single V3</a></li>
+                            <li><a href="page-listing-single-v4.html">Single V4</a></li>
+                            <li><a href="page-listing-single-v5.html">Single V5</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><span>전문가</span></li>
+            <li><span>회사소개</span>
+                <ul>
+                    <li><a href="page-about.html">인사</a></li>
+                    <li class="mont"><a href="page-gallery.html">About Us</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 </div>
