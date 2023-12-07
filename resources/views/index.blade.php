@@ -47,40 +47,18 @@
     </div>
 </section>
 
-<!-- Why Chose Us -->
-<section id="why-chose" class="whychose_us pb30">
-    <div class="container container_w">
-        <div class="row">
-            <div class="col-md-4 col-lg-4 col-xl-4">
-                <div class="why_chose_us home7 empty">
-                    <p class="mont">image</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xl-4">
-                <div class="why_chose_us home7 empty">
-                    <p class="mont">image</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-xl-4">
-                <div class="why_chose_us home7 empty">
-                    <p class="mont">image</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Feature Properties -->
-<section id="feature-property" class="feature-property bgc-f7 pb30">
+<section id="feature-property" class="feature-property bgc-f7">
     <div class="container container_w">
         <div class="tit_btn">
             <div class="main-title subtit">
                 <h2><span class="mont">NEW </span>신규매물</h2>
                 <p>최고의 매물을 놓치지 마세요</p>
             </div>
-            <button class="more_btn">
+            <a class="more_btn">
                 더보기<i class="ri-arrow-right-line"></i>
-            </button>
+            </a>
         </div>
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4">
@@ -437,11 +415,14 @@
 <!-- Our Testimonials -->
 <section class="our-testimonials">
     <div class="container container_w">
-        <div>
+        <div class="tit_btn">
             <div class="main-title subtit">
                 <h2>전문가 추천</h2>
                 <p>전문가의 눈으로 선별한 최고의 매물을 만나보세요.</p>
             </div>
+            <a class="more_btn">
+                더보기<i class="ri-arrow-right-line"></i>
+            </a>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -672,14 +653,34 @@
     </div>
 </section>
 
+<!-- 신문광고 -->
+<section class="our-newspaper bgc-f7">
+    <div class="container container_w">
+        <div class="row align-items-center">
+            <div class="col-md-8 main-title subtit newsp_subtit">
+                <h2>신문속의 <span class="mont">GYEMOIM INC .</span></h2>
+                <p>매주 월, 수, 금 부산일보와 함께하는 신문광고</p>
+                <button type="submit" class="btn btn-thm btn-thm_w">더보기</button>
+            </div>
+            <div class="col-md-4">
+                <img src="/images/newspaper.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- Our Blog -->
 <section class="our-blog bgc-f7 pb100">
     <div class="container container_w">
-        <div>
+        <div class="tit_btn">
             <div class="main-title subtit">
                 <h2><span>NEWS </span>인사이드</h2>
                 <p>주목할만한 부동산 소식을 여기서 만나보세요.</p>
             </div>
+            <a class="more_btn">
+                더보기<i class="ri-arrow-right-line"></i>
+            </a>
         </div>
         <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-4 main_news">

@@ -4,7 +4,7 @@
 
 <!-- Inner Page Breadcrumb -->
 <section class="inner_page_breadcrumb">
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-xl-6">
                 <div class="breadcrumb_content">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
 
 <!-- Our LogIn Register -->
