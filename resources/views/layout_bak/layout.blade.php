@@ -15,8 +15,8 @@
 <!-- Title -->
 <title>FindHouse - Real Estate HTML Template</title>
 <!-- Favicon -->
-<link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
-<link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" />
+<link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+<link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

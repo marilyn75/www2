@@ -17,8 +17,8 @@
     <!-- Title -->
     <title>FindHouse - Real Estate HTML Template</title>
     <!-- Favicon -->
-    <link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
-    <link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" />
+    <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+    <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" />
 
     <script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
     <script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>

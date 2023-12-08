@@ -13,8 +13,8 @@
 <!-- Title -->
 <title>GYEMOIM INC.</title>
 <!-- Favicon -->
-<link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
-<link href="{{ url('images/favicon.ico') }}" sizes="128x128" rel="shortcut icon" />
+<link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+<link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" />
 
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
