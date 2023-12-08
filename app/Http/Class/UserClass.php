@@ -73,7 +73,7 @@ class UserClass{
         $filename = null;
         if(!empty($data['file'])){
             if($user->file !== null){  // 기존 파일 삭제
-                unlink($this->file_path . $user->file);
+                @unlink($this->file_path . $user->file);
             }
             
 
@@ -104,13 +104,13 @@ class UserClass{
             $image->save($this->file_path . $filename);
         }
 
-        $user->name = $data['name'];
-        $user->company = $data['company'];
-        $user->position = $data['position'];
-        $user->phone = $data['phone'];
-        $user->zip_code = $data['zip_code'];
-        $user->address = $data['address'];
-        $user->address_detail = $data['address_detail'];
+        $user->name = @$data['name'];
+        $user->company = @$data['company'];
+        $user->position = @$data['position'];
+        $user->phone = @$data['phone'];
+        $user->zip_code = @$data['zip_code'];
+        $user->address = @$data['address'];
+        $user->address_detail = @$data['address_detail'];
         if(!empty($filename))   $user->file = $filename;
 
         $user->update();
