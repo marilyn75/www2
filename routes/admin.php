@@ -4,11 +4,13 @@ use App\Http\Controllers\Admin\BoardConfsController;
 use App\Http\Controllers\Admin\BoardDatasControll;
 use App\Http\Controllers\Admin\CommonCodeController;
 use App\Http\Controllers\Admin\MenusController;
+use App\Http\Controllers\Admin\NewspaperAdsController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Member\ChatController;
 use App\Models\BoardConf;
 use App\Models\CommonCode;
 use Illuminate\Support\Facades\Route;
+use Tests\Feature\Admin\NewspaperAdsTest;
 
 // 관리자 페이지
 Route::prefix('/admin')->middleware('admin')->group(function(){
@@ -68,4 +70,10 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::post('/codes/delete/{id?}', [CommonCodeController::class, 'destroy'])->name('admin.codes.destroy');
     Route::post('/codes/sort', [CommonCodeController::class, 'sort'])->name('admin.codes.sort');
     Route::get('/codes/sort/edit/{id?}', [CommonCodeController::class, 'sort_edit'])->name('admin.codes.sort.edit');
+
+    // 신문광고관리
+    Route::get('/newspaperads', [NewspaperAdsController::class, 'index'])->name('admin.newspaper-ads');
+    Route::get('/newspaperads/data', [NewspaperAdsController::class, 'getTableData'])->name('admin.newspaper-ads.data');
+    Route::get('/newspaperads/create', [NewspaperAdsController::class, 'create'])->name('admin.newspaper-ads.create');
+    Route::post('/newspaperads/store', [NewspaperAdsController::class, 'store'])->name('admin.newspaper-ads.store');
 });

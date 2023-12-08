@@ -7,6 +7,8 @@ use App\Models\CommonCode;
 use App\Models\UserSaleFavorite;
 use App\Models\IntraSaleHomepage;
 use Illuminate\Support\Facades\DB;
+use App\Http\Class\lib\ResultClass;
+use App\Http\Class\lib\KakaoApiClass;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;
 

@@ -44,4 +44,11 @@ class CommonCodeClass{
     public static function getChildrenFromId($id){
         return CommonCode::where(['parent_id' => $id, 'is_use'=>1])->select('id','title')->get()->toArray();
     }
+
+    // 신문사구분
+    public function getNewspaperCodes(){
+        $cate = $this->getChildrenFromId(69);
+        return $cate;
+    }
+    
 }

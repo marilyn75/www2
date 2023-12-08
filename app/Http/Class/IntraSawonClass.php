@@ -9,6 +9,7 @@ use App\Models\IntraMember;
 use App\Models\IntraBoardDefault;
 use App\Models\IntraSaleHomepage;
 use Illuminate\Support\Facades\DB;
+use App\Http\Class\lib\ResultClass;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Class;
+namespace App\Http\Class\lib;
 
 // 처리결과 클래스
 

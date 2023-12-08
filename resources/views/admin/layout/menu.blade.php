@@ -15,6 +15,7 @@
       </ul>
     </li>
     <li><a href="{{ route('admin.board-confs') }}"><i class="flaticon-document"></i> <span>게시판관리</span></a></li>
+    <li><a href="{{ route('admin.newspaper-ads') }}"><i class="flaticon-document"></i> <span>신문광고관리</span></a></li>
     <li class="treeview">
       <a href="page-my-properties.html"><i class="flaticon-home"></i> <span>My Properties</span><i class="fa fa-angle-down pull-right"></i></a>
       <ul class="treeview-menu">

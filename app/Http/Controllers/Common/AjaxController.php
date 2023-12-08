@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Common;
 
-use App\Http\Class\ResultClass;
 use App\Http\Class\IntraSaleClass;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

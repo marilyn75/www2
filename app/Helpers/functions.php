@@ -163,3 +163,18 @@ if (!function_exists('formatCreatedAt2')) {
         return $string ? implode(', ', $string) . ' 전' : '방금 전';
     }
 }
+
+// select option 만들기
+if (!function_exists('makeOptions')) {
+    function makeOptions($cate, $id = null) {
+        if(!is_array($cate)) return null;
+        $html = "";
+        foreach($cate as $_ct){
+            $s = "";
+            if($id==$_ct['id']) $s = "selected";
+            $html .= '<option value="'.$_ct['id'].'" '.$s.'>'.$_ct['title'].'</option>';
+        }
+
+        return $html;
+    }
+}

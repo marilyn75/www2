@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Class;
+namespace App\Http\Class\lib;
 
 // 카카오 api 관련 클래스
 
