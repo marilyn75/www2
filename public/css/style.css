@@ -16681,7 +16681,7 @@ swiper-slide img {
 .hot_subtit h4{ color: #fff; font-size: 30px; font-weight: 500; }
 .hot_subtit p{ font-size: 24px; font-weight: 400; }
 .hot_subtit .btn { width: 170px; }
-.our-hot-offer { background-image: url(../images/background/mapimg.png); }
+.our-hot-offer { background-image: url(../images/background/mapimg.png); height: 627px; }
 .text-thm_main p{ font-size: 14px; }
 .text-thm_main h4{ font-size: 18px; }
 .fp_meta_main li a{ font-size: 14px !important; }
