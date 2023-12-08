@@ -17014,6 +17014,28 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   color: #555555 !important;
 }
 
+
+/* 신문광고 */
+/* .ad_article { height: 100vh; } */
+.article_brd { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 30px; cursor: pointer; border: 1px solid #ebebeb; }
+.article_brd p { font-size: 18px; color: #000; margin: 0; }
+.article_brd p:first-child { font-weight: 500; }
+.article_brd p:nth-child(2)::after { content: ''; display: block; height: 1px; width: 100%; background: #000; margin-top: 20px; margin-bottom: 15px; }
+.pdf_btn { background: transparent; font-weight: 500; border: none; padding: 0; cursor: pointer; font-size: 18px; }
+.pdf_btn:active{ border: transparent; outline: none; }
+.pdf_btn:focus{ border: transparent; outline: none; }
+.pdf_btn i { margin-left: 10px; }
+.article_top { display: flex; justify-content: space-between; width: 100%; }
+.article_top .search_option_two { width: 195px; }
+.article_top .search_option_two .dropdown button { background: transparent; border: none; border-radius: 0px; border-bottom: 1px solid #000; font-size: 18px; }
+.article_top .search_option_two .dropdown button .filter-option { font-size: 18px; }
+
+.table .thead-top th { font-size: 18px; font-weight: 500; color: #000; background: transparent; padding: 20px; border-top: 2px solid #000; border-bottom: 1px solid #B8B8B8; }
+.table td, .table th { font-weight: 500; color: #333; font-size: 18px; padding: 20px; border-top: 1px solid #B8B8B8; }
+.table td i, .table th i { margin-left: 10px; }
+.table td:first-child{ width: 850px; }
+
+
 /* 공지사항 */
 .my_profile_setting_input .btn1 { 
   border: 2px solid #385F8D;
