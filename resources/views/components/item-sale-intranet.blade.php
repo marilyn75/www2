@@ -35,7 +35,8 @@
                 <div class="tc_content tc_content_w">
                     <p class="text-thm">{{ $printData['category'] }}</p>
                     <h4>{{ $printData['title'] }} </h4>
-
+                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
+                    <p class="text-inf text_loc"><i class="ri-map-pin-2-fill"></i>{{ $printData['address'] }}</p>
                     @if(!empty($printData['area_b']))
                     <div class="text-inf-w">
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
@@ -55,8 +56,6 @@
                         @endif
                     </div>
                     @endif
-                    <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $printData['address'] }}</p>
-                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
                 </div>
                 <div class="fp_footer fp_footer_w">
                     <ul class="fp_meta float-left mb0 fp_meta_w">
