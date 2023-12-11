@@ -76,4 +76,7 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::get('/newspaperads/data', [NewspaperAdsController::class, 'getTableData'])->name('admin.newspaper-ads.data');
     Route::get('/newspaperads/create', [NewspaperAdsController::class, 'create'])->name('admin.newspaper-ads.create');
     Route::post('/newspaperads/store', [NewspaperAdsController::class, 'store'])->name('admin.newspaper-ads.store');
+    Route::get('/newspaperads/edit/{id?}', [NewspaperAdsController::class, 'edit'])->name('admin.newspaper-ads.edit');
+    Route::post('/newspaperads/update/{id?}', [NewspaperAdsController::class, 'update'])->name('admin.newspaper-ads.update');
+    Route::post('/newspaperads/delete/{id?}', [NewspaperAdsController::class, 'destroy'])->name('admin.newspaper-ads.destroy');
 });

@@ -21,9 +21,14 @@
         }
 
     });
+
+    $(document).on('click', '.btnList', function(){
+        location.href="{{ route('admin.newspaper-ads') }}";
+        return false;
+    });
 </script>
 
-<form name="frm" action="{{ route('admin.newspaper-ads.store') }}" method="POST" enctype="multipart/form-data">
+<form name="frm" action="{{ $conf['action'] }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="my_dashboard_review mb40"><h4 class="mb30">신문광고 등록하기</h4>
         <div class="row">
@@ -50,6 +55,11 @@
             <div class="col-lg-12">
                 <div class="my_profile_setting_textarea">
                     <label for="content">파일</label>
+                    @if(!empty($data['file']['filename_org']))
+                    <div>
+                        <a href="{{ route('common.file.view', $data['file']['id']) }}" target="_blank">{{ $data['file']['filename_org'] }}</a>
+                    </div>
+                    @endif
                     <input type="file" name="file" id="file" class="form-control">
                 </div>
             </div>

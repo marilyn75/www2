@@ -65,7 +65,7 @@
         })
         .on("click",".btn-edit",function(){     // 수정버튼 처리
             var id = $(this).data('id');
-            var url = "{{ route('admin.board') }}/edit/" + id;
+            var url = "{{ route('admin.newspaper-ads.edit') }}/" + id;
             //var params = "keyword=" + table.search() + "&page_size=" + table.page.len() + "&page=" + table.page.info().page;
             var params = {
                 'keyword' : table.search(),
@@ -113,7 +113,7 @@
                 if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
                     $.ajax({
                         type: 'post',
-                        url : "{{ route('admin.board') }}" + "/delete/"+id,
+                        url : "{{ route('admin.newspaper-ads.destroy') }}" + "/"+id,
                         data: {'_token': '{{ csrf_token() }}'},
                         dataType: 'json', 
                         success: function(r){

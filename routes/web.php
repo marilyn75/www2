@@ -76,6 +76,10 @@ Route::prefix('/common')->group(function(){
 
     // ajax 처리
     Route::match(['get', 'post'], '/ajax', [App\Http\Controllers\Common\AjaxController::class, 'addFavorite'])->name('common.ajax.addFavorite');
+
+    // 파일 다운로드
+    Route::get('/fdn/{id}', [App\Http\Class\lib\FileClass::class, 'download'])->name('common.file.download');
+    Route::get('/fv/{id}', [App\Http\Class\lib\FileClass::class, 'viewfile'])->name('common.file.view');
 });
 
 Route::match(['get', 'post'], '/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');
