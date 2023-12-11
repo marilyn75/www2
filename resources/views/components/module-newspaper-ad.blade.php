@@ -1,6 +1,6 @@
 
 
-<form name="frm" action="{{ $data->path() }}" method="post" class="row">
+<form name="frm" action="{{ $data->path() }}" method="post" class="col-md-12">
     @csrf
     <input type="hidden" name="page" value="1">
     <div class="article_top mb80">
@@ -17,6 +17,12 @@
             </div>
         </div>
     </div>
+
+    <!-- 데이터 없는 경우 -->
+    <!-- <div class="row pt100 pb100 nodata">
+        <p><i class="ri-information-line"></i>데이터가 없습니다.</p>
+    </div> -->
+
     <div class="row pb100">
         <div class="col-md-4 col-lg-3">
             <div class="article_brd">
