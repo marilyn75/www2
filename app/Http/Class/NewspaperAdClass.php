@@ -20,6 +20,19 @@ class NewspaperAdClass{
     {
         $this->model = new NewspaperAd;
     }
+
+    public function getListData($request, $itemNum=8){
+        $data = $request->all();
+
+        $where[] = ['news_code', 70]; // 부산일보 고정
+        if(!empty($data['y']))  $where[] = ['pub_date', 'like', $data['y'].'%'];
+        else                    $where[] = ['pub_date', 'like', date("Y").'%'];
+
+        $model = $this->model::where($where);
+        $model->orderBy('pub_date','desc');
+
+        return $model->paginate($itemNum);
+    }
     
     public function datalist(){
         $data = $this->model::select('id', 'news_code', 'news_txt', 'pub_date')

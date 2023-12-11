@@ -3,17 +3,27 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
+use App\Http\Class\NewspaperAdClass;
 
 class ModuleNewspaperAd extends Component
 {
+    private $page;
+    private $request;
+    private $cls;
+
+    public $printData;
+    public $relatedSales;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($page, Request $request)
     {
-        //
+        $this->page = $page;
+        $this->request = $request;
+        $this->cls = new NewspaperAdClass;
     }
 
     /**
@@ -21,6 +31,8 @@ class ModuleNewspaperAd extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.module-newspaper-ad');
+        $data = $this->cls->getListData($this->request);
+        debug($data);
+        return view('components.module-newspaper-ad', compact('data'));
     }
 }
