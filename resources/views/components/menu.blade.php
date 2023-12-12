@@ -40,6 +40,7 @@
                 <div class="user_setting_content user_setting_content_w">
                     <a class="dropdown-item text-dark" href="{{ route('changepw') }}">비밀번호 변경</a>
                     <a class="dropdown-item text-dark" href="{{ route('profile') }}">회원정보 수정</a>
+                    <a class="dropdown-item text-dark" href="#">마이페이지</a>
                     <a class="dropdown-item text-dark" href="#">Messages</a>
                     <a class="dropdown-item text-dark" href="#">Purchase history</a>
                     <a class="dropdown-item text-dark" href="#">Help</a>

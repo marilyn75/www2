@@ -37,6 +37,7 @@ Route::prefix('/member')->group(function(){
 
     Route::get('profile', [App\Http\Controllers\Member\ProfileController::class, 'index'])->name('profile')->middleware('auth');
     Route::post('profile', [App\Http\Controllers\Member\ProfileController::class, 'update'])->middleware('auth');
+
 });
 
 Route::get('login',[App\Http\Controllers\Member\LoginController::class, 'index'])->name('login')->middleware('guest');

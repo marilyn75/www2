@@ -73,7 +73,7 @@
 
         <!-- 수정 -->
         <div class="col-sm-4 col-md-4 col-lg-3">
-            <a class="employ_box" href="{{ $data->path() }}?mode=view&idx={{ $_sawon->idx }}">
+            <a class="feat_property employ_box" href="{{ $data->path() }}?mode=view&idx={{ $_sawon->idx }}">
                 <div class="empl-img-w">
                     <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
                 </div>

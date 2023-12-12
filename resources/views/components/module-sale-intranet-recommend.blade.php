@@ -1,4 +1,4 @@
-<form name="frm" action="{{ $data->path() }}" method="post" class="row">
+<form name="frm" action="{{ $data->path() }}" method="post" >
     @csrf
     <input type="hidden" name="page" value="1">
     <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
