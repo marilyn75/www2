@@ -1,36 +1,38 @@
-
 <script>
-    function addFavorite(obj, id){
-        var $child = $(obj).children();
-        
-        var flag = ($child.hasClass('ri-heart-3-line')) ? "add" : "remove";
-        var params = {id:id, flag:flag};
+function addFavorite(obj, id) {
+    var $child = $(obj).children();
 
-        var r = doAjax('{{ route('common.ajax.addFavorite') }}',params);
-    
-        if(r.result){
-            if(flag=="add") $child.removeClass('ri-heart-3-line').addClass('ri-heart-3-fill');
-            else            $child.removeClass('ri-heart-3-fill').addClass('ri-heart-3-line');
+    var flag = ($child.hasClass('ri-heart-3-line')) ? "add" : "remove";
+    var params = {
+        id: id,
+        flag: flag
+    };
 
-            // if(flag=="add") $child.addClass('on');
-            // else            $child.removeClass('on');
-            sbAlert(r.message);
-        }
+    var r = doAjax('{{ route('common.ajax.addFavorite') }}', params);
 
-        return false;
+    if (r.result) {
+        if (flag == "add") $child.removeClass('ri-heart-3-line').addClass('ri-heart-3-fill');
+        else $child.removeClass('ri-heart-3-fill').addClass('ri-heart-3-line');
+
+        // if(flag=="add") $child.addClass('on');
+        // else            $child.removeClass('on');
+        sbAlert(r.message);
     }
 
-    $(document).on('change', '#transArea', function(){
-        if(this.checked){
-            $('.area').each(function(){
-                $(this).html($(this).data('py'));
-            });
-        }else{
-            $('.area').each(function(){
-                $(this).html($(this).data('m2'));
-            });
-        }
-    });
+    return false;
+}
+
+$(document).on('change', '#transArea', function() {
+    if (this.checked) {
+        $('.area').each(function() {
+            $(this).html($(this).data('py'));
+        });
+    } else {
+        $('.area').each(function() {
+            $(this).html($(this).data('m2'));
+        });
+    }
+});
 </script>
 
 <form name="frm" action="{{ $data->path() }}" method="post" class="row">
@@ -363,9 +365,16 @@
                 </div>
             </li> -->
                     <li>
-                        <div class="search_option_two">
+
+                        <div class="left_area tac-xsd result_filt">
+                            <p>검색결과 <span class="mont point_c">16</span>건</p>
+                            <button class="reset_btn">초기화</button>
+                        </div>
+
+                    </li>
+                    <li>
+                        <!-- <div class="search_option_two">
                             <div class="candidate_revew_select select_w">
-                                <!-- <label for="">지역</label> -->
                                 <select class="selectpicker w100 show-tick">
                                     <option>지역</option>
                                     <option>강서구</option>
@@ -377,6 +386,15 @@
                                     <option>북구</option>
                                 </select>
                             </div>
+                        </div> -->
+                        <label for="">유형</label>
+                        <div class="" data-toggle="buttons">
+                            <label class="btn filt_r-btn inter active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked="">주거용
+                            </label>
+                            <label class="btn filt_r-btn inter">
+                                <input type="radio" name="options" id="option2" autocomplete="off">상업용
+                            </label>
                         </div>
                     </li>
                     <li>
@@ -474,9 +492,8 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="small_dropdown2 small_dropdown2_w">
-                            <!-- <label for="">가격</label> -->
                             <div id="prncgs2" class="btn dd_btn">
                                 <span>가격 (단위 : 만원)</span>
                                 <label for="exampleInputEmail2"><i class="ri-arrow-down-s-fill"></i></label>
@@ -489,7 +506,117 @@
                                 </div>
                             </div>
                         </div>
+                    </li> -->
+
+                    <li>
+                        <div class="range_container">
+                            <div class="form_control">
+                                <!-- min -->
+                                <div class="form_control_container">
+                                    <input class="form_control_container__time__input" type="number" id="fromInput"
+                                        value="10" min="0" max="100" />
+                                </div>
+                                <!-- max -->
+                                <div class="form_control_container">
+                                    <input class="form_control_container__time__input" type="number" id="toInput"
+                                        value="30" min="0" max="100" />
+                                </div>
+                            </div>
+                            <div class="sliders_control">
+                                <input id="fromSlider" type="range" value="10" min="0" max="100" />
+                                <input id="toSlider" type="range" value="30" min="0" max="100" />
+                            </div>
+                        </div>
                     </li>
+                    <script>
+                    function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+                        const [from, to] = getParsed(fromInput, toInput);
+                        fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
+                        if (from > to) {
+                            fromSlider.value = to;
+                            fromInput.value = to;
+                        } else {
+                            fromSlider.value = from;
+                        }
+                    }
+
+                    function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+                        const [from, to] = getParsed(fromInput, toInput);
+                        fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
+                        setToggleAccessible(toInput);
+                        if (from <= to) {
+                            toSlider.value = to;
+                            toInput.value = to;
+                        } else {
+                            toInput.value = from;
+                        }
+                    }
+
+                    function controlFromSlider(fromSlider, toSlider, fromInput) {
+                        const [from, to] = getParsed(fromSlider, toSlider);
+                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+                        if (from > to) {
+                            fromSlider.value = to;
+                            fromInput.value = to;
+                        } else {
+                            fromInput.value = from;
+                        }
+                    }
+
+                    function controlToSlider(fromSlider, toSlider, toInput) {
+                        const [from, to] = getParsed(fromSlider, toSlider);
+                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+                        setToggleAccessible(toSlider);
+                        if (from <= to) {
+                            toSlider.value = to;
+                            toInput.value = to;
+                        } else {
+                            toInput.value = from;
+                            toSlider.value = from;
+                        }
+                    }
+
+                    function getParsed(currentFrom, currentTo) {
+                        const from = parseInt(currentFrom.value, 10);
+                        const to = parseInt(currentTo.value, 10);
+                        return [from, to];
+                    }
+
+                    function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+                        const rangeDistance = to.max - to.min;
+                        const fromPosition = from.value - to.min;
+                        const toPosition = to.value - to.min;
+                        controlSlider.style.background = `linear-gradient(
+      to right,
+      ${sliderColor} 0%,
+      ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
+      ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
+      ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
+      ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
+      ${sliderColor} 100%)`;
+                    }
+
+                    function setToggleAccessible(currentTarget) {
+                        const toSlider = document.querySelector('#toSlider');
+                        if (Number(currentTarget.value) <= 0) {
+                            toSlider.style.zIndex = 2;
+                        } else {
+                            toSlider.style.zIndex = 0;
+                        }
+                    }
+
+                    const fromSlider = document.querySelector('#fromSlider');
+                    const toSlider = document.querySelector('#toSlider');
+                    const fromInput = document.querySelector('#fromInput');
+                    const toInput = document.querySelector('#toInput');
+                    fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+                    setToggleAccessible(toSlider);
+
+                    fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
+                    toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
+                    fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
+                    toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
+                    </script>
 
                     <!-- <li class="min_area list-inline-item">
                 <div class="form-group">
@@ -678,11 +805,16 @@
                             <li class="list-inline-item">
                                 <select class="selectpicker show-tick" name="sort"
                                     onchange="frm.sort.value=this.value;frm.submit();">
-                                    <option value="reg_date|desc" @if (@$_POST['sort']=="reg_date|desc" ) selected @endif>최신순</option>
-                                    <option value="reg_date" @if (@$_POST['sort']=="reg_date" ) selected @endif>오래된순</option>
-                                    <option value="isRecom|desc" @if (@$_POST['sort']=="isRecom|desc" ) selected @endif>추천순</option>
-                                    <option value="salePrice|desc" @if (@$_POST['sort']=="salePrice|desc") selected @endif>높은가격순</option>
-                                    <option value="salePrice" @if (@$_POST['sort']=="salePrice") selected @endif>낮은가격순</option>
+                                    <option value="reg_date|desc" @if (@$_POST['sort']=="reg_date|desc" ) selected
+                                        @endif>최신순</option>
+                                    <option value="reg_date" @if (@$_POST['sort']=="reg_date" ) selected @endif>오래된순
+                                    </option>
+                                    <option value="isRecom|desc" @if (@$_POST['sort']=="isRecom|desc" ) selected @endif>
+                                        추천순</option>
+                                    <option value="salePrice|desc" @if (@$_POST['sort']=="salePrice|desc" ) selected
+                                        @endif>높은가격순</option>
+                                    <option value="salePrice" @if (@$_POST['sort']=="salePrice" ) selected @endif>낮은가격순
+                                    </option>
                                     {{-- <option value="zzim desc" @if ($_POST['sort']=="zzim desc") selected @endif>찜하기순</option>
                                     <option value="price desc" @if ($_POST['sort']=="price desc") selected @endif>높은가격순</option>
                                     <option value="price asc" @if ($_POST['sort']=="price asc") selected @endif>낮은가격순</option> --}}
@@ -699,22 +831,22 @@
                         </ul>
 
 
-        
-     
+
+
 
                     </div>
                 </div>
             </div>
         </div>
         <!-- 검색결과 end -->
-        
+
         <div class="row">
             @foreach ($data as $_data)
             @php
-            
+
             $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
 
-            if(!empty($favorites) && in_array($printData['idx'], $favorites))   $printData['isFavorite'] = true;
+            if(!empty($favorites) && in_array($printData['idx'], $favorites)) $printData['isFavorite'] = true;
 
             @endphp
             <x-item-sale-intranet type='default' :printData="$printData" />
