@@ -39,6 +39,48 @@
     <script type="text/javascript" src="{{ url('js/common.js') }}"></script>
     <script src="{{ url('js/docurl.js') }}"></script>
 
+    <!-- google chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['month', 'Sales'],
+          ['01',  150 ],
+          ['02',  200 ],
+          ['03',  350 ],
+          ['04',  230 ],
+          ['05',  489 ],
+          ['06',  500 ],
+          ['07',  300 ],
+          ['08',  860 ],
+          ['09',  650 ],
+          ['10',  530 ],
+          ['11',  680 ],
+          ['12',  900 ]
+        ]);
+
+        var options = {
+          curveType: 'function',
+          legend: { position: 'none' },
+          width : '100%',
+          colors: ['#F6A620'],
+          lineWidth: 3,
+          backgroundColor: 'transparent',
+          vAxis: {baselineColor: {color: '#d9d9d9'}},
+          vAxis: {gridlines: {color: '#d9d9d9'}},
+          vAxis: { textStyle: {fontName: 'Montserrat'} },
+          hAxis: { textStyle: {fontName: 'Montserrat'} }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 </head>
 
 <body>

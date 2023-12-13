@@ -1,8 +1,8 @@
 @extends('admin.layout.layout')
 
-@section('page-title', '채팅 문의')
+@section('page-title', '실시간 문의')
 
-@section('page-comment', '회원들의 문의사항을 실시간 채팅으로 관리 합니다.')
+<!-- @section('page-comment', '회원들의 문의사항을 실시간 채팅으로 관리 합니다.') -->
 
 @section('content')
 
@@ -10,13 +10,13 @@
 
 <div class="row">
     <div class="col-lg-5 col-xl-4">
-        <div class="message_container">
+        <div class="message_container ms_list">
             <div class="inbox_user_list">
                 <div class="iu_heading">
                     <div class="candidate_revew_search_box">
                         <form class="form-inline">
-                            <input class="form-control" type="search" placeholder="Serach" aria-label="Search">
-                            <button class="btn" type="submit"><span class="flaticon-magnifying-glass"></span></button>
+                            <input class="form-control" type="search" placeholder="이름을 검색" aria-label="Search">
+                            <button class="btn" type="submit"><i class="ri-user-search-line"></i></button>
                         </form>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                     <li class="contact">
                         <a href="{{ route('admin.chat', $_user->getChatChannel()) }}">
                             <div class="wrap">
-                                <span class="contact-status online"></span>
+                                <!-- <span class="contact-status online"></span> -->
                                 <img class="img-fluid" src="{{ $_user->data()->profile_file }}" />
                                 <div class="meta">
                                     <h5 class="name">{{ $_user->data()->name }}</h5>
@@ -47,7 +47,7 @@
     </div>
     @if (!empty($currUser))
     <div class="col-lg-7 col-xl-8">
-        <div class="message_container">
+        <div class="message_container chat_contain">
             <div class="user_heading">
                 <a href="#">
                     <div class="wrap">
@@ -65,7 +65,7 @@
     </div>    
     @else
     <div class="col-lg-7 col-xl-8">
-        <div class="message_container">
+        <div class="message_container chat_contain">
             <div class="user_heading">
                 <a href="#">
                     <div class="wrap">

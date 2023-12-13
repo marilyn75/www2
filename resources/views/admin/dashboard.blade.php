@@ -14,7 +14,7 @@
                             <h2 class="breadcrumb_title">대시보드</h2>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                    <div class="col-sm-6 col-md-4 col-xl-4">
                         <div class="ff_one">
                             <div class="detais">
                                 <p>오늘 방문자 수</p>
@@ -22,28 +22,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                    <div class="col-sm-6 col-md-4 col-xl-4">
                         <div class="ff_one style2">
-                            <div class="icon"><span class="flaticon-view"></span></div>
                             <div class="detais">
                                 <p>관심매물</p>
                                 <div class="timer ff_sec mont">24</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                    <div class="col-sm-6 col-md-4 col-xl-4">
                         <div class="ff_one style3">
-                            <div class="icon"><span class="flaticon-chat"></span></div>
                             <div class="detais">
                                 <p>매물 조회 수</p>
                                 <div class="timer ff_thi mont">12</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-12 mt70">
+                    <div class="breadcrumb_content style2">
+                            <h2 class="breadcrumb_title">방문자 수</h2>
+                        </div>
                         <div class="application_statics">
-                            <h4>방문자</h4>
-                            <div class="c_container"></div>
+                            <div id="curve_chart" style="height: 500px"></div>
                         </div>
                     </div>
                 </div>

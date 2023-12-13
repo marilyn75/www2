@@ -12068,8 +12068,8 @@ a.btn.btn_error{
 .sidebar-menu li:hover a,
 .sidebar-menu li.active a{
   color: #ffffff;
-  background-color: #172133;
-  border-left-color: #ff5a5f;
+  background-color: #000;
+  border-left-color: #385f8d;
 }
 .sidebar-menu li .treeview-menu{
   margin: 0;
@@ -17358,14 +17358,20 @@ code {
   box-shadow: 0px 0px 15px 3px rgba(25, 26, 54, 0.05);
   border: none;
   position: relative;
+  height: 140px;
  }
- .ff_one .detais { padding-top: 5px; padding-left: 130px; }
- .application_statics { border-radius: 20px; background: #F5F6FB; box-shadow: none; }
+ .ff_one .detais { padding-top: 12px; padding-left: 130px; }
+ .application_statics { 
+    border-radius: 20px; 
+    background: #F5F6FB; 
+    box-shadow: none;
+    padding: 0;
+  }
  .ff_one .ff_fir:before { 
   background: url(../images/admin/menu/line01.png) no-repeat center; 
   position: absolute;
-    left: 0;
-    top: 0;
+    left: 25px;
+    top: 5px;
     content: "";
     width: 100px;
     height: 100px;
@@ -17374,8 +17380,8 @@ code {
 .ff_one .ff_sec:before { 
   background: url(../images/admin/menu/line02.png) no-repeat center; 
   position: absolute;
-    left: 0;
-    top: 0;
+    left: 25px;
+    top: 5px;
     content: "";
     width: 100px;
     height: 100px;
@@ -17384,15 +17390,29 @@ code {
 .ff_one .ff_thi:before { 
   background: url(../images/admin/menu/line03.png) no-repeat center; 
   position: absolute;
-    left: 0;
-    top: 0;
+    left: 25px;
+    top: 5px;
     content: "";
     width: 100px;
     height: 100px;
     background-size: contain;
 }
- 
+.ff_one .detais p { color: #525252; font-size: 18px; font-weight: 500; margin-bottom: 10px; } 
+.ff_one .detais .timer { color: #191a36; font-size: 30px; font-weight: 600; }
 
+.ms_list { background: #F5F6FB; border: none; border-radius: 20px; }
+.candidate_revew_search_box input.form-control { font-size: 14px; border: none; border-radius: 50px; padding: 6px 20px; }
+.candidate_revew_search_box button { background: #385f8d; width: 52px; height: 52px; border-radius: 50px; }
+.candidate_revew_search_box button i { color: #fff; font-size: 20px; }
+.candidate_revew_search_box .form-inline { justify-content: space-between; }
+.iu_heading .candidate_revew_search_box input.form-control { width: 300px; }
+.inbox_user_list .wrap .meta h5.name { color: #000; font-weight: 600; }
+.inbox_user_list .wrap .meta p.preview { color: #525252; }
+.inbox_user_list ul li.contact .wrap .meta { margin-top: 7px; }
+.inbox_user_list ul li.contact .wrap img { margin-right: 14px; }
+.inbox_user_list ul li { padding: 12px 0; }
+.chat_contain { border: none; border-radius: 20px; background: #FFF; box-shadow: 0px 0px 15px 3px rgba(25, 26, 54, 0.05); }
+.message_container .user_heading { border: none; border-radius: 20px; }
 
 
 
@@ -17409,6 +17429,14 @@ code {
 @media (max-width: 1599.98px) {
   .feat_property_w .details .tc_content .price_w { margin-top: 12px; }
   .prof { gap: 20px; }
+
+  .ff_one { height: 120px; }
+  .ff_one .ff_fir:before { left: 15px; width: 80px; height: 80px; }
+  .ff_one .ff_sec:before { left: 15px; width: 80px; height: 80px; }
+  .ff_one .ff_thi:before { left: 15px; width: 80px; height: 80px; }
+  .ff_one .detais { padding-top: 5px; padding-left: 100px; }
+  .ff_one .detais p { font-size: 16px; margin-bottom: 8px; }
+
 }
 @media (max-width: 1199.98px) {
   .details_w { padding: 15px 15px 0px; }
@@ -17437,6 +17465,12 @@ code {
   .single_product_slider_w .owl-controls .owl-dots span { width: 90px !important; } 
   .intro_imgs img { height: 300px; }
 
+  .ff_one .ff_fir:before { display: none; }
+  .ff_one .ff_sec:before { display: none; }
+  .ff_one .ff_thi:before { display: none; }
+  .ff_one .detais { padding: 0; }
+
+
 
 }
 @media (max-width: 991.98px) {
@@ -17460,6 +17494,8 @@ code {
   .service_img img { height: 300px; }
   .mobile_serv { display: block; }
   .feat_property_w .thumb .img-whp { width: 100% !important; }
+
+  .dash_contain{ width: 100%; }
 
 }
 @media (max-width: 867.98px) {
