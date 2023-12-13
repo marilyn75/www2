@@ -1,13 +1,13 @@
 <ul>
     @foreach ($codeItems as $_code)
         <li class='
-        @if (!empty($_code->children()) && $_code->children()->count() > 0) has-sub @endif
+        @if (!empty($_code->children()) && $_code->children()->count() > 0) has-sub is-open @endif
         '>
             <div class='li-wr'>
                 <input type='hidden' name='id[]' value='{{ $_code->id }}' />
                 <input type='hidden' name='depth[]' value='{{ $_code->depth - 1 }}' />
                 <p class='is-handle'>
-                <button type='button' ><span class='blind'>Toggle Sub</span></button>
+                <button type='button' class="is-folder"><span class='blind'>Toggle Sub</span></button>
                 </p>
                 <p class='nm-wr'>
                     <strong class='is-nm'>{{ $_code->title }} @if ($_code->is_use==0) <span style="font-size: 10px; color:red;">[사용안함]</span> @endif</strong>

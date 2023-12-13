@@ -165,22 +165,33 @@ class MenusTest extends TestCase
 
     public function test_메뉴순서를_일괄_수정_할_수_있다(): void
     {
-        // Menu::factory()->state(['parent_id'=>1])->count(1)->create();
-        // $menu = Menu::orderBy('id', 'desc')->first();
+        Menu::factory()->state(['parent_id'=>1])->count(1)->create();
+        $menu = Menu::orderBy('id', 'desc')->first();
 
-        // $newMenus = Menu::factory()->state(['parent_id'=>$menu->id])->count(3)->create();
-        // foreach($newMenus as $_mn){
-        //     $ids[] = $_mn->id;
-        // }
+        $newMenus = Menu::factory()->state(['parent_id'=>$menu->id])->count(3)->create();
+        foreach($newMenus as $_i=>$_mn){
+            // $ids[] = $_mn->id;
+            $ids[] = $_mn->id;
+            $menu_name[] = $_mn->title;
+            $depth[] = 1;
+        }
 
-        // $tree = Menu::descendantsOf(1)->toTree();
-        // // dd($tree->toArray());
+        shuffle($ids);  // 랜덤섞기
+
+        $payload = [
+            '_token' => csrf_token(),
+            'root' => $menu->id,
+            'id' => $ids,
+            'depth' => $depth,
+        ];
+
+        $response = $this->post(route('admin.menus.sort'), $payload);
+        $response->assertSessionHas('success_message','메뉴순서가 수정 되었습니다.')
+            ->assertStatus(302);
         
-        
+        $response = $this->post(route('admin.menus',[1, $menu->id]), $payload);
+        $response->assertSeeTextInOrder($menu_name);
 
-        // $r = Menu::rebuildSubtree(Menu::find(1), $tree);
-        // print_r($r);
-        // dd($tree);
     }
 
     public function test_메뉴옵션을_일괄_수정_할_수_있다(): void

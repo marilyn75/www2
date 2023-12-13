@@ -111,6 +111,37 @@
     </style>
 
     <script>
+
+        function setTreeList($listwr){
+            var $wr = $listwr;
+            $("li",$wr).each(function(){
+                if($("ul",this).length>0){
+                    $(this).addClass("has-sub");
+                    $(this).addClass("is-open");
+                }else{
+                    $(this).removeClass("has-sub");
+                }
+
+                $(" > .li-wr .is-handle button",this).bind("click",function(){
+
+                    var $li = $(this).parent().parent().parent();
+
+                    if($li.hasClass("has-sub")){
+                        if($li.hasClass("is-open")){
+                            $("ul",$li).slideUp("fast");
+                            $li.removeClass("is-open");
+                            $li.addClass("is-close");
+                        }
+                        else{
+                            $("ul",$li).slideDown("fast");
+                            $li.addClass("is-open");
+                            $li.removeClass("is-close");
+                        }
+                    }
+                });
+
+            });
+        }
         // 1차메뉴추가
         $(document).on('click', '#btnAddCode', function() {
             openWindow("{{ route('admin.codes.create') }}", 700, 500, 'addcode');
@@ -176,6 +207,11 @@
                 }
             });
         });  
+
+        // 코드순서저장
+        $(document).on('click', '.btnSort', function(){
+            frm.submit();
+        });
     </script>
 
     <link rel="stylesheet" media="all" href="{{ url('css/admin-style.css') }}" />
@@ -245,19 +281,39 @@
                 <h4 class="a-tit02">{{ $currCode->title }}</h4>
                 <div class="">
                     <button type="button" class="a-sp-btn btnAddSubCode" data-id="{{ $p_id }}"><span>코드 등록</span></button>
-                    <button type="button" class="a-sp-btn"><span>코드 순서 저장</span></button>
+                    <button type="button" class="a-sp-btn btnSort" onclick=""><span>코드 순서 저장</span></button>
                 </div>
 
-                <form id="frmCommCodeDataList" method="post" onsubmit="return false">
+                <form name="frm" action="{{ route('admin.codes.sort') }}" id="frmCommCodeDataList" method="post" onsubmit="return false">
                     @csrf
+                    <input type="hidden" name="root" value="{{ $p_id }}">
                     <div class="cfg-category-list">
                         <x-CommonCodeItem :codeItems="$subCodes" />
                     </div>
                 </form>
                 <script>
                     $(document).ready(function() {
-                        $(".cfg-category-list ul").sortable({});
-                        CommCodeCtrl.setTreeList($('.cfg-category-list'));
+                        // $(".cfg-category-list ul").sortable({});
+                        // setTreeList($('.cfg-category-list'));
+
+                        $(".cfg-category-list ul").sortable();
+                        $(".cfg-category-list .is-folder").each(function() {
+                            $(this).click(function() {
+                                var $li = $(this).parent().parent().parent();
+                                var hasSub = $(" > ul", $li).length;
+
+                                if (hasSub > 0) {
+                                    if ($li.hasClass("is-close")) {
+                                        $(" > ul", $li).slideDown("fast");
+                                        $li.removeClass("is-close");
+                                    } else {
+                                        $(" > ul", $li).slideUp("fast");
+                                        $li.addClass("is-close");
+                                    }
+
+                                }
+                            });
+                        });
                     });
                 </script>
 

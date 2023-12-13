@@ -328,7 +328,7 @@ class MenusController extends Controller
         // dd($result);
 
         return back()
-            ->with('success_message','메뉴순서가 수정 되었습니다.'.$result);
+            ->with('success_message','메뉴순서가 수정 되었습니다.');
         
     }
 

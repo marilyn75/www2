@@ -116,4 +116,46 @@ class CommonCodeController extends Controller
 
         return json_encode(['result'=>true, 'message'=>'삭제 되었습니다.']);
     }
+
+    public function sort(Request $request){
+        $data = $request->all();
+
+        $descendants = CommonCode::descendantsOf($data['root'])->toArray();
+        foreach($descendants as $_v){
+            $id = $_v['id'];
+            unset($_v['_lft'], $_v['_rgt'], $_v['parent_id']);
+            $arrDescendents[$id] = $_v;
+        }
+
+        $tree = [];
+        foreach ($data["id"] as $i => $id) {
+            $depth = $data["depth"][$i]*1;
+            $node = $arrDescendents[$id];
+            // array_push($node, ["children" => []]);
+            // $node = ["id" => $id, "children" => []];
+            // if ($depth == 1 || $depth == -1) {
+            if ($depth == 0) {
+                $tree[] = $node;
+            } else {
+                $parent =& $tree[array_key_last($tree)];
+                for ($j = 2; $j < $depth; ++$j) {
+                    $parent =& $parent["children"][array_key_last($parent["children"])];
+                }
+                $parent['children'][] = $node;
+            }
+        }
+
+        if(!empty($data['gubun']) && $data['gubun']=="left"){
+            foreach($tree as $_i=>$_node){
+                $tree[$_i]['children'] = CommonCode::descendantsOf($tree[$_i]['id'])->toTree()->toArray();
+            }
+            $this->removeTreeInfo($tree);
+        }  
+     
+
+        $result = CommonCode::rebuildSubtree(CommonCode::find($data['root']), $tree);
+
+        return back()
+            ->with('success_message','코드순서가 저장 되었습니다.');
+    }
 }
