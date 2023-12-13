@@ -3,6 +3,7 @@
 namespace App\Http\Class;
 
 use App\Models\NewspaperAd;
+use Jenssegers\Agent\Agent;
 use Yajra\DataTables\DataTables;
 use App\Http\Class\lib\FileClass;
 use App\Http\Class\lib\ResultClass;
@@ -59,6 +60,24 @@ class NewspaperAdClass{
         }
 
         return $data;
+    }
+
+    public static function getPrintData($data){
+        $return = $data->toArray();
+
+        $file_data = $data->file();
+
+        $return['down_link'] = route('common.file.download', $file_data->id);
+        $return['view_link'] = route('common.file.view', $file_data->id);
+
+        $agent = new Agent();
+        if($agent->isMobile()){
+            $return['link'] = $return['down_link'];
+        }else{
+            $return['link'] = $return['view_link'];
+        }
+
+        return $return;
     }
 
     public function store($ctrl, $request){
