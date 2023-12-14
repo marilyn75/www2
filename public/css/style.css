@@ -16263,7 +16263,7 @@ button.gm-ui-hover-effect:focus {
 
 
 .container_w { max-width: 1240px; margin: 0 auto; padding: 0 20px;}
-.details_w { padding: 0 20px; }
+.details_w { padding: 0 15px; }
 .search_result_w { padding: 0 25px; margin: 0 auto; width: 100%; background: transparent; border: none; font-size: 16px; display: flex; align-items: baseline; justify-content: space-between; }
 .search_result_w .left_area p{ font-size: 16px; color: #000; font-weight: 600; }
 .search_result_w .bootstrap-select>.dropdown-toggle { background: transparent; }
@@ -16305,7 +16305,7 @@ button.gm-ui-hover-effect:focus {
 .feat_property_w .thumb .thmb_cntnt ul.tag li a, .feat_property_w .thumb .thmb_cntnt ul.tag li span, .properti_city.home6 .thumb .thmb_cntnt ul.tag li a, .feat_property_w.home8 ul.tag li a, .feat_property_w.list ul.tag li a{
   font-size: 16px;
 }
-.feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { right: 10px; left: auto; top: 10px; display: flex; align-items: center; }
+.feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { right: 7px; left: auto; top: 4px; display: flex; align-items: center; }
 .feat_property_w .thumb .thmb_cntnt .fp_price { left: 12px; display: flex; align-items: center; }
 .feat_property .thumb .thmb_cntnt .fp_price_w { background: rgb(0, 0, 0, 0.5); border-radius: 30px; }
 .feat_property .thumb .thmb_cntnt .fp_price_w p{ font-weight: 500; padding: 10px 20px; font-size: 16px; margin: 0; color: #fff; }
@@ -16356,7 +16356,7 @@ button.gm-ui-hover-effect:focus {
 .select_w label { margin-bottom: 3px; padding-left: 5px; color: #385F8D; font-weight: 500; }
 .select_w .bootstrap-select>.dropdown-toggle:focus, .select_w .bootstrap-select>.dropdown-toggle:active, .grid_list_search_result .bootstrap-select>.dropdown-toggle:focus, .grid_list_search_result .bootstrap-select>.dropdown-toggle:active{border: 2px solid #385F8D;}
 .small_dropdown2_w label { margin-bottom: 3px; padding-left: 5px; color: #385F8D; font-weight: 500; }
-.pc_filter_bx { padding: 30px; background: #fff; border-radius: 10px; box-shadow: 0px 0px 15px 3px rgba(25, 26, 54, 0.05);}
+.pc_filter_bx { padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0px 0px 15px 3px rgba(25, 26, 54, 0.05);}
 .panel-body_w { padding: 0 5px; }
 .sasw_list_w button.btn.dropdown-toggle { 
   line-height: 34px;
@@ -16365,20 +16365,54 @@ button.gm-ui-hover-effect:focus {
   height: 48px;
  }
 
-.form_control_container {
+/* .form_control_container {
   display: flex; align-items: center;
-}
+} */
 .range_container {
   display: flex;
   flex-direction: column;
-  padding: 0 5px;
 }
-.range_container .form_control { display: flex; justify-content: space-between; }
-.sliders_control {
+.range_container .form_control { display: flex;  margin-bottom: 30px; gap: 10px; }
+.range_container .form_control_container { width: 50%; }
+.range_container .form_control_container input { 
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #525252;
+  height: 48px;
+  font-size: 14px;
+  padding: 6px 10px; 
   position: relative;
-  min-height: 50px;
+  background: url(../images/resource/won.png) no-repeat;
+  background-position: 65px;
+  content: '';
+  background-size: 33px;
+}
+.range_container .form_control_container input[type="number"]::-webkit-outer-spin-button,
+.range_container .form_control_container input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+.range_container .form_control_container .form_area { 
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #525252;
+  height: 48px;
+  font-size: 14px;
+  padding: 6px 10px; 
+  position: relative;
+  background: url(../images/resource/meter.png) no-repeat;
+  background-position: 65px;
+  content: '';
+  background-size: 33px;
 }
 
+.sliders_control {
+  position: relative;
+  min-height: 18px;
+}
+.label_fx { display: flex; align-items: center; justify-content: space-between; }
+.label_fx button { cursor: pointer; margin-bottom: 0.5rem; border: none; background: transparent; padding: 0; }
+.label_fx button:focus, .label_fx button:active { outline: none; border: none; }
+.label_fx i {  font-size: 22px; color: #385f8d; }
 /* .form_control {
   position: relative;
   display: flex;
@@ -16464,24 +16498,40 @@ input[type="range"] {
   z-index: 1;
   top: 4px;
 }
+#fromAreaSlider {
+  height: 0;
+  z-index: 1;
+  top: 4px;
+}
+
 .sawon_crop { width: 40px; height: 40px; border-radius: 40px; overflow: hidden; }
 .img-whp { width: 350px !important; height: 203px; border-radius: 10px; }
-.feat_property_w.home7.style4 .thumb { margin: 0; padding: 20px; background: #fff; max-height: fit-content; }
+.feat_property_w.home7.style4 .thumb { margin: 0; padding: 15px; background: #fff; max-height: fit-content; }
 .feat_property_w .thumb .thmb_cntnt, .properti_city.home6 .thumb .thmb_cntnt { bottom: 20px; left: 20px; right: 20px; top: 20px; }
 .text_loc i { color: #ADB8C2; }
 .feat_property_w .details .tc_content .text_loc { margin-bottom: 15px !important; color: #000 !important; }
 .fp_meta_w li { color: #000; font-weight: 500; }
 
 .result_filt { margin-bottom: 10px; }
-.result_filt::after { content: ''; display: block; width: 100%; height: 1px; background: #E8E8E8; margin: 20px 0; }
+.sasw_list_w li::after { content: ''; display: block; width: 100%; height: 1px; background: #E8E8E8; margin: 20px 0; }
+.sasw_list_w li:last-child::after { display: none; }
 .result_filt p { font-size: 16px; font-weight: 500; }
 .result_filt p span { font-weight: 600;  }
 .result_filt .reset_btn { border: none; background: transparent; color: #525252; text-decoration-line: underline; padding: 0; }
 .sasw_list_w label { color: #000; font-size: 16px; }
-.filt_r-btn { border-radius: 3px; padding: 15px 0; border: 1px solid #828282; color: #828282 !important; font-size: 14px !important; } 
-.filt_r-btn.active { background: #385f8d; }
+.filt_r-btn { width: 50%; border-radius: 3px; padding: 10px 0; border: 1px solid #828282; color: #828282 !important; font-size: 14px !important; } 
+.filt_r-btn.active { color: #fff !important;  background: #385f8d; border-color: #385f8d; }
 .filt_r-btn input[type="radio"] {
   display: none; /* 라디오 버튼 숨기기 */
+}
+.filt_btns { display: flex; gap: 10px; }
+.select_w input { 
+  border-radius: 3px; 
+  border: 1px solid #525252; 
+  height: 48px; 
+  font-size: 14px;
+  padding: 6px 20px; 
+  width: 100%;
 }
 
 

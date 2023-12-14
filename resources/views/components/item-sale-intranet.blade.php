@@ -1,13 +1,14 @@
 @if ($type=="recommend")
 <div class="col-lg-4">
 @else
-<div class="col-sm-6 col-md-6 col-lg-6">
+<div class="col-sm-6 col-md-6 col-lg-4 pl10 ">
 @endif
     <a href="?mode=show&idx={{ $printData['idx'] }}">
         <div class="feat_property home7 style4 bdrrn feat_property_w">
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">
                 <div class="thmb_cntnt">
+                    <p>{{ $printData['category'] }}</p>
                     <ul class="tag mb0">
                         @if ($type=="default")
                             <!-- 찜하기 전 -->
@@ -33,7 +34,6 @@
             </div>
             <div class="details details_w">
                 <div class="tc_content tc_content_w">
-                    <p class="text-thm">{{ $printData['category'] }}</p>
                     <h4>{{ $printData['title'] }} </h4>
                     <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
                     <p class="text-inf text_loc"><i class="ri-map-pin-2-fill"></i>{{ $printData['address'] }}</p>

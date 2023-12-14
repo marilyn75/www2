@@ -35,7 +35,7 @@ $(document).on('change', '#transArea', function() {
 });
 </script>
 
-<form name="frm" action="{{ $data->path() }}" method="post" class="row">
+<form name="frm" action="{{ $data->path() }}" method="post" class="row pl15 pr15">
     @csrf
     <input type="hidden" name="page" value="1">
 
@@ -348,24 +348,11 @@ $(document).on('change', '#transArea', function() {
     <!-- mobile filter end -->
 
     <!-- pc side bar -->
-    <div class="col-lg-4 col-xl-4">
+    <div class="col-lg-3 col-xl-3">
         <div class="dn-smd dn-991 pc_filter_bx">
             <div class="sidebar_advanced_search_widget">
                 <ul class="sasw_list mb0 sasw_list_w">
-                    <!-- <li class="search_area">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputName1" placeholder="지하철/건물명/물건번호">
-                    <label for="exampleInputEmail"><span class="flaticon-magnifying-glass"></span></label>
-                </div>
-            </li> -->
-                    <!-- <li class="search_area">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputEmail" placeholder="지역">
-                    <label for="exampleInputEmail"><span class="flaticon-maps-and-flags"></span></label>
-                </div>
-            </li> -->
                     <li>
-
                         <div class="left_area tac-xsd result_filt">
                             <p>검색결과 <span class="mont point_c">16</span>건</p>
                             <button class="reset_btn">초기화</button>
@@ -373,22 +360,8 @@ $(document).on('change', '#transArea', function() {
 
                     </li>
                     <li>
-                        <!-- <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <select class="selectpicker w100 show-tick">
-                                    <option>지역</option>
-                                    <option>강서구</option>
-                                    <option>금정구</option>
-                                    <option>남구</option>
-                                    <option>동구</option>
-                                    <option>동래구</option>
-                                    <option>진구</option>
-                                    <option>북구</option>
-                                </select>
-                            </div>
-                        </div> -->
                         <label for="">유형</label>
-                        <div class="" data-toggle="buttons">
+                        <div class="filt_btns" data-toggle="buttons">
                             <label class="btn filt_r-btn inter active">
                                 <input type="radio" name="options" id="option1" autocomplete="off" checked="">주거용
                             </label>
@@ -398,128 +371,37 @@ $(document).on('change', '#transArea', function() {
                         </div>
                     </li>
                     <li>
+                        <label for="">지역</label>
                         <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <!-- <label for="">매물종류</label> -->
-                                <select class="selectpicker w100 show-tick">
-                                    <option>매물종류</option>
-                                    <option>토지 / 임야</option>
-                                    <option>상업용 건물</option>
-                                    <option>원룸건물</option>
-                                    <option>호텔 / 모텔</option>
-                                    <option>공장 / 주유소</option>
-                                    <option>기타매물</option>
-                                </select>
+                            <div class="select_w">
+                                <input type="text" placeholder="지역">
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <!-- <label for="">매물분류</label> -->
-                                <select class="selectpicker w100 show-tick">
-                                    <option>매물분류</option>
-                                    <option>상가주택</option>
-                                    <option>상가건물</option>
-                                    <option>다세대</option>
-                                    <option>다가구</option>
-                                    <option>공장</option>
-                                    <option>창고</option>
-                                </select>
-                            </div>
+                        <label for="">거래종류</label>
+                        <div class="filt_btns" data-toggle="buttons">
+                            <label class="btn filt_r-btn inter active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked="">매매
+                            </label>
+                            <label class="btn filt_r-btn inter">
+                                <input type="radio" name="options" id="option2" autocomplete="off">임대
+                            </label>
                         </div>
                     </li>
-                    <li>
-                        <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <!-- <label for="">방개수</label> -->
-                                <select class="selectpicker w100 show-tick">
-                                    <option>방개수</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <!-- <label for="">화장실개수</label> -->
-                                <select class="selectpicker w100 show-tick">
-                                    <option>화장실개수</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <!-- <label for="">명도여부</label> -->
-                                <select class="selectpicker w100 show-tick">
-                                    <option>명도여부</option>
-                                    <option>가능</option>
-                                    <option>완료</option>
-                                    <option>불가</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="search_option_two">
-                            <div class="candidate_revew_select select_w">
-                                <!-- <label for="">건축년도</label> -->
-                                <select class="selectpicker w100 show-tick">
-                                    <option>건축년도</option>
-                                    <option>2013</option>
-                                    <option>2014</option>
-                                    <option>2015</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
-                                    <option>2020</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- <li>
-                        <div class="small_dropdown2 small_dropdown2_w">
-                            <div id="prncgs2" class="btn dd_btn">
-                                <span>가격 (단위 : 만원)</span>
-                                <label for="exampleInputEmail2"><i class="ri-arrow-down-s-fill"></i></label>
-                            </div>
-                            <div class="dd_content2 style2 dd_content2_w">
-                                <div class="pricing_acontent">
-                                    <input type="text" class="amount" placeholder="￦10,000">
-                                    <input type="text" class="amount2" placeholder="￦1,000,000">
-                                    <div class="slider-range"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </li> -->
 
                     <li>
+                        <label for="">가격</label>
                         <div class="range_container">
                             <div class="form_control">
                                 <!-- min -->
                                 <div class="form_control_container">
-                                    <input class="form_control_container__time__input" type="number" id="fromInput"
-                                        value="10" min="0" max="100" />
+                                    <input class="form_price" type="number" id="fromInput" value="10" min="0"
+                                        max="100" />
                                 </div>
                                 <!-- max -->
                                 <div class="form_control_container">
-                                    <input class="form_control_container__time__input" type="number" id="toInput"
-                                        value="30" min="0" max="100" />
+                                    <input class="form_price" type="number" id="toInput" value="30" min="0" max="100" />
                                 </div>
                             </div>
                             <div class="sliders_control">
@@ -531,7 +413,7 @@ $(document).on('change', '#transArea', function() {
                     <script>
                     function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
                         const [from, to] = getParsed(fromInput, toInput);
-                        fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
+                        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
                         if (from > to) {
                             fromSlider.value = to;
                             fromInput.value = to;
@@ -542,7 +424,7 @@ $(document).on('change', '#transArea', function() {
 
                     function controlToInput(toSlider, fromInput, toInput, controlSlider) {
                         const [from, to] = getParsed(fromInput, toInput);
-                        fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
+                        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
                         setToggleAccessible(toInput);
                         if (from <= to) {
                             toSlider.value = to;
@@ -554,7 +436,7 @@ $(document).on('change', '#transArea', function() {
 
                     function controlFromSlider(fromSlider, toSlider, fromInput) {
                         const [from, to] = getParsed(fromSlider, toSlider);
-                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
                         if (from > to) {
                             fromSlider.value = to;
                             fromInput.value = to;
@@ -565,7 +447,7 @@ $(document).on('change', '#transArea', function() {
 
                     function controlToSlider(fromSlider, toSlider, toInput) {
                         const [from, to] = getParsed(fromSlider, toSlider);
-                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
                         setToggleAccessible(toSlider);
                         if (from <= to) {
                             toSlider.value = to;
@@ -609,7 +491,7 @@ $(document).on('change', '#transArea', function() {
                     const toSlider = document.querySelector('#toSlider');
                     const fromInput = document.querySelector('#fromInput');
                     const toInput = document.querySelector('#toInput');
-                    fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
+                    fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
                     setToggleAccessible(toSlider);
 
                     fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
@@ -618,161 +500,127 @@ $(document).on('change', '#transArea', function() {
                     toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
                     </script>
 
-                    <!-- <li class="min_area list-inline-item">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="최소 면적">
-                </div>
-            </li> -->
-                    <!-- <li class="max_area list-inline-item">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputName3" placeholder="최대 면적">
-                </div>
-            </li> -->
+
+                    <!-- 거래면적 -->
                     <li>
-                        <div id="accordion" class="panel-group">
-                            <div class="panel panel_w">
-                                <div class="panel-heading panel-heading_w">
-                                    <a href="#panelBodyRating" class="accordion-toggle link" data-toggle="collapse"
-                                        data-parent="#accordion">
-                                        <h4 class="panel-title">
-                                            옵션
-                                        </h4>
-                                        <i class="ri-arrow-down-s-fill"></i>
-                                    </a>
+                        <div class="label_fx">
+                            <label for="transactionArea">거래면적</label>
+                            <button>
+                                <i class="ri-exchange-fill"></i>
+                            </button>
+                        </div>
+                        <div class="range_container">
+                            <div class="form_control">
+                                <!-- min -->
+                                <div class="form_control_container">
+                                    <input class="form_area" type="number" id="fromAreaInput" value="10" min="0"
+                                        max="100" />
                                 </div>
-                                <div id="panelBodyRating" class="panel-collapse collapse">
-                                    <div class="panel-body row panel-body_w">
-                                        <div class="col-lg-12">
-                                            <ul class="ui_kit_checkbox selectable-list float-left fn-400">
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck16">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck16">주차장</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck17">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck17">엘리베이터</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck18">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck18">에스컬레이터</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck19">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck19">일반상업지</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck20">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck20">준주거지역</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck21">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck21">제1종근생시설</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck22">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck22">제2종근생시설</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck23">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck23">제3종근생시설</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <ul class="ui_kit_checkbox selectable-list float-right fn-400">
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck24">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck24">자연녹지지역</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck25">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck25">계획관리지역</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck26">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck26">개발제한지역</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck27">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck27">일반공업지역</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck28">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck28">준공업지역</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck29">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck29">프랜차이즈</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck30">
-                                                        <label class="custom-control-label" for="customCheck30">권리금
-                                                            무</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <!-- max -->
+                                <div class="form_control_container">
+                                    <input class="form_area" type="number" id="toAreaInput" value="30" min="0"
+                                        max="100" />
                                 </div>
+                            </div>
+                            <div class="sliders_control">
+                                <input id="fromAreaSlider" type="range" value="10" min="0" max="100" />
+                                <input id="toAreaSlider" type="range" value="30" min="0" max="100" />
                             </div>
                         </div>
                     </li>
+                    <script>
+                    function controlFromAreaInput(fromSlider, fromInput, toInput, controlSlider) {
+                        const [from, to] = getParsed(fromInput, toInput);
+                        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+                        if (from > to) {
+                            fromSlider.value = to;
+                            fromInput.value = to;
+                        } else {
+                            fromSlider.value = from;
+                        }
+                    }
+
+                    function controlToAreaInput(toSlider, fromInput, toInput, controlSlider) {
+                        const [from, to] = getParsed(fromInput, toInput);
+                        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+                        setToggleAccessible(toInput);
+                        if (from <= to) {
+                            toSlider.value = to;
+                            toInput.value = to;
+                        } else {
+                            toInput.value = from;
+                        }
+                    }
+
+                    function controlFromAreaSlider(fromSlider, toSlider, fromInput) {
+                        const [from, to] = getParsed(fromSlider, toSlider);
+                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+                        if (from > to) {
+                            fromSlider.value = to;
+                            fromInput.value = to;
+                        } else {
+                            fromInput.value = from;
+                        }
+                    }
+
+                    function controlToAreaSlider(fromSlider, toSlider, toInput) {
+                        const [from, to] = getParsed(fromSlider, toSlider);
+                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+                        setToggleAccessible(toSlider);
+                        if (from <= to) {
+                            toSlider.value = to;
+                            toInput.value = to;
+                        } else {
+                            toInput.value = from;
+                            toSlider.value = from;
+                        }
+                    }
+
+                    function getParsed(currentFrom, currentTo) {
+                        const from = parseInt(currentFrom.value, 10);
+                        const to = parseInt(currentTo.value, 10);
+                        return [from, to];
+                    }
+
+                    function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+                        const rangeDistance = to.max - to.min;
+                        const fromPosition = from.value - to.min;
+                        const toPosition = to.value - to.min;
+                        controlSlider.style.background = `linear-gradient(
+            to right,
+            ${sliderColor} 0%,
+            ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
+            ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
+            ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%,
+            ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%,
+            ${sliderColor} 100%)`;
+                    }
+
+                    function setToggleAccessible(currentTarget) {
+                        const toAreaSlider = document.querySelector('#toAreaSlider');
+                        if (Number(currentTarget.value) <= 0) {
+                            toAreaSlider.style.zIndex = 2;
+                        } else {
+                            toAreaSlider.style.zIndex = 0;
+                        }
+                    }
+
+                    const fromAreaSlider = document.querySelector('#fromAreaSlider');
+                    const toAreaSlider = document.querySelector('#toAreaSlider');
+                    const fromAreaInput = document.querySelector('#fromAreaInput');
+                    const toAreaInput = document.querySelector('#toAreaInput');
+                    fillSlider(fromAreaSlider, toAreaSlider, '#D9D9D9', '#385f8d', toAreaSlider);
+                    setToggleAccessible(toAreaSlider);
+
+                    fromAreaSlider.oninput = () => controlFromAreaSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
+                    toAreaSlider.oninput = () => controlToAreaSlider(fromAreaSlider, toAreaSlider, toAreaInput);
+                    fromAreaInput.oninput = () => controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput,
+                        toAreaSlider);
+                    toAreaInput.oninput = () => controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput,
+                        toAreaSlider);
+                    </script>
+
+
                     <li>
                         <div class="search_option_button">
                             <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
@@ -783,7 +631,7 @@ $(document).on('change', '#transArea', function() {
         </div>
     </div>
     <!-- pc side bar end -->
-    <div class="col-md-12 col-lg-8">
+    <div class="col-md-12 col-lg-9">
         <!-- 검색결과 -->
         <div class="row row_w">
             <div class="grid_list_search_result search_result_w">
