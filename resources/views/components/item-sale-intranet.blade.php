@@ -35,7 +35,6 @@
             <div class="details details_w">
                 <div class="tc_content tc_content_w">
                     <h4>{{ $printData['title'] }} </h4>
-                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
                     <p class="text-inf text_loc"><i class="ri-map-pin-2-fill"></i>{{ $printData['address'] }}</p>
                     @if(!empty($printData['area_b']))
                     <div class="text-inf-w">
@@ -56,12 +55,13 @@
                         @endif
                     </div>
                     @endif
+                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
                 </div>
                 <div class="fp_footer fp_footer_w">
                     <ul class="fp_meta float-left mb0 fp_meta_w">
-                        <li class="list-inline-item sawon_crop"><img src="{{ $printData['sawon_photo'] }}" style="width: 40px; height: 40px;"></li>
-                        <li class="list-inline-item">{{ $printData['sawon_name'] }}
-                            {{ $printData['sawon_sosok'] }}
+                        <li class="list-inline-item sawon_crop"><img src="{{ $printData['sawon_photo'] }}"></li>
+                        <li class="list-inline-item"><p class="fp_pname">{{ $printData['sawon_name'] }}
+                            {{ $printData['sawon_sosok'] }}</p>
                         </li>
                     </ul>
                     <p class="fp_pdate">{{ $printData['print_data'] }}</p>
