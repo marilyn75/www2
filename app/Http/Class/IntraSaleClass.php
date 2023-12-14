@@ -2,6 +2,7 @@
 
 namespace App\Http\Class;
 
+use App\Http\Class\lib\FileClass;
 use App\Models\Sale;
 use App\Models\CommonCode;
 use App\Models\UserSaleFavorite;
@@ -53,6 +54,8 @@ class IntraSaleClass{
 
     // 출력용 데이터 가공
     static public function getPrintData($data){
+        $clsFile = new FileClass();
+
         $return = $data->toArray();
 
         // 수익률 계산 : (월세 * 12) / (매매가격 - 보증금)
@@ -73,14 +76,20 @@ class IntraSaleClass{
 
         $return['imgs'] = [];
         foreach($data->files as $_img){
-            $return['imgs'][] = "http://test.gbbinc.co.kr/_Data/Homepage/".$_img->filename;
+            // $return['imgs'][] = "http://test.gbbinc.co.kr/_Data/Homepage/".$_img->filename;
+            $return['imgs'][] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$_img->filename, 730, 430);
         }
         if(count($return['imgs'])==0){
             $return['imgs'][] = "/images/noimg.jpg";
         }
         // $return['imgs'][] = "/images/noimg.jpg";
 
-        $return['img'] = (empty($data->files->first()->filename))?"/images/noimg.jpg":"http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename;
+
+        // 리스트이미지 썸네일
+        $return['img'] = "/images/noimg.jpg";
+        if(!empty($data->files->first()->filename)){
+            $return['img'] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename, 250, 150);
+        }
 
         $arrAddr = explode("|",$data->addr);
         $arrAddress = explode(" ", $arrAddr[0]);

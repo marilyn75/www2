@@ -5,6 +5,7 @@ namespace App\Http\Class\lib;
 use App\Models\ModuleFile;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 // 파일처리관련 클래스
 
@@ -105,4 +106,47 @@ class FileClass{
         return response($file, 200)->header('Content-Type', $type);
     }
 
+    public function mkThumbnailFromUrl($imgUrl, $w=250, $h=150){
+        $imageContent = file_get_contents($imgUrl);
+
+        // 이미지 로드
+        $image = Image::make($imageContent);
+        // 이미지 파일명 확인
+        $filename = pathinfo($imgUrl, PATHINFO_FILENAME);
+        // 이미지 확장자 확인
+        $extension = pathinfo($imgUrl, PATHINFO_EXTENSION);
+        $saveFileName = $filename.'_'.$w.'x'.$h.'.'.$extension;
+        $outputPath = public_path('/files/thumb/'.$saveFileName);
+
+        if(file_exists($outputPath)){
+
+        }else{
+            // 이미지 리사이징
+            $image->fit($w, $h);
+
+            // 워터마크 로드
+            $watermarkPath = public_path("/images/property/watermark.png");
+            $watermark = Image::make($watermarkPath);
+            // 워터마크 크기 조정
+            $wm_w = $watermark->width();
+            $wm_h = $watermark->height();
+
+            if($wm_w >= $image->width() - 40){
+                $wm_w = $image->width() - 40;
+                $wm_h = round($wm_w / 11);
+                $watermark->fit($wm_w, $wm_h);
+            }
+
+            // 이미지에 워터마크 삽입
+            $image->insert($watermark, 'center');
+
+            // 새로운 이미지 저장
+            $image->save($outputPath);
+        }
+
+        return str_replace(base_path('public'), '', $outputPath);
+
+        // 이미지 출력
+        // return $image->response();
+    }
 }
