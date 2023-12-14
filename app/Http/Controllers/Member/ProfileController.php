@@ -29,4 +29,8 @@ class ProfileController extends Controller
         return back()
             ->with('success_message','회원정보가 변경 되었습니다.');
     }
+
+    public function mypage(){
+        return view('member.mypage');
+    }
 }
