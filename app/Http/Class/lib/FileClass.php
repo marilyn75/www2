@@ -108,7 +108,7 @@ class FileClass{
 
     public function mkThumbnailFromUrl($imgUrl, $w=250, $h=150){
         $path = '/files/thumb/';
-        $this->chkDir($path);
+        $this->chkDir(public_path($path));
 
         $imageContent = file_get_contents($imgUrl);
 
