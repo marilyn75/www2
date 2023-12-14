@@ -16,6 +16,7 @@ class CommonCode extends Model
     protected $fillable = [
         'title',
         'is_use',
+        'class',
         'created_user_id',
         'created_ip',
         'updated_user_id',

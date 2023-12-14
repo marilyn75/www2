@@ -34,15 +34,16 @@ class CommonCodeClass{
 
         $data = CommonCode::defaultOrder()->withDepth()->descendantsOf($id)->where('is_use',1)->toTree()->toArray();
         foreach($data as $_dt){
-            foreach($_dt['children'] as $_child)
-            $return[$_dt['title']][] = $_child['title'];
+            foreach($_dt['children'] as $_child){
+                $return[$_dt['title']][] = $_child['title'] . "|" . $_child['class'];
+            }
         }
 
         return $return;
     }
 
     public static function getChildrenFromId($id){
-        return CommonCode::where(['parent_id' => $id, 'is_use'=>1])->select('id','title')->get()->toArray();
+        return CommonCode::defaultOrder()->withDepth()->where(['parent_id' => $id, 'is_use'=>1])->select('id','title')->get()->toArray();
     }
 
     // 신문사구분

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title')->comment('코드명');
             $table->tinyInteger('is_use')->default(1)->comment('사용여부');
 
+            $table->string('class')->comment('구분 클래스');
+
             $table->unsignedBigInteger('created_user_id')->nullable()->comment('작성자 아이디');
             $table->string('created_ip',20)->nullable()->comment('작성자 아이피');
             $table->unsignedBigInteger('updated_user_id')->nullable()->comment('수정자 아이디');

@@ -33,6 +33,12 @@
                     <input type="text" class="form-control" id="title" name="title" value="@if (empty($code)){{ old('title') }}@else{{ $code->title }}@endif">
                 </div>
             </div>
+            <div class="col-lg-6 col-xl-6">
+                <div class="my_profile_setting_input ui_kit_select_search form-group">
+                    <label>여분필드 (class)</label>
+                    <input type="text" class="form-control" id="class" name="class" value="@if (empty($code)){{ old('class') }}@else{{ $code->class }}@endif">
+                </div>
+            </div>
             
             <div class="col-lg-6 col-xl-6">
                 <div class="my_profile_setting_input ui_kit_select_search form-group" id="mntype">

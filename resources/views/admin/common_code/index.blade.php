@@ -144,18 +144,18 @@
         }
         // 1차메뉴추가
         $(document).on('click', '#btnAddCode', function() {
-            openWindow("{{ route('admin.codes.create') }}", 700, 500, 'addcode');
+            openWindow("{{ route('admin.codes.create') }}", 700, 600, 'addcode');
         });
 
         $(document).on('click', '.btnAddSubCode', function() {
             var id = $(this).data('id');
-            openWindow("{{ route('admin.codes.create') }}/"+id, 700, 500, 'addcode');
+            openWindow("{{ route('admin.codes.create') }}/"+id, 700, 600, 'addcode');
         });
 
         // 수정하기
         $(document).on('click', '.btnEditCode', function(){
             var id = $(this).data('id');
-            openWindow("{{ route('admin.codes.edit') }}/"+id, 700, 500, 'addcode');
+            openWindow("{{ route('admin.codes.edit') }}/"+id, 700, 600, 'addcode');
         });  
 
         // 이동하기

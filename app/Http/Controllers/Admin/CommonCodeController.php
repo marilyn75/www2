@@ -52,6 +52,7 @@ class CommonCodeController extends Controller
         $codeData = [
             'title' => $data['title'],
             'is_use' => $data['is_use'],
+            'class' => $data['class'],
             'created_user_id' => auth()->user()->id,
             'created_ip' => $request->ip(),
             'updated_user_id' => auth()->user()->id,
@@ -99,6 +100,7 @@ class CommonCodeController extends Controller
         $codeData = [
             'title' => $data['title'],
             'is_use' => $data['is_use'],
+            'class' => $data['class'],
             'updated_user_id' => auth()->user()->id,
             'updated_ip' => $request->ip(),
         ];
