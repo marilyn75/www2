@@ -107,6 +107,9 @@ class FileClass{
     }
 
     public function mkThumbnailFromUrl($imgUrl, $w=250, $h=150){
+        $path = '/files/thumb/';
+        $this->chkDir($path);
+
         $imageContent = file_get_contents($imgUrl);
 
         // 이미지 로드
@@ -116,7 +119,7 @@ class FileClass{
         // 이미지 확장자 확인
         $extension = pathinfo($imgUrl, PATHINFO_EXTENSION);
         $saveFileName = $filename.'_'.$w.'x'.$h.'.'.$extension;
-        $outputPath = public_path('/files/thumb/'.$saveFileName);
+        $outputPath = public_path($path.$saveFileName);
 
         if(file_exists($outputPath)){
 
