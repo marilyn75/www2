@@ -4,7 +4,7 @@ namespace App\Http\Class;
 
 use App\Models\CommonCode;
 
-// 게시판관련 클래스
+// 공통코드관련 클래스
 
 class CommonCodeClass{
     
@@ -26,13 +26,13 @@ class CommonCodeClass{
     }
 
     public static function getChildrenTreeFormFirstCodeText($code_text){
-        $id = CommonCode::where([
+        $id = CommonCode::defaultOrder()->withDepth()->where([
             'parent_id' => null,
             'is_use' => 1,
             'title' => $code_text
         ])->pluck('id')[0];
 
-        $data = CommonCode::descendantsOf($id)->where('is_use',1)->toTree()->toArray();
+        $data = CommonCode::defaultOrder()->withDepth()->descendantsOf($id)->where('is_use',1)->toTree()->toArray();
         foreach($data as $_dt){
             foreach($_dt['children'] as $_child)
             $return[$_dt['title']][] = $_child['title'];

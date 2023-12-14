@@ -158,4 +158,39 @@ class CommonCodeController extends Controller
         return back()
             ->with('success_message','코드순서가 저장 되었습니다.');
     }
+
+    public function sort_edit($id){
+        // $menu = Menu::find($id);
+        // $ancestors = $menu->ancestors;
+        $currMenu = CommonCode::ancestorsAndSelf($id);
+        $totMenu = $currMenu->first()->descendants->sortBy(['_lft','_rgt']);
+
+        foreach($currMenu as $_menu){
+            $arrPath[] = $_menu->title;
+        }
+        unset($arrPath[0]);
+        $path = implode(" > ", $arrPath);
+
+        return view('admin.common_code.sort-edit', compact('id', 'currMenu', 'totMenu', 'path'));
+    }
+
+    public function sort_update($id, Request $request){
+        $data = $request->all();
+
+        // 유효성 검사
+        $rules = [
+            'parentId' => 'required',
+        ];
+        $messages = [
+            'parentId.required' => '상위코드 필드는 필수입니다.',
+        ];
+        $this->validate($request, $rules, $messages);
+
+        $menu = CommonCode::find($id);
+        $menu->parent_id = $data['parentId'];
+        $menu->update();
+
+        return back()
+            ->with('success_message','코드위치가 이동 되었습니다.');
+    }
 }

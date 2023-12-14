@@ -59,6 +59,7 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::post('/menus/delete/{id?}', [MenusController::class, 'destroy'])->name('admin.menus.destroy');
     Route::post('/menus/sort', [MenusController::class, 'sort'])->name('admin.menus.sort');
     Route::get('/menus/sort/edit/{id?}', [MenusController::class, 'sort_edit'])->name('admin.menus.sort.edit');
+    Route::post('/menus/sort/edit/{id?}', [MenusController::class, 'sort_update'])->name('admin.menus.sort.update');
     Route::post('/menus/option', [MenusController::class, 'option'])->name('admin.menus.option');
 
     // 공통코드관리
@@ -70,6 +71,7 @@ Route::prefix('/admin')->middleware('admin')->group(function(){
     Route::post('/codes/delete/{id?}', [CommonCodeController::class, 'destroy'])->name('admin.codes.destroy');
     Route::post('/codes/sort', [CommonCodeController::class, 'sort'])->name('admin.codes.sort');
     Route::get('/codes/sort/edit/{id?}', [CommonCodeController::class, 'sort_edit'])->name('admin.codes.sort.edit');
+    Route::post('/codes/sort/edit/{id?}', [CommonCodeController::class, 'sort_update'])->name('admin.codes.sort.update');
 
     // 신문광고관리
     Route::get('/newspaperads', [NewspaperAdsController::class, 'index'])->name('admin.newspaper-ads');

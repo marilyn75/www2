@@ -10,8 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Models\BoardConf;
 use Intervention\Image\Facades\Image;
 
-use function Psy\debug;
-
 class MenusController extends Controller
 {
     private $cls;
@@ -274,18 +272,38 @@ class MenusController extends Controller
     }
 
     public function sort_edit($id){
-        $menu = Menu::find($id);
-        $ancestors = $menu->ancestors;
+        // $menu = Menu::find($id);
+        // $ancestors = $menu->ancestors;
+        $currMenu = Menu::ancestorsAndSelf($id);
+        $totMenu = $currMenu->first()->descendants->sortBy(['_lft','_rgt']);
 
-        if($ancestors->count() == 0){
-            $path = "--상위 메뉴 없음--";
-        }else{
-            $path = implode(" > ", $ancestors->where('parent_id', '!=', null)->pluck('title')->toArray());
-            if($path)   $path .= " > ";
-            $path .= $menu->title;
+        foreach($currMenu as $_menu){
+            $arrPath[] = $_menu->title;
         }
+        unset($arrPath[0]);
+        $path = implode(" > ", $arrPath);
 
-        return view('admin.menu.sort-edit', compact('id', 'path', 'menu'));
+        return view('admin.menu.sort-edit', compact('id', 'currMenu', 'totMenu', 'path'));
+    }
+
+    public function sort_update($id, Request $request){
+        $data = $request->all();
+
+        // 유효성 검사
+        $rules = [
+            'parentId' => 'required',
+        ];
+        $messages = [
+            'parentId.required' => '상위메뉴 필드는 필수입니다.',
+        ];
+        $this->validate($request, $rules, $messages);
+
+        $menu = Menu::find($id);
+        $menu->parent_id = $data['parentId'];
+        $menu->update();
+
+        return back()
+            ->with('success_message','메뉴위치가 이동 되었습니다.');
     }
 
     public function sort(Request $request){

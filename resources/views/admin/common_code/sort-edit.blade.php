@@ -1,6 +1,6 @@
 @extends('layout.layout-popup')
 
-@section('page-title', '메뉴 이동')
+@section('page-title', '코드 이동')
 
 @section('content')
 
@@ -99,7 +99,7 @@
     
 </script>
 
-<form name="frm" action="{{ route('admin.menus.sort.update', $id) }}" method="POST">
+<form name="frm" action="{{ route('admin.codes.sort.update', $id) }}" method="POST">
     @csrf
     <input type="hidden" name="id" value="{{ $id }}">
     <input type="hidden" name="parentId" value="" hname="상위메뉴" frequired='required'>
@@ -107,8 +107,8 @@
         <div class="row">
             <div class="col-lg-6 col-xl-6">
                 <div class="my_profile_setting_input form-group">
-                    <label for="board_name">메뉴정보</label>
-                    <div>[ {{ $currMenu->find($id)->code }} ] {{ $currMenu->find($id)->title }}</div>
+                    <label for="board_name">코드정보</label>
+                    <div>{{ $currMenu->find($id)->title }}</div>
                 </div>
             </div>
             <div class="col-lg-6 col-xl-6">
@@ -119,7 +119,7 @@
             </div>
             <div class="col-lg-6 col-xl-6">
                 <div class="my_profile_setting_input ui_kit_select_search form-group">
-                    <label>이동할 상위메뉴</label>
+                    <label>이동할 상위코드</label>
                     <div id="divMenuSelect">
 
                     </div>

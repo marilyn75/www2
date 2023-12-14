@@ -239,7 +239,7 @@
         // 이동하기
         $(document).on('click', '.btnMoveMenu', function(){
             var id = $(this).data('id');
-            openWindow("{{ route('admin.menus.sort.edit') }}/"+id, 900, 1000, 'addmenu');
+            openWindow("{{ route('admin.menus.sort.edit') }}/"+id, 600, 400, 'addmenu');
         });
 
         // 삭제하기
