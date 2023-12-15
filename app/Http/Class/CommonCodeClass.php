@@ -35,7 +35,7 @@ class CommonCodeClass{
         $data = CommonCode::defaultOrder()->withDepth()->descendantsOf($id)->where('is_use',1)->toTree()->toArray();
         foreach($data as $_dt){
             foreach($_dt['children'] as $_child){
-                $return[$_dt['title']][] = $_child['title'] . "|" . $_child['class'];
+                $return[$_dt['title']][$_child['id']] = $_child['title'] . "|" . $_child['class'];
             }
         }
 

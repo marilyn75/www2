@@ -110,7 +110,10 @@ class FileClass{
         $path = '/files/thumb/';
         $this->chkDir(public_path($path));
 
-        $imageContent = file_get_contents($imgUrl);
+        $imageContent = @file_get_contents($imgUrl);
+        if($imageContent === false){
+            return null;
+        }
 
         // 이미지 로드
         $image = Image::make($imageContent);

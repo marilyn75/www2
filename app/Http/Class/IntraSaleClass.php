@@ -24,8 +24,8 @@ class IntraSaleClass{
 
     public function getListData($request, $itemNum=6){
         $data = $request->all();
-
-        $model = IntraSaleHomepage::where('isDone',1);
+        
+        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1]);
         if($request['mode']=="recommend"){
             $model = $model->where('isRecom',1);
         }
