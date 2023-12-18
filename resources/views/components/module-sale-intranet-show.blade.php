@@ -6,6 +6,44 @@ $(window).on('load', function() {
     });
 });
 </script>
+<script>
+    function addFavorite(obj, id) {
+        var $child = $(obj).children();
+    
+        var flag = ($child.hasClass('fill_heart')) ? "remove" : "add";
+        var params = {
+            id: id,
+            flag: flag
+        };
+    
+        var r = doAjax('{{ route('common.ajax.addFavorite') }}', params);
+    
+        if (r.result) {
+            if (flag == "add") $child.removeClass('ri-heart-3-line').addClass('fill_heart').addClass('ri-heart-3-fill');
+            else $child.removeClass('ri-heart-3-fill').addClass('ri-heart-3-line').removeClass('fill_heart');
+    
+            // if(flag=="add") $child.addClass('on');
+            // else            $child.removeClass('on');
+            sbAlert(r.message);
+        }
+    
+        return false;
+    }
+    
+    $(document).on('click', '#transArea', function() {
+        if (!$(this).hasClass('py')) {
+            $('.area').each(function() {
+                $(this).html($(this).data('py'));
+            });
+            $(this).addClass('py');
+        } else {
+            $('.area').each(function() {
+                $(this).html($(this).data('m2'));
+            });
+            $(this).removeClass('py');
+        }
+    });
+</script>
 <div class="col-lg-8">
 
     <!-- 수정 -->
@@ -18,14 +56,14 @@ $(window).on('load', function() {
                     <ul>
                         <li><a href="#">{{ $printData['prposAreaNm'] }}</a>
                         </li>
-                        @if(!empty($printData['area_b']))
-                        <li><a href="#">분양{{ $printData['area_b'] }}㎡
-                                전유{{ $printData['area_j'] }}㎡ </a></li>
+                        @if($printData['category_class']=="home" || $printData['category_class']=="mall")
+                        <li><a href="#">공급<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
+                                전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡ </span></a></li>
                         @else
                         <li><a href="#">토지면적
-                                {{ $printData['landArea'] }}㎡</a></li>
+                            <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span></a></li>
                         @if (strpos($printData['category'],"토지")===false)
-                        <li><a href="#">연면적 {{ $printData['bdArea'] }}㎡</a>
+                        <li><a href="#">연면적 <span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></a>
                         </li>
                         @endif
                         @endif
@@ -33,13 +71,17 @@ $(window).on('load', function() {
                 </div>
                 <div class="de_info_right">
                     <div class="detail_btn_w">
-                        <button class="detail_btn">
-                            <i class="ri-arrow-left-right-line"></i>
+                        <button class="detail_btn" id="transArea">
+                            <i class="ri-arrow-left-right-line" ></i>
                         </button>
 
                         <!-- 찜하기 전 -->
-                        <button class="heart_btn detail_btn on">
+                        <button class="heart_btn detail_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
+                            @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
+                            <i class="ri-heart-3-fill fill_heart"></i>
+                            @else
                             <i class="ri-heart-3-line"></i>
+                            @endif
                         </button>
                         <!-- 찜한 후 -->
                         <!-- <button class="heart_btn detail_btn">
@@ -130,6 +172,48 @@ $(window).on('load', function() {
                                 <div class="col-lg-12 pl-0 pr-0">
                                     <h4 class="mb10">매물정보</h4>
                                 </div>
+                                {{-- 주거, 분양상가 --}}
+                            @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
+                                <ul class="list-inline-item detail_list row">
+                                    <li class="col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
+                                        <p>매물유형 :</p>
+                                        <p>{{ $printData['category'] }}</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>공급면적 :</p>
+                                        <p class="mont">{{ $printData['area_b'] }}㎥ ({{ $printData['area_b_py'] }}p)</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>전용면적 :</p>
+                                        <p class="mont">{{ $printData['area_j'] }}㎥ ({{ $printData['area_j_py'] }}p)</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>전용율 :</p>
+                                        <p class="mont">{{ $printData['areaRate'] }}%</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>주구조 :</p>
+                                        <p>{{ $printData['strctCdNm'] }}</p>
+                                    </li>
+                                    @if($printData['category_class']=="home")
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>주차시설 :</p>
+                                        <p>세대당 {{ number_format($printData['ratePkngCnt']) }} 대 / 총 {{ number_format($printData['totPkngCnt']) }} 대</p>
+                                    </li>
+                                    @else
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>주차시설 :</p>
+                                        <p>총 {{ $printData['parkingCnt'] }}</p>
+                                    </li>
+                                    @endif
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>승강기 :</p>
+                                        <p>승강기 {{ $printData['ElvtCnt'] }}</p>
+                                    </li>
+    
+                   
+                                </ul>
+                            @else
                                 <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>매물유형 :</p>
@@ -149,23 +233,11 @@ $(window).on('load', function() {
                                         <p>{{ $printData['prposAreaNm'] }}</p>
                                     </li>
 
-                                    @if ($printData['isToji']==false)
-
-                                    @if(!empty($printData['area_b']))
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>분양면적 :</p>
-                                        <p class="mont">{{ $printData['area_b'] }}㎥ ({{ $printData['area_b_py'] }}p)</p>
-                                    </li>
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>전유면적 :</p>
-                                        <p class="mont">{{ $printData['area_j'] }}㎥ ({{ $printData['area_j_py'] }}p)</p>
-                                    </li>
-                                    @else
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>연면적 :</p>
                                         <p class="mont">{{ $printData['bdArea'] }}㎥ ({{ $printData['bdArea_py'] }}p)</p>
                                     </li>
-                                    @endif
+
 
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>건물용도 :</p>
@@ -188,11 +260,12 @@ $(window).on('load', function() {
                                         <p>승강기 {{ $printData['ElvtCnt'] }}</p>
                                     </li>
 
-                                    @endif
+                     
 
                                 </ul>
+                            @endif
                             </div>
-                            @if ($printData['isToji']==false)
+                            
                             <div class="additional_details additional_w">
                                 <div class="col-lg-12 pl-0 pr-0">
                                     <h4 class="mb10">추가설명</h4>
@@ -202,32 +275,47 @@ $(window).on('load', function() {
                                         <p>사용승인일 :</p>
                                         <p class="mont">{{ $printData['useAprDay'] }}</p>
                                     </li>
+                                    @if($printData['category_class']=="home")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>입주정보 :</p>
-                                        <p>{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</p>
-                                    </li>
-                                    @if ($printData['isJugeo']==true)
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>월관리비 :</p>
-                                        <p>관리비 없음</p>
+                                        <p>세대수 :</p>
+                                        <p>{{ $printData['households'] }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>방향 :</p>
-                                        <p>{{ $printData['direction'] }}향</p>
-                                    </li>
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>방 / 화장실 :</p>
-                                        <p>방 {{ $printData['room_num'] }}개 / 욕실 {{ $printData['restroom_num'] }}개</p>
-                                    </li>
-
-                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>난방방식 :</p>
-                                        <p>개별난방</p>
+                                        <p>발코니 :</p>
+                                        <p>{{ $printData['balcony'] }}</p>
                                     </li>
                                     @endif
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>방향 :</p>
+                                        <p>{{ $printData['direction'] }} ({{ $printData['direction_gijun'] }})</p>
+                                    </li>
+                                @if($printData['category_class']!="factory"){
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>방/화장실 :</p>
+                                        <p class="mont">{{ $printData['room_num'] }}개 / {{ $printData['restroom_num'] }}개</p>
+                                    </li>
+                                    @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>해당층/전체층 :</p>
+                                        <p>{{ $printData['currFloor'] }} / {{ $printData['totFloor'] }}</p>
+                                    </li>
+                                    @endif
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>월관리비 :</p>
+                                        <p>{!! $printData['print_mngPrice'] !!}</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>난방방식 :</p>
+                                        <p>{{ $printData['heat_type'] }} ({{ $printData['heat_info'] }})</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>입주정보 : </p>
+                                        <p>{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</p>
+                                    </li>
+                                @endif
                                 </ul>
                             </div>
-                            @endif
+                           
                             <div class="additional_details additional_w">
                                 <div class="col-lg-12 pl-0 pr-0">
                                     <h4 class="mb10">가격정보</h4>
@@ -273,7 +361,7 @@ $(window).on('load', function() {
 
                             </div>
                         </div>
-                        @if($printData['isJugeo'])
+                        @if($printData['category_class']=="mall" || $printData['category_class']=="home")
                         @if(!empty($printData['optCodes']['생활시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">

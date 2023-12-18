@@ -42,7 +42,7 @@
                             {{ $printData['floorInfo'] }}
                         </p>
                         <p class="text-inf"><i class="ri-building-line"></i>분양<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
-                            전유<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span></p>
+                            전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span></p>
                     </div>
                     @else
                     <div class="text-inf-w">

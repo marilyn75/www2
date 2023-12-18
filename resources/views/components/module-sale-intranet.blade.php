@@ -439,7 +439,7 @@ $(document).on('change', '#transArea', function() {
 
             $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
 
-            if(!empty($favorites) && in_array($printData['idx'], $favorites)) $printData['isFavorite'] = true;
+            // if(!empty($favorites) && in_array($printData['idx'], $favorites)) $printData['isFavorite'] = true;
 
             @endphp
             <x-item-sale-intranet type='default' :printData="$printData" />

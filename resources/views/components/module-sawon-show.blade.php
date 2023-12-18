@@ -51,7 +51,7 @@
                                         @if(!empty($_sale['area_b']))
                                             <div class="text-inf-w text-inf_main">
                                                 <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $_sale['prposAreaNm'] }} {{ $_sale['floorInfo'] }}</p>
-                                                <p class="text-inf"><i class="ri-building-line"></i>분양{{ $_sale['area_b'] }}㎡ 전유{{ $_sale['area_j'] }}㎡</p>
+                                                <p class="text-inf"><i class="ri-building-line"></i>분양{{ $_sale['area_b'] }}㎡ 전용{{ $_sale['area_j'] }}㎡</p>
                                             </div>
                                         @else
                                             <div class="text-inf-w text-inf_main">

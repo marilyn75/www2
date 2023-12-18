@@ -107,8 +107,12 @@ class IntraSaleClass{
         $return['area_b_py'] = (empty($return['area_b']))?"":number_format(doubleval($return['area_b']) * 0.3025 ,2);
         $return['area_j_py'] = (empty($return['area_j']))?"":number_format(doubleval($return['area_j']) * 0.3025 ,2);
 
-        $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:$return['totPkngCnt']."대";
-        $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음")?$return['rideUseElvtCnt']:$return['rideUseElvtCnt']."대";
+        if($return['area_j']) $return['areaRate'] = round(($return['area_j'] / $return['area_b']) * 100,2);   //전용율
+
+        $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:number_format($return['totPkngCnt'])." 대";
+        $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음")?$return['rideUseElvtCnt']:$return['rideUseElvtCnt']." 대";
+
+        if(!$return['direction_gijun']) $return['direction_gijun'] = "출입구 기준";
 
         if($return['movein']!="즉시입주"){
             $arrMovein = explode(" ", $return['movein']);
@@ -127,6 +131,11 @@ class IntraSaleClass{
 
         $return['movein_nego'] = ($return['movein_nego']=='1')?"(협의가능)":"";
 
+        $return['useAprDay'] = ($return['useAprDay'])?$return['useAprDay']:"확인불가";
+
+        $return["households"] = ($return['households']=="해당없음")?$return['households']:number_format(intval($return['households']))." 세대";
+
+        $return["print_mngPrice"] = ($return['mngPrice']=="없음")?$return['mngPrice']:number_format(intval($return['mngPrice'])) . "원 <small class='f-10'>(".str_replace("|",", ",$return['mngPriceOpt']).")</small>";
         // $bd = $data->sale->building->first();
         // $floorInfo = "";
         // $area_b = "";
@@ -175,10 +184,28 @@ class IntraSaleClass{
 
         $return['print_data'] = formatCreatedAt2($data->reg_date);
 
+        $cateInfo = CommonCodeClass::getData($return['category_id']);
+        $return['category_class'] = $cateInfo->class;
+
+        if($return['category_class']=="mall" || $return['category_class']=="home"){
+            $optCodes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');
+            $options = explode("|",$return['options']);
+            
+            foreach($optCodes as $_k=>$_opt){
+                foreach($_opt as $__v){
+                    $optTxt = explode("|",$__v)[0];
+                    if(in_array($optTxt, $options)) $return['optCodes'][$_k][] = $optTxt;
+                }
+            }
+        }
+
         // 카테고리 체크용
         $return['isJugeo'] = strpos($return['category'],'주거') === 0;
         $return['isToji'] = strpos($return['category'],'토지') !== false;
         $return['isSangeop'] = !$return['isToji'] && strpos($return['category'],'상업') === 0;
+
+        $favorites = (new IntraSaleClass)->getFavorites();
+        if($favorites->isSuccess() && in_array($return['idx'], $favorites->getData())) $return['isFavorite'] = true;
 
         return $return;
     }

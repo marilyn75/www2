@@ -13,6 +13,10 @@ class CommonCodeClass{
         
     }
 
+    public static function getData($id){
+        return CommonCode::find($id);
+    }
+
     // 1차코드 텍스트 기준으로 자식 코드 가져오기
     public static function getChildrenFormFirstCodeText($code_text){
         $id = CommonCode::where([

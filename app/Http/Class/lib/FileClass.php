@@ -110,13 +110,6 @@ class FileClass{
         $path = '/files/thumb/';
         $this->chkDir(public_path($path));
 
-        $imageContent = @file_get_contents($imgUrl);
-        if($imageContent === false){
-            return null;
-        }
-
-        // 이미지 로드
-        $image = Image::make($imageContent);
         // 이미지 파일명 확인
         $filename = pathinfo($imgUrl, PATHINFO_FILENAME);
         // 이미지 확장자 확인
@@ -124,9 +117,16 @@ class FileClass{
         $saveFileName = $filename.'_'.$w.'x'.$h.'.'.$extension;
         $outputPath = public_path($path.$saveFileName);
 
-        if(file_exists($outputPath)){
+        if(!file_exists($outputPath)){
 
-        }else{
+            $imageContent = @file_get_contents($imgUrl);
+            if($imageContent === false){
+                return null;
+            }
+
+            // 이미지 로드
+            $image = Image::make($imageContent);
+
             // 이미지 리사이징
             $image->fit($w, $h);
 

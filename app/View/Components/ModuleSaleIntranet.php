@@ -66,13 +66,6 @@ class ModuleSaleIntranet extends Component
         $data = $this->cls->getData($this->request->idx);
         $printData = $this->cls->getPrintData($data);
 
-        $printData['optCodes'] = [];
-        $optCodes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');
-        foreach($optCodes as $_k=>$_item){
-            foreach($_item as $_v)
-                if(in_array($_v, explode("|",$printData['options'])) !== false) $printData['optCodes'][$_k][] = $_v;
-        }
-
         // 지도
         $printData['localX'] = $data->sale->lands[0]->localX;
         $printData['localY'] = $data->sale->lands[0]->localY;
