@@ -98,3 +98,5 @@ Route::get('/board/file-download/{file_id}', [App\Http\Controllers\Admin\BoardDa
 Route::get('/test', function(){
     return view('test');
 });
+
+require __DIR__.'/test.php';

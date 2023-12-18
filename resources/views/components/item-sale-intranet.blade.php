@@ -1,5 +1,5 @@
 @if ($type=="recommend")
-<div class="col-lg-4">
+<div class="col-sm-6 col-md-6 col-lg-4">
 @else
 <div class="col-sm-6 col-md-6 col-lg-4 pl10 ">
 @endif
