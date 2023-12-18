@@ -42,7 +42,7 @@
                     <div class="breadcrumb_content style2">
                             <h2 class="breadcrumb_title">방문자 수</h2>
                         </div>
-                        <div class="application_statics">
+                        <div class="application_statics admin_chart">
                             <div id="curve_chart" style="height: 500px"></div>
                         </div>
                     </div>

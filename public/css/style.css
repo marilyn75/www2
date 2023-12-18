@@ -16506,7 +16506,11 @@ input[type="range"] {
 
 .sawon_crop { width: 38px; height: 38px; border-radius: 40px; overflow: hidden; }
 .sawon_crop img { width: 38px; height: 38px; }
-.img-whp {  height: 156px; border-radius: 5px; }
+.img-whp {  
+  /* height: 156px;  */
+  height: auto;
+  border-radius: 5px; 
+}
 .feat_property_w.home7.style4 .thumb { margin: 0; padding: 15px; background: #fff; max-height: fit-content; }
 .feat_property_w .thumb .thmb_cntnt, .properti_city.home6 .thumb .thmb_cntnt { bottom: 20px; left: 20px; right: 20px; top: 20px; }
 .feat_property_w .thumb .thmb_cntnt p {
@@ -17480,7 +17484,7 @@ code {
   height: 140px;
  }
  .ff_one .detais { padding-top: 12px; padding-left: 130px; }
- .application_statics { 
+ .admin_chart { 
     border-radius: 20px; 
     background: #F5F6FB; 
     box-shadow: none;
