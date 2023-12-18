@@ -9209,27 +9209,26 @@ a.btn.btn_error{
 
 /*== Tab Widget UI Page ==*/
 .ui_kit_tab .nav.nav-tabs {
-  background-color: #ff5a5f;
+  background-color: transparent;
   border-radius: 4px;
 }
 .ui_kit_tab .nav.nav-tabs {
   height: 60px;
+  border: none;
 }
 .ui_kit_tab .nav.nav-tabs .nav-link {
-  color: #ffffff;
-  height: 43px;
-  line-height: 27px;
-  margin-top: 10px;
-  text-align: center;
-  width: 104px;
+  color: #828282;
+  padding: 5px 15px;
 }
 .ui_kit_tab .nav.nav-tabs .nav-link:hover {
   border: 1px solid transparent;
 }
 .ui_kit_tab .nav.nav-tabs .nav-link.active {
-  border-radius: 9px;
-  background-color: #ff797d;
+  color: #000;
   border: none;
+  border-bottom: 2px solid #385f8d;
+  background: transparent;
+
 }
 .Rounded_Rectangle_13 {
   position: absolute;
@@ -9239,9 +9238,9 @@ a.btn.btn_error{
   height: 43px;
   z-index: 63;
 }
-.ui_kit_tab .tab-content .tab-pane{
+/* .ui_kit_tab .tab-content .tab-pane{
   padding: 35px 0;
-}
+} */
 .ui_kit_tab .tab-content .tab-pane p{
   font-size: 14px;
   color: #484848;
@@ -16269,24 +16268,24 @@ button.gm-ui-hover-effect:focus {
 .search_result_w .left_area p{ font-size: 16px; color: #000; font-weight: 600; }
 .search_result_w .bootstrap-select>.dropdown-toggle { background: transparent; }
 .plr-0 { padding: 0; }
-.list-inline-item i {  font-size: 18px; line-height: 40px; }
-.ri-thumb-up-fill { font-size: 16px !important; color: #FFC700; }
+.list-inline-item i {  font-size: 16px; line-height: 35px; }
+.ri-thumb-up-fill { font-size: 14px !important; color: #FFC700; }
 .ri-heart-3-fill { color: #E93C3C; }
 
 .search_result_w .right_area ul li .filter-option-inner-inner { font-size: 16px; color: #000; font-weight: 600; }
 .feat_property.home7.style3 .details .tc_content_w { padding: 0; position: relative; }
 .feat_property_w .thumb .thmb_cntnt ul.tag li, .feat_property_w.home8 ul.tag li, .properti_city.home6 .thumb .thmb_cntnt ul.tag li, .feat_property_w.list .dtls_headr ul.tag li {
   border-radius: 30px;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   background: rgb(0, 0, 0, 0.3);
 }
 .heart_btn {
   border: none;
   color: #Fff;
   border-radius: 30px;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   background: rgb(0, 0, 0, 0.15);
   cursor: pointer;
 }
@@ -16320,7 +16319,7 @@ button.gm-ui-hover-effect:focus {
   color: #385F8D; }
 .tag_w { position: absolute; top: 0; right: 0; }
 .feat_property_w .details .tc_content p { font-size: 16px; color: #385F8D !important; font-weight: 500; margin-bottom: 3px; }
-.feat_property_w .details .tc_content h4 { font-size: 18px; color: #000; }
+.feat_property_w .details .tc_content h4 { font-size: 18px; color: #000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .feat_property_w .details .tc_content .text-inf { color: #525252 !important; font-weight: 500; margin-bottom: 2px; }
 .feat_property_w .details .tc_content .text-inf i { margin-right: 5px; }
 .feat_property_w .details .tc_content .price_w { text-align: right; margin-bottom: 12px; font-size: 16px; font-weight: bold; }
@@ -16929,7 +16928,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
     border-bottom: 2px solid #385f8d;
 }
 .nolist { text-align: center; }
-.nolist p { margin-bottom: 30px; font-size: 16px; font-weight: 500; color: #000; }
+.nolist p { margin-bottom: 30px !important; font-size: 16px !important; font-weight: 500; color: #000 !important; }
 .nolist .btn { color: #fff !important; width: 130px; padding: 10px; font-size: 14px; }
 .nolist .btn:hover{ color: #385f8d !important; }
 
@@ -17201,6 +17200,7 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 .dataTables_length label { color: #000; }
 
 /* 회사소개 */
+.intro_top { text-align: center; }
 .intro_tit { color: #000; margin-bottom: 45px; line-height: 40px; }
 .inner_page_breadcrumb { background-repeat: round; }
 .intro_imgs { display: flex; justify-content: space-between; gap: 10px; }

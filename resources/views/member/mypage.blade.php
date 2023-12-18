@@ -31,22 +31,54 @@
     </div>
 </section>
 
-<section class="pb100 list_bx">
+{{-- <section class="pb100 list_bx">
     <div class="container container_w">
         <ul class="menu_link">
             <li><a href="#" class="on">관심매물</a></li>
             <li><a href="#">최근 본 매물</a></li>
         </ul>
         <div class="row">
-
-            {{-- 관심 매물이 없는 경우 --}}
             <div class="col-lg-12 pt100 pb100 nolist">
                 <p>등록된 관심매물이 없습니다.</p>
                 <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
             </div>
-
         </div>
     </div>
+</section> --}}
+
+<section class="pb100 list_bx">
+    <div class="container container_w">
+        <div class="shortcode_widget_tab">
+            <div class="ui_kit_tab mt30">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs menu_link" id="myTab2" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#item1-tab">관심매물</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#item2-tab">최근 본 매물</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content" id="myTabContent2">
+
+                    {{-- 관심매물이 없을 때 --}}
+                    <div id="item1-tab" class="container pt100 pb100 tab-pane nolist active">
+                        <p>등록된 관심매물이 없습니다.</p>
+                        <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                    
+                    </div>
+                    {{-- 최근 본 매물이 없을 때 --}}
+                    <div id="item2-tab" class="container pt100 pb100 tab-pane nolist fade">
+                        <p>최근 본 매물이 없습니다.</p>
+                        <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </section>
 
 @endsection
