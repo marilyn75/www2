@@ -4,7 +4,7 @@
 <div class="col-sm-6 col-md-6 col-lg-4 pl10 ">
 @endif
     <a href="?mode=show&idx={{ $printData['idx'] }}">
-        <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") classname @endif">
+        <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") related @endif">
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">
                 <div class="thmb_cntnt @if($printData['is_soldout']) {{ __('thmb_soldout') }} @endif">
