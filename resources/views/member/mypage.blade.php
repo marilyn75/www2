@@ -64,14 +64,16 @@
 
                     {{-- 관심매물이 없을 때 --}}
                     <div id="item1-tab" class="container pt100 pb100 tab-pane nolist active">
-                        {{-- @if ($data['favorites']->isSuccess())
+                        @if ($data['favorites']->isSuccess())
+                        <div class="row">
                             @foreach ($data['favorites']->getData() as $printData)
-                                <x-item-sale-intranet type='recommend' :printData="$printData" />
+                                <x-item-sale-intranet type='' :printData="$printData" />
                             @endforeach
-                        @else --}}
+                        </div>
+                        @else
                         <p>등록된 관심매물이 없습니다.</p>
                         <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
-                        {{-- @endif --}}
+                        @endif
                         
                     
                     </div>

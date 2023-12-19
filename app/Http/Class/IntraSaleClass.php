@@ -158,11 +158,11 @@ class IntraSaleClass{
         // }
         // $return['floorInfo'] = $floorInfo;
 
+        // 리스트 층 정보
         $floorInfo = "";
-        if(intval($data->ugrndFlrCnt) > 0) $floorInfo = "B".$data->ugrndFlrCnt."/";
-        $floorInfo .= $data->grndFlrCnt."F";
+        if(intval($return['ugrndFlrCnt']) > 0) $floorInfo = "B".$return['ugrndFlrCnt']."/";
+        $floorInfo .= $return['grndFlrCnt']."F";
         $return['floorInfo'] = $floorInfo;
-
 
         $return['description_1'] = "";
         $return['description_2'] = "";
@@ -192,6 +192,9 @@ class IntraSaleClass{
         $return['category_class'] = $cateInfo->class;
 
         if($return['category_class']=="mall" || $return['category_class']=="home"){
+            // 리스트 층정보
+            $return['floorInfo'] = $return['currFloor'] . " / " . $return['totFloor'] .'층';
+
             $optCodes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');
             $options = explode("|",$return['options']);
             
