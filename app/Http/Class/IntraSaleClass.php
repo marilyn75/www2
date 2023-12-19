@@ -340,8 +340,13 @@ class IntraSaleClass{
         $favorites = $this->getFavorites();
         if($favorites->isSuccess()){
             $ids = $favorites->getData();
-            $data = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])
+            $respons_data = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])
                 ->whereIn('idx', $ids)->get();
+
+            foreach($respons_data as $_dt){
+                $data[] = $this->getPrintData($_dt);
+            }
+
             return ResultClass::success('',$data);
         }else{
             return $favorites;
