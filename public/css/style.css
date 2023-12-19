@@ -9241,12 +9241,7 @@ a.btn.btn_error{
 /* .ui_kit_tab .tab-content .tab-pane{
   padding: 35px 0;
 } */
-.ui_kit_tab .tab-content .tab-pane p{
-  font-size: 14px;
-  color: #484848;
-  line-height: 1.857;
-  margin-bottom: 0;
-}
+
 /*== Table Widget UI Page ==*/
 .ui_kit_table .table {
   background-color: #ffffff;
@@ -16401,7 +16396,7 @@ button.gm-ui-hover-effect:focus {
   padding: 6px 10px; 
   position: relative;
   background: url(../images/resource/meter.png) no-repeat;
-  background-position: 65px;
+  background-position: 72px;
   content: '';
   background-size: 33px;
 }
@@ -16414,7 +16409,7 @@ button.gm-ui-hover-effect:focus {
   padding: 6px 10px; 
   position: relative;
   background: url(../images/resource/meter_chg.png) no-repeat;
-  background-position: 65px;
+  background-position: 72px;
   content: '';
   background-size: 33px;
 }
@@ -16533,9 +16528,9 @@ input[type="range"] {
   margin-top: 5px;
   background: #385f8d;
   border-radius: 3px;
-  color: #fff;
+  color: #fff !important;
   margin-left: 5px;
-  font-size: 12px;
+  font-size: 12px !important;
 }
 .text_loc i { color: #ADB8C2; }
 .feat_property_w .details .tc_content .text_loc { margin-bottom: 15px !important; color: #000 !important; }

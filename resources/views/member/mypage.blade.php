@@ -48,7 +48,7 @@
 
 <section class="pb100 list_bx">
     <div class="container container_w">
-        <div class="shortcode_widget_tab">
+        <div class="">
             <div class="ui_kit_tab mt30">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs menu_link" id="myTab2" role="tablist">
@@ -63,7 +63,7 @@
                 <div class="tab-content" id="myTabContent2">
 
                     {{-- 관심매물이 없을 때 --}}
-                    <div id="item1-tab" class="container pt100 pb100 tab-pane nolist active">
+                    <div id="item1-tab" class="pt50 pb150 tab-pane active">
                         @if ($data['favorites']->isSuccess())
                         <div class="row">
                             @foreach ($data['favorites']->getData() as $printData)
@@ -71,14 +71,16 @@
                             @endforeach
                         </div>
                         @else
-                        <p>등록된 관심매물이 없습니다.</p>
-                        <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                        <div class="nolist">
+                            <p>등록된 관심매물이 없습니다.</p>
+                            <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                        </div>
                         @endif
                         
                     
                     </div>
                     {{-- 최근 본 매물이 없을 때 --}}
-                    <div id="item2-tab" class="container pt100 pb100 tab-pane nolist fade">
+                    <div id="item2-tab" class="pt100 pb100 tab-pane nolist fade">
                         <p>최근 본 매물이 없습니다.</p>
                         <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
                     </div>
