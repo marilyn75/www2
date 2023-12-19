@@ -16512,7 +16512,7 @@ input[type="range"] {
   border-radius: 5px; 
 }
 .feat_property_w.home7.style4 .thumb { margin: 0; padding: 15px; background: #fff; max-height: fit-content; }
-.feat_property_w .thumb .thmb_cntnt, .properti_city.home6 .thumb .thmb_cntnt { bottom: 20px; left: 20px; right: 20px; top: 20px; }
+.feat_property_w .thumb .thmb_cntnt, .properti_city.home6 .thumb .thmb_cntnt { bottom: 15px; left: 15px; right: 15px; top: 15px; border-radius: 5px; }
 .feat_property_w .thumb .thmb_cntnt p {
   width: fit-content;
   padding: 5px 12px;
@@ -16551,6 +16551,24 @@ input[type="range"] {
 }
 .sidebar_advanced_search_widget h4 { font-size: 20px; font-weight: 600; color: #000; }
 .sidebar_advanced_search_widget h4 i { font-size: 22px; }
+
+.thmb_soldout { 
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(1.5px);
+ }
+
+.sold_out { 
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  background: #E93C3C;
+  bottom: 0;
+  padding: 8px 0;
+  color: #fff;
+  border-radius: 0 0 5px 5px;
+  font-weight: 500;
+}
 
 
 

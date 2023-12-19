@@ -29,12 +29,13 @@
                             @endif
                         @endif
                     </ul>
-                </div>
-                @if($printData['is_soldout'])
+                    @if($printData['is_soldout'])
                 <div class="sold_out">
                     거래완료
                 </div>
                 @endif
+                </div>
+                
 
             </div>
             <div class="details details_w">
