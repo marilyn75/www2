@@ -86,10 +86,6 @@ $(document).on('change', '#transArea', function() {
                             </label>
                         </div>
                     </li>
-
-                    
-
-
                     <li>
                         <div class="search_option_button">
                             <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
@@ -109,25 +105,58 @@ $(document).on('change', '#transArea', function() {
         <div class="dn-smd dn-991 pc_filter_bx">
             <div class="sidebar_advanced_search_widget">
                 <ul class="sasw_list mb0 sasw_list_w">
-                    <li>
+                    <li class="filt_li">
                         <div class="left_area tac-xsd result_filt">
                             <p>검색결과 <span class="mont point_c">16</span>건</p>
                             <button class="reset_btn">초기화</button>
                         </div>
 
                     </li>
-                    <li>
+                    <li class="filt_li">
                         <label for="">유형</label>
                         <div class="filt_btns" data-toggle="buttons">
                             <label class="btn filt_r-btn inter active">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked="">주거용
+                                <input type="radio" name="options" id="option1" autocomplete="off" onclick="showSelectBox('residential')">주거용
                             </label>
                             <label class="btn filt_r-btn inter">
-                                <input type="radio" name="options" id="option2" autocomplete="off">상업용
+                                <input type="radio" name="options" id="option2" autocomplete="off" onclick="showSelectBox('commercial')">상업용
                             </label>
                         </div>
+
+                        <div id="residentialSelectBox" class="chk_sect hidden">
+                            <div class="candidate_revew_select">
+                                <label for="residentialOptions">주거용</label>
+                                <select id="residentialOptions" class="selectpicker w100 show-tick">
+                                    <option>주거용매물</option>
+                                    <option>단독주택</option>
+                                    <option>아파트</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="commercialSelectBox" class="chk_sect hidden">
+                            <div class="candidate_revew_select">
+                                <label for="commercialOptions">상업용</label>
+                                <select id="commercialOptions" class="selectpicker w100 show-tick">
+                                    <option>상업용매물</option>
+                                    <option>토지</option>
+                                    <option>임야</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </li>
-                    <li>
+                    <script>
+                        function showSelectBox(type) {
+                            // 모든 셀렉트 박스를 숨김
+                            document.getElementById('residentialSelectBox').classList.add('hidden');
+                            document.getElementById('commercialSelectBox').classList.add('hidden');
+                
+                            // 선택된 유형에 해당하는 셀렉트 박스를 보여줌
+                            document.getElementById(type + 'SelectBox').classList.remove('hidden');
+                        }
+                    </script>
+                    <li class="filt_li">
                         <label for="">지역</label>
                         <div class="search_option_two">
                             <div class="select_w">
@@ -135,11 +164,11 @@ $(document).on('change', '#transArea', function() {
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="filt_li">
                         <label for="">거래종류</label>
                         <div class="filt_btns" data-toggle="buttons">
                             <label class="btn filt_r-btn inter active">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked="">매매
+                                <input type="radio" name="options" id="option1" autocomplete="off">매매
                             </label>
                             <label class="btn filt_r-btn inter">
                                 <input type="radio" name="options" id="option2" autocomplete="off">임대
@@ -147,7 +176,7 @@ $(document).on('change', '#transArea', function() {
                         </div>
                     </li>
 
-                    <li>
+                    <li class="filt_li">
                         <label for="">가격</label>
                         <div class="range_container">
                             <div class="form_control">
@@ -259,7 +288,7 @@ $(document).on('change', '#transArea', function() {
 
 
                     <!-- 거래면적 -->
-                    <li>
+                    <li class="filt_li">
                         <div class="label_fx">
                             <label for="transactionArea">거래면적</label>
                             <button>
@@ -285,6 +314,15 @@ $(document).on('change', '#transArea', function() {
                             </div>
                         </div>
                     </li>
+                    <script>
+                        $(document).ready(function () {
+                          $(".label_fx button").click(function (e) {
+                            e.preventDefault(); // 기본 동작 막기
+                            $(".form_area").toggleClass("up");
+                          });
+                        });
+                      </script>
+                      
                     <script>
                     function controlFromAreaInput(fromSlider, fromInput, toInput, controlSlider) {
                         const [from, to] = getParsed(fromInput, toInput);
@@ -378,7 +416,7 @@ $(document).on('change', '#transArea', function() {
                     </script>
 
 
-                    <li>
+                    <li class="filt_li">
                         <div class="search_option_button">
                             <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
                         </div>

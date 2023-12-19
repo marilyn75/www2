@@ -16405,6 +16405,19 @@ button.gm-ui-hover-effect:focus {
   content: '';
   background-size: 33px;
 }
+.range_container .form_control_container .form_area.up{
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #525252;
+  height: 48px;
+  font-size: 14px;
+  padding: 6px 10px; 
+  position: relative;
+  background: url(../images/resource/meter_chg.png) no-repeat;
+  background-position: 65px;
+  content: '';
+  background-size: 33px;
+}
 
 .sliders_control {
   position: relative;
@@ -16529,13 +16542,14 @@ input[type="range"] {
 .fp_meta_w li { color: #000; font-weight: 500; }
 
 .result_filt { margin-bottom: 10px; }
-.sasw_list_w li::after { content: ''; display: block; width: 100%; height: 1px; background: #E8E8E8; margin: 20px 0; }
-.sasw_list_w li:last-child::after { display: none; }
+.filt_li::after { content: ''; display: block; width: 100%; height: 1px; background: #E8E8E8; margin: 20px 0; }
+.filt_li:last-child::after { display: none; }
+.filt_li .dropdown-menu { border-color: #525252; }
 .result_filt p { font-size: 16px; font-weight: 500; }
 .result_filt p span { font-weight: 600;  }
 .result_filt .reset_btn { border: none; background: transparent; color: #525252; text-decoration-line: underline; padding: 0; }
-.sasw_list_w label { color: #000; font-size: 16px; }
-.filt_r-btn { width: 50%; border-radius: 3px; padding: 10px 0; border: 1px solid #828282; color: #828282 !important; font-size: 14px !important; } 
+.sasw_list_w label { color: #000; font-size: 16px; width: 100%; }
+.filt_r-btn { width: 50%; border-radius: 3px; padding: 10px 0; border: 1px solid #828282; color: #828282 !important; font-size: 14px !important; font-weight: 500; } 
 .filt_r-btn.active { color: #fff !important;  background: #385f8d; border-color: #385f8d; }
 .filt_r-btn input[type="radio"] {
   display: none; /* 라디오 버튼 숨기기 */
@@ -16562,13 +16576,32 @@ input[type="range"] {
   width: 100%;
   position: absolute;
   text-align: center;
-  background: #E93C3C;
+  background: #B82525;
   bottom: 0;
   padding: 8px 0;
   color: #fff;
   border-radius: 0 0 5px 5px;
   font-weight: 500;
+  font-size: 14px;
 }
+.hidden {
+  display: none;
+}
+.chk_sect { margin-top: 10px; }
+.chk_sect select { 
+  border-radius: 3px;
+  border: 1px solid #525252;
+  height: 48px;
+  font-size: 14px;
+  padding: 6px 15px;
+  width: 100%;
+  cursor: pointer;
+ }
+/* 옵션 리스트 스타일 */
+.chk_sect select option { padding: 100px; font-size: 14px; height: 100px; }
+.chk_sect select option:hover { background: red; color: red; }
+
+
 
 
 
