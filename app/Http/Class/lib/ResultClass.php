@@ -27,6 +27,11 @@ class ResultClass{
         return $this->data;
     }
 
+    public function getDataCount()
+    {
+        return count($this->data);
+    }
+
     public function getMessage()
     {
         return $this->message;

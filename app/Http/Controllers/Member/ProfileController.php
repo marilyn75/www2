@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Member;
 
-use App\Http\Class\UserClass;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Class\UserClass;
+use App\Http\Class\IntraSaleClass;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -31,6 +32,10 @@ class ProfileController extends Controller
     }
 
     public function mypage(){
-        return view('member.mypage');
+        $favorites = (new IntraSaleClass)->getFavoritesData();
+
+        $data['favorites'] = $favorites;
+
+        return view('member.mypage', compact('data'));
     }
 }

@@ -10,6 +10,7 @@ use App\Models\IntraSaleHomepage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Class\lib\ResultClass;
 use App\Http\Class\lib\KakaoApiClass;
+use App\Models\IntraSale;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;
 
@@ -57,6 +58,9 @@ class IntraSaleClass{
         $clsFile = new FileClass();
 
         $return = $data->toArray();
+
+        // 거래완료 여부
+        $return['is_soldout'] = (strpos($data->sale->_options, 'COC')!==false);
 
         // 수익률 계산 : (월세 * 12) / (매매가격 - 보증금)
         $return['rate'] = (intval($data->monPrice_st)==0)?0:round(((($data->monPrice_st * 12) / ($data->salePrice - $data->depPrice_st)) * 100), 2);
@@ -326,6 +330,19 @@ class IntraSaleClass{
         foreach($data as $_dt)  $ids[] = $_dt->sale_id;
 
         return ResultClass::success('', $ids);
+    }
+
+    // 관심매물 데이터
+    public function getFavoritesData(){
+        $favorites = $this->getFavorites();
+        if($favorites->isSuccess()){
+            $ids = $favorites->getData();
+            $data = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])
+                ->whereIn('idx', $ids)->get();
+            return ResultClass::success('',$data);
+        }else{
+            return $favorites;
+        }
     }
 
     // 관련매물

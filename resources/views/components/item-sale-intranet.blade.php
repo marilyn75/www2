@@ -7,7 +7,7 @@
         <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") classname @endif">
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">
-                <div class="thmb_cntnt">
+                <div class="thmb_cntnt @if($printData['is_soldout']) {{ __('thmb_soldout') }} @endif">
                     <p>{{ $printData['category'] }}</p>
                     <ul class="tag mb0">
                         @if ($type=="default")
@@ -30,6 +30,11 @@
                         @endif
                     </ul>
                 </div>
+                @if($printData['is_soldout'])
+                <div class="sold_out">
+                    거래완료
+                </div>
+                @endif
 
             </div>
             <div class="details details_w">
@@ -42,7 +47,7 @@
                             {{ $printData['floorInfo'] }}
                         </p>
                         <p class="text-inf"><i class="ri-building-line"></i>분양<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
-                            전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span></p>
+                            전유<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span></p>
                     </div>
                     @else
                     <div class="text-inf-w">

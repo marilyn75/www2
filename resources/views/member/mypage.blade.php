@@ -19,7 +19,7 @@
             <div class="my_bx_rg">
                 <div class="my_bx_count my_bx_heart">
                     <p>관심매물</p>
-                    <h3 class="mont">5</h3>
+                    <h3 class="mont">{{ $data['favorites']->getDataCount() }}</h3>
                 </div>
                 <div class="my_bx_line"></div>
                 <div class="my_bx_count my_bx_recent">
@@ -64,8 +64,15 @@
 
                     {{-- 관심매물이 없을 때 --}}
                     <div id="item1-tab" class="container pt100 pb100 tab-pane nolist active">
+                        {{-- @if ($data['favorites']->isSuccess())
+                            @foreach ($data['favorites']->getData() as $printData)
+                                <x-item-sale-intranet type='recommend' :printData="$printData" />
+                            @endforeach
+                        @else --}}
                         <p>등록된 관심매물이 없습니다.</p>
                         <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                        {{-- @endif --}}
+                        
                     
                     </div>
                     {{-- 최근 본 매물이 없을 때 --}}
