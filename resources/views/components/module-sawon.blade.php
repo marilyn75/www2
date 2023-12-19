@@ -74,22 +74,27 @@
         <!-- 수정 -->
         <div class="col-sm-4 col-md-4 col-lg-3">
             <a class="feat_property employ_box" href="{{ $data->path() }}?mode=view&idx={{ $_sawon->idx }}">
-                <div class="empl-img-w">
-                    <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
-                </div>
                 <div class="employ_inf">
                     <p>{{ @$_sawon->info->sosok }}</p>
                     <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }}</p>
                 </div>
-                <div class="employ_call">
-                    <i class="ri-phone-line"></i>
-                    <p class="mont">1833 {{ @$_sawon->info->office_line }}</p>
+                <div class="empl-img-w">
+                    <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
                 </div>
-                @if ($_sawon->homepage_sales_count > 0)
+                <div class="employ_round">
+                    <div class="employ_call emp_rd">
+                        {{-- <i class="ri-phone-line"></i> --}}
+                        <p class="mont">1833 {{ @$_sawon->info->office_line }}</p>
+                    </div>
+                    <div class="sales_count emp_rd">
+                        <p>{{ $_sawon->homepage_sales_count }} 건</p>
+                    </div>
+                </div>
+                {{-- @if ($_sawon->homepage_sales_count > 0)
                 <div class="sales_count">
                     <p>{{ $_sawon->homepage_sales_count }} 건</p>
                 </div>
-                @endif
+                @endif --}}
                 
             </a>
         </div>

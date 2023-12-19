@@ -13,7 +13,7 @@
                 <div class="my_bx_inf">
                     <p>{{ Auth::user()->name }}</p>
                     <p><span class="address mont">{{ Auth::user()->email }}</span></p>
-                    <button class="btn btn-thm btn-thm_w"><a href="">프로필 관리</a></button>
+                    <button class="btn btn-thm btn-thm_w"><a href="{{ route('profile') }}">프로필 관리</a></button>
                 </div>
             </div>
             <div class="my_bx_rg">

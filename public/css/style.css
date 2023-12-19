@@ -16859,20 +16859,25 @@ swiper-slide img {
 
 
 /* employee */
-.employ_box { display: grid; justify-items: center; height: 285px; padding: 20px !important; margin-bottom: 30px; border-radius: 10px; position: relative; }
-.empl-img-w { width: 130px; height: 130px; border-radius: 100px; overflow: hidden; }
-.empl-img-w img { height: 130px; }
-.employ_inf { display: grid; justify-items: center; margin-top: 15px; }
+.employ_box { display: grid; justify-items: center; padding: 20px !important; margin-bottom: 30px; border-radius: 10px; position: relative; }
+.empl-img-w { width: 120px; height: 120px; border-radius: 100px; overflow: hidden; border: 1px solid #f5f5f5; }
+.empl-img-w img { height: 120px; }
+.employ_inf { display: grid; justify-items: center; margin-bottom: 10px;}
 .employ_inf p { margin: 0; }
-.employ_inf p:last-child { font-size: 20px; font-weight: 600; }
-.employ_inf p:first-child { font-size: 16px; font-weight: 600; color: #385F8D; }
-.employ_call { display: flex; gap: 5px; margin-top: 15px; }
-.employ_call p { margin: 0; font-weight: 600; font-size: 16px; }
+.employ_inf p:last-child { font-size: 20px; font-weight: 600; line-height: normal; }
+.employ_inf p:first-child { font-size: 16px; font-weight: 600; color: #385f8d91; line-height: normal; margin-bottom: 2px; }
+/* .employ_call { display: flex; gap: 5px; margin-top: 15px; }/ */
+.employ_call p { margin: 0; font-weight: 500; font-size: 14px; color: #385f8d; line-height: 30px; }
 .employ_call i{ color: #000; }
 .employ_call button{ margin: 0; font-weight: 600; font-size: 16px; }
-.sales_count { position: absolute; right: 10px; top: 10px; background: #385f8d; padding: 8px 13px; border-radius: 50px; }
-.sales_count p { color: #fff; margin: 0; font-size: 14px; line-height: normal; }
+/* .sales_count { position: absolute; right: 10px; top: 10px; background: #385f8d; padding: 8px 13px; border-radius: 50px; } */
+/* .sales_count p { color: #fff; margin: 0; font-size: 14px; line-height: normal; } */
+.employ_round { display: flex; gap: 7px; margin-top: 20px;}
+.sales_count p { font-size: 14px;  margin: 0; color: #fff; line-height: 28px; }
 .sawon_form { display: contents; }
+.emp_rd:first-child { background: #fff; border: 1.5px solid #385f8d; padding: 4px 20px; border-radius: 30px; }
+.emp_rd:last-child { background: #385f8d; padding: 6px 20px; border-radius: 30px; }
+
 
 
 
