@@ -17199,6 +17199,43 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 }
 
 
+
+/* news */
+.news_w { margin-bottom: 55px; }
+.news_w .thumb { border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 250px; display: flex;  }
+.news_w .thumb img { transition: transform 0.3s; }
+.news_w .thumb img:hover { transform: scale(1.1); }
+
+.news_details p:first-child{ 
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration-line: underline;
+    text-decoration-color: black;
+    text-decoration-style: solid;
+    text-underline-position: under;
+    text-underline-offset: 2px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+ }
+ .news_details p:last-child {
+    color: #828282; 
+    font-size: 18px; 
+    font-weight: 500;
+ }
+ .news_details h4 { 
+  color: #000; 
+  font-size: 20px; 
+  font-weight: 600; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+
+
 /* 신문광고 */
 /* .ad_article { height: 100vh; } */
 .article_brd { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 30px; cursor: pointer; border: 1px solid #ebebeb; }
