@@ -549,6 +549,28 @@ $(window).on('load', function() {
 
     <x-inquirybox type="photo" :printData="$printData" />
 
+    <div class="sidebar_listing_list sidebar_enterinfo">
+        <h4 class="mb20">중개등록정보</h4>
+        <ul>
+            <li>
+                <p>등록번호</p>
+                <p>제26500-2023-00054호</p>
+            </li>
+            <li>
+                <p>소재지</p>
+                <p>부산 연제구 중앙대로 1091, 6F</p>
+            </li>
+            <li>
+                <p>대표</p>
+                <p>송대훈</p>
+            </li>
+            <li>
+                <p>연락처</p>
+                <p>051-791-8888</p>
+            </li>
+        </ul>
+    </div>
+
     <x-today-view-sales />
 
 </div>

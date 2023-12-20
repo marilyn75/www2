@@ -15,7 +15,7 @@
     <div class="sidebar_advanced_search_widget">
         @if ($type=='photo')
         <div class="sl_creator sl_creator_w">
-            <h4 class="mb20">중개사정보</h4>
+            <h4 class="mb20">현장안내원</h4>
             <div class="media media_w">
                 <div class="profile_crop">
                     <img class="mr-3" src="{{ $printData['sawon_photo'] }}" style="width:90px;height:90px">
@@ -51,11 +51,6 @@
             <li class="search_area">
                 <div class="form-group">
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요"required hname="연락처">
-                </div>
-            </li>
-            <li class="search_area">
-                <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="이메일을 입력하세요"required hname="이메일" options="email">
                 </div>
             </li>
             <li class="search_area">
