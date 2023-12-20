@@ -16614,7 +16614,7 @@ input[type="range"] {
 .contact_bar { position: sticky; }
 /* .contact_bx { width:376px; height: 1000px; position: sticky; top: 125px; } */
 .contact_bx { width:376px; height: 1000px; top: 125px; }
-.sl_creator_w h4 { font-size: 20px; font-weight: 600; }
+.sl_creator_w h4 { font-size: 18px; font-weight: 600; }
 .profile_crop { border-radius: 10px; overflow: hidden; object-fit: cover; width: 90px; height: 90px; }
 .media_w { gap: 20px; align-items: center; }
 .sasw_list_w .search_area input { border: none; border-bottom: 1px solid #d9d9d9; border-radius: 0px; padding: 10px; }
@@ -16648,7 +16648,7 @@ input[type="range"] {
 .contact_bx_modal { width: 100%; height: auto; border: none; margin: 0; padding: 15px 20px; }
 .media-detail { color: #385F8D !important; font-weight: 600 !important; }
 .media-call { font-weight: 500; }
-.today_pro h4 { font-size: 20px; font-weight: 600; }
+.today_pro h4 { font-size: 18px; font-weight: 600; }
 .detail_emp_btns { display: flex; gap: 10px; }
 .detail_emp_btns .btn{ margin: 0; }
 .detail_emp_btns .btn:first-child { background: #fff; border: 1px solid #385F8D; color: #385F8D; }
@@ -16757,6 +16757,13 @@ swiper-slide img {
 .related .details .tc_content_w .text-inf-w { gap: 0; }
 .related .details .fp_footer .fp_meta li { margin-right: 5px; }
 .related .details .fp_footer .fp_meta .sawon_crop { width: 32px; height: 32px; }
+
+.sidebar_enterinfo h4 { color: #000; font-weight: 600; }
+.enterinfo { margin: 0; }
+.enterinfo li{ display: flex; justify-content: space-between; }
+.enterinfo li p { font-size: 16px; margin: 0; color: #000; }
+.enterinfo li p:first-child { font-weight: 500; }
+
 
 
 

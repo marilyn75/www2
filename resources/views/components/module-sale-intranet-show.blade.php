@@ -551,7 +551,7 @@ $(window).on('load', function() {
 
     <div class="sidebar_listing_list sidebar_enterinfo">
         <h4 class="mb20">중개등록정보</h4>
-        <ul>
+        <ul class="enterinfo">
             <li>
                 <p>등록번호</p>
                 <p>제26500-2023-00054호</p>
