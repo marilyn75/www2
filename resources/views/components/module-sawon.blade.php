@@ -86,8 +86,8 @@
                         <p>{{ $_sawon->homepage_sales_count }} 건</p>
                     </div>
                     <div class="employ_inf">
-                        <p>{{ @$_sawon->info->sosok }}</p>
-                        <p>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }}</p>
+                        <p>{{ @$_sawon->sosok }}</p>
+                        <p>{{ $_sawon->user_name }} {{ @$_sawon->duty }}</p>
                     </div>
                 </div>
                 {{-- @if ($_sawon->homepage_sales_count > 0)
