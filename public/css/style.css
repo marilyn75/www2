@@ -16750,10 +16750,10 @@ swiper-slide img {
 .detail_btn i { color: #000; }
 .detail_btn_w .fill_heart { color: #E93C3C; }
 
-.related .details .tc_content h4 { font-size: 16px; }
+.related .details .tc_content h4 { font-size: 18px; }
 .related .details .tc_content { margin-bottom: 0; }
-.related .details .tc_content p { font-size: 14px; }
-.related .details .fp_footer .fp_pname { font-size: 14px; }
+.related .details .tc_content p { font-size: 16px; }
+.related .details .fp_footer .fp_pname { font-size: 16px; }
 .related .details .tc_content_w .text-inf-w { gap: 0; }
 .related .details .fp_footer .fp_meta li { margin-right: 5px; }
 .related .details .fp_footer .fp_meta .sawon_crop { width: 32px; height: 32px; }

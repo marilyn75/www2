@@ -1,7 +1,9 @@
 @if ($type=="recommend")
 <div class="col-sm-6 col-md-6 col-lg-4">
+@elseif ($type=="related")
+<div class="col-sm-6 col-md-6 col-lg-6">
 @else
-<div class="col-sm-6 col-md-6 col-lg-4 pl10 ">
+<div class="col-sm-6 col-md-6 col-lg-4 pl10">
 @endif
     <a href="?mode=show&idx={{ $printData['idx'] }}">
         <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") related @endif">
