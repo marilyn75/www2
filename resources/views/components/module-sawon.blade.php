@@ -76,7 +76,7 @@
             <a class="feat_property employ_box" href="{{ $data->path() }}?mode=view&idx={{ $_sawon->idx }}">
                 <div class="empl-img-w">
                     @if(empty($_sawon->mb_photo))
-                    <img class="img-whp" src="/images/user-placeholder.png">
+                    <img class="img-whp" src="/images/sawon-placeholder.png">
                     @else
                     <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
                     @endif

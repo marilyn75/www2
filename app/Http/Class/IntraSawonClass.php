@@ -23,7 +23,7 @@ class IntraSawonClass{
         
     }
 
-    public function getListData($request, $itemNum=8){
+    public function getListData($request, $itemNum=9){
         $data = $request->all();
 
         $model1 = DB::connection('mysql_intranet')
@@ -76,7 +76,7 @@ class IntraSawonClass{
         $return['office_line'] = $data->info->office_line;
 
         $return['photo'] = $data->mb_photo;
-        $return['photo'] = (empty($return['photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['photo'];
+        $return['photo'] = (empty($return['photo']))?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['photo'];
 
         $return['slogan'] = $data->info->slogan;
         $return['introduce'] = $data->info->introduce;
