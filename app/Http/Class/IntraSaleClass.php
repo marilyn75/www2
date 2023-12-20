@@ -113,7 +113,7 @@ class IntraSaleClass{
 
         if($return['area_j']) $return['areaRate'] = round(($return['area_j'] / $return['area_b']) * 100,2);   //전용율
 
-        $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:number_format($return['totPkngCnt'])." 대";
+        $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:number_format(intval($return['totPkngCnt']))." 대";
         $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음")?$return['rideUseElvtCnt']:$return['rideUseElvtCnt']." 대";
 
         if(!$return['direction_gijun']) $return['direction_gijun'] = "출입구 기준";

@@ -289,7 +289,7 @@ $(window).on('load', function() {
                                         <p>방향 :</p>
                                         <p>{{ $printData['direction'] }} ({{ $printData['direction_gijun'] }})</p>
                                     </li>
-                                @if($printData['category_class']!="factory"){
+                                @if($printData['category_class']!="factory")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>방/화장실 :</p>
                                         <p class="mont">{{ $printData['room_num'] }}개 / {{ $printData['restroom_num'] }}개</p>

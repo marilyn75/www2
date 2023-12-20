@@ -26,16 +26,36 @@ class IntraSawonClass{
     public function getListData($request, $itemNum=8){
         $data = $request->all();
 
-        $model = IntraMember::where([
-            'mb_out'=>0,
-            'auth_gr'=>'M01_D01',
-            ])->withCount('homepageSales');
+        $model1 = DB::connection('mysql_intranet')
+            ->table(DB::raw("
+                (select count(*) as homepage_sales_count 
+                from CS_SALE_HOMEPAGE a 
+                join (select * from CS_MEMBER aa join CS_MEMBER_SINFO bb on aa.user_key=bb.s_user_key) b 
+                on a.user_id=b.user_id 
+                where mb_out=0 and auth_gr='M01_D01' and chkcert!='y' and a.isDel=0 and a.isDone=1) 
+                tbl"))
+            ->selectRaw("0 as idx, '' as mb_photo, '개벽 부동산' as user_name, '' as duty, '중개법인' as sosok, '8840' as office_line, '' as mb_email, homepage_sales_count, '' as reg_date");
+
+        $model = DB::connection('mysql_intranet')
+                    ->table('CS_MEMBER')
+                    ->join('CS_MEMBER_SINFO', 'CS_MEMBER.user_key', '=', 'CS_MEMBER_SINFO.s_user_key')
+                    ->where([
+                        'mb_out'=>0,
+                        'auth_gr'=>'M01_D01',
+                        'chkcert'=>'y',
+                        ])
+                    ->select('idx','mb_photo', 'user_name', 'duty', 'sosok', 'office_line', 'mb_email', DB::raw('(select count(*) from CS_SALE_HOMEPAGE where user_id=CS_MEMBER.user_id and isDel=0 and isDone=1) as homepage_sales_count'), 'reg_date')
+                    ->union($model1);
+
+        // $model = IntraMember::where([
+        //     'mb_out'=>0,
+        //     'auth_gr'=>'M01_D01',
+        //     ])->withCount('homepageSales');
 
         if(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
             if(empty($arrSort[1])) $arrSort[1] = 'asc';
-            $model->orderBy($arrSort[0],$arrSort[1]);
-            debug('order',$arrSort);            
+            $model->orderBy($arrSort[0],$arrSort[1]);        
         }else{
             $model->orderBy('reg_date','desc');
         }

@@ -48,10 +48,10 @@
                 </div>
                 <div class="details">
                     <div class="tc_content">
-                        <h4>{{ $_sawon->user_name }} {{ @$_sawon->info->duty }}</h4>
-                        <p class="text-thm">{{ @$_sawon->info->sosok }}</p>
+                        <h4>{{ $_sawon->user_name }} {{ @$_sawon->duty }}</h4>
+                        <p class="text-thm">{{ @$_sawon->sosok }}</p>
                         <ul class="prop_details mb0">
-                            <li><a href="#">Office: 1833 {{ @$_sawon->info->office_line }}</a></li>
+                            <li><a href="#">Office: 1833 {{ @$_sawon->office_line }}</a></li>
                             {{-- <li><a href="#">Mobile: 891 456 9874</a></li>
                             <li><a href="#">Fax: 342 654 1258</a></li> --}}
                             <li><a href="#">Email: {{ $_sawon->mb_email }}</a></li>
@@ -75,7 +75,11 @@
         <div class="col-sm-12 col-md-6 col-lg-4">
             <a class="feat_property employ_box" href="{{ $data->path() }}?mode=view&idx={{ $_sawon->idx }}">
                 <div class="empl-img-w">
+                    @if(empty($_sawon->mb_photo))
+                    <img class="img-whp" src="/images/user-placeholder.png">
+                    @else
                     <img class="img-whp" src="http://gbbinc.co.kr/_Data/Member/{{ $_sawon->mb_photo }}">
+                    @endif
                 </div>
                 <div class="employ_round">
                     <div class="sales_count emp_rd">
