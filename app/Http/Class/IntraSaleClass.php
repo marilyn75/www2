@@ -25,10 +25,32 @@ class IntraSaleClass{
 
     public function getListData($request, $itemNum=6){
         $data = $request->all();
+        if(empty($data)){
+            $data = json_decode($_COOKIE["filter_condition"], true);
+            debug($data);
+        }else{
+            // 검색조건 저장 쿠키
+            setcookie("filter_condition", json_encode($data), time()+3600);
+        }
         
         $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1]);
         if($request['mode']=="recommend"){
             $model = $model->where('isRecom',1);
+        }
+
+        // 필터조건
+        if(@$data['cate2']){
+            $model->where('category_id', $data['cate2']);
+        }elseif(@$data['cate1']){
+            $clsCode = new CommonCodeClass;
+            $result = $clsCode->getDescendants($data['cate1']);
+
+            $responsData = $result->getData();
+            foreach($responsData as $_dt){
+                $inCateId[] = $_dt['id'];
+            }
+            
+            $model->whereIn('category_id', $inCateId);
         }
 
         if(!empty($data['sort'])){
@@ -180,10 +202,11 @@ class IntraSaleClass{
         $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
         $return['sawon_user_id'] = $data->sale->users->first()->sawon->user_id;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
-        $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/user-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
-        $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
-        $return['sawon_duty'] = $data->sale->users->first()->sawon->info->duty;
-        $return['sawon_sosok'] = $data->sale->users->first()->sawon->info->sosok;
+        $return['sawon_photo'] = (empty($return['sawon_photo']) || $data->sale->users->first()->sawon->info->chkcert !='y')?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
+        $return['sawon_name'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"개벽 부동산":$data->sale->users->first()->sawon->user_name;
+        $return['sawon_duty'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"":$data->sale->users->first()->sawon->info->duty;
+        $return['sawon_sosok'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"":$data->sale->users->first()->sawon->info->sosok;
+        $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);
         $return['sawon_office_line'] = $data->sale->users->first()->sawon->info->office_line;
 
         $return['print_data'] = formatCreatedAt2($data->reg_date);

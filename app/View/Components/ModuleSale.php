@@ -70,8 +70,8 @@ class ModuleSale extends Component
                 $data['tmp_id'] = $this->cls->getTmpId();
 
                 $CommonCodeClass = new CommonCodeClass;
-                $tradeType = $CommonCodeClass->getChildrenFormFirstCodeText('거래유형');
-                $saleType = $CommonCodeClass->getChildrenFormFirstCodeText('매물유형');
+                // $tradeType = $CommonCodeClass->getChildrenFormFirstCodeText('거래유형');
+                // $saleType = $CommonCodeClass->getChildrenFormFirstCodeText('매물유형');
 
                 $db_data = $this->cls->getDataFromTmpId($data['tmp_id']);
                 if(empty($db_data)){

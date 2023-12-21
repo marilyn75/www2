@@ -50,7 +50,7 @@
             </li>
             <li class="search_area">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요"required hname="연락처">
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요"required hname="연락처" options="phone">
                 </div>
             </li>
             <li class="search_area">

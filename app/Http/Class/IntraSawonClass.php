@@ -2,6 +2,7 @@
 
 namespace App\Http\Class;
 
+use stdClass;
 use App\Models\Sale;
 use GuzzleHttp\Client;
 use App\Models\CommonCode;
@@ -69,10 +70,15 @@ class IntraSawonClass{
     }
 
     public function getPrintData($data){
+        // if ($data instanceof stdClass) {
+        //     debug('stdClass');
+        // }else{
+        //     debug('Eloquent');
+        // }
         $return = $data->toArray();
 
         $return['duty'] = $data->info->duty;
-        $return['sosok'] = $data->info->sosok;
+        $return['sosok'] = str_replace('소속','',$data->info->sosok);
         $return['office_line'] = $data->info->office_line;
 
         $return['photo'] = $data->mb_photo;

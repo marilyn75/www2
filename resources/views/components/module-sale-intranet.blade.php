@@ -1,4 +1,24 @@
 <script>
+    var jsonCate;
+
+    // $.ajax({
+    //     url: '{{ route('common.ajax.getSaleCategory') }}',
+    //     type: 'GET',
+    //     dataType: 'json',
+    //     async: false,  // 동기적으로 설정
+    //     success: function(response) {
+    //         if(response.result){
+    //             jsonCate = response.data;
+    //             console.log(jsonCate);
+    //         }else{
+    //             alert(response.message);
+    //         }
+    //     },
+    //     error: function(error) {
+    //         console.error('Error:', error);
+    //     }
+    // });
+
     function addFavorite(obj, id) {
         var $child = $(obj).children();
 
@@ -21,6 +41,58 @@
 
         return false;
     }
+
+    function initFilterForm(){
+        var oldCond = JSON.parse(getCookie('filter_condition'));
+
+        jsonCate.forEach(function(cate){
+            $html = $('#divCategory label').eq(0).clone();
+            $html.find('input').attr('checked',false).val(cate.id);
+            $html.find('span').html(cate.title);
+            $html.appendTo('#divCategory');
+        });
+
+        if(oldCond.cate1){
+            $("input[name='cate1']").eq(0).attr('checked',false);
+            $("input[name='cate1']").eq(0).parent().removeClass('active');
+            $("input[name='cate1'][value='"+oldCond.cate1+"']").click();
+        }
+        if(oldCond.cate2){
+            frm.cate2.value = oldCond.cate2;
+            $('#cate2').selectpicker('refresh');
+        }
+    }
+
+    $(document).ready(function(){
+        var r = doAjax('{{ route('common.ajax.getSaleCategory') }}');
+        if (r.result) jsonCate = r.data;
+
+        initFilterForm();
+
+        console.log(JSON.parse(getCookie('filter_condition')));
+    });
+
+    $(document).on('change', "input[name='cate1']", function(){
+        var idx = ($("input[name='cate1']").index(this));
+
+        $('#cate2 option').remove();
+        if(idx>0){
+            var data = jsonCate[idx-1];
+            $('#lbCate2').html(data.title);
+            $('#cate2').append($('<option>', {value: '', text: data.title+' 전체'}));
+            data.children.forEach(function(subCate){
+                $('#cate2').append($('<option>', {
+                            value: subCate.id,
+                            text: subCate.title
+                        }));
+            });
+            $('#cate2').selectpicker('refresh');
+            $("#divSubCategory").show();
+        }else{
+            $("#divSubCategory").hide();
+        }
+    });
+
 
     $(document).on('change', '#transArea', function() {
         if (this.checked) {
@@ -110,46 +182,26 @@
                 <ul class="sasw_list mb0 sasw_list_w">
                     <li class="filt_li">
                         <div class="left_area tac-xsd result_filt">
-                            <p>검색결과 <span class="mont point_c">16</span>건</p>
+                            <p>검색결과 <span class="mont point_c">{{ number_format($data->total()) }}</span>건</p>
                             <button class="reset_btn">초기화</button>
                         </div>
 
                     </li>
                     <li class="filt_li">
                         <label for="">유형</label>
-                        <div class="filt_btns" data-toggle="buttons">
-                            <label class="btn filt_r-btn inter active">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked=""
-                                onclick="hideAllSelectBoxes()">전체
-                            </label>
-                            <label class="btn filt_r-btn inter active">
-                                <input type="radio" name="options" id="option2" autocomplete="off"
-                                    onclick="showSelectBox('residential')">주거용
-                            </label>
-                            <label class="btn filt_r-btn inter">
-                                <input type="radio" name="options" id="option3" autocomplete="off"
-                                    onclick="showSelectBox('commercial')">상업용
+                        <div class="filt_btns" data-toggle="buttons" id="divCategory">
+                            <label class="btn filt_r-btn inter ">
+                                <input type="radio" name="cate1" value="" autocomplete="off" checked><span>전체</span>
                             </label>
                         </div>
 
-                        <div id="residentialSelectBox" class="chk_sect hidden">
+                        <div id="divSubCategory" class="hidden">
                             <div class="candidate_revew_select">
-                                <label for="residentialOptions">주거용</label>
-                                <select id="residentialOptions" class="selectpicker w100 show-tick">
-                                    <option>주거용매물</option>
+                                <label for="cate2" id="lbCate2">주거용</label>
+                                <select id="cate2" name="cate2" class="selectpicker w100 show-tick">
+                                    <option>주거용 전체</option>
                                     <option>단독주택</option>
                                     <option>아파트</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div id="commercialSelectBox" class="chk_sect hidden">
-                            <div class="candidate_revew_select">
-                                <label for="commercialOptions">상업용</label>
-                                <select id="commercialOptions" class="selectpicker w100 show-tick">
-                                    <option>상업용매물</option>
-                                    <option>토지</option>
-                                    <option>임야</option>
                                 </select>
                             </div>
                         </div>
