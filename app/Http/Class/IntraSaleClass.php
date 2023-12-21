@@ -25,7 +25,7 @@ class IntraSaleClass{
 
     public function getListData($request, $itemNum=6){
         $data = $request->all();
-        if(empty($data)){
+        if(empty($data) && !empty($_COOKIE["filter_condition"])){
             $data = json_decode($_COOKIE["filter_condition"], true);
             debug($data);
         }else{
