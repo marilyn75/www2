@@ -2671,7 +2671,11 @@ input.amount4:focus{
 }
 .home1-advnc-search .search_option_two .dropdown.bootstrap-select .dropdown-menu.show,
 .home1-advnc-search .dropdown.bootstrap-select .dropdown-menu.show{
-  min-width: 250px !important;
+  min-width: 100% !important;
+  top: 5px !important;
+  background: transparent;
+  border-radius: 5px;
+  border-color: #000;
 }
 .home1-advnc-search.home5 .search_option_two .dropdown.bootstrap-select .dropdown-menu.show,
 .home1-advnc-search.home5 .dropdown.bootstrap-select .dropdown-menu.show{
@@ -2681,6 +2685,7 @@ input.amount4:focus{
 .home1-advnc-search ul.dropdown-menu.inner.show li{
   font-size: 14px;
   margin-right: 0 !important;
+  padding: 0 10px !important;
 }
 .home1-advnc-search .search_option_two .dropdown-menu{
   top: 50px !important;
@@ -2712,15 +2717,17 @@ form.home5_advanced_search_form .search_option_two .dropdown-menu{
   -o-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+
+  display: none;
 }
 .home1-advnc-search .bootstrap-select .bs-ok-default:after{
   color: #ff5a5f;
 }
 .home1-advnc-search .bootstrap-select .dropdown-menu li a{
-  color: #484848;
+  color: #000000;
   font-size: 14px;
   line-height: 2;
-  width: 250px;
+  /* width: 250px; */
 }
 .home1-advnc-search.home5 .form-group.df label{
   font-size: 24px;
@@ -11128,8 +11135,16 @@ a.btn.btn_error{
 .candidate_revew_select .dropdown-item:active,
 .grid_list_search_result .dropdown-item.active,
 .grid_list_search_result .dropdown-item:active{
-  background-color: #f7f7f7;
-  color: #484848;
+  background-color: #385f8d;
+  color: #fff !important;
+}
+.grid_list_search_result .dropdown-item:hover{
+  background-color: #385f8d !important;
+  color: #fff !important;
+}
+.home1-advnc-search .bootstrap-select .dropdown-menu li a:hover{
+  background: #385F8D;
+  color: #fff;
 }
 .grid_list_search_result{
   background-color: #ffffff;
@@ -16807,6 +16822,8 @@ swiper-slide img {
 .home_search_w .search_option_two .dropdown.bootstrap-select .dropdown-toggle .filter-option {
   font-size: 20px;
   color: #000;
+  font-weight: 500;
+  padding: 6px 0px;
 }
 .home_search_w ul { 
   display: flex;
@@ -17819,14 +17836,21 @@ code {
   .main_tit { top: -54px; }
   .home_search_w ul { width: 100%; }
   .home_search_w .search_option_two .dropdown.bootstrap-select .dropdown-toggle .filter-option {
-    font-size: 14px;
+    font-size: 13px;
   }
   .home_bx .home_search_w .search_option_two .dropdown.bootstrap-select>.dropdown-toggle{
-    width: 90px !important; height: 45px !important;
+    /* width: 90px !important; height: 45px !important; */
+    width: 100% !important; height: 45px !important;
+  }
+  .home1-advnc-search .search_option_two .dropdown.bootstrap-select .dropdown-menu.show, .home1-advnc-search .dropdown.bootstrap-select .dropdown-menu.show{
+    background: #fff;
+  }
+  .home1-advnc-search .bootstrap-select .dropdown-menu li a{
+    font-size: 13px;
   }
   .home_search_w .search_option_two { margin-bottom: 0 !important; }
-  .home_search_w .form-control { font-size: 14px; height: 45px !important; }
-  .home_search_w ul li .search_option_button button { width: 30px !important; font-size: 16px; }
+  .home_search_w .form-control { font-size: 13px; height: 45px !important; }
+  .home_search_w ul li .search_option_button button { width: 30px !important; font-size: 14px; }
   .home_search_w ul li .search_option_button button:hover { border: none; background: none; }
   .subtit h2 { font-size: 20px; }
   .subtit p { font-size: 16px; }
