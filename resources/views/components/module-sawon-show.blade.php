@@ -1,3 +1,4 @@
+<div class="row">
 <form name="frm" action="{{ $data['sales']->path() }}" method="post" class="row pl15 pr15">
     @csrf
     <input type="hidden" name="page" value="1">
@@ -104,4 +105,5 @@
     <x-today-view-sales />
 
 
+</div>
 </div>
