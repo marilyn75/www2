@@ -18,6 +18,6 @@ class IntraMember extends Model
     }
 
     public function homepageSales(){
-        return $this->hasMany(IntraSaleHomepage::class, 'user_id', 'user_id')->where('isDone',1);
+        return $this->hasMany(IntraSaleHomepage::class, 'user_id', 'user_id')->where(['isDone'=>1,'isDel'=>0]);
     }
 }

@@ -113,8 +113,10 @@ class IntraSaleClass{
 
         // 리스트이미지 썸네일
         $return['img'] = "/images/noimg.jpg";
+        $return['img2'] = "/images/noimg.jpg";
         if(!empty($data->files->first()->filename)){
             $return['img'] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename, 250, 150);
+            $return['img2'] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename, 250, 190);
         }
 
         $arrAddr = explode("|",$data->addr);

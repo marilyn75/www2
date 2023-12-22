@@ -66,7 +66,13 @@ class IntraSawonClass{
     }
 
     public function getData($idx){
-        return IntraMember::find($idx);
+
+        if($idx==0){    // 중개보조원 모두
+            $data = "other";
+        }else
+            $data = IntraMember::find($idx); 
+
+        return $data;
     }
 
     public function getPrintData($data){
@@ -75,25 +81,73 @@ class IntraSawonClass{
         // }else{
         //     debug('Eloquent');
         // }
-        $return = $data->toArray();
 
-        $return['duty'] = $data->info->duty;
-        $return['sosok'] = str_replace('소속','',$data->info->sosok);
-        $return['office_line'] = $data->info->office_line;
+        if($data=="other"){ // 중개보조원들
+            $return['duty'] = "";
+            $return['sosok'] = "중개법인";
+            $return['office_line'] = "8840";
 
-        $return['photo'] = $data->mb_photo;
-        $return['photo'] = (empty($return['photo']))?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['photo'];
+            $return['photo'] = "/images/sawon-placeholder.png";
 
-        $return['slogan'] = $data->info->slogan;
-        $return['introduce'] = $data->info->introduce;
+            $return['slogan'] = "";
+            $return['introduce'] = "";
 
-        $sales = $data->homepageSales;
-        $clsIntraSale = new IntraSaleClass;
-        foreach($sales as $_sale){
-            $return['sales'][] = $clsIntraSale->getPrintData($_sale);
+            // $sales = $data->homepageSales;
+            // $clsIntraSale = new IntraSaleClass;
+            // foreach($sales as $_sale){
+            //     $return['sales'][] = $clsIntraSale->getPrintData($_sale);
+            // }
+
+            $return['sawon_user_id'] = "radmin";
+            $return['user_name'] = "개벽 부동산";
+            
+            $sales = IntraSaleHomepage::join('CS_MEMBER','CS_MEMBER.user_id','=','CS_SALE_HOMEPAGE.user_id')
+                ->join('CS_MEMBER_SINFO', 'CS_MEMBER.user_key', '=', 'CS_MEMBER_SINFO.s_user_key')
+                ->where([
+                    'mb_out'=>0, 
+                    'auth_gr'=>'M01_D01',
+                    'CS_SALE_HOMEPAGE.isDone'=>1,
+                    'CS_SALE_HOMEPAGE.isDel'=>0,
+                ])->where('chkcert','!=','y')
+                ->select('CS_SALE_HOMEPAGE.*')
+                ->orderBy('reg_date','desc')
+                ->paginate(5);
+ 
+            $clsIntraSale = new IntraSaleClass;
+            $return['sales'] = $sales;
+            // foreach($sales as $_sale){
+            //     $return['sales'][] = $clsIntraSale->getPrintData($_sale);
+            // }
+
+        }else{
+            $return = $data->toArray();
+
+            $return['duty'] = $data->info->duty;
+            $return['sosok'] = str_replace('소속','',$data->info->sosok);
+            $return['office_line'] = $data->info->office_line;
+
+            $return['photo'] = $data->mb_photo;
+            $return['photo'] = (empty($return['photo']))?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['photo'];
+
+            $return['slogan'] = $data->info->slogan;
+            $return['introduce'] = $data->info->introduce;
+
+            // $sales = $data->homepageSales->paginate(5);
+            $sales = IntraSaleHomepage::where([
+                'isDone'=>1,
+                'isDel'=>0,
+                'user_id'=>$data->user_id,
+            ])
+            ->orderBy('reg_date','desc')
+            ->paginate(5);
+            $return['sales'] = $sales;
+            // $clsIntraSale = new IntraSaleClass;
+            // foreach($sales as $_sale){
+            //     $return['sales'][] = $clsIntraSale->getPrintData($_sale);
+            // }
+
+            $return['sawon_user_id'] = $data->user_id;
         }
-
-        $return['sawon_user_id'] = $data->user_id;
         return $return;
     }
 

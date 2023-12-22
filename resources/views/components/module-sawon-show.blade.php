@@ -1,3 +1,9 @@
+<form name="frm" action="{{ $data['sales']->path() }}" method="post" class="row pl15 pr15">
+    @csrf
+    <input type="hidden" name="page" value="1">
+    <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
+    <input type="hidden" name="idx" value="{{ $_REQUEST['idx'] }}">
+</form>
 <div class="col-md-12 col-lg-8">
     <div class="row">
         <div class="col-lg-12">
@@ -39,10 +45,14 @@
                         </div>
                         @else
                             @foreach ($data['sales'] as $_sale)
+                            @php
+                                $_sale = App\Http\Class\IntraSaleClass::getPrintData($_sale);
+                            @endphp
+                            <a href="{{ route('page',20).__('?mode=show&idx='.$_sale['idx']) }}">
                         <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
                             <div class="feat_property list style2 hvr-bxshd bdrrn agent_list">
                                 <div class="thumb agent_thumb">
-                                    <img class="img-whp" src="{{ $_sale['img'] }}" >
+                                    <img class="img-whp" src="{{ $_sale['img2'] }}" >
                                 </div>
                                 <div class="details details_w">
                                     <div class="tc_content tc_content_w agent_content">
@@ -67,10 +77,12 @@
                                 </div>
                             </div>
                         </div>
+                            </a>
                             @endforeach
                         
                         @endif
                     </div>
+                    <x-pagination :data="$data['sales']" />
                     {{-- 등록매물 e --}}
                     <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="product_single_content">
