@@ -17883,7 +17883,7 @@ code {
   .employ_name p { text-align: left; font-size: 16px; }
   .detail_img_crop img { height: 280px !important; }
   .swiper-slide img { height: 290px !important; }
-  
+
 
   /* 원인 */
   /* .single_product_grid_w { flex-direction: column-reverse; padding: 20px; margin-bottom: 0 !important; } */
@@ -17938,7 +17938,22 @@ code {
   .my_bx_inf .btn { margin-top: 15px; width: 115px; padding: 8px; }
   .my_profile_bx { padding-bottom: 20px; }
 
+  /* mobile menu */
+  .mm-navbar__title { font-size: 18px; }
+  .mm-listitem__text { font-size: 16px; }
+  .stylehome1 a.mm-listitem__text, .stylehome1 a.mm-btn.mm-btn_next.mm-listitem__btn.mm-listitem__text{
+    font-size: 16px;
+  }
+  .stylehome1 .mm-panel ul.mm-listview li.mm-listitem.cl_btn a.btn { padding: 15px; }
+  .mmenu_logo img { height: 30px; }
+  .stylehome1 .mm-panel ul.mm-listview li.mm-listitem.cl_btn { margin: 10px 0; }
+
+
 }
+
+
+
+
 @media (max-width: 520.98px) {
   .home_search_w ul { display: grid; }
   .mobile_serv { font-size: 20px; }
@@ -18010,6 +18025,7 @@ code {
   .why_chose_us .details p span { font-size: 25px; }
   .vision h2 { font-size: 20px; }
   .fight h2 { font-size: 20px; }
+  .news_imgw { display: none; }
 
   .filter_btn { font-size: 12px; padding: 4px 8px; }
   .breadcrumb_title_w { font-size: 14px; }
@@ -18020,5 +18036,9 @@ code {
   .my_bx_inf .btn a { color: #385F8D !important; font-weight: 600; }
   .my_profile_bx { padding-bottom: 0; }
   .menu_link { font-size: 14px; }
+
+  /* main */
+  .tit_btn { display: grid; justify-content: normal; }
+
 }
 
