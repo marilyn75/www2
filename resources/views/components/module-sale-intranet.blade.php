@@ -79,7 +79,7 @@
         if(idx>0){
             var data = jsonCate[idx-1];
             $('#lbCate2').html(data.title);
-            $('#cate2').append($('<option>', {value: '', text: data.title+' 전체'}));
+            $('#cate2').append($('<option>', {value: ' ', text: data.title+' 전체'}));
             data.children.forEach(function(subCate){
                 $('#cate2').append($('<option>', {
                             value: subCate.id,
@@ -199,9 +199,7 @@
                             <div class="candidate_revew_select">
                                 <label for="cate2" id="lbCate2">주거용</label>
                                 <select id="cate2" name="cate2" class="selectpicker w100 show-tick">
-                                    <option>주거용 전체</option>
-                                    <option>단독주택</option>
-                                    <option>아파트</option>
+                                  
                                 </select>
                             </div>
                         </div>

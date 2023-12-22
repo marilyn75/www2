@@ -81,8 +81,9 @@
                             @endforeach
                         
                         @endif
+                        <x-pagination :data="$data['sales']" />
                     </div>
-                    <x-pagination :data="$data['sales']" />
+                    
                     {{-- 등록매물 e --}}
                     <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                         <div class="product_single_content">

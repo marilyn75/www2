@@ -27,10 +27,13 @@ class IntraSaleClass{
         $data = $request->all();
         if(empty($data) && !empty($_COOKIE["filter_condition"])){
             $data = json_decode($_COOKIE["filter_condition"], true);
-            debug($data);
+            debug("쿠키",$data);
         }else{
             // 검색조건 저장 쿠키
-            setcookie("filter_condition", json_encode($data), time()+3600);
+            $cookie = $data;
+            unset($cookie['_token'],$cookie['page']);
+            debug("쿠키",$cookie);
+            setcookie("filter_condition", json_encode($cookie), time()+3600);
         }
         
         $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1]);
@@ -39,9 +42,9 @@ class IntraSaleClass{
         }
 
         // 필터조건
-        if(@$data['cate2']){
+        if(!empty($data['cate2'])){
             $model->where('category_id', $data['cate2']);
-        }elseif(@$data['cate1']){
+        }elseif(!empty($data['cate1'])){
             $clsCode = new CommonCodeClass;
             $result = $clsCode->getDescendants($data['cate1']);
 

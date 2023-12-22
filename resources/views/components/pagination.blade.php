@@ -10,6 +10,8 @@
     $max = $start + $length;
 
     if($start < 1) $start = 1;
+
+    
 @endphp
 
 @if(false)
@@ -44,6 +46,7 @@
         </ul>
     </div>
 </div>
+{{-- @elseif($data->lastPage()>1) --}}
 @else
 <div class="col-lg-12 mt20">
     <div class="mbp_pagination">
