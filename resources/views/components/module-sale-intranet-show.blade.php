@@ -1,3 +1,4 @@
+<div class="row">
 <script>
 $(window).on('load', function() {
     $('.owl-dot').each(function(index) {
@@ -573,4 +574,5 @@ $(window).on('load', function() {
 
     <x-today-view-sales />
 
+</div>
 </div>

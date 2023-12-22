@@ -58,7 +58,7 @@
         </div>
         @endempty
 
-        <div class="row">
+        <div class="">
             @if ($page->type == 'C')
             <x-menu-content :page="$page" />
             @elseif ($page->type == 'B')

@@ -1,4 +1,4 @@
-<div class="w-100">
+<div class="col-lg-12">
     @if(!$board_exist)
     @include('include.page-error')
 @else
@@ -20,12 +20,16 @@
             ],
             processing: true,
             serverSide: true,
+            lengthChange: false,
+            ordering : false,
+
             //info:false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Korean.json",
             },
             // order:[[0, 'desc']],
-            ordering : false,
+
+            "hover" : true,
         });
         
         $(".table")

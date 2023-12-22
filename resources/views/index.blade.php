@@ -19,7 +19,6 @@
                                         <div class="candidate_revew_select">
                                             <select class="selectpicker w100 show-tick">
                                                 <option>상업용</option>
-                                                <option>상업용</option>
                                                 <option>주거용</option>
                                                 <option>경매</option>
                                                 <option>프랜차이즈</option>
