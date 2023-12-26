@@ -88,6 +88,9 @@
     function makeSelect(menu){
         var cnt = $("select[name='menu[]']").length + 1;
         var html = '<select name="menu[]" data-depth="'+cnt+'" class="menu">';
+        if(cnt==1)
+            html += '<option value="{{ $root_id }}">--'+cnt+'차 메뉴--</option>';
+        else
             html += '<option value="">--'+cnt+'차 메뉴--</option>';
         
         menu.forEach(function(mn){

@@ -1,20 +1,10 @@
 <ul id="respMenu" class="ace-responsive-menu text-left" data-menu-style="horizontal">
     @foreach ($menus as $menu)
-    <li>
-        <a href="{{ $menu['link'] }}" @if(!empty($menu['target'])) target="{{ $menu['target'] }}" @endif ><span class="title">{{ $menu['txt'] }}</span></a>
-        @if(!empty($menu['submenu']))
-        <ul class="sub_menu">
-            @foreach ($menu['submenu'] as $submenu)
-            <li><a href="{{ $submenu['link'] }}" @if(!empty($submenu['target'])) target="{{ $submenu['target'] }}" @endif ><span class="title">{{ $submenu['txt'] }}</span></a></li>
-            @endforeach
-        </ul>
-        @endif
-    </li>
+    <x-menupc-item :menu="$menu" />
     @endforeach
     
 
-    {{-- <li class="list-inline-item add_listing"><a href="{{ route('page', 18) }}?mode=create"><span class="flaticon-plus"></span><span class="dn-lg"> 매물등록</span></a></li> --}}
-    <li><a href="{{ route('page', 18) }}?mode=create"><span class="title enter_span">매물등록</span></a></li>
+    {{-- <li><a href="{{ route('page', 18) }}?mode=create"><span class="title enter_span">매물등록</span></a></li> --}}
     @guest
     <li class="list-inline-item list_s float-right aaa">
         <a href="{{ route('login') }}" class="btn flaticon-user login_head"> <span class="log_sp">로그인</span></a>

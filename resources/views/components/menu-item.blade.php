@@ -10,7 +10,7 @@
                         Toggle</span></button>
                 <span class='is-mntype mntype-{{ strtolower($_menu->type) }}'></span>
                 <p class='nm-wr'>
-                    <a href='http://test.gbbinc.co.kr/mng/SawonList' target='_blank'>
+                    <a href='{{ route('page', $_menu->id) }}' target='_blank'>
                         <strong class='is-nm'>{{ $_menu->title }}</strong>
                         <span class='is-code'>SawonList</span>
                     </a>

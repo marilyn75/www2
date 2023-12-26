@@ -276,14 +276,14 @@ class MenusController extends Controller
         // $ancestors = $menu->ancestors;
         $currMenu = Menu::ancestorsAndSelf($id);
         $totMenu = $currMenu->first()->descendants->sortBy(['_lft','_rgt']);
-
+        $root_id = $totMenu->first()->parent_id;
         foreach($currMenu as $_menu){
             $arrPath[] = $_menu->title;
         }
         unset($arrPath[0]);
         $path = implode(" > ", $arrPath);
 
-        return view('admin.menu.sort-edit', compact('id', 'currMenu', 'totMenu', 'path'));
+        return view('admin.menu.sort-edit', compact('id', 'currMenu', 'totMenu', 'path', 'root_id'));
     }
 
     public function sort_update($id, Request $request){
