@@ -464,8 +464,6 @@
 	.dropdown-content.half_style{height: 490px;}
 	.shop_single_tab_content.style2{margin-bottom: 30px;}
 	.sidebar_switch.mobile_style{height: 60px;position: relative;}
-	.sidebar_listing_list.style2.mobile_sytle_sidebar{max-height: 667px;overflow-y: scroll;}
-	.sidebar_listing_list.style2{ max-height: 667px; overflow-y: scroll; }
 
 
 	.start_partner{margin-bottom: 30px;}
@@ -791,6 +789,9 @@
 
 	.small_dropdown2.home2.style2{position: relative;}
 	.dd_content2.home2.style2{top: 60px;}
+	.sidebar_listing_list.style2.mobile_sytle_sidebar{max-height: 645px !important;overflow-y: scroll;}
+	.sidebar_listing_list.style2{ max-height: 645px; overflow-y: scroll; }
+	.sidebar_listing_list.style2::-webkit-scrollbar { width: 10px; }
 }
 /* (min-width:361px) (max-width:520px) */
 @media only screen and (max-width:520px){

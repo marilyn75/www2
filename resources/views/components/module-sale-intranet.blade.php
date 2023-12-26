@@ -142,6 +142,7 @@
             <div class="listing_sidebar dn db-991">
                 <div class="sidebar_content_details style3">
                     <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+                    <a class="filter_closed_btn float-right" href="#"><i class="ri-close-line"></i></a>
                     <div class="sidebar_listing_list style2 mobile_sytle_sidebar mb0">
                         @include('include.filter')
                     </div>
