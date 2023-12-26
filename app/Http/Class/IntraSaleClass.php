@@ -238,7 +238,7 @@ class IntraSaleClass{
         $return['sawon_user_id'] = $data->sale->users->first()->sawon->user_id;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
         $return['sawon_photo'] = (empty($return['sawon_photo']) || $data->sale->users->first()->sawon->info->chkcert !='y')?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
-        $return['sawon_name'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"개벽 부동산":$data->sale->users->first()->sawon->user_name;
+        $return['sawon_name'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"㈜부동산중개법인개벽":$data->sale->users->first()->sawon->user_name;
         $return['sawon_duty'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"":$data->sale->users->first()->sawon->info->duty;
         $return['sawon_sosok'] = ($data->sale->users->first()->sawon->info->chkcert !='y')?"":$data->sale->users->first()->sawon->info->sosok;
         $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);

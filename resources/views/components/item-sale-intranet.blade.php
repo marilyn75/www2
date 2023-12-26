@@ -70,7 +70,7 @@
                 <div class="fp_footer fp_footer_w">
                     <ul class="fp_meta float-left mb0 fp_meta_w">
                         <li class="list-inline-item sawon_crop"><img src="{{ $printData['sawon_photo'] }}"></li>
-                        <li class="list-inline-item"><p class="fp_pname">{{ $printData['sawon_name'] }}
+                        <li class="list-inline-item"><p class="fp_pname">{{ str_replace('부동산','',$printData['sawon_name']) }}
                             {{ $printData['sawon_sosok'] }}</p>
                         </li>
                     </ul>
