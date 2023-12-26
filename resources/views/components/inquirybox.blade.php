@@ -53,24 +53,6 @@
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요" required hname="연락처" options="phone" oninput="formatPhoneNumber(this)">
                 </div>
             </li>
-
-            {{-- 하이픈 자동생성 --}}
-            <script>
-                function formatPhoneNumber(input) {
-                    // Remove all non-numeric characters
-                    var phoneNumber = input.value.replace(/\D/g, '');
-            
-                    // Check if the length of the number is 10 or 11 (assuming it's a Korean phone number)
-                    if (phoneNumber.length === 10 || phoneNumber.length === 11) {
-                        // Insert hyphens at the appropriate positions
-                        var formattedNumber = phoneNumber.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
-                        
-                        // Set the formatted number back to the input field
-                        input.value = formattedNumber;
-                    }
-                }
-            </script>
-            
             <li class="search_area">
                 <div class="form-group">
                     <textarea id="message" name="message" class="form-control required" rows="3"
