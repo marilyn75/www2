@@ -789,7 +789,7 @@
 
 	.small_dropdown2.home2.style2{position: relative;}
 	.dd_content2.home2.style2{top: 60px;}
-	.sidebar_listing_list.style2.mobile_sytle_sidebar{max-height: 645px !important;overflow-y: scroll;}
+	.sidebar_listing_list.style2.mobile_sytle_sidebar{max-height: 100vh !important;overflow-y: scroll; padding-bottom: 120px;}
 	.sidebar_listing_list.style2{ max-height: 645px; overflow-y: scroll; }
 	.sidebar_listing_list.style2::-webkit-scrollbar { width: 10px; }
 }
