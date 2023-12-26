@@ -131,7 +131,7 @@
     });
 </script>
 
-<form name="frm" action="{{ $data->path() }}" method="post" class="row pl15 pr15">
+<form name="frm" action="{{ $data->path() }}" method="post" class="row">
     @csrf
     <input type="hidden" name="page" value="1">
 

@@ -366,7 +366,7 @@ $(window).on('load', function() {
                         @if(!empty($printData['optCodes']['생활시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 pl0 pr0">
                                     <h4 class="mb15">생활시설</h4>
                                 </div>
                                 <ul class="order_list list-inline-item order_list_w row">
@@ -386,7 +386,7 @@ $(window).on('load', function() {
                         @if(!empty($printData['optCodes']['보안시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 pl0 pr0">
                                     <h4 class="mb15">보안시설</h4>
                                 </div>
                                 <ul class="order_list list-inline-item order_list_w row">
@@ -405,7 +405,7 @@ $(window).on('load', function() {
                         @if(!empty($printData['optCodes']['기타시설']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="application_statics mt30 application_w">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 pl0 pr0">
                                     <h4 class="mb15">기타시설</h4>
                                 </div>
                                 <ul class="order_list list-inline-item order_list_w row">

@@ -16345,7 +16345,7 @@ button.gm-ui-hover-effect:focus {
 .filter_btn i { margin-right: 10px; }
 .search_result_w .right_area ul li:first-child:before { display: none; }
 .candidate_revew_select .bootstrap-select>.dropdown-toggle, .search_result_w .bootstrap-select>.dropdown-toggle { color: #000; }
-.breadcrumb_content_w { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px !important; }
+.breadcrumb_content_w { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0px !important; }
 .bootstrap-select .bs-ok-default:after { display: none; }
 .mobile-menu-trigger i{ font-size: 25px; }
 .search_result_w .right_area ul li:first-child { margin-right: 20px; }
@@ -16373,7 +16373,7 @@ button.gm-ui-hover-effect:focus {
 .select_w label { margin-bottom: 3px; padding-left: 5px; color: #385F8D; font-weight: 500; }
 .select_w .bootstrap-select>.dropdown-toggle:focus, .select_w .bootstrap-select>.dropdown-toggle:active, .grid_list_search_result .bootstrap-select>.dropdown-toggle:focus, .grid_list_search_result .bootstrap-select>.dropdown-toggle:active{border: 2px solid #385F8D;}
 .small_dropdown2_w label { margin-bottom: 3px; padding-left: 5px; color: #385F8D; font-weight: 500; }
-.pc_filter_bx { padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0px 0px 15px 3px rgba(25, 26, 54, 0.05);}
+.pc_filter_bx { padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0px 0px 15px 3px rgba(25, 26, 54, 0.05);margin-top: 20px; }
 .panel-body_w { padding: 0 5px; }
 .sasw_list_w button.btn.dropdown-toggle { 
   line-height: 34px;
@@ -16787,6 +16787,8 @@ swiper-slide img {
 .enterinfo li{ display: flex; justify-content: space-between; }
 .enterinfo li p { font-size: 14px; margin: 0; color: #000; }
 .enterinfo li p:first-child { font-weight: 600; }
+ .order_list li { padding-left: 15px !important; }
+
 
 
 
@@ -17742,7 +17744,6 @@ code {
   .filter_btn { display: block; }
   .list-inline-item i { font-size: 18px; }
   .list-inline-item i { line-height: 43px; }
-  .list-inline-item:nth-child(2) i { font-size: 18px; line-height: 40px; }
   .our-hot-offer { height: 850px; }
   .hot_subtit { margin-bottom: 50px; }
   .all_bx .btn { width: auto; font-size: 12px; line-height: 29px; background: transparent; color: #385F8D; border: none; font-weight: 700;}
@@ -17809,7 +17810,7 @@ code {
 @media (max-width: 575.98px) {
   /* .text-inf-w { display: flex; gap: 15px; } */
   .feat_property_w .details .tc_content .price_w { font-size: 18px; }
-  .search_result_w { display: flex !important; justify-content: space-between;}
+  .search_result_w { display: flex !important; justify-content: flex-end; margin-top: 30px;}
   .subfilter_w ul{ display: flex; gap: 15px; }
   .filter_btn { font-size: 14px; padding: 6px 16px; }
   .bootstrap-select.show-tick .dropdown-menu li a span.text { margin-right: 0; }
@@ -17827,7 +17828,11 @@ code {
   .description_w p { font-size: 14px; line-height: normal; }
   .additional_w h4 { font-size: 18px; margin-bottom: 15px; }
   .additional_w ul li p { font-size: 14px; line-height: 1.8; }
+  .list-inline-item:nth-child(2) i { font-size: 18px; line-height: 40px; }
+  .order_list_w i { margin-right: 7px; }
+  .order_list_w p { font-size: 14px; }
   .nearby_w h4 { font-size: 18px; }
+  .list-inline-item:nth-child(2) i { line-height: 35px; }
   .tooltip > .tooltip-inner { font-size: 12px; }
   .education_distance h5 { font-size: 14px; }
   .single_w .para { font-size: 14px; }
@@ -17853,6 +17858,8 @@ code {
   .de_info_left ul li a { font-size: 14px; }
   .description_w { padding: 20px; }
   .additional_w { padding: 20px; }
+  .application_w { padding: 20px; }
+  .application_w h4 { font-size: 18px; }
   .additional_w .list-inline-item:not(:last-child) { width: 110px; }
   .contact_btn { bottom: 50px; right: 10px; width: 90px; height: 90px; }
   .contact_btn a { font-size: 14px; }
@@ -17894,6 +17901,14 @@ code {
   .detail_img_crop img { height: 280px !important; }
   .swiper-slide img { height: 290px !important; }
 
+  .chat-icon button { width: 90px; height: 90px; }
+  .mbp_pagination ul.page_navigation li .page-link { height: 35px; width: 35px; line-height: 20px; }
+  .feat_property_w .thumb .thmb_cntnt p { font-size: 14px !important; margin-top: 10px; margin-left: 10px; }
+  .heart_btn { width: 40px; height: 40px; }
+  .feat_property_w .details .tc_content .price_w { margin-top: 8px; }
+  .feat_property_w .details .tc_content { margin-bottom: 0; }
+  .feat_property_w .details .fp_footer .fp_pname { font-size: 14px; }
+  .feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { top: 10px; right: 10px; }
 
   /* 원인 */
   /* .single_product_grid_w { flex-direction: column-reverse; padding: 20px; margin-bottom: 0 !important; } */
