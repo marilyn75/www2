@@ -1222,3 +1222,39 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
     return false;
 }
 }
+
+// options='phone' 자동 하이픈
+$(document).on('keyup', 'input[options="phone"]', function() {
+    var rawNumber = $(this).val().replace(/[^\d]/g, '');
+
+    // 전화번호가 11자리를 넘지 않도록 합니다.
+    var phoneNumber = rawNumber.substring(0, 11);
+
+    // '02'로 시작하는 경우와 그 외를 구분합니다.
+    if (/^02/.test(phoneNumber)) {
+        phoneNumber = rawNumber.substring(0, 10);
+      // '02'로 시작할 경우
+      if (phoneNumber.length < 3) {
+        // 아직 '02'만 입력된 상태
+      } else if (phoneNumber.length < 6) {
+        phoneNumber = phoneNumber.replace(/(^02)(\d+)/, '$1-$2');
+      } else if (phoneNumber.length < 10) {
+        phoneNumber = phoneNumber.replace(/(^02)(\d{3})(\d+)/, '$1-$2-$3');
+      } else {
+        phoneNumber = phoneNumber.replace(/(^02)(\d{3,4})(\d{4})/, '$1-$2-$3');
+      }
+    } else {
+      // '02'가 아닌 다른 지역번호일 경우
+      if (phoneNumber.length < 4) {
+        // 아직 지역번호만 입력된 상태
+      } else if (phoneNumber.length < 7) {
+        phoneNumber = phoneNumber.replace(/(^\d{3})(\d+)/, '$1-$2');
+      } else if (phoneNumber.length < 11) {
+        phoneNumber = phoneNumber.replace(/(^\d{3})(\d{3})(\d+)/, '$1-$2-$3');
+      } else {
+        phoneNumber = phoneNumber.replace(/(^\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
+      }
+    }
+
+    $(this).val(phoneNumber);
+});
