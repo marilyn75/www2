@@ -17960,6 +17960,9 @@ code {
 
   .result_filt { text-align: left !important; }
 
+  .range_container .form_control_container input { background-position: 100px; }
+  .range_container .form_control_container .form_area { background-position: 100px; }
+
 }
 
 
