@@ -522,7 +522,7 @@ $(window).on('load', function() {
                                 @endif
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row similar_wrap">
                             <div class="col-lg-12 similar similar_w">
                                 <h4 class="mt30 mb30">관련매물</h4>
                             </div>

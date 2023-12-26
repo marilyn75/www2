@@ -16778,8 +16778,8 @@ swiper-slide img {
 .sidebar_enterinfo h4 { color: #000; font-weight: 600; }
 .enterinfo { margin: 0; }
 .enterinfo li{ display: flex; justify-content: space-between; }
-.enterinfo li p { font-size: 16px; margin: 0; color: #000; }
-.enterinfo li p:first-child { font-weight: 500; }
+.enterinfo li p { font-size: 14px; margin: 0; color: #000; }
+.enterinfo li p:first-child { font-weight: 600; }
 
 
 
@@ -17948,7 +17948,8 @@ code {
   .mmenu_logo img { height: 30px; }
   .stylehome1 .mm-panel ul.mm-listview li.mm-listitem.cl_btn { margin: 10px 0; }
 
-
+  .similar_wrap { display: none; }
+  .enterinfo li { display: grid; }
 }
 
 
@@ -18010,6 +18011,7 @@ code {
   .agent_list { padding: 15px; }
   .agent_content h4 { margin-bottom: 10px !important; }
   .sidebar_listing_list_w { padding: 15px; }
+  .sidebar_listing_list { padding: 15px; }
   .mobile_serv { font-size: 16px; }
 
   .swiper-slide img { height: 180px !important; }
