@@ -535,6 +535,10 @@
 
 	.dd_content2.home2.style2{top: 130px;}
 
+	.sidebar_listing_list.style2.mobile_sytle_sidebar{max-height: 100vh !important;overflow-y: scroll; padding-bottom: 140px;}
+	.sidebar_listing_list.style2{ max-height: 645px; overflow-y: scroll; }
+	.sidebar_listing_list.style2::-webkit-scrollbar { width: 10px; }
+
 }
 @media only screen and (max-width:768px){
 	.nav_logo_img.mt10{margin-top: 5px;}
@@ -592,6 +596,8 @@
 	.footer_social_widget.home6{margin-top: 0;}
 	.about_box_home6{margin-bottom: 60px;}
 	.funfact_two_details li{margin-bottom: 30px;margin-right: 80px !important;}
+
+	
 }
 /* Small devices (min-width: 576px) (max-width: 767.98px) // (landscape phones, less than 768px) */
 @media only screen and (max-width: 767.98px){
@@ -789,9 +795,7 @@
 
 	.small_dropdown2.home2.style2{position: relative;}
 	.dd_content2.home2.style2{top: 60px;}
-	.sidebar_listing_list.style2.mobile_sytle_sidebar{max-height: 100vh !important;overflow-y: scroll; padding-bottom: 120px;}
-	.sidebar_listing_list.style2{ max-height: 645px; overflow-y: scroll; }
-	.sidebar_listing_list.style2::-webkit-scrollbar { width: 10px; }
+
 }
 /* (min-width:361px) (max-width:520px) */
 @media only screen and (max-width:520px){

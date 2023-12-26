@@ -17758,6 +17758,9 @@ code {
   .dash_contain{ width: 100%; }
   .img-whp { height: 200px; }
 
+  .result_filt { text-align: left !important; }
+
+
 }
 @media (max-width: 867.98px) {
   .text-inf-w { display: grid; gap: 0; }
@@ -17957,8 +17960,6 @@ code {
 
   .similar_wrap { display: none; }
   .enterinfo li { display: grid; }
-
-  .result_filt { text-align: left !important; }
 
   .range_container .form_control_container input { background-position: 100px; }
   .range_container .form_control_container .form_area { background-position: 100px; }
