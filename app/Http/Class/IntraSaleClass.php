@@ -41,7 +41,8 @@ class IntraSaleClass{
             $model = $model->where('isRecom',1);
         }
 
-        // 필터조건
+        // 필터조건 s ///////////////////////////////////////////////////////////
+        // 유형
         if(!empty($data['cate2'])){
             $model->where('category_id', $data['cate2']);
         }elseif(!empty($data['cate1'])){
@@ -55,6 +56,35 @@ class IntraSaleClass{
             
             $model->whereIn('category_id', $inCateId);
         }
+
+        // 거래종류
+        if(!empty($data['tradeType'])){
+            $model->where('tradeType', $data['tradeType']);
+        }
+
+        // 지역
+        if(!empty($data['location'])){
+            $model->where('addr', 'like', '%'.$data['location'].'%');
+        }
+
+        // 가격
+        if(!empty($data['toPrice'])){
+            $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . $data['fromPrice'])
+                ->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . $data['toPrice']);
+        }
+
+        // 거래면적
+        if(!empty($data['toArea'])){
+            $fromArea = $data['fromArea'];
+            $toArae = $data['toArea'];
+            if($data['area_unit']=='p'){
+                $fromArea = $fromArea * 3.305785;
+                $toArae = $toArae * 3.305785;
+            }
+            $model->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) >= ' . $fromArea)
+                ->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) <= ' . $toArae);
+        }
+        // 필터조건 e ///////////////////////////////////////////////////////////
 
         if(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
@@ -436,6 +466,17 @@ class IntraSaleClass{
 
         // debug($sale);
         debug($data);
+
+        return $data;
+    }
+
+    // 최고가격, 최고면적
+    public function getMaxPriceNArea(){
+        $data = DB::connection('mysql_intranet')
+        ->table('CS_SALE_HOMEPAGE')
+        ->where(['isDel'=>0, 'isDone'=>1])
+        ->select(DB::raw('round(MAX(greatest(salePrice*1,depPrice*1))) as maxPrice'), DB::raw('round(MAX(greatest(landArea*1,bdArea*1,area_b*1))) as maxArea'))
+        ->first();
 
         return $data;
     }

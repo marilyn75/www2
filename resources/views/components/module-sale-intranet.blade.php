@@ -61,6 +61,30 @@
             frm.cate2.value = oldCond.cate2;
             $('#cate2').selectpicker('refresh');
         }
+
+        if(oldCond.tradeType){
+            $("input[name='tradeType']").eq(0).attr('checked',false);
+            $("input[name='tradeType']").eq(0).parent().removeClass('active');
+            $("input[name='tradeType'][value='"+oldCond.tradeType+"']").click();
+        }
+        if(oldCond.location){
+            $("input[name='location']").val(oldCond.location);
+        }
+        if(oldCond.toPrice){
+            frm.fromPrice.value = oldCond.fromPrice;
+            frm.toPrice.value = oldCond.toPrice;
+            controlFromInput(fromSlider, fromInput, toInput, toSlider);
+            controlToInput(toSlider, fromInput, toInput, toSlider);
+        }
+        if(oldCond.toArea){
+            if(oldCond.area_unit=='p'){
+                tranBtnClick();
+            }
+            frm.fromArea.value = oldCond.fromArea;
+            frm.toArea.value = oldCond.toArea;
+            controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+            controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        }
     }
 
     $(document).ready(function(){
@@ -145,7 +169,7 @@
                                     <label for="">지역</label>
                                     <div class="search_option_two">
                                         <div class="select_w">
-                                            <input type="text" placeholder="지역">
+                                            <input type="text" placeholder="지역" name="location" value="">
                                         </div>
                                     </div>
                                 </li>
@@ -228,7 +252,7 @@
                         <label for="">지역</label>
                         <div class="search_option_two">
                             <div class="select_w">
-                                <input type="text" placeholder="지역">
+                                <input type="text" placeholder="지역" name="location" value="">
                             </div>
                         </div>
                     </li>
@@ -236,14 +260,13 @@
                         <label for="">거래종류</label>
                         <div class="filt_btns" data-toggle="buttons">
                             <label class="btn filt_r-btn inter active">
-                                <input type="radio" name="options" id="option1" autocomplete="off"
-                                    checked="">전체
+                                <input type="radio" name="tradeType" id="option1" autocomplete="off" value="" checked="">전체
                             </label>
                             <label class="btn filt_r-btn inter active">
-                                <input type="radio" name="options" id="option2" autocomplete="off">매매
+                                <input type="radio" name="tradeType" id="option2" autocomplete="off" value="매매">매매
                             </label>
                             <label class="btn filt_r-btn inter">
-                                <input type="radio" name="options" id="option3" autocomplete="off">임대
+                                <input type="radio" name="tradeType" id="option3" autocomplete="off" value="임대">임대
                             </label>
                         </div>
                     </li>
@@ -254,20 +277,16 @@
                             <div class="form_control">
                                 <!-- min -->
                                 <div class="form_control_container">
-                                    <input class="form_price" type="number" id="fromInput" value="10"
-                                        min="0" max="100" />
+                                    <input class="form_price" type="number" name="fromPrice" id="fromInput" value="0" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
                                 </div>
                                 <!-- max -->
                                 <div class="form_control_container">
-                                    <input class="form_price" type="number" id="toInput" value="30"
-                                        min="0" max="100" />
+                                    <input class="form_price" type="number" name="toPrice" id="toInput" value="{{ $maxPriceNArea->maxPrice }}" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
                                 </div>
                             </div>
                             <div class="sliders_control">
-                                <input id="fromSlider" type="range" value="10" min="0"
-                                    max="100" />
-                                <input id="toSlider" type="range" value="30" min="0"
-                                    max="100" />
+                                <input id="fromSlider" type="range" value="0" min="0" max="{{ $maxPriceNArea->maxPrice }}" step="10" />
+                                <input id="toSlider" type="range" value="{{ $maxPriceNArea->maxPrice }}" min="0"max="{{ $maxPriceNArea->maxPrice }}" step="10" />
                             </div>
                         </div>
                     </li>
@@ -330,13 +349,13 @@
                             const fromPosition = from.value - to.min;
                             const toPosition = to.value - to.min;
                             controlSlider.style.background = `linear-gradient(
-      to right,
-      ${sliderColor} 0%,
-      ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-      ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-      ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} 100%)`;
+                            to right,
+                            ${sliderColor} 0%,
+                            ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
+                            ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
+                            ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
+                            ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
+                            ${sliderColor} 100%)`;
                         }
 
                         function setToggleAccessible(currentTarget) {
@@ -365,7 +384,10 @@
                     <!-- 거래면적 -->
                     <li class="filt_li">
                         <div class="label_fx">
-                            <label for="transactionArea">거래면적</label>
+                            <label for="transactionArea">
+                                거래면적
+                                <input type="hidden" name="area_unit" id="area_unit" value="m">
+                            </label>
                             <button>
                                 <i class="ri-exchange-fill"></i>
                             </button>
@@ -374,20 +396,16 @@
                             <div class="form_control">
                                 <!-- min -->
                                 <div class="form_control_container">
-                                    <input class="form_area" type="number" id="fromAreaInput" value="10"
-                                        min="0" max="100" />
+                                    <input class="form_area input_area" type="number" name="fromArea" id="fromAreaInput" value="0" min="0" max="{{ $maxPriceNArea->maxArea }}" />
                                 </div>
                                 <!-- max -->
                                 <div class="form_control_container">
-                                    <input class="form_area" type="number" id="toAreaInput" value="30"
-                                        min="0" max="100" />
+                                    <input class="form_area input_area" type="number" name="toArea" id="toAreaInput" value="{{ $maxPriceNArea->maxArea }}" min="0" max="{{ $maxPriceNArea->maxArea }}" />
                                 </div>
                             </div>
                             <div class="sliders_control">
-                                <input id="fromAreaSlider" type="range" value="10" min="0"
-                                    max="100" />
-                                <input id="toAreaSlider" type="range" value="30" min="0"
-                                    max="100" />
+                                <input class="input_area" id="fromAreaSlider" type="range" value="0" min="0" max="{{ $maxPriceNArea->maxArea }}" />
+                                <input class="input_area" id="toAreaSlider" type="range" value="{{ $maxPriceNArea->maxArea }}" min="0" max="{{ $maxPriceNArea->maxArea }}" />
                             </div>
                         </div>
                     </li>
@@ -395,9 +413,38 @@
                         $(document).ready(function() {
                             $(".label_fx button").click(function(e) {
                                 e.preventDefault(); // 기본 동작 막기
-                                $(".form_area").toggleClass("up");
+                                tranBtnClick();
+
                             });
                         });
+                        
+                        function tranBtnClick(){
+                            $(".form_area").toggleClass("up");
+                            var max = $('.input_area').attr('max');
+                            var min = $('.input_area').attr('min');
+                            var fval = $('#fromAreaInput').val();
+                            var tval = $('#toAreaInput').val();
+        
+                            if($(".form_area").hasClass('up')){ // 평
+                                $("#area_unit").val('p');
+                                max = Math.round(max * 0.3025);
+                                min = Math.round(min * 0.3025);
+                                fval = Math.round(fval * 0.3025);
+                                tval = Math.round(tval * 0.3025);
+                            }else{                              // 제곱미터
+                                $("#area_unit").val('m');
+                                max = Math.round(max * 3.305785);
+                                min = Math.round(min * 3.305785);
+                                fval = Math.round(fval * 3.305785);
+                                tval = Math.round(tval * 3.305785);
+                            }
+                            $('.input_area').attr('max', max);
+                            $('.input_area').attr('min', min);
+                            $('#fromAreaInput').val(fval);
+                            $('#toAreaInput').val(tval);
+                            controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+                            controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+                        }
                     </script>
 
                     <script>
@@ -466,6 +513,7 @@
             ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%,
             ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%,
             ${sliderColor} 100%)`;
+                            console.log('fill');
                         }
 
                         function setToggleAccessible(currentTarget) {
@@ -486,10 +534,8 @@
 
                         fromAreaSlider.oninput = () => controlFromAreaSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
                         toAreaSlider.oninput = () => controlToAreaSlider(fromAreaSlider, toAreaSlider, toAreaInput);
-                        fromAreaInput.oninput = () => controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput,
-                            toAreaSlider);
-                        toAreaInput.oninput = () => controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput,
-                            toAreaSlider);
+                        fromAreaInput.oninput = () => controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+                        toAreaInput.oninput = () => controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
                     </script>
 
 
