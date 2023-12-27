@@ -69,7 +69,7 @@
 @include('include.messagebox')
 
 
-    <div class="my_dashboard_review mb40">
+    <div class="my_dashboard_review mb40 mt20">
         <div class="row">
             <div class="col-lg-12">
                 <div class="main_blog_post_content">

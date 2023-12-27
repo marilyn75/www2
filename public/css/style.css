@@ -16365,7 +16365,7 @@ button.gm-ui-hover-effect:focus {
 .small_dropdown2_w i{font-size: 14px;}
 .feat_property_w .details .fp_footer .fp_meta li:nth-child(2) { margin-right: 0; }
 .feat_property_w .details .fp_footer .fp_pdate { margin: 0 !important; color: #000 !important; }
-.feat_property_w .details .fp_footer .fp_pname { font-size: 16px; font-weight: 500; margin: 0 !important; color: #000; }
+.feat_property_w .details .fp_footer .fp_pname { font-size: 14px; font-weight: 500; margin: 0 !important; color: #000; }
 .breadcrumb_title_w { margin: 0; }
 .mbp_pagination_w ul.page_navigation li.active .page-link{ background: #385F8D; } 
 .top-filt { display: flex; justify-content: space-between; }
@@ -16857,7 +16857,7 @@ swiper-slide img {
 .hot_subtit h4{ color: #fff; font-size: 30px; font-weight: 500; }
 .hot_subtit p{ font-size: 24px; font-weight: 400; }
 .hot_subtit .btn { width: 170px; }
-.our-hot-offer { background-image: url(../images/background/mapimg.png); height: 627px; }
+.our-hot-offer { background-image: url(../images/background/mapimg.png); height: 540px; }
 .text-thm_main p{ font-size: 14px; }
 .text-thm_main h4{ font-size: 18px; }
 .fp_meta_main li a{ font-size: 14px !important; }
@@ -16866,7 +16866,7 @@ swiper-slide img {
 .text_wrap_main { display: grid; gap: 0; }
 .feat_main .details .fp_footer .fp_meta li { margin: 0; }
 .fp_main .fp_pdate { font-size: 12px !important; }
-.item_main { display: flex; justify-content: space-between;}
+.item_main { display: flex; justify-content: flex-start;}
 .employ_prof_w { width: 100px; height: 100px; overflow: hidden; object-fit: cover;  border-radius: 50px; }
 .prof { display: flex; align-items: center; gap: 25px; }
 .employ_name p{ text-align: left; margin: 0; font-size: 20px; color: #385F8D; font-weight: 500; }
@@ -16889,7 +16889,8 @@ swiper-slide img {
 .newsp_subtit p { margin-bottom: 25px; }
 .newsp_subtit .btn { width: 170px; }
 .newsp_subtit { margin: 0; }
-
+.mn_nws_img .thumb { border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 220px; display: flex; }
+.prof .employ_prof_w img{ height: inherit; }
 
 
 
@@ -16917,7 +16918,7 @@ swiper-slide img {
 
 
 /* employee detail */
-.agent_bx { padding: 20px; }
+.agent_bx { padding: 20px; margin-top: 20px; }
 .agent_thumb { margin: 0 !important; width: 250px !important; height: 190px !important; }
 .agent_bx .details { padding-top: 20px; }
 .agent_inf p { font-size: 16px !important; color: #000 !important; font-weight: 500; margin: 0;}
@@ -17281,7 +17282,7 @@ table.dataTable tbody tr:hover { background: #f5f5f5; }
 .pdf_btn:active{ border: transparent; outline: none; }
 .pdf_btn:focus{ border: transparent; outline: none; }
 .pdf_btn i { margin-left: 10px; }
-.article_top { display: flex; justify-content: space-between; width: 100%; }
+.article_top { display: flex; justify-content: space-between; width: 100%; margin-top: 20px; }
 .article_top .search_option_two { width: 195px; }
 .article_top .search_option_two .dropdown button { background: transparent; border: none; border-radius: 0px; border-bottom: 1px solid #000; font-size: 18px; }
 .article_top .search_option_two .dropdown button .filter-option { font-size: 18px; }
@@ -17792,6 +17793,7 @@ code {
   .cate_bg img { width: 61px; }
 
   .my_bx_rg { display: none; }
+  .employ_bx { width: 270px; }
 }
 @media (max-width: 767.98px) {
 
@@ -17884,7 +17886,7 @@ code {
   .city_tit h4 { font-size: 16px; }
   .hot_subtit h4 { font-size: 20px; }
   .hot_subtit .btn { width: 115px; }
-  .hot_subtit .btn-thm_w { padding: 8px 0; }
+  .hot_subtit .btn-thm_w { padding: 8px 0; font-size: 14px; }
   .hot_subtit p { font-size: 16px; margin-bottom: 75px; }
   .item_main { display: grid; justify-content: normal; }
   .all_bx { display: flex; justify-content: space-between; }
@@ -17892,6 +17894,13 @@ code {
   .employ_name p { text-align: left; font-size: 16px; }
   .detail_img_crop img { height: 280px !important; }
   .swiper-slide img { height: 290px !important; }
+  .employ_bx { width: 100%; }
+  .more_btn { display: none; }
+  .main_news h5 { font-size: 16px; margin-bottom: 5px; }
+  .main_news p { font-size: 14px; }
+  .mn_nws_img { margin-top: 15px !important; }
+  .newsp_subtit .btn { padding: 8px 0; font-size: 14px; width: 115px; }
+
 
   .chat-icon button { width: 90px; height: 90px; }
   .mbp_pagination ul.page_navigation li .page-link { height: 35px; width: 35px; line-height: 20px; }

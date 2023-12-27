@@ -30,7 +30,7 @@
 </script>
 
 <div class="w-100">    
-    <div class="my_dashboard_review mb40">
+    <div class="my_dashboard_review mb40 mt20">
         <div class="property_table">
             <div class="table-responsive mt0">
 

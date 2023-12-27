@@ -14,7 +14,7 @@
     </li>
 </ul> --}}
 
-<div class="row">
+<div class="row mt20">
     @for ($i=0;$i<12;$i++)
     <div class="col-sm-6 col-md-6 col-lg-4">
         <div class="news_w">

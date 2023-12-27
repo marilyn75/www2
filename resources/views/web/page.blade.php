@@ -46,7 +46,7 @@
             </div>
         </div> --}}
 
-        <div class="row">
+        <div class="row ">
             <div class="col-lg-6 top-filt">
                 <div class="breadcrumb_content style2 breadcrumb_content_w">
                     <h2 class="breadcrumb_title breadcrumb_title_w">Home / {{ implode(" / ", $arrLocation) }}</h2>

@@ -246,13 +246,14 @@
             <div class="col-sm-4 col-md-4 col-lg-4 main_news">
                 <a href="https://www.busan.com/view/busan/view.php?code={{ $news[$i]['CODE'] }}" target="_blank">
                     <h5>{{ $news[$i]['TITLE'] }}</h5>
-                </a>
+                
                 <p class="mont">{{ str_replace("-",".",$news[$i]['PUB_DATE']) }}</p>
                 <div class="mn_nws_img">
-                    <p>
+                    <div class="thumb">
                         <img class="img-fluid w100" src="{{ __('https://www.busan.com/nas/wcms/wcms_data/photos/').$news[$i]['IMG_PATH'] }}" alt="{{ $news[$i]['IMG_PATH'] }}">
-                    </p>
+                    </div>
                 </div>
+                </a>
             </div>
         @endfor
         </div>
