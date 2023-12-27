@@ -1,11 +1,11 @@
-<form name="frm" action="{{ $data->path() }}" method="post" class="col-lg-12" >
+<form name="frm" action="{{ $data->path() }}" method="post" class="" >
     @csrf
     <input type="hidden" name="page" value="1">
     <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container container_w">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="">
                 <div class="row">
                     @foreach ($data as $_data)
                     @php
