@@ -63,10 +63,10 @@ class BoardClass{
     }
 
     public function datalist(){
-        $data = BoardData::select('id', 'title', 'writer')
+        $data = BoardData::select('id', 'title', 'writer', 'is_notice')
                 ->where('board_id',$this->board_id)
-                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at');
-                // ->orderBy('id', 'desc');
+                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m-%d %H:%i:%s") as formatted_created_at')
+                ->orderBy('is_notice', 'desc');
             
         return DataTables::of($data)->toJson();
     }
@@ -79,6 +79,7 @@ class BoardClass{
 
         $save_data = [
             'board_id' => $this->board_id,
+            'is_notice' => intval(@$data['is_notice']),
             'title' => $data['title'],
             'content' => $data['content'],
             'created_user_id' => auth()->user()->id,
@@ -275,6 +276,7 @@ class BoardClass{
         }
 
         // 데이터 처리
+        $this->post->is_notice = intval(@$data['is_notice']);
         $this->post->title = $data['title'];
         $this->post->content = $data['content'];
         $this->post->updated_user_id = auth()->user()->id;

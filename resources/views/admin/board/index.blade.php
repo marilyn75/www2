@@ -37,7 +37,9 @@
                 {
                     "data":"title",
                     "render": function(data, type, row) {
-                        return '<a href="{{ route('admin.board.show') }}/' + row.id + '" class="btn-view">' + data + '</a>';
+                        var htmlTitle = '<a href="{{ route('admin.board.show') }}/' + row.id + '" class="btn-view">' + data + '</a>';
+                        if(row.is_notice==1)    htmlTitle = '<span>[공지]</span> ' + htmlTitle;
+                        return htmlTitle;
                     }
                 },
                 {"data":"writer"},

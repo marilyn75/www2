@@ -86,7 +86,14 @@ class BoardDatasControll extends Controller
             }
         }
 
-        return view($this->prefixPath . 'board.create', compact('board_name', 'id', 'conf', 'ss_id', '_MULTIFILE'));
+        $data = [
+            'title'=>old('title'),
+            'content'=>old('content'),
+            'is_notice'=>old('is_notice'),
+            '_multifile'=>[],
+        ];
+
+        return view($this->prefixPath . 'board.create', compact('board_name', 'id', 'conf', 'ss_id', 'data'));
     }
 
     /**
@@ -126,14 +133,13 @@ class BoardDatasControll extends Controller
         $BoardClass = new BoardClass(null, $id);
         $board_name = $BoardClass->getBoardName();
 
-        $data = $BoardClass->getViewData($request);
+        $data = $BoardClass->getViewData($request)->toArray();
 
         $conf = $BoardClass->getConf();
         
-        $_MULTIFILE = [];
         $ss_id = ($request->old('ss_id'))?$request->old('ss_id'):md5(uniqid());
 
-        return view($this->prefixPath . 'board.edit', compact('board_name', 'data', 'id', 'conf', '_MULTIFILE', 'ss_id'));
+        return view($this->prefixPath . 'board.create', compact('board_name', 'data', 'id', 'conf', 'ss_id'));
     }
 
     /**

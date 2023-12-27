@@ -38,7 +38,7 @@
             ,limit_file_size: {{ $conf->file_size }}
             ,limit_max_file_size: {{ $conf->file_total_size }}
             ,org_file_items:[
-                <?=@implode(",",$_MULTIFILE);?>
+                <?=@implode(",",$data['_multifile']);?>
             ]
             ,upload_complete_func:function(){
                 //업로드 전체 완료 후 실행처리
@@ -80,23 +80,45 @@
         location.href="{{ route('admin.board', $id) }}";
         return false;
     });
+
+    $(document).on('click', '.btnCancel', function(){
+        location.href="{{ route('admin.board.show', $id) }}";
+        return false;
+    });
 </script>
 
+@if(empty($data['id']))
 <form action="{{ route('admin.board.store',$id) }}" method="POST">
+@else
+<form action="{{ route('admin.board.update',$id) }}" method="POST">
+@endif
     @csrf
     <div class="my_dashboard_review mb40">
+        @if(empty($data['id']))
+        <h4 class="mb30">글쓰기</h4>
+        @else
+        <h4 class="mb30">글수정</h4>
+        @endif
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="mb30">글쓰기</h4>
+                <div class="my_profile_setting_input form-group">
+                    <label for="title">옵션</label>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="is_notice" name="is_notice" value="1" @if($data['is_notice']=='1'){{ __('checked') }}@endif>
+                        <label class="custom-control-label" for="is_notice">공지</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
                 <div class="my_profile_setting_input form-group">
                     <label for="title">제목</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ $data['title'] }}">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="my_profile_setting_textarea">
                     <label for="content">내용</label>
-                    <textarea class="form-control" id="content" rows="7" name="content">{{ old('content') }}</textarea>
+                    <textarea class="form-control" id="content" rows="7" name="content">{{ $data['content'] }}</textarea>
                 </div>
             </div>
 
@@ -110,7 +132,11 @@
             
             <div class="col-xl-12">
                 <div class="my_profile_setting_input">
+                    @if(empty($data['id']))
                     <button class="btn btn1 float-left btnList">목록</button>
+                    @else
+                    <button class="btn btn1 float-left btnCancel">취소</button>
+                    @endif
                     <button class="btn btn2 float-right">저장</button>
                 </div>
             </div>
