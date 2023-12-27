@@ -25,10 +25,10 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ];      
 
-        $chkDup = User::where('email',$saveData['email'])->count();
-        if($chkDup > 0){
-            return back()->with('error_message', '이미 가입된 이메일 입니다.');
-        }
+        // $chkDup = User::where('email',$saveData['email'])->count();
+        // if($chkDup > 0){
+        //     return back()->with('error_message', '이미 가입된 이메일 입니다.');
+        // }
 
         $result = User::create($saveData);
 

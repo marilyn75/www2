@@ -46,6 +46,6 @@ class NewspaperAdTest extends TestCase
         $response = $this->get(route('page',3));
         
         $response->assertStatus(200)
-            ->assertSee('2023-10-10');
+            ->assertSeeText('2023-10-10');
     }
 }

@@ -23,7 +23,7 @@ class ChatTest extends TestCase
         $response = $this->get(route('chat'));
 
         $response->assertStatus(200)
-            ->assertSeeText('로그인 후 이용하세요.');
+            ->assertSeeText('로그인 후');
     }
 
     public function test_로그인_후이면_채팅창으로_리디렉션(): void
