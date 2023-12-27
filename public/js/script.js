@@ -968,18 +968,26 @@
         });
 
         $(".filter_open_btn").on('click', function(){
+      
+            var filterHtml = $('#divFilter').html();
+           
+            $('#divFilter').html("");
+            $('#divFilterM').html(filterHtml);
+            initInputRange();initFilterForm();
+
             $(".sidebar_content_details.style3").addClass("sidebar_ml0");
-        });
-
-        $(".filter_closed_btn").on('click', function(){
-            $(".sidebar_content_details.style3").removeClass("sidebar_ml0");
-        });
-
-        $(".filter_open_btn").on('click', function(){
             $("body").addClass("body_overlay");
         });
 
         $(".filter_closed_btn").on('click', function(){
+        
+            var filterHtml = $('#divFilterM').html();
+            
+            $('#divFilterM').html("");
+            $('#divFilter').html(filterHtml);
+            initInputRange();initFilterForm();
+
+            $(".sidebar_content_details.style3").removeClass("sidebar_ml0");
             $("body").removeClass("body_overlay");
         });
 
