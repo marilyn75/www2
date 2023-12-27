@@ -198,4 +198,17 @@ class IntraSawonClass{
             return ResultClass::fail('문의하기 실패.');
         }
     }
+
+    // 메인 전문가 추천
+    public function mainAgents(){
+        $data = IntraMember::join('CS_MEMBER_SINFO', 'CS_MEMBER.user_key','=','CS_MEMBER_SINFO.s_user_key')
+            ->where([
+                'mb_out'=>0, 
+                'auth_gr'=>'M01_D01'
+            ])
+            ->where('chkcert','=','y')
+            ->orderBy('user_name', 'asc')
+            ->get();
+        return $data;
+    }
 }

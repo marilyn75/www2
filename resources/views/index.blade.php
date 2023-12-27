@@ -3,6 +3,9 @@
 @section('content')
 
 <!-- Home Design -->
+<form action="{{ route('page', 20) }}" method="POST">
+    @csrf
+    <input type="hidden" name="page" value="1">
 <section class="home-seven home_w">
     <div class="container container_w">
         <div class="main_tit">
@@ -17,19 +20,17 @@
                                 <li class="list-inline-item">
                                     <div class="search_option_two">
                                         <div class="candidate_revew_select">
-                                            <select class="selectpicker w100 show-tick">
-                                                <option>상업용</option>
-                                                <option>주거용</option>
-                                                <option>경매</option>
-                                                <option>프랜차이즈</option>
+                                            <select name="cate1" class="selectpicker w100 show-tick">
+                                            @foreach($sale_codes as $_code)
+                                                <option value="{{ $_code['id'] }}">{{ $_code['title'] }}</option>
+                                            @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="list-inline-item">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputName1"
-                                            placeholder="지역, 도로명, 지번주소, 프랜차이즈명">
+                                        <input type="text" name="location" class="form-control" id="exampleInputName1" placeholder="지역명">
                                     </div>
                                 </li>
                                 <li class="list-inline-item">
@@ -45,7 +46,7 @@
         </div>
     </div>
 </section>
-
+</form>
 
 <!-- Feature Properties -->
 <section id="feature-property" class="feature-property bgc-f7">
@@ -55,220 +56,29 @@
                 <h2><span class="mont">NEW </span>신규매물</h2>
                 <p>최고의 매물을 놓치지 마세요</p>
             </div>
-            <a class="more_btn">
-                더보기<i class="ri-arrow-right-line"></i>
+            <a href="{{ route('page', 20) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/BI1.PNG" alt="BI1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="ri-thumb-up-fill"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">상가건물</p>
-                            <h4>최고의 선택, 밸류업</h4>
-                            <div class="text-inf-w text-inf_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>일반상업지 1,000㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                            <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/AI4.PNG"
-                                            alt="AI4.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">(주)부동산중개법인개벽</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/rent1.PNG" alt="rent1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">분양상가</p>
-                            <h4>부전역 3번출구 바로 앞</h4>
-                            <div class="text-inf-w text-inf_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>전유면적 1,000㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>해당층 1/15F</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 부산진구 부전동</p>
-                            <p class="text-thm price_w">임대 <span class="mont">30,000 / 1,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/HM1.PNG"
-                                            alt="HM1.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">송땡땡 부동산연구소</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">2 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/BI2.PNG" alt="BI2.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">상가주택</p>
-                            <h4>연산동 장사하기 좋은곳</h4>
-                            <div class="text-inf-w text-inf_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>일반상업지 333㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>단층 연100㎡</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 연제구 연산동</p>
-                            <p class="text-thm price_w">매매 <span class="mont">150,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/AI3.PNG"
-                                            alt="AI3.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">M3consulting Inc.</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">3 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/BI1.PNG" alt="BI1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-fill full-heart"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="ri-thumb-up-fill"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">상가건물</p>
-                            <h4>최고의 선택, 밸류업</h4>
-                            <div class="text-inf-w text-inf_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>일반상업지 333㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>단층 연100㎡</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                            <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/AI4.PNG"
-                                            alt="AI4.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">(주)부동산중개법인개벽</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/BI1.PNG" alt="BI1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="ri-thumb-up-fill"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">상가건물</p>
-                            <h4>최고의 선택, 밸류업</h4>
-                            <div class="text-inf-w text-inf_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>일반상업지 1,000㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                            <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/AI4.PNG"
-                                            alt="AI4.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">(주)부동산중개법인개벽</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="feat_property home7 style4 bdrrn feat_property_w">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/rent1.PNG" alt="rent1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">분양상가</p>
-                            <h4>부전역 3번출구 바로 앞</h4>
-                            <div class="text-inf-w text-inf_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>전유면적 1,000㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>해당층 1/15F</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 부산진구 부전동</p>
-                            <p class="text-thm price_w">임대 <span class="mont">30,000 / 1,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w">
-                            <ul class="fp_meta float-left mb0 fp_meta_w">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/HM1.PNG"
-                                            alt="HM1.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">송땡땡 부동산연구소</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">2 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @foreach ($newSales as $_data)
+            @php
+            
+            $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
+
+            @endphp
+            <x-item-sale-intranet type='recommend' :printData="$printData" />
+
+            @endforeach
         </div>
     </div>
 </section>
 
 <!-- Property Cities -->
+<form name="frmCities" action="{{ route('page', 20) }}" method="POST">
+    @csrf
+    <input type="hidden" name="page" value="1">
+    <input type="hidden" name="location">
+</form>
 <section id="property-city" class="property-city pb30">
     <div class="container container_w">
         <div>
@@ -279,46 +89,46 @@
         </div>
         <div class="row">
             <div class="col-lg-4 col-xl-4">
-                <div class="properti_city home7">
+                <div class="properti_city home7" onclick="frmCities.location.value='동래구';frmCities.submit();">
                     <div class="thumb">
                         <img class="img-fluid w100" src="images/property/C1.jpg" alt="C1.jpg">
                         <div class="overlay"></div>
                     </div>
                     <div class="details city_tit">
-                        <h4>동래구 <span class="mont">24</span>개</h4>
+                        <h4>동래구 <span class="mont">{{ number_format($localSaleCnt->동래구) }}</span>개</h4>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8 col-xl-8">
-                <div class="properti_city home7">
+                <div class="properti_city home7" onclick="frmCities.location.value='해운대구';frmCities.submit();">
                     <div class="thumb">
                         <img class="img-fluid w100" src="images/property/C2.jpg" alt="C2.jpg">
                         <div class="overlay"></div>
                     </div>
                     <div class="details city_tit">
-                        <h4>해운대구 <span class="mont">18</span>개</h4>
+                        <h4>해운대구 <span class="mont">{{ number_format($localSaleCnt->해운대구) }}</span>개</h4>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8 col-xl-8">
-                <div class="properti_city home7">
+                <div class="properti_city home7" onclick="frmCities.location.value='수영구';frmCities.submit();">
                     <div class="thumb">
                         <img class="img-fluid w100" src="images/property/C3.jpg" alt="C3.jpg">
                         <div class="overlay"></div>
                     </div>
                     <div class="details city_tit">
-                        <h4>수영구 <span class="mont">89</span>개</h4>
+                        <h4>수영구 <span class="mont">{{ number_format($localSaleCnt->수영구) }}</span>개</h4>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-xl-4">
-                <div class="properti_city home7">
+                <div class="properti_city home7" onclick="frmCities.location.value='부산진구';frmCities.submit();">
                     <div class="thumb">
                         <img class="img-fluid w100" src="images/property/C4.jpg" alt="C4.jpg">
                         <div class="overlay"></div>
                     </div>
                     <div class="details city_tit">
-                        <h4>부산진구 <span class="mont">47</span>개</h4>
+                        <h4>부산진구 <span class="mont">{{ number_format($localSaleCnt->부산진구) }}</span>개</h4>
                     </div>
                 </div>
             </div>
@@ -334,79 +144,18 @@
                 <div class="our_hotoffer hot_subtit">
                     <h4><span class="mont">HOT</span> 추천매물</h4>
                     <p>성공적인 거래를 위한 가장 큰 장점,<br>바로 우리의 경험이 만들어낸 매물 선별입니다.</p>
-                    <button type="submit" class="btn btn-thm btn-thm_w">더보기</button>
+                    <button type="submit" class="btn btn-thm btn-thm_w" onclick="location.href='{{ route('page',19) }}'">더보기</button>
                 </div>
             </div>
-            <div class="col-sm-3 col-md-6 col-lg-3 hot_list">
-                <div class="feat_property home7 style4 bdrrn feat_property_w feat_main">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/BI1.PNG" alt="BI1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="ri-thumb-up-fill"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm text-thm_main">상가건물</p>
-                            <h4>최고의 선택, 밸류업</h4>
-                            <div class="text-inf-w text_wrap_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>일반상업지 1,000㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                            <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w fp_main">
-                            <ul class="fp_meta float-left mb0 fp_meta_w fp_meta_main">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/AI4.PNG"
-                                            alt="AI4.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">(주)부동산중개법인개벽</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 col-md-6 col-lg-3 hot_list">
-                <div class="feat_property home7 style4 bdrrn feat_property_w feat_main">
-                    <div class="thumb">
-                        <img class="img-whp" src="images/property/rent1.PNG" alt="rent1.PNG">
-                        <div class="thmb_cntnt">
-                            <ul class="tag mb0">
-                                <li class="list-inline-item"><a href="#"><i class="ri-heart-3-line"></i></a>
-                                </li>
-                                <li class="list-inline-item"><a href="#"><i class="ri-thumb-up-fill"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="details details_w">
-                        <div class="tc_content tc_content_w">
-                            <p class="text-thm">상가건물</p>
-                            <h4>최고의 선택, 밸류업</h4>
-                            <div class="text-inf-w text_wrap_main">
-                                <p class="text-inf"><i class="ri-building-line"></i>일반상업지 1,000㎡</p>
-                                <p class="text-inf"><i class="ri-building-line"></i>B1/15F 연10,000㎡</p>
-                            </div>
-                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>부산광역시 해운대구 우동</p>
-                            <p class="text-thm price_w">매매 <span class="mont">1,000,000</span> 만원</p>
-                        </div>
-                        <div class="fp_footer fp_footer_w fp_main">
-                            <ul class="fp_meta float-left mb0 fp_meta_w fp_meta_main">
-                                <li class="list-inline-item"><a href="#"><img src="images/property/AI4.PNG"
-                                            alt="AI4.PNG"></a></li>
-                                <li class="list-inline-item"><a href="#">(주)부동산중개법인개벽</a></li>
-                            </ul>
-                            <p class="fp_pdate mont">1 day ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @foreach ($recommendSales as $_data)
+            @php
+            
+            $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
+
+            @endphp
+            <x-item-sale-intranet type='main_recommend' :printData="$printData" />
+
+            @endforeach
         </div>
     </div>
 </section>
@@ -419,233 +168,44 @@
                 <h2>전문가 추천</h2>
                 <p>전문가의 눈으로 선별한 최고의 매물을 만나보세요.</p>
             </div>
-            <a class="more_btn">
+            <a class="more_btn" href="{{ route('page', 25) }}">
                 더보기<i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="testimonial_grid_slider style2">
+                @foreach ($agents as $_i=>$_sawon)
+                @php
+                    $cls = new App\Http\Class\IntraSawonClass;
+                    $_sawon = $cls->getPrintData($_sawon);
+                @endphp
+
+                @if($_i % 3 == 0)
                     <div class="item item_main">
+                @endif
                         <div class="testimonial_grid style2 col-lg-4 employ_bx">
                             <div class="all_bx">
                                 <div class="prof">
                                     <div class="employ_prof_w">
-                                        <img src="images/property/profile.jpg" alt="">
+                                        <img src="{{ $_sawon['photo'] }}" alt="">
                                     </div>
                                     <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">김중개</p>
+                                        <p>{{ $_sawon['sosok'] }}</p>
+                                        <p class="en">{{ $_sawon['user_name'] }} {{ $_sawon['duty'] }}</p>
                                     </div>
                                 </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
+                                <button class="btn btn-thm btn-thm_w" onclick="location.href='{{ route('page', 25).'?mode=view&idx='.$_sawon['idx'] }}'">더보기</button>
                             </div>
                         </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile02.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>소속공인중개사</p>
-                                        <p class="en">이중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile03.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">박중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
+                @if($_i % 3 == 2)
                     </div>
-                    <div class="item item_main">
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">김중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile02.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>소속공인중개사</p>
-                                        <p class="en">이중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile03.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">박중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
+                @endif
+                @endforeach
+                @if($_i % 3 != 2)
                     </div>
-                    <div class="item item_main">
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">김중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile02.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>소속공인중개사</p>
-                                        <p class="en">이중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile03.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">박중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item item_main">
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">김중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile02.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>소속공인중개사</p>
-                                        <p class="en">이중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile03.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">박중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item item_main">
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">김중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile02.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>소속공인중개사</p>
-                                        <p class="en">이중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                        <div class="testimonial_grid style2 col-lg-4 employ_bx">
-                            <div class="all_bx">
-                                <div class="prof">
-                                    <div class="employ_prof_w">
-                                        <img src="images/property/profile03.jpg" alt="">
-                                    </div>
-                                    <div class="employ_name">
-                                        <p>중개보조원</p>
-                                        <p class="en">박중개</p>
-                                    </div>
-                                </div>
-                                <button class="btn btn-thm btn-thm_w">더보기</button>
-                            </div>
-                        </div>
-                    </div>
+                @endif
+                    
                 </div>
             </div>
         </div>
@@ -659,7 +219,7 @@
             <div class="col-8 col-sm-8 col-md-8 main-title subtit newsp_subtit">
                 <h2>신문속의 <span class="mont">GYEMOIM INC .</span></h2>
                 <p>매주 월, 수, 금 부산일보와 함께하는 신문광고</p>
-                <button type="submit" class="btn btn-thm btn-thm_w">더보기</button>
+                <button class="btn btn-thm btn-thm_w" onclick="location.href='{{ route('page', 29) }}'">더보기</button>
             </div>
             <div class="col-4 col-sm-4 col-md-4 news_imgw">
                 <img src="/images/newspaper.png" alt="">
@@ -677,32 +237,24 @@
                 <h2><span>NEWS </span>인사이드</h2>
                 <p>주목할만한 부동산 소식을 여기서 만나보세요.</p>
             </div>
-            <a class="more_btn">
+            <a class="more_btn" href="{{ route('page', 30) }}">
                 더보기<i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="row">
+        @for ($i=0;$i<3;$i++)
             <div class="col-sm-4 col-md-4 col-lg-4 main_news">
-                <h5>경제학자 곽수종 “내년 올해보다 어렵다… 2025년엔 리바운드”</h5>
-                <p class="mont">2023. 12. 05</p>
+                <a href="https://www.busan.com/view/busan/view.php?code={{ $news[$i]['CODE'] }}" target="_blank">
+                    <h5>{{ $news[$i]['TITLE'] }}</h5>
+                </a>
+                <p class="mont">{{ str_replace("-",".",$news[$i]['PUB_DATE']) }}</p>
                 <div class="mn_nws_img">
-                    <p>image</p>
+                    <p>
+                        <img class="img-fluid w100" src="{{ __('https://www.busan.com/nas/wcms/wcms_data/photos/').$news[$i]['IMG_PATH'] }}" alt="{{ $news[$i]['IMG_PATH'] }}">
+                    </p>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-4 col-lg-4 main_news">
-                <h5>“지역업체 써달라” 서울 본사 찾아 하도급 세일즈 나선 부산시</h5>
-                <p class="mont">2023. 12. 05</p>
-                <div class="mn_nws_img">
-                    <p>image</p>
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-4 main_news">
-                <h5>아파트중개플랫폼 ‘부동산서베이’, 사회초년생 무료 강의</h5>
-                <p class="mont">2023. 12. 05</p>
-                <div class="mn_nws_img">
-                    <p>image</p>
-                </div>
-            </div>
+        @endfor
         </div>
     </div>
 </section>

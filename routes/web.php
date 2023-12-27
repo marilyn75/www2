@@ -20,9 +20,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('index');
-})->name('main');
+Route::get('/', [App\Http\Controllers\Web\HomeController::class, 'index'])->name('main');
 
 // 관리자
 require __DIR__.'/admin.php';

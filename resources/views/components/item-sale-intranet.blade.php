@@ -1,11 +1,20 @@
+@php
+    $page_id = 20;
+@endphp
+
 @if ($type=="recommend")
 <div class="col-sm-6 col-md-6 col-lg-4">
 @elseif ($type=="related")
 <div class="col-sm-6 col-md-6 col-lg-6">
+@elseif ($type=="main_recommend")
+@php
+    $page_id = 19;
+@endphp
+<div class="col-sm-3 col-md-6 col-lg-3 hot_list">
 @else
 <div class="col-sm-6 col-md-6 col-lg-4 pl10">
 @endif
-    <a href="?mode=show&idx={{ $printData['idx'] }}">
+    <a href="{{ route('page',$page_id) }}?mode=show&idx={{ $printData['idx'] }}">
         <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") related @endif">
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">

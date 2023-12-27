@@ -487,4 +487,36 @@ class IntraSaleClass{
 
         return $data;
     }
+
+    // 메인 신규매물
+    public function mainNewSales(){
+        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])->orderBy('reg_date','desc')->limit(6)->get();
+        return $model;
+    }
+
+    // 메인 구역별 매물수
+    public function mainLocalSaleCount(){
+        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])
+            ->select(DB::raw("sum(case when addr like '%동래구%' then 1 else 0 end ) as 동래구"), 
+                    DB::raw("sum(case when addr like '%해운대구%' then 1 else 0 end ) as 해운대구"), 
+                    DB::raw("sum(case when addr like '%수영구%' then 1 else 0 end ) as 수영구"), 
+                    DB::raw("sum(case when addr like '%부산진구%' then 1 else 0 end ) as 부산진구")
+            )
+            ->first();
+
+        return $model;
+    }
+
+    // 메인 추천매물
+    public function mainRecommendSales(){
+        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])
+            ->where('isRecom',1)
+            ->whereHas('sale', function($query){
+                $query->where('_options', 'not like', '%COC%');
+            })
+            ->orderBy('reg_date','desc')
+            ->limit(2)->get();
+
+        return $model;
+    }
 }
