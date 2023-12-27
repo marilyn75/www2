@@ -137,6 +137,13 @@
             });
         }
     });
+
+    // 초기화
+    $(document).on('click', '.reset_btn', function(){
+        setCookie('filter_condition','');
+        frm.reset();
+        frm.submit();
+    });
 </script>
 
 <form name="frm" action="{{ $data->path() }}" method="post" class="row">
