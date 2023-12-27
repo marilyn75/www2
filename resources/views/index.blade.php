@@ -144,7 +144,7 @@
                 <div class="our_hotoffer hot_subtit">
                     <h4><span class="mont">HOT</span> 추천매물</h4>
                     <p>성공적인 거래를 위한 가장 큰 장점,<br>바로 우리의 경험이 만들어낸 매물 선별입니다.</p>
-                    <button type="submit" class="btn btn-thm btn-thm_w" onclick="location.href='{{ route('page',19) }}'">더보기</button>
+                    <button type="submit" class="btn btn-thm btn-thm_w" onclick="location.href='{{ route('page', 19).'?mode=recommend' }}'">더보기</button>
                 </div>
             </div>
             @foreach ($recommendSales as $_data)

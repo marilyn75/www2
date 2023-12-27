@@ -39,54 +39,57 @@ class IntraSaleClass{
         $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1]);
         if($request['mode']=="recommend"){
             $model = $model->where('isRecom',1);
-        }
+        }else{
 
-        // 필터조건 s ///////////////////////////////////////////////////////////
-        // 유형
-        if(!empty($data['cate2'])){
-            $model->where('category_id', $data['cate2']);
-        }elseif(!empty($data['cate1'])){
-            $clsCode = new CommonCodeClass;
-            $result = $clsCode->getDescendants($data['cate1']);
+            // 필터조건 s ///////////////////////////////////////////////////////////
+            // 유형
+            if(!empty($data['cate2'])){
+                $model->where('category_id', $data['cate2']);
+            }elseif(!empty($data['cate1'])){
+                $clsCode = new CommonCodeClass;
+                $result = $clsCode->getDescendants($data['cate1']);
 
-            $responsData = $result->getData();
-            foreach($responsData as $_dt){
-                $inCateId[] = $_dt['id'];
+                $responsData = $result->getData();
+                foreach($responsData as $_dt){
+                    $inCateId[] = $_dt['id'];
+                }
+                
+                $model->whereIn('category_id', $inCateId);
             }
-            
-            $model->whereIn('category_id', $inCateId);
-        }
 
-        // 거래종류
-        if(!empty($data['tradeType'])){
-            $model->where('tradeType', $data['tradeType']);
-        }
-
-        // 지역
-        if(!empty($data['location'])){
-            $model->where('addr', 'like', '%'.$data['location'].'%');
-        }
-
-        // 가격
-        if(!empty($data['toPrice'])){
-            $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . $data['fromPrice'])
-                ->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . $data['toPrice']);
-        }
-
-        // 거래면적
-        if(!empty($data['toArea'])){
-            $fromArea = $data['fromArea'];
-            $toArae = $data['toArea'];
-            if($data['area_unit']=='p'){
-                $fromArea = $fromArea * 3.305785;
-                $toArae = $toArae * 3.305785;
+            // 거래종류
+            if(!empty($data['tradeType'])){
+                $model->where('tradeType', $data['tradeType']);
             }
-            $model->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) >= ' . $fromArea)
-                ->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) <= ' . $toArae);
-        }
-        // 필터조건 e ///////////////////////////////////////////////////////////
 
-        if(!empty($data['sort'])){
+            // 지역
+            if(!empty($data['location'])){
+                $model->where('addr', 'like', '%'.$data['location'].'%');
+            }
+
+            // 가격
+            if(!empty($data['toPrice'])){
+                $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . $data['fromPrice'])
+                    ->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . $data['toPrice']);
+            }
+
+            // 거래면적
+            if(!empty($data['toArea'])){
+                $fromArea = $data['fromArea'];
+                $toArae = $data['toArea'];
+                if($data['area_unit']=='p'){
+                    $fromArea = $fromArea * 3.305785;
+                    $toArae = $toArae * 3.305785;
+                }
+                $model->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) >= ' . $fromArea)
+                    ->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) <= ' . $toArae);
+            }
+            // 필터조건 e ///////////////////////////////////////////////////////////
+        }
+
+        if($request['mode']!="recommend"){
+            $model->orderBy('isRecom','desc');
+        }elseif(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
             if(empty($arrSort[1])) $arrSort[1] = 'asc';
 
@@ -512,7 +515,7 @@ class IntraSaleClass{
         $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])
             ->where('isRecom',1)
             ->whereHas('sale', function($query){
-                $query->where('_options', 'not like', '%COC%');
+                $query->whereRaw("instr(ifnull(_options,''),'COC') IS false");
             })
             ->orderBy('reg_date','desc')
             ->limit(2)->get();
