@@ -61,7 +61,7 @@
             </li>
             <li>
                 <div class="search_option_button detail_emp_btns">
-                    @if ($type=='photo')<a class="btn btn-block btn-thm btn-thm_w" href="{{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}">자세히보기</a>@endif
+                    @if ($type=='photo')<a class="btn btn-block btn-thm btn-thm_w" href="@if($printData['sawon_chkcert']=='y'){{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}@else{{ route('page',25) }}?mode=view&idx=0 @endif">자세히보기</a>@endif
                     <button type="submit" class="btn btn-block btn-thm btn-thm_w">
                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         문의하기

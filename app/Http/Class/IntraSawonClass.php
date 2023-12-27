@@ -119,6 +119,8 @@ class IntraSawonClass{
             //     $return['sales'][] = $clsIntraSale->getPrintData($_sale);
             // }
 
+            $return['chkcert'] = "n";
+
         }else{
             $return = $data->toArray();
 
@@ -147,6 +149,8 @@ class IntraSawonClass{
             // }
 
             $return['sawon_user_id'] = $data->user_id;
+
+            $return['chkcert'] = "y";
         }
         return $return;
     }
