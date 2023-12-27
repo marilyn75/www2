@@ -30,6 +30,7 @@
             // order:[[0, 'desc']],
 
             "hover" : true,
+            // responsive: true
         });
         
         $(".table")
