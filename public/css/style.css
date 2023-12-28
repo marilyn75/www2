@@ -17141,6 +17141,22 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 }
 .dataTables_filter label { color: #000; }
 .sign_up_form_w .btn-log:hover{ background: #385F8D; color: #fff; }
+.phone_num_chk { display: flex; }
+
+
+
+/* 약관동의 */
+.agree_bx { background: #fff; border-radius: 10px; padding: 20px; }
+.custom-control-label::before { left: 0px; }
+.custom-control-label::after { left: 0; }
+.login_form .form-group .custom-control-label, .sign_up_form .form-group .custom-control-label{ 
+  padding-left: 28px; 
+  color: #000;
+  font-weight: 500;
+  font-size: 16px;
+  padding-top: 0;
+}
+
 
 
 /* 비밀번호 찾기 */

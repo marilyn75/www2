@@ -31,6 +31,13 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="비밀번호 확인" >
                             </div>
+                            <div class="form-group phone_num_chk">
+                                <input type="number" class="form-control" id="phnumber" name="phnumber" placeholder="휴대폰 번호를 입력하세요" >
+                                <button>인증</button>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="confirm" name="confirm" placeholder="인증번호를 입력하세요" >
+                            </div>
                             {{-- <div class="form-group custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="exampleCheck3">
                                 <label class="custom-control-label" for="exampleCheck3">Want to become an instructor?</label>
