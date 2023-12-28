@@ -15,7 +15,7 @@
     <div class="sidebar_advanced_search_widget">
         @if ($type=='photo')
         <div class="sl_creator sl_creator_w">
-            <h4 class="mb20">현장안내원</h4>
+            <h4 class="mb20">현장안내</h4>
             <div class="media media_w">
                 <div class="profile_crop">
                     <img class="mr-3" src="{{ $printData['sawon_photo'] }}" style="width:90px;height:90px">

@@ -29,7 +29,8 @@ class ResultClass{
 
     public function getDataCount()
     {
-        return count($this->data);
+        if($this->isSuccess())  return count($this->data);
+        else                    return 0;
     }
 
     public function getMessage()

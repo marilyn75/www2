@@ -445,8 +445,8 @@ $(window).on('load', function() {
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="whats_nearby mt30 nearby_w">
                                 <h4 class="mb10">근처시설
-                                    <i class="ri-information-line" data-toggle="tooltip" data-placement="top"
-                                        data-original-title="근처시설을 클릭해보세요"></i>
+                                    {{-- <i class="ri-information-line" data-toggle="tooltip" data-placement="top"
+                                        data-original-title="근처시설을 클릭해보세요"></i> --}}
                                 </h4>
                                 <script>
                                 $(document).ready(function() {

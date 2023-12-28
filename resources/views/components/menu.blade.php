@@ -34,7 +34,7 @@
                     {{-- <a class="dropdown-item text-dark" href="#">Messages</a>
                     <a class="dropdown-item text-dark" href="#">Purchase history</a>
                     <a class="dropdown-item text-dark" href="#">Help</a> --}}
-                    <a class="dropdown-item text-dark" href="{{ route('logout') }}">Log out</a>
+                    <a class="dropdown-item text-dark" href="{{ route('logout') }}">로그아웃</a>
                 </div>
             </div>
         </div>

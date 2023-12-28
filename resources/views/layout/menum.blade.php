@@ -17,7 +17,7 @@
                             {{-- <a class="dropdown-item" href="#">Messages</a>
                             <a class="dropdown-item" href="#">Purchase history</a>
                             <a class="dropdown-item" href="#">Help</a> --}}
-                            <a class="dropdown-item" href="{{ route('logout') }}">Log out</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}">로그아웃</a>
                         </div>
                     </div>
            

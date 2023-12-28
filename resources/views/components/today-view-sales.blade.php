@@ -5,9 +5,9 @@
 @endphp
 <div class="sidebar_recent_product today_pro">
     <h4 class="mb20">오늘 본 매물</h4>
-    @if(empty($sales))
-    @else
-    @foreach ($sales as $_data)
+    @if($sales->isSuccess())
+    
+    @foreach ($sales->getData() as $_data)
     @php
     
     $sale = $cls->getPrintData($_data);
@@ -22,5 +22,9 @@
         </div>
     </div>
     @endforeach
+    @else
+    <div class="nolist">
+        <p>{{ $sales->getMessage() }}</p>
+    </div>
     @endif
 </div>

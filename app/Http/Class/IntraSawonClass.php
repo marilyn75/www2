@@ -35,7 +35,7 @@ class IntraSawonClass{
                 on a.user_id=b.user_id 
                 where mb_out=0 and auth_gr='M01_D01' and chkcert!='y' and a.isDel=0 and a.isDone=1) 
                 tbl"))
-            ->selectRaw("0 as idx, '' as mb_photo, '㈜부동산중개법인개벽' as user_name, '' as duty, '' as sosok, '8840' as office_line, '' as mb_email, homepage_sales_count, '' as reg_date");
+            ->selectRaw("0 as idx, '' as mb_photo, '부동산중개법인개벽' as user_name, '' as duty, '주식회사' as sosok, '8840' as office_line, '' as mb_email, homepage_sales_count, '' as reg_date");
 
         $model = DB::connection('mysql_intranet')
                     ->table('CS_MEMBER')
@@ -84,7 +84,7 @@ class IntraSawonClass{
 
         if($data=="other"){ // 중개보조원들
             $return['duty'] = "";
-            $return['sosok'] = "";
+            $return['sosok'] = "주식회사";
             $return['office_line'] = "8840";
 
             $return['photo'] = "/images/sawon-placeholder.png";
@@ -99,7 +99,7 @@ class IntraSawonClass{
             // }
 
             $return['sawon_user_id'] = "radmin";
-            $return['user_name'] = "㈜부동산중개법인개벽";
+            $return['user_name'] = "부동산중개법인개벽";
             
             $sales = IntraSaleHomepage::join('CS_MEMBER','CS_MEMBER.user_id','=','CS_SALE_HOMEPAGE.user_id')
                 ->join('CS_MEMBER_SINFO', 'CS_MEMBER.user_key', '=', 'CS_MEMBER_SINFO.s_user_key')
@@ -125,7 +125,7 @@ class IntraSawonClass{
             $return = $data->toArray();
 
             $return['duty'] = $data->info->duty;
-            $return['sosok'] = str_replace('소속','',$data->info->sosok);
+            $return['sosok'] = $data->info->sosok;
             $return['office_line'] = $data->info->office_line;
 
             $return['photo'] = $data->mb_photo;

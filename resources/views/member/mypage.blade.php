@@ -24,7 +24,7 @@
                 <div class="my_bx_line"></div>
                 <div class="my_bx_count my_bx_recent">
                     <p>최근 본 매물</p>
-                    <h3 class="mont">2</h3>
+                    <h3 class="mont">{{ $data['todayViewSales']->getDataCount() }}</h3>
                 </div>
             </div>
         </div>
@@ -62,7 +62,6 @@
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent2">
 
-                    {{-- 관심매물이 없을 때 --}}
                     <div id="item1-tab" class="pt50 pb150 tab-pane active">
                         @if ($data['favorites']->isSuccess())
                         <div class="row">
@@ -73,7 +72,7 @@
                         @else
                         <div class="nolist">
                             <p>등록된 관심매물이 없습니다.</p>
-                            <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                            <a class="btn btn-thm btn-thm_w" href="{{ route('page', 20) }}">매물 보러가기</a>
                         </div>
                         @endif
                         
@@ -81,8 +80,18 @@
                     </div>
                     {{-- 최근 본 매물이 없을 때 --}}
                     <div id="item2-tab" class="pt100 pb100 tab-pane nolist fade">
-                        <p>최근 본 매물이 없습니다.</p>
-                        <a class="btn btn-thm btn-thm_w">매물 보러가기</a>
+                        @if ($data['todayViewSales']->isSuccess())
+                        <div class="row">
+                            @foreach ($data['todayViewSales']->getData() as $printData)
+                                <x-item-sale-intranet type='' :printData="$printData" />
+                            @endforeach
+                        </div>
+                        @else
+                        <div class="nolist">
+                            <p>{{ $data['todayViewSales']->getMessage() }}</p>
+                            <a class="btn btn-thm btn-thm_w" href="{{ route('page', 20) }}">매물 보러가기</a>
+                        </div>
+                        @endif
                     </div>
 
                 </div>

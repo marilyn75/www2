@@ -245,12 +245,12 @@ class IntraSaleClass{
         $return['sawon_duty'] = $data->sale->users->first()->sawon->info->duty;
         $return['sawon_chkcert'] = $data->sale->users->first()->sawon->info->chkcert;
         $return['sawon_sosok'] = $data->sale->users->first()->sawon->info->sosok;
-        $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);
+        // $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);
         $return['sawon_office_line'] = $data->sale->users->first()->sawon->info->office_line;
         $return['sawon_chkcert'] = $data->sale->users->first()->sawon->info->chkcert;
 
         $return['radmin_photo'] = "/images/sawon-placeholder.png";
-        $return['radmin_name'] = "㈜부동산중개법인개벽";
+        $return['radmin_name'] = "부동산중개법인개벽";
         $return['radmin_duty'] = "";
         $return['radmin_sosok'] = "";
         $return['radmin_office_line'] = "";
@@ -301,7 +301,7 @@ class IntraSaleClass{
 
     public function getTodayViewSales(){
         if(empty($_COOKIE['viewed_intra_sales'])){
-            return null;
+            return ResultClass::fail('최근 본 매물이 없습니다.');
         }else{
             $arrIdx = json_decode($_COOKIE['viewed_intra_sales'],true);
             
@@ -309,7 +309,7 @@ class IntraSaleClass{
                 ->orderByRaw("FIELD(idx, " . implode(',', $arrIdx) . ")")   // 쿠키값 순서대로
                 ->get();
 
-            return $data;
+            return ResultClass::success('',$data);
         }
     }
 
@@ -494,7 +494,10 @@ class IntraSaleClass{
 
     // 메인 신규매물
     public function mainNewSales(){
-        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])->orderBy('reg_date','desc')->limit(6)->get();
+        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])->orderBy('reg_date','desc')
+            ->whereHas('sale', function($query){
+                $query->whereRaw("instr(ifnull(_options,''),'COC') IS false");
+            })->limit(6)->get();
         return $model;
     }
 

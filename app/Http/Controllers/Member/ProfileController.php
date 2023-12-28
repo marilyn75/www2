@@ -32,9 +32,12 @@ class ProfileController extends Controller
     }
 
     public function mypage(){
-        $favorites = (new IntraSaleClass)->getFavoritesData();
-
+        $cls = new IntraSaleClass;
+        $favorites = $cls->getFavoritesData();
         $data['favorites'] = $favorites;
+
+        $todayViewSales = $cls->getTodayViewSales();
+        $data['todayViewSales'] = $todayViewSales;
 
         return view('member.mypage', compact('data'));
     }

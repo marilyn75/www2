@@ -86,8 +86,8 @@
                         <p>{{ $_sawon->homepage_sales_count }} 건</p>
                     </div>
                     <div class="employ_inf">
-                        <p>{{ @str_replace('소속','',$_sawon->sosok) }}</p>
-                        <p>{{ str_replace('부동산','',$_sawon->user_name) }} {{ @$_sawon->duty }}</p>
+                        <p>{{ @$_sawon->sosok }}</p>
+                        <p>{{ $_sawon->user_name }} {{ @$_sawon->duty }}</p>
                     </div>
                 </div>
                 {{-- @if ($_sawon->homepage_sales_count > 0)
