@@ -13,7 +13,7 @@
                     "data":"title",
                     "render": function(data, type, row) {
                         var htmlTitle = '<a href="' + docURL.url + '?mode=view&bid=' + row.id + '" class="btn-view">' + data + '</a>';
-                        if(row.is_notice==1)    htmlTitle = '<span>[공지]</span> ' + htmlTitle;
+                        if(row.is_notice==1)    htmlTitle = '<span class="notice_bg">공지</span> ' + htmlTitle;
                         return htmlTitle;
                     }
                 },
