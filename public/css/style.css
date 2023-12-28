@@ -17342,13 +17342,20 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 
 
 
+/* about us  */
 /* 회사소개 */
 .intro_top { text-align: center; }
 .intro_tit { color: #000; margin-bottom: 45px; line-height: 40px; }
 .inner_page_breadcrumb { background-repeat: round; }
-.intro_imgs { display: flex; justify-content: space-between; gap: 10px; }
-.core h2 { color: #000; margin-bottom: 45px; }
-.intro_txt { font-size: 20px; color: #000; font-weight: 500; word-break: keep-all; }
+.core { background: #1A4473; padding: 100px 0; }
+.core h2 { color: #FFF; margin-bottom: 45px; text-align: center; font-size: 40px; font-weight: 500;}
+.intro_boxs { display: flex; justify-content: space-between; gap: 40px; }
+.intro_bx { border-radius: 30px; background: #2B5481; width: 100%;  padding: 130px 0; }
+.intro_bx h2 { font-size: 40px; margin-bottom: 30px; }
+.intro_bx p { font-size: 24px; color: #fff; text-align: center; }
+
+
+.intro_txt { font-size: 24px; color: #000; font-weight: 500; word-break: keep-all; }
 .intro_contact h2 { color: #000; margin-bottom: 45px; }
 .intro_contact ul { margin-top: 40px; }
 .intro_contact ul li { display: flex; }
@@ -17358,7 +17365,13 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 
 /* about us */
 .about_content { border-radius: 10px; overflow: hidden; }
-.about_us h2{ font-size: 30px; color: #000; margin-bottom: 45px; }
+.about_top .bg_txt { position: absolute; transform: translateX(0%); width: -webkit-fill-available; }
+.about_top .bg_txt h2 { color: rgba(255, 255, 255, 0.54); font-size: 120px; font-weight: 700; text-align: center; }
+.about_us h2{ font-size: 40px; text-align: center; color: #000; margin-bottom: 45px; }
+.about_us p { font-size: 28px; font-weight: 500; color: #000; text-align: center; }
+.contact_us { display: flex; justify-content: center; gap: 40px; margin-top: 30px; }
+.contact_us p { font-size: 28px; color: #000;  }
+
 .why_chose_us.style2:hover .icon { background: linear-gradient(90deg, #388D8D 0%, #1A4173 100%) !important; }
 .why_chose_us.style2:hover:before { background: #385f8d; }
 .why_chose_us .details { margin-top: 25px; }
@@ -17726,7 +17739,13 @@ code {
   .ff_one .ff_thi:before { display: none; }
   .ff_one .detais { padding: 0; }
 
-
+  .about_top .bg_txt h2 { font-size: 90px; }
+  .intro_bx h2 { font-size: 28px;  }
+  .intro_bx p { font-size: 16px; } 
+  .intro_bx { padding: 95px 0; }
+  .intro_bx h2 { margin-bottom: 10px; }
+  .about_us h2 { font-size: 30px; }
+  
 
 }
 @media (max-width: 991.98px) {
@@ -17795,6 +17814,20 @@ code {
 
   .my_bx_rg { display: none; }
   .employ_bx { width: 270px; }
+
+  .core h2 { font-size: 30px; }
+  .about_top .bg_txt h2 { font-size: 60px; }
+  .intro_bx h2 { font-size: 24px; margin-bottom: 6px; }
+  .intro_bx { padding: 82px 27px; }
+  .intro_tit { font-size: 24px; }
+  .intro_txt { font-size: 16px !important; }
+  .why_chose_us .details h4 { font-size: 16px; }
+  .about_top .pt80 { padding-top: 40px; }
+  .about_us h2 { font-size: 24px; }
+  .about_us p { font-size: 16px; }
+  .contact_us p { font-size: 16px; }
+  .intro_boxs { display: grid; justify-content: center; }
+
 }
 @media (max-width: 767.98px) {
 
@@ -17983,6 +18016,11 @@ code {
 
   .inner_page_breadcrumb  { height: 280px; }
   .log_sign_pd { padding: 60px 0 80px; }
+  .about_top .bg_txt h2 { font-size: 38px; }
+  .about_us h2 { font-size: 18px; }
+  .about_top .pt80 { padding-top: 22px; }
+  .about_content { margin-bottom: 20px; }
+
 }
 
 
@@ -18031,6 +18069,16 @@ code {
   .my_bx_inf .btn { font-size: 12px; }
   .my_bx_inf .btn { width: 90px; }
   .menu_link { font-size: 16px; }
+
+  .about_top .bg_txt h2 { font-size: 30px; }
+  .about_us h2 { font-size: 16px; }
+  .about_top .pt80 { padding-top: 12px; }
+  .about_top .intro_txt { font-size: 14px !important; }
+  .core { padding: 70px 0; }
+  .intro_boxs { margin-top: 35px; }
+  .intro_tit {  }
+
+
 }
 
 
@@ -18072,8 +18120,10 @@ code {
   .my_profile_bx { padding-bottom: 0; }
   .menu_link { font-size: 14px; }
 
+
   /* main */
   .tit_btn { display: grid; justify-content: normal; }
+
 
 }
 
