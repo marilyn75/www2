@@ -38,9 +38,9 @@
                     <label for="title">신문사</label>
                     <select name="news_code" id="news_code" class="form-control">
                         <option value="">선택하세요.</option>
-                        <?
-                        echo makeOptions($conf['cate'], $data['news_code']);
-                        ?>
+                        @php
+                            echo makeOptions($conf['cate'], $data['news_code']);
+                        @endphp
                     </select>
                     <input type="hidden" name="news_txt" value="{{ $data['news_txt'] }}">
                 </div>

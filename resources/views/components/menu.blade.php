@@ -34,6 +34,9 @@
                     {{-- <a class="dropdown-item text-dark" href="#">Messages</a>
                     <a class="dropdown-item text-dark" href="#">Purchase history</a>
                     <a class="dropdown-item text-dark" href="#">Help</a> --}}
+                    @if (auth()->user()->is_admin)
+                    <a class="dropdown-item text-dark" href="{{ route('admin') }}">관리자모드</a>
+                    @endif
                     <a class="dropdown-item text-dark" href="{{ route('logout') }}">로그아웃</a>
                 </div>
             </div>

@@ -14,9 +14,13 @@
                         <div class="user_setting_content">
                             <a class="dropdown-item" href="{{ route('changepw') }}">비밀번호 변경</a>
                             <a class="dropdown-item" href="{{ route('profile') }}">회원정보 수정</a>
+                            <a class="dropdown-item" href="{{ route('mypage') }}">마이페이지</a>
                             {{-- <a class="dropdown-item" href="#">Messages</a>
                             <a class="dropdown-item" href="#">Purchase history</a>
                             <a class="dropdown-item" href="#">Help</a> --}}
+                        @if (auth()->user()->is_admin)
+                            {{-- <a class="dropdown-item" href="{{ route('admin') }}">관리자모드</a> --}}
+                        @endif
                             <a class="dropdown-item" href="{{ route('logout') }}">로그아웃</a>
                         </div>
                     </div>
