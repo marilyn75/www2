@@ -2,23 +2,6 @@
 
 @section('content')
 
-<!-- Inner Page Breadcrumb -->
-<section class="inner_page_breadcrumb">
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-xl-6">
-                <div class="breadcrumb_content">
-                    <h4 class="breadcrumb_title">회원가입</h4>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">회원가입</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div> -->
-</section>
-
 <!-- Our LogIn Register -->
 
 <section class="our-log-reg bgc-fa log_sign_pd">
@@ -35,6 +18,7 @@
                         	
                         <form action="{{ url(route('register')) }}" method="POST">
                             @csrf
+                            <input type="hidden" name="mode" value="store">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="사용자 이름" value="{{ old('name') }}">
                             </div>

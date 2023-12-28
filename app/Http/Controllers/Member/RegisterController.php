@@ -9,31 +9,39 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     public function index(){
-        return view('member.register');
+        return view('member.agree');
     }
 
     // 회원정보 저장
     public function store(Request $request){
         $data = $request->all();
 
-        // 유효성 검사
-        $this->validate($request, User::$rules['register']);
+        if($data['mode']=="form"){
+            // 유효성 검사
+            $this->validate($request, ['agree' => 'required',], ['agree.required'=>"약관동의는 필수 입니다."]);
 
-        $saveData = [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ];      
+            return view('member.register');
+        }elseif($data['mode']=="store"){
 
-        // $chkDup = User::where('email',$saveData['email'])->count();
-        // if($chkDup > 0){
-        //     return back()->with('error_message', '이미 가입된 이메일 입니다.');
-        // }
+            // 유효성 검사
+            $this->validate($request, User::$rules['register']);
 
-        $result = User::create($saveData);
+            $saveData = [
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ];      
 
-        return redirect(route('login'))
-            ->with('success_message','회원가입 완료되었습니다. 로그인 하세요.')
-            ->with('email',$saveData['email']);
+            // $chkDup = User::where('email',$saveData['email'])->count();
+            // if($chkDup > 0){
+            //     return back()->with('error_message', '이미 가입된 이메일 입니다.');
+            // }
+
+            $result = User::create($saveData);
+
+            return redirect(route('login'))
+                ->with('success_message','회원가입 완료되었습니다. 로그인 하세요.')
+                ->with('email',$saveData['email']);
+        }
     }
 }

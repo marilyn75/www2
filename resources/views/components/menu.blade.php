@@ -31,9 +31,9 @@
                     <a class="dropdown-item text-dark" href="{{ route('changepw') }}">비밀번호 변경</a>
                     <a class="dropdown-item text-dark" href="{{ route('profile') }}">회원정보 수정</a>
                     <a class="dropdown-item text-dark" href="{{ route('mypage') }}">마이페이지</a>
-                    <a class="dropdown-item text-dark" href="#">Messages</a>
+                    {{-- <a class="dropdown-item text-dark" href="#">Messages</a>
                     <a class="dropdown-item text-dark" href="#">Purchase history</a>
-                    <a class="dropdown-item text-dark" href="#">Help</a>
+                    <a class="dropdown-item text-dark" href="#">Help</a> --}}
                     <a class="dropdown-item text-dark" href="{{ route('logout') }}">Log out</a>
                 </div>
             </div>
