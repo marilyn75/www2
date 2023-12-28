@@ -199,7 +199,7 @@ class MenusController extends Controller
 
             // 기존 이미지 삭제
             if(!empty($model['top_image'])){
-                unlink(public_path('files/menu/' . $model['top_image']));
+                @unlink(public_path('files/menu/' . $model['top_image']));
             }
         }
 
@@ -254,13 +254,13 @@ class MenusController extends Controller
         
         // 첨부파일 있는지 체크하고 삭제
         if(!empty($node->top_image)){
-            unlink(public_path('files/menu/' . $node->top_image));
+            @unlink(public_path('files/menu/' . $node->top_image));
         }
         if ($node) {
             $children = $node->descendants;
             foreach($children as $_menu){
                 if(!empty($_menu->top_image)){
-                    unlink(public_path('files/menu/' . $_menu->top_image));
+                    @unlink(public_path('files/menu/' . $_menu->top_image));
                 }
             }
         }

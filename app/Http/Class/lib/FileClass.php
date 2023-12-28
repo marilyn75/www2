@@ -62,7 +62,7 @@ class FileClass{
 
         if($data->count() > 0){
             foreach($data->get() as $_f){
-                unlink(public_path($_f->filepath . $_f->filename));
+                @unlink(public_path($_f->filepath . $_f->filename));
             }
             $data->delete();
         }

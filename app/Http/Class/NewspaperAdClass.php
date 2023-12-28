@@ -151,7 +151,7 @@ class NewspaperAdClass{
 
         // 파일 삭제 
         if(!empty($file_data)){
-            unlink(public_path($file_data->filepath . $file_data->filename));
+            @unlink(public_path($file_data->filepath . $file_data->filename));
             $file_data->delete();
         }
 
