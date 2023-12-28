@@ -36,7 +36,7 @@
                 <div class="tab-content" id="myTabContent2">
                     {{-- 등록매물 s --}}
                     <div class="tab-pane fade row pl15 pl0-1199 pr15 pr0-1199 show active agent_enter" id="listing" role="tabpanel" aria-labelledby="listing-tab">
-                        @if (empty($data['sales']))
+                        @if ($data['sales']->total()==0)
                         <div class="col-lg-12 pl0 pr0 feat_property feat_property_w">
                             <div class="product_single_content">
                                 <div class="mbp_pagination_comments agent_review">
@@ -80,9 +80,9 @@
                         </div>
                             </a>
                             @endforeach
-                        
-                        @endif
                         <x-pagination :data="$data['sales']" />
+                        @endif
+                        
                     </div>
                     
                     {{-- 등록매물 e --}}

@@ -83,6 +83,9 @@
                         @if ($data['todayViewSales']->isSuccess())
                         <div class="row">
                             @foreach ($data['todayViewSales']->getData() as $printData)
+                            @php
+                                $printData = App\Http\Class\IntraSaleClass::getPrintData($printData);
+                            @endphp
                                 <x-item-sale-intranet type='' :printData="$printData" />
                             @endforeach
                         </div>

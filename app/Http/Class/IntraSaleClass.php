@@ -295,7 +295,7 @@ class IntraSaleClass{
             array_unshift($existingViewedSales, $idx);
 
             // 배열을 JSON으로 다시 인코딩하고 쿠키 설정
-            setcookie("viewed_intra_sales", json_encode($existingViewedSales), time()+3600);
+            setcookie("viewed_intra_sales", json_encode($existingViewedSales), time()+3600, '/');
         }
     }
 
