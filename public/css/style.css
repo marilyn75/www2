@@ -16878,6 +16878,7 @@ swiper-slide img {
 .mm-slideout { z-index: 0; }
 .chat-icon button{ width: 120px; height: 120px; border: none; position: fixed; right: 90px; bottom: 75px; border-radius: 100px; background: #385F8D; display: grid; align-items: center; padding: 20px 0; cursor: pointer; filter: drop-shadow(0px 0px 10px rgba(56, 95, 141, 0.25)); z-index: 999; }
 .chat-icon p { color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; line-height: 20px; }
+.chat-icon i { display: none; }
 .click_chat::after { content: ''; display: block; height: 1px; background: #fff; width: 30px; margin: 0 auto; margin-top: 1px; }
 .main_news h5 { font-size: 20px; color: #000; line-height: 26px; word-break: keep-all; margin-bottom: 10px; }
 .main_news p { color: #828282; font-weight: 500; font-size: 16px; }
@@ -17824,8 +17825,9 @@ code {
   .inside_main h4 { font-size: 16px !important; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;  }
   .hot_list { display: none; }
   .our-hot-offer { height: 300px; }
-  .chat-icon button { width: 100px; height: 100px; right: 60px; gap: 5px; }
-  .chat-icon p { font-size: 12px; line-height: 18px; }
+  .chat-icon button { width: 80px; height: 80px; right: 60px; gap: 5px; }
+  .chat-icon p { display: none; }
+  .chat-icon i { display: block; color: #fff; font-size: 25px; }
   .agent_enter { padding: 0 15px !important; }
   .intro_imgs img { height: 245px; }
   .about_top .intro_txt { font-size: 16px; }
@@ -17958,7 +17960,8 @@ code {
   .newsp_subtit .btn { padding: 8px 0; font-size: 14px; width: 115px; }
 
 
-  .chat-icon button { width: 90px; height: 90px; }
+  .chat-icon button { width: 70px; height: 70px; }
+  .chat-icon i { line-height: 31px; }
   .mbp_pagination ul.page_navigation li .page-link { height: 35px; width: 35px; line-height: 20px; }
   .feat_property_w .thumb .thmb_cntnt p { font-size: 14px !important; margin-top: 10px; margin-left: 10px; }
   .heart_btn { width: 40px; height: 40px; }
