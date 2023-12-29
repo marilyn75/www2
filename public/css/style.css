@@ -17146,7 +17146,9 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 
 
 /* 약관동의 */
-.agree_bx { background: #fff; border-radius: 10px; padding: 20px; }
+.agree_bx { background: #fff; border-radius: 10px; padding: 20px; position: relative; }
+.agree_bx a { position: absolute; right: 17px; top: 18px; }
+.agree_bx a i { color: #385f8d; font-size: 20px; }
 .custom-control-label::before { left: 0px; }
 .custom-control-label::after { left: 0; }
 .login_form .form-group .custom-control-label, .sign_up_form .form-group .custom-control-label{ 
@@ -17156,6 +17158,8 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   font-size: 16px;
   padding-top: 0;
 }
+.agree_lb { font-size: 16px; color: #000; font-weight: 500; }
+
 
 
 
