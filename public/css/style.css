@@ -17028,7 +17028,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
     border-bottom: 2px solid #385f8d;
 }
 .nolist { text-align: center; }
-.nolist p { margin-bottom: 30px !important; font-size: 16px !important; font-weight: 500; color: #000 !important; }
+.nolist p { margin-bottom: 30px !important; font-size: 16px !important; color: #828282 !important; }
 .nolist .btn { color: #fff !important; width: 130px; padding: 10px; font-size: 14px; }
 .nolist .btn:hover{ color: #385f8d !important; }
 

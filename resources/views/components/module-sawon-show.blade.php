@@ -102,6 +102,32 @@
 
     <x-inquirybox type="default" :printData="$data" />
 
+    <div class="sidebar_listing_list sidebar_enterinfo">
+        <h4 class="mb20">중개등록정보</h4>
+        <ul class="enterinfo">
+            <li>
+                <p>업체명</p>
+                <p>(주)부동산중개법인 개벽</p>
+            </li>
+            <li>
+                <p>허가번호</p>
+                <p>26470-2018-00085</p>
+            </li>
+            <li>
+                <p>소재지</p>
+                <p>부산 연제구 중앙대로 1091, 6F (연산동, 제세빌딩)</p>
+            </li>
+            <li>
+                <p>대표공인중개사</p>
+                <p>권태용</p>
+            </li>
+            <li>
+                <p>연락처</p>
+                <p>1833-8840</p>
+            </li>
+        </ul>
+    </div>
+
     <x-today-view-sales />
 
 

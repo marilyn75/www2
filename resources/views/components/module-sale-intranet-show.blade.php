@@ -554,6 +554,10 @@ $(window).on('load', function() {
         <h4 class="mb20">중개등록정보</h4>
         <ul class="enterinfo">
             <li>
+                <p>업체명</p>
+                <p>(주)부동산중개법인 개벽</p>
+            </li>
+            <li>
                 <p>허가번호</p>
                 <p>26470-2018-00085</p>
             </li>
