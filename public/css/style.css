@@ -17141,7 +17141,9 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 }
 .dataTables_filter label { color: #000; }
 .sign_up_form_w .btn-log:hover{ background: #385F8D; color: #fff; }
-.phone_num_chk { display: flex; }
+.phone_num_chk { display: flex; position: relative; }
+.num_chk_btn { position: absolute; cursor: pointer; right: 0; font-size: 14px; background: #385f8d; border: none; color: #fff; padding: 6px 20px; border-radius: 5px; }
+.num_chk_btn:focus, .num_chk_btn:active { outline: none; }
 
 
 
