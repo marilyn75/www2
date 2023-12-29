@@ -67,7 +67,8 @@ class User extends Authenticatable
         'register' => [
             'name' => 'required|max:20',
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:6|max:30|confirmed'
+            'password' => 'required|min:6|max:30|confirmed',
+            'isCert' => 'required',
         ],
         // 패스워드변경
         'changepassword' => [

@@ -27,12 +27,15 @@ require __DIR__.'/admin.php';
 
 // 회원관련
 Route::prefix('/member')->group(function(){
-    Route::get('register', [App\Http\Controllers\Member\RegisterController::class, 'index'])->name('register')->middleware('guest');
+    Route::get('agree', [App\Http\Controllers\Member\RegisterController::class, 'index'])->name('agree')->middleware('guest');
+    Route::post('agree', [App\Http\Controllers\Member\RegisterController::class, 'handleAgree'])->middleware('guest');
+    Route::get('register', [App\Http\Controllers\Member\RegisterController::class, 'store'])->name('register')->middleware('guest');
     Route::post('register', [App\Http\Controllers\Member\RegisterController::class, 'store'])->middleware('guest');
+    Route::post('sendCertNum', [App\Http\Controllers\Member\RegisterController::class, 'sendCertNum'])->name('sendCertNum');    // 휴대폰 인증번호 전송
+    Route::post('confirmCertNum', [App\Http\Controllers\Member\RegisterController::class, 'confirmCertNum'])->name('confirmCertNum');    // 휴대폰 인증번호 확인
 
     Route::get('changepw', [App\Http\Controllers\Member\ChangePasswordController::class, 'index'])->name('changepw')->middleware('auth');
     Route::post('changepw', [App\Http\Controllers\Member\ChangePasswordController::class, 'update'])->middleware('auth');
-
     Route::get('profile', [App\Http\Controllers\Member\ProfileController::class, 'index'])->name('profile')->middleware('auth');
     Route::post('profile', [App\Http\Controllers\Member\ProfileController::class, 'update'])->middleware('auth');
     Route::get('mypage', [App\Http\Controllers\Member\ProfileController::class, 'mypage'])->name('mypage')->middleware('auth');
@@ -81,6 +84,7 @@ Route::prefix('/common')->group(function(){
     // 파일 다운로드
     Route::get('/fdn/{id}', [App\Http\Class\lib\FileClass::class, 'download'])->name('common.file.download');
     Route::get('/fv/{id}', [App\Http\Class\lib\FileClass::class, 'viewfile'])->name('common.file.view');
+    
 });
 
 Route::match(['get', 'post'], '/page/{id}', [App\Http\Controllers\Web\PageController::class, 'index'])->name('page');

@@ -49,7 +49,7 @@
                             <div class="log_bar"></div>
                             <a class="tdu" href="#">비밀번호 찾기</a>
                             <div class="log_bar"></div>
-                            <a class="tdu" href="{{ route('register') }}">회원가입</a>
+                            <a class="tdu" href="{{ route('agree') }}">회원가입</a>
                         </div>
                         <!-- <div class="row mt40">
                             <div class="col-lg">

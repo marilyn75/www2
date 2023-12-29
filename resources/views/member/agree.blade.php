@@ -14,10 +14,9 @@
                     </div>
                     <div class="details">
                         @include('include.messagebox')
-                        <form action="{{ url(route('register')) }}" method="POST">
+                        <form action="{{ route('agree') }}" method="POST">
                             @csrf
                             <input type="hidden" name="mode" value="form">
-                            
                             {{-- 전체동의 --}}
                             <div class="form-group custom-control custom-checkbox agree_bx mb40">
                                 <input type="checkbox" class="custom-control-input" id="exampleCheck3" name="agree3" value="3">
