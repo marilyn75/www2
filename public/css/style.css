@@ -17145,7 +17145,22 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .phone_num_chk { display: flex; position: relative; }
 .num_chk_btn { position: absolute; cursor: pointer; right: 0; font-size: 14px; background: #385f8d; border: none; color: #fff; padding: 6px 20px; border-radius: 5px; }
 .num_chk_btn:focus, .num_chk_btn:active { outline: none; }
+.finish_agr { 
+  position: absolute;
+  right: 0;
+  top: 14px;
+  font-size: 14px;
+  color: #385f8d;
+  font-weight: 500;
+ }
+ .finish_agr i { margin-right: 5px; }
+ input[type="number"]::-webkit-outer-spin-button,
+ input[type="number"]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
 
+ 
 
 
 /* 약관동의 */
