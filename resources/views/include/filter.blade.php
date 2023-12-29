@@ -55,11 +55,11 @@
                 <div class="form_control">
                     <!-- min -->
                     <div class="form_control_container">
-                        <input class="form_price" type="number" name="fromPrice" id="fromInput" value="0" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
+                        <input class="form_price" type="text" name="fromPrice" id="fromInput" value="0" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
                     </div>
                     <!-- max -->
                     <div class="form_control_container">
-                        <input class="form_price" type="number" name="toPrice" id="toInput" value="{{ $maxPriceNArea->maxPrice }}" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
+                        <input class="form_price" type="text" name="toPrice" id="toInput" value="{{ $maxPriceNArea->maxPrice }}" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
                     </div>
                 </div>
                 <div class="sliders_control">
@@ -84,11 +84,11 @@
                 <div class="form_control">
                     <!-- min -->
                     <div class="form_control_container">
-                        <input class="form_area input_area" type="number" name="fromArea" id="fromAreaInput" value="0" min="0" max="{{ $maxPriceNArea->maxArea }}" />
+                        <input class="form_area input_area" type="text" name="fromArea" id="fromAreaInput" value="0" min="0" max="{{ $maxPriceNArea->maxArea }}" />
                     </div>
                     <!-- max -->
                     <div class="form_control_container">
-                        <input class="form_area input_area" type="number" name="toArea" id="toAreaInput" value="{{ $maxPriceNArea->maxArea }}" min="0" max="{{ $maxPriceNArea->maxArea }}" />
+                        <input class="form_area input_area" type="text" name="toArea" id="toAreaInput" value="{{ $maxPriceNArea->maxArea }}" min="0" max="{{ $maxPriceNArea->maxArea }}" />
                     </div>
                 </div>
                 <div class="sliders_control">

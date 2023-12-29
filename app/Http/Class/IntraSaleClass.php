@@ -27,12 +27,10 @@ class IntraSaleClass{
         $data = $request->all();
         if(empty($data) && !empty($_COOKIE["filter_condition"])){
             $data = json_decode($_COOKIE["filter_condition"], true);
-            debug("쿠키",$data);
         }else{
             // 검색조건 저장 쿠키
             $cookie = $data;
             unset($cookie['_token'],$cookie['page']);
-            debug("쿠키",$cookie);
             setcookie("filter_condition", json_encode($cookie), time()+3600);
         }
         
@@ -87,8 +85,8 @@ class IntraSaleClass{
             // 필터조건 e ///////////////////////////////////////////////////////////
         }
 
-        if($request['mode']!="recommend"){
-            $model->orderBy('isRecom','desc');
+        if($request['mode']=="recommend"){
+            $model->orderBy('isRecom','desc')->orderBy('reg_date','desc');
         }elseif(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
             if(empty($arrSort[1])) $arrSort[1] = 'asc';

@@ -77,6 +77,8 @@ class NewspaperAdClass{
             $return['link'] = $return['view_link'];
         }
 
+        $return['link'] = $return['down_link']; // 피씨, 모바일 모두 다운로드로
+
         return $return;
     }
 

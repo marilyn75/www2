@@ -65,20 +65,23 @@
             $("input[name='location']").val(oldCond.location);
         }
         if(oldCond.toPrice){
-            frm.fromPrice.value = oldCond.fromPrice;
-            frm.toPrice.value = oldCond.toPrice;
+            frm.fromPrice.value = comma(oldCond.fromPrice);
+            frm.toPrice.value = comma(oldCond.toPrice);
             controlFromInput(fromSlider, fromInput, toInput, toSlider);
             controlToInput(toSlider, fromInput, toInput, toSlider);
+        }else{
+            frm.toPrice.value = comma(frm.toPrice.value);
         }
         if(oldCond.toArea){
             if(oldCond.area_unit=='p' && $("#area_unit").val() != 'p'){
                 tranBtnClick();
             }
-            frm.fromArea.value = oldCond.fromArea;
-            frm.toArea.value = oldCond.toArea;
-            controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-            controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-            console.log('oldCond.toArea');
+            frm.fromArea.value = comma(oldCond.fromArea);
+            frm.toArea.value = comma(oldCond.toArea);
+            controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+            controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        }else{
+            frm.toArea.value = comma(frm.toArea.value);
         }
         console.log('fromSlider',fromSlider);
     }
@@ -255,63 +258,64 @@
         hideAllSelectBoxes();
     });
 
-    function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
-        const [from, to] = getParsed(fromInput, toInput);
-        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-        if (from > to) {
-            fromSlider.value = to;
-            fromInput.value = to;
-        } else {
-            fromSlider.value = from;
-        }
-    }
+    // function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+    //     const [from, to] = getParsed(fromInput, toInput);
+    //     fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+    //     if (from > to) {
+    //         fromSlider.value = to;
+    //         fromInput.value = to;
+    //     } else {
+    //         fromSlider.value = from;
+    //     }
+    // }
 
-    function controlToInput(toSlider, fromInput, toInput, controlSlider) {
-        const [from, to] = getParsed(fromInput, toInput);
-        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-        setToggleAccessible(toInput);
-        if (from <= to) {
-            toSlider.value = to;
-            toInput.value = to;
-        } else {
-            toInput.value = from;
-        }
-    }
+    // function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+    //     const [from, to] = getParsed(fromInput, toInput);
+    //     fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+    //     setToggleAccessible(toInput);
+    //     if (from <= to) {
+    //         toSlider.value = to;
+    //         toInput.value = to;
+    //     } else {
+    //         toInput.value = from;
+    //     }
+    // }
 
-    function controlFromSlider(fromSlider, toSlider, fromInput) {
-        const [from, to] = getParsed(fromSlider, toSlider);
-        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-        if (from > to) {
-            fromSlider.value = to;
-            fromInput.value = to;
-        } else {
-            fromInput.value = from;
-        }
-    }
+    // function controlFromSlider(fromSlider, toSlider, fromInput) {
+    //     const [from, to] = getParsed(fromSlider, toSlider);
+    //     fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+    //     if (from > to) {
+    //         fromSlider.value = to;
+    //         fromInput.value = to;
+    //     } else {
+    //         fromInput.value = from;
+    //     }
+    // }
 
-    function controlToSlider(fromSlider, toSlider, toInput) {
-        const [from, to] = getParsed(fromSlider, toSlider);
-        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-        setToggleAccessible(toSlider);
-        if (from <= to) {
-            toSlider.value = to;
-            toInput.value = to;
-        } else {
-            toInput.value = from;
-            toSlider.value = from;
-        }
-    }
+    // function controlToSlider(fromSlider, toSlider, toInput) {
+    //     const [from, to] = getParsed(fromSlider, toSlider);
+    //     fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+    //     setToggleAccessible(toSlider);
+    //     if (from <= to) {
+    //         toSlider.value = to;
+    //         toInput.value = to;
+    //     } else {
+    //         toInput.value = from;
+    //         toSlider.value = from;
+    //     }
+    // }
 
     function getParsed(currentFrom, currentTo) {
-        const from = parseInt(currentFrom.value, 10);
-        const to = parseInt(currentTo.value, 10);
+        const from = parseInt(uncomma(currentFrom.value), 10);
+        const to = parseInt(uncomma(currentTo.value), 10);
         return [from, to];
     }
 
     function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
         const rangeDistance = to.max - to.min;
-        const fromPosition = from.value - to.min;
-        const toPosition = to.value - to.min;
+        const fromPosition = uncomma(from.value) - to.min;
+        const toPosition = uncomma(to.value) - to.min;
+
         controlSlider.style.background = `linear-gradient(
         to right,
         ${sliderColor} 0%,
@@ -322,9 +326,9 @@
         ${sliderColor} 100%)`;
     }
 
-    function setToggleAccessible(currentTarget) {
-        toSlider = document.querySelector('#toSlider');
-        if (Number(currentTarget.value) <= 0) {
+    function setToggleAccessible(currentTarget, toSlider) {
+        // toSlider = document.querySelector('#toSlider');
+        if (Number(uncomma(currentTarget.value)) <= 0) {
             toSlider.style.zIndex = 2;
         } else {
             toSlider.style.zIndex = 0;
@@ -347,8 +351,8 @@
         $(".form_area").toggleClass("up");
         var max = $('.input_area').attr('max');
         var min = $('.input_area').attr('min');
-        var fval = $('#fromAreaInput').val();
-        var tval = $('#toAreaInput').val();
+        var fval = uncomma($('#fromAreaInput').val());
+        var tval = uncomma($('#toAreaInput').val());
 
         if($(".form_area").hasClass('up')){ // 평
             $("#area_unit").val('p');
@@ -365,87 +369,89 @@
         }
         $('.input_area').attr('max', max);
         $('.input_area').attr('min', min);
-        $('#fromAreaInput').val(fval);
-        $('#toAreaInput').val(tval);
-        controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-        controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+
+        $('#fromAreaInput').val(comma(fval));
+        $('#toAreaInput').val(comma(tval));
+        controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
     }
 
-    function controlFromAreaInput(fromSlider, fromInput, toInput, controlSlider) {
+    function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
         const [from, to] = getParsed(fromInput, toInput);
         fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
         if (from > to) {
             fromSlider.value = to;
-            fromInput.value = to;
+            fromInput.value = comma(to);
         } else {
             fromSlider.value = from;
+            fromInput.value = comma(from);
         }
     }
 
-    function controlToAreaInput(toSlider, fromInput, toInput, controlSlider) {
+    function controlToInput(toSlider, fromInput, toInput, controlSlider) {
         const [from, to] = getParsed(fromInput, toInput);
         fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-        setToggleAccessible(toInput);
+        setToggleAccessible(toInput, toSlider);
         if (from <= to) {
             toSlider.value = to;
-            toInput.value = to;
+            toInput.value = comma(to);
         } else {
-            toInput.value = from;
+            toInput.value = comma(from);
         }
     }
 
-    function controlFromAreaSlider(fromSlider, toSlider, fromInput) {
+    function controlFromSlider(fromSlider, toSlider, fromInput) {
         const [from, to] = getParsed(fromSlider, toSlider);
         fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
         if (from > to) {
             fromSlider.value = to;
-            fromInput.value = to;
+            fromInput.value = comma(to);
         } else {
-            fromInput.value = from;
+            fromInput.value = comma(from);
         }
     }
 
-    function controlToAreaSlider(fromSlider, toSlider, toInput) {
+    function controlToSlider(fromSlider, toSlider, toInput) {
         const [from, to] = getParsed(fromSlider, toSlider);
         fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-        setToggleAccessible(toSlider);
+        setToggleAccessible(toSlider, toSlider);
         if (from <= to) {
             toSlider.value = to;
-            toInput.value = to;
+            toInput.value = comma(to);
         } else {
-            toInput.value = from;
+            toInput.value = comma(from);
             toSlider.value = from;
         }
     }
 
-    function getParsed(currentFrom, currentTo) {
-        const from = parseInt(currentFrom.value, 10);
-        const to = parseInt(currentTo.value, 10);
-        return [from, to];
-    }
+    // function getParsed(currentFrom, currentTo) {
+    //     const from = parseInt(uncomma(currentFrom.value), 10);
+    //     const to = parseInt(uncomma(currentTo.value), 10);
+    //     return [from, to];
+    // }
 
-    function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-        const rangeDistance = to.max - to.min;
-        const fromPosition = from.value - to.min;
-        const toPosition = to.value - to.min;
-        controlSlider.style.background = `linear-gradient(
-        to right,
-        ${sliderColor} 0%,
-        ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
-        ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
-        ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%,
-        ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%,
-        ${sliderColor} 100%)`;
-    }
+    // function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+    //     const rangeDistance = to.max - to.min;
+    //     const fromPosition = uncomma(from.value) - to.min;
+    //     const toPosition = uncomma(to.value) - to.min;
+    //     controlSlider.style.background = `linear-gradient(
+    //     to right,
+    //     ${sliderColor} 0%,
+    //     ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
+    //     ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
+    //     ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%,
+    //     ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%,
+    //     ${sliderColor} 100%)`;
+    // }
 
-    function setToggleAccessible(currentTarget) {
-        toAreaSlider = document.querySelector('#toAreaSlider');
-        if (Number(currentTarget.value) <= 0) {
-            toAreaSlider.style.zIndex = 2;
-        } else {
-            toAreaSlider.style.zIndex = 0;
-        }
-    }
+    // function setToggleAccessible(currentTarget) {
+    //     toAreaSlider = document.querySelector('#toAreaSlider');
+    //     if (Number(currentTarget.value) <= 0) {
+    //         toAreaSlider.style.zIndex = 2;
+    //     } else {
+    //         toAreaSlider.style.zIndex = 0;
+    //     }
+    // }
 
     var fromAreaSlider = document.querySelector('#fromAreaSlider');
     var toAreaSlider = document.querySelector('#toAreaSlider');
@@ -465,7 +471,7 @@
         toAreaInput = document.querySelector('#toAreaInput');
 
         fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-        setToggleAccessible(toSlider);
+        setToggleAccessible(toSlider, toSlider);
 
         fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
         toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
@@ -473,12 +479,12 @@
         toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
 
         fillSlider(fromAreaSlider, toAreaSlider, '#D9D9D9', '#385f8d', toAreaSlider);
-        setToggleAccessible(toAreaSlider);
+        setToggleAccessible(toAreaSlider, toAreaSlider);
 
-        fromAreaSlider.oninput = () => controlFromAreaSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
-        toAreaSlider.oninput = () => controlToAreaSlider(fromAreaSlider, toAreaSlider, toAreaInput);
-        fromAreaInput.oninput = () => controlFromAreaInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-        toAreaInput.oninput = () => controlToAreaInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        fromAreaSlider.oninput = () => controlFromSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
+        toAreaSlider.oninput = () => controlToSlider(fromAreaSlider, toAreaSlider, toAreaInput);
+        fromAreaInput.oninput = () => controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        toAreaInput.oninput = () => controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
 
         console.log('initInputRange');
     }
