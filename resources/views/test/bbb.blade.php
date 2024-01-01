@@ -7,7 +7,7 @@
  <div class="container container_w">
     <section class="intro_top pb100">
         <h2 class="intro_tit mont">GYEMOIM INC.</h2>
-        <h2 class="intro_tit">부동산은 계약을 통해 완성됩니다.<br>계약을 필요로 하는 사람들의 모임,</h2>
+        <h2 class="intro_tit">부동산 투자의 안전한 시작<br>우리의 경험이 만들어낸 최고의 매물과 함게 하세요.</h2>
         <p class="intro_txt">모두의 선택을 더 나은 방향으로 이끄는 곳입니다.</p>
         <p class="intro_txt"><br>부동산 시세를 이해하는 지식을 갖추었나요?<br>이제 우리의 경험이 빚어낸 최고의 매물과 함께 지혜로운 선택을 할 차례입니다.<br>부동산
             투자의 안전한 시작 <span class="mont">GYEMOIM INC.&nbsp;</span>과 함께하세요.</p>

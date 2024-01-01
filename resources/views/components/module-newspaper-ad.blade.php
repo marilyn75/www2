@@ -32,11 +32,15 @@
         $printData = App\Http\Class\NewspaperAdClass::getPrintData($_data);
         
         @endphp
-        <div class="col-md-4 col-lg-3">
+        <div class="col-md-6">
             <div class="article_brd">
-                <p>{{ $printData['news_txt'] }} 신문광고</p>
-                <p class="mont">{{ $printData['pub_date'] }}</p>
-                <a href="{{ $printData['link'] }}" target="_blank" class="pdf_btn" >PDF Download<i class="ri-file-download-line"></i></a>
+                <p class="article_cate">{{ $printData['news_txt'] }}</p>
+                <h2>부동산중개법인 개벽 신문광고</h2>
+                <div class="article_d">
+                    <i class="ri-time-line"></i>   
+                    <p class="mont date">{{ $printData['pub_date'] }}</p>
+                </div>
+                {{-- <a href="{{ $printData['link'] }}" target="_blank" class="pdf_btn" >PDF Download<i class="ri-file-download-line"></i></a> --}}
             </div>
         </div>
         @endforeach

@@ -17160,7 +17160,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
      margin: 0;
  }
 
- 
+
 
 
 /* 약관동의 */
@@ -17315,8 +17315,6 @@ table.dataTable tbody tr:hover { background: #f5f5f5; }
 /* .ad_article { height: 100vh; } */
 .article_brd { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 30px; cursor: pointer; border: 1px solid #ebebeb; }
 .article_brd p { font-size: 18px; color: #000; margin: 0; }
-.article_brd p:first-child { font-weight: 500; }
-.article_brd p:nth-child(2)::after { content: ''; display: block; height: 1px; width: 100%; background: #000; margin-top: 20px; margin-bottom: 15px; }
 .pdf_btn { background: transparent; font-weight: 500; border: none; padding: 0; cursor: pointer; font-size: 18px; }
 .pdf_btn:active{ border: transparent; outline: none; }
 .pdf_btn:focus{ border: transparent; outline: none; }
@@ -17332,7 +17330,13 @@ table.dataTable tbody tr:hover { background: #f5f5f5; }
 
 .nodata { justify-content: center; padding: 150px 0 300px; }
 .nodata p { font-size: 16px; color: #828282; text-align: center; margin: 0; }
-/* .table td:first-child{ width: 850px; } */
+
+.article_cate { font-size: 16px !important; background: #385f8d; color: #fff !important; border-radius: 6px;  width: fit-content; padding: 6px 20px; }
+.article_brd h2 { color: #000; font-size: 24px; font-weight: 600; margin-top: 15px; margin-bottom: 55px; }
+.article_brd .date { font-weight: 500; }
+.article_d { display: flex; gap: 5px; align-items: center; }
+.article_d i { font-size: 21px; color: #385f8d; }
+
 
 
 /* 공지사항 */
@@ -17389,7 +17393,7 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 .core h2 { color: #FFF; margin-bottom: 45px; text-align: center; font-size: 40px; font-weight: 500;}
 .intro_boxs { display: flex; justify-content: space-between; gap: 40px; }
 .intro_bx { border-radius: 30px; background: #2B5481; width: 100%;  padding: 130px 0; }
-.intro_bx h2 { font-size: 40px; margin-bottom: 30px; }
+.intro_bx h2 { font-size: 40px; margin-bottom: 30px; font-weight: 700; }
 .intro_bx p { font-size: 24px; color: #fff; text-align: center; }
 
 
