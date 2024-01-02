@@ -61,7 +61,8 @@
             return false;
         }
 
-        var phone = $('#phone').val().replace(/-/g,'');
+        // var phone = $('#phone').val().replace(/-/g,'');
+        var phone = $('#phone').val();
         if(phone.length < 10){
             alert('휴대폰 번호를 정확히 입력하세요.');
             $('#phone').focus();

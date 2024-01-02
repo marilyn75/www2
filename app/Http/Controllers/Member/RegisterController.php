@@ -51,11 +51,19 @@ class RegisterController extends Controller
     // 인증번호 전송
     public function sendCertNum(Request $request){
         $phone = $request->phone;
-        if($request->ajax()){
-            $response = (new SmsClass)->sendPhoneCertNumber($phone, 1);
-            $result = ResultClass::success('인증번호가 전송 되었습니다.', $response);
+
+        // 휴대폰번호 중복체크
+        $cnt = User::where('phone',$phone)->count();
+        if($cnt > 0){
+            $result = ResultClass::fail('이미 가입된 휴대폰 번호입니다.');
         }else{
-            $result = ResultClass::fail('잘못된 요청 입니다.');
+
+            if($request->ajax()){
+                $response = (new SmsClass)->sendPhoneCertNumber($phone, 1);
+                $result = ResultClass::success('인증번호가 전송 되었습니다.', $response);
+            }else{
+                $result = ResultClass::fail('잘못된 요청 입니다.');
+            }
         }
 
         return $result->jsonResult();
