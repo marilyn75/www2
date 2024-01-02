@@ -17203,6 +17203,12 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 }
 .change_pw .btn-log:hover{ background: #385F8D; color: #fff; }
 
+.found_inf p { color: #828282; font-size: 18px; } 
+.found_inf h3 { color: #333; font-weight: 600; } 
+
+
+
+
 /* 게시물 */
 .packages_table .table .thead-light th, .savesearched_table .table .thead-light th, .property_table .table .thead-light th{
   background: transparent;
@@ -17315,9 +17321,9 @@ table.dataTable tbody tr:hover { background: #f5f5f5; }
 /* .ad_article { height: 100vh; } */
 .article_brd { background: #fff; padding: 25px; border-radius: 10px; margin-bottom: 30px; cursor: pointer; border: 1px solid #ebebeb; }
 .article_brd p { font-size: 18px; color: #000; margin: 0; }
-.pdf_btn { background: transparent; font-weight: 500; border: none; padding: 0; cursor: pointer; font-size: 18px; }
-.pdf_btn:active{ border: transparent; outline: none; }
-.pdf_btn:focus{ border: transparent; outline: none; }
+.pdf_btn { color: #385f8d; background: transparent; font-weight: 500; border: none; padding: 0; cursor: pointer; font-size: 18px; }
+.pdf_btn:active{ color: #385f8d; border: transparent; outline: none; }
+.pdf_btn:focus{ color: #385f8d; border: transparent; outline: none; }
 .pdf_btn i { margin-left: 10px; }
 .article_top { display: flex; justify-content: space-between; width: 100%; margin-top: 20px; }
 .article_top .search_option_two { width: 195px; }
@@ -17331,12 +17337,12 @@ table.dataTable tbody tr:hover { background: #f5f5f5; }
 .nodata { justify-content: center; padding: 150px 0 300px; }
 .nodata p { font-size: 16px; color: #828282; text-align: center; margin: 0; }
 
-.article_cate { font-size: 16px !important; background: #385f8d; color: #fff !important; border-radius: 6px;  width: fit-content; padding: 6px 20px; }
+.article_cate { font-size: 16px !important; background: #385f8d; color: #fff !important; border-radius: 6px;  width: fit-content; height: 38px; padding: 6px 18px; }
 .article_brd h2 { color: #000; font-size: 24px; font-weight: 600; margin-top: 15px; margin-bottom: 55px; }
 .article_brd .date { font-weight: 500; }
 .article_d { display: flex; gap: 5px; align-items: center; }
 .article_d i { font-size: 21px; color: #385f8d; }
-
+.article_fot { display: flex; align-items: center; justify-content: space-between; }
 
 
 /* 공지사항 */
@@ -17870,6 +17876,7 @@ code {
   .about_us p { font-size: 16px; }
   .contact_us p { font-size: 16px; }
   .intro_boxs { display: grid; justify-content: center; }
+  .my_bx_rg { display: none; }
 
 }
 @media (max-width: 767.98px) {

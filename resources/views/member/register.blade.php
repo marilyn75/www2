@@ -20,13 +20,13 @@
                             @csrf
                             <input type="hidden" name="isCert" id="isCert" value="{{ old('isCert') }}">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="사용자 이름" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" value="{{ old('name') }}">
                             </div>
                              <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="이메일" value="{{ old('email') }}">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요" value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" >
+                                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요" >
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="비밀번호 확인" >
@@ -34,8 +34,6 @@
                             <div class="form-group phone_num_chk">
                                 <input type="text" class="form-control" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" value="{{ old('phone') }}" options="phone">
                                 <span class="cert_btn"><button type="button" class="num_chk_btn" id="certRequestBtn">인증 요청</button></span>
-                                {{-- 인증완료 시 --}}
-                                {{-- <p class="finish_agr"><i class="ri-checkbox-circle-line"></i>인증완료</p> --}}
                             </div>
                             <div class="form-group phone_num_chk" id="divCertNumber">
                                 <input type="text" class="form-control" id="confirm" name="confirm" placeholder="인증번호를 입력하세요." disabled maxlength="4">

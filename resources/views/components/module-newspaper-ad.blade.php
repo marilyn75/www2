@@ -36,11 +36,13 @@
             <div class="article_brd">
                 <p class="article_cate">{{ $printData['news_txt'] }}</p>
                 <h2>부동산중개법인 개벽 신문광고</h2>
-                <div class="article_d">
-                    <i class="ri-time-line"></i>   
-                    <p class="mont date">{{ $printData['pub_date'] }}</p>
+                <div class="article_fot">
+                    <div class="article_d">
+                        <i class="ri-time-line"></i>   
+                        <p class="mont date">{{ $printData['pub_date'] }}</p>
+                    </div>
+                    <a href="{{ $printData['link'] }}" target="_blank" class="pdf_btn" >PDF Download<i class="ri-file-download-line"></i></a>
                 </div>
-                {{-- <a href="{{ $printData['link'] }}" target="_blank" class="pdf_btn" >PDF Download<i class="ri-file-download-line"></i></a> --}}
             </div>
         </div>
         @endforeach
