@@ -67,14 +67,14 @@ class IntraSaleClass{
 
             // 가격
             if(!empty($data['toPrice'])){
-                $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . $data['fromPrice'])
-                    ->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . $data['toPrice']);
+                $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . str_replace(',','',$data['fromPrice']))
+                    ->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . str_replace(',','',$data['toPrice']));
             }
 
             // 거래면적
             if(!empty($data['toArea'])){
-                $fromArea = $data['fromArea'];
-                $toArae = $data['toArea'];
+                $fromArea = str_replace(',','',$data['fromArea']);
+                $toArae = str_replace(',','',$data['toArea']);
                 if($data['area_unit']=='p'){
                     $fromArea = $fromArea * 3.305785;
                     $toArae = $toArae * 3.305785;
