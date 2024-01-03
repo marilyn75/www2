@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해주세요"
-                                value="@if (Session::has('email')) {{ Session::get('email') }} @elseif (isset($_COOKIE["
+                                value="@if (@$_GET['email']) {{ $_GET['email'] }} @elseif (Session::has('email')) {{ Session::get('email') }} @elseif (isset($_COOKIE["
                                 email"])) {{ $_COOKIE["email"] }} @else {{ old('email') }} @endif">
                         </div>
                         <div class="form-group">
@@ -45,24 +45,13 @@
                         </div>
                         <button type="submit" class="btn btn-log btn-block btn-thm2">로그인</button>
                         <div class="form-group log_bot">
-                            <a class="tdu" href="#">이메일 찾기</a>
+                            <a class="tdu" href="{{ route('findid') }}">이메일 찾기</a>
                             <div class="log_bar"></div>
-                            <a class="tdu" href="#">비밀번호 찾기</a>
+                            <a class="tdu" href="{{ route('findpw') }}">비밀번호 찾기</a>
                             <div class="log_bar"></div>
                             <a class="tdu" href="{{ route('agree') }}">회원가입</a>
                         </div>
-                        <!-- <div class="row mt40">
-                            <div class="col-lg">
-                                <a href="{{ route('social.login','naver') }}"
-                                    class="btn btn-block color-white bgc-naver mb0"><i
-                                        class="fa fa-facebook float-left mt5"></i> Naver</a>
-                            </div>
-                            <div class="col-lg">
-                                <a href="{{ route('social.login','kakao') }}"
-                                    class="btn btn2 btn-block color-black bgc-kakao mb0"><i
-                                        class="fa fa-google float-left mt5"></i> Kakao</a>
-                            </div>
-                        </div> -->
+
                         <div class="social_btn">
                             <a href="{{ route('social.login','naver') }}">
                                 <div class="sns sns_n">

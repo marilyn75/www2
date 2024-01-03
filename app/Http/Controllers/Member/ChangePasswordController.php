@@ -35,4 +35,37 @@ class ChangePasswordController extends Controller
         return back()
             ->with('success_message','비밀번호가 변경 되었습니다.');
     }
+
+    // 아이디(이메일)찾기
+    public function findid(Request $request){
+        $data = $request->all();
+
+        if($request->method()=='POST'){
+            $rules = [
+                'name'=>'required','phone'=>'required',
+            ];
+            // 유효성 검사
+            $this->validate($request, $rules);
+
+            $userData = User::where(['name'=>$data['name'],'phone'=>$data['phone']])->first();
+            debug($userData);
+            if(empty($userData)){
+                return back()
+                    ->with('error_message','일치하는 회원정보가 없습니다.');
+            }else{
+
+                return view('member.findidok', compact('userData'));
+            }
+            
+        }else{
+            
+
+            return view('member.findid');
+        }
+    }
+
+    // 비밀번호 찾기
+    public function findpw(){
+        return view('member.findpw');
+    }
 }
