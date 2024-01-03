@@ -25,7 +25,6 @@
     @if($data->total()>0)
 
     <div class="row pb100">
-        
         @foreach ($data as $_data)
         @php
         

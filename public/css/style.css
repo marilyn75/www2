@@ -16795,7 +16795,7 @@ swiper-slide img {
 
 /* error page */
 .error_page { padding: 30px; }
-.error_page img { height: 292px; }
+.error_page img { height: 90px; }
 .erro_code h3 { text-align: center; line-height: 32px; }
 .error_page_btns a:first-child { 
   background: #385f8d;
@@ -16880,7 +16880,16 @@ swiper-slide img {
 .chat-icon p { color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; line-height: 20px; }
 .chat-icon i { display: none; }
 .click_chat::after { content: ''; display: block; height: 1px; background: #fff; width: 30px; margin: 0 auto; margin-top: 1px; }
-.main_news h5 { font-size: 20px; color: #000; line-height: 26px; word-break: keep-all; margin-bottom: 10px; }
+.main_news h5 { 
+  font-size: 20px; 
+  color: #000; 
+  line-height: 26px; 
+  word-break: keep-all; 
+  margin-bottom: 10px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .main_news p { color: #828282; font-weight: 500; font-size: 16px; }
 .mn_nws_img { margin-top: 25px !important; border-radius: 10px; margin-top: 20px; background: #F0F0F0; height: 215px; line-height: 215px; text-align: center; }
 .tit_btn { display: flex; justify-content: space-between; align-items: center; }
@@ -16892,7 +16901,7 @@ swiper-slide img {
 .newsp_subtit { margin: 0; }
 .mn_nws_img .thumb { border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 220px; display: flex; }
 .prof .employ_prof_w img{ height: inherit; }
-.hot_list { padding: 0; padding-left: 10px; }
+.hot_list { padding-left: 10px; }
 
 
 
@@ -18072,6 +18081,17 @@ code {
   .about_top .pt80 { padding-top: 22px; }
   .about_content { margin-bottom: 20px; }
 
+  .article_cate { font-size: 14px !important; height: 34px; padding: 5px 15px; }
+  .article_brd h2 { font-size: 20px; }
+  .article_brd { font-size: 16px; }
+  .article_d i { font-size: 19px; }
+  .pdf_btn { font-size: 16px; }
+  .pdf_btn i { font-size: 19px; }
+  .article_top h2 { line-height: 48px; margin: 0; font-size: 20px; }
+  .article_top .search_option_two { width: 160px; }
+  .article_top.mb80 { margin-bottom: 50px; }
+  .article_brd p { font-size: 16px; }
+
 }
 
 
@@ -18128,7 +18148,14 @@ code {
   .core { padding: 70px 0; }
   .intro_boxs { margin-top: 35px; }
 
-
+  .article_cate { font-size: 12px !important; height: 28px; }
+  .article_brd h2 { margin-bottom: 35px; }
+  .article_fot { display: grid; justify-content: normal; }
+  .article_brd { padding: 20px; }
+  .article_top .search_option_two { width: 100px; }
+  .article_top .search_option_two .dropdown button .filter-option { font-size: 16px; }
+  .candidate_revew_select .bootstrap-select>.dropdown-toggle, .grid_list_search_result .bootstrap-select>.dropdown-toggle{ height: 45px; }
+  .article_brd h2 { font-size: 18px; margin-top: 10px; }
 }
 
 
@@ -18173,6 +18200,7 @@ code {
 
   /* main */
   .tit_btn { display: grid; justify-content: normal; }
+
 
 
 }
