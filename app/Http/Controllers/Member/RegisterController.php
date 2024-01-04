@@ -53,7 +53,9 @@ class RegisterController extends Controller
         $phone = $request->phone;
 
         // 휴대폰번호 중복체크
-        $cnt = User::where('phone',$phone)->count();
+        if($request->chkDup=="false") $cnt = 0;
+        else                        $cnt = User::where('phone',$phone)->count();
+
         if($cnt > 0){
             $result = ResultClass::fail('이미 가입된 휴대폰 번호입니다.');
         }else{

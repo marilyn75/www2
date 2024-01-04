@@ -55,6 +55,7 @@ Route::get('social/leave/{provider}',[App\Http\Controllers\Auth\SocialController
 Route::match(['get', 'post'], 'findid', [App\Http\Controllers\Member\ChangePasswordController::class, 'findid'])->name('findid')->middleware('guest');
 // // 비밀번호찾기
 Route::match(['get', 'post'], 'findpw', [App\Http\Controllers\Member\ChangePasswordController::class, 'findpw'])->name('findpw')->middleware('guest');
+Route::match(['get', 'post'], 'findpw/form', [App\Http\Controllers\Member\ChangePasswordController::class, 'findpw_form'])->name('findpw.form')->middleware('guest');
 // Route::post('')
 
 

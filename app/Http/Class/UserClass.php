@@ -3,6 +3,7 @@
 namespace App\Http\Class;
 
 use App\Models\ChatChannel;
+use App\Models\SocialAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -144,5 +145,19 @@ class UserClass{
         }
 
         $user->delete();
+    }
+
+    public static function getUserFromEmail($email)
+    {
+        $id = null;
+        $data = User::where('email',$email)->first();
+        if(empty($data)){
+            $data = SocialAccount::where('email',$email)->first();
+            if(!empty($data)) $id = $data->user_id;
+        }else{
+            $id = $data->id;
+        }
+
+        return new static($id);
     }
 }

@@ -14,8 +14,9 @@
             <div class="col-sm-12 col-lg-6 offset-lg-3">
                 <div class="login_form inner_page login_form_w">
                     @include('include.messagebox')
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('findpw') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="isCert" id="isCert" value="{{ old('isCert') }}">
                         <div class="heading log_sing_intro">
                             <h3>비밀번호 찾기</h3>
                             <p>가입 시 등록한 정보를 입력하시면 비밀번호를 변경하실 수 있습니다.</p>
@@ -43,5 +44,5 @@
     </div>
 </section>
 
-
+@include('member.js.smscert_js')
 @endsection
