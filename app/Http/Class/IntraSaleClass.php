@@ -240,12 +240,11 @@ class IntraSaleClass{
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
         $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
         $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
-        $return['sawon_duty'] = $data->sale->users->first()->sawon->info->duty;
-        $return['sawon_chkcert'] = $data->sale->users->first()->sawon->info->chkcert;
-        $return['sawon_sosok'] = $data->sale->users->first()->sawon->info->sosok;
+        $return['sawon_duty'] = @$data->sale->users->first()->sawon->info->duty;
+        $return['sawon_chkcert'] = @$data->sale->users->first()->sawon->info->chkcert;
+        $return['sawon_sosok'] = @$data->sale->users->first()->sawon->info->sosok;
         // $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);
-        $return['sawon_office_line'] = $data->sale->users->first()->sawon->info->office_line;
-        $return['sawon_chkcert'] = $data->sale->users->first()->sawon->info->chkcert;
+        $return['sawon_office_line'] = @$data->sale->users->first()->sawon->info->office_line;
 
         $return['radmin_photo'] = "/images/sawon-placeholder.png";
         $return['radmin_name'] = "부동산중개법인개벽";
