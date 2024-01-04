@@ -53,7 +53,7 @@ Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialControl
 // 이메일찾기
 Route::match(['get', 'post'], 'findid', [App\Http\Controllers\Member\ChangePasswordController::class, 'findid'])->name('findid')->middleware('guest');
 // // 비밀번호찾기
-// Route::match(['get', 'post'], 'findpw', [App\Http\Controllers\Member\ChangePasswordController::class, 'findpw'])->name('findpw')->middleware('guest');
+Route::match(['get', 'post'], 'findpw', [App\Http\Controllers\Member\ChangePasswordController::class, 'findpw'])->name('findpw')->middleware('guest');
 // Route::post('')
 
 
