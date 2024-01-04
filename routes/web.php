@@ -49,6 +49,7 @@ Route::get('logout',[App\Http\Controllers\Member\LoginController::class, 'logout
 
 Route::get('social/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'login'])->name('social.login');
 Route::get('social/callback/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'callback'])->name('social.callback');
+Route::get('social/leave/{provider}',[App\Http\Controllers\Auth\SocialController::class, 'leave_callback'])->name('social.leave');    // 쇼셜계정 연결끊기 콜백
 
 // 이메일찾기
 Route::match(['get', 'post'], 'findid', [App\Http\Controllers\Member\ChangePasswordController::class, 'findid'])->name('findid')->middleware('guest');

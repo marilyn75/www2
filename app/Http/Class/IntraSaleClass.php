@@ -403,6 +403,7 @@ class IntraSaleClass{
 
     // 관심매물 데이터
     public function getFavoritesData(){
+        $data = [];
         $favorites = $this->getFavorites();
         if($favorites->isSuccess()){
             $ids = $favorites->getData();

@@ -12,7 +12,7 @@ class SocialAccount extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'provider_name', 'provider_id', 'name', 'email', 'token', 'refresh_token', 'expires_in', 'avatar'
+        'user_id', 'provider_name', 'provider_id', 'name', 'email', 'token', 'refresh_token', 'expires_in', 'avatar', 'phone'
     ];
 
     public function user(){
