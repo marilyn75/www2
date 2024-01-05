@@ -16559,7 +16559,7 @@ input[type="range"] {
 .result_filt { margin-bottom: 10px; }
 .filt_li::after { content: ''; display: block; width: 100%; height: 1px; background: #E8E8E8; margin: 20px 0; }
 .filt_li:last-child::after { display: none; }
-.filt_li .dropdown-menu { border-color: #525252; }
+.filt_li .dropdown-menu { border-color: #525252; min-width: 100% !important; transform: translate3d(0px, 0px, 0px) !important; top: 48px !important;}
 .result_filt p { font-size: 16px; font-weight: 500; }
 .result_filt p span { font-weight: 600;  }
 .result_filt .reset_btn { border: none; background: transparent; color: #525252; text-decoration-line: underline; padding: 0; }
