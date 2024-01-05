@@ -24,14 +24,19 @@
                         <div class="found_inf mt40 mb80">
                             <p>이메일 주소</p>
                             <div class="email_wrap">
+                                @if ($userData->hasSocialAccounts()>0)
+                                    @foreach ($userData->socialAccounts as $_account)
+                                <img src="/images/sns/{{ $_account->provider_name }}_find.png" alt=""><h3 class="mont">{{ $_account->email }}</h3>
+                                    @endforeach
+                                @else
+                                <h3 class="mont">{{ $userData->email }}</h3>
+                                @endif
 
                                 {{-- 카카오 계정일 때 --}}
                                 {{-- <img src="/images/sns/kakao_find.png" alt=""> --}}
 
                                 {{-- 네이버 계정일 때 --}}
                                 {{-- <img src="/images/sns/naver_find.png" alt=""> --}}
-
-                                <h3 class="mont">{{ $userData->email }}</h3>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-log btn-block btn-thm2">로그인</button>

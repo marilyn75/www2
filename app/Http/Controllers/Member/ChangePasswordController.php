@@ -50,7 +50,7 @@ class ChangePasswordController extends Controller
             $this->validate($request, $rules);
 
             $userData = User::where(['name'=>$data['name'],'phone'=>$data['phone']])->first();
-            debug($userData);
+            debug($userData->hasSocialAccounts());
             if(empty($userData)){
                 return back()
                     ->with('error_message','일치하는 회원정보가 없습니다.');

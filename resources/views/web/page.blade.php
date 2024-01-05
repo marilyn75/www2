@@ -61,9 +61,7 @@
         @endempty
 
         <div class="">
-            @if ($page->type == 'C')
-            <x-menu-content :page="$page" />
-            @elseif ($page->type == 'B')
+            @if ($page->type == 'B')
             <x-menu-board :page="$page" :request="$request" />
             @elseif ($page->type == 'P')
                 @php
@@ -75,6 +73,9 @@
             @endif
         </div>
     </div>
+    @if ($page->type == 'C')
+    <div><x-menu-content :page="$page" /></div>
+    @endif
 </section>
 
 @endsection
