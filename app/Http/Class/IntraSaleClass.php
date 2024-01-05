@@ -86,7 +86,7 @@ class IntraSaleClass{
         }
 
         if($request['mode']=="recommend"){
-            $model->orderBy('isRecom','desc')->orderBy('reg_date','desc');
+            $model->orderBy('recom_date','desc')->orderBy('reg_date','desc');
         }elseif(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
             if(empty($arrSort[1])) $arrSort[1] = 'asc';

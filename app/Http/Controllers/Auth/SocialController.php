@@ -23,8 +23,8 @@ class SocialController extends Controller
     {
         
         $socialUser = Socialite::driver($provider)->user();
-
-        $phone = $socialUser->user['response']['mobile'];
+        $phone = null;
+        if(!empty($socialUser->user['response']))   $phone = $socialUser->user['response']['mobile'];
 
         $socialAccount = SocialAccount::where([
             'provider_name' => $provider,
