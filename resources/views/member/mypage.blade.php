@@ -63,7 +63,7 @@
                 <div class="tab-content" id="myTabContent2">
 
                     <div id="item1-tab" class="pt50 pb150 tab-pane active">
-                        @if ($data['favorites']->isSuccess())
+                        @if ($data['favorites']->isSuccess() && $data['favorites']->getDataCount() > 0)
                         <div class="row">
                             @foreach ($data['favorites']->getData() as $printData)
                                 <x-item-sale-intranet type='' :printData="$printData" />
