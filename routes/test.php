@@ -24,4 +24,12 @@ Route::get('/test7', function(){
     return view('test.found_pw');
 });
 
+Route::get('/member_leave', function(){
+    return view('test.member_leave');
+});
+
+Route::get('/leave_finish', function(){
+    return view('test.leave_finish');
+});
+
 ?>

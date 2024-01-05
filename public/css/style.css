@@ -17170,7 +17170,29 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .email_wrap { display: flex; gap: 10px; align-items: center; }
 .email_wrap img { height: fit-content; }
 
+.cancel_wrap { text-align: right; padding: 0 10px; margin-bottom: 70px; }
+.agree_bx ul { margin: 0; }
+.agree_bx li { color: #000; word-break: keep-all; }
+.agree_bx p { font-size: 18px; color: #E93C3C; font-weight: 500; line-height: normal; margin-bottom: 20px; word-break: keep-all; }
+.custom-control-label { padding-left: 28px; color: #000; font-weight: 500; font-size: 16px; }
 
+
+
+/* 회원탈퇴 */
+.leave_finish_wrap { text-align: center; }
+.leave_finish_wrap h2 { color: #000; }
+.leave_finish_wrap p { color: #000; font-size: 18px; }
+.leave_finish_wrap .btn2 {
+    margin-top: 90px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    height: 50px;
+    width: 200px;
+    background: #385f8d;
+    border: 1px solid #385f8d;
+}
 
 
 

@@ -97,6 +97,11 @@
                                         <input type="text" class="form-control" id="address_detail" name="address_detail" value="{{ Auth::user()->address_detail }}">
                                     </div>
                                 </div> -->
+                                <div class="cancel_wrap">
+                                    <a href="#">
+                                        회원탈퇴 <i class="ri-arrow-right-s-line"></i>
+                                    </a>
+                                </div>
                                 <div class="col-xl-12 text-center">
                                     <div class="my_profile_setting_input">
                                         <button class="btn btn2">수정하기</button>
