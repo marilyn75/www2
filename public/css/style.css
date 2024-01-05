@@ -16400,9 +16400,8 @@ button.gm-ui-hover-effect:focus {
   padding: 6px 10px; 
   position: relative;
   background: url(../images/resource/won.png) no-repeat;
-  background-position: 72px;
+  background-position: 90px;
   content: '';
-  background-size: 33px;
 }
 .range_container .form_control_container input[type="number"]::-webkit-outer-spin-button,
 .range_container .form_control_container input[type="number"]::-webkit-inner-spin-button{
@@ -17168,6 +17167,9 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
      -webkit-appearance: none;
      margin: 0;
  }
+.email_wrap { display: flex; gap: 10px; align-items: center; }
+.email_wrap img { height: fit-content; }
+
 
 
 
@@ -17213,7 +17215,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .change_pw .btn-log:hover{ background: #385F8D; color: #fff; }
 
 .found_inf p { color: #828282; font-size: 18px; } 
-.found_inf h3 { color: #333; font-weight: 600; } 
+.found_inf h3 { color: #333; font-weight: 600; margin: 0; } 
 
 
 
@@ -17397,6 +17399,23 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 .main_blog_post_content { margin-top: 20px; }
 .thead-light { background: #f0f0f0; }
 .notice_bg { color: #FFF; font-size: 12px; font-weight: 500; padding: 6px 12px; background: #385f8d; border-radius: 30px; margin-right: 5px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  background: #385f8d !important;
+  border: none;
+  border-radius: 20px;
+  color: #fff !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: transparent;
+  border-color: transparent;
+  border-radius: 20px;
+  color: #385f8d !important;
+  font-weight: 600;
+}
+.packages_table .table td, .packages_table .table th, .savesearched_table .table td, .savesearched_table .table th, .property_table .table td, .property_table .table th{
+  font-size: 14px;
+}
+
 
 
 /* about us  */
@@ -18071,7 +18090,7 @@ code {
   .similar_wrap { display: none; }
   .enterinfo li { display: grid; }
 
-  .range_container .form_control_container input { background-position: 100px; }
+  .range_container .form_control_container input { background-position: 115px; }
   .range_container .form_control_container .form_area { background-position: 100px; }
 
   .inner_page_breadcrumb  { height: 280px; }
@@ -18092,6 +18111,7 @@ code {
   .article_top.mb80 { margin-bottom: 50px; }
   .article_brd p { font-size: 16px; }
 
+  .header.stylehome1 { z-index: 999; }
 }
 
 

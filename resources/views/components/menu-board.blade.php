@@ -8,7 +8,8 @@
         var table = new DataTable('.table',{
             "ajax":"{{ route('board.data', $id) }}",
             "columns":[
-                {"data":"id"},
+                // {"data":"id"},
+                {"data":"id", "visible":false},
                 {
                     "data":"title",
                     "render": function(data, type, row) {
@@ -18,12 +19,19 @@
                     }
                 },
                 {"data":"writer"},
-                {"data": "formatted_created_at", "searchable" : false},
+                {
+                    "data": "formatted_created_at", "searchable" : false,
+                    "render": function(data, type, row) {
+                    // 'formatted_created_at' 열을 수정하여 날짜만 표시하도록 변경
+                    return row.formatted_created_at.split(' ')[0];
+                },
+            },
             ],
             processing: true,
             serverSide: true,
             lengthChange: false,
             ordering : false,
+            searching : false,
 
             //info:false,
             "language": {
@@ -163,7 +171,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">제목</th>
                     <th scope="col">작성자</th>
-                    <th scope="col">등록일시</th>
+                    <th scope="col">날짜</th>
                 </tr>
                 </thead>
                 <tbody>
