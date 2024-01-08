@@ -4,6 +4,7 @@
 @else
 
 <script>
+    
     $(document).ready(function(){
         var table = new DataTable('.table',{
             "ajax":"{{ route('board.data', $id) }}",
@@ -40,7 +41,7 @@
             // order:[[0, 'desc']],
 
             "hover" : true,
-            // responsive: true
+            "responsive": true,
         });
         
         $(".table")

@@ -2,6 +2,10 @@
         <div class="container container_w">
             <div>
                 <div class="home5 footer_about_w">
+                    <div class="foot_agr">
+                        <a href="#">이용약관</a>
+                        <a href="#">개인정보처리방침</a>
+                    </div>
                     <p>주식회사 계모임 대표 송대훈</p>
                     <p>부산 연제구 중앙대로 1091, 6F (연산동, 제세빌딩)</p>
                     <div class="footer_info">

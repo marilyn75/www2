@@ -17000,6 +17000,8 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   margin-left: 10px;
 }
 .ftnum p::after { display: none !important; }
+.foot_agr { display: flex; gap: 10px; margin-bottom: 10px; }
+.foot_agr a { color: #fff; font-size: 14px; }
 
 
 /* mypage */
@@ -17181,7 +17183,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 /* 회원탈퇴 */
 .leave_finish_wrap { text-align: center; }
 .leave_finish_wrap h2 { color: #000; }
-.leave_finish_wrap p { color: #000; font-size: 18px; }
+.leave_finish_wrap p { color: #000; font-size: 18px; word-break: keep-all; }
 .leave_finish_wrap .btn2 {
     margin-top: 90px;
     border-radius: 8px;
@@ -18134,6 +18136,10 @@ code {
   .article_brd p { font-size: 16px; }
 
   .header.stylehome1 { z-index: 999; }
+
+
+  .agree_bx p {  }
+
 }
 
 
@@ -18198,6 +18204,13 @@ code {
   .article_top .search_option_two .dropdown button .filter-option { font-size: 16px; }
   .candidate_revew_select .bootstrap-select>.dropdown-toggle, .grid_list_search_result .bootstrap-select>.dropdown-toggle{ height: 45px; }
   .article_brd h2 { font-size: 18px; margin-top: 10px; }
+
+  .leave_finish_wrap h2 { font-size: 24px; }
+  .leave_finish_wrap p { color: #000; font-size: 16px; word-break: keep-all; }
+  .leave_finish_wrap .btn2 {
+      margin-top: 70px;
+  }
+
 }
 
 
