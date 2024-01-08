@@ -17,8 +17,8 @@
             </form> -->
         </div>
         <div class="error_page_btns">
-            <a class="btn btn_error btn-thm " href="index.html">로그인</a>
-            <a class="btn btn_error btn-thm" href="index.html">닫기</a>
+            <a class="btn btn_error btn-thm " href="#" onclick="opener.location.href='{{ route('login') }}';self.close();">로그인</a>
+            <a class="btn btn_error btn-thm" href="#" onclick="self.close();">닫기</a>
         </div>
     </div>
 </div>

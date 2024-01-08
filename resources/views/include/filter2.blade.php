@@ -55,16 +55,18 @@
                 <div class="form_control">
                     <!-- min -->
                     <div class="form_control_container">
-                        <input class="form_price" type="text" name="fromPrice" id="fromInput" value="0" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
+                        <input class="form_price" type="hidden" name="fromPrice" id="fromInput" value="" readonly />
+                        <input class="form_price" type="text" name="fromPrice_txt" id="fromInput_txt" value="최소" readonly />
                     </div>
                     <!-- max -->
                     <div class="form_control_container">
-                        <input class="form_price" type="text" name="toPrice" id="toInput" value="{{ $maxPriceNArea->maxPrice }}" min="0" max="{{ $maxPriceNArea->maxPrice }}" />
+                        <input class="form_price" type="hidden" name="toPrice" id="toInput" value="" readonly />
+                        <input class="form_price" type="text" name="toPrice_txt" id="toInput_txt" value="최대" readonly />
                     </div>
                 </div>
                 <div class="sliders_control">
-                    <input id="fromSlider" type="range" value="0" min="0" max="{{ $maxPriceNArea->maxPrice }}" step="10" />
-                    <input id="toSlider" type="range" value="{{ $maxPriceNArea->maxPrice }}" min="0"max="{{ $maxPriceNArea->maxPrice }}" step="10" />
+                    <input id="fromSlider" name="fromPriceRange" type="range" value="0" min="0" max="12" step="1" />
+                    <input id="toSlider" name="toPriceRange" type="range" value="12" min="0"max="12" step="1" />
                 </div>
             </div>
         </li>
@@ -84,16 +86,18 @@
                 <div class="form_control">
                     <!-- min -->
                     <div class="form_control_container">
-                        <input class="form_area input_area" type="text" name="fromArea" id="fromAreaInput" value="0" min="0" max="{{ $maxPriceNArea->maxArea }}" />
+                        <input class="form_area" type="hidden" name="fromArea" id="fromAreaInput" value="" />
+                        <input class="form_area" type="text" name="fromArea_txt" id="fromAreaInput_txt" value="최소" min="0" max="12" readonly />
                     </div>
                     <!-- max -->
                     <div class="form_control_container">
-                        <input class="form_area input_area" type="text" name="toArea" id="toAreaInput" value="{{ $maxPriceNArea->maxArea }}" min="0" max="{{ $maxPriceNArea->maxArea }}" />
+                        <input class="form_area" type="hidden" name="toArea" id="toAreaInput" value="" />
+                        <input class="form_area" type="text" name="toArea_txt" id="toAreaInput_txt" value="최대" min="0" max="12" />
                     </div>
                 </div>
                 <div class="sliders_control">
-                    <input class="input_area" id="fromAreaSlider" type="range" value="0" min="0" max="{{ $maxPriceNArea->maxArea }}" />
-                    <input class="input_area" id="toAreaSlider" type="range" value="{{ $maxPriceNArea->maxArea }}" min="0" max="{{ $maxPriceNArea->maxArea }}" />
+                    <input id="fromAreaSlider" name="fromAreaRange" type="range" value="0" min="0" max="12" step="1" />
+                    <input id="toAreaSlider" name="toAreaRange" type="range" value="12" min="0" max="12" step="1" />
                 </div>
             </div>
         </li>
@@ -109,6 +113,57 @@
 </div>
 
 <script>
+    var arrPriceRange = [
+        {'title':'최소', 'class':''},
+        {'title':'5천만', 'class':'5000'},
+        {'title':'1억', 'class':'10000'},
+        {'title':'2억', 'class':'20000'},
+        {'title':'3억', 'class':'30000'},
+        {'title':'5억', 'class':'50000'},
+        {'title':'10억', 'class':'100000'},
+        {'title':'20억', 'class':'200000'},
+        {'title':'30억', 'class':'300000'},
+        {'title':'50억', 'class':'500000'},
+        {'title':'100억', 'class':'1000000'},
+        {'title':'300억', 'class':'3000000'},
+        {'title':'최대', 'class':''}, 
+    ];
+
+    var arrAreaMRange = [
+        {'title':'최소', 'class':''},
+        {'title':'30', 'class':'30'},
+        {'title':'50', 'class':'50'},
+        {'title':'100', 'class':'100'},
+        {'title':'150', 'class':'150'},
+        {'title':'200', 'class':'200'},
+        {'title':'300', 'class':'300'},
+        {'title':'500', 'class':'500'},
+        {'title':'800', 'class':'800'},
+        {'title':'1,000', 'class':'1000'},
+        {'title':'3,000', 'class':'3000'},
+        {'title':'5,000', 'class':'5000'},
+        {'title':'최대', 'class':''}, 
+    ];
+
+    var arrAreaPRange = [
+        {'title':'최소', 'class':''},
+        {'title':'10', 'class':'33.057851'},
+        {'title':'20', 'class':'66.115702'},
+        {'title':'30', 'class':'99.173554'},
+        {'title':'40', 'class':'132.231405'},
+        {'title':'50', 'class':'165.289256'},
+        {'title':'100', 'class':'330.578512'},
+        {'title':'200', 'class':'661.157025'},
+        {'title':'300', 'class':'991.735537'},
+        {'title':'500', 'class':'1652.89256'},
+        {'title':'1,000', 'class':'3305.78512'},
+        {'title':'3,000', 'class':'9917.35537'},
+        {'title':'최대', 'class':''}, 
+    ];
+
+    var arrAreaRange = arrAreaMRange;
+
+
     // filter script s//////////////////////////////////
     function showSelectBox(type) {
         document.getElementById('residentialSelectBox').classList.add('hidden');
@@ -125,53 +180,6 @@
     document.getElementById('option1').addEventListener('click', function() {
         hideAllSelectBoxes();
     });
-
-    // function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
-    //     const [from, to] = getParsed(fromInput, toInput);
-    //     fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-    //     if (from > to) {
-    //         fromSlider.value = to;
-    //         fromInput.value = to;
-    //     } else {
-    //         fromSlider.value = from;
-    //     }
-    // }
-
-    // function controlToInput(toSlider, fromInput, toInput, controlSlider) {
-    //     const [from, to] = getParsed(fromInput, toInput);
-    //     fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-    //     setToggleAccessible(toInput);
-    //     if (from <= to) {
-    //         toSlider.value = to;
-    //         toInput.value = to;
-    //     } else {
-    //         toInput.value = from;
-    //     }
-    // }
-
-    // function controlFromSlider(fromSlider, toSlider, fromInput) {
-    //     const [from, to] = getParsed(fromSlider, toSlider);
-    //     fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-    //     if (from > to) {
-    //         fromSlider.value = to;
-    //         fromInput.value = to;
-    //     } else {
-    //         fromInput.value = from;
-    //     }
-    // }
-
-    // function controlToSlider(fromSlider, toSlider, toInput) {
-    //     const [from, to] = getParsed(fromSlider, toSlider);
-    //     fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-    //     setToggleAccessible(toSlider);
-    //     if (from <= to) {
-    //         toSlider.value = to;
-    //         toInput.value = to;
-    //     } else {
-    //         toInput.value = from;
-    //         toSlider.value = from;
-    //     }
-    // }
 
     function getParsed(currentFrom, currentTo) {
         const from = parseInt(uncomma(currentFrom.value), 10);
@@ -217,114 +225,81 @@
     function tranBtnClick(){
         console.log('tranBtnClick');
         $(".form_area").toggleClass("up");
-        var max = $('.input_area').attr('max');
-        var min = $('.input_area').attr('min');
-        var fval = uncomma($('#fromAreaInput').val());
-        var tval = uncomma($('#toAreaInput').val());
+        
 
         if($(".form_area").hasClass('up')){ // 평
             $("#area_unit").val('p');
-            max = Math.round(max * 0.3025);
-            min = Math.round(min * 0.3025);
-            fval = Math.round(fval * 0.3025);
-            tval = Math.round(tval * 0.3025);
+            arrAreaRange = arrAreaPRange;
         }else{                              // 제곱미터
             $("#area_unit").val('m');
-            max = Math.round(max * 3.305785);
-            min = Math.round(min * 3.305785);
-            fval = Math.round(fval * 3.305785);
-            tval = Math.round(tval * 3.305785);
+            arrAreaRange = arrAreaMRange;
         }
-        $('.input_area').attr('max', max);
-        $('.input_area').attr('min', min);
+        frm.fromArea.value = '';
+        frm.toArea.value = '';
+        frm.fromArea_txt.value = '최소';
+        frm.toArea_txt.value = '최대';
+        frm.fromAreaRange.value = 0;
+        frm.toAreaRange.value = 12;
 
-        $('#fromAreaInput').val(comma(fval));
-        $('#toAreaInput').val(comma(tval));
-        controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-        controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        fillSlider(frm.fromAreaRange, frm.toAreaRange, '#D9D9D9', '#385f8d', frm.toAreaRange);
     }
 
-    function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
-        const [from, to] = getParsed(fromInput, toInput);
-        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-        if (from > to) {
-            fromSlider.value = to;
-            fromInput.value = comma(to);
-        } else {
-            fromSlider.value = from;
-            fromInput.value = comma(from);
-        }
-    }
+    // function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+    //     const [from, to] = getParsed(fromInput, toInput);
+    //     // fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+    //     if (from > to) {
+    //         fromSlider.value = to;
+    //         fromInput.value = comma(to);
+    //     } else {
+    //         fromSlider.value = from;
+    //         fromInput.value = comma(from);
+    //     }
+    // }
 
-    function controlToInput(toSlider, fromInput, toInput, controlSlider) {
-        const [from, to] = getParsed(fromInput, toInput);
-        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-        setToggleAccessible(toInput, toSlider);
-        if (from <= to) {
-            toSlider.value = to;
-            toInput.value = comma(to);
-        } else {
-            toInput.value = comma(from);
-        }
-    }
+    // function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+    //     const [from, to] = getParsed(fromInput, toInput);
+    //     fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+    //     setToggleAccessible(toInput, toSlider);
+    //     if (from <= to) {
+    //         toSlider.value = to;
+    //         toInput.value = comma(to);
+    //     } else {
+    //         toInput.value = comma(from);
+    //     }
+    // }
 
     function controlFromSlider(fromSlider, toSlider, fromInput) {
         const [from, to] = getParsed(fromSlider, toSlider);
         fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+        var arrRange = arrPriceRange;
+        if(fromInput.name=='fromArea')    arrRange = arrAreaRange;
+
         if (from > to) {
             fromSlider.value = to;
-            fromInput.value = comma(to);
+            fromInput.value = arrRange[to]['class'];
+            $(fromInput).next()[0].value = arrRange[to]['title'];
         } else {
-            fromInput.value = comma(from);
+            fromInput.value = arrRange[from]['class'];
+            $(fromInput).next()[0].value = arrRange[from]['title'];
         }
     }
 
     function controlToSlider(fromSlider, toSlider, toInput) {
         const [from, to] = getParsed(fromSlider, toSlider);
         fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+        var arrRange = arrPriceRange;
+        if(toInput.name=='toArea')    arrRange = arrAreaRange;
         setToggleAccessible(toSlider, toSlider);
         if (from <= to) {
             toSlider.value = to;
-            toInput.value = comma(to);
+            toInput.value = arrRange[to]['class'];
+            $(toInput).next()[0].value = arrRange[to]['title'];
         } else {
-            toInput.value = comma(from);
+            toInput.value = arrRange[from]['class'];
+            $(toInput).next()[0].value = arrRange[from]['title'];
             toSlider.value = from;
         }
     }
-
-    // function getParsed(currentFrom, currentTo) {
-    //     const from = parseInt(uncomma(currentFrom.value), 10);
-    //     const to = parseInt(uncomma(currentTo.value), 10);
-    //     return [from, to];
-    // }
-
-    // function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-    //     const rangeDistance = to.max - to.min;
-    //     const fromPosition = uncomma(from.value) - to.min;
-    //     const toPosition = uncomma(to.value) - to.min;
-    //     controlSlider.style.background = `linear-gradient(
-    //     to right,
-    //     ${sliderColor} 0%,
-    //     ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
-    //     ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
-    //     ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%,
-    //     ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%,
-    //     ${sliderColor} 100%)`;
-    // }
-
-    // function setToggleAccessible(currentTarget) {
-    //     toAreaSlider = document.querySelector('#toAreaSlider');
-    //     if (Number(currentTarget.value) <= 0) {
-    //         toAreaSlider.style.zIndex = 2;
-    //     } else {
-    //         toAreaSlider.style.zIndex = 0;
-    //     }
-    // }
-
-    var fromAreaSlider = document.querySelector('#fromAreaSlider');
-    var toAreaSlider = document.querySelector('#toAreaSlider');
-    var fromAreaInput = document.querySelector('#fromAreaInput');
-    var toAreaInput = document.querySelector('#toAreaInput');
 
     
     function initInputRange(){
@@ -343,16 +318,16 @@
 
         fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
         toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
-        fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
-        toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
+        // fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
+        // toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
 
         fillSlider(fromAreaSlider, toAreaSlider, '#D9D9D9', '#385f8d', toAreaSlider);
         setToggleAccessible(toAreaSlider, toAreaSlider);
 
         fromAreaSlider.oninput = () => controlFromSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
         toAreaSlider.oninput = () => controlToSlider(fromAreaSlider, toAreaSlider, toAreaInput);
-        fromAreaInput.oninput = () => controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-        toAreaInput.oninput = () => controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        // fromAreaInput.oninput = () => controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        // toAreaInput.oninput = () => controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
 
         console.log('initInputRange');
     }
@@ -360,6 +335,7 @@
     function initFilterForm(){
         console.log('initFilterForm');
         var oldCond = JSON.parse(getCookie('filter_condition'));
+        console.log(oldCond);
 
         if(oldCond.cate1){
             $("input[name='cate1']").eq(0).attr('checked',false);
@@ -379,24 +355,21 @@
         if(oldCond.location){
             $("input[name='location']").val(oldCond.location);
         }
-        if(oldCond.toPrice){
-            frm.fromPrice.value = comma(oldCond.fromPrice);
-            frm.toPrice.value = comma(oldCond.toPrice);
-            controlFromInput(fromSlider, fromInput, toInput, toSlider);
-            controlToInput(toSlider, fromInput, toInput, toSlider);
-        }else{
-            frm.toPrice.value = comma(frm.toPrice.value);
+        if(oldCond.fromPrice || oldCond.toPrice){
+            frm.fromPriceRange.value = oldCond.fromPriceRange;
+            controlFromSlider(frm.fromPriceRange, frm.toPriceRange, frm.fromPrice);
+            frm.toPriceRange.value = oldCond.toPriceRange;
+            controlToSlider(frm.fromPriceRange, frm.toPriceRange, frm.toPrice);
+
         }
-        if(oldCond.toArea){
+        if(oldCond.fromArea || oldCond.toArea){
             if(oldCond.area_unit=='p' && $("#area_unit").val() != 'p'){
                 tranBtnClick();
             }
-            frm.fromArea.value = comma(oldCond.fromArea);
-            frm.toArea.value = comma(oldCond.toArea);
-            controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-            controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-        }else{
-            frm.toArea.value = comma(frm.toArea.value);
+            frm.fromAreaRange.value = oldCond.fromAreaRange;
+            controlFromSlider(frm.fromAreaRange, frm.toAreaRange, frm.fromArea);
+            frm.toAreaRange.value = oldCond.toAreaRange;
+            controlToSlider(frm.fromAreaRange, frm.toAreaRange, frm.toArea);
         }
         console.log('fromSlider',fromSlider);
     }

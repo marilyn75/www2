@@ -66,21 +66,25 @@ class IntraSaleClass{
             }
 
             // 가격
+            if(!empty($data['fromPrice'])){
+                $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . str_replace(',','',$data['fromPrice']));
+            }
             if(!empty($data['toPrice'])){
-                $model->whereRaw('GREATEST(salePrice*1, depPrice*1) >= ' . str_replace(',','',$data['fromPrice']))
-                    ->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . str_replace(',','',$data['toPrice']));
+                $model->whereRaw('GREATEST(salePrice*1, depPrice*1) <= ' . str_replace(',','',$data['toPrice']));
             }
 
             // 거래면적
-            if(!empty($data['toArea'])){
+            if(!empty($data['fromArea'])){
                 $fromArea = str_replace(',','',$data['fromArea']);
+                $model->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) >= ' . $fromArea);
+            }
+            if(!empty($data['toArea'])){
                 $toArae = str_replace(',','',$data['toArea']);
-                if($data['area_unit']=='p'){
-                    $fromArea = $fromArea * 3.305785;
-                    $toArae = $toArae * 3.305785;
-                }
-                $model->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) >= ' . $fromArea)
-                    ->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) <= ' . $toArae);
+                // if($data['area_unit']=='p'){
+                //     $fromArea = $fromArea * 3.305785;
+                //     $toArae = $toArae * 3.305785;
+                // }
+                $model->whereRaw('GREATEST(landArea*1,bdArea*1,area_b*1) <= ' . $toArae);
             }
             // 필터조건 e ///////////////////////////////////////////////////////////
         }

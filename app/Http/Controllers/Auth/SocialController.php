@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\SocialAccount;
+use Exception;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\SocialAccount;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -21,8 +22,12 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
-        
+        try{
         $socialUser = Socialite::driver($provider)->user();
+        }catch(Exception $e){
+            return redirect()->route('main');
+            exit;
+        }
         $phone = null;
         if(!empty($socialUser->user['response']))   $phone = $socialUser->user['response']['mobile'];
 
