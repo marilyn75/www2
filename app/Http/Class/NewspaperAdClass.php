@@ -92,8 +92,6 @@ class NewspaperAdClass{
             'news_code' => $data['news_code'],
             'news_txt' => $data['news_txt'],
             'pub_date' => $data['pub_date'],
-            'created_ip' => request()->ip(),
-            'created_user_id' => auth()->user()->id,
         ];
 
         $result = NewspaperAd::create($save_data);
@@ -125,8 +123,6 @@ class NewspaperAdClass{
         $model->news_code = $data['news_code'];
         $model->news_txt = $data['news_txt'];
         $model->pub_date = $data['pub_date'];
-        $model->updated_ip = request()->ip();
-        $model->updated_user_id = auth()->user()->id;
         $result = $model->update();
 
         if(!$result){

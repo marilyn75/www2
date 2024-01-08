@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\TracksIpAddressesAndUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class NewspaperAd extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, TracksIpAddressesAndUser;
 
     protected $fillable = [
         'news_code',

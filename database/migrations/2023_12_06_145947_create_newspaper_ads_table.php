@@ -18,13 +18,7 @@ return new class extends Migration
             $table->string('news_txt')->comment('신문사구분명');
             $table->date('pub_date')->comment('신문게재일');
 
-            $table->unsignedBigInteger('created_user_id')->nullable()->comment('작성자 아이디');
-            $table->string('created_ip',20)->nullable()->comment('작성자 아이피');
-            $table->unsignedBigInteger('updated_user_id')->nullable()->comment('수정자 아이디');
-            $table->string('updated_ip',20)->nullable()->comment('수정자 아이피');
-            $table->unsignedBigInteger('deleted_user_id')->nullable()->comment('삭제자 아이디');
-            $table->string('deleted_ip',20)->nullable()->comment('삭제자 아이피');
-
+            $table->userstamps();
             $table->timestamps();
             $table->softDeletes();
 
