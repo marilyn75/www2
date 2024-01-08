@@ -17685,7 +17685,7 @@ code {
 
 /* Button 1 */
 #button-1 .knobs:before {
-  content: "㎡";
+  content: "\33A1";
   position: absolute;
   top: 4px;
   left: 6px;
