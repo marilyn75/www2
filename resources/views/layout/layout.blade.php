@@ -116,5 +116,19 @@
 <script type="text/javascript" src="{{ url('js/lib/common.simple.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/lib/common.msgPopup.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/lib/formcheck.js') }}"></script>
+
+{{-- 네이버 애널리틱스 --}}
+@if(strpos(Request::getHttpHost(), "gyemoim.co.kr") !== false )
+	
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "1c5779067a9af20";
+if(window.wcs) {
+wcs_do();
+}
+</script>
+@endif
+
 </body>
 </html>
