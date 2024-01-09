@@ -246,9 +246,9 @@ class IntraSaleClass{
         $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
         $return['sawon_duty'] = @$data->sale->users->first()->sawon->info->duty;
         $return['sawon_chkcert'] = @$data->sale->users->first()->sawon->info->chkcert;
-        $return['sawon_sosok'] = @$data->sale->users->first()->sawon->info->sosok;
+        $return['sawon_sosok'] = ($return['sawon_chkcert']=='y')?@$data->sale->users->first()->sawon->info->sosok:"";
         // $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);
-        $return['sawon_office_line'] = @$data->sale->users->first()->sawon->info->office_line;
+        $return['sawon_office_line'] = ($return['sawon_chkcert']=='y')?@$data->sale->users->first()->sawon->info->office_line:"8840";
 
         $return['radmin_photo'] = "/images/sawon-placeholder.png";
         $return['radmin_name'] = "부동산중개법인개벽";
