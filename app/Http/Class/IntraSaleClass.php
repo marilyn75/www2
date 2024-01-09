@@ -153,8 +153,8 @@ class IntraSaleClass{
         $return['img'] = "/images/noimg.jpg";
         $return['img2'] = "/images/noimg.jpg";
         if(!empty($data->files->first()->filename)){
-            $return['img'] = $clsFile->mkThumbnailFromUrl(env('intranet_domain')."/_Data/Homepage/".$data->files->first()->filename, 250, 150);
-            $return['img2'] = $clsFile->mkThumbnailFromUrl(env('intranet_domain')."/_Data/Homepage/".$data->files->first()->filename, 250, 190);
+            $return['img'] = $clsFile->mkThumbnailFromUrl(env('INTRANET_DOMAIN')."/_Data/Homepage/".$data->files->first()->filename, 250, 150);
+            $return['img2'] = $clsFile->mkThumbnailFromUrl(env('INTRANET_DOMAIN')."/_Data/Homepage/".$data->files->first()->filename, 250, 190);
         }
 
         $arrAddr = explode("|",$data->addr);
@@ -463,7 +463,7 @@ class IntraSaleClass{
         // 평당가격 쿼리
         $qry['price_per_py'] = "round(case when category like '%분양상가' then salePrice / (area_b / 3.3) else salePrice / (landArea / 3.3) end)";
 
-        $model = IntraSaleHomepage::where('idx','!=',$sale['idx'])
+        $model = IntraSaleHomepage::where('idx','!=',$sale['idx'])->where(['isDel'=>0, 'isDone'=>1])
             ->orderByRaw("case when category = '" .$sale['category']. "' then 0 when category like '" .$arrCategory[0]. "%' then 1 else 2 end"); // 매물유형조건
         
         if($sale['tradeType']=="임대"){
