@@ -129,7 +129,7 @@ class IntraSawonClass{
             $return['office_line'] = $data->info->office_line;
 
             $return['photo'] = $data->mb_photo;
-            $return['photo'] = (empty($return['photo']))?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['photo'];
+            $return['photo'] = (empty($return['photo']))?"/images/sawon-placeholder.png":env('INTRANET_DOMAIN')."/_Data/Member/".$return['photo'];
 
             $return['slogan'] = $data->info->slogan;
             $return['introduce'] = $data->info->introduce;
@@ -158,7 +158,7 @@ class IntraSawonClass{
     // 중개사에게 문의하기 
     public function sendInquiry($request){
 
-        $apiUrl = "http://test.gbbinc.co.kr/Share/api.php";
+        $apiUrl = env('INTRANET_DOMAIN')."/Share/api.php";
 
         $client = new Client();
 

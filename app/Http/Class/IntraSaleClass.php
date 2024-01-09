@@ -140,8 +140,8 @@ class IntraSaleClass{
 
         $return['imgs'] = [];
         foreach($data->files as $_img){
-            // $return['imgs'][] = "http://test.gbbinc.co.kr/_Data/Homepage/".$_img->filename;
-            $return['imgs'][] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$_img->filename, 730, 430);
+            // $return['imgs'][] = env('intranet_domain')."/_Data/Homepage/".$_img->filename;
+            $return['imgs'][] = $clsFile->mkThumbnailFromUrl(env('INTRANET_DOMAIN')."/_Data/Homepage/".$_img->filename, 730, 430);
         }
         if(count($return['imgs'])==0){
             $return['imgs'][] = "/images/noimg.jpg";
@@ -153,8 +153,8 @@ class IntraSaleClass{
         $return['img'] = "/images/noimg.jpg";
         $return['img2'] = "/images/noimg.jpg";
         if(!empty($data->files->first()->filename)){
-            $return['img'] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename, 250, 150);
-            $return['img2'] = $clsFile->mkThumbnailFromUrl("http://test.gbbinc.co.kr/_Data/Homepage/".$data->files->first()->filename, 250, 190);
+            $return['img'] = $clsFile->mkThumbnailFromUrl(env('intranet_domain')."/_Data/Homepage/".$data->files->first()->filename, 250, 150);
+            $return['img2'] = $clsFile->mkThumbnailFromUrl(env('intranet_domain')."/_Data/Homepage/".$data->files->first()->filename, 250, 190);
         }
 
         $arrAddr = explode("|",$data->addr);
@@ -242,7 +242,7 @@ class IntraSaleClass{
         $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
         $return['sawon_user_id'] = $data->sale->users->first()->sawon->user_id;
         $return['sawon_photo'] = $data->sale->users->first()->sawon->mb_photo;
-        $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/sawon-placeholder.png":"https://www.gbbinc.co.kr/_Data/Member/".$return['sawon_photo'];
+        $return['sawon_photo'] = (empty($return['sawon_photo']))?"/images/sawon-placeholder.png":env('INTRANET_DOMAIN')."/_Data/Member/".$return['sawon_photo'];
         $return['sawon_name'] = $data->sale->users->first()->sawon->user_name;
         $return['sawon_duty'] = @$data->sale->users->first()->sawon->info->duty;
         $return['sawon_chkcert'] = @$data->sale->users->first()->sawon->info->chkcert;
@@ -321,7 +321,7 @@ class IntraSaleClass{
         $x = intval($kko_xy["documents"][0]["x"]);
 		$y = intval($kko_xy["documents"][0]["y"]);
 
-        return "https://www.gbbinc.co.kr/Share/map.php?x=".$x."&y=".$y."&w=720&h=400";
+        return env('INTRANET_DOMAIN')."?x=".$x."&y=".$y."&w=720&h=400";
     }
 
     // 근처시설

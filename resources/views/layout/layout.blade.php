@@ -11,7 +11,7 @@
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 <!-- Title -->
-<title>GYEMOIM INC.</title>
+<title>@if(!empty($arrLocation)){{ implode(" > ", array_reverse($arrLocation)). " | " }}@endif GYEMOIM INC.</title>
 <!-- Favicon -->
 <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
 <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" />
