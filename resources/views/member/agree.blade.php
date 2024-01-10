@@ -28,7 +28,7 @@
                             <div class="form-group custom-control custom-checkbox agree_bx">
                                 <input type="checkbox" class="custom-control-input" id="exampleCheck2" name="agree2" value="2">
                                 <label class="custom-control-label" for="exampleCheck2">서비스 이용약관에 동의합니다.</label>
-                                <a href=""><i class="ri-arrow-right-s-line"></i></a>
+                                <a href="{{ route('page',39) }}" target="_blank"><i class="ri-arrow-right-s-line"></i></a>
                             </div>
 
                             {{-- 개인정보처리방침 --}}
@@ -36,7 +36,7 @@
                             <div class="form-group custom-control custom-checkbox agree_bx">
                                 <input type="checkbox" class="custom-control-input" id="exampleCheck1" name="agree" value="1">
                                 <label class="custom-control-label" for="exampleCheck1">개인정보처리방침에 동의합니다.</label>
-                                <a href=""><i class="ri-arrow-right-s-line"></i></a>
+                                <a href="{{ route('page',40) }}" target="_blank"><i class="ri-arrow-right-s-line"></i></a>
                             </div>
 
                             
