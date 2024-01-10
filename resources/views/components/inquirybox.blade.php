@@ -25,7 +25,11 @@
                     <h5 class="mt-0">{{ $printData['sawon_name'] }}
                         {{ $printData['sawon_duty'] }}</h5>
                     <p class="mb0 mont media-call">Tel.
+                    @if ($printData['sawon_chkcert']=='y')
+                        <a href="tel:{{ $printData['sawon_phone'] }}">{{ $printData['sawon_phone'] }}</a>
+                    @else
                         1833-{{ $printData['sawon_office_line'] }}
+                    @endif
                     </p>
                 </div>
             </div>

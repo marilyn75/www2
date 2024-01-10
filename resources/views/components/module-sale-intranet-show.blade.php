@@ -50,7 +50,7 @@ $(window).on('load', function() {
     <!-- 수정 -->
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
-            <h4>매물번호: <span class="mont">90658</span></h4>
+            <h4>매물번호: <span class="mont">{{ substr($printData['p_code'],3) }}</span></h4>
             <div class="detail_info">
                 <div class="de_info_left">
                     <p>{{ $printData['category'] }}</p>
@@ -94,8 +94,8 @@ $(window).on('load', function() {
 
                     </div>
                     <div class="price">
-                        <p class="de_info_pr">매매 <span class="mont">{{ $printData['price'] }}</span>만원</p>
-                        <p><span class="mont">7,399</span>만원 <span class="mont">(3.3㎡)</span></p>
+                        <p class="de_info_pr">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span>만원</p>
+                        @if(!empty($printData['price_py']))<p><span class="mont">{{ $printData['price_py'] }}</span>만원 <span class="mont">(3.3㎡)</span></p>@endif
                     </div>
                 </div>
             </div>
