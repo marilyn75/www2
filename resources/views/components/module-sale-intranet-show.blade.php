@@ -50,6 +50,7 @@ $(window).on('load', function() {
     <!-- 수정 -->
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
+            <h4>매물번호: <span class="mont">90658</span></h4>
             <div class="detail_info">
                 <div class="de_info_left">
                     <p>{{ $printData['category'] }}</p>
@@ -61,11 +62,13 @@ $(window).on('load', function() {
                         <li><a href="#">공급<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
                                 전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡ </span></a></li>
                         @else
-                        <li><a href="#">토지면적
-                            <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span></a></li>
-                        @if (strpos($printData['category'],"토지")===false)
-                        <li><a href="#">연면적 <span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></a>
-                        </li>
+                        <div style="display: flex; gap:10px">
+                            <li><a href="#">토지면적
+                                <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span></a></li>
+                            @if (strpos($printData['category'],"토지")===false)
+                            <li><a href="#">연면적 <span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></a>
+                            </li>
+                        </div>
                         @endif
                         @endif
                     </ul>
@@ -90,7 +93,10 @@ $(window).on('load', function() {
                         </button> -->
 
                     </div>
-                    <p class="de_info_pr"><span class="mont">{{ $printData['price'] }}</span>만원</p>
+                    <div class="price">
+                        <p class="de_info_pr">매매 <span class="mont">{{ $printData['price'] }}</span>만원</p>
+                        <p><span class="mont">7,399</span>만원 <span class="mont">(3.3㎡)</span></p>
+                    </div>
                 </div>
             </div>
             <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
