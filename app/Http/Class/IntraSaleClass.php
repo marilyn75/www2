@@ -127,10 +127,10 @@ class IntraSaleClass{
 
 
         $return['saleTypeFull'] = $data->saleTypeTxt;
-        $return['saleType'] = trim(explode(">",$data->saleTypeTxt)[1]);        
+        $return['saleType'] = (strpos($data->saleTypeTxt,">")!==false)?trim(explode(">",$data->saleTypeTxt)[1]):$data->saleTypeTxt;        
 
         $return['categoryFull'] = $data->category;
-        $return['category'] = trim(explode(">",$data->category)[1]);        
+        $return['category'] = (strpos($data->category,">")!==false)?trim(explode(">",$data->category)[1]):$data->category;        
 
         if($data->tradeType=="임대"){
             $return['price'] = number_format($data->depPrice)." / ".number_format($data->monPrice);
@@ -249,6 +249,7 @@ class IntraSaleClass{
         $return['sawon_sosok'] = ($return['sawon_chkcert']=='y')?@$data->sale->users->first()->sawon->info->sosok:"";
         // $return['sawon_sosok'] = str_replace('소속','',$return['sawon_sosok']);
         $return['sawon_office_line'] = ($return['sawon_chkcert']=='y')?@$data->sale->users->first()->sawon->info->office_line:"8840";
+        $return['sawon_phone'] = @$data->sale->users->first()->sawon->mb_mobile;
 
         $return['radmin_photo'] = "/images/sawon-placeholder.png";
         $return['radmin_name'] = "부동산중개법인개벽";
@@ -263,7 +264,7 @@ class IntraSaleClass{
 
         if($return['category_class']=="mall" || $return['category_class']=="home"){
             // 리스트 층정보
-            $return['floorInfo'] = $return['currFloor'];
+            $return['floorInfo'] = printEmpty($return['currFloor']);
             if(!empty($return['totFloor'])) $return['floorInfo'] .= " / " . $return['totFloor'] .'층';
 
             $optCodes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');

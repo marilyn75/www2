@@ -42,8 +42,12 @@
             <input type="hidden" name="p_code" value="{{ @$printData['p_code'] }}">
             <input type="hidden" name="user_id" value="{{ $printData['sawon_user_id'] }}">
             <input type="hidden" name="s_idx" value="{{ @$printData['s_idx'] }}">
+            @auth
+            <input type="hidden" name="name" value="{{ auth()->user()->name }}">
+            <input type="hidden" name="phone" value="{{ auth()->user()->phone }}">
+            @endauth
         <ul class="sasw_list mb0 sasw_list_w">
-            <li class="search_area">
+            {{-- <li class="search_area">
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력하세요" required hname="이름">
                 </div>
@@ -52,11 +56,13 @@
                 <div class="form-group">
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요" required hname="연락처" options="phone">
                 </div>
-            </li>
+            </li> --}}
             <li class="search_area">
                 <div class="form-group">
                     <textarea id="message" name="message" class="form-control required" rows="3"
-                    required hname="내용" placeholder="문의하실 내용을 입력하세요."></textarea>
+                    required hname="내용" placeholder="문의하실 내용을 입력하세요." @guest
+                        onfocus="alert('로그인 후 문의해주세요.');$(this).blur();"
+                    @endguest></textarea>
                 </div>
             </li>
             <li>

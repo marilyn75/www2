@@ -68,9 +68,12 @@
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
                             <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span>
                         </p>
-                        @if (strpos($printData['category'],"토지")===false)
+                        {{-- @if (strpos($printData['category'],"토지")===false) --}}
+                        @if (!empty($printData['bdArea']))
                         <p class="text-inf"><i class="ri-building-line"></i>{{ $printData['floorInfo']}}
                             연<span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></p>
+                        @else
+                        <p class="text-inf"><i class="ri-building-line"></i>-</p>
                         @endif
                     </div>
                     @endif

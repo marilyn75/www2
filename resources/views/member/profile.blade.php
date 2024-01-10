@@ -51,8 +51,7 @@
                                     <div class="col-lg-12">
                                         <div class="my_profile_setting_input form-group">
                                             <label for="name">이름</label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                value="{{ Auth::user()->name }}">
+                                            <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -78,7 +77,7 @@
                                         <div class="my_profile_setting_input form-group">
                                             <label for="phone">연락처</label>
                                             <input type="text" class="form-control" id="phone" name="phone"
-                                                value="{{ Auth::user()->phone }}">
+                                                value="{{ Auth::user()->phone }}" readonly>
                                         </div>
                                     </div>
 

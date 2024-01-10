@@ -22,6 +22,12 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
+
+        // 세션 시작
+        if(session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         try{
         $socialUser = Socialite::driver($provider)->user();
         }catch(Exception $e){
@@ -46,7 +52,9 @@ class SocialController extends Controller
             ]);
 
             Auth::login($socialAccount->user);
-            return redirect()->route('main');
+            
+            if(!empty($_SESSION['return_url'])) return redirect($_SESSION['return_url']);
+            else                                return redirect()->route('main');
         }
 
         $user = User::where([
@@ -85,7 +93,10 @@ class SocialController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect()->route('main');
+
+        
+        if(!empty($_SESSION['return_url'])) return redirect($_SESSION['return_url']);
+        else                                return redirect()->route('main');
     }
 
     // 계정 연결 끊기

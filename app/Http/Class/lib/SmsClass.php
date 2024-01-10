@@ -3,6 +3,7 @@
 namespace App\Http\Class\lib;
 
 use App\Models\SMS;
+use App\Models\IntraMember;
 
 // sms 클래스
 
@@ -22,6 +23,7 @@ class SmsClass{
 
         // 디버그모드에서는 sms 전송 안됨
         if(env('APP_DEBUG')=="debug"){
+            debug($message);
             $result = true;
         }else{
             $result = $this->model->create([
@@ -70,7 +72,21 @@ class SmsClass{
             'expiry_time' => $expiry_time,
         ];
 
-        debug('sendPhoneCertNumber - message', $message);
         return $this->send($phone, $message);
+    }
+
+    // 사원에게 문의안내 sms
+    public function sendRequiryNoti($postData){
+        $sawon = IntraMember::where('user_id',$postData['b_free1'])->first();
+        if(!empty($sawon->mb_mobile)){
+            $message = '[계모임] '.$postData['reg_name'].'님이 문의글을 남겼습니다.
+인트라넷에서 확인하세요.
+물건번호 : '.$postData['b_free2'].'
+연락처 : '.$postData['b_hp'];
+
+            return $this->send($sawon->mb_mobile, $message);
+        }
+        else
+            return false;
     }
 }

@@ -11,6 +11,7 @@ use App\Models\IntraBoardDefault;
 use App\Models\IntraSaleHomepage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Class\lib\ResultClass;
+use App\Http\Class\lib\SmsClass;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;
@@ -189,13 +190,15 @@ class IntraSawonClass{
             // 응답 내용 가져오기
             $data = json_decode($response->getBody(), true);
 
-            // 여기에서 $data를 가공하거나 필요에 따라 처리합니다.
-
             // return response()->json($data);
-            if($data['result'])
+            if($data['result']){
+                // 사원에게 알림 sms
+                $result = (new SmsClass)->sendRequiryNoti($postData);
+debug($result);
                 return ResultClass::success('문의 내용이 전달 되었습니다. 담당자 확인 후 연락드리겠습니다.');
-            else
+            }else{
                 return ResultClass::fail('[ERR] 문의하기 실패하였습니다.');
+            }
         } catch (\Exception $e) {
             // 에러 처리
             // return response()->json(['error' => $e->getMessage()], 500);
