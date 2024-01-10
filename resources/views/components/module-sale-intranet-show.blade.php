@@ -194,7 +194,7 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>주구조 :</p>
-                                        <p>{{ $printData['strctCdNm'] }}</p>
+                                        <p>{{ printEmpty($printData['strctCdNm']) }}</p>
                                     </li>
                                     @if($printData['category_class']=="home")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
@@ -204,12 +204,12 @@ $(window).on('load', function() {
                                     @else
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>주차시설 :</p>
-                                        <p>총 {{ $printData['parkingCnt'] }}</p>
+                                        <p>{{ $printData['parkingCnt'] }}</p>
                                     </li>
                                     @endif
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>승강기 :</p>
-                                        <p>승강기 {{ $printData['ElvtCnt'] }}</p>
+                                        <p>{{ $printData['ElvtCnt'] }}</p>
                                     </li>
     
                    
@@ -227,26 +227,26 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>지목 :</p>
-                                        <p>{{ $printData['lndcgrCodeNm'] }}</p>
+                                        <p>{{ printEmpty($printData['lndcgrCodeNm']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>용도지역 :</p>
-                                        <p>{{ $printData['prposAreaNm'] }}</p>
+                                        <p>{{ printEmpty($printData['prposAreaNm']) }}</p>
                                     </li>
 
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>연면적 :</p>
-                                        <p class="mont">{{ $printData['bdArea'] }}㎥ ({{ $printData['bdArea_py'] }}p)</p>
+                                        <p class="mont">@if(intval($printData['bdArea'])==0){{ __('-') }}@else{{ $printData['bdArea'] }}㎥ ({{ $printData['bdArea_py'] }}p)@endif</p>
                                     </li>
 
 
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>건물용도 :</p>
-                                        <p>{{ $printData['mainPurpsCdNm'] }}</p>
+                                        <p>{{ printEmpty($printData['mainPurpsCdNm']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>주구조 :</p>
-                                        <p>{{ $printData['strctCdNm'] }}</p>
+                                        <p>{{ printEmpty($printData['strctCdNm']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>규모 :</p>
@@ -254,11 +254,11 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>주차시설 :</p>
-                                        <p>주차 {{ $printData['parkingCnt'] }}</p>
+                                        <p>{{ $printData['parkingCnt'] }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>승강기 :</p>
-                                        <p>승강기 {{ $printData['ElvtCnt'] }}</p>
+                                        <p>{{ $printData['ElvtCnt'] }}</p>
                                     </li>
 
                      
@@ -283,7 +283,7 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>발코니 :</p>
-                                        <p>{{ $printData['balcony'] }}</p>
+                                        <p>{{ printEmpty($printData['balcony']) }}</p>
                                     </li>
                                     @endif
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
@@ -307,7 +307,7 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>난방방식 :</p>
-                                        <p>{{ $printData['heat_type'] }} ({{ $printData['heat_info'] }})</p>
+                                        <p>@if(empty($printData['heat_type']) && empty($printData['heat_info'])){{ __('-') }}@else{{ $printData['heat_type'] }} ({{ $printData['heat_info'] }})@endif</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>입주정보 : </p>

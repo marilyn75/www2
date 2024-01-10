@@ -178,3 +178,10 @@ if (!function_exists('makeOptions')) {
         return $html;
     }
 }
+if (!function_exists('printEmpty')) {
+    function printEmpty($val, $str='-'){
+        if(empty($val))  return $str;
+        else    return $val;
+    }
+}
+// 값이 없을때 대체 문자
