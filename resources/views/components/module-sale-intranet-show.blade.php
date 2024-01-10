@@ -298,7 +298,7 @@ $(window).on('load', function() {
                                     @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>해당층/전체층 :</p>
-                                        <p>{{ $printData['currFloor'] }} / {{ $printData['totFloor'] }}</p>
+                                        <p>{{ $printData['currFloor'] }} @if(!empty($printData['totFloor'])){{ __('/') }}@endif {{ $printData['totFloor'] }}</p>
                                     </li>
                                     @endif
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
