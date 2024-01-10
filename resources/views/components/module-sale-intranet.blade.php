@@ -181,6 +181,7 @@
         <!-- 검색결과 end -->
 
         <div class="row">
+            @if($data->total()>0)
             @foreach ($data as $_data)
                 @php
 
@@ -192,6 +193,9 @@
                 <x-item-sale-intranet type='default' :printData="$printData" />
             @endforeach
             <x-pagination :data="$data" />
+            @else
+                *** 검색 결과가 없습니다. 마크업 부분 ***
+            @endif
         </div>
     </div>
 </form>

@@ -7,6 +7,7 @@
         <div class="row">
             <div class="">
                 <div class="row">
+                    @if($data->total() > 0)
                     @foreach ($data as $_data)
                     @php
                     
@@ -19,6 +20,9 @@
 
                     @endforeach
                     <x-pagination :data="$data" />
+                    @else
+                    *** 추천 매물이 없습니다. 마크업 부분 ***
+                    @endif
                 </div>
             </div>
         </div>
