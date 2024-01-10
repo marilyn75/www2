@@ -16797,6 +16797,8 @@ swiper-slide img {
 
 table.dataTable tbody tr { background-color: #fff!important; }
 
+.nodata_serch { padding: 345px 0; }
+.nodata_serch p { font-size: 16px; color: #828282; text-align: center; margin: 0; }
 
 
 /* error page */
@@ -16818,6 +16820,9 @@ table.dataTable tbody tr { background-color: #fff!important; }
   box-shadow: none;
   font-weight: 600;
  }
+ .nodata_serch { padding: 345px 0; }
+ .nodata_serch i { margin-right: 5px; }
+
 
 
 

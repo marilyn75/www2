@@ -4,7 +4,7 @@
     <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container container_w">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="">
                 <div class="row">
                     @if($data->total() > 0)
@@ -21,7 +21,9 @@
                     @endforeach
                     <x-pagination :data="$data" />
                     @else
-                    *** 추천 매물이 없습니다. 마크업 부분 ***
+                    <div class="nodata_serch">
+                        <p><i class="ri-information-line"></i>추천매물이 없습니다.</p>
+                    </div>
                     @endif
                 </div>
             </div>

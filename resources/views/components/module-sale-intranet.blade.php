@@ -180,7 +180,7 @@
         </div>
         <!-- 검색결과 end -->
 
-        <div class="row">
+        <div class="row justify-content-center">
             @if($data->total()>0)
             @foreach ($data as $_data)
                 @php
@@ -194,7 +194,9 @@
             @endforeach
             <x-pagination :data="$data" />
             @else
-                *** 검색 결과가 없습니다. 마크업 부분 ***
+                <div class="nodata_serch">
+                    <p><i class="ri-information-line"></i>검색결과가 없습니다.</p>
+                </div>
             @endif
         </div>
     </div>
