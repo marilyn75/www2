@@ -250,7 +250,7 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>규모 :</p>
-                                        <p>지하 {{ $printData['ugrndFlrCnt'] }}층 / 지상 {{ $printData['grndFlrCnt'] }}층</p>
+                                        <p>지하 {{ printEmpty($printData['ugrndFlrCnt']) }}층 / 지상 {{ printEmpty($printData['grndFlrCnt']) }}층</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>주차시설 :</p>

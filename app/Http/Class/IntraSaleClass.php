@@ -263,7 +263,8 @@ class IntraSaleClass{
 
         if($return['category_class']=="mall" || $return['category_class']=="home"){
             // 리스트 층정보
-            $return['floorInfo'] = $return['currFloor'] . " / " . $return['totFloor'] .'층';
+            $return['floorInfo'] = $return['currFloor'];
+            if(!empty($return['totFloor'])) $return['floorInfo'] .= " / " . $return['totFloor'] .'층';
 
             $optCodes = CommonCodeClass::getChildrenTreeFormFirstCodeText('매물옵션정보');
             $options = explode("|",$return['options']);
