@@ -136,6 +136,7 @@ class IntraSaleClass{
         $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);
         
         $return['landArea_py'] = (empty($return['landArea']))?"":number_format(doubleval($return['landArea']) * 0.3025 ,2);
+        $return['landArea_org'] = $return['landArea'];
         $return['landArea'] = (empty($return['landArea']))?"":number_format($return['landArea'],2);
         
 
@@ -149,7 +150,7 @@ class IntraSaleClass{
         }else{
             // 평당가격
             if(!empty($return['area_b'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['area_b']) * 0.3025)));
-            elseif(!empty($return['landArea_py'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['landArea']) * 0.3025)));
+            elseif(!empty($return['landArea_py'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['landArea_org']) * 0.3025)));
             $return['price'] = number_format($data->salePrice);
         }
 
