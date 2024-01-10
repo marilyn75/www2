@@ -23,8 +23,10 @@
 
 <script type="text/javascript" src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.js"></script>
 <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="//cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.css">
 
 
 <!-- Link Swiper's CSS -->

@@ -520,6 +520,10 @@ $(window).on('load', function() {
                                     @endforeach
                                 </div>
                                 @endif
+
+                                {{-- 근처시설 없는경우  --}}
+                                {{-- <p class="nonearby"><i class="ri-information-line"></i>해당사항 없음</p> --}}
+                            
                             </div>
                         </div>
                         <div class="row similar_wrap">

@@ -16321,7 +16321,7 @@ button.gm-ui-hover-effect:focus {
 .feat_property_w .thumb .thmb_cntnt ul.tag li a, .feat_property_w .thumb .thmb_cntnt ul.tag li span, .properti_city.home6 .thumb .thmb_cntnt ul.tag li a, .feat_property_w.home8 ul.tag li a, .feat_property_w.list ul.tag li a{
   font-size: 16px;
 }
-.feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { right: 7px; left: auto; top: 4px; display: flex; align-items: center; }
+.feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { right: 7px; left: auto; top: 7px; display: flex; align-items: center; }
 .feat_property_w .thumb .thmb_cntnt .fp_price { left: 12px; display: flex; align-items: center; }
 .feat_property .thumb .thmb_cntnt .fp_price_w { background: rgb(0, 0, 0, 0.5); border-radius: 30px; }
 .feat_property .thumb .thmb_cntnt .fp_price_w p{ font-weight: 500; padding: 10px 20px; font-size: 16px; margin: 0; color: #fff; }
@@ -16545,11 +16545,11 @@ input[type="range"] {
   width: fit-content;
   padding: 5px 12px;
   margin: 0;
-  margin-top: 5px;
+  margin-top: 7px;
   background: #385f8d;
   border-radius: 3px;
   color: #fff !important;
-  margin-left: 5px;
+  margin-left: 7px;
   font-size: 12px !important;
 }
 .text_loc i { color: #ADB8C2; }
@@ -16660,6 +16660,8 @@ input[type="range"] {
 .map_w i { color: #385F8D;}
 .map_top_w { display: flex; align-items: baseline; justify-content: space-between; }
 .nearby_w h4 { font-size: 20px; color: #000; font-weight: 600; }
+.nonearby { font-size: 16px; color: #828282; text-align: center; margin: 0; }
+.nonearby i { margin-right: 5px; }
 .nearby_w i { color: #385f8d; }
 .education_w h5 { color: #000; font-weight: 600; color: #385F8D; }
 .single_w .para { line-height: 2; font-size: 16px; cursor: pointer;}
@@ -16789,6 +16791,7 @@ swiper-slide img {
 .order_list li { padding-left: 15px !important; }
 .detail_img { margin-top: 20px; }
 
+table.dataTable tbody tr { background-color: #fff!important; }
 
 
 
@@ -17439,6 +17442,12 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 .packages_table .table td, .packages_table .table th, .savesearched_table .table td, .savesearched_table .table th, .property_table .table td, .property_table .table th{
   font-size: 14px;
 }
+.multiFileUpload .mfu-fsel-bt { cursor: pointer; color: #385f8d !important; border-radius: 5px; background: transparent !important; border: 1px solid #385f8d !important; }
+.multiFileUpload ul.mfu-file-list, .multiFileUpload ul.mfu-file-list li { background: #fff; border-radius: 5px; padding: 10px !important; }
+.multiFileUpload .file-item .isFileTypeIcon { border-radius: 5px; }
+.multiFileUpload .file-item .isFileTypeIcon img { max-height: 25px !important; }
+
+.main_blog_post_content .mbp_thumb_post .details p { font-size: 16px; }
 
 
 
@@ -17470,7 +17479,7 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 .about_us h2{ font-size: 40px; text-align: center; color: #000; margin-bottom: 45px; }
 .about_us p { font-size: 28px; font-weight: 500; color: #000; text-align: center; }
 .contact_us { display: flex; justify-content: center; gap: 40px; margin-top: 30px; }
-.contact_us p { font-size: 28px; color: #000;  }
+.contact_us p { font-size: 22px; color: #000;  }
 
 .why_chose_us.style2:hover .icon { background: linear-gradient(90deg, #388D8D 0%, #1A4173 100%) !important; }
 .why_chose_us.style2:hover:before { background: #385f8d; }
@@ -17790,6 +17799,13 @@ code {
 .message_container .user_heading { border: none; border-radius: 20px; }
 
 
+/* 약관동의 상세 */
+.agr_pg { margin-bottom: 20px; }
+.agr_pg p{ font-size: 16px; color: #000; }
+.agr_pg h3{ font-size: 22px; color: #000; }
+.agr_pg h5{ font-size: 18px; color: #000; font-weight: 600; }
+.agr_subinfo p{margin: 0;}
+.agr_subinfo { margin-bottom: 15px; }
 
 
 @media (max-width:640px) {
@@ -18137,8 +18153,9 @@ code {
 
   .header.stylehome1 { z-index: 999; }
 
+  .agr_pg p{ font-size: 14px; }
+  .agr_pg h3{ font-size: 18px; }
 
-  .agree_bx p {  }
 
 }
 
@@ -18151,6 +18168,20 @@ code {
   .swiper-slide img { 
     height: 250px !important;
    }
+
+   .dataTables_wrapper .dataTable thead tr th:nth-child(2){
+      display: none;
+   }
+   .dataTables_wrapper .dataTable thead tr th:last-child {
+    display: none;
+   }
+   .dataTables_wrapper .dataTable tbody tr td:nth-child(2){
+      display: none;
+   }
+   .dataTables_wrapper .dataTable tbody tr td:last-child{
+    display: none;
+ }
+
 }
 @media (max-width: 380px) {
   .breadcrumb_title_w { font-size: 16px; }

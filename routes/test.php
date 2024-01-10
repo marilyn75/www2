@@ -32,4 +32,12 @@ Route::get('/leave_finish', function(){
     return view('test.leave_finish');
 });
 
+Route::get('/service_agree', function(){
+    return view('test.service_agree');
+});
+
+Route::get('/personal_agree', function(){
+    return view('test.personal_agree');
+});
+
 ?>

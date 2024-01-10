@@ -52,7 +52,7 @@ function FormUploader() {
 		, file_list_target:null
 		, item_list_element:"li"
 		, auto_upload:false
-		, upload_btn_label : "File Select"
+		, upload_btn_label : "파일 업로드"
 		, to_content : false //본문추가 사용
 		, use_view_btn:true
 		, use_down_btn:true
