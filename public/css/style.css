@@ -16744,6 +16744,7 @@ swiper-slide img {
 }
 
 .detail_img .single_product_grid { padding: 30px; }
+.single_product_grid_w .product_t { display: flex; width: 100%; justify-content: space-between; }
 .swiper-button-next { background: rgba(0,0,0,0.3); width: 60px !important; height: 60px !important; border-radius: 50px; }
 .swiper-button-next i { font-size: 35px; color: #333333; }
 .swiper-button-next p { font-size: 14px; color: #fff; font-weight: 500; margin: 0; }
@@ -16771,7 +16772,7 @@ swiper-slide img {
 .de_info_left ul { margin: 0; }
 .de_info_left ul li a{ font-size: 18px; color: #000; }
 .de_info_pr { line-height: normal; font-size: 24px !important; color: #385F8D !important; font-weight: 600 !important; }
-.de_info_right { display: grid; justify-items: end; align-content: space-between; height: 100%; }
+.de_info_right { display: grid; justify-items: end; align-content: space-between;}
 
 .detail_btn { cursor: pointer; background: #f8f8f8; border: none; border-radius: 5px; width: 40px; height: 40px; }
 .detail_btn:active { outline: none; border: transparent; }
@@ -16794,6 +16795,7 @@ swiper-slide img {
 .enterinfo li p:first-child { font-weight: 600; }
 .order_list li { padding-left: 15px !important; }
 .detail_img { margin-top: 20px; }
+.detail_width { display: flex; gap: 10px; }
 
 table.dataTable tbody tr { background-color: #fff!important; }
 
@@ -18131,7 +18133,7 @@ code {
   .vision h2 { font-size: 24px; margin-bottom: 15px; }
   .fight h2 { font-size: 24px; margin-bottom: 15px; }
   .detail_info { display: grid; justify-content: normal; }
-  .de_info_right { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: end; }
+  .de_info_right { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: end; justify-content: flex-end; }
   .detail_btn { width: 35px; height: 35px; }
   .main_news { margin-bottom: 40px; }
   
@@ -18322,6 +18324,8 @@ code {
   .my_bx_inf .btn a { color: #385F8D !important; font-weight: 600; }
   .my_profile_bx { padding-bottom: 0; }
   .menu_link { font-size: 14px; }
+
+  .detail_width { display: grid; gap: 0; }
 
 
   /* main */

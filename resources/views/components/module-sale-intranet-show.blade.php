@@ -50,7 +50,28 @@ $(window).on('load', function() {
     <!-- 수정 -->
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
-            <h4>매물번호: <span class="mont">{{ substr($printData['p_code'],3) }}</span></h4>
+            <div class="product_t">
+                <h4>매물번호: <span class="mont">{{ substr($printData['p_code'],3) }}</span></h4>
+                <div class="detail_btn_w">
+                    <button class="detail_btn" id="transArea">
+                        <i class="ri-arrow-left-right-line" ></i>
+                    </button>
+
+                    <!-- 찜하기 전 -->
+                    <button class="heart_btn detail_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
+                        @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
+                        <i class="ri-heart-3-fill fill_heart"></i>
+                        @else
+                        <i class="ri-heart-3-line"></i>
+                        @endif
+                    </button>
+                    <!-- 찜한 후 -->
+                    <!-- <button class="heart_btn detail_btn">
+                        <i class="ri-heart-3-fill fill_heart"></i>
+                    </button> -->
+
+                </div>
+            </div>
             <div class="detail_info">
                 <div class="de_info_left">
                     <p>{{ $printData['category'] }}</p>
@@ -62,7 +83,7 @@ $(window).on('load', function() {
                         <li><a href="#">공급<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
                                 전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡ </span></a></li>
                         @else
-                        <div style="display: flex; gap:10px">
+                        <div class="detail_width">
                             <li><a href="#">토지면적
                                 <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span></a></li>
                             @if (strpos($printData['category'],"토지")===false)
@@ -74,25 +95,6 @@ $(window).on('load', function() {
                     </ul>
                 </div>
                 <div class="de_info_right">
-                    <div class="detail_btn_w">
-                        <button class="detail_btn" id="transArea">
-                            <i class="ri-arrow-left-right-line" ></i>
-                        </button>
-
-                        <!-- 찜하기 전 -->
-                        <button class="heart_btn detail_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
-                            @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
-                            <i class="ri-heart-3-fill fill_heart"></i>
-                            @else
-                            <i class="ri-heart-3-line"></i>
-                            @endif
-                        </button>
-                        <!-- 찜한 후 -->
-                        <!-- <button class="heart_btn detail_btn">
-                            <i class="ri-heart-3-fill fill_heart"></i>
-                        </button> -->
-
-                    </div>
                     <div class="price">
                         <p class="de_info_pr">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span>만원</p>
                         @if(!empty($printData['price_py']))<p><span class="mont">{{ $printData['price_py'] }}</span>만원 <span class="mont">(3.3㎡)</span></p>@endif
