@@ -25,7 +25,7 @@
                         <img src="/images/nodata.png" alt="">
                         <p class="nodata_np">추천매물이 없습니다</p>
                         <p>현재 추천중인 매물이 없습니다. 다른 매물을 둘러보세요!</p>
-                        <button class="btn btn-thm_w">매물 둘러보기</button>
+                        <a href="{{ route('page',20) }}" class="btn btn-thm_w">매물 둘러보기</a>
                     </div>
                     @endif
                 </div>

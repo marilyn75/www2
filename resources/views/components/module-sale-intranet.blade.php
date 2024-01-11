@@ -199,7 +199,7 @@
                     <p class="nodata_np">해당매물이 없습니다</p>
                     <p>검색어를 바르게 입력하셨는지 확인하시거나,<br>
                         다른 조건으로 검색해보세요!</p>
-                    <button class="btn btn-thm_w">매물 둘러보기</button>
+                    <button class="btn btn-thm_w reset_btn">매물 둘러보기</button>
                 </div>
             @endif
         </div>
