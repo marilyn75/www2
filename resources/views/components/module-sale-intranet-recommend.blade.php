@@ -4,8 +4,8 @@
     <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container container_w">
-        <div class="row justify-content-center">
-            <div class="">
+        <div class="row">
+            <div class="col-12">
                 <div class="row">
                     @if($data->total() > 0)
                     @foreach ($data as $_data)
@@ -22,7 +22,10 @@
                     <x-pagination :data="$data" />
                     @else
                     <div class="nodata_serch">
-                        <p><i class="ri-information-line"></i>추천매물이 없습니다.</p>
+                        <img src="/images/nodata.png" alt="">
+                        <p class="nodata_np">추천매물이 없습니다</p>
+                        <p>현재 추천중인 매물이 없습니다. 다른 매물을 둘러보세요!</p>
+                        <button class="btn btn-thm_w">매물 둘러보기</button>
                     </div>
                     @endif
                 </div>

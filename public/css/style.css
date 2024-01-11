@@ -16797,8 +16797,12 @@ swiper-slide img {
 
 table.dataTable tbody tr { background-color: #fff!important; }
 
-.nodata_serch { padding: 345px 0; }
-.nodata_serch p { font-size: 16px; color: #828282; text-align: center; margin: 0; }
+.nodata_serch { padding: 230px 0; width: 100%; text-align: center; }
+.nodata_serch .nodata_np { margin-top: 20px !important; color: #385f8d; font-weight: 500; }
+.nodata_serch p { margin-top: 10px !important; font-size: 18px; color: #828282; text-align: center; margin: 0; }
+.nodata_serch .btn { margin-top: 55px; border: 1px solid #385f8d; background: transparent; color: #385f8d; padding: 10px 40px; }
+.nodata_serch .btn:hover { color: #fff; background: #385f8d; }
+
 
 
 /* error page */
@@ -16820,9 +16824,6 @@ table.dataTable tbody tr { background-color: #fff!important; }
   box-shadow: none;
   font-weight: 600;
  }
- .nodata_serch { padding: 345px 0; }
- .nodata_serch i { margin-right: 5px; }
-
 
 
 
