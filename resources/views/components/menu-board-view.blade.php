@@ -134,9 +134,13 @@
             <div class="my_profile_setting_input float-left fn-520">
                 <button class="btn btn1 btnList">목록</button>
             </div>
+            @auth
+            @if(auth()->user()->is_admin)
             <div class="my_profile_setting_input">
                 <button class="btn btn2 btnEdit">수정</button>
                 <button class="btn btn3 btnDelete">삭제</button>
             </div>
+            @endif
+            @endauth
         </div>
     </div>

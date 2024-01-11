@@ -186,11 +186,12 @@
         </div>
     </div>
     @auth
+    @if(auth()->user()->is_admin)
     <div class="pck_chng_btn text-right mt50">
         <a href="{{ route('page', $page->id) }}?mode=write"><button class="btn btn-lg btn-thm">글쓰기</button></a>
     </div>
+    @endif
     @endauth
-    
 </div>
 
 @endif

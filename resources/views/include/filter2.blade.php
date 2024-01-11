@@ -374,5 +374,11 @@
         console.log('fromSlider',fromSlider);
     }
         
+    $(document).on('keypress', "input[name='location']", function(e){
+        if(e.which == 13) { // 13은 엔터키의 코드입니다.
+            frm.submit();
+            return false; // 이벤트 버블링을 방지합니다.
+        }
+    });
     // filter script e//////////////////////////////////
 </script>
