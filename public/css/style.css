@@ -17958,6 +17958,12 @@ code {
   .intro_boxs { display: grid; justify-content: center; }
   .my_bx_rg { display: none; }
 
+  .nodata_serch { padding: 170px 0; }
+  .nodata_serch .nodata_np { margin-top: 15px !important; }
+  .nodata_serch p { margin-top: 0px !important; }
+  .nodata_serch .btn { margin-top: 40px; }
+
+
   /* mobile menu */
 .login_ham { margin-bottom: 25px; display: grid; justify-items: center; }
 .login_ham p { font-size: 20px; color: #000; font-weight: 500; margin-top: 15px;}
@@ -18178,6 +18184,11 @@ code {
   .de_info_right .price { margin-top: 10px; justify-items: start; }
   .de_info_right .price p { font-size: 14px; order: 0; }
   .single_product_grid_w h4 { font-size: 16px; }
+
+  .nodata_serch { padding-top: 100px; }
+  .nodata_serch img { width: 60px; }
+  .nodata_serch p { font-size: 16px; word-break: keep-all; }
+  .nodata_serch .btn { font-size: 14px; margin-top: 30px; }
 
 
   /* mobile menu */
