@@ -27,18 +27,17 @@ class IntraSaleClass{
         $data = $request->all();
         if(empty($data) && !empty($_COOKIE["filter_condition"])){
             $data = json_decode($_COOKIE["filter_condition"], true);
-        }else{
-            // 검색조건 저장 쿠키
-            $cookie = $data;
-            unset($cookie['_token'],$cookie['page']);
-            setcookie("filter_condition", json_encode($cookie), time()+3600);
         }
         
         $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1]);
         if($request['mode']=="recommend"){
             $model = $model->where('isRecom',1);
         }else{
-
+            // 검색조건 저장 쿠키
+            $cookie = $data;
+            unset($cookie['_token'],$cookie['page']);
+            setcookie("filter_condition", json_encode($cookie), time()+3600);
+            
             // 필터조건 s ///////////////////////////////////////////////////////////
             // 유형
             if(!empty($data['cate2'])){

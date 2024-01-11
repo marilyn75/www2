@@ -22,11 +22,19 @@ class PageController extends Controller
 
     public function index($id, Request $request){
 
+        $page = Menu::find($id);
+        // 메뉴관리에서 파라메터 설정한 값을 Request 객체에 포함시킴
+        if(!empty($page->params)){
+            parse_str($page->params, $queryArray);
+            foreach ($queryArray as $key => $value) {
+                $request->query->set($key, $value);
+            }
+        }
+
         if($request->prcCode=="ajax"){
             return $this->ajax($id, $request);
         }
 
-        $page = Menu::find($id);
         $MenuClass = new MenuClass;
         $arrLocation = $MenuClass->getLocationArr($id);
         $bg = $MenuClass->getTopImage($id);

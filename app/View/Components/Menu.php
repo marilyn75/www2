@@ -40,7 +40,7 @@ class Menu extends Component
     private function mkItem($data){
         $link = ($data->type != 'M')?route('page', $data->id):"#";
         if($data->type=="L")    $link = $data->url;
-        if(!empty($data->params))   $link .= "?".$data->params;
+        // if(!empty($data->params))   $link .= "?".$data->params;
 
         $item = [
             'code' => $data->id,

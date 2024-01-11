@@ -6,7 +6,7 @@ use App\Models\Menu;
 use App\Models\BoardConf;
 use Illuminate\Support\Facades\File;
 
-// 메뉴판관련 클래스
+// 메뉴관련 클래스
 
 class MenuClass{
 

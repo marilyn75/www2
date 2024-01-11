@@ -10,7 +10,7 @@
                 <div class="dropdown bootstrap-select w100 show-tick">
                     <select name="y" class="selectpicker w100 show-tick" tabindex="-98" onchange="frm.submit();">
                     @for ($year = date('Y'); $year >= 2020; $year--)
-                        <option value="{{ $year }}" @if(@$_REQUEST['y']==$year){{ __('selected') }}@endif>{{ $year }}</option>
+                        <option value="{{ $year }}" @if(@$request->y==$year){{ __('selected') }}@endif>{{ $year }}</option>
                     @endfor
                     </select>
                 </div>

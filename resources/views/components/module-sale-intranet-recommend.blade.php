@@ -1,7 +1,7 @@
 <form name="frm" action="{{ $data->path() }}" method="post" class="" >
     @csrf
     <input type="hidden" name="page" value="1">
-    <input type="hidden" name="mode" value="{{ $_REQUEST['mode'] }}">
+    <input type="hidden" name="mode" value="{{ $request->mode }}">
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container container_w">
         <div class="row">

@@ -49,6 +49,7 @@ class ModuleSaleIntranet extends Component
     }
 
     public function index(){
+        $request = $this->request;
         $data = $this->cls->getListData($this->request);
         // debug($data);
         // 관심매물 ids
@@ -56,7 +57,7 @@ class ModuleSaleIntranet extends Component
         $favorites = $result->getData();
 
         if($this->request->mode=="recommend")
-            return view('components.module-sale-intranet-recommend', compact('data', 'favorites'));
+            return view('components.module-sale-intranet-recommend', compact('data', 'favorites', 'request'));
         else{
             // 최고가격, 최고면적
             $maxPriceNArea = $this->cls->getMaxPriceNArea();
