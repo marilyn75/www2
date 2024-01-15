@@ -24,7 +24,13 @@
                         @if ($type=="default")
                             <!-- 찜하기 전 -->
                             <li class="list-inline-item">
-                                <button class="heart_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
+                                <button class="heart_btn" 
+                                @auth
+                                onclick="return addFavorite(this,{{ $printData['idx'] }})"
+                                @else
+                                data-toggle="modal" data-target="#logalertModal" onclick="return false;"
+                                @endauth
+                                >
                                     @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
                                     <i class="ri-heart-3-fill"></i>
                                     @else

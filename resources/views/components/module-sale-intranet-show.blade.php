@@ -58,7 +58,13 @@ $(window).on('load', function() {
                     </button>
 
                     <!-- 찜하기 전 -->
-                    <button class="heart_btn detail_btn" onclick="return addFavorite(this,{{ $printData['idx'] }})">
+                    <button class="heart_btn detail_btn" 
+                    @auth
+                    onclick="return addFavorite(this,{{ $printData['idx'] }})"
+                    @else
+                    data-toggle="modal" data-target="#logalertModal" onclick="return false;"
+                    @endauth
+                    >
                         @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
                         <i class="ri-heart-3-fill fill_heart"></i>
                         @else
