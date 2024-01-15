@@ -18,20 +18,20 @@
             </div>
             <button type="submit" class="btn btn-primary">로그인</button>
             <ul class="find_li">
-                <li><a href="/find_id"><p>아이디 찾기</p></a></li>
-                <li><a href="/find_pwd"><p>비밀번호 찾기</p></a></li>
+                <li><a href="{{ route('findid') }}"><p>이메일 찾기</p></a></li>
+                <li><a href="{{ route('findpw') }}"><p>비밀번호 찾기</p></a></li>
             </ul>
             <div class="social_mo">
-                <div class="nav">
+                <div class="nav" style="cursor: pointer" onclick="location.href='{{ route('social.login','naver') }}';">
                     <img src="/images/sns/nav_log.png" alt="">
                     <p>네이버로 로그인</p>
                 </div>
-                <div class="kak">
+                <div class="kak" style="cursor: pointer" onclick="location.href='{{ route('social.login','kakao') }}';">
                     <img src="/images/sns/kak_log.png" alt="">
                     <p>카카오로 로그인</p>
                 </div>
             </div>
-            <a href="/signin" class="signin_link">아직 계모임 아이디가 없으신가요? <span>회원가입 바로가기</span></a>
+            <a href="{{ route('agree') }}" class="signin_link">아직 계모임 아이디가 없으신가요? <span>회원가입 바로가기</span></a>
         </div>
       </div>
     </div>
