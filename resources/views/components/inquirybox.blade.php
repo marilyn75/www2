@@ -56,38 +56,39 @@
             <input type="hidden" name="phone" value="{{ auth()->user()->phone }}">
             @endauth
         <ul class="sasw_list mb0 sasw_list_w">
+            @guest
             {{-- <li class="search_area">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력하세요" required hname="이름">
-                </div>
-            </li>
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력하세요" required hname="이름">
+            </div>
+            </li> --}}
             <li class="search_area">
                 <div class="form-group">
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요" required hname="연락처" options="phone">
                 </div>
-            </li> --}}
+            </li>
+            @endguest
+            
             <li class="search_area">
                 <div class="form-group">
                     <textarea id="message" name="message" class="form-control required" rows="3"
-                    required hname="내용" placeholder="문의하실 내용을 입력하세요." @guest
-                    data-toggle="modal" data-target="#logalertModal" onfocus="$(this).blur();"
-                    @endguest></textarea>
+                    required hname="내용" placeholder="문의하실 내용을 입력하세요." ></textarea>
                 </div>
             </li>
             <li>
                 <div class="search_option_button detail_emp_btns">
                     @if ($type=='photo')<a class="btn btn-block btn-thm btn-thm_w" href="@if($printData['sawon_chkcert']=='y'){{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}@else{{ route('page',25) }}?mode=view&idx=0 @endif">자세히보기</a>@endif
-                    @auth
+                    {{-- @auth --}}
                     <button type="submit" class="btn btn-block btn-thm btn-thm_w">
                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         문의하기
                     </button>
-                    @else
-                    <button type="button" class="btn btn-block btn-thm btn-thm_w" data-toggle="modal" data-target="#logalertModal">
+                    {{-- @else --}}
+                    {{-- <button type="button" class="btn btn-block btn-thm btn-thm_w" data-toggle="modal" data-target="#logalertModal">
                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         문의하기
-                    </button>
-                    @endauth
+                    </button> --}}
+                    {{-- @endauth --}}
                 </div>
             </li>
         </ul>

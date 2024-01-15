@@ -160,7 +160,7 @@ class IntraSawonClass{
     // 중개사에게 문의하기 
     public function sendInquiry(&$controller, $request){
 
-        $controller->validate($request, ['message'=>'required']);
+        $controller->validate($request, ['phone'=>'required', 'message'=>'required']);
 
         $apiUrl = env('INTRANET_DOMAIN')."/Share/api.php";
 
