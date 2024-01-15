@@ -106,6 +106,26 @@ class FileClass{
         return response($file, 200)->header('Content-Type', $type);
     }
 
+    function orientateImage($image, $filepath) {
+        $exif = exif_read_data($filepath);
+    
+        if(!empty($exif['Orientation'])) {
+            switch($exif['Orientation']) {
+                case 8:
+                    $image->rotate(90);
+                    break;
+                case 3:
+                    $image->rotate(180);
+                    break;
+                case 6:
+                    $image->rotate(-90);
+                    break;
+            }
+        }
+    
+        return $image;
+    }        
+
     public function mkThumbnailFromUrl($imgUrl, $w=250, $h=150){
         $path = '/files/thumb/';
         $this->chkDir(public_path($path));
@@ -127,8 +147,17 @@ class FileClass{
             // 이미지 로드
             $image = Image::make($imageContent);
 
-            // 이미지 리사이징
-            $image->fit($w, $h);
+            // 이미지 방향을 올바르게 설정
+            $image = $this->orientateImage($image, $imgUrl);
+
+            // // 이미지 리사이징
+            // $image->fit($w, $h);
+            // 비율을 유지하며 리사이징
+            $image->resize($w, $h, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            // // 캔버스 크기를 조절하고 남는 공간을 투명하게 처리
+            // $image->resizeCanvas(730, 430, 'center', false, array(255, 255, 255, 0));
 
             // 워터마크 로드
             $watermarkPath = public_path("/images/property/watermark.png");
