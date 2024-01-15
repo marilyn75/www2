@@ -455,7 +455,7 @@ $(window).on('load', function() {
                         </div>
 
 
-
+                        @if(!empty($printData['infra']['교육시설']) || !empty($printData['infra']['주변시설']) || !empty($printData['infra']['교통정보']))
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="whats_nearby mt30 nearby_w">
                                 <h4 class="mb10">근처시설
@@ -480,7 +480,6 @@ $(window).on('load', function() {
 
                                 });
                                 </script>
-
                                 @if(!empty($printData['infra']['교육시설']))
                                 <div class="education_distance mb15 education_w">
                                     <h5><i class="ri-school-line"></i> 교육시설
@@ -535,11 +534,13 @@ $(window).on('load', function() {
                                 </div>
                                 @endif
 
+                                
                                 {{-- 근처시설 없는경우  --}}
                                 {{-- <p class="nonearby"><i class="ri-information-line"></i>해당사항 없음</p> --}}
-                            
+                                
                             </div>
                         </div>
+                        @endif
                         <div class="row similar_wrap">
                             <div class="col-lg-12 similar similar_w">
                                 <h4 class="mt30 mb30">관련매물</h4>
