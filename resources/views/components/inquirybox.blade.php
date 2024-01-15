@@ -70,7 +70,7 @@
                 <div class="form-group">
                     <textarea id="message" name="message" class="form-control required" rows="3"
                     required hname="내용" placeholder="문의하실 내용을 입력하세요." @guest
-                        onfocus="alert('로그인 후 문의해주세요.');$(this).blur();"
+                    data-toggle="modal" data-target="#logalertModal" onfocus="$(this).blur();"
                     @endguest></textarea>
                 </div>
             </li>

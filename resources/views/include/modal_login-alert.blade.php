@@ -32,14 +32,14 @@ document.querySelector("#logalertModal").addEventListener("click", function() {
   document.body.classList.add("modal-open");
 });
 
-// 모달 닫기 버튼을 클릭했을 때 이벤트 처리
-document.querySelector("#logalertModal .close").addEventListener("click", function() {
-  // 배경 요소 제거
-  var backdrop = document.querySelector(".modal-backdrop");
-  backdrop.parentNode.removeChild(backdrop);
+// // 모달 닫기 버튼을 클릭했을 때 이벤트 처리
+// document.querySelector("#logalertModal .close").addEventListener("click", function() {
+//   // 배경 요소 제거
+//   var backdrop = document.querySelector(".modal-backdrop");
+//   backdrop.parentNode.removeChild(backdrop);
   
-  // body에서 "modal-open" 클래스 제거
-  document.body.classList.remove("modal-open");
-});
+//   // body에서 "modal-open" 클래스 제거
+//   document.body.classList.remove("modal-open");
+// });
 
 </script>
