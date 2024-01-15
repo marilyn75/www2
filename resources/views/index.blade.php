@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Home Design -->
-<form action="{{ route('page', 20) }}" method="POST">
+{{-- <form action="{{ route('page', 20) }}" method="POST">
     @csrf
     <input type="hidden" name="page" value="1">
 <section class="home-seven home_w">
@@ -46,7 +46,69 @@
         </div>
     </div>
 </section>
+</form> --}}
+
+<!-- Home Design -->
+<form action="{{ route('page', 20) }}" method="POST">
+    @csrf
+    <input type="hidden" name="page" value="1">
+    <section class="mainslider">
+        <swiper-container class="mainswiper" pagination="true" navigation="false" loop="true" autoplay="true" delay="5000" speed="600">
+            <swiper-slide>
+                <img src="/images/slide/slide01.png" alt="">
+            </swiper-slide>
+            <swiper-slide>
+                <img src="/images/slide/slide02.png" alt="">
+            </swiper-slide>
+            <swiper-slide>
+                <img src="/images/slide/slide03.png" alt="">
+            </swiper-slide>
+            <swiper-slide>
+                <img src="/images/slide/slide04.png" alt="">
+            </swiper-slide>
+        </swiper-container>
+        <div class="container container_w">
+            <div class="main_tit main_tit_new">
+                <h2>전문가들의 추천매물과<br>최고의 투자 기회를 만나보세요</h2>
+            </div>
+            <div>
+                <div>
+                    <div class="home_content home7 home_bx home_bx_new">
+                        <div class="home_adv_srch_opt home7">
+                            <div class="home1-advnc-search home7 home_search_w">
+                                <ul class="h1ads_1st_list mb0 text-center">
+                                    <li class="list-inline-item">
+                                        <div class="search_option_two">
+                                            <div class="candidate_revew_select">
+                                                <select name="cate1" class="selectpicker w100 show-tick">
+                                                @foreach($sale_codes as $_code)
+                                                    <option value="{{ $_code['id'] }}">{{ $_code['title'] }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <div class="form-group">
+                                            <input type="text" name="location" class="form-control" id="exampleInputName1" placeholder="지역명">
+                                        </div>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <div class="search_option_button">
+                                            <button type="submit" class="btn btn-thm btn-thm_w">검색</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
 <!-- Feature Properties -->
 <section id="feature-property" class="feature-property bgc-f7">

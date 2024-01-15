@@ -49,7 +49,7 @@
 <section class="pb100 list_bx">
     <div class="container container_w">
         <div class="">
-            <div class="ui_kit_tab mt30">
+            <div class="ui_kit_tab">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs menu_link" id="myTab2" role="tablist">
                     <li class="nav-item">
@@ -62,7 +62,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent2">
 
-                    <div id="item1-tab" class="pt50 pb150 tab-pane active">
+                    <div id="item1-tab" class="pb150 tab-pane active">
                         @if ($data['favorites']->isSuccess() && $data['favorites']->getDataCount() > 0)
                         <div class="row">
                             @foreach ($data['favorites']->getData() as $printData)
@@ -79,7 +79,7 @@
                     
                     </div>
                     {{-- 최근 본 매물이 없을 때 --}}
-                    <div id="item2-tab" class="pt100 pb100 tab-pane nolist fade">
+                    <div id="item2-tab" class=" pb100 tab-pane nolist fade">
                         @if ($data['todayViewSales']->isSuccess())
                         <div class="row">
                             @foreach ($data['todayViewSales']->getData() as $printData)
