@@ -34,14 +34,26 @@ class LoginController extends Controller
                 setcookie("password","");
             }
 
-            // 세션 시작
-            if(session_status() == PHP_SESSION_NONE) {
-              session_start();
+            if($request->expectsJson()){    // 요청 헤더가 json 리턴을 기대함
+                return response()->json([
+                    'message' => '로그인 되었습니다.'
+                ]);
+            }else{
+                // 세션 시작
+                if(session_status() == PHP_SESSION_NONE) {
+                session_start();
+                }
+                if(!empty($_SESSION['return_url'])) return redirect($_SESSION['return_url']);
+                else                                return redirect('/');
             }
-            if(!empty($_SESSION['return_url'])) return redirect($_SESSION['return_url']);
-            else                                return redirect('/');
         }else{
-            return back()->with('error_message','이메일 또는 비밀번호가 유효하지 않습니다.');
+            if($request->expectsJson()){    // 요청 헤더가 json 리턴을 기대함
+                return response()->json([
+                    'message' => '로그인 정보가 유효하지 않습니다.'
+                ], 400);
+            }else{
+                return back()->with('error_message','이메일 또는 비밀번호가 유효하지 않습니다.');
+            }
         }
     }
 

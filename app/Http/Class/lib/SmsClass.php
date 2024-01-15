@@ -79,6 +79,7 @@ class SmsClass{
     public function sendRequiryNoti($postData){
         $sawon = IntraMember::where('user_id',$postData['b_free1'])->first();
         if(!empty($sawon->mb_mobile)){
+            debug($sawon->mb_mobile);
             $message = '[계모임] '.$postData['reg_name'].'님이 문의글을 남겼습니다.
 인트라넷에서 확인하세요.
 물건번호 : '.$postData['b_free2'].'

@@ -1,14 +1,18 @@
 <script>
     function sendMsg(r){
-        r = JSON.parse(r);
-        console.log(r);
-        if(r.result){
+        // r = JSON.parse(r);
+        try{ $alertLoadingClose();}catch(e){}
+        if(r.result=='true'){
             frm.reset();
             sbAlert(r.message);
         }else{
             sbAlert(r.message);
         }
-        
+    }
+
+    function sendMsgFail(r){
+        sbAlert(r.responseJSON['message']);
+        $alertLoadingClose();
     }
 </script>
 <div class="sidebar_listing_list sidebar_listing_list_w">
@@ -40,8 +44,9 @@
         </div>
         @endif
 
-        <form name="frm" method="post" onsubmit="return defaultAjaxFormSubmit(this, sendMsg);">
+        <form name="frm" method="post" onsubmit="return defaultAjaxFormSubmit(this, sendMsg, sendMsgFail);">
             @csrf
+            <input type="hidden" name="dataType" value="json">
             <input type="hidden" name="mode" value="sendInquiry">
             <input type="hidden" name="p_code" value="{{ @$printData['p_code'] }}">
             <input type="hidden" name="user_id" value="{{ $printData['sawon_user_id'] }}">
@@ -72,10 +77,17 @@
             <li>
                 <div class="search_option_button detail_emp_btns">
                     @if ($type=='photo')<a class="btn btn-block btn-thm btn-thm_w" href="@if($printData['sawon_chkcert']=='y'){{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}@else{{ route('page',25) }}?mode=view&idx=0 @endif">자세히보기</a>@endif
+                    @auth
                     <button type="submit" class="btn btn-block btn-thm btn-thm_w">
                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         문의하기
                     </button>
+                    @else
+                    <button type="button" class="btn btn-block btn-thm btn-thm_w" data-toggle="modal" data-target="#logalertModal">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        문의하기
+                    </button>
+                    @endauth
                 </div>
             </li>
         </ul>

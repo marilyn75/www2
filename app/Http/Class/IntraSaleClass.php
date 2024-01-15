@@ -254,6 +254,13 @@ class IntraSaleClass{
         $return['sawon_office_line'] = ($return['sawon_chkcert']=='y')?@$data->sale->users->first()->sawon->info->office_line:"8840";
         $return['sawon_phone'] = @$data->sale->users->first()->sawon->mb_mobile;
 
+        // 개인정보 숨김설정인 경우
+        if($data->sale->users->first()->sawon->info->gmi_hide2=="1"){
+            $return['sawon_photo'] = "/images/sawon-placeholder.png";
+            $return['sawon_name'] = "부동산중개법인개벽";
+            $return['sawon_office_line'] = "8840";
+        }
+
         $return['radmin_photo'] = "/images/sawon-placeholder.png";
         $return['radmin_name'] = "부동산중개법인개벽";
         $return['radmin_duty'] = "";

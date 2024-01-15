@@ -1,6 +1,6 @@
 {
-    "(and :count more error)": "(그리고 :count개 이상의 오류)",
-    "(and :count more errors)": "(그리고 :count개 이상의 오류)",
+    "(and :count more error)": " <!--(그리고 :count개 이상의 오류)-->",
+    "(and :count more errors)": " <!--(그리고 :count개 이상의 오류)-->",
     "All rights reserved.": "모든 권리 보유.",
     "Forbidden": "권한 없음",
     "Go to page :page": ":Page 페이지로 이동",

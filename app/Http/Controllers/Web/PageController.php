@@ -89,7 +89,7 @@ class PageController extends Controller
             return json_encode($data);
         }elseif($request->mode=="sendInquiry"){
             $cls = new IntraSawonClass;
-            $reslut = $cls->sendInquiry($request);
+            $reslut = $cls->sendInquiry($this, $request);
             return $reslut->jsonResult();
         }
     }

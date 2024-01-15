@@ -1481,8 +1481,10 @@ function ajaxFormSubmit(f,callbackS,callbackE){
 
 	var $f = $(f);
 	var bAsync = true;
-	console.log(f.async);
+	var tDataType = 'text';
+	// console.log(f.async);
 	if(typeof(f.async) != "undefined" && f.async.value==0) bAsync = false;
+	if(typeof(f.dataType) != "undefined" && f.dataType.value!="") tDataType = f.dataType.value;
 	var ajaxFrmData = null;
 
 	if(typeof(callbackS)=="undefined")  var callbackS = defaultAjaxFrmSubmitSuccess;
@@ -1530,13 +1532,14 @@ function ajaxFormSubmit(f,callbackS,callbackE){
 			url : $f.attr("action"),data:ajaxFrmData,
 			files      : $("[type='file']",f),
 			async:bAsync,
+			dataType:tDataType,
 			type: 'POST',
 				success: function (rst) {
 
 document.location.ref="?"
 
 				try{ callbackS(rst);}catch(e){}
-				try{ $alertLoadingClose();}catch(e){}
+				// try{ $alertLoadingClose();}catch(e){}
 
 			   },
 			   error: function (jqXHR) {
@@ -1549,7 +1552,10 @@ document.location.ref="?"
 					 alert("Error!! 다시 시도해 주시기바랍니다.");
 					 try{ $alertLoadingClose();}catch(e){}
 				 }
-			   }
+			   },
+			   complete : function() {
+				// try{ $alertLoadingClose();}catch(e){}
+			  }
 		},{}));
 		}catch(e){
 			alert(e);
@@ -1566,11 +1572,12 @@ document.location.ref="?"
 }
 
 function defaultAjaxFormSubmit(f,callbackS,callbackE){
-	var chk = FormCheck(f);
-	if(chk){
-		chk = ajaxFormSubmit(f,callbackS,callbackE);
-	}
-	return chk;
+	return ajaxFormSubmit(f,callbackS,callbackE);
+	// var chk = FormCheck(f);
+	// if(chk){
+	// 	chk = ajaxFormSubmit(f,callbackS,callbackE);
+	// }
+	// return chk;
 }
 function defaultAjaxFrmSubmitSuccess(r){
 	var rst = $.trim(r).split("|");

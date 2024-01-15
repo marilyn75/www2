@@ -45,6 +45,7 @@ class IntraSawonClass{
                         'mb_out'=>0,
                         'auth_gr'=>'M01_D01',
                         'chkcert'=>'y',
+                        'gmi_hide1' => 0,   // 계원소개제외여부
                         ])
                     ->select('idx','mb_photo', 'user_name', 'duty', 'sosok', 'office_line', 'mb_email', DB::raw('(select count(*) from CS_SALE_HOMEPAGE where user_id=CS_MEMBER.user_id and isDel=0 and isDone=1) as homepage_sales_count'), 'reg_date')
                     ->union($model1);
@@ -157,7 +158,9 @@ class IntraSawonClass{
     }
 
     // 중개사에게 문의하기 
-    public function sendInquiry($request){
+    public function sendInquiry(&$controller, $request){
+
+        $controller->validate($request, ['message'=>'required']);
 
         $apiUrl = env('INTRANET_DOMAIN')."/Share/api.php";
 
