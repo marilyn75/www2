@@ -21,4 +21,17 @@
                 </div>
             </div>
         </div>
+
+{{-- 로그인 알림 모달 --}}
+  @include('include.modal_login-alert') 
+{{-- 로그인 알림 모달 끝 --}}
+
+
+{{-- 로그인 모달 --}}
+  @include('include.modal_login')
+  
+{{-- 로그인 모달 끝 --}}
+
+
+
     </section>
