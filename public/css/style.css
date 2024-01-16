@@ -16897,6 +16897,18 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .chat-icon button{ width: 120px; height: 120px; border: none; position: fixed; right: 90px; bottom: 75px; border-radius: 100px; background: #385F8D; display: grid; align-items: center; padding: 20px 0; cursor: pointer; filter: drop-shadow(0px 0px 10px rgba(56, 95, 141, 0.25)); z-index: 999; }
 .chat-icon p { color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; line-height: 20px; }
 .chat-icon i { display: none; }
+.chat-bdg { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #E93C3C;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+ }
 .click_chat::after { content: ''; display: block; height: 1px; background: #fff; width: 30px; margin: 0 auto; margin-top: 1px; }
 .main_news h5 { 
   font-size: 20px; 
@@ -18024,6 +18036,8 @@ code {
   .our-hot-offer { height: 300px; }
   .chat-icon button { width: 80px; height: 80px; right: 60px; gap: 5px; }
   .chat-icon p { display: none; }
+  .chat-bdg { width: 25px; height: 25px; }
+  .chat-bdg p{ display: block; font-size: 12px; }
   .chat-icon i { display: block; color: #fff; font-size: 25px; }
   .agent_enter { padding: 0 15px !important; }
   .intro_imgs img { height: 245px; }
