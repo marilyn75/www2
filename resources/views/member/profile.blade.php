@@ -41,7 +41,7 @@
                                     <div class="wrap-custom-file">
                                         <input type="file" name="file" id="image1" accept=".gif, .jpg, .jpeg, .png"
                                             value="" />
-                                        <label for="image1" style="background-image: url('{{ showProfileImage() }}');">
+                                        <label for="image1" style="background-image: url('{{ showProfileImage() }}');background-size: 260px 260px;">
                                             <span><i class="ri-upload-line"></i></span>
                                         </label>
                                     </div>
@@ -75,7 +75,7 @@
                                 </div> -->
                                     <div class="col-lg-12">
                                         <div class="my_profile_setting_input form-group">
-                                            <label for="phone">연락처</label>
+                                            <label for="phone">휴대폰번호</label>
                                             <input type="text" class="form-control" id="phone" name="phone"
                                                 value="{{ Auth::user()->phone }}" readonly>
                                         </div>
