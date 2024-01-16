@@ -243,7 +243,9 @@ class IntraSaleClass{
         foreach(explode("|",$return['bdOpt']) as $_opt){  
             if(!empty($_opt))  $arrHash[] = $_opt;
         }
-        foreach(explode("|",$return['prposAreaNmArr']) as $_nm)  $arrHash[] = $_nm;
+        foreach(explode("|",$return['prposAreaNmArr']) as $_nm){
+            if(!empty($_nm))  $arrHash[] = $_nm;
+        }  
 
         $return['hashtag'] = '';
         if(count($arrHash) > 0){
