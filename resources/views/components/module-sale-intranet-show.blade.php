@@ -160,9 +160,9 @@ $(window).on('load', function() {
                                     {!! $printData['description_1'] !!}
                                 </p>
                                 @if (!empty($printData['description_2']))
-                                <p class="gpara second_para white_goverlay mt10 mb10">
+                                {{-- <p class="gpara second_para  mt10 mb10">
                                     {{ $printData['description_2'] }}
-                                </p>
+                                </p> --}}
 
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
@@ -172,7 +172,13 @@ $(window).on('load', function() {
 
                                         </p>
                                     </div>
+                                    <div class="hashtag_w">
+                                        <p class="hashtag">#미등기</p>
+                                        <p class="hashtag">#불법건축물</p>
+                                        <p class="hashtag">#가설건축물</p>
+                                    </div>
                                 </div>
+
                                 <p class="overlay_close">
                                     <a class="text-thm fz14 text-thm_w" data-toggle="collapse" href="#collapseExample"
                                         role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -565,7 +571,7 @@ $(window).on('load', function() {
 </div>
 
 <!-- 중개사정보 / 오늘 본 매물-->
-<div class="col-lg-4">
+<div class="pt20 col-lg-4">
 
     <x-inquirybox type="photo" :printData="$printData" />
 

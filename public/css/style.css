@@ -16644,7 +16644,7 @@ input[type="range"] {
 .sasw_list_w .search_area textarea { border: none; border-bottom: 1px solid #d9d9d9; border-radius: 0px; padding: 10px; }
 .small-img { width: 175px; height: 130px; overflow: hidden; object-fit: cover; border-radius: 10px; }
 .description_w h4 { color: #000 ; font-size: 20px; font-weight: 600; }
-.description_w p { font-size: 16px; color: #000; }
+.description_w p { font-size: 16px; color: #000; width: fit-content; }
 .text-thm_w { color: #385F8D !important; font-weight: 600 ;}
 .additional_w h4 { font-size: 20px; font-weight: 600; color: #000; }
 .additional_w ul li p { font-size: 16px; color: #000; font-weight: 500; line-height: 2.5; }
@@ -16757,7 +16757,7 @@ swiper-slide img {
 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
   content: none !important;
 }
-
+.gpara .second_para .white_goverlay { display: none; }
 
 
 .detail_info {
@@ -16807,6 +16807,8 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .nodata_serch .btn { margin-top: 55px; border: 1px solid #385f8d; background: transparent; color: #385f8d; padding: 10px 40px; }
 .nodata_serch .btn:hover { color: #fff; background: #385f8d; }
 
+.hashtag_w { display: flex; gap: 10px; margin-bottom: 20px; }
+.hashtag { font-weight: 500; font-size: 14px !important; border-radius: 3px; padding: 6px 14px; background: #fff; border: 1px solid #385f8d; color: #385f8d !important; }
 
 
 /* error page */
@@ -16922,7 +16924,7 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .swiper-button-next, .swiper-rtl .swiper-button-prev { width: 12px; height: 12px; }
 .swiper-button-next, .swiper-button-prev { width: 12px; height: 12px; }
 
-.mainswiper { height: auto; position: relative; padding-top: 205px; }
+.mainswiper { height: auto; position: relative; margin-top: 205px; border-radius: 30px; overflow: hidden; }
 .home_bx_new { position: absolute !important; z-index: 10; top: 50%; right: 50%; padding: 0 !important; transform: translate(50%, 50%);}
 .home_bx_new .home_adv_srch_opt.home7, .home_bx_new.home_adv_srch_opt.home9 { margin-top: 0 !important; }
 .main_tit_new { top: 120px; z-index: 10; }

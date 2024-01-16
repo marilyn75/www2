@@ -98,7 +98,7 @@
         </div>
     </div>
 </div>
-<div class="col-lg-4">
+<div class="pt20 col-lg-4">
 
     <x-inquirybox type="default" :printData="$data" />
 
