@@ -51,7 +51,8 @@ $(window).on('load', function() {
     <div class="detail_img">
         <div class="col-lg-12 single_product_grid row single_product_grid_w">
             <div class="product_t">
-                <h4>매물번호: <span class="mont">{{ substr($printData['p_code'],3) }}</span></h4>
+                {{-- <h4>매물번호: <span class="mont">{{ substr($printData['p_code'],3) }}</span></h4> --}}
+                <h4>매물번호: <span class="mont">{{ $printData['idx'] }}</span></h4>
                 <div class="detail_btn_w">
                     <button class="detail_btn" id="transArea">
                         <i class="ri-arrow-left-right-line" ></i>
@@ -171,11 +172,6 @@ $(window).on('load', function() {
                                             {!! $printData['description_3'] !!}
 
                                         </p>
-                                    </div>
-                                    <div class="hashtag_w">
-                                        <p class="hashtag">#미등기</p>
-                                        <p class="hashtag">#불법건축물</p>
-                                        <p class="hashtag">#가설건축물</p>
                                     </div>
                                 </div>
 
@@ -375,6 +371,10 @@ $(window).on('load', function() {
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월세 :</p>
                                         <p class="mont">{{ number_format($printData['monPrice']) }} 만원</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>권리금 :</p>
+                                        <p class="mont">{{ number_format($printData['premPrice']) }} 만원</p>
                                     </li>
                                 </ul>
 

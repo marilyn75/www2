@@ -178,8 +178,8 @@ class IntraSaleClass{
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
 
-        $return['parkingCnt'] = ($return['totPkngCnt']=="없음")?$return['totPkngCnt']:number_format(intval($return['totPkngCnt']))." 대";
-        $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음")?$return['rideUseElvtCnt']:$return['rideUseElvtCnt']." 대";
+        $return['parkingCnt'] = ($return['totPkngCnt']=="없음"||$return['totPkngCnt']=="")?"없음":number_format(intval($return['totPkngCnt']))." 대";
+        $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음"||$return['rideUseElvtCnt']=="")?"없음":$return['rideUseElvtCnt']." 대";
 
         if(!$return['direction_gijun']) $return['direction_gijun'] = "출입구 기준";
 
@@ -239,7 +239,22 @@ class IntraSaleClass{
             if($i > 1 && $i <= 4)   $return['description_2'] .= $_txt;
         }
 
-        
+        $arrHash = [];
+        foreach(explode("|",$return['bdOpt']) as $_opt){  
+            if(!empty($_opt))  $arrHash[] = $_opt;
+        }
+        foreach(explode("|",$return['prposAreaNmArr']) as $_nm)  $arrHash[] = $_nm;
+
+        $return['hashtag'] = '';
+        if(count($arrHash) > 0){
+            $return['hashtag'] .= '<div class="hashtag_w">';
+            foreach($arrHash as $_hash) $return['hashtag'] .= '<p class="hashtag">#'.$_hash.'</p>';
+            $return['hashtag'] .= '</div>';
+        }
+
+        if(!empty($return['description_3']))    $return['description_3'] =  $return['description_3'] . $return['hashtag'];
+        elseif(!empty($return['description_2']))    $return['description_2'] = $return['description_2'] . $return['hashtag'];
+        else $return['description_1'] = $return['description_1'] . $return['hashtag'];
 
 // dd('중개사정보',$data->sale->users->first()->sawon->user_name);
         $return['sawon_idx'] = $data->sale->users->first()->sawon->idx;
