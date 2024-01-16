@@ -11,12 +11,14 @@
     <p class="mont click_chat">click</p>
     <i class="ri-message-3-line"></i>
 
-    <div class="chat-bdg">
-        <p>1</p>
-    </div>
-    </button>
     @if ($cnt>0)
-    <div class="notification-sticker">{{ $cnt }}</div>
+    <div class="chat-bdg">
+        <p>{{ $cnt }}</p>
+    </div>
     @endif
+    </button>
+    {{-- @if ($cnt>0)
+    <div class="notification-sticker">{{ $cnt }}</div>
+    @endif --}}
 
 </div>
