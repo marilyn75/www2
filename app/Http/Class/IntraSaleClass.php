@@ -173,7 +173,7 @@ class IntraSaleClass{
         }
 
         $arrAddr = explode("|",$data->addr);
-        $arrAddress = explode(" ", $arrAddr[0]);
+        $arrAddress = explode(" ", $arrAddr[$return['mainAddr']]);  // 대표지번
         $addr = trim($arrAddress[0])." ".trim($arrAddress[1])." ".trim($arrAddress[2]);
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
@@ -247,6 +247,8 @@ class IntraSaleClass{
             if(!empty($_nm))  $arrHash[] = $_nm;
         }  
 
+        if(count(explode("|",$return['prposAreaNmArr'])) > 1)   $return['prposAreaNm'] .= " 외".(count(explode("|",$return['prposAreaNmArr'])) - 1);
+
         $return['hashtag'] = '';
         if(count($arrHash) > 0){
             $return['hashtag'] .= '<div class="hashtag_w">';
@@ -276,6 +278,7 @@ class IntraSaleClass{
             $return['sawon_photo'] = "/images/sawon-placeholder.png";
             $return['sawon_name'] = "부동산중개법인개벽";
             $return['sawon_office_line'] = "8840";
+            $return['sawon_duty'] = "";
         }
 
         $return['radmin_photo'] = "/images/sawon-placeholder.png";

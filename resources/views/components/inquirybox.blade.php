@@ -53,10 +53,10 @@
             <input type="hidden" name="s_idx" value="{{ @$printData['s_idx'] }}">
             @auth
             <input type="hidden" name="name" value="{{ auth()->user()->name }}">
-            <input type="hidden" name="phone" value="{{ auth()->user()->phone }}">
+            @if(!empty(auth()->user()->phone))<input type="hidden" name="phone" value="{{ auth()->user()->phone }}">@endif
             @endauth
         <ul class="sasw_list mb0 sasw_list_w">
-            @guest
+            @if(empty(auth()->user()->phone))
             {{-- <li class="search_area">
             <div class="form-group">
                 <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력하세요" required hname="이름">
@@ -67,7 +67,7 @@
                     <input type="text" class="form-control" name="phone" id="phone" placeholder="연락처를 입력하세요" required hname="연락처" options="phone">
                 </div>
             </li>
-            @endguest
+            @endif
             
             <li class="search_area">
                 <div class="form-group">

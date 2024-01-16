@@ -5,7 +5,7 @@
 
 <div class="dashboard_sidebar_menu dn-992">
   <ul class="sidebar-menu">
-    <li class="header"><img src="{{ asset('images/header-logo.png') }}" alt="header-logo2.png"></li>
+    <li class="header"><a href="{{ route('main') }}" target="_blank"><img src="{{ asset('images/header-logo.png') }}" alt="header-logo2.png"></a></li>
     <li class="title"><span>Main</span></li>
     <li class="treeview @if($routeName=='admin'){{ __('active') }}@endif"><a href="{{ route('admin') }}"><i class="ri-dashboard-line"></i><span>대시보드</span></a></li>
     <li class="treeview @if($routeName=='admin.chat'){{ __('active') }}@endif"><a href="{{ route('admin.chat') }}"><i class="ri-message-3-line"></i><span>채팅문의관리</span></a></li>
