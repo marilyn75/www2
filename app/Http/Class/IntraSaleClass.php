@@ -168,7 +168,7 @@ class IntraSaleClass{
         $return['img'] = "/images/noimg.jpg";
         $return['img2'] = "/images/noimg.jpg";
         if(!empty($data->files->first()->filename)){
-            $return['img'] = $clsFile->mkThumbnailFromUrl(env('INTRANET_DOMAIN')."/_Data/Homepage/".$data->files->first()->filename, 250, 150);
+            $return['img'] = $clsFile->mkThumbnailFromUrl(env('INTRANET_DOMAIN')."/_Data/Homepage/".$data->files->first()->filename, 380, 240);
             $return['img2'] = $clsFile->mkThumbnailFromUrl(env('INTRANET_DOMAIN')."/_Data/Homepage/".$data->files->first()->filename, 250, 190);
         }
 
