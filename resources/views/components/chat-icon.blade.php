@@ -4,7 +4,9 @@
     @auth
     onclick="openWindow('{{ route('chat') }}',600, 900, 'chat');return false;"
     @else
-    data-toggle="modal" data-target="#logalertModal" onclick="return false;"
+    {{-- data-toggle="modal" data-target="#logalertModal" onclick="return false;" --}}
+    data-url="modal.login-alert"
+    class="modal-button"
     @endauth
     >
     <p>무엇을 <br> 도와드릴까요?</p>

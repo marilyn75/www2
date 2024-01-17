@@ -7,7 +7,7 @@
     {{-- <li><a href="{{ route('page', 18) }}?mode=create"><span class="title enter_span">매물등록</span></a></li> --}}
     @guest
     <li class="list-inline-item list_s float-right aaa">
-        <a href="#" class="btn flaticon-user login_head" id="a-login" data-toggle="modal" data-target="#loginModal"> <span class="log_sp">로그인</span></a>
+        <a href="#" class="btn flaticon-user login_head modal-button" id="a-login" data-url="modal.login"> <span class="log_sp">로그인</span></a>
         
     </li>
     @endguest

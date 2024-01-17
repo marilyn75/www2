@@ -22,16 +22,33 @@
             </div>
         </div>
 
-{{-- 로그인 알림 모달 --}}
-  @include('include.modal_login-alert') 
-{{-- 로그인 알림 모달 끝 --}}
-
-
-{{-- 로그인 모달 --}}
-  @include('include.modal_login')
-  
-{{-- 로그인 모달 끝 --}}
 
 
 
     </section>
+
+{{-- 모달창 영역 --}}
+<div class="modal-content" id="modal">
+    {{-- AJAX로 로드된 컨텐츠가 여기 들어갑니다. --}}
+</div>
+<script>
+// 모달창 호출 스크립트
+$(document).ready(function() {
+    $('.modal-button').click(function() {
+        var url = $(this).data('url'); // 버튼의 데이터 속성에서 URL을 가져옵니다.
+        
+        $.ajax({
+            url: '{{ route('modal.content') }}/'+url,
+            type: 'GET',
+            success: function(response) {
+                $('#modal').html(response); // 모달의 내용을 업데이트합니다.
+                $('#modal .modal').modal('show'); // 모달을 표시합니다.
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+
+</script>
