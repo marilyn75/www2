@@ -16321,7 +16321,7 @@ button.gm-ui-hover-effect:focus {
 .feat_property_w .thumb .thmb_cntnt ul.tag li a, .feat_property_w .thumb .thmb_cntnt ul.tag li span, .properti_city.home6 .thumb .thmb_cntnt ul.tag li a, .feat_property_w.home8 ul.tag li a, .feat_property_w.list ul.tag li a{
   font-size: 16px;
 }
-.feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { right: 7px; left: auto; top: 7px; display: flex; align-items: center; }
+.feat_property_w .thumb .thmb_cntnt ul.tag, .properti_city.home6 .thumb .thmb_cntnt ul.tag { right: 10px; left: auto; top: 10px; display: flex; align-items: center; }
 .feat_property_w .thumb .thmb_cntnt .fp_price { left: 12px; display: flex; align-items: center; }
 .feat_property .thumb .thmb_cntnt .fp_price_w { background: rgb(0, 0, 0, 0.5); border-radius: 30px; }
 .feat_property .thumb .thmb_cntnt .fp_price_w p{ font-weight: 500; padding: 10px 20px; font-size: 16px; margin: 0; color: #fff; }
@@ -16540,16 +16540,16 @@ input[type="range"] {
   border-radius: 5px; 
 }
 .feat_property_w.home7.style4 .thumb { border-radius: 10px 10px 0 0; margin: 0; background: #fff; max-height: fit-content; }
-.feat_property_w .thumb .thmb_cntnt, .properti_city.home6 .thumb .thmb_cntnt { bottom: 7px; left: 7px; right: 7px; top: 7px; border-radius: 10px; }
+.feat_property_w .thumb .thmb_cntnt, .properti_city.home6 .thumb .thmb_cntnt { bottom: 0; left: 0; right: 0; top: 0; border-radius: 10px; }
 .feat_property_w .thumb .thmb_cntnt p {
   width: fit-content;
   padding: 5px 20px;
   margin: 0;
-  margin-top: 7px;
+  margin-top: 10px;
   background: #385f8d;
   border-radius: 5px;
   color: #fff !important;
-  margin-left: 7px;
+  margin-left: 10px;
   font-size: 14px !important;
 }
 .text_loc i { color: #ADB8C2; }
@@ -16875,7 +16875,7 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .hot_subtit h4{ color: #fff; font-size: 30px; font-weight: 500; }
 .hot_subtit p{ font-size: 24px; font-weight: 400; }
 .hot_subtit .btn { width: 170px; }
-.our-hot-offer { background-image: url(../images/background/mapimg.png); height: 540px; }
+.our-hot-offer { background-image: url(../images/background/mapimg.png); height: 580px; }
 .text-thm_main p{ font-size: 14px; }
 .text-thm_main h4{ font-size: 18px; }
 .fp_meta_main li a{ font-size: 14px !important; }
