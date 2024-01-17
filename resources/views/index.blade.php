@@ -279,7 +279,7 @@
 </section>
 
 <!-- 신문광고 -->
-<section class="our-newspaper bgc-f7">
+{{-- <section class="our-newspaper bgc-f7">
     <div class="container container_w">
         <div class="row align-items-center">
             <div class="col-8 col-sm-8 col-md-8 main-title subtit newsp_subtit">
@@ -290,6 +290,19 @@
             <div class="col-4 col-sm-4 col-md-4 news_imgw">
                 <img src="/images/newspaper.png" alt="">
             </div>
+        </div>
+    </div>
+</section> --}}
+<section class="our-newspaper bgc-f7">
+    <div class="container container_w">
+        <div class="newsad_box">
+            <div class="news-title">
+                <h2>신문속의 <br><span class="mont">GYEMOIM INC .</span></h2>
+                <p>매주 월, 수, 금 부산일보와 함께하는 신문광고</p>
+            </div>
+            <a href="" class="news_link">
+                <img src="/images/news_ad.png" alt="">
+            </a>
         </div>
     </div>
 </section>
