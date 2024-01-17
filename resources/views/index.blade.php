@@ -296,11 +296,14 @@
 <section class="our-newspaper bgc-f7">
     <div class="container container_w">
         <div class="newsad_box">
-            <div class="news-title">
-                <h2>신문속의 <br><span class="mont">GYEMOIM INC .</span></h2>
-                <p>매주 월, 수, 금 부산일보와 함께하는 신문광고</p>
-            </div>
             <a href="" class="news_link">
+                <div class="news-title">
+                    <h2>신문속의 <br><span class="mont">GYEMOIM INC .</span></h2>
+                    <p>매주 월, 수, 금 부산일보와 함께하는 신문광고</p>
+                </div>
+                <div class="news-arrow">
+                    <i class="ri-arrow-right-line"></i>
+                </div>
                 <img src="/images/news_ad.png" alt="">
             </a>
         </div>
