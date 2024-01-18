@@ -17806,6 +17806,8 @@ code {
 .sidebar-menu .title { color: #d9d9d9; font-size: 18px; font-weight: 600; padding: 0 20px; }
 .sidebar-menu li a { color: #d9d9d9; font-size: 18px; font-weight: 400; padding: 0 20px; }
 
+.sidebar-menu li:first-child:hover a { border-color: #191A36; background: transparent; }
+.sidebar-menu li:first-child a:hover {border-color: #191A36;  background: transparent; }
 .ff_one { 
   border-radius: 20px;
   background: #FFF;
