@@ -17968,7 +17968,6 @@ code {
 }
 @media (max-width: 1199.98px) {
   .feat_property .details .fp_footer_w { padding: 0; padding: 12px 0 16px; }
-  .feat_property .details .fp_footer .fp_meta_w li:first-child { display: none; }
   .small-img { width: auto; height: auto; }
   .contact_bar { display: none; }
   .contact_btn { display: flex; align-items: center; justify-content: center; }
@@ -18006,7 +18005,7 @@ code {
   }
   .filter_btn { display: block; }
   .list-inline-item i { font-size: 18px; }
-  .list-inline-item i { line-height: 43px; }
+  /* .list-inline-item i { line-height: 43px; } */
   .our-hot-offer { height: 850px; }
   .hot_subtit { margin-bottom: 50px; }
   .all_bx .btn { width: auto; font-size: 12px; line-height: 29px; background: transparent; color: #385F8D; border: none; font-weight: 700;}
