@@ -137,6 +137,60 @@
         </div>
         
     </div>
+
+    {{-- 매물 슬라이드 --}}
+    {{-- <div class="slsl" id="slsl">
+        <div class="slide-track">
+            @foreach ($newSales as $_data)
+            @php
+            $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
+            @endphp
+            <div class="adad">
+                <x-item-sale-intranet type='recommend' :printData="$printData" />
+            </div>
+            @endforeach
+        </div>
+    </div>
+    
+    <style>
+        .slsl{
+    width: 100vw;
+    height: 33vh;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    display: grid;
+    place-items: center;
+}
+
+.slide-track{
+    display: flex;
+    width: min-content;
+    animation: scroll 40s linear infinite;
+}
+
+.adad{
+    height: 200px;
+    width: 380px;
+    display: contents;
+    align-items: center;
+    margin: 10px;
+    position:relative;
+    background-color: pink;
+    border-radius: 12px;
+}
+
+@keyframes scroll{
+    0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(-300px * 6));
+        }
+}
+    </style> --}}
 </section>
 
 <!-- Property Cities -->
