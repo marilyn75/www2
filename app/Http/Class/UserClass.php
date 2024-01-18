@@ -140,11 +140,16 @@ class UserClass{
     public function destroy(){
         $user = $this->model->first();
 
+        // 소셜계정 삭제
+        if($user->hasSocialAccounts()){
+            SocialAccount::where('user_id', $this->id)->delete();
+        }
+
         if(!empty($user->file)){
             unlink($this->file_path . $user->file);
         }
 
-        $user->delete();
+        return $user->delete();
     }
 
     public static function getUserFromEmail($email)

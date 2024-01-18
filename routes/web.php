@@ -40,6 +40,10 @@ Route::prefix('/member')->group(function(){
     Route::post('profile', [App\Http\Controllers\Member\ProfileController::class, 'update'])->middleware('auth');
     Route::get('mypage', [App\Http\Controllers\Member\ProfileController::class, 'mypage'])->name('mypage')->middleware('auth');
 
+    Route::match(['get', 'post'],'leave', [App\Http\Controllers\Member\LeaveController::class, 'index'])->name('leave')->middleware('auth');
+    Route::get('leave-done', [App\Http\Controllers\Member\LeaveController::class, 'leave_done'])->name('leave.done');
+
+    Route::post('password-confirm', [App\Http\Controllers\Member\LeaveController::class, 'confirmpw'])->name('passwordConfrim')->middleware('auth');
 });
 
 Route::get('login',[App\Http\Controllers\Member\LoginController::class, 'index'])->name('login')->middleware('guest');

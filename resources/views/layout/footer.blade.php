@@ -37,20 +37,24 @@ $(document).ready(function() {
     $('.modal-button').click(function() {
         var url = $(this).data('url'); // 버튼의 데이터 속성에서 URL을 가져옵니다.
         
-        $.ajax({
-            url: '{{ route('modal.content') }}/'+url,
-            type: 'GET',
-            success: function(response) {
-                $('#modal').html(response); // 모달의 내용을 업데이트합니다.
-                $('#modal .modal').modal('show'); // 모달을 표시합니다.
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+        showModal(url);
 
         return false;
     });
 });
+
+function showModal(url){
+    $.ajax({
+        url: '{{ route('modal.content') }}/'+url,
+        type: 'GET',
+        success: function(response) {
+            $('#modal').html(response); // 모달의 내용을 업데이트합니다.
+            $('#modal .modal').modal('show'); // 모달을 표시합니다.
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
 
 </script>
