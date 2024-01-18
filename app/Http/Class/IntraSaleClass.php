@@ -142,7 +142,7 @@ class IntraSaleClass{
         $return['area_b_py'] = (empty($return['area_b']))?"":number_format(doubleval($return['area_b']) * 0.3025 ,2);
         $return['area_j_py'] = (empty($return['area_j']))?"":number_format(doubleval($return['area_j']) * 0.3025 ,2);
 
-        if($return['area_j']) $return['areaRate'] = round(($return['area_j'] / $return['area_b']) * 100,2);   //전용율
+        if($return['area_j']) $return['areaRate'] = round((doubleval($return['area_j']) / doubleval($return['area_b'])) * 100,2);   //전용율
 
         if($data->tradeType=="임대"){
             $return['price'] = number_format($data->depPrice)." / ".number_format($data->monPrice);
