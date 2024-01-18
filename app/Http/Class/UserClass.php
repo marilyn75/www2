@@ -142,14 +142,14 @@ class UserClass{
 
         // 소셜계정 삭제
         if($user->hasSocialAccounts()){
-            SocialAccount::where('user_id', $this->id)->delete();
+            SocialAccount::where('user_id', $this->id)->forceDelete();
         }
 
         if(!empty($user->file)){
             unlink($this->file_path . $user->file);
         }
 
-        return $user->delete();
+        return $user->forceDelete();
     }
 
     public static function getUserFromEmail($email)
