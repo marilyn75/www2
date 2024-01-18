@@ -16301,7 +16301,11 @@ button.gm-ui-hover-effect:focus {
 .search_result_w .left_area p{ font-size: 16px; color: #000; font-weight: 600; }
 .search_result_w .bootstrap-select>.dropdown-toggle { background: transparent; }
 .plr-0 { padding: 0; }
-.list-inline-item i {  font-size: 16px; line-height: 35px; }
+.list-inline-item i {  
+  font-size: 16px; 
+  /* line-height: 35px;  */
+  line-height: normal; 
+}
 .ri-thumb-up-fill { font-size: 14px !important; color: #FFC700; }
 .ri-heart-3-fill { color: #E93C3C; }
 
@@ -16321,6 +16325,9 @@ button.gm-ui-hover-effect:focus {
   width: 35px;
   background: rgb(0, 0, 0, 0.15);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .heart_btn:active {
   outline: none;
@@ -18472,6 +18479,7 @@ code {
 
 
 @media (max-width: 340px) {
+  .footer_info { display: grid; gap: 0; }
   .text-inf-w { display: grid; gap: 0; }
   .search_result_w { padding: 0 20px; }
   .subfilter_w ul { gap: 0; }
