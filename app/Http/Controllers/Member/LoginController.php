@@ -43,6 +43,7 @@ class LoginController extends Controller
                 if(session_status() == PHP_SESSION_NONE) {
                 session_start();
                 }
+                
                 if(!empty($_SESSION['return_url'])) return redirect($_SESSION['return_url']);
                 else                                return redirect('/');
             }
@@ -61,5 +62,17 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         return redirect(url()->previous());
         // return redirect('/');
+    }
+
+   /**
+     * 사용자가 인증된 후에 호출되는 메소드.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        // 사용자가 로그인한 후에 여기에 추가적인 로직을 구현합니다.
     }
 }

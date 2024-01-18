@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\TracksIpAddressesAndUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Sale extends Model
 {
     use HasFactory, SoftDeletes;
+    use TracksIpAddressesAndUser;
 
     protected $fillable = [
         'tmp_id','sale_code','trade_type','trade_type_txt','sale_type','sale_type_txt','sale_amount','deposit_amount_state','monthly_amount_state',

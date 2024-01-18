@@ -34,11 +34,7 @@ return new class extends Migration
             $table->tinyInteger('file_upload')->default(0)->comment('파일업로드권한');
             $table->tinyInteger('file_download')->default(1)->comment('파일다운로드권한');
 
-            $table->unsignedBigInteger('created_user_id')->nullable()->comment('작성자 아이디');
-            $table->string('created_ip',20)->nullable()->comment('작성자 아이피');
-            $table->unsignedBigInteger('updated_user_id')->nullable()->comment('수정자 아이디');
-            $table->string('updated_ip',20)->nullable()->comment('수정자 아이피');
-
+            $table->userstamps();
             $table->timestamps();
             $table->softDeletes();
 

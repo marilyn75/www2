@@ -20,11 +20,7 @@ return new class extends Migration
 
             $table->string('class')->nullable()->comment('구분 클래스');
 
-            $table->unsignedBigInteger('created_user_id')->nullable()->comment('작성자 아이디');
-            $table->string('created_ip',20)->nullable()->comment('작성자 아이피');
-            $table->unsignedBigInteger('updated_user_id')->nullable()->comment('수정자 아이디');
-            $table->string('updated_ip',20)->nullable()->comment('수정자 아이피');
-
+            $table->userstamps();
             $table->timestamps();
 
             $table->comment('코드관리');

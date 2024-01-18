@@ -21,7 +21,13 @@ class EventServiceProvider extends ServiceProvider
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
         \SocialiteProviders\Naver\NaverExtendSocialite::class.'@handle',
         \SocialiteProviders\Kakao\KakaoExtendSocialite::class.'@handle',
-        ]
+        ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LogSuccessfulLogin',
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\LogSuccessfulLogout',
+        ],
     ];
 
     /**

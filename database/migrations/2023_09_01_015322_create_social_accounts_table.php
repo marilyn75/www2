@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('email')->nullable()->comment('이메일');
             $table->string('avatar')->nullable()->comment('프로필 사진');
 
+            $table->userstamps();
             $table->timestamps();
             $table->softDeletes();
         });

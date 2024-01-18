@@ -4,16 +4,21 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Permission\Traits\HasRoles;
+use App\Traits\TracksIpAddressesAndUser;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles, SoftDeletes;
+    use LogsActivity;
+    use TracksIpAddressesAndUser;
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +31,9 @@ class User extends Authenticatable
         'password',
         'file',
         'phone',
+        'zip_code',
+        'address',
+        'address_detail',
     ];
 
     /**
@@ -90,4 +98,22 @@ class User extends Authenticatable
             'password' => 'required|min:6|max:30|confirmed'
         ],
     ];
+
+    // protected static $logAttributes = ['name', 'email'];
+    // protected static $logName = 'user';
+    
+    protected static $recordEvents = ['created', 'updated', 'deleted'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('user')
+            // 예를 들어, 로그 기록에 추가할 속성을 설정할 수 있습니다.
+            ->logOnly($this->fillable)
+            // ->logAll()
+            // 로그를 기록할 때 발생시킬 이벤트를 설정할 수 있습니다.
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
+    }
+
 }

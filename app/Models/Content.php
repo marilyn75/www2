@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\TracksIpAddressesAndUser;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Content extends Model
 {
     use HasFactory, SoftDeletes;
+    use TracksIpAddressesAndUser;
 
     public $timestamps = true;
 

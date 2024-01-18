@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\TracksIpAddressesAndUser;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CommonCode extends Model
 {
     use HasFactory;
     use NodeTrait;
+    use TracksIpAddressesAndUser;
 
     public $timestamps = true;
 

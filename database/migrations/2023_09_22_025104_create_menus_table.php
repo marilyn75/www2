@@ -30,29 +30,10 @@ return new class extends Migration
             $table->string('target',10)->nullable()->comment('링크target');
             $table->tinyInteger('is_use')->default(1)->comment('사용여부');
 
-            $table->unsignedBigInteger('created_user_id')->nullable()->comment('작성자 아이디');
-            $table->string('created_ip',20)->nullable()->comment('작성자 아이피');
-            $table->unsignedBigInteger('updated_user_id')->nullable()->comment('수정자 아이디');
-            $table->string('updated_ip',20)->nullable()->comment('수정자 아이피');
+            $table->userstamps();
 
             $table->timestamps();
         });
-
-        // 기초 데이터
-        $data = [
-            [
-                'code'=>'_web',
-                'title'=>'PC',
-                'type'=>'S',
-            ],
-            [
-                'code'=>'_mobile',
-                'title'=>'MOBILE',
-                'type'=>'S',
-            ],
-        ];
-        Menu::create($data[0]);
-        Menu::create($data[1]);
     }
 
     /**

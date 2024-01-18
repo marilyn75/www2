@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('address',255)->nullable()->comment('주소');
             $table->string('address_detail',255)->nullable()->comment('상세주소');
             $table->rememberToken();
+
+            $table->userstamps();
             $table->timestamps();
             $table->softDeletes();
         });
