@@ -19,7 +19,7 @@
     <div class="mbp_pagination">
         <ul class="page_navigation">
             <li class="page-item @if($data->currentPage()==1) disabled @endif">
-                <a class="page-link" href="@if($data->currentPage()==1)#@else{{ $data->path()."?page=".(intval($data->currentPage()) - 1) }}@endif" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span> Prev</a>
+                <a class="page-link" href="@if($data->currentPage()==1)#@else{{ $data->path()."?page=".(intval($data->currentPage()) - 1) }}@endif" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span></a>
             </li>
             @if($start > 1)
             <li class="page-item"><a class="page-link" href="{{ $data->path()."?page=1" }}">1</a></li>
@@ -52,7 +52,7 @@
     <div class="mbp_pagination">
         <ul class="page_navigation">
             <li class="page-item @if($data->currentPage()==1) disabled @endif">
-                <a class="page-link" href="@if($data->currentPage()==1)#@else{{ __("javascript:goPage(".(intval($data->currentPage()) - 1).");") }}@endif" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span> Prev</a>
+                <a class="page-link" href="@if($data->currentPage()==1)#@else{{ __("javascript:goPage(".(intval($data->currentPage()) - 1).");") }}@endif" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span></a>
             </li>
             @if($start > 1)
             <li class="page-item"><a class="page-link" href="{{ __("javascript:goPage(1);") }}">1</a></li>

@@ -17085,7 +17085,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
 .my_bx_inf p { margin: 0; }
 .my_bx_inf p:first-child { color: #000; font-size: 18px; font-weight: 500; }
 .my_bx_inf p:nth-child(2) { color: rgba(56, 95, 141, 0.42); font-size: 18px; text-decoration: underline; }
-.my_bx_inf .btn { width: 130px; padding: 10px; font-size: 14px; }
+.my_bx_inf .btn { width: 130px; padding: 10px; font-size: 14px; margin-top: 20px; }
 .my_bx_inf .btn:hover a{ color: #385f8d !important; font-weight: 500; }
 .my_bx_inf .btn:active a{ color: #385f8d !important; font-weight: 500; }
 .my_bx_inf .btn:focus a{ color: #385f8d !important; font-weight: 500; }
@@ -17956,6 +17956,7 @@ code {
 .modal-open .modal { backdrop-filter: blur(20px); background: #0000009c; }
 
 
+.page-link { display: flex; align-items: center; justify-content: center; }
 
 
 
@@ -18008,6 +18009,7 @@ code {
   .intro_bx { padding: 95px 0; }
   .intro_bx h2 { margin-bottom: 10px; }
   .about_us h2 { font-size: 30px; }
+  .my_bx_rg { display: none; }
   
 
 }
@@ -18098,7 +18100,6 @@ code {
   .about_us p { font-size: 16px; }
   .contact_us p { font-size: 16px; }
   .intro_boxs { display: grid; justify-content: center; }
-  .my_bx_rg { display: none; }
 
   .nodata_serch { padding: 170px 0; }
   .nodata_serch .nodata_np { margin-top: 15px !important; }
@@ -18113,6 +18114,8 @@ code {
   .home_search_w ul li:nth-child(2) { width: 335px !important; }
   .mainswiper { margin-top: 124px; }
   .home_bx_new { transform: translate(50%,-8%); }
+
+  .my_bx_inf .btn { width: 100px; padding: 8px; font-size: 12px; }
 
 
 
@@ -18306,9 +18309,11 @@ code {
   .my_bx { padding: 20px; }
   .my_bx_pimg { width: 120px; height: 120px; }
   .my_bx_inf p { line-height: normal; }
-  .my_bx_lf { gap: 25px; }
-  .my_bx_inf .btn { margin-top: 15px; width: 115px; padding: 8px; }
+  .my_bx_lf { gap: 10px; }
+  .my_bx_inf .btn { width: 90px; padding: 6px; }
   .my_profile_bx { padding-bottom: 20px; }
+
+  .my_bx_inf p { font-size: 14px !important; } 
 
   /* mobile menu */
   .mm-navbar__title { font-size: 18px; }
@@ -18446,10 +18451,14 @@ code {
   .feat_property_w .details .fp_footer .fp_pname { font-size: 14px; }
   .feat_property_w .details .tc_content { margin-bottom: 0; }
 
-  .my_bx_inf p { font-size: 14px !important; }
   .my_bx_inf .btn { font-size: 12px; }
   .my_bx_inf .btn { width: 90px; }
   .menu_link { font-size: 16px; }
+  .my_bx_pimg { width: 80px; height: 80px; }
+  .my_bx_inf .btn { font-size: 12px; background: none; color: #385f8d; border: none; padding: 0; width: auto; }
+  .my_bx_inf .btn a { color: #385f8d; font-weight: 600; }
+  .my_bx_inf .btn { margin-top: 10px; }
+
 
   .about_top .bg_txt h2 { font-size: 30px; }
   .about_us h2 { font-size: 16px; }
@@ -18513,9 +18522,8 @@ code {
   .filter_btn { font-size: 12px; padding: 4px 8px; }
   .breadcrumb_title_w { font-size: 14px; }
 
-  .my_bx_pimg { width: 80px; height: 80px; }
+
   .my_bx_lf { gap: 15px; }
-  .my_bx_inf .btn { font-size: 12px; background: none; color: #385f8d; border: none; padding: 0; width: auto; }
   .my_bx_inf .btn a { color: #385F8D !important; font-weight: 600; }
   .my_profile_bx { padding-bottom: 0; }
   .menu_link { font-size: 14px; }
