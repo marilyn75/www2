@@ -19,7 +19,7 @@
                 <div class="head_img_w">
                     <img src="{{ showProfileImage() }}" width="50" height="50"> 
                 </div>
-                <span class="dn-1199">{{ Auth::user()->name }}</span>
+                <span class="">{{ Auth::user()->name }}</span>
             </a>
             <div class="dropdown-menu">
                 <div class="user_set_header user_set_header_w">

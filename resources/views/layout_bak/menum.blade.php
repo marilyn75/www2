@@ -9,7 +9,7 @@
                 @endguest
                 @auth
 
-                    <a class="mobile-menu-reg-link" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{ ('images/team/e1.png') }}" alt="e1.png"> <span class="dn-1199">{{ Auth::user()->name }}</span></a>
+                    <a class="mobile-menu-reg-link" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{ ('images/team/e1.png') }}" alt="e1.png"> <span class="">{{ Auth::user()->name }}</span></a>
                     <div class="dropdown-menu">
                         <div class="user_setting_content">
                             <a class="dropdown-item" href="{{ route('changepw') }}">비밀번호 변경</a>

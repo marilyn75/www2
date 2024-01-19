@@ -72,8 +72,10 @@
                                                 @endif
                                             </div>
                                         @endif
-                                        <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $_sale['address'] }}</p>
-                                        <p class="text-thm price_w">{{ $_sale['tradeType'] }} <span class="mont">{{ $_sale['price'] }}</span> 만원</p>
+                                        <div class="enter_list">
+                                            <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $_sale['address'] }}</p>
+                                            <p class="text-thm price_w">{{ $_sale['tradeType'] }} <span class="mont">{{ $_sale['price'] }}</span> 만원</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
