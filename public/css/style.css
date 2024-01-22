@@ -17026,7 +17026,7 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .enter_list { display: flex; align-items: center; justify-content: space-between; }
 .enter_list p { margin: 0 !important; }
 .agent_list .details_w .agent_content { margin: 0; margin-top: 3px; }
-
+.agent_bx .details { padding-top: 0; }
 
 
 
