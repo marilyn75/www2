@@ -16377,7 +16377,7 @@ button.gm-ui-hover-effect:focus {
 .feat_property .details .fp_footer_w { padding: 15px 0; display: flex; align-items: center; justify-content: space-between; }
 /* .sasw_list_w button.btn.dropdown-toggle { background: transparent; border: none; border-radius: 0; border-bottom: 1px solid; } */
 .bootstrap-select .dropdown-toggle .filter-option { font-size: 14px;  }
-.feat_property .details .tc_content { padding: 0 !important; text-align: left; }
+.feat_property .details .tc_content { padding: 0 !important; text-align: left; margin-top: 15px; margin-bottom: 15px; }
 /* .small_dropdown2_w .dd_btn { background: transparent; border: none; border-radius: 0; border-bottom: 1px solid; } */
 .sasw_list .small_dropdown2_w .dd_btn {font-size: 16px;  }
 .sasw_list .small_dropdown2 .dd_content2_w { width :100%; max-width: none; }
@@ -17025,6 +17025,7 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .agent_review p { font-size: 16px; color: #828282; text-align: center; margin: 0; }
 .enter_list { display: flex; align-items: center; justify-content: space-between; }
 .enter_list p { margin: 0 !important; }
+.agent_list .details_w .agent_content { margin: 0; margin-top: 3px; }
 
 
 
@@ -18144,7 +18145,10 @@ code {
   .main_tit { top: 105px; }
   .home_bx_new { top: 55%; }
 
+  .right_area.style2 { text-align: right !important; }
+
 }
+
 @media (max-width: 575.98px) {
   section { padding: 50px 0; }
   /* .text-inf-w { display: flex; gap: 15px; } */
@@ -18457,6 +18461,11 @@ code {
   .top-filt { align-items: center; }
   .all_bx .btn { font-size: 14px; font-weight: 500; width: 40px; height: auto; line-height: auto; background: transparent; border: none; color: #385F8D; }
   .feat_property_w .details .tc_content h4 { font-size: 16px !important; }
+  .employ_inf p:first-child { font-size: 14px; }
+  .employ_inf p:last-child { font-size: 16px; }
+  .empl-img-w { width: 125px; height: 125px; }
+  .empl-img-w img { height: 125px; }
+
 
   .log_sing_intro h3 { font-size: 24px; }
   .log_sing_intro p { font-size: 16px; }
@@ -18564,6 +18573,12 @@ code {
   .news-title p { font-size: 10px; }
   .news-arrow { width: 20px; height: 20px; }
   .news-arrow i { font-size: 13px; }
+
+  .empl-img-w { width: 100px; height: 100px; }
+  .empl-img-w img { height: 100px; }
+  .emp_rd { padding: 5px 11px; }
+  .sales_count p { font-size: 12px; line-height: normal; }
+
 
 }
 
