@@ -2,10 +2,11 @@
 
 namespace App\Http\Class;
 
-use App\Models\ChatChannel;
-use App\Models\SocialAccount;
 use App\Models\User;
+use App\Models\ChatChannel;
 use Illuminate\Http\Request;
+use App\Models\SocialAccount;
+use Illuminate\Support\Facades\Http;
 use Intervention\Image\Facades\Image;
 
 // 유저관련 클래스
@@ -142,7 +143,9 @@ class UserClass{
 
         // 소셜계정 삭제
         if($user->hasSocialAccounts()){
-            SocialAccount::where('user_id', $this->id)->forceDelete();
+            foreach($user->socialAccounts as $_account){
+                $result = $this->unlinkSocialAccount($_account->provider_name, $_account->token);
+            }
         }
 
         if(!empty($user->file)){
@@ -164,5 +167,28 @@ class UserClass{
         }
 
         return new static($id);
+    }
+
+    // 소셜계정 연결해제
+    public function unlinkSocialAccount($provider, $accessToken){
+        if($provider=='kakao'){
+            $response = Http::withHeaders([
+                "Authorization" => "Bearer " . $accessToken,
+            ])->post('https://kapi.kakao.com/v1/user/unlink');
+
+            return $response->json();
+        }
+
+        if($provider=='naver'){
+            $response = Http::asForm()->post('https://nid.naver.com/oauth2.0/token',[
+                'service_provider'=>'NAVER',
+                'client_id'=>env('NAVER_CLIENT_ID'),
+                'client_secret'=>env('NAVER_CLIENT_SECRET'),
+                'access_token'=>$accessToken,
+                'grant_type'=>'delete',
+            ]);
+
+            return $response->json();
+        }
     }
 }
