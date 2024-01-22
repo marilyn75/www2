@@ -19,4 +19,4 @@ yarn-error.log
 /.idea
 /.vscode
 /public/.well-known
-/resources/conf/
+/resources/views/conf
