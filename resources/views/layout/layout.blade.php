@@ -2,7 +2,7 @@
 <html dir="ltr" lang="ko">
 <head>
 	{{-- 구글 관련 스트립트 --}}
-	@include('conf.google')
+	@include('conf.head_top')
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,6 +70,9 @@
 </head>
 
 <body>
+	
+	@include('conf.body_top')
+
 <div class="wrapper">
 	<div class="preloader"></div>
 
