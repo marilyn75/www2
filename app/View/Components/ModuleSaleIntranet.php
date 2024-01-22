@@ -81,6 +81,9 @@ class ModuleSaleIntranet extends Component
         // 오늘 본 매물 키 쿠키저장
         $this->cls->todayViewSaleSetCookie($this->request->idx);
 
+        // 조회수 증가
+        $this->cls->incrementHits($this->request->idx);
+
         // 관련매물
         $this->relatedSales = $this->cls->getRelatedSales($printData);
 

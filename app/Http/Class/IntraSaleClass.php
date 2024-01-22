@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Class\lib\ResultClass;
 use App\Http\Class\lib\KakaoApiClass;
 use App\Models\IntraSale;
+use App\Models\IntraSaleHit;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;
 
@@ -559,5 +560,15 @@ class IntraSaleClass{
             ->limit(2)->get();
 
         return $model;
+    }
+
+    // 조회수 증가
+    public function incrementHits($idx, $cnt=1){
+        // IntraSaleHomepage::find($idx)->increment('hits', $cnt);
+        $today = date('Y-m-d');
+        $cond = ['date'=>$today, 's_idx'=>$idx];
+        IntraSaleHit::updateOrCreate($cond);
+    
+        IntraSaleHit::where($cond)->increment('hits');
     }
 }
