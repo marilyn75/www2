@@ -156,33 +156,44 @@ $(window).on('load', function() {
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="listing_single_description description_w">
                                 <h4 class="mb20">상세내용</h4>
-
+                            
                                 <p class="mb10">
                                     {!! $printData['description_1'] !!}
                                 </p>
+                            
                                 @if (!empty($printData['description_2']))
-                                {{-- <p class="gpara second_para  mt10 mb10">
-                                    {{ $printData['description_2'] }}
-                                </p> --}}
-
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
                                         <p class="mt10 mb10">
-
                                             {!! $printData['description_3'] !!}
-
                                         </p>
                                     </div>
                                 </div>
-
+                            
                                 <p class="overlay_close">
                                     <a class="text-thm fz14 text-thm_w" data-toggle="collapse" href="#collapseExample"
                                         role="button" aria-expanded="false" aria-controls="collapseExample">
                                         더보기 <i class="ri-arrow-down-s-line"></i>
                                     </a>
                                 </p>
+                            
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var collapseExample = document.getElementById('collapseExample');
+                                        var overlayClose = document.querySelector('.overlay_close a');
+                            
+                                        overlayClose.addEventListener('click', function () {
+                                            if (collapseExample.classList.contains('show')) {
+                                                overlayClose.innerHTML = '더보기 <i class="ri-arrow-down-s-line"></i>';
+                                            } else {
+                                                overlayClose.innerHTML = '접기 <i class="ri-arrow-up-s-line"></i>';
+                                            }
+                                        });
+                                    });
+                                </script>
                                 @endif
                             </div>
+                            
                         </div>
                         <div class="col-lg-12 pl-0 pr-0">
                             <div class="additional_details additional_w">

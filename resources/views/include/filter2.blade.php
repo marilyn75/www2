@@ -104,7 +104,10 @@
         
 
 
-        <li class="filt_li">
+        <li class="filt_li filt_bt_wrap">
+            <div class="search_option_button">
+                <button type="submit" class="btn btn-block btn-thm btn-thm_w">초기화</button>
+            </div>
             <div class="search_option_button">
                 <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
             </div>
