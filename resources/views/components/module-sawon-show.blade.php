@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="feat_property list style2 agent agent_bx">
-                <div class="thumb agent_thumb">
+                <div class="empl-img-w">
                     <img class="img-whp" src="{{ $data['photo'] }}">
                 </div>
                 <div class="details details_w">

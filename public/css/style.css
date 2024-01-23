@@ -17027,6 +17027,8 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .enter_list p { margin: 0 !important; }
 .agent_list .details_w .agent_content { margin: 0; margin-top: 3px; }
 .agent_bx .details { padding-top: 0; }
+.agent_bx .details { width: auto !important; }
+
 
 
 
@@ -18292,12 +18294,26 @@ code {
   .sidebar_listing_list_w{ padding: 20px; }
   .today_pro { padding: 20px !important; }
   .chat-icon button { right: 18px; }
-  .agent_bx .details { padding: 0; margin-top: 20px; }
+  /* .agent_bx .details { padding: 0; margin-top: 20px; } */
+  .agent_bx .details_w .agent_inf { margin: 0; padding-top: 3px !important;}
+
   .agent_bx .agent_thumb { display: block; width: 100% !important; }
   /* .agent_list .agent_thumb { display: block; width: 100% !important; } */
   .agent_list .details { padding: 0; margin-left: 10px; }
   .agent_content .text-inf-w { display: grid !important; gap: 3px; }
   .agent_content { margin: 0 !important; }
+  .empl-img-w { width: 125px; height: 125px; border-radius: 8px; }
+  .empl-img-w img { height: 125px; }
+  .employ_inf p:first-child { font-size: 14px; }
+  .employ_inf p:last-child { font-size: 16px; }
+  .sales_count p { font-size: 12px; line-height: 24px; }
+  .emp_rd { padding: 0 10px; border-radius: 3px; }
+  .agent_inf p:first-child { font-size: 14px !important; }  
+  .agent_inf h4 { font-size: 18px !important; margin-bottom: 10px; }
+  .agent_inf p { font-size: 14px !important; }
+
+
+
 
   .sign_up_form.inner_page, .login_form.inner_page { padding: 0; }
   /* .single_product_slider_w .owl-controls .owl-dots span { width: 145px !important; } */
@@ -18395,6 +18411,9 @@ code {
 .logmod .modal-content { padding: 30px 15px; }
 .signin_link { font-size: 13px; }
 
+.hashtag { font-size: 12px !important; }
+
+
 
 }
 
@@ -18437,6 +18456,10 @@ code {
  .agent_list .details_w { width: 100% !important; }
  .feat_property_w .details .agent_content .price_w { text-align: right; }
 
+ .hashtag_w { flex-wrap: wrap; }
+ .hashtag { margin: 0; }
+
+
 }
 @media (max-width: 380px) {
   .main_tit h2 { font-size: 22px; line-height: 30px; }
@@ -18463,8 +18486,9 @@ code {
   .feat_property_w .details .tc_content h4 { font-size: 16px !important; }
   .employ_inf p:first-child { font-size: 14px; }
   .employ_inf p:last-child { font-size: 16px; }
-  .empl-img-w { width: 125px; height: 125px; }
-  .empl-img-w img { height: 125px; }
+  .empl-img-w { width: 100px; height: 100px; border-radius: 5px; }
+  .empl-img-w img { height: 100px; }
+  .agent_inf p:last-child { margin-top: 5px; }
 
 
   .log_sing_intro h3 { font-size: 24px; }
@@ -18487,7 +18511,7 @@ code {
   .my_bx_inf .btn { margin-top: 10px; }
 
 
-  .about_top .bg_txt h2 { font-size: 30px; }
+  .about_top .bg_txt h2 { font-size: 30px; } 
   .about_us h2 { font-size: 16px; }
   .about_top .pt80 { padding-top: 12px; }
   .about_top .intro_txt { font-size: 14px !important; }
@@ -18513,6 +18537,7 @@ code {
   .home_search_w ul li:nth-child(2) { width: 130px !important; }
   .mainswiper { margin-top: 60px; border-radius: 10px; }
   .home_content .home_search_w { height: 70px; }
+
 
 }
 

@@ -8,8 +8,8 @@
 
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 
-<div class="row">
-    <div class="col-lg-5 col-xl-4">
+<div class="row ">
+    <div class="col-lg-5 col-xl-4 mt100">
         <div class="message_container ms_list">
             <div class="inbox_user_list">
                 <div class="iu_heading">

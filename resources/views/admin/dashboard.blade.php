@@ -1,4 +1,5 @@
 @extends('admin.layout.layout')
+@section('page-title', '대시보드')
 
 @section('content')
 
