@@ -4,6 +4,34 @@
     <input type="hidden" name="mode" value="{{ $request->mode }}">
 <section class="our-listing bgc-f7 pb30-991">
     <div class="container container_w">
+        <section class="row top_cate">
+            <div class="cate_wrap">
+                <div class="cate_bg">
+                    <img src="images/top_cate/busanilbo.png" alt="">
+                </div>
+                <p>전체</p>
+            </div>
+            <div class="cate_wrap">
+                <div class="cate_bg"></div>
+                <p>카테고리1</p>
+            </div>
+            <div class="cate_wrap">
+                <div class="cate_bg"></div>
+                <p>카테고리2</p>
+            </div>
+            <div class="cate_wrap">
+                <div class="cate_bg"></div>
+                <p>카테고리3</p>
+            </div>
+            <div class="cate_wrap">
+                <div class="cate_bg"></div>
+                <p>카테고리4</p>
+            </div>
+            <div class="cate_wrap">
+                <div class="cate_bg"></div>
+                <p>카테고리5</p>
+            </div>
+        </section>
         <div class="row">
             <div class="col-12">
                 <div class="row">

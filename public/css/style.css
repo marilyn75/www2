@@ -17581,6 +17581,7 @@ table.dataTable>thead>tr>th, table.dataTable>thead>tr>td { padding: 20px 15px; }
 .cate_bg { cursor: pointer; width: 112px; height: 112px; background: #fff; border-radius: 150px; display: flex; align-items: center; justify-content: center; }
 .cate_bg:hover{ border: 5px solid #fff; outline: 5px solid #385F8D; }
 .cate_bg img { width: 92px; }
+.cate_wrap { display: grid; justify-items: center; }
 .cate_wrap p { font-size: 18px; text-align: center; font-weight: 500; margin-top: 10px; }
 
 
@@ -18052,6 +18053,9 @@ code {
   .img-whp { height: 200px; }
   .agent_thumb .img-whp{ width: auto !important; height: auto !important; }
 
+  .top_cate { gap: 35px; }
+  .cate_bg { width: 75px; height: 75px; }
+  .cate_bg img { width: 61px; }
 
   .result_filt { text-align: left !important; }
 
@@ -18097,9 +18101,6 @@ code {
   .intro_imgs img { height: 245px; }
   .about_top .intro_txt { font-size: 16px; }
 
-  .top_cate { gap: 35px; }
-  .cate_bg { width: 75px; height: 75px; }
-  .cate_bg img { width: 61px; }
 
   .my_bx_rg { display: none; }
   .employ_bx { width: 270px; }
@@ -18273,7 +18274,11 @@ code {
   .enter_list { display: grid; justify-content: normal; }
   .feat_property_w .details .agent_content .price_w { text-align: start; margin-top: 5px !important; }
 
-
+  .top_cate { gap: 25px; }
+  .cate_bg { width: 60px; height: 60px; }
+  .cate_bg img { width: 61px; }
+  .cate_wrap p { font-size: 16px; }
+  
   .chat-icon button { width: 70px; height: 70px; }
   .chat-icon i { line-height: 31px; }
   .mbp_pagination ul.page_navigation li .page-link { height: 35px; width: 35px; line-height: 20px; }
