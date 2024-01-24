@@ -2,6 +2,9 @@
 <html dir="ltr" lang="en">
 
 <head>
+    {{-- 구글 관련 스트립트 --}}
+	@include('conf.head_top')
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +18,7 @@
     <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <!-- Title -->
-    <title>FindHouse - Real Estate HTML Template</title>
+    <title>@if(!empty($arrLocation)){{ implode(" > ", array_reverse($arrLocation)). " | " }}@endif GYEMOIM INC.</title>
     <!-- Favicon -->
     <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
     <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" />
@@ -92,6 +95,8 @@
 </head>
 
 <body>
+    @include('conf.body_top')
+
     <div class="popup-title">
         <h2 class="pop_title">@yield('page-title')</h2>
         <span class="close-button" >

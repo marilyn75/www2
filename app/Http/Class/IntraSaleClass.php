@@ -201,7 +201,7 @@ class IntraSaleClass{
 
         $return['movein_nego'] = ($return['movein_nego']=='1')?"(협의가능)":"";
 
-        $return['useAprDay'] = ($return['useAprDay'])?$return['useAprDay']:"확인불가";
+        $return['useAprDay'] = ($return['useAprDay'] && $return['useAprDay']!="0000-00-00")?$return['useAprDay']:"확인불가";
 
         $return["households"] = ($return['households']=="해당없음")?$return['households']:number_format(intval($return['households']))." 세대";
 
