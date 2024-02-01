@@ -1,11 +1,11 @@
 <?php
 
 Route::get('/test2', function(){
-    return view('test.aaa');
+    return view('test.auction_detail');
 });
 
 Route::get('/test3', function(){
-    return view('test.bbb');
+    return view('test.auction_list');
 });
 
 Route::get('/test4', function(){
