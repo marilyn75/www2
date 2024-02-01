@@ -17975,7 +17975,7 @@ code {
 
 
 /* 경매 공매  */
-
+.auc_serch { justify-content: flex-start; padding: 0 15px; }
 .red_c { color: #E93C3C; }
 .auc_list { height: 198px; display: grid; align-content: space-between; padding: 10px 15px 0px; }
 .auction_tag { 

@@ -7,7 +7,7 @@
 
             <!-- 검색결과 -->
             <div class="row row_w">
-                <div class="grid_list_search_result search_result_w">
+                <div class="grid_list_search_result search_result_w auc_serch">
                     <div class="left_area tac-xsd">
                         <p>검색결과 <span class="mont point_c">9</span>건</p>
                     </div>
