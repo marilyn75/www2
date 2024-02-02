@@ -17976,7 +17976,7 @@ code {
 
 
 /* 경매 공매  */
-.auc_serch { justify-content: flex-start; padding: 0 15px; }
+.auc_serch { justify-content: flex-start !important; padding: 0 15px; }
 .red_c { color: #E93C3C; }
 .auc_list { height: 198px; display: grid; align-content: space-between; padding: 10px 15px 0px; }
 .auction_tag { 
@@ -18482,7 +18482,18 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   }
   .link_mob a { width: 48%; }
 
-  
+  .auction_tag { height: 56px; width: 43px; }
+  .auction_tag p { font-size: 14px; }
+  .auc_listw .auc_num { font-size: 12px !important; }
+  .auc_list_t { margin-bottom: 2px; }
+  .auc_list_t p { font-size: 12px; }
+  .auc_listw h4 { font-size: 16px; margin-bottom: 2px; }
+  .app_vlu { font-size: 12px; }
+  .low_vlu { font-size: 16px; margin: 0; }
+  .auc_hash li p { font-size: 12px; }
+  .auc_list { height: 185px; }
+  .auc_hash { margin-bottom: 10px; }
+  .auc_list { align-content: space-between; }
 
 }
 
@@ -18510,6 +18521,8 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 
   .dash_contain{ width: 100%; }
   .img-whp { height: 200px; }
+  .auction_thumb .img-whp { height: auto; }
+
   .agent_thumb .img-whp{ width: auto !important; height: auto !important; }
 
   .top_cate { gap: 35px; }
@@ -18621,7 +18634,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 
   .pdf_mob li { padding: 15px 0; }
 
-  .auction_tag { height: 56px; width: 43px; }
+  /* .auction_tag { height: 56px; width: 43px; }
   .auction_tag p { font-size: 14px; }
   .auc_listw .auc_num { font-size: 12px !important; }
   .auc_list_t { margin-bottom: 2px; }
@@ -18632,7 +18645,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .auc_hash li p { font-size: 12px; }
   .auc_list { height: 185px; }
   .auc_hash { margin-bottom: 10px; }
-  .auc_list { align-content: space-between; }
+  .auc_list { align-content: space-between; } */
   .dropdown-el label { font-size: 14px; }
   .down_width { left: 138px; }
 
@@ -18955,6 +18968,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
  .pdf_mob li p { font-size: 12px; }
 
  .down_filt { right: inherit; margin-top: 120px; }
+ .auc_list_r { margin-top: 110px; }
 
 
 }

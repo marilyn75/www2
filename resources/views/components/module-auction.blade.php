@@ -64,7 +64,7 @@
             </script>
 
             <!-- list -->
-            <div class="row mt80">
+            <div class="row mt80 auc_list_r">
 
                 @foreach ($data['items'] as $_item)
                 @php
