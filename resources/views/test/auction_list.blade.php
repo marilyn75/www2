@@ -17,7 +17,8 @@
 
             <!-- 검색필터 -->
             <!-- 경매+공매 -->
-            <span class="dropdown-el">
+            <div>
+                <span class="dropdown-el">
                 <input type="radio" name="sortType" value="Relevance" checked="checked"
                     id="sort-relevance"><label for="sort-relevance">경매+공매</label>
                 <input type="radio" name="sortType" value="Popularity" id="sort-best"><label
@@ -44,6 +45,8 @@
                 <input type="radio" name="filt" value="6" id="price-low"><label for="price-low">최저가
                     낮은</label>
             </span>
+            </div>
+            
 
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

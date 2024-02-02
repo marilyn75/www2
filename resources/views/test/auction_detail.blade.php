@@ -6,13 +6,15 @@
 <section class="listing-title-area">
     <div class="container container_w">
         <!-- title -->
-        <div class="col-12 auc_tit">
-            <p class="det_inf">서울동부지방법원 본원 <span>2021타경51574[1]</span></p>
-            <div class="main_title">
-                <h3>서울특별시 송파구 새말로 116, 2층 202호 (문정동, 한울리움)</h3>
-                <p class="auc_bdg">전용 12.5평</p>
+        <div class="row">
+            <div class="col-12 auc_tit">
+                <p class="det_inf">서울동부지방법원 본원 <span>2021타경51574[1]</span></p>
+                <div class="main_title">
+                    <h3>서울특별시 송파구 새말로 116, 2층 202호 (문정동, 한울리움)</h3>
+                    <p class="auc_bdg">전용 12.5평</p>
+                </div>
+                <p class="adr">서울 송파구 문정동 83-24</p>
             </div>
-            <p class="adr">서울 송파구 문정동 83-24</p>
         </div>
         <!-- img -->
         <div class="row jcsb">
@@ -206,7 +208,7 @@
 
                 {{-- side filter mobile --}}
                 <!-- pdf -->
-                <div class="col-6 auc_mob">
+                <div class="col-12 col-lg-6 auc_mob">
                     <ul class="auc_pdf_down pdf_mob">
                         <li>
                             <img src="/images/auction/auc_pdf_01.png" alt="">
@@ -243,7 +245,7 @@
                     </ul>
                 </div>
                 <!-- 대법원 link -->
-                <div class="col-6 auc_mob">
+                <div class="col-12 col-lg-6 auc_mob">
                     <div class="sidebar_auc_content auc_link link_mob">
                         <a href="#">
                             <p><span>대법원</span>물건상세</p>

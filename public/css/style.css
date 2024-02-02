@@ -17049,6 +17049,7 @@ header.main-menu_w.menu_style_home_one.style2 .ace-responsive-menu li a{
   line-height: 100px;
   padding: 0 20px;
 }
+.ace-responsive-menu li a span { font-size: 20px; }
 .arrow { display: none; }
 .navbar_brand_w { margin: 0 !important; height: 100px; align-items: center; margin-right: 25px !important; }
 .navbar_brand_w img { height: 50px; }
@@ -18342,7 +18343,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   cursor: pointer;
 }
 .auc_pdf_down li p { color: #000; margin: 0; font-size: 14px; }
-.auc_link { display: grid; gap: 10px; }
+.auc_link { display: grid; gap: 10px; margin-bottom: 48px; }
 .auc_link a{ 
   display: flex; 
   align-items: center; 
@@ -18350,6 +18351,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   background: #F6FAFF;
   padding: 10px 15px;
   border-radius: 5px;
+  border: 1px solid #EEF3FA;
 }
 .auc_link a p{ margin: 0; color: #000; font-size: 14px; }
 .auc_link a p span{ margin-right: 18px; color: #385f8d; font-weight: 500; font-size: 14px;}
@@ -18421,6 +18423,9 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .ff_one .detais { padding-top: 5px; padding-left: 100px; }
   .ff_one .detais p { font-size: 16px; margin-bottom: 8px; }
 
+  .auc_list { height: 220px; align-content: inherit; }
+  .auc_hash { flex-wrap: wrap; }
+
 }
 @media (max-width: 1199.98px) {
   .feat_property .details .fp_footer_w { padding: 0; padding: 12px 0 16px; }
@@ -18462,6 +18467,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
     justify-content: center;
     gap: 20px;
     margin-bottom: 48px;
+    height: 206px;
   }
   .pdf_mob li { width: 21%; padding: 9px 0; }
   .pdf_mob li p { line-height: normal; }
@@ -18471,8 +18477,11 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
     justify-content: space-between; 
     flex-wrap: wrap; 
     border-radius: 3px;
+    height: 206px;
   }
   .link_mob a { width: 48%; }
+
+  
 
 }
 
@@ -18586,13 +18595,16 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 
 
   /* mobile menu */
-.login_ham { margin-bottom: 25px; display: grid; justify-items: center; }
-.login_ham p { font-size: 20px; color: #000; font-weight: 500; margin-top: 15px;}
-.login_ham img { width: 95px; height: 95px; border-radius: 50px; }
-.login_ham .btn{ font-size: 14px; margin-top: 15px; padding: 3px 12px; border-radius: 20px; background: #385f8d; color: #fff; }
+  .login_ham { margin-bottom: 25px; display: grid; justify-items: center; }
+  .login_ham p { font-size: 20px; color: #000; font-weight: 500; margin-top: 15px;}
+  .login_ham img { width: 95px; height: 95px; border-radius: 50px; }
+  .login_ham .btn{ font-size: 14px; margin-top: 15px; padding: 3px 12px; border-radius: 20px; background: #385f8d; color: #fff; }
+
 
 
 }
+
+
 @media (max-width: 767.98px) {
 
   .single_product_slider.owl-theme .owl-dots .owl-dot span { width: 80px; height: 65px; }
@@ -18605,6 +18617,23 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .home_bx_new { top: 55%; }
 
   .right_area.style2 { text-align: right !important; }
+
+  .pdf_mob li { padding: 15px 0; }
+
+  .auction_tag { height: 56px; width: 43px; }
+  .auction_tag p { font-size: 14px; }
+  .auc_listw .auc_num { font-size: 12px !important; }
+  .auc_list_t { margin-bottom: 2px; }
+  .auc_list_t p { font-size: 12px; }
+  .auc_listw h4 { font-size: 16px; margin-bottom: 2px; }
+  .app_vlu { font-size: 12px; }
+  .low_vlu { font-size: 16px; margin: 0; }
+  .auc_hash li p { font-size: 12px; }
+  .auc_list { height: 185px; }
+  .auc_hash { margin-bottom: 10px; }
+  .auc_list { align-content: space-between; }
+  .dropdown-el label { font-size: 14px; }
+  .down_width { left: 138px; }
 
 }
 
@@ -18873,7 +18902,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 .signin_link { font-size: 13px; }
 
 .hashtag { font-size: 12px !important; }
-
+.dropdown-el { margin-top: 75px; }
 
 
 }
@@ -18919,6 +18948,12 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 
  .hashtag_w { flex-wrap: wrap; }
  .hashtag { margin: 0; }
+
+ .pdf_mob { gap: 15px; }
+ .pdf_mob li { width: 20%; }
+ .pdf_mob li p { font-size: 12px; }
+
+ .down_filt { right: inherit; margin-top: 120px; }
 
 
 }
