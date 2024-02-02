@@ -178,10 +178,58 @@ if (!function_exists('makeOptions')) {
         return $html;
     }
 }
+
+// 값이 없을때 대체 문자
 if (!function_exists('printEmpty')) {
     function printEmpty($val, $str='-'){
         if(empty($val))  return $str;
         else    return $val;
     }
 }
-// 값이 없을때 대체 문자
+
+// 숫자 한글로
+if (!function_exists('price_kor')) {
+    function price_kor($num){
+        $result = '';
+
+        $eok = floor($num / 100000000);
+        if ($eok > 0) {
+            $result .= $eok . '억 ';
+            $num %= 100000000;
+        }
+
+        $man = floor($num / 10000);
+        if ($man > 0) {
+            $result .= $man . '만 ';
+            $num %= 10000;
+        }
+
+        if ($num > 0) {
+            $result .= $num;
+        }
+
+        return trim($result);
+    }
+}
+
+// d-day 계산
+if (!function_exists('calculateDDay')) {
+    function calculateDDay($date) {
+        $now = new DateTime(); // 현재 날짜와 시간
+        $targetDate = new DateTime($date); // 목표 날짜
+
+        $interval = $now->diff($targetDate); // 두 날짜 사이의 차이를 계산
+
+        // D-Day 표시
+        if ($now < $targetDate) {
+            // 목표 날짜가 미래에 있는 경우
+            return 'D-' . $interval->days;
+        } else if ($now > $targetDate) {
+            // 목표 날짜가 과거에 있는 경우
+            return 'D+' . $interval->days;
+        } else {
+            // 오늘이 목표 날짜인 경우
+            return 'D-Day';
+        }
+    }
+}
