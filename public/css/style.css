@@ -18146,6 +18146,7 @@ input:checked + label,
 
 
 /* 경공매 상세페이지 */
+.auction_thumb { height: 250px; overflow: hidden; }
 .auc-slide img { height: auto; }
 .swiper-pagination-fraction { font-size: 16px; }
 .auc_tit .det_inf { color: #000; margin-bottom: 15px; font-size: 14px; }

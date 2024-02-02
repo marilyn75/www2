@@ -72,7 +72,7 @@
                 @endphp
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="feat_property home7 style4 bdrrn feat_property_w">
-                        <div class="thumb">
+                        <div class="thumb auction_thumb">
                             <img class="img-whp" src="{{ env('AUCTION_API_URL') }}/images/{{ $_item['saNo'] }}/{{ $_item['대표사진'] }}" alt="{{ $_item['대표사진'] }}" >
                             <div class="thmb_cntnt">
                                 <ul class="tag mb0">
