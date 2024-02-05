@@ -1,12 +1,12 @@
 @extends('layout.layout')
 
 @section('content')
-<form name="frm" action="" method="post" class="col-md-12">
+<form name="frm" action="" method="post" class="col-md-12 pl0 pr0">
     @csrf
     <input type="hidden" name="page" value="1">
 <section class="our-listing pb30-991">
     <div class="container_w">
-        <div class="col-md-12 col-lg-12">
+        <div class="col-md-12 col-lg-12 pl0 pr0">
 
             <!-- 검색결과 -->
             <div class="row row_w">
@@ -92,7 +92,10 @@
                         <div class="details details_w auc_list">
                             <div class="auc_listw">
                                 <div class="auc_list_t">
-                                    <p class="auc_num">{{ $_item['법원'] }} {{ $_item['사건번호'] }}[{{ $_item['물건번호'] }}]</p>
+                                    <div class="auc_num_w">
+                                        <p class="auc_num">{{ $_item['법원'] }}</p>
+                                        <p class="auc_num">{{ $_item['사건번호'] }}[{{ $_item['물건번호'] }}]</p>
+                                    </div>
                                     <p class="auc_dd">{{ $_item['dday'] }}</p>
                                 </div>
                                 <h4>{{ $_item['소재지'] }}</h4>
