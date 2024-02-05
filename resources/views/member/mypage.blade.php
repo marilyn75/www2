@@ -58,6 +58,12 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#item2-tab">최근 본 매물</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#item3-tab">관심 경공매</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#item4-tab">최근 본 경공매</a>
+                    </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent2">
@@ -75,9 +81,8 @@
                             <a class="btn btn-thm btn-thm_w" href="{{ route('page', 20) }}">매물 보러가기</a>
                         </div>
                         @endif
-                        
-                    
                     </div>
+                    
                     {{-- 최근 본 매물이 없을 때 --}}
                     <div id="item2-tab" class=" pb100 tab-pane nolist fade">
                         @if ($data['todayViewSales']->isSuccess())
