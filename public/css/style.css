@@ -18131,6 +18131,7 @@ input:checked + label:nth-child(2) {
   padding: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
   max-height: 15em;
+  z-index: 2;
 }
 
 .dropdown-el.expanded label {
