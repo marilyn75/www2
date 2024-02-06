@@ -18155,6 +18155,7 @@ input:checked + label,
 
 
 /* 경공매 상세페이지 */
+/* .auc-swiper-wrapper { width: ; } */
 .auction_thumb { height: 250px; overflow: hidden; }
 .auc-slide img { height: auto; }
 .swiper-pagination-fraction { font-size: 16px; }
@@ -18168,6 +18169,7 @@ input:checked + label,
   align-items: center;
   gap: 10px;
   margin-bottom: 6px;
+  flex-wrap: wrap;
  }
 .auc_tit h3 { 
   color: #000;
@@ -18410,9 +18412,6 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 
 
 
-
-
-
 @media (max-width:640px) {
   .ole,
   .elo {
@@ -18548,7 +18547,12 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .home1-advnc-search ul li .search_option_button button { width: 122px; }
   .home1-advnc-search.home7 .search_option_two .dropdown.bootstrap-select>.dropdown-toggle { width: 145px; }
 
+  .pdf_mob { height: auto; }
+  .link_mob { height: auto; }
+
 }
+
+
 @media (max-width: 867.98px) {
   section { padding: 60px 0; }
   .text-inf-w { display: grid; gap: 0; }
@@ -18645,13 +18649,12 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .right_area.style2 { text-align: right !important; }
 
   .pdf_mob li { padding: 15px 0; }
-
   .auction_thumb { height: 185px; }
-
   .dropdown-el label { font-size: 14px; }
   .down_width { left: 138px; }
-  /* .auc_list_t { display: grid; }
-  .auc_list_t p { text-align: right; } */
+  
+  .auc_tit h3 { font-size: 20px; word-break: keep-all; }
+  
 
 
 }
@@ -18923,7 +18926,12 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 .hashtag { font-size: 12px !important; }
 .dropdown-el { margin-top: 75px; }
 .auc_list_t { display: flex; }
-
+.map_wrap { display: none; }
+.auc_detail_row .col-12 { padding: 0; }
+.auc_pri_n { font-size: 16px; word-break: keep-all; }
+.sale_lst { display: grid; justify-content: normal; }
+.sale_lst li { width: 100%; }
+.sale_lst li p:first-child { width: 50%; }
 
 }
 
@@ -18969,15 +18977,19 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
  .hashtag_w { flex-wrap: wrap; }
  .hashtag { margin: 0; }
 
- .pdf_mob { gap: 15px; }
+ .pdf_mob { gap: 15px; justify-content: space-between; }
  .pdf_mob li { width: 20%; }
  .pdf_mob li p { font-size: 12px; }
 
  .down_filt { right: inherit; margin-top: 120px; }
  .auc_list_r { margin-top: 110px; }
-
+ .auc_price_wrap li { padding: 15px; }
+ .auc_pri_tit { margin-bottom: 10px; word-break: keep-all; line-height: normal; }
+ .auc_pri_n { line-height: 20px; }
 
 }
+
+
 @media (max-width: 380px) {
   .main_tit h2 { font-size: 22px; line-height: 30px; }
   .main_tit { top: 63px; }
@@ -19055,6 +19067,18 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .mainswiper { margin-top: 60px; border-radius: 10px; }
   .home_content .home_search_w { height: 70px; }
 
+  .auc_pri_n { font-size: 14px; font-weight: 600; line-height: 18px; }
+  .sale_lst li p:first-child { font-size: 14px; margin-bottom: 5px; }
+  .sale_lst li p:last-child { font-size: 14px; margin-bottom: 5px; }
+  .fall_lst li p { font-size: 14px; }
+  .link_mob { display: grid; justify-content: normal; }
+  .link_mob a { width: 100%; }
+  .auc_info_tit p { font-size: 18px; }
+  .auc_info_list li span { font-size: 14px; }
+  .auc_info_list li p { font-size: 14px; }
+  .auc_info_list { gap: 10px; }
+  .auc_width_wrap li { padding: 15px; }
+  .auc_wid_n { font-size: 14px; font-weight: 600; }
 
 }
 
@@ -19120,6 +19144,18 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .empl-img-w img { height: 100px; }
   .emp_rd { padding: 5px 11px; }
   .sales_count p { font-size: 12px; line-height: normal; }
+
+
+  .auc_tit .det_inf { margin-bottom: 5px; }
+  .auc_tit h3 { font-size: 18px; }
+  .auc_bdg { font-size: 12px !important; padding: 7px 12px; }
+  .auc_price_wrap { display: grid; }
+  .auc_price_wrap li { border: 1px solid  #e4e4e4 !important; }
+  .auc_price_wrap li { border-radius: 0px !important; }
+
+  .auc_price_wrap li:first-child { border-bottom: none !important; }
+  .auc_price_wrap li:nth-child(2) { border-bottom: none !important; }
+  .auc_price_wrap li:nth-child(3) { border-bottom: none !important; }
 
 
 }

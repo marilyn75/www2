@@ -17,9 +17,9 @@
             </div>
         </div>
         <!-- img -->
-        <div class="row jcsb">
+        <div class="row jcsb auc_detail_row">
             <div class="row col-lg-12 col-xl-8">
-                <div class="col-sm-6 col-xl-6">
+                <div class="col-12 col-sm-6 auc_slider">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide auc-slide">
@@ -56,7 +56,7 @@
                     },
                 });
                 </script>
-                <div class="col-sm-6 col-xl-6 map_wrap">
+                <div class="col-12 col-sm-6 col-xl-6 map_wrap">
                     <img src="/images/auction/auction_map.png" alt="">
                     <div class="map_icon">
                         <a href="#">
@@ -312,11 +312,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col">구분</th>
-                                <th scope="col">소재지</th>
-                                <th scope="col">용도</th>
-                                <th scope="col">상세</th>
+                                <th scope="col" width="10%"></th>
+                                <th scope="col" width="20%">구분</th>
+                                <th scope="col" width="40%">소재지</th>
+                                <th scope="col" width="17%">용도</th>
+                                <th scope="col" width="13%">상세</th>
                             </tr>
                         </thead>
                         <tbody>
