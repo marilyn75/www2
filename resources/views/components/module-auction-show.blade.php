@@ -17,9 +17,9 @@
             </div>
         </div>
         <!-- img -->
-        <div class="row jcsb">
+        <div class="row jcsb auc_detail_row">
             <div class="row col-lg-12 col-xl-8">
-                <div class="col-sm-6 col-xl-6">
+                <div class="col-12 col-md-6 auc_slider">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                             @foreach ($data['images'] as $_img)
@@ -52,8 +52,11 @@
                     },
                 });
                 </script>
-                <div class="col-sm-6 col-xl-6 map_wrap">
-                    <div style="width:390px;height:290px;">
+                <div class="col-12 col-md-6 map_wrap">
+                    <div class="auc_info_tit map_info_tit">
+                        <p>지도</p>
+                    </div>
+                    <div style="width:100%;height:290px;">
                         <x-kko_map :printData="$data" />
                     </div>
                     {{-- <img src="/images/auction/auction_map.png" alt=""> --}}
