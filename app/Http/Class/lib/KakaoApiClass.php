@@ -89,4 +89,20 @@ class KakaoApiClass{
 		$data = $this->resCurl($R_DATA);
 		return json_decode($data, true);
     }
+
+    // 주소검색
+    public function getAddr($query){
+        $url = "https://dapi.kakao.com/v2/local/search/address.json";
+        $headers = $this->headers;
+        $params['query'] = $query;
+        
+        $queryString = http_build_query($params);
+        $url .= "?".$queryString;
+
+        $R_DATA["url"] = $url;
+		$R_DATA["header"] = $headers;
+
+		$data = $this->resCurl($R_DATA);
+		return json_decode($data, true);
+    }
 }

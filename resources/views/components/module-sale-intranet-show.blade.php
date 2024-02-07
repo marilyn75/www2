@@ -467,8 +467,9 @@ $(window).on('load', function() {
                                     </p>
                                 </div>
 
-
+                                <div style="width:auto;height:400px;">
                                 <x-kko_map :printData="$printData" />
+                                </div>
 
                             </div>
                         </div>

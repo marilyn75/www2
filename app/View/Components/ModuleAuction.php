@@ -27,8 +27,37 @@ class ModuleAuction extends Component
     public function render(): View|Closure|string
     {
         
+        switch($this->request->mode){
+            case "":
+                $return = $this->index();
+                break;
+            case "view":
+                $return = $this->show();
+                break;
+            // case "create":
+            //     $return = $this->create();
+            //     break;
+            // case "edit":
+            //     $return = $this->edit();
+            //     break;
+
+        }
+
+        return $return;
+
+        
+    }
+
+    public function index(){
         $data = $this->cls->getData($this->request);
         debug($data);
         return view('components.module-auction', compact('data'));
+    }
+
+    public function show(){
+        $data = $this->cls->getDetailData($this->request);
+        $data = $this->cls->getViewPrintData($data);
+        debug($data);
+        return view('components.module-auction-show', compact('data'));
     }
 }
