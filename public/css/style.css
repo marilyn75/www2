@@ -18157,7 +18157,7 @@ input:checked + label,
 /* 경공매 상세페이지 */
 /* .auc-swiper-wrapper { width: ; } */
 .auction_thumb { height: 250px; overflow: hidden; }
-.auc-slide img { height: auto; }
+.auc-slide img { height: 290px; }
 .swiper-pagination-fraction { font-size: 16px; }
 .auc_tit .det_inf { color: #000; margin-bottom: 15px; font-size: 14px; }
 .auc_tit .det_inf span { 
@@ -18986,6 +18986,8 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
  .auc_price_wrap li { padding: 15px; }
  .auc_pri_tit { margin-bottom: 10px; word-break: keep-all; line-height: normal; }
  .auc_pri_n { line-height: 20px; }
+ .link_mob { display: grid; justify-content: normal; }
+ .link_mob a { width: 100%; }
 
 }
 
@@ -19071,8 +19073,6 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
   .sale_lst li p:first-child { font-size: 14px; margin-bottom: 5px; }
   .sale_lst li p:last-child { font-size: 14px; margin-bottom: 5px; }
   .fall_lst li p { font-size: 14px; }
-  .link_mob { display: grid; justify-content: normal; }
-  .link_mob a { width: 100%; }
   .auc_info_tit p { font-size: 18px; }
   .auc_info_list li span { font-size: 14px; }
   .auc_info_list li p { font-size: 14px; }
