@@ -10,7 +10,7 @@
 @endphp
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ env('KAKAO_SCRIPT_KEY') }}"></script>
-<div id="map" style="width:auto;height:100%;">
+<div id="map" style="width:auto;height:100%;"></div>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = {
