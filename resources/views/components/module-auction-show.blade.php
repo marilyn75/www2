@@ -10,7 +10,7 @@
             <div class="col-12 auc_tit">
                 <p class="det_inf">{{ $data['법원'] }} <span>{{ $data['사건번호'] }}[{{ $data['물건번호'] }}]</span></p>
                 <div class="main_title">
-                    <h3>{{ $data['도로명주소'] }}</h3>
+                    <h3>{{ $data['도로명주소'] }} {{ $data['외필지'] }}</h3>
                     <p class="auc_bdg">전용 12.5평</p>
                 </div>
                 <p class="adr">{{ $data['지번주소'] }}</p>
@@ -22,11 +22,14 @@
                 <div class="col-12 col-md-6 auc_slider">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
+                            @empty($data['images'])
+                            @else
                             @foreach ($data['images'] as $_img)
                             <div class="swiper-slide auc-slide">
                                 <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}">
                             </div>    
                             @endforeach
+                            @endempty
                         </div>
                         <!-- <div class="swiper-button-next"><i class="ri-arrow-right-s-line"></i></i></div> -->
                         <div class="swiper-button-next">
@@ -73,11 +76,11 @@
                     <ul class="auc_price_wrap">
                         <li>
                             <p class="auc_pri_tit">감정가</p>
-                            <h3 class="auc_pri_n">3억 1700만원</h3>
+                            <h3 class="auc_pri_n">{{ price_kor($data['감정평가액']) }}원</h3>
                         </li>
                         <li>
                             <p class="auc_pri_tit">최저가</p>
-                            <h3 class="auc_pri_n">892만 3000원</h3>
+                            <h3 class="auc_pri_n">{{ price_kor($data['최저매각가격']) }}원</h3>
                         </li>
                         <li>
                             <p class="auc_pri_tit">실거래 매매가</p>
@@ -157,7 +160,7 @@
                 <!-- 유찰내역 -->
                 <div class="col-12">
                     <div class="sale_tit">
-                        <p>#유찰16회 #재매각 #선순위임차인 #선순위전세권 #위반건축물</p>
+                        <p>{{ $data['해시태그'] }}</p>
                     </div>
                     <div class="und_line"></div>
                     <ul class="fall_lst">

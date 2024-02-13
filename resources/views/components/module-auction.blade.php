@@ -69,7 +69,6 @@
                 @foreach ($data['items'] as $_item)
                 @php
                     $printData = (new App\Http\Class\AuctionClass)->getPrintData($_item);
-                    $printData['view_link'] = "?mode=view&sano=".$_item['saNo']."&no=".$_item['물건번호'];
                 @endphp
                 <x-item-auction :printData="$printData" />
                 @endforeach

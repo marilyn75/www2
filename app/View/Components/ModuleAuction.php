@@ -58,6 +58,10 @@ class ModuleAuction extends Component
         $data = $this->cls->getDetailData($this->request);
         $data = $this->cls->getViewPrintData($data);
         debug($data);
-        return view('components.module-auction-show', compact('data'));
+
+        $skin = 'components.module-auction-show';
+        if(empty($data))    $skin = 'components.error';
+
+        return view($skin, compact('data'));
     }
 }
