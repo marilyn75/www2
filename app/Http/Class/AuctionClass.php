@@ -92,11 +92,11 @@ class AuctionClass{
         $data['localY'] = $addr['documents'][0]['y'];
 
         debug($addr);
-        $data['도로명주소'] = $data['소재지'][0]['addr'];
+        $data['도로명주소'] = $data['소재지'][0]['addr_road'];
         $data['지번주소'] = $addr['documents'][0]['address']['address_name'];
         $data['외필지'] = (count($data['소재지'])>1)?" 외 " .(count($data['소재지']) - 1). "필지":"";
 
-        $data['pnu'] = $data['소재지'][0]['showGongsiJiga'];
+        // $data['pnu'] = $data['소재지'][0]['showGongsiJiga'];
 
         // 사진
         if(!empty($data['photo'])){
