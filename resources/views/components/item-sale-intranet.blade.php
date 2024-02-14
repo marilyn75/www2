@@ -83,7 +83,7 @@
                         @endif
                     </div>
                     @endif
-                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span> 만원</p>
+                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="">{{ $printData['price'] }}</span> 만원</p>
                 </div>
                 <div class="fp_footer fp_footer_w">
                     <ul class="fp_meta float-left mb0 fp_meta_w">

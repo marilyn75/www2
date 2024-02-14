@@ -16903,7 +16903,7 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .subtit p { color: #828282; font-size: 24px; font-weight: 500; }
 .city_tit h4 { color: #000; font-size: 24px; font-weight: 500; }
 .city_tit span { color: #385F8D; font-weight: 500; }
-.hot_w::before { background: rgba(0, 0, 0, 0.9); }
+.hot_w::before { background: rgba(0, 0, 0, 0.8); }
 .hot_subtit h4{ color: #fff; font-size: 30px; font-weight: 500; }
 .hot_subtit p{ font-size: 24px; font-weight: 400; }
 .hot_subtit .btn { width: 170px; }
@@ -18933,6 +18933,7 @@ tbody tr td a:hover { color: #385f8d; text-decoration: underline; }
 .map_wrap { padding: 0; }
 .auc_detail_row .col-12 { padding: 0; }
 .auc_pri_n { font-size: 16px; word-break: keep-all; }
+.auc_wid_n { font-size: 16px; }
 .sale_lst { display: grid; justify-content: normal; }
 .sale_lst li { width: 100%; }
 .sale_lst li p:first-child { width: 50%; }
