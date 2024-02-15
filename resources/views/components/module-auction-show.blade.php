@@ -10,10 +10,12 @@
             <div class="col-12 auc_tit">
                 <p class="det_inf">{{ $data['법원'] }} <span>{{ $data['사건번호'] }}[{{ $data['물건번호'] }}]</span></p>
                 <div class="main_title">
-                    <h3>{{ $data['도로명주소'] }} {{ $data['외필지'] }}</h3>
-                    <p class="auc_bdg">전용 12.5평</p>
+                    <h3>{{ $data['주소'] }} {{ $data['print_etc'] }}</h3>
+                    <p class="auc_bdg">
+                        {{ $data['print_box_area'] }}
+                    </p>
                 </div>
-                <p class="adr">{{ $data['지번주소'] }}</p>
+                <p class="adr">{{ $data['주소2'] }}</p>
             </div>
         </div>
         <!-- img -->
@@ -98,27 +100,27 @@
                     <div class="sale_tit">
                         <p>매각진행</p>
                         <div class="sale_days">
-                            <p class="sale_day">2024년 02월 19일</p>
-                            <p class="auc_bdg">D-26</p>
+                            <p class="sale_day">{{ $data['매각기일2'] }}</p>
+                            <p class="auc_bdg">{{ $data['dday'] }}</p>
                         </div>
                     </div>
                     <div class="und_line"></div>
                     <ul class="sale_lst">
                         <li>
                             <p>용도</p>
-                            <p>다세대</p>
+                            <p>{{ $data['물건종류'] }}</p>
                         </li>
                         <li>
                             <p>대상</p>
-                            <p>토지전체, 건물전체</p>
+                            <p>{{ $data['print_target'] }}</p>
                         </li>
                         <li>
                             <p>토지</p>
-                            <p>19.8㎡ (6평)</p>
+                            <p>{{ $data['토지전체면적'] }}</p>
                         </li>
                         <li>
                             <p>건물</p>
-                            <p>41.31㎡ (12.5평)</p>
+                            <p>{{ $data['건물전체면적'] }}</p>
                         </li>
                         <li>
                             <p>감정</p>
@@ -126,32 +128,34 @@
                         </li>
                         <li>
                             <p>보증금</p>
-                            <p>90만원 (10%)</p>
+                            <p>{{ price_kor($data['감정평가액'] * 0.1) }}원 (10%)</p>
                         </li>
                         <li class="hidden">
                             <p>경매구분</p>
-                            <p>강제경매</p>
+                            <p>{{ $data['경매구분'] }}</p>
                         </li>
                         <li class="hidden">
                             <p>사건번호</p>
-                            <p>2021타경51574</p>
+                            <p>{{ $data['사건번호'] }}</p>
                         </li>
                         <li class="hidden">
                             <p>관할법원</p>
-                            <p>서울동부지방법원 본원</p>
+                            <p>{{ $data['법원'] }}</p>
                         </li>
                         <li class="hidden">
                             <p>배당요구종기일</p>
-                            <p>2021년06월28일</p>
+                            <p>{{ printDateKor($data['배당요구종기']) }}</p>
                         </li>
                         <li class="hidden">
                             <p>청구액</p>
-                            <p>190,000,000원</p>
+                            <p>{{ number_format($data['청구금액']) }}원</p>
                         </li>
+                        @foreach ($data['사건내역'][0]['당사자내역'] as $_data)
                         <li class="hidden">
-                            <p>채권자</p>
-                            <p>조OO</p>
+                            <p>{{ $_data['당사자구분'] }}</p>
+                            <p>{{ $_data['당사자명'] }}</p>
                         </li>
+                        @endforeach
                     </ul>
                     <button class="ac_more_btn" onclick="showMore()">더보기</button>
                 </div>
@@ -164,7 +168,24 @@
                     </div>
                     <div class="und_line"></div>
                     <ul class="fall_lst">
+                    @foreach ($data['기일내역'] as $_data)
+                        @if($_data['최저매각가격'] > 0)
                         <li>
+                            <p>{{ $_data['기일'] }}</p>
+                            <div class="fall_rst">
+                                <p>{{ price_kor($_data['최저매각가격']) }}원</p>
+                                @if($_data['기일결과']=="유찰")
+                                <p class="auc_bdg fall">유찰</p>
+                                @elseif ($_data['기일결과']=="매각")
+                                <p class="auc_bdg sale">매각</p>
+                                @else
+                                <p class="auc_bdg ing">진행</p>
+                                @endif
+                            </div>
+                        </li>
+                        @endif
+                    @endforeach
+                        {{-- <li>
                             <p>2024. 02. 19</p>
                             <div class="fall_rst">
                                 <p>892만 3000원</p>
@@ -205,7 +226,7 @@
                                 <p>5318만 3000원</p>
                                 <p class="auc_bdg fall">유찰</p>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                     <button class="ac_more_btn fall_btn" onclick="showMoreFall()">더보기</button>
                 </div>
@@ -275,13 +296,14 @@
                     </div>
                 </div>
 
-
+                @if (!empty($data['물건비고html']))
                 <!-- 공고내용 -->
                 <div class="col-12">
                     <div class="auc_info_tit">
                         <p>공고내용</p>
                     </div>
-                    <ul class="auc_info_list">
+                    <div>{!! $data['물건비고html'] !!}</div>
+                    {{-- <ul class="auc_info_list">
                         <li>
                             <div class="auc_inf_order">
                                 <span>1.</span>
@@ -294,10 +316,10 @@
                                 <p> 건축물대장상 용도는 제2종근린생활시설(사무소)이나 현황 주거용으로 무단 용도 변경되어 있고, 위반건축물로 등재되어 있음.</p>
                             </div>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <div class="cont_und_line"></div>
                 </div>
-
+                @endif
 
                 <!-- 매각목록 -->
                 <div class="col-12">
@@ -307,11 +329,11 @@
                     <ul class="auc_width_wrap">
                         <li>
                             <p class="auc_wid_tit">토지</p>
-                            <h3 class="auc_wid_n">320.5㎡ (97평)</h3>
+                            <h3 class="auc_wid_n">{{ $data['토지전체면적'] }}</h3>
                         </li>
                         <li>
                             <p class="auc_wid_tit">건물</p>
-                            <h3 class="auc_wid_n">898.1㎡ (271.7평)</h3>
+                            <h3 class="auc_wid_n">{{ $data['건물전체면적'] }}</h3>
                         </li>
                     </ul>
                     <table>
@@ -325,13 +347,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @for ($i=0;$i<count($data['소재지']);$i++)
+                            
+                        
                             <tr>
-                                <th class="bck_col">1</th>
-                                <td class="bck_col">집합건물</td>
-                                <td class="bck_col">서울특별시 송파구 새말로 116, 2층 202호 (문정동, 한울리움)</td>
-                                <td class="bck_col">근린생활시설</td>
+                                <th class="bck_col">{{ $data['소재지'][$i]['num'] }}</th>
+                                <td class="bck_col">{{ $data['소재지'][$i]['구분'] }}</td>
+                                <td class="bck_col">{{ $data['소재지'][$i]['addr'] }}</td>
+                                <td class="bck_col">{{ $data['소재지'][$i]['type'] }}</td>
                                 <td class="bck_col"><a href="#">보기</a></td>
                             </tr>
+                        @endfor
                         </tbody>
                     </table>
                     <div class="cont_und_line"></div>
@@ -342,7 +368,10 @@
                     <div class="auc_info_tit">
                         <p>감정평가</p>
                     </div>
-                    <ul class="auc_info_list">
+                    <div>
+                        {!! $data['감정평가요항표요약html'] !!}
+                    </div>
+                    {{-- <ul class="auc_info_list">
                         <li>
                             <div class="auc_inf_order">
                                 <span>1.</span>
@@ -372,11 +401,15 @@
                             <p> 철근콘크리트구조 평스라브지붕 7층 건물 내 2층 202호로서,외벽: 치장벽돌 및 일부 석재붙임 마감 등.내벽: 벽지 및 일부 타일붙임 마감
                                 등.창호: 샷시창임.</p>
                         </li>
-                    </ul>
+                    </ul> --}}
                     <button class="ac_more_btn mb0 auc_inf_btn" onclick="showMoreAucInf()">더보기</button>
                     <div class="cont_und_line"></div>
                 </div>
 
+                @if(!empty($data['건물정보']))
+                @php
+                    $bdInfo = $data['건물정보'];
+                @endphp
                 <!-- 건축물정보 -->
                 <div class="col-12">
                     <div class="auc_info_tit">
@@ -389,41 +422,50 @@
                         <tbody>
                             <tr>
                                 <th class="bck_col">착공일자</th>
-                                <td class="bck_wt">2017-04-03</td>
+                                <td class="bck_wt">{{ printDate($bdInfo['착공일자']) }}</td>
                                 <th class="bck_col">대지면적</th>
-                                <td class="bck_wt">352.4 ㎡</td>
+                                <td class="bck_wt">{{ number_format($bdInfo['대지면적'],2) }} ㎡</td>
                             </tr>
                             <tr>
                                 <th class="bck_col">허가일자</th>
-                                <td class="bck_wt">2017-03-27</td>
+                                <td class="bck_wt">{{ printDate($bdInfo['허가일자']) }}</td>
                                 <th class="bck_col">건축면적</th>
-                                <td class="bck_wt">165.91 ㎡</td>
+                                <td class="bck_wt">{{ number_format($bdInfo['건축면적'],2) }} ㎡</td>
                             </tr>
                             <tr>
                                 <th class="bck_col">사용승인</th>
-                                <td class="bck_wt">2017-10-27</ㅅ>
+                                <td class="bck_wt">{{ printDate($bdInfo['사용승인']) }}</ㅅ>
                                 <th class="bck_col">연면적</th>
-                                <td class="bck_wt">704.7 ㎡</td>
+                                <td class="bck_wt">{{ number_format($bdInfo['연면적'],2) }} ㎡</td>
                             </tr>
                             <tr>
                                 <th class="bck_col">건폐율</th>
-                                <td class="bck_wt">47.08 %</td>
+                                <td class="bck_wt">{{ number_format($bdInfo['건폐율'],2) }} %</td>
                                 <th class="bck_col">용적률</th>
-                                <td class="bck_wt">199.97 %</td>
+                                <td class="bck_wt">{{ number_format($bdInfo['용적률'],2) }} %</td>
                             </tr>
                             <tr>
                                 <th class="bck_col">승강기</th>
-                                <td class="bck_wt"> · 승용 - 1대<br></td>
-                                <th class="bck_col">최저<br>최고층</th>
-                                <td class="bck_wt">1층 / 7층</td>
+                                <td class="bck_wt"> 
+                                    · 승용 - {{ $bdInfo['승용승강기수'] }}대<br>
+                                    · 비상용 - {{ $bdInfo['비상용승강기수'] }}대
+                                </td>
+                                <th class="bck_col">지하 / 지상</th>
+                                <td class="bck_wt">{{ $bdInfo['지하층수'] }}층 / {{ $bdInfo['지상층수'] }}층</td>
                             </tr>
                             <tr>
                                 <th class="bck_col">주차장</th>
-                                <td colspan="3" class="bck_wt"> · 옥내자주식 - 9대<br> · 옥외자주식 - 2대<br></td>
+                                <td colspan="3" class="bck_wt"> 
+                                    · 옥내기계식 - {{ $bdInfo['옥내기계식대수'] }}대<br> 
+                                    · 옥외기계식 - {{ $bdInfo['옥외기계식대수'] }}대<br>
+                                    · 옥내자주식 - {{ $bdInfo['옥내자주식대수'] }}대<br> 
+                                    · 옥외자주식 - {{ $bdInfo['옥외자주식대수'] }}대<br>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                @endif
             </div>
 
             <script>

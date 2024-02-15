@@ -57,7 +57,7 @@ class ModuleAuction extends Component
     public function show(){
         $data = $this->cls->getDetailData($this->request);
         $data = $this->cls->getViewPrintData($data);
-        debug($data);
+        debug($this->request->all(), $data);
 
         $skin = 'components.module-auction-show';
         if(empty($data))    $skin = 'components.error';

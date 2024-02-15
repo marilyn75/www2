@@ -164,6 +164,29 @@ if (!function_exists('formatCreatedAt2')) {
     }
 }
 
+// 날짜형식3
+if (!function_exists('printDateKor')) {
+    function printDateKor($date) {
+        $dt = str_replace('.','-',$date);
+
+        $arr = explode('-',$dt);
+
+        return $arr[0] . '년 ' . $arr[1] . '월 ' . $arr[2] . '일';
+    }
+}
+
+// 날짜형식4
+if (!function_exists('printDate')) {
+    function printDate($date, $a='-') {
+        $date = str_replace(['.','-'],'',$date);
+        $y = substr($date,0,4);
+        $m = substr($date,4,2);
+        $d = substr($date,6);
+        
+        return $y . $a . $m . $a . $d;
+    }
+}
+
 // select option 만들기
 if (!function_exists('makeOptions')) {
     function makeOptions($cate, $id = null) {
@@ -224,12 +247,12 @@ if (!function_exists('calculateDDay')) {
         if ($now < $targetDate) {
             // 목표 날짜가 미래에 있는 경우
             return 'D-' . $interval->days+1;
-        } else if ($now > $targetDate) {
-            // 목표 날짜가 과거에 있는 경우
-            return 'D+' . $interval->days;
-        } else {
+        }if($interval->days==0){
             // 오늘이 목표 날짜인 경우
             return 'D-Day';
+        } else {
+            // 목표 날짜가 과거에 있는 경우
+            return 'D+' . $interval->days;
         }
     }
 }

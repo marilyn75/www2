@@ -7,6 +7,9 @@
     $pn = (Rand(0,1))?0.0000007:-0.0000007;
     $y = $y + (Rand(0,1000) * $pn);
     // debug($x,$y);
+
+    $level = empty($printData['level']) ? 5 : $printData['level'];
+
 @endphp
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ env('KAKAO_SCRIPT_KEY') }}"></script>
@@ -15,7 +18,7 @@
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = {
             center: new kakao.maps.LatLng({{ $y }}, {{ $x }}), // 지도의 중심좌표
-            level: 5, // 지도의 확대 레벨
+            level: {{ $level }}, // 지도의 확대 레벨
             mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
         }; 
 

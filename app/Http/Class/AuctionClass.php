@@ -85,16 +85,76 @@ class AuctionClass{
     public function getViewPrintData($data){
         if(empty($data)) return $data;
 
-        $clsKakaoApi = new KakaoApiClass;
+        // $data['level'] = 4; // 카카오 맵 레벨 기본 5
+        $data['localX'] = $data['소재지'][0]['kakao_x'];
+        $data['localY'] = $data['소재지'][0]['kakao_y'];
+        $data['주소'] = (strpos($data['소재지'][0]['addr'], ",")!==false)?$data['소재지'][0]['addr']:$data['소재지'][0]['addr_road'];
+        if(empty($data['주소'])){
+            $data['주소'] = $data['소재지'][0]['addr_jibun'];
+            $data['주소2'] = "";
+        }else{
+            $data['주소2'] = $data['소재지'][0]['addr_jibun'];
+        }
 
-        $addr = $clsKakaoApi->getAddr($data['소재지'][0]['addr']);
-        $data['localX'] = $addr['documents'][0]['x'];
-        $data['localY'] = $addr['documents'][0]['y'];
+        // 타이틀 옆 면적표시
+        $box_area = [];
+        $arrTotArea = ['건물'=>0,'토지'=>0];
+        $str = "전체";
+        $buildingCnt = 0;
+        $landCnt = 0;
+        $aptHoCnt = 0;
+        foreach($data['소재지'] as $_addr){
+            $_area = $_addr['면적'];
 
-        debug($addr);
-        $data['도로명주소'] = $data['소재지'][0]['addr_road'];
-        $data['지번주소'] = $addr['documents'][0]['address']['address_name'];
-        $data['외필지'] = (count($data['소재지'])>1)?" 외 " .(count($data['소재지']) - 1). "필지":"";
+            if(!empty($_area['전유'])){
+                $box_area['전용'] = round($_area['전유'],2);
+                $aptHoCnt++;
+                // break;
+            }
+            if(empty($_area['지분'])){
+                if(!empty($_area['건물'])){
+                    $box_area['건물'] = round($_area['건물'],2);
+                    $arrTotArea['건물'] += $_area['건물'];
+                    $buildingCnt++;
+                    // break;
+                }
+                if(!empty($_area['토지'])){
+                    $box_area['토지'] = round($_area['토지'],2);
+                    $arrTotArea['토지'] += $_area['토지'];
+                    $landCnt++;
+                    // break;
+                }
+            }else{
+                $str = "지분";
+                if(!empty($_area['건물지분'])){
+                    $box_area['건물'] = round($_area['건물지분'],2);
+                    $arrTotArea['건물'] += $_area['건물지분'];
+                    $buildingCnt++;
+                    // break;
+                }
+                if(!empty($_area['토지지분'])){
+                    $box_area['토지'] = round($_area['토지지분'],2);
+                    $arrTotArea['토지'] += $_area['토지지분'];
+                    $landCnt++;
+                    // break;
+                }
+            }
+
+            if(!empty($_addr['건물정보']))  $data['건물정보'] = $_addr['건물정보'];
+        }
+        $data['box_area'] = $box_area;
+        if(!empty($box_area['전용']))   $data['print_box_area'] = "전용 ".$box_area['전용'] . "㎡";
+        if(!empty($box_area['건물']) && empty($data['print_box_area']))   $data['print_box_area'] = "건물 ".$box_area['건물'] . "㎡";
+        if(!empty($box_area['토지']) && empty($data['print_box_area']))   $data['print_box_area'] = "토지 ".$box_area['토지'] . "㎡";
+
+        // 외 필지, 외 건물 동
+        $data['print_etc'] = "";
+        if($aptHoCnt > 1) $data['print_etc'] = " 외 " . ($aptHoCnt-1) . "호";
+        elseif($buildingCnt > 1) $data['print_etc'] = " 외 건물 " . ($buildingCnt-1) . "동";
+        elseif($landCnt > 1) $data['print_etc'] = " 외 " . ($landCnt-1) . "필지";
+        
+
+        $data['totArea'] = $arrTotArea;
 
         // $data['pnu'] = $data['소재지'][0]['showGongsiJiga'];
 
@@ -107,6 +167,24 @@ class AuctionClass{
                 ];
             }
         }
+
+        $tmp = explode(' ', $data['매각기일']);
+        $tmp2 = explode(".",$tmp[0]);
+        $data['매각기일2'] = $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일';
+        $data['dday'] = calculateDDay(str_replace('.','-',$tmp[0]));
+        if($data['dday']=='D-Day') $data['dday'] = "";
+
+        // 대상, 토지, 건물
+        if($data['totArea']['토지'] > 0)    $data['target'][] = '토지'.$str;
+        if($data['totArea']['건물'] > 0)    $data['target'][] = '건물'.$str;
+        $data['print_target'] = implode(", ", $data['target']);
+        $data['토지전체면적'] = number_format($data['totArea']['토지'],2) . '㎡ ';
+        $data['토지전체면적'] .= '(' . number_format($data['totArea']['토지'] * 0.3025,2) . '평)';
+        $data['건물전체면적'] = number_format($data['totArea']['건물'],2) . '㎡ ';
+        $data['건물전체면적'] .= '(' . number_format($data['totArea']['건물'] * 0.3025,2) . '평)';
+
+        // 경매구분
+        $data['경매구분'] = str_replace('부동산','',$data['사건내역'][0]['사건명']);
 
         $data['유찰횟수'] = 0;
         foreach($data['기일내역'] as $_item){
