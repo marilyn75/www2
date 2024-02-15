@@ -17978,6 +17978,13 @@ code {
 
 .page-link { display: flex; align-items: center; justify-content: center; }
 
+.aucmod .modal-dialog { max-width: 600px; }
+.aucmod .modal-scroll { height: 400px; overflow-y: scroll; }
+.aucmod .modal-dialog { margin-top: 250px; }
+
+
+
+
 
 /* 경매 공매  */
 .auc_serch { justify-content: flex-start !important; padding: 0 15px; }
