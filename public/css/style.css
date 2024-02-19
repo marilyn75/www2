@@ -18275,6 +18275,13 @@ input:checked + label,
   word-break: keep-all;
   margin: 0;
 }
+.auc_btitle { 
+  background: #385f8d; 
+  border-radius: 3px; 
+  padding: 10px; 
+  margin-bottom: 20px;
+}
+.auc_btitle p { color: #fff; font-size: 20px; margin: 0; font-weight: 500; }
 .cont_und_line { width: 100%; border: 1px solid #e4e4e4; margin-top: 35px; margin-bottom: 35px; }
 .auc_width_wrap { margin-top: 20px; margin-bottom: 45px; display: flex; }
 .auc_width_wrap li { width: 100%; padding: 25px; background: #fff; border: 1px solid #e4e4e4; }
@@ -18331,6 +18338,29 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 .fall_lst .hidden { display: none ; }
 .auc_info_list .hidden { display: none; }
 .auc_mob { display: none; }
+
+/* 공매 */
+.use_state_list span { 
+  font-size: 16px;
+  color: #385f8d;
+  font-weight: 500;
+ }
+ .use_state_list p {
+  font-size: 16px;
+  line-height: 21px;
+  color: #000;
+  margin-top: 3px;
+ }
+ .respon { font-size: 16px; color: #000; }
+.flx_bg { display: flex; justify-content: space-between; }
+.flx_bg .auc_bdg { height: 30px; cursor: pointer; }
+.flx_bg .auc_bdg:active, .flx_bg .auc_bdg:focus { outline: none; }
+.use_plan { display: flex; gap: 5px; flex-wrap: wrap; }
+.sm_txt { color: #828282; font-size: 13px; line-height: 18px; margin-top: 10px; }
+.img_tit { display: flex; gap: 10px; align-items: center; }
+.img_tit img { height: 25px; }
+.bid li p:first-child { width: 117px; }
+
 
 
 
@@ -18640,6 +18670,9 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 
   .my_bx_inf .btn { width: 100px; padding: 8px; font-size: 12px; }
 
+  .bid { display: grid; justify-content: normal; }
+  .bid li { width: 100%; }
+  .bid li p:first-child { width: 160px; }
 
 
   /* mobile menu */
@@ -18951,7 +18984,17 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 .auc_wid_n { font-size: 16px; }
 .sale_lst { display: grid; justify-content: normal; }
 .sale_lst li { width: 100%; }
-.sale_lst li p:first-child { width: 50%; }
+.sale_tit p { font-size: 14px; }
+.sale_lst li p:first-child { width: 50%; font-size: 14px; }
+.sale_lst li p:last-child { font-size: 14px; }
+.bid li p:first-child { width: 35%; }
+.fall_lst li  p { font-size: 14px; }
+.auc_info_tit p { font-size: 18px; }
+.use_state_list span { font-size: 14px; }
+.use_state_list p { font-size: 14px; line-height: 19px; }
+.respon { font-size: 14px; }
+thead tr th { font-size: 12px; }
+tbody tr th, tbody tr td { font-size: 12px; }
 
 }
 
@@ -19176,6 +19219,8 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   .auc_price_wrap li:first-child { border-bottom: none !important; }
   .auc_price_wrap li:nth-child(2) { border-bottom: none !important; }
   .auc_price_wrap li:nth-child(3) { border-bottom: none !important; }
+
+  .bid li { display: grid; }
 
 
 }

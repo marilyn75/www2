@@ -321,6 +321,13 @@
                 </div>
                 @endif
 
+
+                <div class="col-12">
+                    <div class="auc_btitle">
+                        <p>부동산</p>
+                    </div>
+                </div>
+
                 <!-- 매각목록 -->
                 <div class="col-12">
                     <div class="auc_info_tit">

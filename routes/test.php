@@ -24,6 +24,10 @@ Route::get('/test7', function(){
     return view('test.found_pw');
 });
 
+Route::get('/test8', function(){
+    return view('test.auction_detail_p');
+});
+
 Route::get('/member_leave', function(){
     return view('test.member_leave');
 });
