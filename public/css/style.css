@@ -18281,6 +18281,8 @@ input:checked + label,
   padding: 10px; 
   margin-bottom: 20px;
 }
+.law_title { font-size: 16px; color: #000; }
+.no_blt li ul li span { font-size: 16px; color: #000; }
 .auc_btitle p { color: #fff; font-size: 20px; margin: 0; font-weight: 500; }
 .cont_und_line { width: 100%; border: 1px solid #e4e4e4; margin-top: 35px; margin-bottom: 35px; }
 .auc_width_wrap { margin-top: 20px; margin-bottom: 45px; display: flex; }
@@ -18301,6 +18303,7 @@ input:checked + label,
 }
 .auc_wid_tit { color: #000; margin: 0; margin-bottom: 7px; }
 .auc_wid_n { color: #000; font-size: 18px; font-weight: 500; margin: 0; }
+.build_table { margin-bottom: 20px; }
 table {
   border-collapse: collapse;
   width: 100%;
@@ -18333,6 +18336,11 @@ tbody tr td .t_link { color: #385f8d; text-decoration: underline; }
 tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 .bck_col{ background: #f6faff; }
 .bck_wt { background-color: #fff; }
+.bck_rd { background-color: #FFEFEF; }
+.bck_bl { background-color: #EFF7FF; }
+.bck_yw { background-color: #FFFBEF; }
+.txt_rd { color: #E93C3C; }
+.txt_lt{ text-align: left; }
 .mb0{ margin-bottom: 0 !important; }
 .sale_lst .hidden { display: none ; }
 .fall_lst .hidden { display: none ; }
@@ -18355,11 +18363,23 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 .flx_bg { display: flex; justify-content: space-between; }
 .flx_bg .auc_bdg { height: 30px; cursor: pointer; }
 .flx_bg .auc_bdg:active, .flx_bg .auc_bdg:focus { outline: none; }
+.flx_bgs { display: flex; gap: 5px; }
 .use_plan { display: flex; gap: 5px; flex-wrap: wrap; }
 .sm_txt { color: #828282; font-size: 13px; line-height: 18px; margin-top: 10px; }
 .img_tit { display: flex; gap: 10px; align-items: center; }
 .img_tit img { height: 25px; }
 .bid li p:first-child { width: 117px; }
+.auc_hide { 
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    height: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+ }
+ .auc_hide.on {
+  height: auto; /* 확장된 상태로 높이를 자동으로 조정 */
+}
 
 
 
