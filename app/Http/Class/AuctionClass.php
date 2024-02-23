@@ -31,6 +31,7 @@ class AuctionClass{
         $params = [           
             'numOfRows' => 9,
             'pageNo' => @$data['page'],
+            'gubun' => @$data['gubun'],
         ];
 
         $response = Http::get($this->url, $params);   
@@ -55,9 +56,15 @@ class AuctionClass{
     }
 
     public function getPrintData($data){
+        if($data['gubun']=="a")   return $this->getPrintData_auction($data);
+        else                    return $this->getPrintData_onbid($data);
+    }
+
+    public function getPrintData_auction($data){
         $data['할인율'] = round((intval($data['감정가']) - intval($data['최저가'])) / intval($data['감정가']) * 100);
         $tmp = explode(' ', $data['매각기일']);
         $data['dday'] = calculateDDay(str_replace('.','-',$tmp[0]));
+        if($data['dday']=='D-Day') $data['dday'] = "결과대기";
 
         $data['유찰횟수'] = 0;
         foreach($data['기일내역'] as $_item){
@@ -78,6 +85,23 @@ class AuctionClass{
         $data['alt'] =  $data['대표사진'];
 
         $data['view_link'] = "?mode=view&sano=".$data['saNo']."&no=".$data['물건번호'];
+
+        return $data;
+    }
+
+    public function getPrintData_onbid($data){
+        $data['감정가'] = $data['감정평가금액'];
+        $data['할인율'] = round((intval($data['감정가']) - intval($data['최저가'])) / intval($data['감정가']) * 100);
+        $data['image'] = env('AUCTION_API_URL') .'/images/'. $data['물건관리번호'] .'/'. $data['대표사진'];
+        $data['alt'] =  $data['대표사진'];
+
+        $hashtag = [];
+        if(!empty($data['자산구분'])) $hashtag[] = $data['자산구분'];
+        if($data['유찰횟수']>0) $hashtag[] = '유찰'.$data['유찰횟수'].'회';
+        $data['해시태그'] = $hashtag;
+
+        $data['상태'] = str_replace("입찰","",$data['물건상태']);
+        $data['날짜'] = $data['상태']=="준비중" ? "시작 " . $data['매각기일'] . " ~ ":" ~ " . $data['매각기일'] . " 마감";
 
         return $data;
     }

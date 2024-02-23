@@ -39,8 +39,10 @@ class PageController extends Controller
         $arrLocation = $MenuClass->getLocationArr($id);
         $bg = $MenuClass->getTopImage($id);
         
-
-        return view('web.page', compact('page', 'arrLocation', 'bg', 'request'));
+        if($request->ajax())
+            return view('web.ajax', compact('page', 'arrLocation', 'bg', 'request'));
+        else
+            return view('web.page', compact('page', 'arrLocation', 'bg', 'request'));
     }
 
     public function store($id, Request $request){

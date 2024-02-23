@@ -36,17 +36,31 @@
 $(document).ready(function() {
     $('.modal-button').click(function() {
         var url = $(this).data('url'); // 버튼의 데이터 속성에서 URL을 가져옵니다.
-        
-        showModal(url);
+        var cont = "";
+        if(typeof($(this).next('input').val())=="string"){
+            cont = $(this).next('input').val();
+        }
+
+        // if(params)  
+        //     showModalPrc(url, params);
+        // else
+            showModal(url,cont);
 
         return false;
     });
 });
 
-function showModal(url){
+function showModal(url, cont){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    
     $.ajax({
         url: '{{ route('modal.content') }}/'+url,
-        type: 'GET',
+        type: 'POST',
+        data:{cont:cont},
         success: function(response) {
             $('#modal').html(response); // 모달의 내용을 업데이트합니다.
             $('#modal .modal').modal('show'); // 모달을 표시합니다.
@@ -57,4 +71,29 @@ function showModal(url){
     });
 }
 
+function showModalPrc(url, params){
+    let searchParams = new URLSearchParams(params);
+    let json = Object.fromEntries(searchParams);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        url: url,
+        data:json,
+        dataType:'html',
+        type: 'POST',
+        success: function(response) {
+            // console.log(response);
+            $('#modal').html(response); // 모달의 내용을 업데이트합니다.
+            $('#modal .modal').modal('show'); // 모달을 표시합니다.
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
 </script>

@@ -34,13 +34,9 @@ class ModuleAuction extends Component
             case "view":
                 $return = $this->show();
                 break;
-            // case "create":
-            //     $return = $this->create();
-            //     break;
-            // case "edit":
-            //     $return = $this->edit();
-            //     break;
-
+            case "modalAddrDetail":
+                $return = $this->modalAddrDetail();
+                break;
         }
 
         return $return;
@@ -63,5 +59,10 @@ class ModuleAuction extends Component
         if(empty($data))    $skin = 'components.error';
 
         return view($skin, compact('data'));
+    }
+
+    // 소재지 상세보기 모달창
+    public function modalAddrDetail(){
+        return print_r($this->request->all());
     }
 }

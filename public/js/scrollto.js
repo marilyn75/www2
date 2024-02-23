@@ -47,21 +47,23 @@ class StickyNavigation {
 		} else {
 			$('.spa-header').removeClass('spa-header--scrolled');
 		}
-		let offset = ($('.sticky-nav-tabs').offset().top + $('.sticky-nav-tabs').height() - this.tabContainerHeight) - headerHeight;
-		if($(window).scrollTop() > this.lastScroll && $(window).scrollTop() > offset) {
-			$('.spa-header').addClass('spa-header--move-up');
-			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
-			$('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-second');
-		} 
-		else if($(window).scrollTop() < this.lastScroll && $(window).scrollTop() > offset) {
-			$('.spa-header').removeClass('spa-header--move-up');
-			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
-			$('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-first');
-		}
-		else {
-			$('.spa-header').removeClass('spa-header--move-up');
-			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
-			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+		if($('.sticky-nav-tabs').length > 0){
+			let offset = ($('.sticky-nav-tabs').offset().top + $('.sticky-nav-tabs').height() - this.tabContainerHeight) - headerHeight;
+			if($(window).scrollTop() > this.lastScroll && $(window).scrollTop() > offset) {
+				$('.spa-header').addClass('spa-header--move-up');
+				$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
+				$('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-second');
+			} 
+			else if($(window).scrollTop() < this.lastScroll && $(window).scrollTop() > offset) {
+				$('.spa-header').removeClass('spa-header--move-up');
+				$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+				$('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-first');
+			}
+			else {
+				$('.spa-header').removeClass('spa-header--move-up');
+				$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
+				$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+			}
 		}
 	}
 	

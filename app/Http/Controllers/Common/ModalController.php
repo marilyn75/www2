@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 
 class ModalController extends Controller
 {
-    public function content($path){
-        return view($path)->render();
+    public function content($path, Request $request){
+
+        $data = $request->all();
+
+        return view($path, compact('data'))->render();
         // return response()->json(['html' => $content]);
     }
 }

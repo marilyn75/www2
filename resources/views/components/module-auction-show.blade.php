@@ -360,8 +360,10 @@
                                         <td class="bck_wt">{{ $data['소재지'][$i]['구분'] }}</td>
                                         <td class="bck_wt">{{ $data['소재지'][$i]['addr'] }}</td>
                                         <td class="bck_wt">{{ $data['소재지'][$i]['type'] }}</td>
-                                        <td class="bck_wt"><a href="#" class="login_head modal-button"
-                                                id="a-login" data-url="modal.auction">보기</a></td>
+                                        <td class="bck_wt">
+                                            <a href="#" class="login_head modal-button" id="a-login" data-url="modal.auction">보기</a>
+                                            <input type="hidden" value="{{ $data['목록내역'][$i]['상세내역html'] }}">
+                                        </td>
                                     </tr>
                                 @endfor
                             </tbody>

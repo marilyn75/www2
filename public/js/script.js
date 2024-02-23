@@ -75,7 +75,8 @@
                 $('.scroll-to-top').fadeOut(500);
             }
         };
-        if ($('.stricky').length) {
+
+        if ($('.stricky').length && $('.header-navigation').length) {
             var headerScrollPos = $('.header-navigation').next().offset().top;
             var stricky = $('.stricky');
             if ($(window).scrollTop() > headerScrollPos) {
