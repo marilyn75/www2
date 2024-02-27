@@ -44,10 +44,16 @@ class AuctionClass{
         $data = $request->all();
 
         // API로부터 데이터 가져오기
-        $params = [           
-            'sano' => $data['sano'],
-            'no' => intval($data['no']),
-        ];
+        if(!empty($data['sano'])){
+            $params = [           
+                'sano' => $data['sano'],
+                'no' => intval($data['no']),
+            ];
+        }else{
+            $params = [           
+                'no' => $data['no'],
+            ];
+        }
 
         $response = Http::get($this->url_show, $params);   
         $this->data = $response->json();
@@ -103,10 +109,17 @@ class AuctionClass{
         $data['상태'] = str_replace("입찰","",$data['물건상태']);
         $data['날짜'] = $data['상태']=="준비중" ? "시작 " . $data['매각기일'] . " ~ ":" ~ " . $data['매각기일'] . " 마감";
 
+        $data['view_link'] = "?mode=view&no=".$data['물건관리번호'];
+
         return $data;
     }
 
     public function getViewPrintData($data){
+        if($data['gbn']=="a")   return $this->getViewPrintData_auction($data);
+        else                    return $this->getViewPrintData_onbid($data);
+    }
+
+    public function getViewPrintData_auction($data){
         if(empty($data)) return $data;
 
         // $data['level'] = 4; // 카카오 맵 레벨 기본 5
@@ -183,8 +196,8 @@ class AuctionClass{
         // $data['pnu'] = $data['소재지'][0]['showGongsiJiga'];
 
         // 사진
-        if(!empty($data['photo'])){
-            foreach($data['photo'] as $_img){
+        if(!empty($data['files']['사진'])){
+            foreach($data['files']['사진'] as $_img){
                 $data['images'][] = [
                     'src' => env('AUCTION_API_URL') .'/images/'. $data['saNo'] .'/'. $_img['file'],
                     'alt' => $_img['cate'],
@@ -239,6 +252,157 @@ class AuctionClass{
         }
 
         $data['기일내역목록'] = array_reverse($data['기일내역목록']);
+
+        return $data;
+    }
+
+    public function getViewPrintData_onbid($data){
+        if(empty($data)) return $data;
+        $arrTarget = [];
+        $data['면적'] = ["건물"=>0,"토지"=>0,"건물지분"=>0,"토지지분"=>0,];
+        foreach($data['물건세부정보']['면적정보'] as $_area){
+
+            if($_area['종별']=="건물"){
+                if(strpos($_area['비고'],'지분')!==false){
+                    $data['면적']['건물지분'] = 1;
+                    $arrTarget[] = "건물지분";
+                }else{
+                    $arrTarget[] = "건물전체";
+                }
+                
+                $data['면적']['건물'] += round($_area['면적'],2);
+            }
+            
+            if($_area['종별']=="토지"){
+                if(strpos($_area['비고'],'지분')!==false){
+                    $data['면적']['토지지분'] = 1;
+                    $arrTarget[] = "토지지분";
+                }else{
+                    $arrTarget[] = "토지전체";
+                }
+                
+                $data['면적']['토지'] += round($_area['면적'],2);
+            }
+        }
+        $arrTarget = array_unique($arrTarget);
+        $data['print_target'] = implode(", ", $arrTarget);
+        if($data['면적']['건물'] > 0){
+            if(empty($data['print_box_area']))   $data['print_box_area'] = "건물 ".$data['면적']['건물'] . "㎡";
+            $data['면적']['건물p'] = $data['면적']['건물'] * 0.3025;
+        }
+        if($data['면적']['토지'] > 0){
+            if(empty($data['print_box_area']))   $data['print_box_area'] = "토지 ".$data['면적']['토지'] . "㎡";
+            $data['면적']['토지p'] = $data['면적']['토지'] * 0.3025;
+        }
+
+        $data['지번주소'] = $data['물건세부정보']['지번주소'];
+
+        // 사진
+        if(!empty($data['files']['사진'])){
+            foreach($data['files']['사진'] as $_img){
+                $data['images'][] = [
+                    'src' => env('AUCTION_API_URL') .'/images/'. $data['물건관리번호'] .'/'. $_img,
+                    'alt' => $_img,
+                ];
+            }
+        }
+
+        if(!empty($data['files']['감정평가서'])){
+            foreach($data['files']['감정평가서'] as $_img){
+                $data['docs'][] = [
+                    'src' => env('AUCTION_API_URL') .'/images/'. $data['물건관리번호'] .'/'. $_img,
+                    'alt' => $_img,
+                ];
+            }
+        }
+
+        $data['localX'] = $data['kakao_x'];
+        $data['localY'] = $data['kakao_y'];
+
+        $sDate = intval(str_replace(['-', ' ', ':'],'',$data['입찰시작일시']));
+        $eDate = intval(str_replace(['-', ' ', ':'],'',$data['입찰종료일시']));
+        $data['진행상태'] = str_replace('인터넷입찰','',$data['물건상태']);
+        if($sDate <= intval(date("YmdHi"))){
+            $tmp = explode(' ', $data['입찰종료일시']);
+            $tmp2 = explode("-",$tmp[0]);
+            $data['매각기일2'] = '~ ' . $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일 ('.$tmp[1].')';
+            $data['dday'] = "마감 ";
+        }else{
+            $tmp = explode(' ', $data['입찰시작일시']);
+            $tmp2 = explode("-",$tmp[0]);
+            $data['매각기일2'] = $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일 ('.$tmp[1].') ~';
+            $data['dday'] = "입찰 ";
+        }
+
+        
+        $data['dday'] .= calculateDDay(str_replace('.','-',$tmp[0]));
+        if($data['dday']=='D-Day') $data['dday'] = "";
+
+        $data['감정평가일'] = "";
+        if(!empty($data['물건세부정보']['감정평가정보'][0]))    $data['감정평가일'] = printDateKor($data['물건세부정보']['감정평가정보'][0]['평가일']);
+
+        $data['담당자정보'] = explode("/",$data['담당자정보']);
+
+        $hashtag = [];
+        // if(!empty($data['자산구분'])) $hashtag[] = $data['자산구분'];
+        if($data['유찰횟수']>0) $hashtag[] = '유찰'.$data['유찰횟수'].'회';
+        $data['해시태그'] = (empty($hashtag))?"":"#".implode(" #",$hashtag);
+
+        $data['입찰이력목록'] = [];
+        $i = 0;
+        do{
+            $_row = $data['입찰이력'][$i];
+            $sDate = intval(str_replace(['-', ' ', ':'],'',$_row['입찰시작일시']));
+
+            $_row['입찰시작일시'] = str_replace("-",". ",str_replace(" ","(",$_row['입찰시작일시'])) . ")";
+            $_row['입찰종료일시'] = str_replace("-",". ",str_replace(" ","(",$_row['입찰종료일시'])) . ")";
+            $_row['개찰일시'] = str_replace("-",".",str_replace(" ","(",$_row['개찰일시'])) . ")";
+            $_row['class'] = "";
+            if($_row['입찰결과']=="유찰"){
+                $_row['class'] = "fall";
+            }elseif(strpos($_row['입찰결과'],"진행중")!==false){
+                $_row['class'] = "ing";
+                $_row['입찰결과']="진행";
+            }elseif(strpos($_row['입찰결과'],"매각")!==false){
+                $_row['class'] = "sale";
+                $_row['입찰결과']="매각";
+            }
+            $data['입찰이력목록'][] = $_row;
+
+            $i++;
+        }while($sDate <= intval(date("YmdHi")) && count($data['입찰이력목록'])>$i);
+
+        // foreach($data['입찰이력'] as $_row){
+        //     $sDate = intval(str_replace(['-', ' ', ':'],'',$_row['입찰시작일시']));
+        //     if($sDate > intval(date("YmdHi"))) break;
+
+        //     $_row['입찰시작일시'] = str_replace("-",". ",str_replace(" ","(",$_row['입찰시작일시'])) . ")";
+        //     $_row['입찰종료일시'] = str_replace("-",". ",str_replace(" ","(",$_row['입찰종료일시'])) . ")";
+        //     $_row['개찰일시'] = str_replace("-",".",str_replace(" ","(",$_row['개찰일시'])) . ")";
+            
+        //     if($_row['입찰결과']=="유찰"){
+        //         $_row['class'] = "fall";
+        //     }elseif(strpos($_row['입찰결과'],"진행중")!==false){
+        //         $_row['class'] = "ing";
+        //         $_row['입찰결과']="진행";
+        //     }elseif(strpos($_row['입찰결과'],"매각")!==false){
+        //         $_row['class'] = "sale";
+        //         $_row['입찰결과']="매각";
+        //     }
+        //     $data['입찰이력목록'][] = $_row;
+        // }
+
+        $data['입찰이력목록'] = array_reverse($data['입찰이력목록']);
+
+        if(!empty($data['토지정보']['이용계획'])){
+            $arrData=[];
+            foreach($data['토지정보']['이용계획'] as $_row){
+                $arrData[] = $_row['용도지역명'];
+            }
+            $arrData = array_unique($arrData);
+        }
+
+        $data['토지이용계획'] = @$arrData;
 
         return $data;
     }

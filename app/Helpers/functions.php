@@ -167,11 +167,14 @@ if (!function_exists('formatCreatedAt2')) {
 // 날짜형식3
 if (!function_exists('printDateKor')) {
     function printDateKor($date) {
-        $dt = str_replace('.','-',$date);
+        $ymd = substr($date,0,10);
+        $etc = substr($date,10);
+
+        $dt = str_replace('.','-',$ymd);
 
         $arr = explode('-',$dt);
 
-        return $arr[0] . '년 ' . $arr[1] . '월 ' . $arr[2] . '일';
+        return $arr[0] . '년 ' . $arr[1] . '월 ' . $arr[2] . '일'.$etc;
     }
 }
 

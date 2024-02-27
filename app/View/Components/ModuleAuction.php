@@ -56,7 +56,9 @@ class ModuleAuction extends Component
         debug($this->request->all(), $data);
 
         $skin = 'components.module-auction-show';
+        
         if(empty($data))    $skin = 'components.error';
+        elseif($data['gbn']=="b")   $skin = 'components.module-auction-b-show';
 
         return view($skin, compact('data'));
     }
