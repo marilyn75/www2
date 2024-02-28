@@ -66,10 +66,10 @@
                         </div>
                         {{-- <img src="/images/auction/auction_map.png" alt=""> --}}
                         <div class="map_icon">
-                            <a href="#">
+                            <a href="https://map.kakao.com/?q={{ urlencode($data['주소2']) }}" target="_blank">
                                 <img src="/images/auction/kaokaomap.png" alt="">
                             </a>
-                            <a href="#">
+                            <a href="https://map.naver.com/?query={{ urlencode($data['주소2']) }}" target="_blank">
                                 <img src="/images/auction/navermap.png" alt="">
                             </a>
                         </div>

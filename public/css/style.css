@@ -19016,6 +19016,12 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 thead tr th { font-size: 12px; }
 tbody tr th, tbody tr td { font-size: 12px; }
 
+.auc_btitle p { font-size: 18px; }
+.law_title { font-size: 14px; }
+.no_blt li ul li span { font-size: 14px; }
+.auc_hide h4 b { font-size: 16px; font-weight: 600; color: #000; }
+.ac_more_btn { font-size: 13px; padding: 8px; }
+
 }
 
 

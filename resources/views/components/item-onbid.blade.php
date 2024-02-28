@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-md-6 col-lg-4">
     <a href="{{ $printData['view_link'] }}">
     <div class="feat_property home7 style4 bdrrn feat_property_w">
-        <div class="thumb">
+        <div class="thumb auction_thumb">
             <img class="img-whp" src="{{ $printData['image'] }}" alt="{{ $printData['alt'] }}" >
             <div class="thmb_cntnt">
                 <ul class="tag mb0">

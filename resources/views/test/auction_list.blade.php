@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="feat_property home7 style4 bdrrn feat_property_w">
-                        <div class="thumb">
+                        <div class="thumb auction_thumb">
                             <img class="img-whp" src="images/auction/auction02.png" alt="rent1.PNG">
                             <div class="thmb_cntnt">
                                 <ul class="tag mb0">
@@ -197,7 +197,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="feat_property home7 style4 bdrrn feat_property_w">
-                        <div class="thumb">
+                        <div class="thumb auction_thumb">
                             <img class="img-whp" src="images/auction/auction02.png" alt="BI1.PNG">
                             <div class="thmb_cntnt">
                                 <ul class="tag mb0">
