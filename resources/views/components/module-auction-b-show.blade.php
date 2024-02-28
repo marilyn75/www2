@@ -285,21 +285,21 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col" width="10%">번호</th>
-                                <th scope="col" width="20%">종별</th>
-                                <th scope="col" width="20%">면적</th>
-                                <th scope="col" width="20%">지분</th>
-                                <th scope="col">비고</th>
+                                <th class="bck_col" scope="col" width="10%">번호</th>
+                                <th class="bck_col" scope="col" width="20%">종별</th>
+                                <th class="bck_col" scope="col" width="20%">면적</th>
+                                <th class="bck_col" scope="col" width="20%">지분</th>
+                                <th class="bck_col" scope="col">비고</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach ($data['물건세부정보']['면적정보'] as $_row)
                             <tr>
-                                <th class="bck_col">{{ $_row['번호'] }}</th>
-                                <td class="bck_col">{{ $_row['종별'] }} / {{ $_row['지목'] }}</td>
-                                <td class="bck_col">{{ number_format($_row['면적'],2) }}㎡</td>
-                                <td class="bck_col">{{ $_row['지분'] }}</td>
-                                <td class="bck_col">{{ $_row['비고'] }}</td>
+                                <th class="bck_wt">{{ $_row['번호'] }}</th>
+                                <td class="bck_wt">{{ $_row['종별'] }} / {{ $_row['지목'] }}</td>
+                                <td class="bck_wt">{{ number_format($_row['면적'],2) }}㎡</td>
+                                <td class="bck_wt">{{ $_row['지분'] }}</td>
+                                <td class="bck_wt">{{ $_row['비고'] }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -354,16 +354,16 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col" width="30%">지목</th>
-                                <th scope="col" width="30%">면적</th>
-                                <th scope="col" width="40%">공시지가(㎡당)</th>
+                                <th class="bck_col" scope="col" width="30%">지목</th>
+                                <th class="bck_col" scope="col" width="30%">면적</th>
+                                <th class="bck_col" scope="col" width="40%">공시지가(㎡당)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="bck_col">{{ $data['물건세부정보']['면적정보'][0]['지목'] }}</th>
-                                <td class="bck_col">{{ number_format($data['물건세부정보']['면적정보'][0]['면적'],2) }}㎡</td>
-                                <td class="bck_col">{{ number_format($data['토지정보']['공시지가']) }}원 ({{ $data['토지정보']['공시년월'] }})</td>
+                                <th class="bck_wt">{{ $data['물건세부정보']['면적정보'][0]['지목'] }}</th>
+                                <td class="bck_wt">{{ number_format($data['물건세부정보']['면적정보'][0]['면적'],2) }}㎡</td>
+                                <td class="bck_wt">{{ number_format($data['토지정보']['공시지가']) }}원 ({{ $data['토지정보']['공시년월'] }})</td>
                             </tr>
                         </tbody>
                     </table>
@@ -393,19 +393,19 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col" width="10%"></th>
-                                <th scope="col" width="30%">감정평가기관</th>
-                                <th scope="col" width="30%">평가일</th>
-                                <th scope="col" width="30%">평가금액</th>
+                                <th class="bck_col" scope="col" width="10%"></th>
+                                <th class="bck_col" scope="col" width="30%">감정평가기관</th>
+                                <th class="bck_col" scope="col" width="30%">평가일</th>
+                                <th class="bck_col" scope="col" width="30%">평가금액</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach ($data['물건세부정보']['감정평가정보'] as $_i=>$_row)
                             <tr>
-                                <th class="bck_col">{{ $_i + 1 }}</th>
-                                <th class="bck_col">{{ $_row['감정평가기관'] }}</th>
-                                <td class="bck_col">{{ $_row['평가일'] }}</td>
-                                <td class="bck_col">{{ number_format($_row['평가금액']) }}원</td>
+                                <th class="bck_wt">{{ $_i + 1 }}</th>
+                                <th class="bck_wt">{{ $_row['감정평가기관'] }}</th>
+                                <td class="bck_wt">{{ $_row['평가일'] }}</td>
+                                <td class="bck_wt">{{ number_format($_row['평가금액']) }}원</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -427,23 +427,23 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col" width="20%">설정일자</th>
-                                <th scope="col">권리종류</th>
-                                <th scope="col">권리자/설정금액</th>
-                                <th scope="col" width="15%">권리</th>
+                                <th class="bck_col" scope="col" width="20%">설정일자</th>
+                                <th class="bck_col" scope="col">권리종류</th>
+                                <th class="bck_col" scope="col">권리자/설정금액</th>
+                                <th class="bck_col" scope="col" width="15%">권리</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach ($data['압류재산정보']['등기부현황'] as $_row)
                             <tr>
-                                <th class="bck_col" rowspan="2">{{ $_row['설정일자'] }}</th>
-                                <th class="bck_col">{{ $_row['권리종류'] }}</th>
-                                <td class="bck_col">{{ $_row['권리자명'] }}</td>
-                                <td class="bck_col" rowspan="2">-</td>
+                                <th class="bck_wt" rowspan="2">{{ $_row['설정일자'] }}</th>
+                                <th class="bck_wt">{{ $_row['권리종류'] }}</th>
+                                <td class="bck_wt">{{ $_row['권리자명'] }}</td>
+                                <td class="bck_wt" rowspan="2">-</td>
                             </tr>
                             <tr>
-                                <th class="bck_col">-</th>
-                                <td class="bck_col">@if($_row['설정금액']>0){{ number_format($_row['설정금액']) }}원@else{{ __("-") }}@endif</td>
+                                <th class="bck_wt">-</th>
+                                <td class="bck_wt">@if($_row['설정금액']>0){{ number_format($_row['설정금액']) }}원@else{{ __("-") }}@endif</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -467,10 +467,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col" width="20%">임차인</th>
-                                <th scope="col">보증금/차임</th>
-                                <th scope="col">전입/확정</th>
-                                <th scope="col" width="15%">대향/소멸</th>
+                                <th class="bck_col" scope="col" width="20%">임차인</th>
+                                <th class="bck_col" scope="col">보증금/차임</th>
+                                <th class="bck_col" scope="col">전입/확정</th>
+                                <th class="bck_col" scope="col" width="15%">대향/소멸</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -489,7 +489,7 @@
                         @endforeach
                         @else
                             <tr>
-                                <th class="bck_col" colspan="4">조회된 데이터가 없습니다.</th>
+                                <th class="bck_wt" colspan="4">조회된 데이터가 없습니다.</th>
                             </tr>
                         @endif
                         </tbody>
@@ -541,29 +541,29 @@
                         <thead>
                             <p>[총 {{ count($data['압류재산정보']['배분요구채권신고현황']) }}건]</p>
                             <tr>
-                                <th scope="col" width="20%">설정일자</th>
-                                <th scope="col" width="20%">권리종류</th>
-                                <th scope="col" width="35%">권리자/설정금액</th>
-                                <th scope="col" width="25%">배분요구일/배분요구채권액</th>
+                                <th class="bck_col" scope="col" width="20%">설정일자</th>
+                                <th class="bck_col" scope="col" width="20%">권리종류</th>
+                                <th class="bck_col" scope="col" width="35%">권리자/설정금액</th>
+                                <th class="bck_col" scope="col" width="25%">배분요구일/배분요구채권액</th>
                             </tr>
                         </thead>
                         <tbody>
                         @if(count($data['압류재산정보']['배분요구채권신고현황']) > 0)
                             @foreach ($data['압류재산정보']['배분요구채권신고현황'] as $_row)
                             <tr>
-                                <td class="bck_col" rowspan="2">{{ !empty($_row['설정일자']) ? $_row['설정일자'] : '-' }}</td>
-                                <td class="bck_col" rowspan="2">{{ $_row['권리종류'] }}</td>
-                                <td class="bck_col">{{ $_row['권리자명'] }}</td>
-                                <td class="bck_col">{{ $_row['배분요구일'] }}</td>
+                                <td class="bck_wt" rowspan="2">{{ !empty($_row['설정일자']) ? $_row['설정일자'] : '-' }}</td>
+                                <td class="bck_wt" rowspan="2">{{ $_row['권리종류'] }}</td>
+                                <td class="bck_wt">{{ $_row['권리자명'] }}</td>
+                                <td class="bck_wt">{{ $_row['배분요구일'] }}</td>
                             </tr>
                             <tr>
-                                <td class="bck_col">{{ $_row['설정금액']>0 ? number_format($_row['설정금액'])."원" : '-' }}</td>
-                                <td class="bck_col">{{ $_row['배분요구채권액']>0 ? number_format($_row['배분요구채권액'])."원" : '-' }}</td>
+                                <td class="bck_wt">{{ $_row['설정금액']>0 ? number_format($_row['설정금액'])."원" : '-' }}</td>
+                                <td class="bck_wt">{{ $_row['배분요구채권액']>0 ? number_format($_row['배분요구채권액'])."원" : '-' }}</td>
                             </tr>
                             @endforeach
                         @else
                             <tr>
-                                <th class="bck_col" colspan="4">조회된 데이터가 없습니다.</th>
+                                <th class="bck_wt" colspan="4">조회된 데이터가 없습니다.</th>
                             </tr>
                         @endif 
                         </tbody>

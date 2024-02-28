@@ -505,7 +505,7 @@
                                 <tr>
                                     <th class="bck_wt">압류<br>(2020.05.18)</th>
                                     <td class="bck_wt">892만원<br>(최저가)</td>
-                                    <td class="bck_wt" colspan="2">멤버십</td>
+                                    <td class="bck_wt" colspan="2">-</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -732,7 +732,7 @@
                             <tbody>
                                 <tr>
                                     <td class="bck_wt" colspan="4">
-                                        내용을 확인하려면 멤버십
+                                        -
                                     </td>
                                 </tr>
                             </tbody>
