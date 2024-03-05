@@ -98,10 +98,10 @@
                     <!-- 매각진행 -->
                     <div class="col-12">
                         <div class="sale_tit">
-                            <p>매각진행</p>
+                            <p>{{ $data['진행상태'] }}</p>
                             <div class="sale_days">
                                 <p class="sale_day">{{ $data['매각기일2'] }}</p>
-                                <p class="auc_bdg">{{ $data['dday'] }}</p>
+                                @if(!empty($data['dday']))<p class="auc_bdg">{{ $data['dday'] }}</p>@endif
                             </div>
                         </div>
                         <div class="und_line"></div>
@@ -124,7 +124,7 @@
                             </li>
                             <li>
                                 <p>감정</p>
-                                <p>2021년 04월 20일</p>
+                                <p>0000년 00월 00일</p>
                             </li>
                             <li>
                                 <p>보증금</p>
@@ -168,9 +168,10 @@
                         </div>
                         <div class="und_line"></div>
                         <ul class="fall_lst">
-                            @foreach ($data['기일내역'] as $_data)
+                            @foreach ($data['기일내역목록'] as $_i=>$_data)
                                 @if ($_data['최저매각가격'] > 0)
                                     <li>
+                                    {{-- <li @if($_i>3){!! __('class="hidden"') !!}@endif> --}}
                                         <p>{{ $_data['기일'] }}</p>
                                         <div class="fall_rst">
                                             <p>{{ price_kor($_data['최저매각가격']) }}원</p>
@@ -443,6 +444,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                @if(!empty($data['건물정보']['층별정보']))
                                 <table class="hidden">
                                     <thead>
                                         <tr>
@@ -453,34 +455,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data['건물정보']['층별정보'] as $_floor)
                                         <tr>
-                                            <td class="bck_wt">옥탑 1층</td>
-                                            <td class="bck_wt">철근콘트리트구조</td>
-                                            <td class="bck_wt">다세대주택</td>
-                                            <td class="bck_wt">16.68㎡</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bck_wt">지상 3층</td>
-                                            <td class="bck_wt">철근콘트리트구조</td>
-                                            <td class="bck_wt">다세대주택</td>
-                                            <td class="bck_wt">116.46㎡</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bck_wt">지상 2층</td>
-                                            <td class="bck_wt">철근콘트리트구조</td>
-                                            <td class="bck_wt">다세대주택</td>
-                                            <td class="bck_wt">116.46㎡</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bck_wt">지상 1층</td>
-                                            <td class="bck_wt">철근콘트리트구조</td>
-                                            <td class="bck_wt">다세대주택</td>
-                                            <td class="bck_wt">116.46㎡</td>
-                                        </tr>
+                                            <td class="bck_wt">{{ $_floor['층구분'] }} {{ $_floor['층'] }}</td>
+                                            <td class="bck_wt">{{ $_floor['주구조'] }}</td>
+                                            <td class="bck_wt">{{ $_floor['주용도'] }}</td>
+                                            <td class="bck_wt">{{ $_floor['면적'] }}㎡</td>
+                                        </tr>    
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                @endif
                             </div>
-                            <button class="ac_more_btn mb0 build_btn" onclick="showMoreBuild()">더보기</button>
+                            @if(!empty($data['건물정보']['층별정보']))<button class="ac_more_btn mb0 build_btn" onclick="showMoreBuild()">더보기</button>@endif
                             <div class="cont_und_line"></div>
                         </div>
                     @endif
@@ -704,13 +691,15 @@
                             <p>현황조사</p>
                         </div>
                         <div class="use_state_list">
-                            <p>본 건 목적물 소재지에 출장하여 조사한 바, 7층 주택이며 1층은 필로티 주차장임.
-                                본 건 목적물 소재지에 출장한 바 문이 잠겨있고 거주자가 부재중이어서 조사하지 못하여 점유관계 미상이나, 전입세대
-                                열람내역 조회결과 주민등록 전입 세대주 남해균, 조기환을 임차인으로 등재함.
-                            </p>
-                            <span>[목록1]</span>
-                            <P>임차인으로 기재한 남해균, 조기환은 전입세대 열람결과 주민등록등본상 등재자이나 현장 방문 당시 만나지
-                                못하여 임차인 여부나 정확한 임대차 관계는 알 수 없음</P>
+                            @if (!empty($data['현황조사내역']['기타']))
+                                <p>{{ $data['현황조사내역']['기타'] }}</p>
+                            @endif
+                            
+                            @foreach ($data['현황조사내역']['점유관계'] as $_i=>$_row)
+                            <span>[목록{{ $_i+1 }}]</span>
+                            <P>{{ $_row['기타'] }}</P>
+                            @endforeach
+                            
                         </div>
                         <div class="cont_und_line"></div>
                     </div>

@@ -69,7 +69,8 @@ class AuctionClass{
     public function getPrintData_auction($data){
         $data['할인율'] = round((intval($data['감정가']) - intval($data['최저가'])) / intval($data['감정가']) * 100);
         $tmp = explode(' ', $data['매각기일']);
-        $data['dday'] = calculateDDay(str_replace('.','-',$tmp[0]));
+        $dday = calculateDDay(str_replace('.','-',$tmp[0]));
+        $data['dday'] = $dday >= 0 ? "결과대기":"D".$dday;
         if($data['dday']=='D-Day') $data['dday'] = "결과대기";
 
         $data['유찰횟수'] = 0;
@@ -208,8 +209,15 @@ class AuctionClass{
         $tmp = explode(' ', $data['매각기일']);
         $tmp2 = explode(".",$tmp[0]);
         $data['매각기일2'] = $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일';
-        $data['dday'] = calculateDDay(str_replace('.','-',$tmp[0]));
-        if($data['dday']=='D-Day') $data['dday'] = "";
+        $dday = calculateDDay(str_replace('.','-',$tmp[0]));
+        if($dday > 0){
+            $data['dday'] = "";
+            $data['진행상태'] = "결과대기";
+        }else{
+            $data['dday'] = "D" . $dday;
+            $data['진행상태'] = "매각진행";
+        }
+        
 
         // 대상, 토지, 건물
         if($data['totArea']['토지'] > 0)    $data['target'][] = '토지'.$str;
@@ -224,9 +232,13 @@ class AuctionClass{
         $data['경매구분'] = str_replace('부동산','',$data['사건내역'][0]['사건명']);
 
         $data['유찰횟수'] = 0;
-        foreach($data['기일내역'] as $_item){
+        $data['기일내역목록'] = [];
+        for($i=count($data['기일내역'])-1;$i>=0;$i--){
+            $_item = $data['기일내역'][$i];
             if($_item['기일결과']=='유찰')  $data['유찰횟수']++;
+            $data['기일내역목록'][] = $_item;
         }
+
         $hashtag = [];
         if($data['유찰횟수']>0) $hashtag[] = '유찰'.$data['유찰횟수'].'회';
 
