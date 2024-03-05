@@ -156,11 +156,11 @@
                         </li>
                         <li class="hidden">
                             <p>담당자</p>
-                            <p>{{ $data['담당자정보'][0].' / '.$data['담당자정보'][1] }}</p>
+                            <p>{{ @$data['담당자정보'][0].' / '.@$data['담당자정보'][1] }}</p>
                         </li>
                         <li class="hidden">
                             <p>연락처</p>
-                            <p>{{ $data['담당자정보'][2] }}</p>
+                            <p>{{ @$data['담당자정보'][2] }}</p>
                         </li>
                     </ul>
                     <button class="ac_more_btn" onclick="showMore()">더보기</button>
@@ -592,7 +592,7 @@
                         </li>
                         <li>
                             <p>담당자</p>
-                            <p>{{ trim($data['담당자정보'][0]).'/'.trim($data['담당자정보'][1]) . ' '.$data['담당자정보'][2] }}</p>
+                            <p>{{ trim(@$data['담당자정보'][0]).'/'.trim(@$data['담당자정보'][1]) . ' '.@$data['담당자정보'][2] }}</p>
                         </li>
                         <li>
                             <p>전자보증서</p>
