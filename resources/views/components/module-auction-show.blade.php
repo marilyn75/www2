@@ -235,7 +235,7 @@
 
                     {{-- side filter mobile --}}
                     <!-- pdf -->
-                    <div class="col-12 col-lg-6 auc_mob">
+                    {{-- <div class="col-12 col-lg-6 auc_mob">
                         <ul class="auc_pdf_down pdf_mob">
                             <li>
                                 <img src="/images/auction/auc_pdf_01.png" alt="">
@@ -270,9 +270,49 @@
                                 <p>토지등기</p>
                             </li>
                         </ul>
+                    </div> --}}
+
+                    <div class="col-12 col-lg-4 auc_mob">
+                        <ul class="auc_pdf_down pdf_mob pdf_mob_temp">
+                            <li>
+                                <img src="/images/auction/auc_pdf_01.png" alt="">
+                                <p>매각명세서</p>
+                            </li>
+                            <li>
+                                <img src="/images/auction/auc_pdf_02.png" alt="">
+                                <p>감정평가서</p>
+                            </li>
+                        </ul>
                     </div>
+
+
                     <!-- 대법원 link -->
-                    <div class="col-12 col-lg-6 auc_mob">
+                    {{-- <div class="col-12 col-lg-6 auc_mob">
+                        <div class="sidebar_auc_content auc_link link_mob">
+                            <a href="#">
+                                <p><span>대법원</span>물건상세</p>
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                            <a href="#">
+                                <p><span>대법원</span>현황조사</p>
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                            <a href="#">
+                                <p><span>대법원</span>송달내역</p>
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                            <a href="#">
+                                <p><span>대법원</span>사건내역</p>
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                            <a href="#">
+                                <p><span>대법원</span>기일내역</p>
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                        </div>
+                    </div> --}}
+
+                    <div class="col-12 col-lg-8 auc_mob">
                         <div class="sidebar_auc_content auc_link link_mob">
                             <a href="#">
                                 <p><span>대법원</span>물건상세</p>
@@ -951,7 +991,7 @@
 
 
                         <!-- pdf -->
-                        <div class="sidebar_auc_content">
+                        {{-- <div class="sidebar_auc_content">
                             <ul class="auc_pdf_down">
                                 <li>
                                     <img src="/images/auction/auc_pdf_01.png" alt="">
@@ -986,7 +1026,25 @@
                                     <p>토지등기</p>
                                 </li>
                             </ul>
+                        </div> --}}
+
+                        <div class="sidebar_auc_content">
+                            <ul class="auc_pdf_down pdf_temp">
+                                <li>
+                                    <div class="pdf_temp_img">
+                                        <img src="/images/auction/auc_pdf_01.png" alt="">
+                                    </div>
+                                    <p>매각명세서</p>
+                                </li>
+                                <li>
+                                    <div class="pdf_temp_img">
+                                        <img src="/images/auction/auc_pdf_02.png" alt="">
+                                    </div>
+                                    <p>감정평가서</p>
+                                </li>
+                            </ul>
                         </div>
+
 
                         <!-- 대법원 -->
                         <div class="sidebar_auc_content auc_link">

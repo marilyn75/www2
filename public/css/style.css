@@ -18423,6 +18423,13 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   cursor: pointer;
 }
 .auc_pdf_down li p { color: #000; margin: 0; font-size: 14px; }
+.pdf_temp { display: grid; }
+.pdf_temp li { display: flex; width: 100%; align-items: center; padding: 15px; }
+.pdf_temp_img { width: 28px; display: flex; justify-content: center; } 
+.pdf_temp li img { height: 21px; }
+.pdf_mob_temp li { width: 100% !important; display: flex; padding: 10px 15px !important; }
+
+
 .auc_link { display: grid; gap: 10px; margin-bottom: 48px; }
 .auc_link a{ 
   display: flex; 
