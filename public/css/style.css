@@ -17982,6 +17982,8 @@ code {
 .aucmod .modal-scroll { height: 400px; overflow-y: scroll; }
 .aucmod .modal-dialog { margin-top: 250px; }
 
+.mod-header { position: absolute; top: -45px; right: 0; }
+
 
 
 
