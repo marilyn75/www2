@@ -274,11 +274,13 @@
 
                     <div class="col-12 col-lg-4 auc_mob">
                         <ul class="auc_pdf_down pdf_mob pdf_mob_temp">
-                            <li>
+                            <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
                                 <img src="/images/auction/auc_pdf_01.png" alt="">
                                 <p>매각명세서</p>
                             </li>
-                            <li>
+                            <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
                                 <img src="/images/auction/auc_pdf_02.png" alt="">
                                 <p>감정평가서</p>
                             </li>
@@ -402,8 +404,11 @@
                                         <td class="bck_wt">{{ $data['소재지'][$i]['addr'] }}</td>
                                         <td class="bck_wt">{{ $data['소재지'][$i]['type'] }}</td>
                                         <td class="bck_wt">
-                                            <a href="#" class="login_head modal-button" id="a-login" data-url="modal.auction">보기</a>
-                                            <input type="hidden" value="{{ $data['목록내역'][$i]['상세내역html'] }}">
+                                            <a href="#" class="login_head modal-button" id="a-login" data-url="modal.auction">
+                                                <input type="hidden" name="cont" value="{{ $data['목록내역'][$i]['상세내역html'] }}">
+                                                보기
+                                            </a>
+                                            
                                         </td>
                                     </tr>
                                 @endfor
@@ -665,7 +670,10 @@
                         <div class="auc_info_tit flx_bg">
                             <p>임차인현황</p>
                             <div class="flx_bgs">
-                                <button class="auc_bdg">매각명세서</button>
+                                <button class="auc_bdg viewDoc modal-button" data-url="modal.pdfviewer">
+                                    <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
+                                    매각명세서
+                                </button>
                                 <button class="auc_bdg">소액임차표</button>
                             </div>
                         </div>
@@ -1025,13 +1033,15 @@
 
                         <div class="sidebar_auc_content">
                             <ul class="auc_pdf_down pdf_temp">
-                                <li>
+                                <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                    <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_01.png" alt="">
                                     </div>
                                     <p>매각명세서</p>
                                 </li>
-                                <li>
+                                <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                    <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_02.png" alt="">
                                     </div>

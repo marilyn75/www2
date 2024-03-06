@@ -37,20 +37,26 @@ $(document).ready(function() {
     $('.modal-button').click(function() {
         var url = $(this).data('url'); // 버튼의 데이터 속성에서 URL을 가져옵니다.
         var cont = "";
-        if(typeof($(this).next('input').val())=="string"){
-            cont = $(this).next('input').val();
+        var params = {};
+        if(typeof($(this).find('input[name="cont"]').val())=="string"){
+            cont = $(this).find('input[name="cont"]').val();
+            params = {cont:cont};
         }
-
+        
+        if(typeof($(this).find('input[name="params"]').val())=="string"){
+            cont = JSON.parse($(this).find('input[name="params"]').val());
+            params = cont;
+        }
         // if(params)  
         //     showModalPrc(url, params);
         // else
-            showModal(url,cont);
+            showModal(url,params);
 
         return false;
     });
 });
 
-function showModal(url, cont){
+function showModal(url, params){
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -60,7 +66,7 @@ function showModal(url, cont){
     $.ajax({
         url: '{{ route('modal.content') }}/'+url,
         type: 'POST',
-        data:{cont:cont},
+        data:params,
         success: function(response) {
             $('#modal').html(response); // 모달의 내용을 업데이트합니다.
             $('#modal .modal').modal('show'); // 모달을 표시합니다.

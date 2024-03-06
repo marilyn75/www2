@@ -206,6 +206,25 @@ class AuctionClass{
             }
         }
 
+        // pdf 문서
+        if(!empty($data['files']['매각물건명세서'])){
+            $arrMaegak = [
+                'gbn'=>$data['gbn'],
+                'saNo'=>$data['saNo'],
+                'fn'=>$data['files']['매각물건명세서'],
+            ];
+            $data['매각명세서_json'] = json_encode($arrMaegak);
+        }
+
+        if(!empty($data['files']['감정평가서']) && count($data['files']['감정평가서']) > 0){
+            $arrMaegak = [
+                'gbn'=>$data['gbn'],
+                'saNo'=>$data['saNo'],
+                'fn'=>$data['files']['감정평가서'][0]['file'],
+            ];
+            $data['감정평가서_json'] = json_encode($arrMaegak);
+        }
+
         $tmp = explode(' ', $data['매각기일']);
         $tmp2 = explode(".",$tmp[0]);
         $data['매각기일2'] = $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일';
