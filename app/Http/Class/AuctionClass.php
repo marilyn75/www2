@@ -265,6 +265,12 @@ class AuctionClass{
 
         $data['기일내역목록'] = array_reverse($data['기일내역목록']);
 
+        if(!empty($data['매각물건명세']['임차인현황'])){
+            foreach($data['매각물건명세']['임차인현황'] as $_row){
+                if(!empty($_row['점유자명'])) $data['임차인현황목록'][] = $_row;
+            }
+        }
+
         return $data;
     }
 

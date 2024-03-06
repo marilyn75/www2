@@ -514,7 +514,7 @@
 
 
                     <!-- 권리분석 -->
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="auc_info_tit flx_bg">
                             <p>권리분석</p>
                             <button class="auc_bdg">예상배당표</button>
@@ -551,7 +551,7 @@
                         </div>
                     </div>
 
-                    {{-- 등기부현황 --}}
+                    {{-- 등기부현황 --
                     <div class="col-12">
                         <div class="auc_info_tit flx_bg">
                             <p>등기부현황</p>
@@ -652,7 +652,7 @@
                             <p>을구 순위번호 4번 2019년 9월 20일 접수 제 138270호 전세권설정등기는 말소되지 않고 매수인에게 인수 됨</p>
                         </div>
                         <div class="cont_und_line"></div>
-                    </div>
+                    </div> --}}
 
                     <div class="col-12">
                         <div class="auc_btitle">
@@ -679,52 +679,47 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @empty($data['임차인현황목록'])
+                                <tr>
+                                    <td colspan="4" class="bck_wt">매각물건명세서상 임차인이 존재하지 않습니다.</td>
+                                </tr>
+                            @else
+                                @foreach ($data['임차인현황목록'] as $_row)
+                                    
+                                @endforeach
                                 <tr>
                                     <td class="bck_wt">
-                                        남해균<br>
-                                        (주거전세권자)<br>
+                                        {{ $_row['점유자명'] }}<br>
+                                        ({{ $_row['점유의권원'] }})<br>
                                         점유부분:<br>
-                                        건물의 전부
+                                        {{ $_row['점유부분'] }}
                                     </td>
-                                    <td class="bck_wt txt_lt">보증: 205,000,000<br>차임: -</td>
+                                    <td class="bck_wt txt_lt">보증: {{ $_row['보증금'] }}<br>차임: {{ $_row['차임'] }}</td>
                                     <td class="bck_wt txt_lt">
-                                        전입: 2019-09-20<br>
-                                        확정: -<br>
-                                        배당: -
+                                        전입: {{ $_row['신고일자'] }}<br>
+                                        확정: {{ $_row['확정일자'] }}<br>
+                                        배당: {{ $_row['배당요구여부'] }}
                                     </td>
                                     <td class="bck_wt txt_rd">있음<br>(인수유의)</td>
                                 </tr>
-                                <tr>
-                                    <td class="bck_wt">
-                                        조기환<br>
-                                        (주거임차인)<br>
-                                        점유부분:<br>
-                                        202호에 속한 204호 전체
-                                    </td>
-                                    <td class="bck_wt txt_lt">보증: 190,000,000<br>차임: -</td>
-                                    <td class="bck_wt txt_lt">
-                                        전입: 2018-06-14<br>
-                                        확정: 2018-06-14<br>
-                                        배당: 2021-06-23
-                                    </td>
-                                    <td class="bck_wt txt_rd">있음<br>(인수유의)</td>
-                                </tr>
+                            @endempty
                             </tbody>
                         </table>
                         <div class="cont_und_line"></div>
                     </div>
 
+                    @if(!empty($data['매각물건명세']['임차인참고사항']) && str_replace("<비고>","",$data['매각물건명세']['임차인참고사항'])!="")
                     <!-- 임차인 참고사항 -->
                     <div class="col-12">
                         <div class="auc_info_tit">
                             <p>임차인 참고사항</p>
                         </div>
                         <div class="use_state_list">
-                            <p>조기환: 대향력있는 임차인임. 배당에서 보증금이 전액 변제되지 아니하면 전액을 매수인이 인수함.</p>
+                            <p>{{ str_replace("<비고>","",$data['매각물건명세']['임차인참고사항']) }}</p>
                         </div>
                         <div class="cont_und_line"></div>
                     </div>
-
+                    @endif
                     <!-- 현황조사 -->
                     <div class="col-12">
                         <div class="auc_info_tit">
@@ -744,7 +739,7 @@
                         <div class="cont_und_line"></div>
                     </div>
 
-                    <!-- 전입세대원 -->
+                    {{-- <!-- 전입세대원 -->
                     <div class="col-12">
                         <div class="auc_info_tit">
                             <p>전입세대원</p>
@@ -767,7 +762,7 @@
                             </tbody>
                         </table>
                         <div class="cont_und_line"></div>
-                    </div>
+                    </div> --}}
 
                     <div class="col-12">
                         <div class="auc_btitle">
@@ -775,7 +770,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="auc_info_tit">
                             <p class="img_tit"><img src="/images/auction/other01.png" alt=""> 입찰방법&amp;제한</p>
                         </div>
@@ -814,7 +809,7 @@
                             </li>
                         </ul>
                         <div class="cont_und_line"></div>
-                    </div>
+                    </div> --}}
 
                     {{-- 납부기한 --}}
                     <div class="col-12">
