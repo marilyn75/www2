@@ -17984,7 +17984,7 @@ code {
 
 .aucpdfmod .modal-dialog { max-width: 1700px; }
 .aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; height: 1070px; }
-
+.aucpdfmod .modal-dialog .modal-content .modal-scroll { height: 1070px; }
 
 
 .mod-header { position: absolute; top: -45px; right: 0; }
