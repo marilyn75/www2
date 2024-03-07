@@ -17983,7 +17983,7 @@ code {
 .aucmod .modal-dialog { margin-top: 250px; }
 
 .aucpdfmod .modal-dialog { max-width: 1700px; }
-.aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; }
+.aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; height: 1070px; }
 
 
 
