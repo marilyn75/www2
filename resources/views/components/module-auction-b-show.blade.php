@@ -837,31 +837,31 @@
 
                         <div class="sidebar_auc_content">
                             <div class="auc_pdf_down pdf_temp">
-                                <button>
+                                <button class="modal-button">
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_09.png" alt="">
                                     </div>
                                     <p>공고&첨부</p>
                                 </button>
-                                <button id="a-login" data-rul="madal.pdf_modal">
+                                <button class="modal-button" id="a-login" data-url="modal.auction">
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_10.png" alt="">
                                     </div>
                                     <p>재산명세서</p>
                                 </button>
-                                <button>
+                                <button class="modal-button">
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_11.png" alt="">
                                     </div>
                                     <p>감정평가서</p>
                                 </button>
-                                <button>
+                                <button class="modal-button">
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_12.png" alt="">
                                     </div>
                                     <p>건물등기</p>
                                 </button>
-                                <button>
+                                <button class="modal-button">
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_13.png" alt="">
                                     </div>
