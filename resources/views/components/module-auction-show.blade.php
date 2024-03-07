@@ -237,16 +237,20 @@
 
                     <div class="col-12 col-lg-4 auc_mob">
                         <ul class="auc_pdf_down pdf_mob pdf_mob_temp">
+                            @if (!empty($data['매각명세서_json']))
                             <li class="viewDoc modal-button" data-url="modal.pdfviewer">
                                 <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
                                 <img src="/images/auction/auc_pdf_01.png" alt="">
                                 <p>매각명세서</p>
-                            </li>
+                            </li>    
+                            @endif
+                            @if (!empty($data['감정평가서_json']))
                             <li class="viewDoc modal-button" data-url="modal.pdfviewer">
                                 <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
                                 <img src="/images/auction/auc_pdf_02.png" alt="">
                                 <p>감정평가서</p>
                             </li>
+                            @endif
                         </ul>
                     </div>
 
@@ -633,10 +637,12 @@
                         <div class="auc_info_tit flx_bg">
                             <p>임차인현황</p>
                             <div class="flx_bgs">
+                                @if (!empty($data['매각명세서_json']))
                                 <button class="auc_bdg viewDoc modal-button" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
                                     매각명세서
                                 </button>
+                                @endif
                                 <button class="auc_bdg">소액임차표</button>
                             </div>
                         </div>
@@ -996,6 +1002,7 @@
 
                         <div class="sidebar_auc_content">
                             <ul class="auc_pdf_down pdf_temp">
+                                @if (!empty($data['매각명세서_json']))
                                 <li class="viewDoc modal-button" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
                                     <div class="pdf_temp_img">
@@ -1003,6 +1010,8 @@
                                     </div>
                                     <p>매각명세서</p>
                                 </li>
+                                @endif
+                                @if (!empty($data['감정평가서_json']))
                                 <li class="viewDoc modal-button" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
                                     <div class="pdf_temp_img">
@@ -1010,6 +1019,7 @@
                                     </div>
                                     <p>감정평가서</p>
                                 </li>
+                                @endif
                             </ul>
                         </div>
 
