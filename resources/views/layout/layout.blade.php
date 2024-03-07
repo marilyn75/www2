@@ -125,5 +125,6 @@
 <script type="text/javascript" src="{{ url('js/lib/common.msgPopup.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/lib/formcheck.js') }}"></script>
 
+<script src="{{ url('/js/readmore/readmore.min.js') }}""></script>
 </body>
 </html>

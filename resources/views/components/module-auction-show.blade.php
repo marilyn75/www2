@@ -2,6 +2,11 @@
 
 @section('content')
 
+<script>
+    $(document).ready(function(){
+        $('ul.fall_lst').readmore();
+    });
+</script>
 
     <section class="listing-title-area">
         <div class="container container_w">
@@ -186,50 +191,8 @@
                                     </li>
                                 @endif
                             @endforeach
-                            {{-- <li>
-                            <p>2024. 02. 19</p>
-                            <div class="fall_rst">
-                                <p>892만 3000원</p>
-                                <p class="auc_bdg ing">진행</p>
-                            </div>
-                        </li>
-                        <li>
-                            <p>2023. 12. 01</p>
-                            <div class="fall_rst">
-                                <p>1115만 4000원</p>
-                                <p class="auc_bdg fall">유찰</p>
-                            </div>
-                        </li>
-                        <li>
-                            <p>2023. 04. 24</p>
-                            <div class="fall_rst">
-                                <p>2750만원</p>
-                                <p class="auc_bdg sale">매각</p>
-                            </div>
-                        </li>
-                        <li class="hidden">
-                            <p>2023. 03. 20</p>
-                            <div class="fall_rst">
-                                <p>3403만 7000원</p>
-                                <p class="auc_bdg fall">유찰</p>
-                            </div>
-                        </li>
-                        <li class="hidden">
-                            <p>2023. 02. 13</p>
-                            <div class="fall_rst">
-                                <p>4254만 6000원</p>
-                                <p class="auc_bdg fall">유찰</p>
-                            </div>
-                        </li>
-                        <li class="hidden">
-                            <p>2022. 12. 12</p>
-                            <div class="fall_rst">
-                                <p>5318만 3000원</p>
-                                <p class="auc_bdg fall">유찰</p>
-                            </div>
-                        </li> --}}
                         </ul>
-                        <button class="ac_more_btn fall_btn" onclick="showMoreFall()">더보기</button>
+                        {{-- <button class="ac_more_btn fall_btn" onclick="showMoreFall()">더보기</button> --}}
                     </div>
 
 
