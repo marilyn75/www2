@@ -52,13 +52,13 @@ class ModuleAuction extends Component
 
     public function show(){
         $data = $this->cls->getDetailData($this->request);
+        if(empty($data)) return view('components.error', compact('data'));
+        
         $data = $this->cls->getViewPrintData($data);
         debug($this->request->all(), $data);
 
         $skin = 'components.module-auction-show';
-        
-        if(empty($data))    $skin = 'components.error';
-        elseif($data['gbn']=="b")   $skin = 'components.module-auction-b-show';
+        if($data['gbn']=="b")   $skin = 'components.module-auction-b-show';
 
         return view($skin, compact('data'));
     }

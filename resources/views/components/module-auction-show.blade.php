@@ -697,6 +697,7 @@
                         <div class="cont_und_line"></div>
                     </div>
                     @endif
+                    @if(!empty($data['현황조사내역']))
                     <!-- 현황조사 -->
                     <div class="col-12">
                         <div class="auc_info_tit">
@@ -715,6 +716,7 @@
                         </div>
                         <div class="cont_und_line"></div>
                     </div>
+                    @endif
 
                     {{-- <!-- 전입세대원 -->
                     <div class="col-12">
