@@ -2,9 +2,34 @@
 
 @section('content')
 
+
 <script>
     $(document).ready(function(){
-        $('ul.fall_lst').readmore();
+        $('ul.fall_lst').readmore({
+            moreLink: '<button class="ac_more_btn">더보기</button>',
+            lessLink: '<button class="ac_more_btn">닫기</button>'
+        });       
+    });
+    $(document).ready(function(){
+        $('ul.sale_lst').readmore({
+            moreLink: '<button class="ac_more_btn">더보기</button>',
+            lessLink: '<button class="ac_more_btn">닫기</button>',
+            collapsedHeight: 140
+        });       
+    });
+    $(document).ready(function(){
+        $('ul.no_blt').readmore({
+            moreLink: '<button class="ac_more_btn">더보기</button>',
+            lessLink: '<button class="ac_more_btn">닫기</button>',
+            collapsedHeight: 120
+        });       
+    });
+    $(document).ready(function(){
+        $('div.build_table_w').readmore({
+            moreLink: '<button class="ac_more_btn">더보기</button>',
+            lessLink: '<button class="ac_more_btn">닫기</button>',
+            collapsedHeight: 325
+        });       
     });
 </script>
 
@@ -135,34 +160,34 @@
                                 <p>보증금</p>
                                 <p>{{ price_kor($data['감정평가액'] * 0.1) }}원 (10%)</p>
                             </li>
-                            <li class="hidden">
+                            <li>
                                 <p>경매구분</p>
                                 <p>{{ $data['경매구분'] }}</p>
                             </li>
-                            <li class="hidden">
+                            <li>
                                 <p>사건번호</p>
                                 <p>{{ $data['사건번호'] }}</p>
                             </li>
-                            <li class="hidden">
+                            <li>
                                 <p>관할법원</p>
                                 <p>{{ $data['법원'] }}</p>
                             </li>
-                            <li class="hidden">
+                            <li>
                                 <p>배당요구종기일</p>
                                 <p>{{ printDateKor($data['배당요구종기']) }}</p>
                             </li>
-                            <li class="hidden">
+                            <li>
                                 <p>청구액</p>
                                 <p>{{ number_format($data['청구금액']) }}원</p>
                             </li>
                             @foreach ($data['사건내역'][0]['당사자내역'] as $_data)
-                                <li class="hidden">
+                                <li>
                                     <p>{{ $_data['당사자구분'] }}</p>
                                     <p>{{ $_data['당사자명'] }}</p>
                                 </li>
                             @endforeach
                         </ul>
-                        <button class="ac_more_btn" onclick="showMore()">더보기</button>
+                        {{-- <button class="ac_more_btn" onclick="showMore()">더보기</button> --}}
                     </div>
 
 
@@ -389,10 +414,10 @@
                         <div class="auc_info_tit">
                             <p>감정평가</p>
                         </div>
-                        <div class="auc_hide">
+                        <div>
                             {!! $data['감정평가요항표요약html'] !!}
                         </div>
-                        <button class="ac_more_btn mb0 auc_inf_btn" onclick="showMoreAucInf()">더보기</button>
+                        {{-- <button class="ac_more_btn mb0 auc_inf_btn" onclick="showMoreAucInf()">더보기</button> --}}
                         <div class="cont_und_line"></div>
                     </div>
 
@@ -457,7 +482,7 @@
                                     </tbody>
                                 </table>
                                 @if(!empty($data['건물정보']['층별정보']))
-                                <table class="hidden">
+                                <table>
                                     <thead>
                                         <tr>
                                             <th class="bck_col" scope="col">층</th>
@@ -479,7 +504,9 @@
                                 </table>
                                 @endif
                             </div>
-                            @if(!empty($data['건물정보']['층별정보']))<button class="ac_more_btn mb0 build_btn" onclick="showMoreBuild()">더보기</button>@endif
+                            @if(!empty($data['건물정보']['층별정보']))
+                            {{-- <button class="ac_more_btn mb0 build_btn" onclick="showMoreBuild()">더보기</button> --}}
+                            @endif
                             <div class="cont_und_line"></div>
                         </div>
                     @endif
@@ -1003,26 +1030,35 @@
                         </div> --}}
 
                         <div class="sidebar_auc_content">
-                            <ul class="auc_pdf_down pdf_temp">
+                            <div class="auc_pdf_down pdf_temp">
                                 @if (!empty($data['매각명세서_json']))
-                                <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                <button class="viewDoc modal-button" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! $data['매각명세서_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_01.png" alt="">
                                     </div>
                                     <p>매각명세서</p>
-                                </li>
+                                </button>
                                 @endif
                                 @if (!empty($data['감정평가서_json']))
-                                <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                <button class="viewDoc modal-button" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_02.png" alt="">
                                     </div>
                                     <p>감정평가서</p>
-                                </li>
+                                </button>
+                                
+                                {{-- disabled  --}}
+                                {{-- <button class="viewDoc modal-button disabled" data-url="modal.pdfviewer">
+                                    <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
+                                    <div class="pdf_temp_img">
+                                        <img src="/images/auction/auc_pdf_02.png" alt="">
+                                    </div>
+                                    <p>감정평가서</p>
+                                </button> --}}
                                 @endif
-                            </ul>
+                            </div>
                         </div>
 
 

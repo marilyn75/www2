@@ -17982,9 +17982,9 @@ code {
 .aucmod .modal-scroll { height: 400px; overflow-y: scroll; }
 .aucmod .modal-dialog { margin-top: 250px; }
 
-.aucpdfmod .modal-dialog { max-width: 1700px; }
-.aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; height: 1070px; }
-.aucpdfmod .modal-dialog .modal-content .modal-scroll { height: 1070px; }
+.aucpdfmod .modal-dialog { max-width: 67%; }
+.aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; }
+.aucpdfmod .modal-dialog .modal-content .modal-scroll { height: 1000px; }
 
 
 .mod-header { position: absolute; top: -45px; right: 0; }
@@ -18236,7 +18236,7 @@ input:checked + label,
 .sale_days { display: flex; align-items: center; gap: 10px; }
 .sale_day { font-weight: 500; }
 .und_line { width: 100%; border: 1px solid #e4e4e4; margin-top: 13px; margin-bottom: 20px; }
-.sale_lst { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.sale_lst { overflow: hidden; display: flex; flex-wrap: wrap; justify-content: space-between; }
 .sale_lst li { display: flex; width: 50%; }
 .sale_lst li p:first-child{
   color: #828282;
@@ -18261,6 +18261,7 @@ input:checked + label,
   margin-bottom: 48px;
 }
 .ac_more_btn:active, .ac_more_btn:focus { outline: none; }
+.fall_lst { overflow: hidden; }
 .fall_lst li { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .fall_lst li:first-child p { color: #000; font-weight: 500; }
 .fall_lst li p { 
@@ -18289,6 +18290,7 @@ input:checked + label,
   margin-bottom: 20px;
 }
 .law_title { font-size: 16px; color: #000; }
+.no_blt { overflow: hidden; }
 .no_blt li ul li span { font-size: 16px; color: #000; }
 .auc_btitle p { color: #fff; font-size: 20px; margin: 0; font-weight: 500; }
 .cont_und_line { width: 100%; border: 1px solid #e4e4e4; margin-top: 35px; margin-bottom: 35px; }
@@ -18311,6 +18313,7 @@ input:checked + label,
 .auc_wid_tit { color: #000; margin: 0; margin-bottom: 7px; }
 .auc_wid_n { color: #000; font-size: 18px; font-weight: 500; margin: 0; }
 .build_table { margin-bottom: 20px; }
+.build_table_w { overflow: hidden; }
 table {
   border-collapse: collapse;
   width: 100%;
@@ -18440,6 +18443,13 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   border: 1px solid #E4E4E4;
   border-radius: 5px;
   cursor: pointer;
+}
+.pdf_temp button.disabled{ cursor:default; }
+.pdf_temp button.disabled p{
+  opacity: 0.5;
+}
+.pdf_temp button.disabled img{
+  opacity: 0.5;
 }
 .pdf_temp_img { width: 32px; display: flex; } 
 .pdf_temp li img { height: 21px; }
