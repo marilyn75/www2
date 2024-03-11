@@ -17990,6 +17990,9 @@ code {
 .mod-header { position: absolute; top: -45px; right: 0; }
 
 
+.usedetail .modal-dialog { max-width: 840px; }
+.usedetail .modal-dialog .modal-content { padding: 40px; }
+.usedetail .modal-dialog .modal-content .modal-scroll { height: 1000px; overflow: scroll; }
 
 
 
