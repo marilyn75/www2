@@ -29,7 +29,7 @@
                 </div>
                 <h4>{{ $printData['소재지'] }}</h4>
                 <p class="app_vlu">{{ price_kor($printData['감정가']) }}원</p>
-                <p class="low_vlu">{{ price_kor($printData['최저가']) }}원
+                <p class="low_vlu">{{ price_kor($printData['price']) }}원
                     @if ($printData['할인율'] > 0)
                     <span>(<i class="ri-arrow-down-line"></i>{{ $printData['할인율'] }}%)</span>
                     @endif

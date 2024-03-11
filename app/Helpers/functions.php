@@ -249,7 +249,7 @@ if (!function_exists('calculateDDay')) {
         // D-Day 표시
         if ($now < $targetDate) {
             // 목표 날짜가 미래에 있는 경우
-            return $interval->days+1 * -1;
+            return ($interval->days+1)  * (-1);
         }if($interval->days==0){
             // 오늘이 목표 날짜인 경우
             return 0;

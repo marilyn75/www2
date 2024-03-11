@@ -111,17 +111,24 @@
                                 <h3 class="auc_pri_n">{{ price_kor($data['감정평가액']) }}원</h3>
                             </li>
                             <li>
-                                <p class="auc_pri_tit">최저가</p>
-                                <h3 class="auc_pri_n">{{ price_kor($data['최저매각가격']) }}원</h3>
+                                <p class="auc_pri_tit">
+                                    {{ $data['진행상태']=="낙찰" ? __('낙찰가') : __('최저가') }}
+                                    @if($data['할인율'] > 0)
+                                    {{ $data['할인율'] }}%
+                                    @endif
+                                </p>
+                                <h3 class="auc_pri_n">
+                                    {{ $data['진행상태']=="낙찰" ? price_kor($data['낙찰가격']) : price_kor($data['최저매각가격']) }}원
+                                </h3>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <p class="auc_pri_tit">실거래 매매가</p>
                                 <h3 class="auc_pri_n">-원</h3>
                             </li>
                             <li>
                                 <p class="auc_pri_tit">실거래 전세가</p>
                                 <h3 class="auc_pri_n">-원</h3>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
 
@@ -158,7 +165,7 @@
                             </li>
                             <li>
                                 <p>보증금</p>
-                                <p>{{ price_kor($data['감정평가액'] * 0.1) }}원 (10%)</p>
+                                <p>@if($data['진행상태']=="결과대기"){{ price_kor((ceil($data['최저가'] / 100000) * 100000) * 0.1) }}원 (10%)@else{{ __("-") }}@endif</p>
                             </li>
                             <li>
                                 <p>경매구분</p>
@@ -198,15 +205,34 @@
                         </div>
                         <div class="und_line"></div>
                         <ul class="fall_lst">
+                            @if (!empty($data['종국결과']))
+                                    <li>
+                                        <p></p>
+                                        <div class="fall_rst">
+                                            <p style="font-size: 12px;"></p>
+                                            
+                                            <p>{{ $data['종국결과'] }}</p><p></p>
+                                        </div>
+                                    </li>
+                            @endif
                             @foreach ($data['기일내역목록'] as $_i=>$_data)
                                 @if ($_data['최저매각가격'] > 0)
                                     <li>
                                     {{-- <li @if($_i>3){!! __('class="hidden"') !!}@endif> --}}
                                         <p>{{ $_data['기일'] }}</p>
                                         <div class="fall_rst">
+
+                                            @if($_data['기일결과']=="매각")
+                                            
+                                            <p style="font-size: 12px;">최저가 <span style="text-decoration: line-through;">{{ price_kor($_data['최저매각가격']) }}원</span></p>
+                                            <p>{{ price_kor($_data['매각가격']) }}원</p>
+                                            @elseif($_data['기일결과'] != '변경')
                                             <p>{{ price_kor($_data['최저매각가격']) }}원</p>
+                                            @endif
                                             @if ($_data['기일결과'] == '유찰')
                                                 <p class="auc_bdg fall">유찰</p>
+                                            @elseif ($_data['기일결과'] == '변경')
+                                                <p class="">기일변경</p>
                                             @elseif ($_data['기일결과'] == '매각')
                                                 <p class="auc_bdg sale">매각</p>
                                             @else
@@ -274,6 +300,13 @@
                                 <input type="hidden" name="params" value='{!! $data['감정평가서_json'] !!}'>
                                 <img src="/images/auction/auc_pdf_02.png" alt="">
                                 <p>감정평가서</p>
+                            </li>
+                            @endif
+                            @if (!empty($data['매각기일공고_json']))
+                            <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                <input type="hidden" name="params" value='{!! $data['매각기일공고_json'] !!}'>
+                                <img src="/images/auction/auc_pdf_03.png" alt="">
+                                <p>매각기일공고</p>
                             </li>
                             @endif
                         </ul>
@@ -1058,7 +1091,14 @@
                                     <p>감정평가서</p>
                                 </button> --}}
                                 @endif
-                            </div>
+                                @if (!empty($data['매각기일공고_json']))
+                                <li class="viewDoc modal-button" data-url="modal.pdfviewer">
+                                    <input type="hidden" name="params" value='{!! $data['매각기일공고_json'] !!}'>
+                                    <img src="/images/auction/auc_pdf_03.png" alt="">
+                                    <p>매각기일공고</p>
+                                </li>
+                                @endif
+                            </ul>
                         </div>
 
 

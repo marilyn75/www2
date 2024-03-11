@@ -67,16 +67,30 @@ class AuctionClass{
     }
 
     public function getPrintData_auction($data){
-        $data['할인율'] = round((intval($data['감정가']) - intval($data['최저가'])) / intval($data['감정가']) * 100);
+        
         $tmp = explode(' ', $data['매각기일']);
         $dday = calculateDDay(str_replace('.','-',$tmp[0]));
         $data['dday'] = $dday >= 0 ? "결과대기":"D".$dday;
         if($data['dday']=='D-Day') $data['dday'] = "결과대기";
 
-        $data['유찰횟수'] = 0;
+        $strState = "";
+        $salePrice = 0;
         foreach($data['기일내역'] as $_item){
-            if($_item['기일결과']=='유찰')  $data['유찰횟수']++;
+            if(!empty($_item['기일결과'])){
+                $strState = $_item['기일결과'];
+                $salePrice = @$_item['매각가격'];
+            }
         }
+
+        if($strState=="매각") $data['dday'] = "낙찰";
+        if(!empty($data['사건내역'][0]['종국일자'])){
+            $data['dday'] = "종료";
+
+        }
+
+        $data['price'] = $data['최저가'];
+        if($data['dday'] == "낙찰") $data['price'] = $salePrice;
+        $data['할인율'] = round((intval($data['감정가']) - intval($data['price'])) / intval($data['감정가']) * 100);
 
         $hashtag = [];
         if($data['유찰횟수']>0) $hashtag[] = '유찰'.$data['유찰횟수'].'회';
@@ -225,16 +239,32 @@ class AuctionClass{
             $data['감정평가서_json'] = json_encode($arrMaegak);
         }
 
+        if(!empty($data['files']['매각기일공고'])){
+            $arrMaegak = [
+                'gbn'=>$data['gbn'],
+                'saNo'=>$data['saNo'],
+                'fn'=>$data['files']['매각기일공고'],
+            ];
+            $data['매각기일공고_json'] = json_encode($arrMaegak);
+        }
+
         $tmp = explode(' ', $data['매각기일']);
         $tmp2 = explode(".",$tmp[0]);
         $data['매각기일2'] = $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일';
+        
         $dday = calculateDDay(str_replace('.','-',$tmp[0]));
         if($dday > 0){
             $data['dday'] = "";
             $data['진행상태'] = "결과대기";
+            
         }else{
             $data['dday'] = "D" . $dday;
             $data['진행상태'] = "매각진행";
+        }
+
+        if(!empty($data['사건내역'][0]['종국일자'])){
+            $data['진행상태'] = "종료";
+            $data['종국결과'] = $data['사건내역'][0]['종국결과'];
         }
         
 
@@ -250,14 +280,6 @@ class AuctionClass{
         // 경매구분
         $data['경매구분'] = str_replace('부동산','',$data['사건내역'][0]['사건명']);
 
-        $data['유찰횟수'] = 0;
-        $data['기일내역목록'] = [];
-        for($i=count($data['기일내역'])-1;$i>=0;$i--){
-            $_item = $data['기일내역'][$i];
-            if($_item['기일결과']=='유찰')  $data['유찰횟수']++;
-            $data['기일내역목록'][] = $_item;
-        }
-
         $hashtag = [];
         if($data['유찰횟수']>0) $hashtag[] = '유찰'.$data['유찰횟수'].'회';
 
@@ -270,6 +292,7 @@ class AuctionClass{
 
         $data['기일내역목록'] = [];
         $chk = false;
+        $strState = "";
         foreach($data['기일내역'] as $_item){
             $date = intval(str_replace(".","",$_item['기일']));
             $today = intval(date("Ymd"));
@@ -280,15 +303,25 @@ class AuctionClass{
                 if($chk==false)    $data['기일내역목록'][] = $_item;
                 $chk = true;
             }
+
+            if(!empty($_item['기일결과'])){
+                $strState = $_item['기일결과'];
+            }
         }
 
         $data['기일내역목록'] = array_reverse($data['기일내역목록']);
+        if($strState=="매각") $data['진행상태'] = "낙찰";
+
+
 
         if(!empty($data['매각물건명세']['임차인현황'])){
             foreach($data['매각물건명세']['임차인현황'] as $_row){
                 if(!empty($_row['점유자명'])) $data['임차인현황목록'][] = $_row;
             }
         }
+
+        $data['할인율'] = round((intval($data['감정평가액']) - intval($data['최저가'])) / intval($data['감정평가액']) * 100);
+        if($data['진행상태'] == "낙찰") $data['할인율'] = round((intval($data['감정평가액']) - intval($data['낙찰가격'])) / intval($data['감정평가액']) * 100);
 
         return $data;
     }
