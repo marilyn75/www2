@@ -54,7 +54,7 @@ class AuctionClass{
                 'no' => $data['no'],
             ];
         }
-
+        debug($this->url_show,$params);
         $response = Http::get($this->url_show, $params);   
         $this->data = $response->json();
 

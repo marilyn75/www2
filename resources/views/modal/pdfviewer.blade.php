@@ -9,7 +9,7 @@
         <div class="modal-content">
 
             <div class="modal-scroll">
-                <iframe src="http://apidata.localhost:8080/PDFViewer/full/viewer.html?file={{ $file }}" frameborder="0" height="100%"></iframe>
+                <iframe src="{{ env('AUCTION_API_URL') }}/PDFViewer/full/viewer.html?file={{ $file }}" frameborder="0" height="100%"></iframe>
             </div>
 
             <div class="mod-header">
