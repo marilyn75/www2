@@ -18008,6 +18008,27 @@ code {
   width: 53px;
 }
 .auction_tag p { font-size: 16px; margin: 0; text-align: center; margin-top: 10px; color: #fff; }
+.auction_hrt { 
+  position: absolute;
+  left: 20px;
+  bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+ }
+ .auction_hrt i { color: #fff; }
+ .auction_hrt p { margin: 0; color: #fff;}
+.aucton_if { 
+  position: absolute; 
+  right: 20px; 
+  bottom: 5px; 
+  background: rgb(0, 0, 0, 0.15);
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+.aucton_if p { color: #fff; margin: 0; }
+
+
 
 .auc { 
   background-image: url(../images/auction/a_tag.png);
@@ -18273,6 +18294,7 @@ input:checked + label,
   font-size: 16px;
  }
 .fall_rst { display: flex; align-items: center; gap: 20px; }
+.fall_rst .row { font-size: 14px; color: #828282 !important; }
 .auc_info_tit p{ color: #000; font-size: 20px; font-weight: 500; }
 .auc_info_list { margin: 0; display: grid; gap: 25px; }
 .auc_inf_order {

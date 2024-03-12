@@ -129,10 +129,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- 경매 공매 표시 -->
-                            <div class="auction_tag sell">
-                                <p>공매</p>
-                            </div>
                         </div>
                         <div class="details details_w auc_list">
                             <div class="auc_listw">

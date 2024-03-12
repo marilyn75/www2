@@ -224,7 +224,7 @@
 
                                             @if($_data['기일결과']=="매각")
                                             
-                                            <p style="font-size: 12px;">최저가 <span style="text-decoration: line-through;">{{ price_kor($_data['최저매각가격']) }}원</span></p>
+                                            <p class="row">최저가 <span style="text-decoration: line-through;">{{ price_kor($_data['최저매각가격']) }}원</span></p>
                                             <p>{{ price_kor($_data['매각가격']) }}원</p>
                                             @elseif($_data['기일결과'] != '변경')
                                             <p>{{ price_kor($_data['최저매각가격']) }}원</p>
