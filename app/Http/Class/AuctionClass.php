@@ -253,7 +253,7 @@ class AuctionClass{
         $data['매각기일2'] = $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일';
         
         $dday = calculateDDay(str_replace('.','-',$tmp[0]));
-        if($dday > 0){
+        if($dday >= 0){
             $data['dday'] = "";
             $data['진행상태'] = "결과대기";
             

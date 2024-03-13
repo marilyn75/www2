@@ -801,11 +801,11 @@
                         <div class="cont_und_line"></div>
                     </div> --}}
 
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="auc_btitle">
                             <p>그외</p>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- <div class="col-12">
                         <div class="auc_info_tit">
@@ -849,7 +849,7 @@
                     </div> --}}
 
                     {{-- 납부기한 --}}
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="auc_info_tit">
                             <p class="img_tit"><img src="/images/auction/other02.png" alt="">납부기한</p>
                         </div>
@@ -858,7 +858,7 @@
                             * 낙찰가격 3천만원 이상은 매각결정기일로부터 30일 이내 3천만원 미만은 매각결정일로부터 7일 이내
                         </p>
                         <div class="cont_und_line"></div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <script>
