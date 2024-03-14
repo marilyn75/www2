@@ -17982,9 +17982,9 @@ code {
 .aucmod .modal-scroll { height: 400px; overflow-y: scroll; }
 .aucmod .modal-dialog { margin-top: 250px; }
 
-.aucpdfmod .modal-dialog { max-width: 67%; }
-.aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; }
-.aucpdfmod .modal-dialog .modal-content .modal-scroll { height: 1000px; }
+.aucpdfmod .modal-dialog { max-width: 67%; height: 53%; }
+.aucpdfmod .modal-dialog .modal-content { background: #404040; border-radius: 10px !important; height: 150%; }
+.aucpdfmod .modal-dialog .modal-content .modal-scroll { height: 100%; }
 
 
 .mod-header { position: absolute; top: -45px; right: 0; }
