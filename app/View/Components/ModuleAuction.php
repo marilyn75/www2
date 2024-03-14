@@ -60,6 +60,9 @@ class ModuleAuction extends Component
         $skin = 'components.module-auction-show';
         if($data['gbn']=="b")   $skin = 'components.module-auction-b-show';
 
+        // 조회수 증가
+        $this->cls->incrementHits($data);
+
         return view($skin, compact('data'));
     }
 

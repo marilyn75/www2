@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Common;
 
-use App\Http\Class\CommonCodeClass;
-use App\Http\Class\IntraSaleClass;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Class\AuctionClass;
+use App\Http\Class\IntraSaleClass;
+use App\Http\Class\CommonCodeClass;
+use App\Http\Controllers\Controller;
 
 class AjaxController extends Controller
 {
@@ -13,6 +14,14 @@ class AjaxController extends Controller
     public function addFavorite(Request $request){
         
         $result = (new IntraSaleClass)->addFavorite($request);
+
+        return $result->jsonResult();
+    }
+
+    // 관심매물 추가 - 경공매
+    public function addFavoriteAuction(Request $request){
+        
+        $result = (new AuctionClass)->addFavorite($request);
 
         return $result->jsonResult();
     }

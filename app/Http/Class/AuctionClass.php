@@ -2,9 +2,12 @@
 
 namespace App\Http\Class;
 
-use App\Http\Class\lib\KakaoApiClass;
 use Illuminate\Http\Request;
+use App\Http\Class\lib\ResultClass;
+use App\Models\UserAuctionFavorite;
 use Illuminate\Support\Facades\Http;
+use App\Http\Class\lib\KakaoApiClass;
+use App\Models\AuctionHit;
 
 // 경매 클래스
 
@@ -106,6 +109,11 @@ class AuctionClass{
         $data['alt'] =  $data['대표사진'];
 
         $data['view_link'] = "?mode=view&sano=".$data['saNo']."&no=".$data['물건번호'];
+
+        // 찜
+        if(auth()->check()){
+            $data['isFavorite'] = auth()->user()->auctionFavorites()->where(['gbn'=>'a','code'=>$data['saNo'],'no'=>$data['물건번호']])->count();
+        }
 
         return $data;
     }
@@ -323,6 +331,11 @@ class AuctionClass{
         $data['할인율'] = round((intval($data['감정평가액']) - intval($data['최저가'])) / intval($data['감정평가액']) * 100);
         if($data['진행상태'] == "낙찰") $data['할인율'] = round((intval($data['감정평가액']) - intval($data['낙찰가격'])) / intval($data['감정평가액']) * 100);
 
+        // 찜
+        if(auth()->check()){
+            $data['isFavorite'] = auth()->user()->auctionFavorites()->where(['gbn'=>'a','code'=>$data['saNo'],'no'=>$data['물건번호']])->count();
+        }
+
         return $data;
     }
 
@@ -475,5 +488,60 @@ class AuctionClass{
         $data['토지이용계획'] = @$arrData;
 
         return $data;
+    }
+
+    // 관심매물처리
+    public function addFavorite($request){
+        $data = $request->all();
+
+        if(!auth()->check()){
+            $result = ResultClass::fail('로그인 후 이용하세요.');
+        }else{
+            if($data['flag']=="add"){
+                $response = UserAuctionFavorite::create([
+                    'user_id' => auth()->user()->id,
+                    'gbn' => $data['gbn'],
+                    'code' => $data['code'],
+                    'no' => @$data['no'],
+                ]);
+                if($response->id)   $result = ResultClass::success('관심매물로 담겼습니다.');
+                else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
+            }else{
+                $response = UserAuctionFavorite::where([
+                    'user_id' => auth()->user()->id,
+                    'gbn' => $data['gbn'],
+                    'code' => $data['code'],
+                    'no' => @$data['no'],
+                ])->delete();
+                if($response)   $result = ResultClass::success('관심매물 해제 되었습니다.');
+                else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
+            }
+        }
+
+        return $result;
+    }
+
+    // 조회수 증가
+    public function incrementHits($data, $cnt=1){
+        // IntraSaleHomepage::find($idx)->increment('hits', $cnt);
+        $today = date('Y-m-d');
+        if($data['gbn']=='a'){
+            $cond = [
+                'date'=>$today, 
+                'gbn'=>$data['gbn'],
+                'code'=>$data['saNo'],
+                'no'=>$data['물건번호'],
+            ];
+        }else{
+            $cond = [
+                'date'=>$today, 
+                'gbn'=>$data['gbn'],
+                'code'=>$data['물건관리번호'],
+            ];
+        }
+
+        AuctionHit::updateOrCreate($cond);
+    
+        AuctionHit::where($cond)->increment('hits', $cnt);
     }
 }

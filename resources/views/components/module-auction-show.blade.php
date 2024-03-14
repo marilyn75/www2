@@ -970,7 +970,19 @@
                         <div class="sidebar_auc_content auc_side_btns">
                             <button id="fontSizeButton" onclick="toggleFontSize()"><i class="ri-text"></i><span
                                     id="fontSizeButtonText">글자크게</span></button>
-                            <button><i class="ri-heart-3-line"></i>보관하기</button>
+                            <button
+                                @auth
+                                onclick="return addFavoriteAuction(this,'{{ $data['gbn'] }},{{ $data['saNo'] }},{{ $data['물건번호'] }}')"
+                                @else
+                                data-url="modal.login-alert" class="modal-button"
+                                @endauth
+                            >
+                                @if (isset($data['isFavorite']) && $data['isFavorite']==true)
+                                <i class="ri-heart-3-fill"></i>
+                                @else
+                                <i class="ri-heart-3-line"></i>
+                                @endif
+                            보관하기</button>
                             <button onclick="printPage()"><i class="ri-printer-line"></i>인쇄하기</button>
                         </div>
 

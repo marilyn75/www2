@@ -7,8 +7,18 @@
                     <ul class="tag mb0">
                         <!-- 찜하기 전 -->
                         <li class="list-inline-item">
-                            <button data-url="modal.login-alert" class="heart_btn modal-button">
+                            <button
+                                @auth
+                                class="heart_btn" onclick="return addFavoriteAuction(this,'{{ $printData['gubun'] }},{{ $printData['saNo'] }},{{ $printData['물건번호'] }}')"
+                                @else
+                                data-url="modal.login-alert" class="heart_btn modal-button"
+                                @endauth
+                            >
+                                @if (isset($printData['isFavorite']) && $printData['isFavorite']==true)
+                                <i class="ri-heart-3-fill"></i>
+                                @else
                                 <i class="ri-heart-3-line"></i>
+                                @endif
                             </button>
                         </li>
                     </ul>
@@ -25,9 +35,11 @@
                 </div>
 
                 {{-- 특별매각조건 --}}
+                @if(in_array('특별매각조건',$printData['해시태그']))
                 <div class="aucton_if">
                     <p>특별매각조건</p>
                 </div>
+                @endif
             </div>
             <div class="details details_w auc_list">
                 <div class="auc_listw">

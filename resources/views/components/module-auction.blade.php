@@ -46,6 +46,7 @@
             </span>
 
             <script>
+    
             $('.dropdown-el').click(function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -70,6 +71,7 @@
                 @foreach ($data['items'] as $_item)
                 @php
                     $printData = (new App\Http\Class\AuctionClass)->getPrintData($_item);
+                    debug($printData);
                 @endphp
                 @if($printData['gubun']=="a")
                 <x-item-auction :printData="$printData" />

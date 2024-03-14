@@ -314,9 +314,14 @@ class IntraSaleClass{
         $return['isToji'] = strpos($return['category'],'토지') !== false;
         $return['isSangeop'] = !$return['isToji'] && strpos($return['category'],'상업') === 0;
 
-        $favorites = (new IntraSaleClass)->getFavorites();
-        if($favorites->isSuccess() && in_array($return['idx'], $favorites->getData())) $return['isFavorite'] = true;
+        // $favorites = (new IntraSaleClass)->getFavorites();
+        // if($favorites->isSuccess() && in_array($return['idx'], $favorites->getData())) $return['isFavorite'] = true;
 
+        // 찜
+        if(auth()->check()){
+            $return['isFavorite'] = auth()->user()->intraSaleFavorites()->where(['sale_id'=>$data['idx']])->count();
+        }
+        debug($return);
         return $return;
     }
 

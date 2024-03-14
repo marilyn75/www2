@@ -69,6 +69,14 @@ class User extends Authenticatable
         return $this->hasMany(ChatUser::class, 'user_id')->with('channel');
     }
 
+    public function intraSaleFavorites(){
+        return $this->hasMany(UserSaleFavorite::class, 'user_id');
+    }
+
+    public function auctionFavorites(){
+        return $this->hasMany(UserAuctionFavorite::class, 'user_id');
+    }
+
     // 유효성 검사 조건
     public static $rules = [
         // 회원가입

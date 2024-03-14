@@ -104,4 +104,37 @@ function showModalPrc(url, params){
         }
     });
 }
+
+function addFavoriteAuction(obj, str) {
+    var arr = str.split(',');
+    console.log(arr.length);
+    
+    let gbn = arr[0];
+    let code = arr[1];
+    let no = null;
+    if(arr.length>2) no = arr[2];
+
+    var $child = $(obj).children();
+
+    var flag = ($child.hasClass('ri-heart-3-line')) ? "add" : "remove";
+    var params = {
+        flag: flag,
+        gbn: gbn,
+        code: code,
+        no: no,
+    };
+
+    var r = doAjax('{{ route('common.ajax.addFavoriteAuction') }}', params);
+
+    if (r.result) {
+        if (flag == "add") $child.removeClass('ri-heart-3-line').addClass('ri-heart-3-fill');
+        else $child.removeClass('ri-heart-3-fill').addClass('ri-heart-3-line');
+
+        // if(flag=="add") $child.addClass('on');
+        // else            $child.removeClass('on');
+        sbAlert(r.message);
+    }
+
+    return false;
+}
 </script>
