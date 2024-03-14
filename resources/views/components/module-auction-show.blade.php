@@ -113,9 +113,12 @@
                             <li>
                                 <p class="auc_pri_tit">
                                     {{ $data['진행상태']=="낙찰" ? __('낙찰가') : __('최저가') }}
-                                    @if($data['할인율'] > 0)
-                                    {{ $data['할인율'] }}%
-                                    @endif
+                                    <span>
+                                        @if($data['할인율'] > 0)
+                                        {{ $data['할인율'] }}%
+                                        @endif
+                                        <i class="ri-arrow-down-line"></i>
+                                    </span>
                                 </p>
                                 <h3 class="auc_pri_n">
                                     {{ $data['진행상태']=="낙찰" ? price_kor($data['낙찰가격']) : price_kor($data['최저매각가격']) }}원
@@ -1079,38 +1082,37 @@
                                     <p>매각명세서</p>
                                 </button>
 
-                                <li class="viewDoc @if (empty($data['매각기일공고_json'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif" data-url="modal.pdfviewer">
+                                <button class="viewDoc @if (empty($data['매각기일공고_json'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! @$data['매각기일공고_json'] !!}'>
                                     <img src="/images/auction/auc_pdf_03.png" alt="">
                                     <p>매각기일공고</p>
-                                </li>
+                                </button>
                             </ul>
                         </div>
+                    </div>
 
-
-                        <!-- 대법원 -->
-                        <div class="sidebar_auc_content auc_link">
-                            <a href="#">
-                                <p><span>대법원</span>물건상세</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>현황조사</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>송달내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>사건내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>기일내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                        </div>
+                    <!-- 대법원 -->
+                    <div class="sidebar_auc_content auc_link">
+                        <a href="#">
+                            <p><span>대법원</span>물건상세</p>
+                            <i class="ri-arrow-right-s-line"></i>
+                        </a>
+                        <a href="#">
+                            <p><span>대법원</span>현황조사</p>
+                            <i class="ri-arrow-right-s-line"></i>
+                        </a>
+                        <a href="#">
+                            <p><span>대법원</span>송달내역</p>
+                            <i class="ri-arrow-right-s-line"></i>
+                        </a>
+                        <a href="#">
+                            <p><span>대법원</span>사건내역</p>
+                            <i class="ri-arrow-right-s-line"></i>
+                        </a>
+                        <a href="#">
+                            <p><span>대법원</span>기일내역</p>
+                            <i class="ri-arrow-right-s-line"></i>
+                        </a>
                     </div>
                 </div>
             </div>

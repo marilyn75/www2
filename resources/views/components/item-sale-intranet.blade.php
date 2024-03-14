@@ -12,7 +12,7 @@
 @endphp
 <div class="col-sm-3 col-md-6 col-lg-3 hot_list">
 @else
-<div class="col-sm-6 col-md-6 col-lg-4 pl10">
+<div class="col-sm-6 col-md-6 col-xl-4 pl10">
 @endif
     <a href="{{ route('page',$page_id) }}?mode=show&idx={{ $printData['idx'] }}">
         <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") related @endif">

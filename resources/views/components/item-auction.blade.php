@@ -24,9 +24,9 @@
                     <p>275</p>
                 </div>
 
-                {{-- 특별매약조건 --}}
+                {{-- 특별매각조건 --}}
                 <div class="aucton_if">
-                    <p>특별매약조건</p>
+                    <p>특별매각조건</p>
                 </div>
             </div>
             <div class="details details_w auc_list">
