@@ -80,14 +80,14 @@
                                 <p class="auc_pri_tit">최저가</p>
                                 <h3 class="auc_pri_n">{{ price_kor($data['최저가']) }}원</h3>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <p class="auc_pri_tit">실거래 매매가</p>
                                 <h3 class="auc_pri_n">-원</h3>
                             </li>
                             <li>
                                 <p class="auc_pri_tit">실거래 전세가</p>
                                 <h3 class="auc_pri_n">-원</h3>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
 
@@ -742,7 +742,19 @@
                         <div class="sidebar_auc_content auc_side_btns">
                             <button id="fontSizeButton" onclick="toggleFontSize()"><i class="ri-text"></i><span
                                     id="fontSizeButtonText">글자크게</span></button>
-                            <button><i class="ri-heart-3-line"></i>보관하기</button>
+                            <button
+                                @auth
+                                onclick="return addFavoriteAuction(this,'{{ $data['gbn'] }},{{ $data['물건관리번호'] }}')"
+                                @else
+                                data-url="modal.login-alert" class="modal-button"
+                                @endauth
+                            >
+                                @if (isset($data['isFavorite']) && $data['isFavorite']==true)
+                                <i class="ri-heart-3-fill"></i>
+                                @else
+                                <i class="ri-heart-3-line"></i>
+                                @endif
+                            보관하기</button>
                             <button onclick="printPage()"><i class="ri-printer-line"></i>인쇄하기</button>
                         </div>
 

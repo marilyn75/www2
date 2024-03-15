@@ -114,6 +114,11 @@ class AuctionClass{
         if(auth()->check()){
             $data['isFavorite'] = auth()->user()->auctionFavorites()->where(['gbn'=>'a','code'=>$data['saNo'],'no'=>$data['물건번호']])->count();
         }
+        $data['favoriteCnt'] = UserAuctionFavorite::where([
+            'gbn' => 'a',
+            'code' => $data['saNo'],
+            'no' => $data['물건번호'],
+        ])->count();
 
         return $data;
     }
@@ -133,6 +138,15 @@ class AuctionClass{
         $data['날짜'] = $data['상태']=="준비중" ? "시작 " . $data['매각기일'] . " ~ ":" ~ " . $data['매각기일'] . " 마감";
 
         $data['view_link'] = "?mode=view&no=".$data['물건관리번호'];
+
+        // 찜
+        if(auth()->check()){
+            $data['isFavorite'] = auth()->user()->auctionFavorites()->where(['gbn'=>'b','code'=>$data['물건관리번호']])->count();
+        }
+        $data['favoriteCnt'] = UserAuctionFavorite::where([
+            'gbn' => 'b',
+            'code' => $data['물건관리번호']
+        ])->count();
 
         return $data;
     }
@@ -301,6 +315,7 @@ class AuctionClass{
         $data['기일내역목록'] = [];
         $chk = false;
         $strState = "";
+        $data['낙찰가격'] = 0;
         foreach($data['기일내역'] as $_item){
             $date = intval(str_replace(".","",$_item['기일']));
             $today = intval(date("Ymd"));
@@ -315,6 +330,8 @@ class AuctionClass{
             if(!empty($_item['기일결과'])){
                 $strState = $_item['기일결과'];
             }
+
+            if($_item['매각가격'] > 0) $data['낙찰가격'] = $_item['매각가격'];
         }
 
         $data['기일내역목록'] = array_reverse($data['기일내역목록']);
@@ -486,6 +503,11 @@ class AuctionClass{
         }
 
         $data['토지이용계획'] = @$arrData;
+
+        // 찜
+        if(auth()->check()){
+            $data['isFavorite'] = auth()->user()->auctionFavorites()->where(['gbn'=>'b','code'=>$data['물건관리번호']])->count();
+        }
 
         return $data;
     }

@@ -114,12 +114,12 @@
                             <li>
                                 <p class="auc_pri_tit">
                                     {{ $data['진행상태']=="낙찰" ? __('낙찰가') : __('최저가') }}
+                                    @if($data['할인율'] > 0)
                                     <span>
-                                        @if($data['할인율'] > 0)
                                         {{ $data['할인율'] }}%
-                                        @endif
                                         <i class="ri-arrow-down-line"></i>
                                     </span>
+                                    @endif
                                 </p>
                                 <h3 class="auc_pri_n">
                                     {{ $data['진행상태']=="낙찰" ? price_kor($data['낙찰가격']) : price_kor($data['최저매각가격']) }}원

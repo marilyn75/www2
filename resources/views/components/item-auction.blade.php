@@ -31,7 +31,7 @@
                 {{-- 하트 개수 --}}
                 <div class="auction_hrt">
                     <i class="ri-heart-fill"></i>
-                    <p>275</p>
+                    <p>{{ number_format($printData['favoriteCnt']) }}</p>
                 </div>
 
                 {{-- 특별매각조건 --}}
