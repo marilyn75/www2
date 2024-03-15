@@ -17994,6 +17994,25 @@ code {
 .usedetail .modal-dialog .modal-content { padding: 40px; }
 .usedetail .modal-dialog .modal-content .modal-scroll { height: 1000px; overflow: scroll; }
 
+.auction_img .modal-dialog { max-width: 45%; }
+.auction_img .modal-dialog .modal-content { padding: 45px; display: flex; align-items: center; }
+.auction_img .modal-dialog .modal-content .big-img { width: 700px; border-radius: 5px; }
+.auction_img .modal-dialog .modal-content .small-images { margin-top: 45px; display: flex; justify-content: center; gap: 15px; }
+.auction_img .modal-dialog .modal-content .small-images .small-img { border-radius: 5px; }
+.auction_img .modal-dialog .modal-content .image-index { 
+  width: 56px;
+  background: #000;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 0;
+  border-radius: 10px;
+  margin-top: 10px;
+ }
+
+
+
 
 
 /* 경매 공매  */
@@ -18199,7 +18218,7 @@ input:checked + label,
 /* 경공매 상세페이지 */
 /* .auc-swiper-wrapper { width: ; } */
 .auction_thumb { height: 250px; overflow: hidden; }
-.auc-slide img { height: 290px; }
+.auc-slide img { height: 290px; cursor: pointer; }
 .swiper-pagination-fraction { font-size: 16px; }
 .auc_tit .det_inf { color: #000; margin-bottom: 15px; font-size: 14px; }
 .auc_tit .det_inf span { 

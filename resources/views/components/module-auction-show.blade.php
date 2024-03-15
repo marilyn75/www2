@@ -53,12 +53,13 @@
                 <div class="row col-lg-12 col-xl-8">
                     <div class="col-12 col-md-6 auc_slider">
                         <div class="swiper mySwiper">
+                            {{-- <a href="#" class="modal-button" id="a-login" data-url="modal.auction_img">00000</a> --}}
                             <div class="swiper-wrapper">
                                 @empty($data['images'])
                                 @else
                                     @foreach ($data['images'] as $_img)
-                                        <div class="swiper-slide auc-slide">
-                                            <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}">
+                                        <div class="swiper-slide auc-slide modal-trigger" id="a-login" data-url="modal.auction_img">
+                                            <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}" class="modal-button" id="a-login" data-url="modal.auction_img">
                                         </div>
                                     @endforeach
                                 @endempty
