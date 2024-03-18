@@ -58,8 +58,8 @@
                                 @empty($data['images'])
                                 @else
                                     @foreach ($data['images'] as $_img)
-                                        <div class="swiper-slide auc-slide modal-trigger" id="a-login" data-url="modal.auction_img">
-                                            <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}" class="modal-button" id="a-login" data-url="modal.auction_img">
+                                        <div class="swiper-slide auc-slide modal-trigger">
+                                            <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}" class="modal-button swiperImg" data-url="modal.auction_img">
                                         </div>
                                     @endforeach
                                 @endempty

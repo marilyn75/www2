@@ -436,7 +436,14 @@ class AuctionClass{
 
         
         $data['dday'] .= calculateDDay(str_replace('.','-',$tmp[0]));
-        if($data['dday']=='D-Day') $data['dday'] = "";
+        if($data['dday']==0) $data['dday'] = "";
+        $dday = calculateDDay(str_replace('.','-',$tmp[0]));
+        if($dday >= 0){
+            $data['dday'] = "";
+            
+        }else{
+            $data['dday'] = "마감 D" . $dday;
+        }    
 
         $data['감정평가일'] = "";
         if(!empty($data['물건세부정보']['감정평가정보'][0]))    $data['감정평가일'] = printDateKor($data['물건세부정보']['감정평가정보'][0]['평가일']);

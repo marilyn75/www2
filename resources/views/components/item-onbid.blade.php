@@ -36,9 +36,9 @@
                 </div> 
 
                 {{-- 특별매각조건 --}}
-                <div class="aucton_if">
+                {{-- <div class="aucton_if">
                     <p>특별매각조건</p>
-                </div>
+                </div> --}}
 
 
             </div>
