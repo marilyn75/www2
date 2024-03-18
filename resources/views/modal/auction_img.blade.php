@@ -16,7 +16,21 @@
                         src="/images/auction/auction02.png" alt="">
                     <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 3)"
                         src="/images/auction/auction03.png" alt="">
+                        <img class="small-img" onclick="changeImg('/images/auction/auction01.png', 1)"
+                        src="/images/auction/auction01.png" alt="">
+                    <img class="small-img" onclick="changeImg('/images/auction/auction02.png', 2)"
+                        src="/images/auction/auction02.png" alt="">
+                    <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 3)"
+                        src="/images/auction/auction03.png" alt="">
                 </div>
+            </div>
+            {{-- 닫기버튼 --}}
+            <div class="mod-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <img src="../images/modal/close_btn.png" alt="">
+                    </span>
+                </button>
             </div>
         </div>
     </div>

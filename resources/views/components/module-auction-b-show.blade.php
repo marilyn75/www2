@@ -855,7 +855,7 @@
                                     </div>
                                     <p>공고&첨부</p>
                                 </button>
-                                <button class="modal-button" id="a-login" data-url="modal.auction">
+                                <button class="modal-button" data-url="modal.auction_account">
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_10.png" alt="">
                                     </div>
