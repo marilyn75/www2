@@ -6,7 +6,7 @@
                 <div class="img-container">
                     <img class="big-img" id="selectedImg" src="/images/auction/auction01.png" alt="">
                     <div class="image-index" id="imageIndex">
-                        1/3
+                        1/12
                     </div>
                 </div>
                 <div class="small-images">
@@ -16,11 +16,23 @@
                         src="/images/auction/auction02.png" alt="">
                     <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 3)"
                         src="/images/auction/auction03.png" alt="">
-                        <img class="small-img" onclick="changeImg('/images/auction/auction01.png', 1)"
+                        <img class="small-img" onclick="changeImg('/images/auction/auction01.png', 4)"
                         src="/images/auction/auction01.png" alt="">
-                    <img class="small-img" onclick="changeImg('/images/auction/auction02.png', 2)"
+                    <img class="small-img" onclick="changeImg('/images/auction/auction02.png', 5)"
                         src="/images/auction/auction02.png" alt="">
-                    <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 3)"
+                    <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 6)"
+                        src="/images/auction/auction03.png" alt="">
+                        <img class="small-img" onclick="changeImg('/images/auction/auction01.png', 7)"
+                        src="/images/auction/auction01.png" alt="">
+                    <img class="small-img" onclick="changeImg('/images/auction/auction02.png', 8)"
+                        src="/images/auction/auction02.png" alt="">
+                    <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 9)"
+                        src="/images/auction/auction03.png" alt="">
+                        <img class="small-img" onclick="changeImg('/images/auction/auction01.png', 10)"
+                        src="/images/auction/auction01.png" alt="">
+                    <img class="small-img" onclick="changeImg('/images/auction/auction02.png', 11)"
+                        src="/images/auction/auction02.png" alt="">
+                    <img class="small-img" onclick="changeImg('/images/auction/auction03.png', 12)"
                         src="/images/auction/auction03.png" alt="">
                 </div>
             </div>
@@ -36,7 +48,7 @@
     </div>
 </div>
 <script>
-    let totalImages = 3; // Total number of images
+    let totalImages = 12; // Total number of images
     let currentIndex = 1; // Current index of selected image
 
     // JavaScript functions to handle image changes and modal functionality

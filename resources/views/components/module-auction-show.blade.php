@@ -1097,7 +1097,9 @@
 
                                 <button class="viewDoc @if (empty($data['매각기일공고_json'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif" data-url="modal.pdfviewer">
                                     <input type="hidden" name="params" value='{!! @$data['매각기일공고_json'] !!}'>
-                                    <img src="/images/auction/auc_pdf_03.png" alt="">
+                                    <div class="pdf_temp_img">
+                                        <img src="/images/auction/auc_pdf_03.png" alt="">
+                                    </div>
                                     <p>매각기일공고</p>
                                 </button>
                             </ul>
