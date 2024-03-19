@@ -407,14 +407,48 @@ class AuctionClass{
             }
         }
 
-        if(!empty($data['files']['감정평가서'])){
-            foreach($data['files']['감정평가서'] as $_img){
-                $data['docs'][] = [
-                    'src' => env('AUCTION_API_URL') .'/images/'. $data['물건관리번호'] .'/'. $_img,
-                    'alt' => $_img,
+        // pdf 문서
+        if(!empty($data['files']['공고첨부'])){
+            foreach($data['파일목록']['공고첨부'] as $item){
+                $arrParams['title'] = "공고&첨부";
+                $arrParams['items'][] = [
+                    'gbn'=>$data['gbn'],
+                    'saNo'=>$data['물건관리번호'],
+                    'fn'=>$item,
+                    'info'=>$item['파일정보']
                 ];
             }
+            $data['공고첨부_json'] = json_encode($arrParams);
         }
+
+        $arrParams['items'] = null;
+        if(!empty($data['files']['재산명세서'])){
+            foreach($data['파일목록']['재산명세서'] as $item){
+                $arrParams['title'] = "재산명세서";
+                $arrParams['items'][] = [
+                    'gbn'=>$data['gbn'],
+                    'saNo'=>$data['물건관리번호'],
+                    'fn'=>$item,
+                    'info'=>$item['파일정보']
+                ];
+            }
+            $data['재산명세서_json'] = json_encode($arrParams);
+        }
+
+        $arrParams['items'] = null;
+        if(!empty($data['files']['감정평가서'])){
+            foreach($data['파일목록']['감정평가서'] as $item){
+                $arrParams['title'] = "감정평가서";
+                $arrParams['items'][] = [
+                    'gbn'=>$data['gbn'],
+                    'saNo'=>$data['물건관리번호'],
+                    'fn'=>$item,
+                    'info'=>$item['파일정보']
+                ];
+            }
+            $data['감정평가서_json'] = json_encode($arrParams);
+        }
+
 
         $data['localX'] = $data['kakao_x'];
         $data['localY'] = $data['kakao_y'];

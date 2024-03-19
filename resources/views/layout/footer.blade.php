@@ -36,7 +36,7 @@
 <script>
 // 모달창 호출 스크립트
 $(document).ready(function() {
-    $('.modal-button').click(function() {
+    $(document).on('click', '.modal-button', function(){
         var url = $(this).data('url'); // 버튼의 데이터 속성에서 URL을 가져옵니다.
         var cont = "";
         var params = {};

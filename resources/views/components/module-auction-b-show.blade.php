@@ -158,11 +158,11 @@
                             </li>
                             <li class="hidden">
                                 <p>담당자</p>
-                                <p>{{ @$data['담당자정보'][0] }}</p>
+                                <p>{{ @$data['담당자정보'][0] }} {{ (count($data['담당자정보'])==3) ? $data['담당자정보'][1] : '' }}</p>
                             </li>
                             <li class="hidden">
                                 <p>연락처</p>
-                                <p>{{ @$data['담당자정보'][1] }}</p>
+                                <p>{{ (count($data['담당자정보'])==3) ? $data['담당자정보'][2] : $data['담당자정보'][1] }}</p>
                             </li>
                         </ul>
                         <button class="ac_more_btn" onclick="showMore()">더보기</button>
@@ -849,19 +849,22 @@
 
                         <div class="sidebar_auc_content">
                             <div class="auc_pdf_down pdf_temp">
-                                <button class="@if (empty($data['files']['공고첨부'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif">
+                                <button class="@if (empty($data['files']['공고첨부'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif" data-url="modal.auction_account">
+                                    <input type="hidden" name="params" value='{!! @$data['공고첨부_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_09.png" alt="">
                                     </div>
                                     <p>공고&첨부</p>
                                 </button>
-                                <button class="@if (empty($data['files']['재산명세서'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif" id="a-login" data-url="modal.auction_account">
+                                <button class="@if (empty($data['files']['재산명세서'])){{ __('disabled modal-button') }}"@else{{ __('modal-button') }}@endif" id="a-login" data-url="modal.auction_account">
+                                    <input type="hidden" name="params" value='{!! @$data['재산명세서_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_10.png" alt="">
                                     </div>
                                     <p>재산명세서</p>
                                 </button>
-                                <button class="@if (empty($data['files']['감정평가서'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif">
+                                <button class="@if (empty($data['files']['감정평가서'])){{ __('disabled') }}"@else{{ __('modal-button') }}@endif" data-url="modal.auction_account">
+                                    <input type="hidden" name="params" value='{!! @$data['감정평가서_json'] !!}'>
                                     <div class="pdf_temp_img">
                                         <img src="/images/auction/auc_pdf_11.png" alt="">
                                     </div>

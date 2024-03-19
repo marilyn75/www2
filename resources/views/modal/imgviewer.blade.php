@@ -1,7 +1,6 @@
 @php
     $path = $data['gbn']=="a" ? "/storage/courtauction/":"/storage/onbid/";
-    $fn = empty($data['fn']['파일명']) ? $data['fn'] : $data['fn']['파일명'];
-    $file = $path . $data['saNo'] . '/' . $fn;
+    $file = $path . $data['saNo'] . '/' . $data['fn']['파일명'];
 @endphp
 
 <div class="modal fade login_modal logmod aucpdfmod" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
@@ -10,7 +9,7 @@
         <div class="modal-content">
 
             <div class="modal-scroll">
-                <iframe src="{{ env('AUCTION_API_URL') }}/PDFViewer/full/viewer.html?file={{ $file }}" frameborder="0" height="100%"></iframe>
+                <a href="{{ env('AUCTION_API_URL') }}/{{ $file }}" target="_blank"><img src="{{ env('AUCTION_API_URL') }}/{{ $file }}" height="100%" style="cursor: pointer;"></img></a>
             </div>
 
             <div class="mod-header">
