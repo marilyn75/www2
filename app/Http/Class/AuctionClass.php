@@ -134,7 +134,7 @@ class AuctionClass{
         if($data['유찰횟수']>0) $hashtag[] = '유찰'.$data['유찰횟수'].'회';
         $data['해시태그'] = $hashtag;
 
-        $data['상태'] = str_replace("입찰","",$data['물건상태']);
+        $data['상태'] = str_replace(["입찰","인터넷"],"",$data['물건상태']);
         $data['날짜'] = $data['상태']=="준비중" ? "시작 " . $data['매각기일'] . " ~ ":" ~ " . $data['매각기일'] . " 마감";
 
         $data['view_link'] = "?mode=view&no=".$data['물건관리번호'];
@@ -283,6 +283,8 @@ class AuctionClass{
             $data['dday'] = "D" . $dday;
             $data['진행상태'] = "매각진행";
         }
+
+        if(@$data['최종기일결과']=="변경")   $data['진행상태'] = "매각연기";
 
         if(!empty($data['사건내역'][0]['종국일자'])){
             $data['진행상태'] = "종료";
@@ -479,8 +481,8 @@ class AuctionClass{
             $data['dday'] = "마감 D" . $dday;
         }    
 
-        $data['감정평가일'] = "";
-        if(!empty($data['물건세부정보']['감정평가정보'][0]))    $data['감정평가일'] = printDateKor($data['물건세부정보']['감정평가정보'][0]['평가일']);
+        $data['감정평가일'] = "-";
+        if(!empty($data['물건세부정보']['감정평가정보'][0]))    $data['감정평가일'] = empty($data['물건세부정보']['감정평가정보'][0]['평가일']) ? '-' : printDateKor($data['물건세부정보']['감정평가정보'][0]['평가일']);
 
         $data['담당자정보'] = explode("/",$data['담당자정보']);
 
@@ -492,8 +494,10 @@ class AuctionClass{
         $data['입찰이력목록'] = [];
         $i = 0;
         do{
+            if(empty($data['입찰이력'][$i])) break;
             $_row = $data['입찰이력'][$i];
             $sDate = intval(str_replace(['-', ' ', ':'],'',$_row['입찰시작일시']));
+            $eDate = intval(str_replace(['-', ' ', ':'],'',$_row['입찰종료일시']));
 
             $_row['입찰시작일시'] = str_replace("-",". ",str_replace(" ","(",$_row['입찰시작일시'])) . ")";
             $_row['입찰종료일시'] = str_replace("-",". ",str_replace(" ","(",$_row['입찰종료일시'])) . ")";
@@ -511,7 +515,7 @@ class AuctionClass{
             $data['입찰이력목록'][] = $_row;
 
             $i++;
-        }while($sDate <= intval(date("YmdHi")) && count($data['입찰이력목록'])>$i);
+        }while($sDate <= intval(date("YmdHi")) && $eDate <= intval(date("YmdHi")));
 
         // foreach($data['입찰이력'] as $_row){
         //     $sDate = intval(str_replace(['-', ' ', ':'],'',$_row['입찰시작일시']));
@@ -549,6 +553,22 @@ class AuctionClass{
         if(auth()->check()){
             $data['isFavorite'] = auth()->user()->auctionFavorites()->where(['gbn'=>'b','code'=>$data['물건관리번호']])->count();
         }
+
+        // 보증금
+        foreach($data['입찰보증금율'] as $row){
+            if($data['회차']==$row['회차'] && $data['차수']==$row['차수']){
+                $data['보증금율'] = $row['입찰보증금율'];
+                $data['보증금'] = intval((ceil($data['최저가'] / 100000) * 100000) * (floatval(str_replace("%","",$row['입찰보증금율'])) / 100));
+                break;
+            }
+        }
+
+        $arrParams = explode(",",$data['params']);
+        $data['온비드링크'] = [
+            '물건상세' => 'https://www.onbid.co.kr/op/cta/cltrdtl/collateralRealEstateDetail.do?cltrHstrNo='.$arrParams[0].'&cltrNo='.$arrParams[1].'&plnmNo='.$arrParams[2].'&pbctNo='.$arrParams[3].'&scrnGrpCd='.$arrParams[4].'&pbctCdtnNo='.$arrParams[5],
+            '입찰이력' => 'https://www.onbid.co.kr/op/cta/cltrdtl/collateralRealEstateDetailHis.do?cltrHstrNo='.$arrParams[0].'&cltrNo='.$arrParams[1].'&plnmNo='.$arrParams[2].'&pbctNo='.$arrParams[3].'&scrnGrpCd='.$arrParams[4].'&pbctCdtnNo='.$arrParams[5],
+            '공고문' => 'https://www.onbid.co.kr/op/ppa/plnmmn/publicAnnounceRlstDetail.do?cltrHstrNo='.$arrParams[0].'&cltrNo='.$arrParams[1].'&plnmNo='.$arrParams[2].'&pbctNo='.$arrParams[3].'&scrnGrpCd='.$arrParams[4].'&pbctCdtnNo='.$arrParams[5],
+        ];
 
         return $data;
     }

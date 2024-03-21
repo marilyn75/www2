@@ -126,7 +126,7 @@
                             </li>
                             <li>
                                 <p>보증금</p>
-                                <p>-</p>
+                                <p>@empty($data['보증금']){{ __("-") }}@else{{ price_kor($data['보증금']) }}원 ({{ $data['보증금율'] }})@endempty</p>
                             </li>
                             <li class="hidden">
                                 <p>처분방식</p>
@@ -152,6 +152,24 @@
                                 <p>입찰마감</p>
                                 <p>{{ printDateKor($data['입찰종료일시']) }}</p>
                             </li>
+                            @if(!empty($data['배분요구종기']))
+                            <li class="hidden">
+                                <p>배분종기</p>
+                                <p>{{ printDateKor($data['배분요구종기']) }}</p>
+                            </li>
+                            @endif
+                            @if(!empty($data['최초공고일자']))
+                            <li class="hidden">
+                                <p>최초공고</p>
+                                <p>{{ printDateKor($data['최초공고일자']) }}</p>
+                            </li>
+                            @endif
+                            @if(!empty($data['공매대행의뢰기관']))
+                            <li class="hidden">
+                                <p>대행의뢰</p>
+                                <p>{{ $data['공매대행의뢰기관'] }}</p>
+                            </li>
+                            @endif
                             <li class="hidden">
                                 <p>집행</p>
                                 <p>{{ $data['집행기관'] }}</p>
@@ -237,29 +255,15 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- 대법원 link -->
+                    <!-- 온비드 link -->
                     <div class="col-12 col-lg-6 auc_mob">
                         <div class="sidebar_auc_content auc_link link_mob">
-                            <a href="#">
-                                <p><span>대법원</span>물건상세</p>
+                            @foreach($data['온비드링크'] as $k=>$v)
+                            <a href="{{ $v }}" target="_blank">
+                                <p><span>온비드</span>{{ $k }}</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
-                            <a href="#">
-                                <p><span>대법원</span>현황조사</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>송달내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>사건내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>기일내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
 
@@ -355,7 +359,9 @@
                         <div class="col-12">
                             <div class="auc_info_tit flx_bg">
                                 <p>토지정보</p>
-                                <button class="auc_bdg">토지이음</button>
+                                @if(!empty($data['pnu']))
+                                <a href="https://www.eum.go.kr/web/ar/lu/luLandDet.jsp?selGbn=umd&isNoScr=script&s_type=1&pnu={{ $data['pnu'] }}&scale=&adzoom=&viewType=basic&p_location=&p_type=&p_type1=&p_type2=&p_type3=&p_type4=&p_type5=&p_type6=&p_type7=&mode=search&landGbnExt=1&tab1_txt=&selSido=26&selSgg=440&selUmd=0103&selRi=00&landGbn=1&bobn=3734&bubn=19&selSido=26&selSgg=440&selRoadNmF=&newAddrRoadCode=0&newaddr_bobn=&newaddr_bubn=&newaddr_jibun=#none" target="_blank"><button class="auc_bdg">토지이음</button></a>
+                                @endif
                             </div>
                             <table>
                                 <thead>
@@ -888,26 +894,12 @@
 
                         <!-- 대법원 -->
                         <div class="sidebar_auc_content auc_link">
-                            <a href="#">
-                                <p><span>대법원</span>물건상세</p>
+                            @foreach($data['온비드링크'] as $k=>$v)
+                            <a href="{{ $v }}" target="_blank">
+                                <p><span>온비드</span>{{ $k }}</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
-                            <a href="#">
-                                <p><span>대법원</span>현황조사</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>송달내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>사건내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <a href="#">
-                                <p><span>대법원</span>기일내역</p>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

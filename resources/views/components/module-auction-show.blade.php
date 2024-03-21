@@ -33,6 +33,16 @@
     });
 </script>
 
+<script>
+    docURL._init();
+    var url = docURL.url.replace('/page','/popup');
+
+    function caLink(type){
+        var params = "mode=caLink.popup&jiwonNm={{ $data['법원'] }}&sano={{ $data['saNo'] }}&no={{ $data['물건번호'] }}&type=" + type;
+        openWindow(url + '?' + params, 800,800);
+    }
+</script>
+
     <section class="listing-title-area">
         <div class="container container_w">
             <!-- title -->
@@ -1108,23 +1118,23 @@
 
                     <!-- 대법원 -->
                     <div class="sidebar_auc_content auc_link">
-                        <a href="#">
+                        <a href="#n" onclick="caLink('RetrieveRealEstCarHvyMachineMulDetailInfo.laf');">
                             <p><span>대법원</span>물건상세</p>
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
-                        <a href="#">
+                        <a href="#n" onclick="caLink('RetrieveRealEstSaHjosa.laf');">
                             <p><span>대법원</span>현황조사</p>
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
-                        <a href="#">
+                        <a href="#n" onclick="caLink('RetrieveRealEstSaDetailInqMungunSongdalList.laf');">
                             <p><span>대법원</span>송달내역</p>
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
-                        <a href="#">
+                        <a href="#n" onclick="caLink('RetrieveRealEstDetailInqSaList.laf');">
                             <p><span>대법원</span>사건내역</p>
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
-                        <a href="#">
+                        <a href="#n" onclick="caLink('RetrieveRealEstSaDetailInqGiilList.laf');">
                             <p><span>대법원</span>기일내역</p>
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
@@ -1133,4 +1143,6 @@
             </div>
         </div>
     </section>
+    
+    
 @endsection
