@@ -67,8 +67,8 @@ class NewspaperAdClass{
 
         $file_data = $data->file();
 
-        $return['down_link'] = route('common.file.download', $file_data->id);
-        $return['view_link'] = route('common.file.view', $file_data->id);
+        $return['down_link'] = empty($file_data->id) ? "" : route('common.file.download', $file_data->id);
+        $return['view_link'] = empty($file_data->id) ? "" : route('common.file.view', $file_data->id);
 
         $agent = new Agent();
         if($agent->isMobile()){

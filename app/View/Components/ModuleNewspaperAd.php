@@ -31,7 +31,7 @@ class ModuleNewspaperAd extends Component
      */
     public function render(): View|Closure|string
     {
-        $data = $this->cls->getListData($this->request);
+        $data = $this->cls->getListData($this->request,4);
         $request = $this->request;
         return view('components.module-newspaper-ad', compact('data', 'request'));
     }

@@ -11,17 +11,15 @@
     $max = $start + $length;
 
     if($start < 1) $start = 1;
-
-    
 @endphp
 <div class="col-lg-12 mt20">
     <div class="mbp_pagination">
         <ul class="page_navigation">
             <li class="page-item @if($data->currentPage()==1) disabled @endif">
-                <a class="page-link" href="@if($data->currentPage()==1)#@else{{ $data->path()."?page=".(intval($data->currentPage()) - 1) }}@endif" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span></a>
+                <a class="page-link" href="@if($data->currentPage()==1)#@else{{ __("javascript:goPage(".(intval($data->currentPage()) - 1).");") }}@endif" tabindex="-1" aria-disabled="true"> <span class="flaticon-left-arrow"></span></a>
             </li>
             @if($start > 1)
-            <li class="page-item"><a class="page-link" href="{{ $data->path()."?page=1" }}">1</a></li>
+            <li class="page-item"><a class="page-link" href="{{ __("javascript:goPage(1);") }}">1</a></li>
             <li class="page-item"><a class="page-link" href="#">...</a></li>
             @endif
 
@@ -31,16 +29,16 @@
                     <a class="page-link" href="#">{{ $pg }} <span class="sr-only">(current)</span></a>
                 </li>
                 @else
-                <li class="page-item"><a class="page-link" href="{{ $data->path()."?page=".$pg }}">{{ $pg }}</a></li>
+                <li class="page-item"><a class="page-link" href="{{ __("javascript:goPage(".$pg.");") }}">{{ $pg }}</a></li>
                 @endif
             @endfor
 
             @if($data->lastPage() >= $max)
             <li class="page-item"><a class="page-link" href="#">...</a></li>
-            <li class="page-item"><a class="page-link" href="{{ $data->path()."?page=".$data->lastPage() }}">{{ $data->lastPage() }}</a></li>
+            <li class="page-item"><a class="page-link" href="{{ __("javascript:goPage(".$data->lastPage().");") }}">{{ $data->lastPage() }}</a></li>
             @endif
             <li class="page-item @if($data->currentPage()==$data->lastPage()) disabled @endif">
-                <a class="page-link" href="@if($data->currentPage()==$data->lastPage())#@else{{ $data->path()."?page=".(intval($data->currentPage()) + 1) }}@endif"><span class="flaticon-right-arrow"></span></a>
+                <a class="page-link" href="@if($data->currentPage()==$data->lastPage())#@else{{ __("javascript:goPage(".(intval($data->currentPage()) + 1).");") }}@endif"><span class="flaticon-right-arrow"></span></a>
             </li>
         </ul>
     </div>
