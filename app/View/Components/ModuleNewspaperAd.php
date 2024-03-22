@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Http\Class\CommonCodeClass;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\View\Component;
@@ -31,8 +32,17 @@ class ModuleNewspaperAd extends Component
      */
     public function render(): View|Closure|string
     {
+
+        // 신문사구분 공통코드
+        $clsCommonCode = new CommonCodeClass;
+        $codes = $clsCommonCode->getNewspaperCodes();
+ 
+        if(empty($this->request->code)) $this->request['code'] = $codes[0]['id'];
+
+        $codes = $clsCommonCode->setKeyValue($codes);
+
         $data = $this->cls->getListData($this->request);
         $request = $this->request;
-        return view('components.module-newspaper-ad', compact('data', 'request'));
+        return view('components.module-newspaper-ad', compact('data', 'request', 'codes'));
     }
 }

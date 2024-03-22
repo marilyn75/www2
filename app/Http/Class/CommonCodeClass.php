@@ -68,5 +68,12 @@ class CommonCodeClass{
         $cate = $this->getChildrenFromId(69);
         return $cate;
     }
+
+    public function setKeyValue($data){
+        $return = [];
+        foreach($data as $dt) $return[$dt['id']] = $dt['title'];
+
+        return $return;
+    }
     
 }

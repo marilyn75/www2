@@ -48,7 +48,7 @@
             <div class="col-lg-6">
                 <div class="my_profile_setting_textarea">
                     <label for="content">게재일</label>
-                    <input type="date" class="form-control w-50" name="pub_date" id="pub_date" value="{{ $data['pub_date'] }}">
+                    <input type="date" class="form-control w-50" name="pub_date" id="pub_date" value="{{ $data['pub_date'] }}" max="9999-12-31">
                 </div>
             </div>
 

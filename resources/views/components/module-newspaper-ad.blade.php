@@ -4,7 +4,19 @@
     @csrf
     <input type="hidden" name="page" value="1">
     <div class="article_top mb80">
-        <h2>부산일보 신문광고</h2>
+        <h2>{{ $codes[$request->code] }} 신문광고</h2>
+
+        <div class="search_option_two">
+            <div class="candidate_revew_select">
+                <div class="dropdown bootstrap-select w100 show-tick">
+                    <select name="code" class="selectpicker w100 show-tick" tabindex="-98" onchange="frm.submit();">
+                    @foreach ($codes as $k=>$v)
+                        <option value="{{ $k }}" @if(@$request->code==$k){{ __('selected') }}@endif>{{ $v }}</option>
+                    @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="search_option_two">
             <div class="candidate_revew_select">
                 <div class="dropdown bootstrap-select w100 show-tick">
