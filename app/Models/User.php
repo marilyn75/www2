@@ -82,8 +82,8 @@ class User extends Authenticatable
         // 회원가입
         'register' => [
             'name' => 'required|max:20',
-            // 'email' => 'required|email|max:255|unique:users,email',
-            'email' => 'required|email|max:255|unique:users,email,{$this->user->id},id,deleted_at,NULL',
+            'email' => 'required|email|max:255|unique:users,email',
+            // 'email' => 'required|email|max:255|unique:users,email,{$this->user->id},id,deleted_at,NULL',
             'password' => 'required|min:6|max:30|confirmed',
             'isCert' => 'required',
         ],

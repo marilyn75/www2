@@ -159,35 +159,68 @@ class IntraSawonClass{
 
     // 중개사에게 문의하기 
     public function sendInquiry(&$controller, $request){
-
-        $controller->validate($request, ['phone'=>'required', 'message'=>'required']);
+        $required = ['phone'=>'required', 'message'=>'required'];
+        $messages = [];
+        if(!auth()->check()){
+            $required['agree'] = 'required';
+            $messages = [
+                'agree.required' => '개인정보처리방침에 동의해주세요.',
+            ];
+        }
+        $controller->validate($request, $required, $messages);
 
         $apiUrl = env('INTRANET_DOMAIN')."/Share/api.php";
 
         $client = new Client();
 
-        $subject = $request->name ."님의 문의글";
-        if(!empty($request->p_code))    $subject .= " (물건번호 : ".$request->p_code.")";
-        $postData = [
-            'site_code' => 'mng',
-            'board_code' => 'inquiry',
-            'b_subject' => $subject,
-            'b_content' => $request->message,
-            // 'b_content_s' => $request->message,
-            'b_content_type' => 'T',
-            'reg_ip' => $request->ip(),
-            'reg_name' => $request->name,
-            'reg_user_id' => (auth()->check())?auth()->user()->id:'',
-            'b_hp' => $request->phone,
-            'b_email' => $request->email,
-            'b_free1' => $request->user_id,  // 중개사아이디
-            'b_free2' => $request->p_code,  // 물건번호
-            'b_free3' => $request->s_idx,  // 물건 idx
-            'reg_pwd' => 'inquiry',
-        ];
+        $name = empty($request->name) ? 'Guest' : $request->name;
+        if(empty($request->gbn)){// 물건문의 
+
+            $subject = $name ."님의 문의글";
+            if(!empty($request->p_code))    $subject .= " (물건번호 : ".$request->p_code.")";
+            $postData = [
+                'site_code' => 'mng',
+                'board_code' => 'inquiry',
+                'b_subject' => $subject,
+                'b_content' => $request->message,
+                // 'b_content_s' => $request->message,
+                'b_content_type' => 'T',
+                'reg_ip' => $request->ip(),
+                'reg_name' => $name,
+                'reg_user_id' => (auth()->check())?auth()->user()->id:'',
+                'b_hp' => $request->phone,
+                'b_email' => $request->email,
+                'b_free1' => $request->user_id,  // 중개사아이디
+                'b_free2' => $request->p_code,  // 물건번호
+                'b_free3' => $request->s_idx,  // 물건 idx
+                'reg_pwd' => 'inquiry',
+            ];
+        }else{          // 경공매 문의
+            $subject = $name ."님의 문의글";
+            if(!empty($request->p_code))    $subject .= " (물건번호 : ".$request->title.")";
+            $postData = [
+                'site_code' => 'mng',
+                'board_code' => 'auction',
+                'CgCode' => $request->gbn,
+                'b_subject' => $subject,
+                'b_content' => $request->message,
+                // 'b_content_s' => $request->message,
+                'b_content_type' => 'T',
+                'reg_ip' => $request->ip(),
+                'reg_name' => $name,
+                'reg_user_id' => (auth()->check())?auth()->user()->id:'',
+                'b_hp' => $request->phone,
+                'link_url1' => $request->link_url,  // 물건링크
+                'b_email' => $request->email,
+                'b_free1' => $request->title,  // 물건번호
+                'b_free2' => $request->addr,  // 물건명 (소재지)
+                'reg_pwd' => 'inquiry',
+            ];
+        }
         try {
             // POST 요청 보내기
             // $response = $client->post($apiUrl,$postData);
+            // $apiUrl = "http://local.gbbinc.co.kr/Share/api.php";
             $response = Http::asForm()->post($apiUrl,$postData);
 
             // 응답 내용 가져오기
@@ -205,7 +238,7 @@ debug($result);
         } catch (\Exception $e) {
             // 에러 처리
             // return response()->json(['error' => $e->getMessage()], 500);
-            return ResultClass::fail('문의하기 실패.');
+            return ResultClass::fail('문의하기 실패.'.$e->getMessage()."\n".$e->getLine());
         }
     }
 

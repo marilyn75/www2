@@ -46,11 +46,26 @@
 
         <form name="frm" method="post" onsubmit="return defaultAjaxFormSubmit(this, sendMsg, sendMsgFail);">
             @csrf
+
+            
             <input type="hidden" name="dataType" value="json">
             <input type="hidden" name="mode" value="sendInquiry">
+            
+            @empty($printData['gbn'])   {{-- 매물문의 --}}
             <input type="hidden" name="p_code" value="{{ @$printData['p_code'] }}">
-            <input type="hidden" name="user_id" value="{{ $printData['sawon_user_id'] }}">
+            <input type="hidden" name="user_id" value="{{ @$printData['sawon_user_id'] }}">
             <input type="hidden" name="s_idx" value="{{ @$printData['s_idx'] }}">
+            @else                       {{-- 경공매문의 --}}
+                @php
+                    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+                    $currentURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                @endphp
+            <input type="hidden" name="gbn" value="{{ @$printData['gbn'] }}">
+            <input type="hidden" name="link_url" value="{{ $currentURL }}">
+            <input type="hidden" name="addr" value="{{ empty($printData['물건명']) ? @$printData['주소'] : @$printData['물건명'] }}">
+            <input type="hidden" name="title" value="{{ $printData['gbn']=='a' ? @$printData['법원'] . ' ' . @$printData['사건번호'] . ' [' . @$printData['물건번호'] .']' : @$printData['물건관리번호'] . ' [' . @$printData['처분방식'] .'] ' . @$printData['자산구분'] }}">
+            @endempty
+
             @auth
             <input type="hidden" name="name" value="{{ auth()->user()->name }}">
             @if(!empty(auth()->user()->phone))<input type="hidden" name="phone" value="{{ auth()->user()->phone }}">@endif
@@ -75,6 +90,11 @@
                     required hname="내용" placeholder="문의하실 내용을 입력하세요." ></textarea>
                 </div>
             </li>
+            @if(!auth()->check())
+            <li>
+                <input type="checkbox" name="agree" id="inq-agree" value="1"><label for="inq-agree">개인정보처리방침 동의</label>
+            </li>
+            @endif
             <li>
                 <div class="search_option_button detail_emp_btns">
                     @if ($type=='photo')<a class="btn btn-block btn-thm btn-thm_w" href="@if($printData['sawon_chkcert']=='y'){{ route('page',25) }}?mode=view&idx={{ $printData['sawon_idx'] }}@else{{ route('page',25) }}?mode=view&idx=0 @endif">자세히보기</a>@endif

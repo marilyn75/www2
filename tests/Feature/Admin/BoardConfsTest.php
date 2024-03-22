@@ -13,7 +13,7 @@ use Spatie\Permission\Models\Role;
 
 class BoardConfsTest extends TestCase
 {
-    use RefreshDatabase, SoftDeletes;
+    use RefreshDatabase;
 
     protected function setUp(): void{
         parent::setUp();

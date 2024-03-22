@@ -255,6 +255,11 @@
                             </li>
                         </ul>
                     </div>
+
+                    <div class="col-12 col-lg-8 auc_mob">
+                        <x-inquirybox type="" :printData="$data" />
+                    </div>
+                    
                     <!-- 온비드 link -->
                     <div class="col-12 col-lg-6 auc_mob">
                         <div class="sidebar_auc_content auc_link link_mob">
@@ -891,7 +896,10 @@
                             </div>
                         </div>
 
-
+                        <div class="sidebar_auc_content">
+                            <x-inquirybox type="" :printData="$data" />
+                        </div>
+                        
                         <!-- 대법원 -->
                         <div class="sidebar_auc_content auc_link">
                             @foreach($data['온비드링크'] as $k=>$v)

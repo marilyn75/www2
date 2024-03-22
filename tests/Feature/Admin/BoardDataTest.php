@@ -16,7 +16,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BoardDataTest extends TestCase
 {
-    use RefreshDatabase, SoftDeletes;
+    use RefreshDatabase;
 
     protected function setUp(): void{
         parent::setUp();

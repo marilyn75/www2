@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class NewspaperAdsTest extends TestCase
 {
-    use RefreshDatabase, SoftDeletes;
+    use RefreshDatabase;
 
     protected function setUp(): void{
         parent::setUp();

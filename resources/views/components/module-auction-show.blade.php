@@ -352,6 +352,10 @@
                     </div> --}}
 
                     <div class="col-12 col-lg-8 auc_mob">
+                    <x-inquirybox type="" :printData="$data" />
+                    </div>
+
+                    <div class="col-12 col-lg-8 auc_mob">
                         <div class="sidebar_auc_content auc_link link_mob">
                             <a href="#">
                                 <p><span>대법원</span>물건상세</p>
@@ -1116,6 +1120,10 @@
                         </div>
                     </div>
 
+                    <div class="sidebar_auc_content auc_link">
+                    <x-inquirybox type="" :printData="$data" />
+                    </div>
+                    
                     <!-- 대법원 -->
                     <div class="sidebar_auc_content auc_link">
                         <a href="#n" onclick="caLink('RetrieveRealEstCarHvyMachineMulDetailInfo.laf');">
