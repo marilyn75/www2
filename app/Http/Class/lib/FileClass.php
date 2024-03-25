@@ -146,7 +146,7 @@ class FileClass{
 
             $imageContent = @file_get_contents($imgUrl);
             if($imageContent === false){
-                return null;
+                return "/images/noimg.jpg";
             }
 
             // 이미지 로드
@@ -183,9 +183,13 @@ class FileClass{
 
             // 새로운 이미지 저장
             $image->save($outputPath);
+            
+            return str_replace(base_path('public'), '', $outputPath);
+        }else{
+            return "/images/noimg.jpg";
         }
 
-        return str_replace(base_path('public'), '', $outputPath);
+        
 
         // 이미지 출력
         // return $image->response();
