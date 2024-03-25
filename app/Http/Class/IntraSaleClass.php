@@ -123,7 +123,7 @@ class IntraSaleClass{
         $return['is_soldout'] = (strpos($data->sale->_options, 'COC')!==false);
 
         // 수익률 계산 : (월세 * 12) / (매매가격 - 보증금)
-        $return['rate'] = (intval($data->monPrice_st)==0)?0:round(((($data->monPrice_st * 12) / ($data->salePrice - $data->depPrice_st)) * 100), 2);
+        $return['rate'] = (intval($data->monPrice_st)==0)?0:round(((($data->monPrice_st * 12) / (intval($data->salePrice) - intval($data->depPrice_st))) * 100), 2);
 
 
         $return['saleTypeFull'] = $data->saleTypeTxt;
