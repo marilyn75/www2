@@ -1120,9 +1120,9 @@
                         </div>
                     </div>
 
-                    <div class="sidebar_auc_content auc_link">
+
                     <x-inquirybox type="" :printData="$data" />
-                    </div>
+
                     
                     <!-- 대법원 -->
                     <div class="sidebar_auc_content auc_link">

@@ -16990,6 +16990,9 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .news-arrow i { font-size: 22px; }
 .header.stylehome1 { z-index: 999; }
 
+.sasw_list_w .agree_fx { display: flex; gap: 5px; margin-bottom: 25px; }
+.sasw_list_w .agree_fx label { margin: 0; }
+
 
 /* employee */
 .employ_box { display: flex; justify-content: space-between; padding: 15px 20px !important; margin-bottom: 30px; border-radius: 10px; position: relative; }

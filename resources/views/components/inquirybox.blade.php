@@ -91,8 +91,8 @@
                 </div>
             </li>
             @if(!auth()->check())
-            <li>
-                <input type="checkbox" name="agree" id="inq-agree" value="1"><label for="inq-agree">개인정보처리방침 동의</label>
+            <li class="agree_fx">
+                <input type="checkbox" name="agree" id="inq-agree" value="1"><label for="inq-agree"><a href="#" class="btn flaticon-user login_head modal-button" id="a-login" data-url="modal.privacy">개인정보처리방침 동의</a></label>
             </li>
             @endif
             <li>
