@@ -353,7 +353,14 @@
             <a href="" class="news_link">
                 <div class="news-title">
                     <h2>신문속의 <br><span class="mont">GYEMOIM INC .</span></h2>
-                    <p>매주 월, 수, 금 부산일보와 함께하는 신문광고</p>
+                    <div class="article_wr">
+                        <div class="article_img">
+                            <img src="/images/busan.png" alt="">
+                        </div>
+                        <div class="article_img">
+                            <img src="/images/kukje.png" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="news-arrow">
                     <i class="ri-arrow-right-line"></i>
