@@ -268,24 +268,24 @@
                     </span>
                     <!-- 지분필터 - 전체  -->
                     <span class="dropdown-el down_width">
-                        <input type="radio" name="share" value="0" checked="checked" id="share-all"><label
-                            for="share-all">지분필터-전체</label>
-                        <input type="radio" name="share" value="5" id="share-ex"><label
-                            for="share-ex">지분보기</label>
-                        <input type="radio" name="share" value="6" id="share-out"><label
-                            for="share-out">지분제외</label>
+                        <input type="radio" name="jibun" value="" id="jibun_all"
+                        @if (@$_REQUEST['jibun'] == '') {{ __('checked="checked"') }} @endif><label
+                            for="jibun_all">지분필터-전체</label>
+                        <input type="radio" name="jibun" value="1" id="jibun_1"
+                        @if (@$_REQUEST['jibun'] == 1) {{ __('checked="checked"') }} @endif><label
+                            for="jibun_1">지분보기</label>
+                        <input type="radio" name="jibun" value="0" id="jibun_0"
+                        @if (@$_REQUEST['jibun'] == 0) {{ __('checked="checked"') }} @endif><label
+                            for="jibun_0">지분제외</label>
                     </span>
                     <!-- 조회순 -->
                     <span class="dropdown-el down_filt">
-                        <input type="radio" name="filt" value="0" checked="checked" id="sale-ear"><label
-                            for="sale-ear">매각기일 빠른</label>
-                        <input type="radio" name="filt" value="5" id="sale-late"><label for="sale-late">매각기일
-                            늦은</label>
-                        <input type="radio" name="filt" value="6" id="price-hight"><label
-                            for="price-hight">최저가
-                            높은</label>
-                        <input type="radio" name="filt" value="6" id="price-low"><label for="price-low">최저가
-                            낮은</label>
+                        <input type="radio" name="order" value="hit" id="order-hit" @if (@$_REQUEST['order'] == '' || @$_REQUEST['order'] == 'hit') {{ __('checked="checked"') }} @endif><label for="order-hit">조회수 많은</label>
+                        <input type="radio" name="order" value="fav" id="order-fav" @if (@$_REQUEST['order'] == 'fav') {{ __('checked="checked"') }} @endif><label for="order-fav">관심수 많은</label>
+                        <input type="radio" name="order" value="date1" id="order-date1" @if (@$_REQUEST['order'] == 'date1') {{ __('checked="checked"') }} @endif><label for="order-date1">매각기일 빠른</label>
+                        <input type="radio" name="order" value="date2" id="order-date2" @if (@$_REQUEST['order'] == 'date2') {{ __('checked="checked"') }} @endif><label for="order-date2">매각기일 늦은</label>
+                        <input type="radio" name="order" value="price1" id="order-price1" @if (@$_REQUEST['order'] == 'price1') {{ __('checked="checked"') }} @endif><label for="order-price1">최저가 높은</label>
+                        <input type="radio" name="order" value="price2" id="order-price2" @if (@$_REQUEST['order'] == 'price2') {{ __('checked="checked"') }} @endif><label for="order-price2">최저가 낮은</label>
                     </span>
 
                     <script>

@@ -35,6 +35,8 @@ class AuctionClass{
             'numOfRows' => 9,
             'pageNo' => @$data['page'],
             'gubun' => @$data['gubun'],
+            'jibun' => @$data['jibun'],
+            'order' => @$data['order'],
         ];
 
         $response = Http::get($this->url, $params);   
