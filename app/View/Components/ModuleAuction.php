@@ -98,7 +98,7 @@ class ModuleAuction extends Component
         $response = $client->get($data['link_url']);
         $contents = $response->getBody()->getContents();
 
-        if(strpos($contents, 'info_nopage.gif')!==false || strpos($contents, 'alert_03.gif')!==false){
+        if(strpos($contents, 'info_nopage.gif')!==false || strpos($contents, 'alert_03.gif')!==false || strpos($contents, 'alert_01.gif')!==false){
             $payload['type'] = $data['type'];
             $jsonHtml = file_get_contents('http://apidata.localhost:8080/api/auction/html?' . http_build_query($payload));
             $arrHtml = json_decode($jsonHtml,1);

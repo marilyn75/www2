@@ -719,7 +719,7 @@
                                     매각명세서
                                 </button>
                                 @endif
-                                <button class="auc_bdg">소액임차표</button>
+                                {{-- <button class="auc_bdg">소액임차표</button> --}}
                             </div>
                         </div>
                         <table>
