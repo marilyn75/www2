@@ -18717,6 +18717,19 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 
 
 
+  /* pop-up */
+
+  .popup-content .table_title h3 { color: #000; font-weight: 500; }
+  .popup-content .table_title { color: #000; font-weight: 500; }
+  .popup-content .table_title { margin-top: 20px; margin-bottom: 15px; }
+  .popup-content .table_title:first-child { margin-top: 40px; }
+  .popup-content table tbody tr th { background: #F6FAFF; }
+  .popup-content .Ltbl_list thead tr th { background: #F6FAFF; }
+  .popup-content .Ltbl_dt tbody tr td { text-align: left; margin-left: 21px; padding: 20px; }
+
+
+
+
 
 
 
