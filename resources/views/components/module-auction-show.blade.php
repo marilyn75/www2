@@ -738,8 +738,6 @@
                                 </tr>
                             @else
                                 @foreach ($data['임차인현황목록'] as $_row)
-                                    
-                                @endforeach
                                 <tr>
                                     <td class="bck_wt">
                                         {{ $_row['점유자명'] }}<br>
@@ -755,6 +753,7 @@
                                     </td>
                                     <td class="bck_wt txt_rd">있음<br>(인수유의)</td>
                                 </tr>
+                                @endforeach
                             @endempty
                             </tbody>
                         </table>
@@ -781,7 +780,7 @@
                         </div>
                         <div class="use_state_list">
                             @if (!empty($data['현황조사내역']['기타']))
-                                <p>{{ $data['현황조사내역']['기타'] }}</p>
+                                <p>{!! nl2br($data['현황조사내역']['기타']) !!}</p>
                             @endif
                             
                             @foreach ($data['현황조사내역']['점유관계'] as $_i=>$_row)
