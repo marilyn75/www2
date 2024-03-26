@@ -16978,11 +16978,11 @@ table.dataTable tbody tr { background-color: #fff!important; }
 .main_tit_new { top: 120px; z-index: 10; }
 
 .newsad_box { position: relative; }
-.news-title { position: absolute; top: 50%; left:100px; transform: translateY(-50%); z-index: 10; }
+.news-title { position: absolute; top: 50%; left:100px; transform: translateY(-50%); z-index: 10; display: grid; gap: 25px; }
 .news-title h2 { font-weight: 600; margin: 0; color: #fff; }
 .news-title p { color: #fff; font-size: 24px; margin-top: 25px;}
-.news-title .article_wr { display: flex; gap: 5px; }
-.news-title .article_img { background: #fff; }
+.news-title .article_wr { display: flex; gap: 7px; }
+.news-title .article_img { background: #fff; padding: 12px 17px; border-radius: 6px; }
 .news-title .article_img img { height: 24px; }
 .news_link { position: relative; display: block; }
 .news_link:hover .news-arrow { opacity: 0.7; }
@@ -17996,8 +17996,8 @@ code {
 .mod-header { position: absolute; top: -45px; right: 0; }
 
 
-.usedetail .modal-dialog { max-width: 840px; }
-.usedetail .modal-dialog .modal-content { padding: 40px; }
+.usedetail .modal-dialog { max-width: 840px; height: 100%; }
+.usedetail .modal-dialog .modal-content { padding: 40px; height: 76%; }
 .usedetail .modal-dialog .modal-content .modal-scroll { height: 1000px; overflow: scroll; }
 
 .auction_img .modal-dialog { max-width: 35%; }
@@ -18598,7 +18598,10 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
  .auc_hide.on {
   height: auto; /* 확장된 상태로 높이를 자동으로 조정 */
 }
-
+.check_ag { display: flex;  margin-bottom: 20px; justify-content: space-between; }
+.check_ag label { margin: 0; width: auto; }
+.check_ag a { font-size: 14px; color: #385f8d; text-decoration: underline; font-weight: 500; }
+.check_lb { display: flex; gap: 7px; }
 
 
 
@@ -18725,10 +18728,12 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   .popup-content .table_title:first-child { margin-top: 40px; }
   .popup-content table tbody tr th { background: #F6FAFF; }
   .popup-content .Ltbl_list thead tr th { background: #F6FAFF; }
+  .popup-content .Ltbl_list .txtleft { text-align: left; }
   .popup-content .Ltbl_dt tbody tr td { text-align: left; margin-left: 21px; padding: 20px; }
 
-
-
+  .popup-content section { padding: 0; }
+  .popup-content .container_w { padding: 0; }
+  .popup-content .pop_sect { background: #385f8d; padding: 15px 15px 9px 15px; }
 
 
 

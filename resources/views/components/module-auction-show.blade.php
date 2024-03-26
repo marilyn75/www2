@@ -39,7 +39,7 @@
 
     function caLink(type){
         var params = "mode=caLink.popup&jiwonNm={{ $data['법원'] }}&sano={{ $data['saNo'] }}&no={{ $data['물건번호'] }}&type=" + type;
-        openWindow(url + '?' + params, 800,800);
+        openWindow(url + '?' + params, 1200,1000);
     }
 </script>
 

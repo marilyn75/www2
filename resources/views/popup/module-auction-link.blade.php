@@ -14,7 +14,7 @@
     <input type="hidden" name="no" value="{{ $data['no'] }}">
     <input type="hidden" name="type" value="">
 </form>
-<div>
+<div class="pop_sect">
     <select name="page_type" id="page_type" onchange="fm.type.value=this.value;fm.submit()">
         <option value="RetrieveRealEstDetailInqSaList.laf" @if($data['type']=="RetrieveRealEstDetailInqSaList.laf"){{ __("selected") }}@endif>사건내역</option>
         <option value="RetrieveRealEstSaDetailInqGiilList.laf" @if($data['type']=="RetrieveRealEstSaDetailInqGiilList.laf"){{ __("selected") }}@endif>기일내역</option>
