@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use DragonCode\Contracts\Cashier\Http\Request;
 
-// 매물관련 클래스
+// 사원관련 클래스
 
 class IntraSawonClass{
 
@@ -249,7 +249,8 @@ debug($result);
                 'mb_out'=>0, 
                 'auth_gr'=>'M01_D01'
             ])
-            ->where('chkcert','=','y')
+            // ->where('chkcert','=','y')
+            ->where('pick_date','!=',null)
             ->orderBy('user_name', 'asc')
             ->get();
         return $data;

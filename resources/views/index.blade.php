@@ -296,7 +296,7 @@
 <section class="our-newspaper bgc-f7">
     <div class="container container_w">
         <div class="newsad_box">
-            <a href="{{ route('page',29) }}" class="news_link">
+            <a href="" class="news_link">
                 <div class="news-title">
                     <h2>신문속의 <br><span class="mont">GYEMOIM INC .</span></h2>
                     <div class="article_wr">
@@ -312,9 +312,10 @@
                         </a>
                     </div>
                 </div>
+                <a href="{{ route('page',29) }}">
                 <div class="news-arrow">
                     <i class="ri-arrow-right-line"></i>
-                </div>
+                </div></a>
                 <img src="/images/news_ad.png" alt="">
             </a>
         </div>
