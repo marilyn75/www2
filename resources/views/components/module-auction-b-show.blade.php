@@ -62,11 +62,11 @@
                         </div>
                         {{-- <img src="/images/auction/auction_map.png" alt=""> --}}
                         <div class="map_icon">
-                            <a href="#">
-                                <img src="/images/auction/kaokaomap.png" alt="">
+                            <a href="https://map.kakao.com/?q={{ urlencode($data['addr_jibun']) }}" target="_blank">
+                                <img src="/images/auction/kaokaomap.png" alt="" width="32px">
                             </a>
-                            <a href="#">
-                                <img src="/images/auction/navermap.png" alt="">
+                            <a href="https://map.naver.com/?query={{ urlencode($data['addr_jibun']) }}" target="_blank">
+                                <img src="/images/auction/navermap.png" alt="" width="32px">
                             </a>
                         </div>
                     </div>

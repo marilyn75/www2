@@ -350,16 +350,20 @@
 <section class="our-newspaper bgc-f7">
     <div class="container container_w">
         <div class="newsad_box">
-            <a href="" class="news_link">
+            <a href="{{ route('page',29) }}" class="news_link">
                 <div class="news-title">
                     <h2>신문속의 <br><span class="mont">GYEMOIM INC .</span></h2>
                     <div class="article_wr">
-                        <div class="article_img">
-                            <img src="/images/busan.png" alt="">
-                        </div>
-                        <div class="article_img">
-                            <img src="/images/kukje.png" alt="">
-                        </div>
+                        <a href="{{ route('page',29) }}?code=70">
+                            <div class="article_img">
+                                <img src="/images/busan.png" alt="">
+                            </div>
+                        </a>
+                        <a href="{{ route('page',29) }}?code=71"">
+                            <div class="article_img">
+                                <img src="/images/kukje.png" alt="">
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="news-arrow">
