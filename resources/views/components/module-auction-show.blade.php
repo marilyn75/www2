@@ -108,10 +108,10 @@
                         {{-- <img src="/images/auction/auction_map.png" alt=""> --}}
                         <div class="map_icon">
                             <a href="https://map.kakao.com/?q={{ empty($data['주소2']) ? urlencode($data['주소']):urlencode($data['주소2']) }}" target="_blank">
-                                <img src="/images/auction/kaokaomap.png" alt="" width="32px">
+                                <img src="/images/auction/kaokaomap.png" alt="" width="32px" height="32px">
                             </a>
                             <a href="https://map.naver.com/?query={{ empty($data['주소2']) ? urlencode($data['주소']):urlencode($data['주소2']) }}" target="_blank">
-                                <img src="/images/auction/navermap.png" alt="" width="32px">
+                                <img src="/images/auction/navermap.png" alt="" width="32px" height="32px">
                             </a>
                         </div>
                     </div>
