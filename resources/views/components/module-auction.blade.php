@@ -6,6 +6,8 @@
         <input type="hidden" name="page" value="1">
         <section class="our-listing pb30-991">
             <div class="container_w">
+                {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
+                @if (env('APP_ENV')=="local")
                 <div class="col-md-12 pl0 pr0">
                     <div id="exTab1">
                         <ul class="nav nav-pills">
@@ -186,13 +188,13 @@
                                     const fromPosition = from.value - to.min;
                                     const toPosition = to.value - to.min;
                                     controlSlider.style.background = `linear-gradient(
-      to right,
-      ${sliderColor} 0%,
-      ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-      ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-      ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} 100%)`;
+                                    to right,
+                                    ${sliderColor} 0%,
+                                    ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
+                                    ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
+                                    ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
+                                    ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
+                                    ${sliderColor} 100%)`;
                                 }
 
                                 function setToggleAccessible(currentTarget) {
@@ -239,7 +241,8 @@
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+                @endif
+                {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
 
                 <div class="col-md-12 col-lg-12 pl0 pr0">
 
