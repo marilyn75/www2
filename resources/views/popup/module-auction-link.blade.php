@@ -23,10 +23,12 @@
         <option value="RetrieveRealEstCarHvyMachineMulDetailInfo.laf" @if($data['type']=="RetrieveRealEstCarHvyMachineMulDetailInfo.laf"){{ __("selected") }}@endif>물건상세</option>
     </select>
 </div>
-<div>
+<div class="pop_wr">
     @empty($data['html'])
     <iframe src="{{ $data['link_url'] }}" frameborder="0" id="iframe" class="iframe100"></iframe>
     @else
-    {!! $data['html'] !!}
+    <div class="pop_table">
+        {!! $data['html'] !!}
+    </div>
     @endempty
 </div>

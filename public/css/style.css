@@ -18732,12 +18732,17 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   .popup-content .table_title:first-child { margin-top: 40px; }
   .popup-content table tbody tr th { background: #F6FAFF; }
   .popup-content .Ltbl_list thead tr th { background: #F6FAFF; }
+  .popup-content .Ltbl_dt caption { display: none; }
+  .popup-content .Ltbl_list caption { display: none; }
   .popup-content .Ltbl_list .txtleft { text-align: left; }
   .popup-content .Ltbl_dt tbody tr td { text-align: left; margin-left: 21px; padding: 20px; }
-
   .popup-content section { padding: 0; }
   .popup-content .container_w { padding: 0; }
   .popup-content .pop_sect { background: #385f8d; padding: 15px 15px 9px 15px; }
+
+  .pop_wr .pop_table { padding: 20px; }
+
+
 
 
 
