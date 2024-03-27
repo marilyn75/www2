@@ -751,7 +751,7 @@
                                         확정: {{ $_row['확정일자'] }}<br>
                                         배당: {{ $_row['배당요구여부'] }}
                                     </td>
-                                    <td class="bck_wt txt_rd">있음<br>(인수유의)</td>
+                                    <td class="bck_wt txt_rd">{!! empty($_row['점유부분']) ? __('-') : __('있음<br>(인수유의)') !!}</td>
                                 </tr>
                                 @endforeach
                             @endempty

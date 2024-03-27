@@ -1,8 +1,9 @@
 <div class="col-sm-6 col-md-6 col-lg-4">
-    <a href="{{ $printData['view_link'] }}">
+    <a href="/page/41{{ $printData['view_link'] }}">
         <div class="feat_property home7 style4 bdrrn feat_property_w">
             <div class="thumb auction_thumb">
                 <img class="img-whp" src="{{ $printData['image'] }}" alt="{{ $printData['alt'] }}">
+                @if (empty($type))
                 <div class="thmb_cntnt">
                     <ul class="tag mb0">
                         <!-- 찜하기 전 -->
@@ -23,16 +24,19 @@
                         </li>
                     </ul>
                 </div>
+                @endif
                 <!-- 경매 공매 표시 -->
                 <div class="auction_tag auc">
                     <p>경매</p>
                 </div>
 
                 {{-- 하트 개수 --}}
+                @if (empty($type))
                 <div class="auction_hrt">
                     <i class="ri-heart-fill"></i>
                     <p>{{ number_format($printData['favoriteCnt']) }}</p>
                 </div>
+                @endif
 
                 {{-- 특별매각조건 --}}
                 @if(in_array('특별매각조건',$printData['해시태그']))

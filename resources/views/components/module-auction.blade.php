@@ -311,23 +311,24 @@
                     </script>
 
                     <!-- list -->
+                    @if (@$data['totalCount'] > 0)
                     <div class="row mt80 auc_list_r">
-                        @if (@$data['totalCount'] > 0)
-                            @foreach ($data['items'] as $_item)
-                                @php
-                                    $printData = (new App\Http\Class\AuctionClass())->getPrintData($_item);
-                                    debug($printData);
-                                @endphp
-                                @if ($printData['gubun'] == 'a')
-                                    <x-item-auction :printData="$printData" />
-                                @else
-                                    <x-item-onbid :printData="$printData" />
-                                @endif
-                            @endforeach
+                        
+                        @foreach ($data['items'] as $_item)
+                            @php
+                                $printData = (new App\Http\Class\AuctionClass())->getPrintData($_item);
+                                debug($printData);
+                            @endphp
+                            @if ($printData['gubun'] == 'a')
+                                <x-item-auction :printData="$printData" />
+                            @else
+                                <x-item-onbid :printData="$printData" />
+                            @endif
+                        @endforeach
 
                     </div>
                     <x-pagination type="api" :data="$data" />
-                @else
+                    @else
                     <div class="nodata_serch">
                         <img src="/images/nodata.png" alt="">
                         <p class="nodata_np">해당매물이 없습니다</p>

@@ -324,6 +324,7 @@
 
 
 <!-- 경공매 -->
+@if (@$auctions['totalCount'] > 0)
 <section id="feature-property" class="feature-property bgc-f7">
     <div class="container container_w">
         <div class="tit_btn">
@@ -331,11 +332,22 @@
                 <h2><span class="mont">GYEMOIM PICK </span>오늘의 경·공매</h2>
                 <p>조회수 높은 경공매 매물을 만나보세요.</p>
             </div>
-            <a href="{{ route('page', 20) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
+            <a href="{{ route('page', 41) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-4">
+            @foreach ($auctions['items'] as $_item)
+                @php
+                    $printData = (new App\Http\Class\AuctionClass())->getPrintData($_item);
+                    debug($printData);
+                @endphp
+                @if ($printData['gubun'] == 'a')
+                    <x-item-auction type="main" :printData="$printData" />
+                @else
+                    <x-item-onbid  type="main" :printData="$printData" />
+                @endif
+            @endforeach
+            {{-- <div class="col-sm-6 col-md-6 col-lg-4">
                 <div class="feat_property home7 style4 bdrrn feat_property_w">
                     <div class="thumb">
                         <img class="img-whp" src="images/auction/auction01.png" alt="BI1.PNG">
@@ -473,12 +485,12 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         
     </div>
 </section>
-
+@endif
 
 <!-- Our Blog -->
 <section class="our-blog bgc-f7 pb100">

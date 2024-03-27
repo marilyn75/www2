@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Class\AuctionClass;
 use Illuminate\Http\Request;
 use App\Http\Class\CommonCodeClass;
 use App\Http\Class\IntraSaleClass;
@@ -28,6 +29,10 @@ class HomeController extends Controller
         $news = (new NewsClass)->getData();
         $news = $news['NEWS_DATA'];
 
-        return view('index',compact('sale_codes', 'newSales', 'localSaleCnt', 'recommendSales', 'agents', 'news'));
+        // 경공매
+        $request = new Request(['numOfRows'=>3, 'order'=>'hit']);
+        $auctions = (new AuctionClass)->getData($request);
+
+        return view('index',compact('sale_codes', 'newSales', 'localSaleCnt', 'recommendSales', 'agents', 'news', 'auctions'));
     }
 }

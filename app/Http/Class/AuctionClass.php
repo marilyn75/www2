@@ -32,7 +32,7 @@ class AuctionClass{
 
         // API로부터 데이터 가져오기
         $params = [           
-            'numOfRows' => 9,
+            'numOfRows' => empty($data['numOfRows']) ? 9:$data['numOfRows'],
             'pageNo' => @$data['page'],
             'gubun' => @$data['gubun'],
             'jibun' => @$data['jibun'],
