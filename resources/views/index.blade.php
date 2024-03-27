@@ -137,60 +137,6 @@
         </div>
         
     </div>
-
-    {{-- 매물 슬라이드 --}}
-    {{-- <div class="slsl" id="slsl">
-        <div class="slide-track">
-            @foreach ($newSales as $_data)
-            @php
-            $printData = App\Http\Class\IntraSaleClass::getPrintData($_data);
-            @endphp
-            <div class="adad">
-                <x-item-sale-intranet type='recommend' :printData="$printData" />
-            </div>
-            @endforeach
-        </div>
-    </div>
-    
-    <style>
-        .slsl{
-    width: 100vw;
-    height: 33vh;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    position: absolute;
-    display: grid;
-    place-items: center;
-}
-
-.slide-track{
-    display: flex;
-    width: min-content;
-    animation: scroll 40s linear infinite;
-}
-
-.adad{
-    height: 200px;
-    width: 380px;
-    display: contents;
-    align-items: center;
-    margin: 10px;
-    position:relative;
-    background-color: pink;
-    border-radius: 12px;
-}
-
-@keyframes scroll{
-    0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(calc(-300px * 6));
-        }
-}
-    </style> --}}
 </section>
 
 <!-- Property Cities -->
@@ -372,6 +318,163 @@
                 <img src="/images/news_ad.png" alt="">
             </a>
         </div>
+    </div>
+</section>
+
+
+<!-- 경공매 -->
+<section id="feature-property" class="feature-property bgc-f7">
+    <div class="container container_w">
+        <div class="tit_btn">
+            <div class="main-title subtit">
+                <h2><span class="mont">GYEMOIM PICK </span>오늘의 경·공매</h2>
+                <p>최고의 매물을 놓치지 마세요</p>
+            </div>
+            <a href="{{ route('page', 20) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <div class="feat_property home7 style4 bdrrn feat_property_w">
+                    <div class="thumb">
+                        <img class="img-whp" src="images/auction/auction01.png" alt="BI1.PNG">
+                        <div class="thmb_cntnt">
+                            <ul class="tag mb0">
+                                <!-- 찜하기 전 -->
+                                <li class="list-inline-item">
+                                    <button data-url="modal.login-alert" class="heart_btn modal-button">
+                                        <i class="ri-heart-3-line"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 경매 공매 표시 -->
+                        <div class="auction_tag auc">
+                            <p>경매</p>
+                        </div>
+                    </div>
+                    <div class="details details_w auc_list">
+                        <div class="auc_listw">
+                            <div class="auc_list_t">
+                                <p class="auc_num">서울동부지법 2021타경51574[1]</p>
+                                <p class="auc_dd">D-26</p>
+                            </div>
+                            <h4>서울특별시 송파구 새말로 116, 2층 202호 (문정동, 한울리움)</h4>
+                            <p class="app_vlu">3억 1700만원</p>
+                            <p class="low_vlu">892만 3000원<span>(<i
+                                        class="ri-arrow-down-line"></i>98%)</span></p>
+                        </div>
+                        <ul class="auc_hash">
+                            <li>
+                                <p>#유찰16회</p>
+                            </li>
+                            <li>
+                                <p>#재매각</p>
+                            </li>
+                            <li>
+                                <p>#선순위임자인</p>
+                            </li>
+                            <li>
+                                <p>#선순위전세권</p>
+                            </li>
+                            <li>
+                                <p>#위반건축물</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <div class="feat_property home7 style4 bdrrn feat_property_w">
+                    <div class="thumb">
+                        <img class="img-whp" src="images/auction/auction01.png" alt="BI1.PNG">
+                        <div class="thmb_cntnt">
+                            <ul class="tag mb0">
+                                <!-- 찜하기 전 -->
+                                <li class="list-inline-item">
+                                    <button data-url="modal.login-alert" class="heart_btn modal-button">
+                                        <i class="ri-heart-3-line"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 경매 공매 표시 -->
+                        <div class="auction_tag auc">
+                            <p>경매</p>
+                        </div>
+                    </div>
+                    <div class="details details_w auc_list">
+                        <div class="auc_listw">
+                            <div class="auc_list_t">
+                                <p class="auc_num">서울동부지법 2021타경51574[1]</p>
+                                <p class="auc_dd">D-26</p>
+                            </div>
+                            <h4>서울특별시 송파구 새말로 116, 2층 202호 (문정동, 한울리움)</h4>
+                            <p class="app_vlu">3억 1700만원</p>
+                            <p class="low_vlu">892만 3000원<span>(<i
+                                        class="ri-arrow-down-line"></i>98%)</span></p>
+                        </div>
+                        <ul class="auc_hash">
+                            <li>
+                                <p>#유찰16회</p>
+                            </li>
+                            <li>
+                                <p>#재매각</p>
+                            </li>
+                            <li>
+                                <p>#선순위임자인</p>
+                            </li>
+                            <li>
+                                <p>#선순위전세권</p>
+                            </li>
+                            <li>
+                                <p>#위반건축물</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4">
+                <div class="feat_property home7 style4 bdrrn feat_property_w">
+                    <div class="thumb">
+                        <img class="img-whp" src="images/auction/auction03.png" alt="BI2.PNG">
+                        <div class="thmb_cntnt">
+                            <ul class="tag mb0">
+                                <!-- 찜하기 전 -->
+                                <li class="list-inline-item">
+                                    <button data-url="modal.login-alert" class="heart_btn modal-button">
+                                        <i class="ri-heart-3-line"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 경매 공매 표시 -->
+                        <div class="auction_tag auc">
+                            <p>경매</p>
+                        </div>
+                    </div>
+                    <div class="details details_w auc_list">
+                        <div class="auc_listw">
+                            <div class="auc_list_t">
+                                <p class="auc_num">창원지법 2022타경6498[1]</p>
+                                <p class="auc_dd red_c">D-7</p>
+                            </div>
+                            <h4>경상남도 김해시 분성로 4, 110동 2층 201호 (외동,김해외동협성엘리시안)</h4>
+                            <p class="app_vlu">2억 8600만원</p>
+                            <p class="low_vlu">1억 8304원<span>(<i
+                                        class="ri-arrow-down-line"></i>36%)</span></p>
+
+                        </div>
+                        <ul class="auc_hash">
+                            <li>
+                                <p>#유찰2회</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </section>
 
