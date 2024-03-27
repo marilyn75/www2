@@ -328,7 +328,7 @@
         <div class="tit_btn">
             <div class="main-title subtit">
                 <h2><span class="mont">GYEMOIM PICK </span>오늘의 경·공매</h2>
-                <p>최고의 매물을 놓치지 마세요</p>
+                <p>조회수 높은 경공매 매물을 만나보세요.</p>
             </div>
             <a href="{{ route('page', 20) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
             </a>
