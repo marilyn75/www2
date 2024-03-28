@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\UserLeave;
 use Illuminate\Http\Request;
 use App\Models\SocialAccount;
 use App\Http\Controllers\Controller;
@@ -70,6 +72,22 @@ class SocialController extends Controller
         }
 
         if(empty($user)){
+
+            // 탈퇴 정보 확인
+            $userLeave = UserLeave::where('email', $socialUser->getEmail())
+                ->orderBy('created_at', 'desc')
+                ->first();
+            if ($userLeave) {
+                // 탈퇴한 날짜로부터 6일을 더함
+                $availableDate = Carbon::parse($userLeave->created_at)->addDays(6);
+                
+                // 현재 날짜와 비교
+                if ($availableDate->isFuture()) {
+                    $remainingDays = Carbon::now()->diffInDays($availableDate);
+                    return redirect(route('login'))->with('error_message','탈퇴한 이력이 있는 이메일입니다. ('.$remainingDays.'일 후 가입 가능)');
+                }
+            }
+            
             $user = User::create([
                 'email' => $socialUser->email,
                 'name' => $socialUser->name,

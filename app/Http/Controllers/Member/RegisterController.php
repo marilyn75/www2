@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Member;
 
-use App\Http\Class\lib\ResultClass;
-use App\Http\Class\lib\SmsClass;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\UserLeave;
 use Illuminate\Http\Request;
+use App\Http\Class\lib\SmsClass;
+use App\Http\Class\lib\ResultClass;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,7 +34,23 @@ class RegisterController extends Controller
 
             // 유효성 검사
             $this->validate($request, User::$rules['register'], ['isCert.required'=>"휴대폰 인증은 필수 입니다."]);
-            
+
+            // 탈퇴 정보 확인
+            $userLeave = UserLeave::where('email', $data['email'])
+                ->orderBy('created_at', 'desc')
+                ->first();
+            if ($userLeave) {
+                // 탈퇴한 날짜로부터 6일을 더함
+                $availableDate = Carbon::parse($userLeave->created_at)->addDays(6);
+                
+                // 현재 날짜와 비교
+                if ($availableDate->isFuture()) {
+                    $remainingDays = Carbon::now()->diffInDays($availableDate);
+                    return back()->with('error_message','탈퇴한 이력이 있는 이메일입니다. ('.$remainingDays.'일 후 가입 가능)');
+                }
+            }
+
+
             $saveData = [
                 'name' => $data['name'],
                 'email' => $data['email'],

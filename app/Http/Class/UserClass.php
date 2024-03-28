@@ -3,6 +3,7 @@
 namespace App\Http\Class;
 
 use App\Models\User;
+use App\Models\UserLeave;
 use App\Models\ChatChannel;
 use Illuminate\Http\Request;
 use App\Models\SocialAccount;
@@ -140,6 +141,27 @@ class UserClass{
 
     public function destroy(){
         $user = $this->model->first();
+
+        // 탈퇴 테이블로 이전
+        $saveData = [
+            'user_id' => $user->id,
+            'is_admin' => $user->is_admin,
+            'name' => $user->name,
+            'email' => $user->email,
+            'email_verified_at' => $user->email_verified_at,
+            'password' => $user->password,
+            'file' => $user->file,
+            'company' => $user->company,
+            'position' => $user->position,
+            'phone' => $user->phone,
+            'zip_code' => $user->zip_code,
+            'address' => $user->address,
+            'address_detail' => $user->address_detail,
+            'remember_token' => $user->remember_token,
+            'created_user_id' => auth()->user()->id,
+            'created_ip' => $_SERVER['REMOTE_ADDR'],
+        ];
+        $r = UserLeave::create($saveData);
 
         // 소셜계정 삭제
         if($user->hasSocialAccounts()){
