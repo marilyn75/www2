@@ -13,7 +13,7 @@ use App\Models\AuctionHit;
 
 class AuctionClass{
 
-    private $url, $url_show;   // 목록 api
+    private $url, $url_show, $url_favorite;   // 목록 api
     private $data;
     private $hash_keyword;
 
@@ -21,6 +21,7 @@ class AuctionClass{
     {
         $this->url = env('AUCTION_API_URL') . '/api/auction/list';
         $this->url_show = env('AUCTION_API_URL') . '/api/auction/show';
+        $this->url_favorite = env('AUCTION_API_URL') . '/api/auction/favorite';
         $this->hash_keyword = [
             '재매각', '선순위임자인', '선순위전세권', '위반건축물', '법정지상권', '별도등기', '유치권', '분묘기지권', 
             '특별매각조건', '농지취득', '예고등기', '선순위관련', '우선매수신고'
@@ -582,25 +583,29 @@ class AuctionClass{
         if(!auth()->check()){
             $result = ResultClass::fail('로그인 후 이용하세요.');
         }else{
-            if($data['flag']=="add"){
-                $response = UserAuctionFavorite::create([
-                    'user_id' => auth()->user()->id,
-                    'gbn' => $data['gbn'],
-                    'code' => $data['code'],
-                    'no' => @$data['no'],
-                ]);
-                if($response->id)   $result = ResultClass::success('관심매물로 담겼습니다.');
-                else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
-            }else{
-                $response = UserAuctionFavorite::where([
-                    'user_id' => auth()->user()->id,
-                    'gbn' => $data['gbn'],
-                    'code' => $data['code'],
-                    'no' => @$data['no'],
-                ])->delete();
-                if($response)   $result = ResultClass::success('관심매물 해제 되었습니다.');
-                else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
-            }
+
+            $r = $this->incrementFavorite($data);
+            if($r){
+                if($data['flag']=="add"){
+                    $response = UserAuctionFavorite::create([
+                        'user_id' => auth()->user()->id,
+                        'gbn' => $data['gbn'],
+                        'code' => $data['code'],
+                        'no' => @$data['no'],
+                    ]);
+                    if($response->id)   $result = ResultClass::success('관심매물로 담겼습니다.');
+                    else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
+                }else{
+                    $response = UserAuctionFavorite::where([
+                        'user_id' => auth()->user()->id,
+                        'gbn' => $data['gbn'],
+                        'code' => $data['code'],
+                        'no' => @$data['no'],
+                    ])->delete();
+                    if($response)   $result = ResultClass::success('관심매물 해제 되었습니다.');
+                    else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
+                }
+            }else            $result = ResultClass::fail('관심매물 처리 실패했습니다. 관리자에게 문의하세요.');
         }
 
         return $result;
@@ -628,5 +633,11 @@ class AuctionClass{
         AuctionHit::updateOrCreate($cond);
     
         AuctionHit::where($cond)->increment('hits', $cnt);
+    }
+
+    // 관심수 증가
+    public function incrementFavorite($data){
+        $response = Http::get($this->url_favorite, $data);   
+        return $response->json();
     }
 }
