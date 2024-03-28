@@ -50,7 +50,7 @@ class ModuleSaleIntranet extends Component
 
     public function index(){
         $request = $this->request;
-        $data = $this->cls->getListData($this->request);
+        $data = $this->cls->getListData($this->request, 30);
         // debug($data);
         // 관심매물 ids
         $result = $this->cls->getFavorites();
