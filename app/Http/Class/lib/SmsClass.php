@@ -4,18 +4,21 @@ namespace App\Http\Class\lib;
 
 use App\Models\SMS;
 use App\Models\IntraMember;
+use App\Models\MMS;
 
 // sms 클래스
 
 class SmsClass{
 
-    protected $model;
     protected $callback;
+    protected $_MAXBYTE_SMS;
+    protected $_MAXBYTE_MMS;
 
     public function __construct()
     {
-        $this->model = new SMS;
         $this->callback = '18338840';
+        $this->_MAXBYTE_SMS = 90;
+        $this->_MAXBYTE_MMS = 2000;
     }
 
     public function send($phone, $message){
@@ -23,18 +26,23 @@ class SmsClass{
 
         // 디버그모드에서는 sms 전송 안됨
         if(env('APP_DEBUG')=="debug"){
-            debug($message);
-            $result = true;
-        }else{
-            $result = $this->model->create([
-                'TR_SENDDATE' => now(), 
-                'TR_SENDSTAT' => '0', 
-                'TR_MSGTYPE' => '0', 
-                'TR_PHONE' => $phone, 
-                'TR_CALLBACK' => $this->callback, 
-                'TR_MSG' => $message
-            ]);
+            $phone = '01055395077';
         }
+
+        // if(env('APP_DEBUG')=="debug"){
+        //     debug($message);
+        //     $result = true;
+        // }else{
+            $send_mode = $this->chkSMSorMMS($message);
+        
+            if($send_mode=="SMS"){
+                $result = $this->sendSMS($phone, $message);
+            }elseif($send_mode=="MMS"){
+                $result = $this->sendMMS($phone, $message);
+            }else{
+                $result = false;
+            }
+        // }
 
         debug('send result', $result);
         // $result 값
@@ -48,6 +56,37 @@ class SmsClass{
         //           인증창에 정확히 입력하세요.
         //   """
         // "id" => 263
+        return $result;
+    }
+
+
+    // sms 전송
+    public function sendSMS($phone, $message){
+        $result = SMS::create([
+            'TR_SENDDATE' => now(), 
+            'TR_SENDSTAT' => '0', 
+            'TR_MSGTYPE' => '0', 
+            'TR_PHONE' => $phone, 
+            'TR_CALLBACK' => $this->callback, 
+            'TR_MSG' => $message
+        ]);
+
+        return $result;
+    }
+
+    // mms 전송
+    public function sendMMS($phone, $message){
+
+        $result = MMS::create([
+            'REQDATE' => now(), 
+            'STATUS' => '0', 
+            'TYPE' => '0', 
+            'PHONE' => $phone, 
+            'CALLBACK' => $this->callback, 
+            'SUBJECT' => '',
+            'MSG' => $message
+        ]);
+
         return $result;
     }
 
@@ -90,5 +129,19 @@ class SmsClass{
         }
         else
             return false;
+    }
+
+    private function str2byte($str){
+        return mb_strlen($str,"EUC-KR");
+    }
+
+    private function chkSMSorMMS($msg){
+        $result = "SMS";
+        $strlen = $this->str2byte($msg);
+
+        if($strlen > $this->_MAXBYTE_SMS)   $result = "MMS";
+        if($strlen > $this->_MAXBYTE_MMS)   $result = "ERR";
+
+        return $result;
     }
 }
