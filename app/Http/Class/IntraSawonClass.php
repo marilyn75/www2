@@ -197,7 +197,8 @@ class IntraSawonClass{
             ];
         }else{          // 경공매 문의
             $subject = $name ."님의 문의글";
-            if(!empty($request->p_code))    $subject .= " (물건번호 : ".$request->title.")";
+            if(!empty($request->title))    $subject .= " (물건번호 : ".$request->title.")";
+            
             $postData = [
                 'site_code' => 'mng',
                 'board_code' => 'auction',

@@ -186,7 +186,7 @@ class FileClass{
             
             return str_replace(base_path('public'), '', $outputPath);
         }else{
-            return "/images/noimg.jpg";
+            return str_replace(base_path('public'), '', $outputPath);
         }
 
         
