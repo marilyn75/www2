@@ -146,12 +146,12 @@ class IntraSaleClass{
         if($return['area_j']) $return['areaRate'] = round((doubleval($return['area_j']) / doubleval($return['area_b'])) * 100,2);   //전용율
 
         if($data->tradeType=="임대"){
-            $return['price'] = number_format($data->depPrice)." / ".number_format($data->monPrice);
+            $return['price'] = price_kor($data->depPrice)." / ".price_kor($data->monPrice)."만";
         }else{
             // 평당가격
             if(!empty($return['area_b'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['area_b']) * 0.3025)));
             elseif(!empty($return['landArea_py'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['landArea_org']) * 0.3025)));
-            $return['price'] = number_format($data->salePrice);
+            $return['price'] = price_kor($data->salePrice * 10000);
         }
 
         $return['imgs'] = [];

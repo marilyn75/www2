@@ -365,7 +365,7 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>융자금 :</p>
-                                        <p>{{ (empty($printData['loanPrice']))?"없음":number_format($printData['loanPrice'])."만원"; }}
+                                        <p>{{ (empty($printData['loanPrice']))?"없음":price_kor($printData['loanPrice'] * 10000)."원"; }}
                                         </p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
