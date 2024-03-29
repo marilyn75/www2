@@ -134,6 +134,10 @@ class IntraSawonClass{
             $return['photo'] = (empty($return['photo']))?"/images/sawon-placeholder.png":env('INTRANET_DOMAIN')."/_Data/Member/".$return['photo'];
 
             $return['slogan'] = $data->info->slogan;
+            $return['blog'] = $data->info->blog;
+            if (strpos($return['blog'], 'http://') !== 0 && strpos($return['blog'], 'https://') !== 0) {
+                $return['blog'] = "http://" . $return['blog'];
+            }
             $return['introduce'] = $data->info->introduce;
 
             // $sales = $data->homepageSales->paginate(5);
