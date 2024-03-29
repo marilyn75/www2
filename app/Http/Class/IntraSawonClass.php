@@ -135,7 +135,7 @@ class IntraSawonClass{
 
             $return['slogan'] = $data->info->slogan;
             $return['blog'] = $data->info->blog;
-            if (strpos($return['blog'], 'http://') !== 0 && strpos($return['blog'], 'https://') !== 0) {
+            if (!empty($return['blog']) && strpos($return['blog'], 'http://') !== 0 && strpos($return['blog'], 'https://') !== 0) {
                 $return['blog'] = "http://" . $return['blog'];
             }
             $return['introduce'] = $data->info->introduce;
