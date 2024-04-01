@@ -156,8 +156,8 @@ class IntraSaleClass{
             $return['price'] = price_kor($data->depPrice)." / ".price_kor($data->monPrice)."만";
         }else{
             // 평당가격
-            if(!empty($return['area_b'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['area_b']) * 0.3025)));
-            elseif(!empty($return['landArea_py'])) $return['price_py'] = number_format(round(doubleval($data->salePrice) / (doubleval($return['landArea_org']) * 0.3025)));
+            if(!empty($return['area_b'])) $return['price_py'] = price_kor(round(doubleval($data->salePrice) / (doubleval($return['area_b']) * 0.3025)) * 10000);
+            elseif(!empty($return['landArea_py'])) $return['price_py'] = price_kor(round(doubleval($data->salePrice) / (doubleval($return['landArea_org']) * 0.3025)) * 10000);
             $return['price'] = price_kor($data->salePrice * 10000);
         }
 
