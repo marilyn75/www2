@@ -16,7 +16,8 @@
                     <div class="tc_content agent_inf">
                         <p>{{ $data['sosok'] }}</p>
                         <h4>{{ $data['user_name'] }} {{ $data['duty'] }}</h4>
-                        <p class="">Tel. 1833-{{ $data['office_line'] }}</p>
+                        {{-- <p class="">Tel. 1833-{{ $data['office_line'] }}</p> --}}
+                        <p class="">HP. {{ $data['mb_mobile'] }}</p>
                         @if($data['blog'])<p class="blog">Blog. <a href="{{ $data['blog'] }}" target="_blank">{{ $data['blog'] }}</a></p>@endif
                         @if($data['slogan'])<p>" {{ $data['slogan'] }} " </p>@endif
                         @if($data['introduce'])<p>" {{ $data['introduce'] }} "</p>@endif
