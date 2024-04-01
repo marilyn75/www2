@@ -69,7 +69,7 @@
                                 @else
                                     @foreach ($data['images'] as $_img)
                                         <div class="swiper-slide auc-slide modal-trigger">
-                                            <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}" class="modal-button swiperImg" data-url="modal.auction_img">
+                                            <img src="{{ $_img['src'] }}" alt="{{ $_img['alt'] }}" class=" swiperImg" data-url="modal.auction_img"><!--modal-button-->
                                         </div>
                                     @endforeach
                                 @endempty
@@ -357,23 +357,23 @@
 
                     <div class="col-12 col-lg-8 auc_mob">
                         <div class="sidebar_auc_content auc_link link_mob">
-                            <a href="#">
+                            <a href="#n" onclick="caLink('RetrieveRealEstCarHvyMachineMulDetailInfo.laf');">
                                 <p><span>대법원</span>물건상세</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
-                            <a href="#">
+                            <a href="#n" onclick="caLink('RetrieveRealEstSaHjosa.laf');">
                                 <p><span>대법원</span>현황조사</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
-                            <a href="#">
+                            <a href="#n" onclick="caLink('RetrieveRealEstSaDetailInqMungunSongdalList.laf');">
                                 <p><span>대법원</span>송달내역</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
-                            <a href="#">
+                            <a href="#n" onclick="caLink('RetrieveRealEstDetailInqSaList.laf');">
                                 <p><span>대법원</span>사건내역</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
-                            <a href="#">
+                            <a href="#n" onclick="caLink('RetrieveRealEstSaDetailInqGiilList.laf');">
                                 <p><span>대법원</span>기일내역</p>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
@@ -1130,7 +1130,7 @@
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
                         <a href="#n" onclick="caLink('RetrieveRealEstSaHjosa.laf');">
-                            <p><span>대법원</span>현황조사</p>
+                            <p><span>대법원</span>현황조사</p>ㅁ
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
                         <a href="#n" onclick="caLink('RetrieveRealEstSaDetailInqMungunSongdalList.laf');">
