@@ -25,6 +25,13 @@ class IntraSaleClass{
     }
 
     public function getListData($request, $itemNum=6){
+        $previousUrl = url()->previous();
+        $previousPath = parse_url($previousUrl, PHP_URL_PATH);
+
+        // 다른 페이지 갔다오면 필터조건 초기화
+        if(env('MENU_LINK_INTRA_SALE') != $previousPath) unset($_COOKIE["filter_condition"]);
+
+        // debug($previousPath,env('MENU_LINK_INTRA_SALE'),env('MENU_LINK_INTRA_SALE') != $previousPath);
         $data = $request->all();
         if(empty($data) && !empty($_COOKIE["filter_condition"])){
             $data = json_decode($_COOKIE["filter_condition"], true);
