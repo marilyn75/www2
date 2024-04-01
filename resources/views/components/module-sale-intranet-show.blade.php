@@ -103,8 +103,8 @@ $(window).on('load', function() {
                 </div>
                 <div class="de_info_right">
                     <div class="price">
-                        <p class="de_info_pr">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}</span>만원</p>
-                        @if(!empty($printData['price_py']))<p><span class="mont">{{ $printData['price_py'] }}</span>만원 <span class="mont">(3.3㎡)</span></p>@endif
+                        <p class="de_info_pr">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}원</span></p>
+                        @if(!empty($printData['price_py']))<p><span class="mont">{{ $printData['price_py'] }}원</span> <span class="mont">(3.3㎡)</span></p>@endif
                     </div>
                 </div>
             </div>
@@ -356,7 +356,7 @@ $(window).on('load', function() {
                                 <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>매매가격 :</p>
-                                        <p>{{ $printData['price'] }}만원</p>
+                                        <p>{{ $printData['price'] }}원</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>월세현황 :</p>

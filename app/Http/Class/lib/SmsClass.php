@@ -25,14 +25,14 @@ class SmsClass{
         $phone = str_replace('-','',$phone);
 
         // 디버그모드에서는 sms 전송 안됨
-        if(env('APP_DEBUG')=="debug"){
-            $phone = '01055395077';
-        }
-
         // if(env('APP_DEBUG')=="debug"){
-        //     debug($message);
-        //     $result = true;
-        // }else{
+        //     $phone = '01055395077';
+        // }
+
+        if(env('APP_DEBUG')=="debug"){
+            debug($message);
+            $result = true;
+        }else{
             $send_mode = $this->chkSMSorMMS($message);
         
             if($send_mode=="SMS"){
@@ -42,7 +42,7 @@ class SmsClass{
             }else{
                 $result = false;
             }
-        // }
+        }
 
         debug('send result', $result);
         // $result 값

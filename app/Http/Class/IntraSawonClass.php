@@ -226,8 +226,6 @@ class IntraSawonClass{
             // POST 요청 보내기
             // $response = $client->post($apiUrl,$postData);
             // $apiUrl = "http://local.gbbinc.co.kr/Share/api.php";
-            $result = (new SmsClass)->sendRequiryNoti($postData);
-            return ResultClass::success('문의 내용이 전달 되었습니다. 담당자 확인 후 연락드리겠습니다.');
 
             $response = Http::asForm()->post($apiUrl,$postData);
 
