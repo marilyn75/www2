@@ -275,10 +275,10 @@
                         @if (@$_REQUEST['jibun'] == '') {{ __('checked="checked"') }} @endif><label
                             for="jibun_all">지분필터-전체</label>
                         <input type="radio" name="jibun" value="1" id="jibun_1"
-                        @if (@$_REQUEST['jibun'] == 1) {{ __('checked="checked"') }} @endif><label
+                        @if (@$_REQUEST['jibun'] == '1') {{ __('checked="checked"') }} @endif><label
                             for="jibun_1">지분보기</label>
                         <input type="radio" name="jibun" value="0" id="jibun_0"
-                        @if (@$_REQUEST['jibun'] == 0) {{ __('checked="checked"') }} @endif><label
+                        @if (@$_REQUEST['jibun'] == '0') {{ __('checked="checked"') }} @endif><label
                             for="jibun_0">지분제외</label>
                     </span>
                     <!-- 조회순 -->
