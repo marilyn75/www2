@@ -14,7 +14,7 @@
 @else
 <div class="col-sm-6 col-md-6 col-xl-4 pl10">
 @endif
-    <a href="{{ route('page',$page_id) }}?mode=show&idx={{ $printData['idx'] }}">
+    <a href="{{ route('page',$page_id) }}?mode=show&idx={{ $printData['idx'] }}" target="_blank">
         <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") related @endif">
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">
