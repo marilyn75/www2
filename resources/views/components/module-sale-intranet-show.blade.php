@@ -7,8 +7,8 @@ $(window).on('load', function() {
     });
 
     $('div.description').readmore({
-        moreLink: '<p class="overlay_close">더보기 <i class="ri-arrow-down-s-line"></i></p>',
-        lessLink: '<p class="overlay_close">접기 <i class="ri-arrow-up-s-line"></i></p>',
+        moreLink: '<p class="overlay_close" style="cursor:pointer">더보기 <i class="ri-arrow-down-s-line"></i></p>',
+        lessLink: '<p class="overlay_close" style="cursor:pointer">접기 <i class="ri-arrow-up-s-line"></i></p>',
         collapsedHeight: 110
     });  
 });
