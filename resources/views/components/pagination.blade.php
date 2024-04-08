@@ -17,7 +17,7 @@
     $prevPage = intval($data->currentPage()) - $length;
     if($prevPage <= 0) $prevPage = 1;
     $nextPage = intval($data->currentPage()) + $length;
-    if($nextPage > $lastPage)   $nextPage = $lastPage;
+    if($nextPage > $data->lastPage())   $nextPage = $data->lastPage();
 @endphp
 <div class="col-lg-12 mt20">
     <div class="mbp_pagination">
