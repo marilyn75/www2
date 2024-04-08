@@ -1127,7 +1127,7 @@
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
                         <a href="#n" onclick="caLink('RetrieveRealEstSaHjosa.laf');">
-                            <p><span>대법원</span>현황조사</p>ㅁ
+                            <p><span>대법원</span>현황조사</p>
                             <i class="ri-arrow-right-s-line"></i>
                         </a>
                         <a href="#n" onclick="caLink('RetrieveRealEstSaDetailInqMungunSongdalList.laf');">

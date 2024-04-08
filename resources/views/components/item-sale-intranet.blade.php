@@ -57,7 +57,7 @@
             </div>
             <div class="details details_w">
                 <div class="tc_content tc_content_w">
-                    <h4>{{ $printData['title'] }} </h4>
+                    <h4 data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $printData['title'] }}">{{ $printData['title'] }} </h4>
                     <p class="text-inf text_loc"><i class="ri-map-pin-2-fill"></i>{{ $printData['address'] }}</p>
                     @if(!empty($printData['area_b']))
                     <div class="text-inf-w">
