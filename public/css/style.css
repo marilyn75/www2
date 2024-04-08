@@ -16845,6 +16845,8 @@ table.dataTable tbody tr { background-color: #fff!important; }
 
 .hashtag_w { display: flex; gap: 10px; margin-bottom: 20px; }
 .hashtag { font-weight: 500; font-size: 14px !important; border-radius: 3px; padding: 6px 14px; background: #fff; border: 1px solid #385f8d; color: #385f8d !important; }
+.listing_single_description .card.card-body { overflow: hidden; }
+
 
 
 /* error page */
