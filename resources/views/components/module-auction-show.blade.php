@@ -9,22 +9,19 @@
             moreLink: '<button class="ac_more_btn">더보기</button>',
             lessLink: '<button class="ac_more_btn">닫기</button>'
         });       
-    });
-    $(document).ready(function(){
+
         $('ul.sale_lst').readmore({
             moreLink: '<button class="ac_more_btn">더보기</button>',
             lessLink: '<button class="ac_more_btn">닫기</button>',
             collapsedHeight: 140
         });       
-    });
-    $(document).ready(function(){
+
         $('ul.no_blt').readmore({
             moreLink: '<button class="ac_more_btn">더보기</button>',
             lessLink: '<button class="ac_more_btn">닫기</button>',
             collapsedHeight: 120
         });       
-    });
-    $(document).ready(function(){
+
         $('div.build_table_w').readmore({
             moreLink: '<button class="ac_more_btn">더보기</button>',
             lessLink: '<button class="ac_more_btn">닫기</button>',

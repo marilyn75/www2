@@ -5,6 +5,12 @@ $(window).on('load', function() {
         var imageUrl = $(".single_product_grid .img-fluid").eq(index + 2).attr('src');
         $(this).find('span').css('background-image', 'url(' + imageUrl + ')');
     });
+
+    $('div.description').readmore({
+        moreLink: '<p class="overlay_close">더보기 <i class="ri-arrow-down-s-line"></i></p>',
+        lessLink: '<p class="overlay_close">접기 <i class="ri-arrow-up-s-line"></i></p>',
+        collapsedHeight: 110
+    });  
 });
 </script>
 <script>
@@ -44,6 +50,7 @@ $(window).on('load', function() {
             $(this).removeClass('py');
         }
     });
+    
 </script>
 <div class="col-lg-8">
 
@@ -157,7 +164,12 @@ $(window).on('load', function() {
                             <div class="listing_single_description description_w">
                                 <h4 class="mb20">상세내용</h4>
                             
-                                <p class="mb10">
+                                <div class="description card card-body">
+                                    @foreach ($printData['description_arr'] as $_line)
+                                    <p>{{ $_line }}</p>                                        
+                                    @endforeach
+                                </div>
+                                {{-- <p class="mb10">
                                     {!! $printData['description_1'] !!}
                                 </p>
                             
@@ -171,10 +183,9 @@ $(window).on('load', function() {
                                 </div>
                             
                                 <p class="overlay_close">
-                                    <a class="text-thm fz14 text-thm_w" data-toggle="collapse" href="#collapseExample"
-                                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                                   
                                         더보기 <i class="ri-arrow-down-s-line"></i>
-                                    </a>
+           
                                 </p>
                             
                                 <script>
@@ -191,7 +202,7 @@ $(window).on('load', function() {
                                         });
                                     });
                                 </script>
-                                @endif
+                                @endif --}}
                             </div>
                             
                         </div>

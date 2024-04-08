@@ -220,18 +220,18 @@ if (!function_exists('price_kor')) {
 
         $eok = floor($num / 100000000);
         if ($eok > 0) {
-            $result .= $eok . '억 ';
+            $result .= number_format($eok) . '억 ';
             $num %= 100000000;
         }
 
         $man = floor($num / 10000);
         if ($man > 0) {
-            $result .= $man . '만 ';
+            $result .= number_format($man) . '만 ';
             $num %= 10000;
         }
 
         if ($num > 0) {
-            $result .= $num;
+            $result .= number_format($num);
         }
 
         return trim($result);
