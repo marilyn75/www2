@@ -214,9 +214,14 @@ $(window).on('load', function() {
                                 {{-- 주거, 분양상가 --}}
                             @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
                                 <ul class="list-inline-item detail_list row">
-                                    <li class="col-md-12 col-lg-12 col-xl-12 pl-0 pr-0">
+                                    {{-- <li class="col-md-12 col-lg-12 col-xl-12 pl-0 pr-0"> --}}
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>매물유형 :</p>
                                         <p>{{ $printData['category'] }}</p>
+                                    </li>
+                                    <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
+                                        <p>건물용도 :</p>
+                                        <p>{{ printEmpty($printData['mainPurpsCdNm']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>공급면적 :</p>
