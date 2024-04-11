@@ -343,7 +343,7 @@ $(window).on('load', function() {
                                     @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>해당층@if(!empty($printData['totFloor'])){{ __('/전체층') }}@endif :</p>
-                                        <p>{{ printEmpty($printData['currFloor']) }} @if(!empty($printData['totFloor'])){{ __('/') }}@endif {{ $printData['totFloor'] }}</p>
+                                        <p>{{ printEmpty($printData['currFloor']) }} @if(!empty($printData['totFloor'])){{ __('/') }}@endif {{ $printData['totFloor'] .'층' }}</p>
                                     </li>
                                     @endif
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
