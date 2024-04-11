@@ -221,7 +221,8 @@ $(window).on('load', function() {
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>건물용도 :</p>
-                                        <p>{{ printEmpty($printData['mainPurpsCdNm']) }}</p>
+                                        {{-- <p>{{ printEmpty($printData['mainPurpsCdNm']) }}</p> --}}
+                                        <p>{{ printEmpty($printData['purps']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>공급면적 :</p>
