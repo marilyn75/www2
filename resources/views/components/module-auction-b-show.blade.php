@@ -77,8 +77,18 @@
                                 <h3 class="auc_pri_n">{{ price_kor($data['감정평가금액']) }}원</h3>
                             </li>
                             <li>
-                                <p class="auc_pri_tit">최저가</p>
-                                <h3 class="auc_pri_n">{{ price_kor($data['최저가']) }}원</h3>
+                                <p class="auc_pri_tit">
+                                    {{ $data['진행상태']=="낙찰" ? __('낙찰가') : __('최저가') }}
+                                    @if($data['할인율'] > 0)
+                                    <span>
+                                        {{ $data['할인율'] }}%
+                                        <i class="ri-arrow-down-line"></i>
+                                    </span>
+                                    @endif
+                                </p>
+                                <h3 class="auc_pri_n">
+                                    {{ $data['진행상태']=="낙찰" ? price_kor($data['낙찰가']) : price_kor($data['최저가']) }}원
+                                </h3>
                             </li>
                             {{-- <li>
                                 <p class="auc_pri_tit">실거래 매매가</p>

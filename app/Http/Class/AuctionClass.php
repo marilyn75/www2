@@ -402,6 +402,9 @@ class AuctionClass{
 
         $data['지번주소'] = $data['물건세부정보']['지번주소'];
 
+        $data['감정가'] = $data['감정평가금액'];
+        $data['할인율'] = round((intval($data['감정가']) - intval($data['최저가'])) / intval($data['감정가']) * 100);
+
         // 사진
         if(!empty($data['files']['사진'])){
             foreach($data['files']['사진'] as $_img){
@@ -495,6 +498,7 @@ class AuctionClass{
         $data['해시태그'] = (empty($hashtag))?"":"#".implode(" #",$hashtag);
 
         $data['입찰이력목록'] = [];
+        $enddate = intval(str_replace(['-', ' ', ':'],'',$data['입찰종료일시']));
         $i = 0;
         do{
             if(empty($data['입찰이력'][$i])) break;
@@ -514,11 +518,18 @@ class AuctionClass{
             }elseif(strpos($_row['입찰결과'],"매각")!==false){
                 $_row['class'] = "sale";
                 $_row['입찰결과']="매각";
+            }elseif(strpos($_row['입찰결과'],"낙찰")!==false){
+                $_row['class'] = "sale";
+                $_row['입찰결과']="낙찰";
             }
             $data['입찰이력목록'][] = $_row;
 
+            if($_row['class'] == "sale") break;
+            if($eDate == $enddate) break;
+            
             $i++;
-        }while($sDate <= intval(date("YmdHi")) && $eDate <= intval(date("YmdHi")));
+        // }while($sDate <= intval(date("YmdHi")) && $eDate <= intval(date("YmdHi")));
+        }while(1);
 
         // foreach($data['입찰이력'] as $_row){
         //     $sDate = intval(str_replace(['-', ' ', ':'],'',$_row['입찰시작일시']));
