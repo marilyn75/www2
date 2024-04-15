@@ -17,7 +17,11 @@
                         <p>{{ $data['sosok'] }}</p>
                         <h4>{{ $data['user_name'] }} {{ $data['duty'] }}</h4>
                         {{-- <p class="">Tel. 1833-{{ $data['office_line'] }}</p> --}}
-                        @if(!empty($data['mb_mobile']))<p class="">HP. {{ $data['mb_mobile'] }}</p>@endif
+                        @if(!empty($data['mb_mobile']) && $data['sosok']=="소속공인중개사")
+                        <p class="">HP.<a href="tel:{{ $data['mb_mobile'] }}"> {{ $data['mb_mobile'] }}</a></p>
+                        @else
+                        <p class="">Tel. <a href="tel:1833-8840">1833-8840</a></p>
+                        @endif
                         @if(!empty($data['blog']))<p class="blog">Blog. <a href="{{ $data['blog'] }}" target="_blank">{{ $data['blog'] }}</a></p>@endif
                         @if(!empty($data['slogan']))<p>" {{ $data['slogan'] }} " </p>@endif
                         @if(!empty($data['introduce']))<p>" {{ $data['introduce'] }} "</p>@endif
@@ -76,7 +80,7 @@
                                         @endif
                                         <div class="enter_list">
                                             <p class="text-inf"><i class="ri-map-pin-2-line"></i>{{ $_sale['address'] }}</p>
-                                            <p class="text-thm price_w">{{ $_sale['tradeType'] }} <span class="mont">{{ $_sale['price'] }}</span> 만원</p>
+                                            <p class="text-thm price_w">{{ $_sale['tradeType'] }} <span class="mont">{{ $_sale['price'] }}원</span></p>
                                         </div>
                                     </div>
                                 </div>
