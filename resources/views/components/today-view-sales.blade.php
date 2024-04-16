@@ -18,7 +18,7 @@
         <div class="media-body today_inf">
             <h5 class="mt-0 mb-0">{{ $sale['category'] }}</h5>
             <div class="today_loc">{{ $sale['address'] }}</div>
-            <a href="#">{{ $sale['tradeType'] }} <span class="mont">{{ $sale['price'] }}</span> 만원</a>
+            <a href="#">{{ $sale['tradeType'] }} <span class="mont">{{ $sale['price'] }}원</span></a>
         </div>
     </div>
     @endforeach

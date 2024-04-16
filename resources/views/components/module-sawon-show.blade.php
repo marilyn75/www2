@@ -18,7 +18,7 @@
                         <h4>{{ $data['user_name'] }} {{ $data['duty'] }}</h4>
                         {{-- <p class="">Tel. 1833-{{ $data['office_line'] }}</p> --}}
                         @if(!empty($data['mb_mobile']) && $data['sosok']=="소속공인중개사")
-                        <p class="">HP.<a href="tel:{{ $data['mb_mobile'] }}"> {{ $data['mb_mobile'] }}</a></p>
+                        <p class="">HP. <a href="tel:{{ $data['mb_mobile'] }}">{{ $data['mb_mobile'] }}</a></p>
                         @else
                         <p class="">Tel. <a href="tel:1833-8840">1833-8840</a></p>
                         @endif
