@@ -8,14 +8,87 @@
             <div class="container_w">
                 {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
                 @if (env('APP_ENV')=="local")
+                <style>
+                    .sel {color:red;}
+                </style>
+                <script>
+                    $(document).ready(function(){
+                        setGu();
+                    });
+
+                    function getListAddr(pnu){
+                        var data;
+                        $.ajax({
+                            type: 'post',
+                            url : "{{ env('AUCTION_API_URL').__('/api/listLocation/') }}"+pnu,
+                            async:false,
+                            dataType: 'json', 
+                            success: function(r){
+                                //작업이 성공적으로 발생했을 경우
+                                data = r;
+                            },
+                            error:function(e){  
+                                //에러가 났을 경우 실행시킬 코드
+                                console.log(e);
+                            }
+                        });
+
+                        return data;
+                    }
+
+                    function setGu(){
+                        var data = getListAddr('26');
+                        $ul = $("<ul></ul>");
+
+                        data.forEach(function(item){
+                            // console.log(item);
+                            if(item.sgg_cd=="000")
+                                $ul.append('<li><button type="button" class="btn sel" code="'+item.sido_cd+item.sgg_cd+'">'+item.locallow_nm+' 전체</button></li>');
+                            else
+                                $ul.append('<li><button type="button" class="btn" code="'+item.sido_cd+item.sgg_cd+'">'+item.locallow_nm+'</button></li>');
+                        });
+
+                        $('#ftAddr div').eq(0).html($ul);
+                    }
+
+                    function setDong(pnu){
+                        var data = getListAddr(pnu);
+                        $ul = $("<ul></ul>");
+
+                        data.forEach(function(item){
+                            // console.log(item);
+                            if(item.umd_cd=="000")
+                                $ul.append('<li><button type="button" class="btn" code="'+item.locatjumin_cd+'">'+item.locallow_nm+' 전체</button></li>');
+                            else
+                                $ul.append('<li><button type="button" class="btn" code="'+item.locatjumin_cd+'">'+item.locallow_nm+'</button></li>');
+                        });
+                        $('#ftAddr div').eq(1).html($ul);
+                    }
+
+                    // 구 선택
+                    $(document).on('click', '#ftAddr div:eq(0) li button', function(){
+                        $(this).closest('ul').find('button').removeClass('sel');
+                        $(this).addClass('sel');
+                        var pnu = $(this).attr('code');
+
+                        setDong(pnu);
+                    });
+
+                    // 동 선택
+                    $(document).on('click', '#ftAddr div:eq(1) li button', function(){
+                        $(this).closest('ul').find('button').removeClass('sel');
+                        $(this).addClass('sel');
+
+                    });
+                </script>
                 <div class="col-md-12 pl0 pr0">
                     <div id="exTab1">
                         <ul class="nav nav-pills">
                             <li class="active">
-                                <a href="#1a" data-toggle="tab"><img src="/images/auction/use.png" alt="">용도</a>
+                                <a href="#1a" data-toggle="tab"><img src="/images/auction/fail.png" alt="">지역</a>
                             </li>
-                            <li><a href="#2a" data-toggle="tab"><img src="/images/auction/fail.png"
-                                        alt="">유찰횟수</a>
+                            <li><a href="#2a" data-toggle="tab"><img src="/images/auction/use.png"
+                                        alt="">용도</a>
                             </li>
                             <li><a href="#3a" data-toggle="tab"><img src="/images/auction/price.png"
                                         alt="">감정가/최저가</a>
@@ -26,7 +99,22 @@
                         </ul>
                         <div class="tab-content clearfix">
                             <div class="tab-pane active" id="1a">
-                                <div class="auc_menu-box" id="usage-box">
+                                <div class="auc_menu-box" id="ftAddr">
+                                    <div class="red-box overflow-auto" style="height:200px;">
+                                        <ul>
+
+                                        </ul>
+                                    </div>
+                                    <div class="sub-box overflow-auto" style="height:200px;">
+                                        <ul>
+                                            <li>전체</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="2a">
+                                <div class="auc_menu-box" id="ftPurpose">
+
                                     <div class="red-box">
                                         <ul>
                                             <li><button type="button" class="btn">전체</button></li>
@@ -40,26 +128,7 @@
                                             <li>전체</li>
                                         </ul>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="2a">
-                                <div class="auc_menu-box" id="usage-box">
-                                    <div class="red-box">
-                                        <ul>
-                                            <li>전체</li>
-                                            <li>신건(유찰0회)</li>
-                                            <li>유찰1회</li>
-                                            <li>유찰2회</li>
-                                            <li>유찰3회</li>
-                                            <li>유찰4회</li>
-                                            <li>유찰5회~</li>
-                                        </ul>
-                                    </div>
-                                    <div class="sub-box">
-                                        <ul>
-                                            <li>전체</li>
-                                        </ul>
-                                    </div>
+ 
                                 </div>
                             </div>
                             <div class="tab-pane" id="3a">
