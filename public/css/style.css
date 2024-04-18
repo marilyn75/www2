@@ -18749,6 +18749,11 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 
 
   /* new filter */
+  .n_filt_top { 
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+   }
   .n_filter_w { display: flex; }
   .n_filter_area { width: 28%; }
   .n_filter_use { width: 28%; }
@@ -18775,7 +18780,6 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
     height: 295px;
   }
   .n_filter_subbox ul li { font-size: 16px; }
-
   .n_filt_bt_wrap {
     justify-content: flex-end;
   }
@@ -18786,6 +18790,13 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   .n_filt_bt_wrap .search_option_button button { 
     padding: 8px 30px;
    }
+
+  .n_search { width: 50%; gap: 10px; }
+  .n_search .form-control { height: 45px; }
+
+
+
+
 
 
 

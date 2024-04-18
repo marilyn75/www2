@@ -321,6 +321,23 @@
 
                     {{-- new filter --}}
                     <div class="col-md-12 pl0 pr0 mt50">
+                        <div class="n_filt_top">
+                            <div class="input-group mb-3 n_search">
+                                <input type="text" class="form-control" placeholder="사건번호 검색" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                {{-- <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button> --}}
+                                <div class="input_bx">
+                                    box
+                                </div>
+                            </div>
+                            <li class="filt_li filt_bt_wrap n_filt_bt_wrap">
+                                <div class="search_option_button">
+                                    <button type="submit" class="btn btn-block btn-thm btn-thm_w">초기화</button>
+                                </div>
+                                <div class="search_option_button">
+                                    <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
+                                </div>
+                            </li>
+                        </div>
                         <div class="n_filter_w">
                             {{-- 지역 --}}
                             <div class= "n_filter_area">
@@ -546,15 +563,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <li class="filt_li filt_bt_wrap mt20 n_filt_bt_wrap">
-                            <div class="search_option_button">
-                                <button type="submit" class="btn btn-block btn-thm btn-thm_w">초기화</button>
-                            </div>
-                            <div class="search_option_button">
-                                <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
-                            </div>
-                        </li>
                     </div>
 
 
