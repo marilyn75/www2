@@ -353,10 +353,17 @@
                                 </div>
                                 <div class="n_filter_sub">
                                     <div class="n_filter_subbox">
-                                        <p>전체</p>
+                                        <ul>
+                                            <li>전체</li>
+                                            <li>주거용 건물</li>
+                                            <li>상업용 건물</li>
+                                            <li>토지</li>
+                                        </ul>
                                     </div>
                                     <div class="n_filter_subbox">
-                                        <p>주거용 전체</p>
+                                        <ul>
+                                            <li>주거용 전체</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
