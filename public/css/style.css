@@ -18748,10 +18748,44 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 
 
 
+  /* new filter */
+  .n_filter_w { display: flex; }
+  .n_filter_area { width: 28%; }
+  .n_filter_use { width: 28%; }
+  .n_filter_price { width: 25%; }
+  .n_filter_status { width: 19%; }
+  .n_filter_t{
+    display: flex;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .n_filter_t p { margin: 0; font-size: 16px; }
+  .n_filter_sub { 
+    display: flex;
+  }
+  .n_filter_subbox{
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    width: 100%;
+    padding: 10px;
+    border-top: none;
+    height: 295px;
+  }
+  .n_filter_subbox ul li { font-size: 16px; }
 
-
-
-
+  .n_filt_bt_wrap {
+    justify-content: flex-end;
+  }
+  .n_filt_bt_wrap .search_option_button {
+    padding: 0;
+    width: auto;
+  }
+  .n_filt_bt_wrap .search_option_button button { 
+    padding: 8px 30px;
+   }
 
 
 
