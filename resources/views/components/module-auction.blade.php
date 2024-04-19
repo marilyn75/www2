@@ -323,21 +323,81 @@
                     <div class="col-md-12 pl0 pr0 mt50">
                         <div class="n_filt_top">
                             <div class="input-group mb-3 n_search">
-                                <input type="text" class="form-control" placeholder="사건번호 검색" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                {{-- <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button> --}}
-                                <div class="input_bx">
-                                    box
+                                <input type="text" class="form-control" id="searchInput" placeholder="사건번호 검색" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn" type="button" id="button-addon2">검색</button>
+                                
+                                {{-- 최근검색기록 & 2023검색결과 --}}
+                                <div class="input_bx" id="box">
+                                    <div class="input_bx_top">
+                                        <h3>2023검색결과</h3>
+                                        <button class="btn">검색기록 지우기</button>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="n_auc_tit">
+                                                <div class="auc_bdg auc_b">경매</div>
+                                                <h2>2023타경2023[2]</h2>
+                                            </div>
+                                            <p class="n_auc_loc">부산시 연제구 연제동 123</p>
+                                        </li>
+                                        <li>
+                                            <div class="n_auc_tit">
+                                                <div class="auc_bdg pub_b">공매</div>
+                                                <h2>2023-00253-001</h2>
+                                            </div>
+                                            <p class="n_auc_loc">부산시 사하구 하단동 1176</p>
+                                        </li>
+                                    </ul>
                                 </div>
+
+                                
+                                {{-- 최근 검색기록 없는 경우 --}}
+                                {{-- <div class="input_bx" id="box">
+                                    <div class="input_bx_top">
+                                        <h3>최근 검색기록</h3>
+                                        <button class="btn">검색기록 지우기</button>
+                                    </div>
+                                    <p>최근 검색 기록이 없습니다.</p>
+                                </div> --}}
+                            
+                                {{-- 검색결과 없는경우 --}}
+                                {{-- <div class="input_bx" id="box">
+                                    <div class="input_bx_top">
+                                        <h3>202333검색결과</h3>
+                                        <button class="btn">검색기록 지우기</button>
+                                    </div>
+                                    <p>검색결과가 없습니다.</p>
+                                </div> --}}
+                            
                             </div>
-                            <li class="filt_li filt_bt_wrap n_filt_bt_wrap">
-                                <div class="search_option_button">
-                                    <button type="submit" class="btn btn-block btn-thm btn-thm_w">초기화</button>
-                                </div>
-                                <div class="search_option_button">
-                                    <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
-                                </div>
-                            </li>
                         </div>
+                        
+                        <script>
+                            // input 클릭 시 box 보이기
+                            document.getElementById('searchInput').addEventListener('click', function() {
+                                document.getElementById('box').style.display = 'block';
+                            });
+                        
+                            // document 클릭 시 box 숨기기
+                            document.addEventListener('click', function(event) {
+                                // 클릭된 요소가 input 또는 box인 경우 무시
+                                if (!event.target.closest('.n_search') && !event.target.closest('#box')) {
+                                    document.getElementById('box').style.display = 'none';
+                                }
+                            });
+                        
+                            // 초기화 버튼 클릭 시 box 숨기고 input 비우기
+                            document.getElementById('resetButton').addEventListener('click', function() {
+                                document.getElementById('box').style.display = 'none';
+                                document.getElementById('searchInput').value = '';
+                            });
+                        
+                            // 검색 버튼 클릭 시 여기에 검색 기능 추가
+                            document.getElementById('searchButton').addEventListener('click', function() {
+                                // 검색 기능 추가
+                            });
+                        </script>
+                        
                         <div class="n_filter_w">
                             {{-- 지역 --}}
                             <div class= "n_filter_area">
@@ -563,6 +623,15 @@
                                 </div>
                             </div>
                         </div>
+
+                        <li class="filt_li filt_bt_wrap n_filt_bt_wrap mt20">
+                            <div class="search_option_button">
+                                <button type="button" id="resetButton" class="btn btn-block btn-thm btn-thm_w">초기화</button>
+                            </div>
+                            <div class="search_option_button">
+                                <button type="button" id="searchButton" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
+                            </div>
+                        </li>
                     </div>
 
 
