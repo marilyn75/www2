@@ -58,12 +58,12 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#item2-tab">최근 본 매물</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#item3-tab">관심 경공매</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#item4-tab">최근 본 경공매</a>
-                    </li>
+                    </li> --}}
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content" id="myTabContent2">
@@ -101,7 +101,7 @@
                         </div>
                         @endif
                     </div>
-
+{{-- 
                     <div id="item3-tab" class=" pb100 tab-pane nolist fade">
                         @if ($data['todayViewSales']->isSuccess())
                         <div class="row">
@@ -136,7 +136,7 @@
                             <a class="btn btn-thm btn-thm_w" href="{{ env('MENU_LINK_AUCTION') }}">경매 보러가기</a>
                         </div>
                         @endif
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

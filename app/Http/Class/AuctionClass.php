@@ -2,12 +2,13 @@
 
 namespace App\Http\Class;
 
+use App\Models\AuctionHit;
 use Illuminate\Http\Request;
+use App\Models\IntraSaleHomepage;
 use App\Http\Class\lib\ResultClass;
 use App\Models\UserAuctionFavorite;
 use Illuminate\Support\Facades\Http;
 use App\Http\Class\lib\KakaoApiClass;
-use App\Models\AuctionHit;
 
 // 경매 클래스
 
@@ -670,12 +671,13 @@ class AuctionClass{
         if(empty($_COOKIE['viewed_auction'])){
             return ResultClass::fail('최근 본 경공매 물건이 없습니다.');
         }else{
-            dd($_COOKIE['viewed_auction']);
+            //dd($_COOKIE['viewed_auction']);
             $arrIdx = json_decode($_COOKIE['viewed_auction'],true);
 
             // $data = IntraSaleHomepage::whereIn('idx', $arrIdx)
             //     ->orderByRaw("FIELD(idx, " . implode(',', $arrIdx) . ")")   // 쿠키값 순서대로
             //     ->get();
+            $data = null;
 
             return ResultClass::success('',$data);
         }
