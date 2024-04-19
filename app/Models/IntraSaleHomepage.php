@@ -20,6 +20,6 @@ class IntraSaleHomepage extends Model
     }
 
     public function files(){
-        return $this->hasMany(IntraModuleFile::class, 'parentIDX')->where('file_code','homepage.files');
+        return $this->hasMany(IntraModuleFile::class, 'parentIDX')->where('file_code','homepage.files')->orderBy('num','asc');
     }
 }

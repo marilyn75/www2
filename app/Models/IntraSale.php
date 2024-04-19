@@ -18,7 +18,7 @@ class IntraSale extends Model
     const DELETED_AT = 'del_date';
 
     public function files(){
-        return $this->hasMany(IntraModuleFile::class, 'parentIDX')->where('file_code','SaleNew.files');
+        return $this->hasMany(IntraModuleFile::class, 'parentIDX')->where('file_code','SaleNew.files')->orderBy('num','asc');
     }
 
     public function lands(){
