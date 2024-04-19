@@ -18805,13 +18805,13 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   .n_search .btn { position: absolute; top: 8%; right: 0; border: none; z-index: 999; }
   .n_search .form-control { height: 45px; }
   .n_auc_tit { display: flex; gap: 10px; align-items: center; }
-  .n_auc_tit h2 { font-size: 18px; color: #000; font-weight: 500; margin: 0; }
+  .n_auc_tit h2 { font-size: 16px; color: #000; font-weight: 500; margin: 0; }
   .auc_b{ padding: 4px 15px; background: #D3E1F2; border-color: #385f8d; color: #385f8d; }
   .pub_b{ padding: 4px 15px; background: #E1F3DF; border-color: #3F8D38; color: #3F8D38; }
   .n_auc_loc { margin: 0 !important; font-size: 16px; color: #000; margin-top: 5px !important; }
   .n_search ul li { padding: 10px 0; }
-  .input_bx_top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;; }
-   .input_bx_top h3 { margin: 0; font-size: 20px; color: #000; font-weight: 500; }
+  .input_bx_top { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
+   .input_bx_top h3 { margin: 0; font-size: 18px; color: #000; font-weight: 500; }
    .input_bx_top .btn { position: inherit; padding: 0; font-size: 14px; color: #385f8d; }
 
 
