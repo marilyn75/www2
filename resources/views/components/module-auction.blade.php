@@ -345,8 +345,8 @@
                                     <img src="/images/auction/fail.png" alt="">
                                     <p>지역</p>
                                 </div>
-                                <div class="n_filter_sub">
-                                    <div class="n_filter_subbox">
+                                <div class="n_filter_sub" id="ftAddr">
+                                    <div class="n_filter_subbox overflow-auto">
                                         <ul>
                                             <li>부산 전체</li>
                                             <li>중구</li>
@@ -354,7 +354,7 @@
                                             <li>동구</li>
                                         </ul>
                                     </div>
-                                    <div class="n_filter_subbox">
+                                    <div class="n_filter_subbox overflow-auto">
                                         <ul>
                                             <li>전체</li>
                                         </ul>
