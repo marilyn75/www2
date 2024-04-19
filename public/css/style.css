@@ -18787,7 +18787,7 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
     width: 100%;
     padding: 10px;
     border-top: none;
-    height: 295px;
+    height: 260px;
   }
   .n_filter_subbox ul li { font-size: 16px; }
   .n_filt_bt_wrap {
@@ -18813,8 +18813,11 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
   .input_bx_top { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
    .input_bx_top h3 { margin: 0; font-size: 18px; color: #000; font-weight: 500; }
    .input_bx_top .btn { position: inherit; padding: 0; font-size: 14px; color: #385f8d; }
-
-
+  .n_range .form_control_container input { 
+    background: none;
+    height: 38px;;
+   }
+   .n_range .form_control { margin-bottom: 15px; }
 
 
 @media (max-width:640px) {

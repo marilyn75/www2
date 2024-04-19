@@ -457,7 +457,7 @@
                                     <ul>
                                         <li class="filt_li">
                                             <label for="">최저가</label>
-                                            <div class="range_container">
+                                            <div class="range_container n_range">
                                                 <div class="form_control">
                                                     <!-- min -->
                                                     <div class="form_control_container">
@@ -490,7 +490,7 @@
                                     <ul>
                                         <li class="filt_li">
                                             <label for="">감정가</label>
-                                            <div class="range_container">
+                                            <div class="range_container n_range">
                                                 <div class="form_control">
                                                     <!-- min -->
                                                     <div class="form_control_container">
