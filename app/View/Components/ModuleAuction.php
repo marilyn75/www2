@@ -73,6 +73,9 @@ class ModuleAuction extends Component
         // 조회수 증가
         $this->cls->incrementHits($data);
 
+        // 오늘 본 경공매 키 쿠키저장
+        $this->cls->todayViewSaleSetCookie($this->request->all());
+
         return view($skin, compact('data'));
     }
 

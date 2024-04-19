@@ -651,4 +651,33 @@ class AuctionClass{
         $response = Http::get($this->url_favorite, $data);   
         return $response->json();
     }
+
+    // 오늘 본 경공매 쿠키 저장
+    public function todayViewSaleSetCookie($arrIdx){
+        // 현재 쿠키 값 가져오기
+        $existingViewedAuction = (empty($_COOKIE['viewed_auction']))?[]:json_decode($_COOKIE['viewed_auction'], true);
+        debug($existingViewedAuction);
+        if(!in_array($arrIdx, $existingViewedAuction)){
+            // 새로운 매물 키를 배열에 추가 (맨 앞으로)
+            array_unshift($existingViewedAuction, $arrIdx);
+
+            // 배열을 JSON으로 다시 인코딩하고 쿠키 설정
+            setcookie("viewed_auction", json_encode($existingViewedAuction), time()+3600, '/');
+        }
+    }
+
+    public function getTodayViewAuction(){
+        if(empty($_COOKIE['viewed_auction'])){
+            return ResultClass::fail('최근 본 경공매 물건이 없습니다.');
+        }else{
+            dd($_COOKIE['viewed_auction']);
+            $arrIdx = json_decode($_COOKIE['viewed_auction'],true);
+
+            // $data = IntraSaleHomepage::whereIn('idx', $arrIdx)
+            //     ->orderByRaw("FIELD(idx, " . implode(',', $arrIdx) . ")")   // 쿠키값 순서대로
+            //     ->get();
+
+            return ResultClass::success('',$data);
+        }
+    }
 }

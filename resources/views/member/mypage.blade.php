@@ -78,7 +78,7 @@
                         @else
                         <div class="nolist">
                             <p>등록된 관심매물이 없습니다.</p>
-                            <a class="btn btn-thm btn-thm_w" href="{{ route('page', 20) }}">매물 보러가기</a>
+                            <a class="btn btn-thm btn-thm_w" href="{{ env('MENU_LINK_INTRA_SALE') }}">매물 보러가기</a>
                         </div>
                         @endif
                     </div>
@@ -97,7 +97,43 @@
                         @else
                         <div class="nolist">
                             <p>{{ $data['todayViewSales']->getMessage() }}</p>
-                            <a class="btn btn-thm btn-thm_w" href="{{ route('page', 20) }}">매물 보러가기</a>
+                            <a class="btn btn-thm btn-thm_w" href="{{ env('MENU_LINK_INTRA_SALE') }}">매물 보러가기</a>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div id="item3-tab" class=" pb100 tab-pane nolist fade">
+                        @if ($data['todayViewSales']->isSuccess())
+                        <div class="row">
+                            @foreach ($data['todayViewSales']->getData() as $printData)
+                            @php
+                                $printData = App\Http\Class\IntraSaleClass::getPrintData($printData);
+                            @endphp
+                                <x-item-sale-intranet type='' :printData="$printData" />
+                            @endforeach
+                        </div>
+                        @else
+                        <div class="nolist">
+                            <p>{{ $data['todayViewSales']->getMessage() }}</p>
+                            <a class="btn btn-thm btn-thm_w" href="{{ env('MENU_LINK_AUCTION') }}">경매 보러가기</a>
+                        </div>
+                        @endif
+                    </div>
+
+                    <div id="item4-tab" class=" pb100 tab-pane nolist fade">
+                        @if ($data['todayViewAuction']->isSuccess())
+                        <div class="row">
+                            @foreach ($data['todayViewSales']->getData() as $printData)
+                            @php
+                                $printData = App\Http\Class\IntraSaleClass::getPrintData($printData);
+                            @endphp
+                                <x-item-sale-intranet type='' :printData="$printData" />
+                            @endforeach
+                        </div>
+                        @else
+                        <div class="nolist">
+                            <p>{{ $data['todayViewSales']->getMessage() }}</p>
+                            <a class="btn btn-thm btn-thm_w" href="{{ env('MENU_LINK_AUCTION') }}">경매 보러가기</a>
                         </div>
                         @endif
                     </div>

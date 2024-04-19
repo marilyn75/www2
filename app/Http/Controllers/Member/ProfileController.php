@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Http\Class\AuctionClass;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Class\UserClass;
@@ -38,6 +39,9 @@ class ProfileController extends Controller
 
         $todayViewSales = $cls->getTodayViewSales();
         $data['todayViewSales'] = $todayViewSales;
+        
+        $todayViewSales = (new AuctionClass)->getTodayViewAuction();
+        $data['todayViewAuction'] = $todayViewSales;
 
         return view('member.mypage', compact('data'));
     }

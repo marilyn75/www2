@@ -49,7 +49,7 @@
 </form> --}}
 
 <!-- Home Design -->
-<form action="{{ route('page', 20) }}" method="POST">
+<form action="{{ env('MENU_LINK_INTRA_SALE') }}" method="POST">
     @csrf
     <input type="hidden" name="page" value="1">
     <div class="container container_w">
@@ -121,7 +121,7 @@
                 <h2><span class="mont">NEW </span>신규매물</h2>
                 <p>최고의 매물을 놓치지 마세요</p>
             </div>
-            <a href="{{ route('page', 20) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
+            <a href="{{ env('MENU_LINK_INTRA_SALE') }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="row">
@@ -140,7 +140,7 @@
 </section>
 
 <!-- Property Cities -->
-<form name="frmCities" action="{{ route('page', 20) }}" method="POST">
+<form name="frmCities" action="{{ env('MENU_LINK_INTRA_SALE') }}" method="POST">
     @csrf
     <input type="hidden" name="page" value="1">
     <input type="hidden" name="location">
@@ -332,7 +332,7 @@
                 <h2><span class="mont">GYEMOIM PICK </span>오늘의 경·공매</h2>
                 <p>조회수 높은 경공매 매물을 만나보세요.</p>
             </div>
-            <a href="{{ route('page', 41) }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
+            <a href="{{ env('MENU_LINK_AUCTION') }}" class="more_btn">더보기<i class="ri-arrow-right-line"></i>
             </a>
         </div>
         <div class="row">
