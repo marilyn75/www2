@@ -320,7 +320,7 @@ $(window).on('load', function() {
                                 <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>사용승인일 :</p>
-                                        <p class="mont">{{ $printData['useAprDay'] }}</p>
+                                        <p>{{ $printData['useAprDay'] }}</p>
                                     </li>
                                     @if($printData['category_class']=="home")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">

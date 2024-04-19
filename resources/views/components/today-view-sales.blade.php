@@ -13,7 +13,7 @@
     $sale = $cls->getPrintData($_data);
 
     @endphp
-    <div class="media media_w" style="cursor: pointer" onclick="location.href='?mode=show&idx={{ $sale['idx'] }}'">
+    <div class="media media_w" style="cursor: pointer" onclick="window.open('{{ env('MENU_LINK_INTRA_SALE') }}?mode=show&idx={{ $sale['idx'] }}');">
         <img class="align-self-start" src="{{ $sale['img'] }}">
         <div class="media-body today_inf">
             <h5 class="mt-0 mb-0">{{ $sale['category'] }}</h5>
