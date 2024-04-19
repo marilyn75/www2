@@ -138,6 +138,7 @@ class IntraSaleClass{
 
         $return['categoryFull'] = $data->category;
         $return['category'] = (strpos($data->category,">")!==false)?trim(explode(">",$data->category)[1]):$data->category;        
+        $return['categoryFirst'] = (strpos($data->category,">")!==false)?trim(explode(">",$data->category)[0]):$data->category;  
 
         $return['bdArea_py'] = (empty($return['bdArea']))?"":number_format(doubleval($return['bdArea']) * 0.3025 ,2);
         $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);

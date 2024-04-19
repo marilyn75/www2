@@ -19,7 +19,11 @@
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">
                 <div class="thmb_cntnt @if($printData['is_soldout']) {{ __('thmb_soldout') }} @endif">
+                    @if($printData['categoryFirst']=="주거용")
+                    <p style="background:green;">{{ $printData['category'] }}</p>
+                    @else
                     <p>{{ $printData['category'] }}</p>
+                    @endif
                     <ul class="tag mb0">
                         @if ($type=="default")
                             <!-- 찜하기 전 -->
