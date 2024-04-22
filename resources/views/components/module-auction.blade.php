@@ -149,7 +149,7 @@
                 $('#ulSearchResult').append($li);
             };
         }else{
-            $('#ulSearchResult').append('<li>최근 검색 기록이 없습니다.</li>');
+            $('#ulSearchResult').append('<li class="n_nodata">최근 검색 기록이 없습니다.</li>');
         }
     }
 </script>
@@ -163,7 +163,7 @@
                     <div class="n_filt_top">
                         <div class="input-group mb-3 n_search">
                             <input type="text" class="form-control" id="searchSano" placeholder="사건번호 검색">
-                            <button class="btn" type="button" id="button-addon2">검색</button>
+                            <button class="btn" type="button" id="button-addon2"><i class="ri-search-line"></i></button>
                             
                             {{-- 최근검색기록 & 2023검색결과 --}}
                             <div class="input_bx" id="searchResultBox" style="z-index: 10;">
