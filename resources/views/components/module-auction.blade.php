@@ -1,11 +1,200 @@
 @extends('layout.layout')
 
 @section('content')
+
+<script>
+    // // input 클릭 시 box 보이기
+    // document.getElementById('searchSano').addEventListener('click', function() {
+    //     document.getElementById('box').style.display = 'block';
+    // });
+
+    // // document 클릭 시 box 숨기기
+    // document.addEventListener('click', function(event) {
+    //     // 클릭된 요소가 input 또는 box인 경우 무시
+    //     if (!event.target.closest('.n_search') && !event.target.closest('#box')) {
+    //         document.getElementById('box').style.display = 'none';
+    //     }
+    // });
+
+    // // 초기화 버튼 클릭 시 box 숨기고 input 비우기
+    // document.getElementById('resetButton').addEventListener('click', function() {
+    //     document.getElementById('box').style.display = 'none';
+    //     document.getElementById('searchInput').value = '';
+    // });
+
+    // // 검색 버튼 클릭 시 여기에 검색 기능 추가
+    // document.getElementById('searchButton').addEventListener('click', function() {
+    //     // 검색 기능 추가
+    // });
+
+    $(document).on('focus', '#searchSano', function(){
+        $('#searchResultBox').show();
+        if(this.value=="") showHistory();
+    });
+    $(document).on('keyup', '#searchSano', function(){
+        var str = this.value;
+        console.log('press');
+        if(str==""){
+            $('#searchResultBox').find('h3').html("최근검색기록");
+            $('#btnClearHistory').show();
+            showHistory();
+        }else{
+            $('#btnClearHistory').hide();
+
+            $('#searchResultBox').find('h3').html(str+" 검색결과");
+
+            $.post("{{ env('AUCTION_API_URL') }}/api/auction/search", {
+                q: str
+            })
+            .done(function(res){
+                console.log(res);
+                $('#ulSearchResult').html('');
+                
+                if(res.length > 0){
+                    res.forEach(function(r){
+                        let $li = $('<li class="serchResultItem"><div class="n_auc_tit"><div class="auc_bdg">경매</div><h2>2023타경2023[2]</h2></div><p class="n_auc_loc">부산시 연제구 연제동 123</p></li>');
+                        if(r.gbn=='a'){
+                            $li.find('.auc_bdg').addClass('auc_b').html('경매');
+                            $li.find('h2').html(r['a_사건번호']);
+                            $li.find('.n_auc_loc').html(r['a_소재지'][0]['addr_jibun']);
+                            $li.attr('sano',r['a_saNo']);
+                            $li.attr('no',r['a_물건번호']);
+                        }else{
+                            $li.find('.auc_bdg').addClass('pub_b').html('공매');
+                            $li.find('h2').html(r['b_물건관리번호']);
+                            $li.find('.n_auc_loc').html(r['b_물건세부정보']['지번주소']);
+                            $li.attr('sano','');
+                            $li.attr('no',r['b_물건관리번호']);
+                        }
+
+                        $('#ulSearchResult').append($li);
+                    });
+                }else{
+                    $('#ulSearchResult').append('<li>검색 결과가 없습니다.</li>');
+                }
+            });
+        }
+    });
+
+    $(document).on('blur', '#searchSano', function(){
+        // $('#searchResultBox').hide();
+        setTimeout(function() {
+            $('#searchResultBox').hide();
+        }, 500); // 1000밀리초 후에 실행
+    });
+
+    $(document).on('click', '.serchResultItem', function(){
+          console.log('li click -> auction view popup');
+        let sano = $(this).attr('sano');
+        let no = $(this).attr('no');
+        let url = '{{ env('MENU_LINK_AUCTION') }}?mode=view';
+
+        if(sano==""){
+            url += '&no=' + no;
+        }else{
+            url += '&sano=' + sano + '&no=' + no;
+        }
+
+        saveHistory($(this)[0].outerHTML);
+
+        window.open(url);
+    });
+
+    // 검색기록삭제버튼
+    $(document).on('click', '#btnClearHistory', function(){
+        removeHistory();
+        showHistory();
+        sbAlert('검색기록이 삭제 되었습니다.');
+        return false;
+    });
+
+    // 최근 검색기록 저장
+    function saveHistory(item){
+        let mySearchList = getCookie('auction_search_list');
+        let jsonSearchList;
+        console.log(mySearchList);
+        if(mySearchList==""){
+            let arr = [item];
+            jsonSearchList = JSON.stringify(arr);
+        }else{
+            let arr = JSON.parse(mySearchList);
+            arr.push(item);
+            jsonSearchList = JSON.stringify(arr);
+        }
+        setCookie('auction_search_list', jsonSearchList, 1);
+
+        console.log(jsonSearchList);
+    }
+
+    // 검색기록 삭제
+    function removeHistory(){
+        setCookie('auction_search_list', '', -1);
+    }
+
+    // 최근 검색기록 표시
+    function showHistory(){
+        $('#ulSearchResult').html('');
+        let mySearchList = getCookie('auction_search_list');
+        // console.log(mySearchList);
+        if(mySearchList!=""){
+            let arr = JSON.parse(mySearchList);
+            arr.forEach(function(item){
+                let $li = $(item);
+                $('#ulSearchResult').append($li);
+            });
+        }else{
+            $('#ulSearchResult').append('<li>최근 검색 기록이 없습니다.</li>');
+        }
+    }
+</script>
+
     <form name="frm" action="" method="post" class="col-md-12 pl0 pr0">
         @csrf
         <input type="hidden" name="page" value="1">
         <section class="our-listing pb30-991">
             <div class="container_w">
+                <div class="col-md-12 pl0 pr0 mt50">
+                    <div class="n_filt_top">
+                        <div class="input-group mb-3 n_search">
+                            <input type="text" class="form-control" id="searchSano" placeholder="사건번호 검색">
+                            <button class="btn" type="button" id="button-addon2">검색</button>
+                            
+                            {{-- 최근검색기록 & 2023검색결과 --}}
+                            <div class="input_bx" id="searchResultBox" style="z-index: 10;">
+                                <div class="input_bx_top">
+                                    <h3>최근검색기록</h3>
+                                    <button class="btn" id="btnClearHistory">검색기록 지우기</button>
+                                </div>
+                                <div id="resultList" class="overflow-auto" style="max-height:30vh;">
+                                    <ul id="ulSearchResult">
+                                    
+                                    </ul>
+                                </div>
+                                
+                            </div>
+
+                            
+                            {{-- 최근 검색기록 없는 경우 --}}
+                            {{-- <div class="input_bx" id="box">
+                                <div class="input_bx_top">
+                                    <h3>최근 검색기록</h3>
+                                    <button class="btn">검색기록 지우기</button>
+                                </div>
+                                <p>최근 검색 기록이 없습니다.</p>
+                            </div> --}}
+                        
+                            {{-- 검색결과 없는경우 --}}
+                            {{-- <div class="input_bx" id="box">
+                                <div class="input_bx_top">
+                                    <h3>202333검색결과</h3>
+                                    <button class="btn">검색기록 지우기</button>
+                                </div>
+                                <p>검색결과가 없습니다.</p>
+                            </div> --}}
+                        
+                        </div>
+                    </div>
+                </div>
                 {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
                 @if (env('APP_ENV') == 'local')
                     <style>
@@ -320,176 +509,10 @@
 
 
                     {{-- new filter --}}
-                    <script>
-                        // // input 클릭 시 box 보이기
-                        // document.getElementById('searchSano').addEventListener('click', function() {
-                        //     document.getElementById('box').style.display = 'block';
-                        // });
-                    
-                        // // document 클릭 시 box 숨기기
-                        // document.addEventListener('click', function(event) {
-                        //     // 클릭된 요소가 input 또는 box인 경우 무시
-                        //     if (!event.target.closest('.n_search') && !event.target.closest('#box')) {
-                        //         document.getElementById('box').style.display = 'none';
-                        //     }
-                        // });
-                    
-                        // // 초기화 버튼 클릭 시 box 숨기고 input 비우기
-                        // document.getElementById('resetButton').addEventListener('click', function() {
-                        //     document.getElementById('box').style.display = 'none';
-                        //     document.getElementById('searchInput').value = '';
-                        // });
-                    
-                        // // 검색 버튼 클릭 시 여기에 검색 기능 추가
-                        // document.getElementById('searchButton').addEventListener('click', function() {
-                        //     // 검색 기능 추가
-                        // });
-
-                        $(document).on('focus', '#searchSano', function(){
-                            $('#searchResultBox').show();
-                            if(this.value=="") showHistory();
-                        });
-                        $(document).on('keyup', '#searchSano', function(){
-                            var str = this.value;
-                            console.log('press');
-                            if(str==""){
-                                $('#searchResultBox').find('h3').html("최근검색기록");
-
-                                showHistory();
-                            }else{
-                                $('#searchResultBox').find('h3').html(str+" 검색결과");
-
-                                $.post("{{ env('AUCTION_API_URL') }}/api/auction/search", {
-                                    q: str
-                                })
-                                .done(function(res){
-                                    console.log(res);
-                                    $('#ulSearchResult').html('');
-
-                                    res.forEach(function(r){
-                                        let $li = $('<li class="serchResultItem"><div class="n_auc_tit"><div class="auc_bdg">경매</div><h2>2023타경2023[2]</h2></div><p class="n_auc_loc">부산시 연제구 연제동 123</p></li>');
-                                        if(r.gbn=='a'){
-                                            $li.find('.auc_bdg').addClass('auc_b').html('경매');
-                                            $li.find('h2').html(r['a_사건번호']);
-                                            $li.find('.n_auc_loc').html(r['a_소재지'][0]['addr_jibun']);
-                                            $li.attr('sano',r['a_saNo']);
-                                            $li.attr('no',r['a_물건번호']);
-                                        }else{
-                                            $li.find('.auc_bdg').addClass('pub_b').html('공매');
-                                            $li.find('h2').html(r['b_물건관리번호']);
-                                            $li.find('.n_auc_loc').html(r['b_물건세부정보']['지번주소']);
-                                            $li.attr('sano','');
-                                            $li.attr('no',r['b_물건관리번호']);
-                                        }
-
-                                        $('#ulSearchResult').append($li);
-                                    });
-                                });
-                            }
-                        });
-
-                        $(document).on('blur', '#searchSano', function(){
-                            // $('#searchResultBox').hide();
-                            setTimeout(function() {
-                                $('#searchResultBox').hide();
-                            }, 500); // 1000밀리초 후에 실행
-                        });
-
-                        $(document).on('click', '.serchResultItem', function(){
-                              console.log('li click -> auction view popup');
-                            let sano = $(this).attr('sano');
-                            let no = $(this).attr('no');
-                            let url = '{{ env('MENU_LINK_AUCTION') }}?mode=view';
-
-                            if(sano==""){
-                                url += '&no=' + no;
-                            }else{
-                                url += '&sano=' + sano + '&no=' + no;
-                            }
-
-                            saveHistory($(this)[0].outerHTML);
-
-                            window.open(url);
-                        });
-
-                        // 최근 검색기록 저장
-                        function saveHistory(item){
-                            let mySearchList = getCookie('auction_search_list');
-                            let jsonSearchList;
-                            console.log(mySearchList);
-                            if(mySearchList==""){
-                                let arr = [item];
-                                jsonSearchList = JSON.stringify(arr);
-                            }else{
-                                let arr = JSON.parse(mySearchList);
-                                arr.push(item);
-                                jsonSearchList = JSON.stringify(arr);
-                            }
-                            setCookie('auction_search_list', jsonSearchList, 1);
-
-                            console.log(jsonSearchList);
-                        }
-
-                        // 검색기록 삭제
-                        function removeHistory(){
-                            setCookie('auction_search_list', '', -1);
-                        }
-
-                        // 최근 검색기록 표시
-                        function showHistory(){
-                            $('#ulSearchResult').html('');
-                            let mySearchList = getCookie('auction_search_list');
-                            // console.log(mySearchList);
-                            let arr = JSON.parse(mySearchList);
-                            arr.forEach(function(item){
-                                console.log(item);
-                                let $li = $(item);
-                                $('#ulSearchResult').append($li);
-                            });
-                        }
-                    </script>
+               
 
                     <div class="col-md-12 pl0 pr0 mt50">
-                        <div class="n_filt_top">
-                            <div class="input-group mb-3 n_search">
-                                <input type="text" class="form-control" id="searchSano" placeholder="사건번호 검색">
-                                <button class="btn" type="button" id="button-addon2">검색</button>
-                                
-                                {{-- 최근검색기록 & 2023검색결과 --}}
-                                <div class="input_bx" id="searchResultBox">
-                                    <div class="input_bx_top">
-                                        <h3>최근검색기록</h3>
-                                        <button class="btn">검색기록 지우기</button>
-                                    </div>
-                                    <div id="resultList" class="overflow-auto" style="max-height:30vh;">
-                                        <ul id="ulSearchResult">
-                                        
-                                        </ul>
-                                    </div>
-                                    
-                                </div>
-
-                                
-                                {{-- 최근 검색기록 없는 경우 --}}
-                                {{-- <div class="input_bx" id="box">
-                                    <div class="input_bx_top">
-                                        <h3>최근 검색기록</h3>
-                                        <button class="btn">검색기록 지우기</button>
-                                    </div>
-                                    <p>최근 검색 기록이 없습니다.</p>
-                                </div> --}}
-                            
-                                {{-- 검색결과 없는경우 --}}
-                                {{-- <div class="input_bx" id="box">
-                                    <div class="input_bx_top">
-                                        <h3>202333검색결과</h3>
-                                        <button class="btn">검색기록 지우기</button>
-                                    </div>
-                                    <p>검색결과가 없습니다.</p>
-                                </div> --}}
-                            
-                            </div>
-                        </div>
+                        
                         
                         
                         
