@@ -97,7 +97,7 @@ class IntraSaleClass{
         }
 
         if($request['mode']=="recommend"){
-            $model->orderBy('recom_date','desc')->orderBy('reg_date','desc');
+            $model->orderBy('recom_date','desc')->orderBy('done_date','desc');
         }elseif(!empty($data['sort'])){
             $arrSort = explode("|", $data['sort']);
             if(empty($arrSort[1])) $arrSort[1] = 'asc';
@@ -108,7 +108,7 @@ class IntraSaleClass{
                 $model->orderBy($arrSort[0],$arrSort[1]);
             }
         }else{
-            $model->orderBy('reg_date','desc');
+            $model->orderBy('done_date','desc');
         }
 
         return $model->paginate($itemNum);
@@ -296,7 +296,8 @@ class IntraSaleClass{
         $return['radmin_sosok'] = "";
         $return['radmin_office_line'] = "";
 
-        $return['print_data'] = formatCreatedAt2($data->reg_date);
+        // $return['print_data'] = formatCreatedAt2($data->reg_date);
+        $return['print_data'] = formatCreatedAt2($data->done_date);
 
         $cateInfo = CommonCodeClass::getData($return['category_id']);
         $return['category_class'] = $cateInfo->class;
@@ -542,7 +543,7 @@ class IntraSaleClass{
 
     // 메인 신규매물
     public function mainNewSales(){
-        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])->orderBy('reg_date','desc')
+        $model = IntraSaleHomepage::where(['isDel'=>0, 'isDone'=>1])->orderBy('done_date','desc')
             ->whereHas('sale', function($query){
                 $query->whereRaw("instr(ifnull(_options,''),'COC') IS false");
             })->limit(6)->get();
@@ -569,7 +570,7 @@ class IntraSaleClass{
             ->whereHas('sale', function($query){
                 $query->whereRaw("instr(ifnull(_options,''),'COC') IS false");
             })
-            ->orderBy('reg_date','desc')
+            ->orderBy('done_date','desc')
             ->limit(2)->get();
 
         return $model;
