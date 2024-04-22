@@ -70,7 +70,7 @@
                         $('#ulSearchResult').append($li);
                     });
                 }else{
-                    $('#ulSearchResult').append('<li>검색 결과가 없습니다.</li>');
+                    $('#ulSearchResult').append('<li class="n_nodata">검색 결과가 없습니다.</li>');
                 }
             });
         }
