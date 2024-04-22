@@ -118,10 +118,14 @@
             jsonSearchList = JSON.stringify(arr);
         }else{
             let arr = JSON.parse(mySearchList);
+            if (arr.indexOf(item) !== -1) {
+                arr.splice(arr.indexOf(item), 1);
+            }
             arr.push(item);
             jsonSearchList = JSON.stringify(arr);
         }
-        setCookie('auction_search_list', jsonSearchList, 1);
+        
+        if(!$(item).hasClass('history')) setCookie('auction_search_list', jsonSearchList, 1);
 
         console.log(jsonSearchList);
     }
@@ -138,10 +142,12 @@
         // console.log(mySearchList);
         if(mySearchList!=""){
             let arr = JSON.parse(mySearchList);
-            arr.forEach(function(item){
-                let $li = $(item);
+            // arr.forEach(function(item){
+            for (let i = arr.length - 1; i >= 0; i--) {
+                let item = arr[i];
+                let $li = $(item).addClass('history');
                 $('#ulSearchResult').append($li);
-            });
+            };
         }else{
             $('#ulSearchResult').append('<li>최근 검색 기록이 없습니다.</li>');
         }
