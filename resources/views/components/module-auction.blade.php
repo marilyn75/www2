@@ -334,6 +334,16 @@
 
                      
                         });
+
+                        // 물건상태 선택
+                        $(document).on('click', '#ftStatus li button', function() {
+                            var idx = ($("button", $(this).closest('ul')).index(this));
+                            
+                            $(this).closest('ul').find('button').removeClass('sel');
+                            $(this).addClass('sel');
+
+                     
+                        });
                     </script>
                 
 
@@ -608,7 +618,7 @@
                                     <img src="/images/auction/status.png" alt="">
                                     <p>물건상태</p>
                                 </div>
-                                <div class="n_filter_subbox">
+                                <div class="n_filter_subbox" id="ftStatus">
                                     <ul>
                                         <li><button type="button" class="btn sel">진행중</button></li>
                                         <li><button type="button" class="btn">변경/연기</button></li>
