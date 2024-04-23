@@ -211,7 +211,28 @@
                     <script>
                         $(document).ready(function() {
                             setGu();
+                            $('#ftAddr button:eq(0)').click();
+
+                            setCate();
+                            // $('#ftCate button:eq(0)').click();
+
+                            initInputRange();
                         });
+
+                        function setCate(){
+                            var r = doAjax('{{ route('common.ajax.getAuctionCategory') }}');
+                            if (r.result) jsonCate = r.data;
+
+                            $ul = $("<ul></ul>");
+
+                            $ul.append('<li><button type="button" class="btn sel">전체</button></li>');
+                            jsonCate.forEach(function(cate){
+                                $ul.append('<li><button type="button" class="btn">' +
+                                    cate.title + '</button></li>');
+                            });
+
+                            $('#ftCate div').eq(0).html($ul);
+                        }
 
                         function getListAddr(pnu) {
                             var data;
@@ -257,11 +278,9 @@
                             data.forEach(function(item) {
                                 // console.log(item);
                                 if (item.umd_cd == "000")
-                                    $ul.append('<li><button type="button" class="btn" code="' + item.locatjumin_cd + '">' + item
-                                        .locallow_nm + ' 전체</button></li>');
+                                    $ul.append('<li><button type="button" class="btn sel" code="' + item.locatjumin_cd + '">' + item.locallow_nm.replace("광역시","") + ' 전체</button></li>');
                                 else
-                                    $ul.append('<li><button type="button" class="btn" code="' + item.locatjumin_cd + '">' + item
-                                        .locallow_nm + '</button></li>');
+                                    $ul.append('<li><button type="button" class="btn" code="' + item.locatjumin_cd + '">' + item.locallow_nm + '</button></li>');
                             });
                             $('#ftAddr div').eq(1).html($ul);
                         }
@@ -281,237 +300,42 @@
                             $(this).addClass('sel');
 
                         });
+
+                        // 용도 1차분류 선택
+                        $(document).on('click', '#ftCate div:eq(0) li button', function() {
+                            var idx = ($("button", $(this).closest('ul')).index(this));
+                            
+                            $(this).closest('ul').find('button').removeClass('sel');
+                            $(this).addClass('sel');
+
+                            if(idx>0){
+                                var data = jsonCate[idx-1].children;
+                                $ul = $("<ul></ul>");
+                                $ul.append('<li><button type="button" class="btn sel">' + $(this).html().replace("건물","") + ' 전체</button></li>');
+
+                                data.forEach(function(item) {
+       
+                                    $ul.append('<li><button type="button" class="btn">' + item.title + '</button></li>');
+                                });
+                                $('#ftCate div').eq(1).html($ul);
+                            }else{
+                                $ul = $("<ul></ul>");
+                                $ul.append('<li><button type="button" class="btn sel">전체</button></li>');
+                                $('#ftCate div').eq(1).html($ul);
+                            }
+                        });
+
+                        // 용도 2차분류 선택
+                        $(document).on('click', '#ftCate div:eq(1) li button', function() {
+                            var idx = ($("button", $(this).closest('ul')).index(this));
+                            
+                            $(this).closest('ul').find('button').removeClass('sel');
+                            $(this).addClass('sel');
+
+                     
+                        });
                     </script>
-                    {{-- <div class="col-md-12 pl0 pr0">
-                        <div id="exTab1">
-                            <ul class="nav nav-pills">
-                                <li class="active">
-                                    <a href="#1a" data-toggle="tab"><img src="/images/auction/fail.png"
-                                            alt="">지역</a>
-                                </li>
-                                <li><a href="#2a" data-toggle="tab"><img src="/images/auction/use.png"
-                                            alt="">용도</a>
-                                </li>
-                                <li><a href="#3a" data-toggle="tab"><img src="/images/auction/price.png"
-                                            alt="">감정가/최저가</a>
-                                </li>
-                                <li><a href="#4a" data-toggle="tab"><img src="/images/auction/status.png"
-                                            alt="">물건상태</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content clearfix">
-                                <div class="tab-pane active" id="1a">
-                                    <div class="auc_menu-box" id="ftAddr">
-                                        <div class="red-box overflow-auto" style="height:200px;">
-                                            <ul>
-
-                                            </ul>
-                                        </div>
-                                        <div class="sub-box overflow-auto" style="height:200px;">
-                                            <ul>
-                                                <li>전체</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="2a">
-                                    <div class="auc_menu-box" id="ftPurpose">
-
-                                        <div class="red-box">
-                                            <ul>
-                                                <li><button type="button" class="btn">전체</button></li>
-                                                <li><button type="button" class="btn">주거용 건물</button></li>
-                                                <li><button type="button" class="btn">상업용 건물</button></li>
-                                                <li><button type="button" class="btn">토지</button></li>
-                                            </ul>
-                                        </div>
-                                        <div class="sub-box">
-                                            <ul>
-                                                <li>전체</li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="3a">
-                                    <div class="auc_menu-box" id="usage-box">
-                                        <div class="red-box sm-box">
-                                            <ul>
-                                                <li class="filt_li">
-                                                    <label for="">가격</label>
-                                                    <div class="range_container">
-                                                        <div class="form_control">
-                                                            <!-- min -->
-                                                            <div class="form_control_container">
-                                                                <input class="form_price" type="hidden"
-                                                                    name="fromPriceJudge" id="fromJudge" value=""
-                                                                    readonly="">
-                                                                <input class="form_price" type="text"
-                                                                    name="fromPriceJudge_txt" id="fromJudge_txt"
-                                                                    value="최소" readonly="">
-                                                            </div>
-                                                            <!-- max -->
-                                                            <div class="form_control_container">
-                                                                <input class="form_price" type="hidden" name="toPriceJudge"
-                                                                    id="toJudge" value="" readonly="">
-                                                                <input class="form_price" type="text"
-                                                                    name="toPriceJudge_txt" id="toJudge_txt" value="최대"
-                                                                    readonly="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="sliders_control">
-                                                            <input id="fromJudgeSlider" name="fromPriceJudgeRange"
-                                                                type="range" value="0" min="0" max="12"
-                                                                step="1">
-                                                            <input id="toJudgeSlider" name="toPriceJudgeRange"
-                                                                type="range" value="12" min="0" max="12"
-                                                                step="1"
-                                                                style="background: linear-gradient(to right, rgb(217, 217, 217) 0%, rgb(217, 217, 217) 0%, rgb(56, 95, 141) 0%, rgb(56, 95, 141) 100%, rgb(217, 217, 217) 100%, rgb(217, 217, 217) 100%); z-index: 0;">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="sub-box sm-box">
-                                            <ul>
-                                                <li class="filt_li">
-                                                    <label for="">감정가</label>
-                                                    <div class="range_container">
-                                                        <div class="form_control">
-                                                            <!-- min -->
-                                                            <div class="form_control_container">
-                                                                <input class="form_price" type="text" name="fromPrice"
-                                                                    id="fromInputJudge" value="0" min="0"
-                                                                    max="100" />
-                                                            </div>
-                                                            <!-- max -->
-                                                            <div class="form_control_container">
-                                                                <input class="form_price" type="text" name="toPrice"
-                                                                    id="toInput" value="100" min="0"
-                                                                    max="100" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="sliders_control">
-                                                            <input id="fromSlider" type="range" value="0"
-                                                                min="0" max="100" step="10" />
-                                                            <input id="toSlider" type="range" value="100"
-                                                                min="0"max="100" step="10" />
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <script>
-                                    function controlFromInput(fromSlider, fromInputJudge, toInput, controlSlider) {
-                                        const [from, to] = getParsed(fromInputJudge, toInput);
-                                        fillSlider(fromInputJudge, toInput, '#C6C6C6', '#385f8d', controlSlider);
-                                        if (from > to) {
-                                            fromSlider.value = to;
-                                            fromInputJudge.value = to;
-                                        } else {
-                                            fromSlider.value = from;
-                                        }
-                                    }
-
-                                    function controlToInput(toSlider, fromInputJudge, toInput, controlSlider) {
-                                        const [from, to] = getParsed(fromInputJudge, toInput);
-                                        fillSlider(fromInputJudge, toInput, '#C6C6C6', '#385f8d', controlSlider);
-                                        setToggleAccessible(toInput);
-                                        if (from <= to) {
-                                            toSlider.value = to;
-                                            toInput.value = to;
-                                        } else {
-                                            toInput.value = from;
-                                        }
-                                    }
-
-                                    function controlFromSlider(fromSlider, toSlider, fromInputJudge) {
-                                        const [from, to] = getParsed(fromSlider, toSlider);
-                                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#385f8d', toSlider);
-                                        if (from > to) {
-                                            fromSlider.value = to;
-                                            fromInputJudge.value = to;
-                                        } else {
-                                            fromInputJudge.value = from;
-                                        }
-                                    }
-
-                                    function controlToSlider(fromSlider, toSlider, toInput) {
-                                        const [from, to] = getParsed(fromSlider, toSlider);
-                                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#385f8d', toSlider);
-                                        setToggleAccessible(toSlider);
-                                        if (from <= to) {
-                                            toSlider.value = to;
-                                            toInput.value = to;
-                                        } else {
-                                            toInput.value = from;
-                                            toSlider.value = from;
-                                        }
-                                    }
-
-                                    function getParsed(currentFrom, currentTo) {
-                                        const from = parseInt(currentFrom.value, 10);
-                                        const to = parseInt(currentTo.value, 10);
-                                        return [from, to];
-                                    }
-
-                                    function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-                                        const rangeDistance = to.max - to.min;
-                                        const fromPosition = from.value - to.min;
-                                        const toPosition = to.value - to.min;
-                                        controlSlider.style.background = `linear-gradient(
-                                    to right,
-                                    ${sliderColor} 0%,
-                                    ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-                                    ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-                                    ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-                                    ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
-                                    ${sliderColor} 100%)`;
-                                    }
-
-                                    function setToggleAccessible(currentTarget) {
-                                        const toSlider = document.querySelector('#toSlider');
-                                        if (Number(currentTarget.value) <= 0) {
-                                            toSlider.style.zIndex = 2;
-                                        } else {
-                                            toSlider.style.zIndex = 0;
-                                        }
-                                    }
-
-                                    const fromSlider = document.querySelector('#fromSlider');
-                                    const toSlider = document.querySelector('#toSlider');
-                                    const fromInputJudge = document.querySelector('#fromInputJudge');
-                                    const toInput = document.querySelector('#toInput');
-                                    fillSlider(fromSlider, toSlider, '#C6C6C6', '#385f8d', toSlider);
-                                    setToggleAccessible(toSlider);
-
-                                    fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInputJudge);
-                                    toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
-                                    fromInputJudge.oninput = () => controlFromInput(fromSlider, fromInputJudge, toInput, toSlider);
-                                    toInput.oninput = () => controlToInput(toSlider, fromInputJudge, toInput, toSlider);
-                                </script>
-                                <div class="tab-pane" id="4a">
-                                    <div class="auc_menu-box" id="usage-box">
-                                        <div class="red-box">
-                                            <ul>
-                                                <li>진행중</li>
-                                                <li>변경/연기</li>
-                                                <li>낙찰</li>
-                                                <li>기각/취하/취소</li>
-                                            </ul>
-                                        </div>
-                                        <div class="sub-box">
-                                            <ul>
-                                                <li>전체</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
+                
 
 
                     {{-- new filter --}}
@@ -552,8 +376,8 @@
                                     <img src="/images/auction/use.png" alt="">
                                     <p>용도</p>
                                 </div>
-                                <div class="n_filter_sub">
-                                    <div class="n_filter_subbox">
+                                <div class="n_filter_sub" id="ftCate">
+                                    <div class="n_filter_subbox overflow-auto">
                                         <ul>
                                             <li>전체</li>
                                             <li>주거용 건물</li>
@@ -561,10 +385,8 @@
                                             <li>토지</li>
                                         </ul>
                                     </div>
-                                    <div class="n_filter_subbox">
-                                        <ul>
-                                            <li>주거용 전체</li>
-                                        </ul>
+                                    <div class="n_filter_subbox overflow-auto">
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -585,26 +407,25 @@
                                                 <div class="form_control">
                                                     <!-- min -->
                                                     <div class="form_control_container">
-                                                        <input class="form_price" type="hidden" name="fromPriceJudge"
-                                                            id="fromJudge" value="" readonly="">
+                                                        <input class="form_price" type="hidden" name="fromPrice1"
+                                                            id="fromPrice1" value="" readonly="">
                                                         <input class="form_price" type="text"
-                                                            name="fromPriceJudge_txt" id="fromJudge_txt" value="최소"
+                                                            name="fromPrice1_txt" id="fromPrice1_txt" value="최소"
                                                             readonly="">
                                                     </div>
                                                     <!-- max -->
                                                     <div class="form_control_container">
-                                                        <input class="form_price" type="hidden" name="toPriceJudge"
-                                                            id="toJudge" value="" readonly="">
-                                                        <input class="form_price" type="text" name="toPriceJudge_txt"
-                                                            id="toJudge_txt" value="최대" readonly="">
+                                                        <input class="form_price" type="hidden" name="toPrice1"
+                                                            id="toPrice1" value="" readonly="">
+                                                        <input class="form_price" type="text" name="toPrice1_txt"
+                                                            id="toPrice1_txt" value="최대" readonly="">
                                                     </div>
                                                 </div>
                                                 <div class="sliders_control">
-                                                    <input id="fromJudgeSlider" name="fromPriceJudgeRange" type="range"
+                                                    <input id="fromPrice1_slider" name="fromPrice1_slider" type="range"
                                                         value="0" min="0" max="12" step="1">
-                                                    <input id="toJudgeSlider" name="toPriceJudgeRange" type="range"
-                                                        value="12" min="0" max="12" step="1"
-                                                        style="background: linear-gradient(to right, rgb(217, 217, 217) 0%, rgb(217, 217, 217) 0%, rgb(56, 95, 141) 0%, rgb(56, 95, 141) 100%, rgb(217, 217, 217) 100%, rgb(217, 217, 217) 100%); z-index: 0;">
+                                                    <input id="toPrice1_slider" name="toPrice1_slider" type="range"
+                                                        value="12" min="0" max="12" step="1">
                                                 </div>
                                             </div>
                                         </li>
@@ -618,22 +439,25 @@
                                                 <div class="form_control">
                                                     <!-- min -->
                                                     <div class="form_control_container">
-                                                        <input class="form_price" type="text" name="fromPrice"
-                                                            id="fromInputJudge" value="0" min="0"
-                                                            max="100" />
+                                                        <input class="form_price" type="hidden" name="fromPrice2"
+                                                            id="fromPrice2" value="" readonly="">
+                                                        <input class="form_price" type="text"
+                                                            name="fromPrice2_txt" id="fromPrice2_txt" value="최소"
+                                                            readonly="">
                                                     </div>
                                                     <!-- max -->
                                                     <div class="form_control_container">
-                                                        <input class="form_price" type="text" name="toPrice"
-                                                            id="toInput" value="100" min="0"
-                                                            max="100" />
+                                                        <input class="form_price" type="hidden" name="toPrice2"
+                                                            id="toPrice2" value="" readonly="">
+                                                        <input class="form_price" type="text" name="toPrice2_txt"
+                                                            id="toPrice2_txt" value="최대" readonly="">
                                                     </div>
                                                 </div>
                                                 <div class="sliders_control">
-                                                    <input id="fromSlider" type="range" value="0" min="0"
-                                                        max="100" step="10" />
-                                                    <input id="toSlider" type="range" value="100"
-                                                        min="0"max="100" step="10" />
+                                                    <input id="fromPrice2_slider" name="fromPrice2_slider" type="range"
+                                                        value="0" min="0" max="12" step="1">
+                                                    <input id="toPrice2_slider" name="toPrice2_slider" type="range"
+                                                        value="12" min="0" max="12" step="1">
                                                 </div>
                                             </div>
                                         </li>
@@ -641,93 +465,140 @@
                                 </div>
 
                                 <script>
-                                    function controlFromInput(fromSlider, fromInputJudge, toInput, controlSlider) {
-                                        const [from, to] = getParsed(fromInputJudge, toInput);
-                                        fillSlider(fromInputJudge, toInput, '#C6C6C6', '#385f8d', controlSlider);
+                                    var arrPriceRange = [
+                                        {'title':'최소', 'class':''},
+                                        {'title':'5천만', 'class':'5000'},
+                                        {'title':'1억', 'class':'10000'},
+                                        {'title':'2억', 'class':'20000'},
+                                        {'title':'3억', 'class':'30000'},
+                                        {'title':'5억', 'class':'50000'},
+                                        {'title':'10억', 'class':'100000'},
+                                        {'title':'20억', 'class':'200000'},
+                                        {'title':'30억', 'class':'300000'},
+                                        {'title':'50억', 'class':'500000'},
+                                        {'title':'100억', 'class':'1000000'},
+                                        {'title':'300억', 'class':'3000000'},
+                                        {'title':'최대', 'class':''}, 
+                                    ];
+    
+                                    function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+                                        const [from, to] = getParsed(fromInput, toInput);
+                                        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
                                         if (from > to) {
                                             fromSlider.value = to;
-                                            fromInputJudge.value = to;
+                                            fromInput.value = comma(to);
                                         } else {
                                             fromSlider.value = from;
+                                            fromInput.value = comma(from);
                                         }
                                     }
 
-                                    function controlToInput(toSlider, fromInputJudge, toInput, controlSlider) {
-                                        const [from, to] = getParsed(fromInputJudge, toInput);
-                                        fillSlider(fromInputJudge, toInput, '#C6C6C6', '#385f8d', controlSlider);
-                                        setToggleAccessible(toInput);
+                                    function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+                                        const [from, to] = getParsed(fromInput, toInput);
+                                        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+                                        setToggleAccessible(toInput, toSlider);
                                         if (from <= to) {
                                             toSlider.value = to;
-                                            toInput.value = to;
+                                            toInput.value = comma(to);
                                         } else {
-                                            toInput.value = from;
+                                            toInput.value = comma(from);
                                         }
                                     }
 
-                                    function controlFromSlider(fromSlider, toSlider, fromInputJudge) {
+                                    function controlFromSlider(fromSlider, toSlider, fromInput) {
                                         const [from, to] = getParsed(fromSlider, toSlider);
-                                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#385f8d', toSlider);
+                                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+                                        var arrRange = arrPriceRange;
+
                                         if (from > to) {
                                             fromSlider.value = to;
-                                            fromInputJudge.value = to;
+                                            fromInput.value = arrRange[to]['class'];
+                                            $(fromInput).next()[0].value = arrRange[to]['title'];
                                         } else {
-                                            fromInputJudge.value = from;
+                                            fromInput.value = arrRange[from]['class'];
+                                            $(fromInput).next()[0].value = arrRange[from]['title'];
                                         }
                                     }
 
                                     function controlToSlider(fromSlider, toSlider, toInput) {
                                         const [from, to] = getParsed(fromSlider, toSlider);
-                                        fillSlider(fromSlider, toSlider, '#C6C6C6', '#385f8d', toSlider);
-                                        setToggleAccessible(toSlider);
+                                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+                                        var arrRange = arrPriceRange;
+
+                                        setToggleAccessible(toSlider, toSlider);
                                         if (from <= to) {
                                             toSlider.value = to;
-                                            toInput.value = to;
+                                            toInput.value = arrRange[to]['class'];
+                                            $(toInput).next()[0].value = arrRange[to]['title'];
                                         } else {
-                                            toInput.value = from;
+                                            toInput.value = arrRange[from]['class'];
+                                            $(toInput).next()[0].value = arrRange[from]['title'];
                                             toSlider.value = from;
                                         }
                                     }
-
+                                    
                                     function getParsed(currentFrom, currentTo) {
-                                        const from = parseInt(currentFrom.value, 10);
-                                        const to = parseInt(currentTo.value, 10);
+                                        const from = parseInt(uncomma(currentFrom.value), 10);
+                                        const to = parseInt(uncomma(currentTo.value), 10);
                                         return [from, to];
                                     }
 
                                     function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
                                         const rangeDistance = to.max - to.min;
-                                        const fromPosition = from.value - to.min;
-                                        const toPosition = to.value - to.min;
+                                        const fromPosition = uncomma(from.value) - to.min;
+                                        const toPosition = uncomma(to.value) - to.min;
+
                                         controlSlider.style.background = `linear-gradient(
-                                    to right,
-                                    ${sliderColor} 0%,
-                                    ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-                                    ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-                                    ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-                                    ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
-                                    ${sliderColor} 100%)`;
+                                        to right,
+                                        ${sliderColor} 0%,
+                                        ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
+                                        ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
+                                        ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
+                                        ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
+                                        ${sliderColor} 100%)`;
                                     }
 
-                                    function setToggleAccessible(currentTarget) {
-                                        const toSlider = document.querySelector('#toSlider');
-                                        if (Number(currentTarget.value) <= 0) {
+                                    function setToggleAccessible(currentTarget, toSlider) {
+                                        // toSlider = document.querySelector('#toSlider');
+                                        if (Number(uncomma(currentTarget.value)) <= 0) {
                                             toSlider.style.zIndex = 2;
                                         } else {
                                             toSlider.style.zIndex = 0;
                                         }
                                     }
 
-                                    const fromSlider = document.querySelector('#fromSlider');
-                                    const toSlider = document.querySelector('#toSlider');
-                                    const fromInputJudge = document.querySelector('#fromInputJudge');
-                                    const toInput = document.querySelector('#toInput');
-                                    fillSlider(fromSlider, toSlider, '#C6C6C6', '#385f8d', toSlider);
-                                    setToggleAccessible(toSlider);
 
-                                    fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInputJudge);
-                                    toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
-                                    fromInputJudge.oninput = () => controlFromInput(fromSlider, fromInputJudge, toInput, toSlider);
-                                    toInput.oninput = () => controlToInput(toSlider, fromInputJudge, toInput, toSlider);
+
+                                    function initInputRange(){
+                                        fromSlider = document.querySelector('#fromPrice1_slider');
+                                        toSlider = document.querySelector('#toPrice1_slider');
+                                        fromInput = document.querySelector('#fromPrice1');
+                                        toInput = document.querySelector('#toPrice1');
+
+                                        fromAreaSlider = document.querySelector('#fromPrice2_slider');
+                                        toAreaSlider = document.querySelector('#toPrice2_slider');
+                                        fromAreaInput = document.querySelector('#fromPrice2');
+                                        toAreaInput = document.querySelector('#toPrice2');
+
+                                        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+                                        setToggleAccessible(toSlider, toSlider);
+
+                                        fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
+                                        toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
+                                        // fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
+                                        // toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
+
+                                        fillSlider(fromAreaSlider, toAreaSlider, '#D9D9D9', '#385f8d', toAreaSlider);
+                                        setToggleAccessible(toAreaSlider, toAreaSlider);
+
+                                        fromAreaSlider.oninput = () => controlFromSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
+                                        toAreaSlider.oninput = () => controlToSlider(fromAreaSlider, toAreaSlider, toAreaInput);
+                                        // fromAreaInput.oninput = () => controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+                                        // toAreaInput.oninput = () => controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+
+                                        console.log('initInputRange');
+                                    }
+                      
                                 </script>
                             </div>
 
@@ -739,10 +610,10 @@
                                 </div>
                                 <div class="n_filter_subbox">
                                     <ul>
-                                        <li>진행중</li>
-                                        <li>변경/연기</li>
-                                        <li>낙찰</li>
-                                        <li>기각/취하/취소</li>
+                                        <li><button type="button" class="btn sel">진행중</button></li>
+                                        <li><button type="button" class="btn">변경/연기</button></li>
+                                        <li><button type="button" class="btn">낙찰</button></li>
+                                        <li><button type="button" class="btn">기각/취하/취소</button></li>
                                     </ul>
                                 </div>
                             </div>

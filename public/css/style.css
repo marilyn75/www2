@@ -16554,6 +16554,16 @@ input[type="range"] {
   z-index: 1;
   top: 4px;
 }
+#fromPrice1_slider {
+  height: 0;
+  z-index: 1;
+  top: 4px;
+}
+#fromPrice2_slider {
+  height: 0;
+  z-index: 1;
+  top: 4px;
+}
 #fromAreaSlider {
   height: 0;
   z-index: 1;

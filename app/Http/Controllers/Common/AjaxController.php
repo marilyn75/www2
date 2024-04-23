@@ -32,4 +32,11 @@ class AjaxController extends Controller
 
         return $result->jsonResult();
     }
+
+    // 경공매유형 코드 전체 tree 
+    public function getCommonCodeAuctionCategoryAllTree(){
+        $result = CommonCodeClass::getChildrenFormFirstCodeText('경공매유형');
+
+        return $result->jsonResult();
+    }
 }

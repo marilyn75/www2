@@ -90,6 +90,7 @@ Route::prefix('/common')->group(function(){
     Route::match(['get', 'post'], '/ajax/addFavorite', [App\Http\Controllers\Common\AjaxController::class, 'addFavorite'])->name('common.ajax.addFavorite');
     Route::match(['get', 'post'], '/ajax/addFavoriteAuction', [App\Http\Controllers\Common\AjaxController::class, 'addFavoriteAuction'])->name('common.ajax.addFavoriteAuction');
     Route::match(['get', 'post'], '/ajax/getSaleCategory', [App\Http\Controllers\Common\AjaxController::class, 'getCommonCodeSaleCategoryAllTree'])->name('common.ajax.getSaleCategory');
+    Route::match(['get', 'post'], '/ajax/getAuctionCategory', [App\Http\Controllers\Common\AjaxController::class, 'getCommonCodeAuctionCategoryAllTree'])->name('common.ajax.getAuctionCategory');
 
     // 파일 다운로드
     Route::get('/fdn/{id}', [App\Http\Class\lib\FileClass::class, 'download'])->name('common.file.download');
