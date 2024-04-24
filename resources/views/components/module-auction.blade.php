@@ -204,9 +204,7 @@
                 {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
                 @if (env('APP_ENV') == 'local')
                     <style>
-                        .sel {
-                            color: red;
-                        }
+                        
                     </style>
                     <script>
                         $(document).ready(function() {
@@ -360,7 +358,7 @@
                             {{-- 지역 --}}
                             <div class= "n_filter_area">
                                 <div class="n_filter_t">
-                                    <img src="/images/auction/fail.png" alt="">
+                                    <img src="/images/auction/location.png" alt="">
                                     <p>지역</p>
                                 </div>
                                 <div class="n_filter_sub" id="ftAddr">
@@ -629,14 +627,28 @@
                             </div>
                         </div>
 
-                        <li class="filt_li filt_bt_wrap n_filt_bt_wrap mt20">
-                            <div class="search_option_button">
-                                <button type="button" id="resetButton" class="btn btn-block btn-thm btn-thm_w">초기화</button>
+                        <div class="n_filter_b">
+                            <div class="btn_wrap">
+                                {{-- 선택 필터 표시부분 --}}
+                                <button class="btn">
+                                    <span>선택필터</span>
+                                    <i class="ri-close-line"></i>
+                                </button>
+                                <button class="btn">
+                                    <span>선택필터</span>
+                                    <i class="ri-close-line"></i>
+                                </button>
+
                             </div>
-                            <div class="search_option_button">
-                                <button type="button" id="searchButton" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
-                            </div>
-                        </li>
+                            <li class="filt_li filt_bt_wrap n_filt_bt_wrap"> 
+                                <div class="search_option_button">
+                                    <button type="button" id="resetButton" class="btn btn-block btn-thm btn-thm_w">초기화</button>
+                                </div>
+                                <div class="search_option_button">
+                                    <button type="button" id="searchButton" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
+                                </div>
+                            </li>
+                        </div>
                     </div>
 
 
