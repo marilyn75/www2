@@ -18759,6 +18759,8 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
 
 
   /* new filter */
+  .n_filt_tit h2 { font-size: 24px; color: #000; margin: 0; font-weight: 600; margin-bottom: 3px; }
+  .n_filt_tit p { font-size: 16px; color: #000; }
   .n_filt_top { 
     display: flex;
     align-items: baseline;

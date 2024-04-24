@@ -159,7 +159,11 @@
         <input type="hidden" name="page" value="1">
         <section class="our-listing pb30-991">
             <div class="container_w">
-                <div class="col-md-12 pl0 pr0 mt50">
+                <div class="n_filt_tit">
+                    <h2>상세검색</h2>
+                    <p>다양한 필터를 활용하여 검색해보세요</p>
+                </div>
+                <div class="col-md-12 pl0 pr0 mt20">
                     <div class="n_filt_top">
                         <div class="input-group mb-3 n_search">
                             <input type="text" class="form-control" id="searchSano" placeholder="사건번호 검색">
@@ -349,8 +353,7 @@
                     {{-- new filter --}}
                
 
-                    <div class="col-md-12 pl0 pr0 mt50">
-                        
+                    <div class="col-md-12 pl0 pr0">
                         
                         
                         
