@@ -151,9 +151,9 @@
                         <li class="list-inline-item">
                             <select class="selectpicker show-tick" name="sort"
                                 onchange="frm.sort.value=this.value;frm.submit();">
-                                <option value="reg_date|desc" @if (@$_POST['sort'] == 'reg_date|desc') selected @endif>
+                                <option value="done_date|desc" @if (@$_POST['sort'] == 'done_date|desc') selected @endif>
                                     최신순</option>
-                                <option value="reg_date" @if (@$_POST['sort'] == 'reg_date') selected @endif>오래된순
+                                <option value="done_date" @if (@$_POST['sort'] == 'done_date') selected @endif>오래된순
                                 </option>
                                 <option value="isRecom|desc" @if (@$_POST['sort'] == 'isRecom|desc') selected @endif>
                                     추천순</option>
