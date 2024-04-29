@@ -466,10 +466,12 @@ class AuctionClass{
         $eDate = intval(str_replace(['-', ' ', ':'],'',$data['입찰종료일시']));
         $data['진행상태'] = str_replace('인터넷입찰','',$data['물건상태']);
         if($sDate <= intval(date("YmdHi"))){
-            $tmp = explode(' ', $data['입찰종료일시']);
-            $tmp2 = explode("-",$tmp[0]);
-            $data['매각기일2'] = '~ ' . $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일 ('.$tmp[1].')';
-            $data['dday'] = "마감 ";
+            if(strpos($data['입찰종료일시'],"-")!==false){
+                $tmp = explode(' ', $data['입찰종료일시']);
+                $tmp2 = explode("-",$tmp[0]);
+                $data['매각기일2'] = '~ ' . $tmp2[0] . '년 ' . $tmp2[1] . '월 ' . $tmp2[2] . '일 ('.$tmp[1].')';
+            }
+                $data['dday'] = "마감 ";
         }else{
             $tmp = explode(' ', $data['입찰시작일시']);
             $tmp2 = explode("-",$tmp[0]);
@@ -478,15 +480,20 @@ class AuctionClass{
         }
 
         
-        $data['dday'] .= calculateDDay(str_replace('.','-',$tmp[0]));
-        if($data['dday']==0) $data['dday'] = "";
-        $dday = calculateDDay(str_replace('.','-',$tmp[0]));
-        if($dday >= 0){
-            $data['dday'] = "";
-            
+        if(!empty($tmp)>0){
+            $data['dday'] .= calculateDDay(str_replace('.','-',$tmp[0]));
+            if($data['dday']==0) $data['dday'] = "";
+            $dday = calculateDDay(str_replace('.','-',$tmp[0]));
+            if($dday >= 0){
+                $data['dday'] = "";
+                
+            }else{
+                $data['dday'] = "마감 D" . $dday;
+            }    
         }else{
-            $data['dday'] = "마감 D" . $dday;
-        }    
+            $data['매각기일2'] = '';
+        }
+        
 
         $data['감정평가일'] = "-";
         if(!empty($data['물건세부정보']['감정평가정보'][0]))    $data['감정평가일'] = empty($data['물건세부정보']['감정평가정보'][0]['평가일']) ? '-' : printDateKor($data['물건세부정보']['감정평가정보'][0]['평가일']);

@@ -167,6 +167,8 @@ if (!function_exists('formatCreatedAt2')) {
 // 날짜형식3
 if (!function_exists('printDateKor')) {
     function printDateKor($date) {
+        if(strpos($date,"-")===false) return $date;
+        
         $ymd = substr($date,0,10);
         $etc = substr($date,10);
 
