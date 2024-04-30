@@ -18125,6 +18125,11 @@ code {
   background-color: #F6FAFF;
 }
 
+
+.btn.selected-filter{
+  font-size: 0.8rem;
+}
+
 #exTab1 .tab-content {
   /* color : white;
   background-color: #428bca;

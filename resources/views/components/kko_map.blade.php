@@ -19,7 +19,8 @@
         mapOption = {
             center: new kakao.maps.LatLng({{ $y }}, {{ $x }}), // 지도의 중심좌표
             level: {{ $level }}, // 지도의 확대 레벨
-            mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+            mapTypeId : kakao.maps.MapTypeId.ROADMAP, // 지도종류
+            disableDoubleClickZoom: true
         }; 
 
     // 지도를 생성한다 
