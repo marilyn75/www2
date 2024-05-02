@@ -19,7 +19,14 @@
 <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
 <link href="{{ url('images/favicon.png') }}" sizes="128x128" rel="shortcut icon" />
 
+<<<<<<< HEAD
 <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" rel="stylesheet">
+=======
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+>>>>>>> ffd668b (update)
 
 <script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>

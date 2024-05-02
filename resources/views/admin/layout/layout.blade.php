@@ -28,7 +28,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.7.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
 
     <script type="text/javascript" src="{{ url('js/jquery-3.3.1.js') }}"></script>
     <script type="text/javascript" src="{{ url('js/jquery-migrate-3.0.0.min.js') }}"></script>
