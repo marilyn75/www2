@@ -9320,9 +9320,9 @@ a.btn.btn_error{
   margin-right: 5px;
   width: 100px;
 }
-.ui_kit_tooltip .btn:hover {
-  color: 
-}
+/*.ui_kit_tooltip .btn:hover {
+  color: ;
+}*/
 .ui_kit_tooltip .btn:focus {
   box-shadow: none;
   border-color: #dddddd;
@@ -12080,7 +12080,7 @@ a.btn.btn_error{
   border-radius: 6px;
 }
 .sidebar-menu::-webkit-scrollbar-thumb {
-  background-color: #1d293e !important; // manage scrollbar thumb background color here
+  background-color: #1d293e !important; /* manage scrollbar thumb background color here*/
   border-radius: 6px;
 }
 .sidebar-menu li{
@@ -12265,7 +12265,7 @@ a.btn.btn_error{
   border-radius: 6px;
 }
 .cl_skill_checkbox .content.ui_kit_checkbox::-webkit-scrollbar-thumb {
-  background-color: #a2a2a2 !important; // manage scrollbar thumb background color here
+  background-color: #a2a2a2 !important; /* manage scrollbar thumb background color here*/
   border-radius: 6px;
 }
 /*== Profile Avatar ==*/
