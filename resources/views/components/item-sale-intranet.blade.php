@@ -14,7 +14,11 @@
 @else
 <div class="col-sm-6 col-md-6 col-xl-4 pl10">
 @endif
+    @if($printData['is_soldout'])
+    <a href="#n" onclick="sbAlert('거래가 완료 되었습니다.','warning');return false;">
+    @else
     <a href="{{ route('page',$page_id) }}?mode=show&idx={{ $printData['idx'] }}" target="_blank">
+    @endif
         <div class="feat_property home7 style4 bdrrn feat_property_w @if($type=="related") related @endif">
             <div class="thumb">
                 <img class="img-whp" src="{{ $printData['img'] }}">
@@ -51,10 +55,10 @@
                         @endif
                     </ul>
                     @if($printData['is_soldout'])
-                <div class="sold_out">
-                    거래완료
-                </div>
-                @endif
+                    <div class="sold_out">
+                        거래완료
+                    </div>
+                    @endif
                 </div>
                 
 
@@ -64,7 +68,7 @@
                     <h4 data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $printData['title'] }}">{{ $printData['title'] }} </h4>
                     <p class="text-inf text_loc"><i class="ri-map-pin-2-fill"></i>{{ $printData['address'] }}</p>
                     @if(!empty($printData['area_b']))
-                    <div class="text-inf-w">
+                    <div class="text-inf-w @if($printData['is_soldout']) {{ __('txt-blurred') }} @endif">
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>
                             공급<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>&nbsp;
                             전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span>
@@ -74,7 +78,7 @@
                         </p>
                     </div>
                     @else
-                    <div class="text-inf-w">
+                    <div class="text-inf-w @if($printData['is_soldout']) {{ __('txt-blurred') }} @endif">
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>{{ $printData['prposAreaNm'] }}
                             <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span>
                         </p>
@@ -87,7 +91,7 @@
                         @endif
                     </div>
                     @endif
-                    <p class="text-thm price_w">{{ $printData['tradeType'] }} <span class="">{{ $printData['price'] }}</span>원</p>
+                    <p class="text-thm price_w @if($printData['is_soldout']) {{ __('txt-blurred') }} @endif">{{ $printData['tradeType'] }} <span class="">{{ $printData['price'] }}</span>원</p>
                 </div>
                 <div class="fp_footer fp_footer_w">
                     <ul class="fp_meta float-left mb0 fp_meta_w">

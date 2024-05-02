@@ -1,5 +1,147 @@
 
+
 <script>
+                
+
+    function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
+        const [from, to] = getParsed(fromInput, toInput);
+        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+        if (from > to) {
+            fromSlider.value = to;
+            fromInput.value = comma(to);
+        } else {
+            fromSlider.value = from;
+            fromInput.value = comma(from);
+        }
+    }
+
+    function controlToInput(toSlider, fromInput, toInput, controlSlider) {
+        const [from, to] = getParsed(fromInput, toInput);
+        fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
+        setToggleAccessible(toInput, toSlider);
+        if (from <= to) {
+            toSlider.value = to;
+            toInput.value = comma(to);
+        } else {
+            toInput.value = comma(from);
+        }
+    }
+
+    function controlFromSlider(fromSlider, toSlider, fromInput) {
+        const [from, to] = getParsed(fromSlider, toSlider);
+        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+        var arrRange = arrPriceRange;
+
+        if (from > to) {
+            fromSlider.value = to;
+            fromInput.value = arrRange[to]['class'];
+            $(fromInput).next()[0].value = arrRange[to]['title'];
+        } else {
+            fromInput.value = arrRange[from]['class'];
+            $(fromInput).next()[0].value = arrRange[from]['title'];
+        }
+    }
+
+    function controlToSlider(fromSlider, toSlider, toInput) {
+        const [from, to] = getParsed(fromSlider, toSlider);
+        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+        var arrRange = arrPriceRange;
+
+        setToggleAccessible(toSlider, toSlider);
+        if (from <= to) {
+            toSlider.value = to;
+            toInput.value = arrRange[to]['class'];
+            $(toInput).next()[0].value = arrRange[to]['title'];
+        } else {
+            toInput.value = arrRange[from]['class'];
+            $(toInput).next()[0].value = arrRange[from]['title'];
+            toSlider.value = from;
+        }
+    }
+    
+    function getParsed(currentFrom, currentTo) {
+        const from = parseInt(uncomma(currentFrom.value), 10);
+        const to = parseInt(uncomma(currentTo.value), 10);
+        return [from, to];
+    }
+
+    function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+        const rangeDistance = to.max - to.min;
+        const fromPosition = uncomma(from.value) - to.min;
+        const toPosition = uncomma(to.value) - to.min;
+
+        controlSlider.style.background = `linear-gradient(
+        to right,
+        ${sliderColor} 0%,
+        ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
+        ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
+        ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
+        ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
+        ${sliderColor} 100%)`;
+    }
+
+    function setToggleAccessible(currentTarget, toSlider) {
+        // toSlider = document.querySelector('#toSlider');
+        if (Number(uncomma(currentTarget.value)) <= 0) {
+            toSlider.style.zIndex = 2;
+        } else {
+            toSlider.style.zIndex = 0;
+        }
+    }
+    var fromAreaSlider = document.querySelector('#fromPrice2_slider');
+    var toAreaSlider = document.querySelector('#toPrice2_slider');
+    var fromAreaInput = document.querySelector('#fromPrice2');
+    var toAreaInput = document.querySelector('#toPrice2');
+
+
+    function initInputRange(){
+        fromSlider = document.querySelector('#fromPrice1_slider');
+        toSlider = document.querySelector('#toPrice1_slider');
+        fromInput = document.querySelector('#fromPrice1');
+        toInput = document.querySelector('#toPrice1');
+
+        fromAreaSlider = document.querySelector('#fromPrice2_slider');
+        toAreaSlider = document.querySelector('#toPrice2_slider');
+        fromAreaInput = document.querySelector('#fromPrice2');
+        toAreaInput = document.querySelector('#toPrice2');
+
+        fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
+        setToggleAccessible(toSlider, toSlider);
+
+        fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
+        toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
+        // fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
+        // toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
+
+        fillSlider(fromAreaSlider, toAreaSlider, '#D9D9D9', '#385f8d', toAreaSlider);
+        setToggleAccessible(toAreaSlider, toAreaSlider);
+
+        fromAreaSlider.oninput = () => controlFromSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
+        toAreaSlider.oninput = () => controlToSlider(fromAreaSlider, toAreaSlider, toAreaInput);
+        // fromAreaInput.oninput = () => controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+        // toAreaInput.oninput = () => controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
+
+        console.log('initInputRange');
+    }
+
+</script>
+<script>
+    var arrPriceRange = [
+                    {'title':'최소', 'class':''},
+                    {'title':'5천만', 'class':'5000'},
+                    {'title':'1억', 'class':'10000'},
+                    {'title':'2억', 'class':'20000'},
+                    {'title':'3억', 'class':'30000'},
+                    {'title':'5억', 'class':'50000'},
+                    {'title':'10억', 'class':'100000'},
+                    {'title':'20억', 'class':'200000'},
+                    {'title':'30억', 'class':'300000'},
+                    {'title':'50억', 'class':'500000'},
+                    {'title':'100억', 'class':'1000000'},
+                    {'title':'300억', 'class':'3000000'},
+                    {'title':'최대', 'class':''}, 
+                ];
+
     // var jsonFilter = {
     //     'addr':{'부산광역시 전체':['부산 전체']},
     //     'purpose':{'전체':[]},
@@ -11,9 +153,9 @@
         // 'addr':{'부산광역시 전체':['부산 전체'], '중구':['영주동','대창동1가','중앙동3가']},
         // 'addr':[{'26110':'중구','sub':[{'2611010100':'영주동'},{'2611013300':'광복동1가'},{'2611010500':'중앙동2가'}]}],
         'addr':[{'code':'26000','txt':'부산광역시 전체','sub':[{'code':'2600000000','txt':'부산 전체'}], 'selected':1}],
-        'purpose':[{'code':'0','txt':'전체','sub':[{'code':'0','txt':'전체'}], 'selected':1}],
-        'cost':{},
-        'status':{}};
+        'purpose':[{'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1}],
+        'cost':{'cost1':{'from':{'code':'','txt':'최소'}, 'to':{'code':'','txt':'최대'}},'cost2':{'from':{'code':'','txt':'최소'}, 'to':{'code':'','txt':'최대'}}},
+        'status':{'code':'0', 'txt':'진행중'}};
     
     var $btnFilter = $('<button class="btn selected-filter"><span>선택필터</span><i class="ri-close-line"></i></button>');
 
@@ -83,13 +225,44 @@
         $('#ftPurpos div:eq(1) li button').removeClass('sel');
         
         $('#ftPurpos div:eq(1) li button').each(function(index){
+            let parent_code = $(this).data('parent_code');
             let code = $(this).data('code');
             let found = false;
             for(i=0;i<jsonFilter.purpose.length;i++){
-                if(chkCodeJsonArray(jsonFilter.purpose[i].sub, code)){
+                if(chkCodeJsonArray(jsonFilter.purpose[i].sub, code) && jsonFilter.purpose[i].code == parent_code){
                     $(this).addClass('sel');
                 }
             }
+        });
+    }
+
+    function setFilterCost(){
+        console.log('setFilterCost',jsonFilter.cost);
+        let from_idx = 0;
+        let to_idx = 12;
+
+        if(jsonFilter.cost.cost1.from.code!='') from_idx = arrPriceRange.findIndex(item => item.class == jsonFilter.cost.cost1.from.code);
+        if(jsonFilter.cost.cost1.to.code!='') to_idx = arrPriceRange.findIndex(item => item.class == jsonFilter.cost.cost1.to.code);
+
+        $('#fromPrice1_slider').val(from_idx);
+        $('#toPrice1_slider').val(to_idx);
+        
+        from_idx = 0;
+        to_idx = 12;
+
+        if(jsonFilter.cost.cost2.from.code!='') from_idx = arrPriceRange.findIndex(item => item.class == jsonFilter.cost.cost2.from.code);
+        if(jsonFilter.cost.cost2.to.code!='') to_idx = arrPriceRange.findIndex(item => item.class == jsonFilter.cost.cost2.to.code);
+
+        $('#fromPrice2_slider').val(from_idx);
+        $('#toPrice2_slider').val(to_idx);
+        
+        initInputRange();
+    }
+
+    function setFilterStatus(){
+        $('#ftStatus li button').removeClass('sel');
+        $('#ftStatus li button').each(function(index){
+            if($(this).data('code') == jsonFilter.status.code) $(this).addClass('sel');
         });
     }
 
@@ -104,6 +277,13 @@
     function setFilterFromjsonFilter(){
         setFilterAddr1();
         setFilterAddr2();
+        setFilterPurpos1();
+        setFilterPurpos2();
+
+        setFilterCost();
+        setFilterStatus();
+
+        printFilterButton();
     }
 
     function chkCodeJsonArray(json, code){
@@ -129,7 +309,7 @@
 
         $ul.append('<li><button type="button" class="btn" data-code="0">전체</button></li>');
         jsonPurpos.forEach(function(purpose){
-            $ul.append('<li><button type="button" class="btn" data-code="'+purpose.id+'" data-parent_code="'+purpose.parent_id+'">' +
+            $ul.append('<li><button type="button" class="btn" data-code="'+purpose.id+'">' +
                 purpose.title + '</button></li>');
         });
 
@@ -282,7 +462,7 @@
         let code = $obj.data('code').toString();
         let txt = $obj.html();
 
-        let parent_code = $obj.data('parent_code').toString();
+        
 
 
         if(level == 1){  // 1차
@@ -294,14 +474,28 @@
                 jsonFilter.purpose.filter(item => item.code==code).selected = 1;
             }else{
                 if(idx > 0){
-                    let sub_code = jsonPurpos.filter(item => item.id == Number(code))[0].children[0].id;
-                    let sub_txt = jsonPurpos.filter(item => item.id == Number(code))[0].children[0].title;
-                    let addItem = {'code':code,'txt':txt, sub:[{'code':sub_code,'txt':sub_txt}], 'selected':1};
-                    jsonFilter.purpose.push(addItem);
+                    let isFullChk = jsonPurpos.length - jsonFilter.purpose.length;
+                    if(isFullChk >= 2){
 
-                    jsonFilter.purpose = jsonFilter.purpose.filter(item => item.code!=0);   // 전체 노드 삭제
+                        let sub_code = 0;
+                        let sub_txt = txt.replace("건물","") + " 전체";
+                        let addItem = {'code':code,'txt':txt, sub:[{'code':code+'_'+sub_code,'txt':sub_txt}], 'selected':1};
+                        jsonFilter.purpose.push(addItem);
+
+                        jsonFilter.purpose = jsonFilter.purpose.filter(item => item.code!=0);   // 전체 노드 삭제
+                    }else{
+                        $ul = $("<ul></ul>");
+                        $ul.append('<li><button type="button" class="btn" data-code="0_0" data-parent_code="0">전체</button></li>');
+                        $('#ftPurpos div').eq(1).html($ul);
+
+                        jsonFilter.purpose = [{'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1}];
+                    }
                 }else{
-                    jsonFilter.purpose = [{'code':'0','txt':'전체','sub':[{'code':'0','txt':'전체'}], 'selected':1}];
+                    $ul = $("<ul></ul>");
+                    $ul.append('<li><button type="button" class="btn" data-code="0_0" data-parent_code="0">전체</button></li>');
+                    $('#ftPurpos div').eq(1).html($ul);
+
+                    jsonFilter.purpose = [{'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1}];
                 }
             }
         }else{          // 2차
@@ -335,51 +529,67 @@
             // let addItem = {'code':code,'txt':txt};
             // jsonFilter.purpose.filter(item => item.selected==1)[0].sub.push(addItem);
 
-            let isExist = jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub.filter(item => item.code == code).length;
+            let parent_code = $obj.data('parent_code').toString();
+
+            let isExist = jsonFilter.purpose.filter(item => item.code == parent_code).length > 0 ? jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub.filter(item => item.code == code).length:false;
             // 이미 있으면 삭제, 없으면 생성
             if(isExist){    // 삭제
-                for (let i = 0; i < jsonFilter.purpose.length; i++) {
-                    const item = jsonFilter.purpose[i];
-                    console.log(item.sub);
-                    if(item.sub) {
-                        const indexToRemove = item.sub.findIndex(subItem => subItem.code === code);
-                        if(indexToRemove !== -1) {
-                            item.sub.splice(indexToRemove, 1);
-                            // item.sub 배열에서 요소를 삭제한 후, 배열 길이가 0인지 확인
-                            if(item.sub.length === 0) {
-                                // 상위 요소도 jsonData 배열에서 삭제
-                                jsonFilter.purpose.splice(i, 1);
-                                // 인덱스 조정
-                                i--;
+                if(code != "0_0"){
+                    for (let i = 0; i < jsonFilter.purpose.length; i++) {
+                        const item = jsonFilter.purpose[i];
+                        console.log('item.sub',item.sub);
+                        if(item.sub) {
+                            const indexToRemove = item.sub.findIndex(subItem => subItem.code == code);
+                            console.log('indexToRemove',indexToRemove, code);
+                            if(indexToRemove !== -1) {
+                                item.sub.splice(indexToRemove, 1);
+                                // item.sub 배열에서 요소를 삭제한 후, 배열 길이가 0인지 확인
+                                if(item.sub.length === 0) {
+                                    // 상위 요소도 jsonData 배열에서 삭제
+                                    jsonFilter.purpose.splice(i, 1);
+                                    // 인덱스 조정
+                                    i--;
+                                }
                             }
                         }
                     }
                 }
             }else{          // 생성
+                // 부모노드가 있는지 체크 없으면 추가
+                if(jsonFilter.purpose.filter(item => item.code == parent_code).length == 0){
+                    let parent_txt = jsonPurpos.filter(item => item.id == parent_code)[0].title;
+                    jsonFilter.purpose.push({'code':parent_code,'txt':parent_txt,'sub':[], 'selected':1});
+
+                    jsonFilter.purpose = jsonFilter.purpose.filter(item => item.code!=0);   // 전체 노드 삭제
+                }
+
                 if(idx == 0){   // 전체버튼 
                     let parent_txt = jsonPurpos.filter(item => item.id == parent_code)[0].title.replace('건물','')+' 전체';
-                    jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub = [{'code':'0','txt':parent_txt}];
+                    jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub = [{'code':parent_code+'_0','txt':parent_txt}];
                 }else{      
                     let subItem = {'code':code,'txt':txt};
                     let isFullChk = jsonPurpos.filter(item => item.id == parent_code)[0].children.length - jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub.length;
-                    if(isFullChk == 2){
-                        let parent_txt = jsonPurpos.filter(item => item.id == parent_code)[0].title.replace('건물','')+' 전체';
-                        jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub = [{'code':'0','txt':parent_txt}];
-                    }else{
+                    if(isFullChk >= 2){
+                        jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub = jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub.filter(item => item.code != parent_code+'_0');   // 전체노드삭제
                         jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub.push(subItem);
+                    }else{
+                        let parent_txt = jsonPurpos.filter(item => item.id == parent_code)[0].title.replace('건물','')+' 전체';
+                        jsonFilter.purpose.filter(item => item.code == parent_code)[0].sub = [{'code':parent_code+'_0','txt':parent_txt}];
                     }
                     
                 }
             }
         }
 
-        // printFilterButton();
+        if(jsonFilter.purpose.length==0) jsonFilter.purpose = [{'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1}];
+
+        printFilterButton();
         console.log(jsonFilter.purpose);
     }
 
     function printFilterButton(){
+        // 지역
         $('#filter-addr').html('');
-
         jsonFilter.addr.forEach(function(item){
             item.sub.forEach(function(subItem){
                 $btn = $btnFilter.clone();
@@ -395,12 +605,60 @@
                 $('#filter-addr').append($btn);
             });
         });
+
+        // 용도
+        $('#filter-purpose').html('');
+        jsonFilter.purpose.forEach(function(item){
+            item.sub.forEach(function(subItem){
+                $btn = $btnFilter.clone();
+
+                if(subItem.code=="0_0") return false;
+
+                $btn.attr('data-code',subItem.code);
+                if(subItem.txt.includes('전체'))
+                    $btn.find('span').html(subItem.txt);
+                else
+                    $btn.find('span').html(item.txt + '-' + subItem.txt);
+
+                $('#filter-purpose').append($btn);
+            });
+        });
+
+        // 최저가, 감정가
+        $('#filter-cost').html('');
+        let btnTxt = '';
+        if(jsonFilter.cost.cost1.from.code != '' || jsonFilter.cost.cost1.to.code != ''){
+            btnTxt += '최저가 ' + jsonFilter.cost.cost1.from.txt + '~' + jsonFilter.cost.cost1.to.txt;
+            $btn = $btnFilter.clone();
+            $btn.attr('data-code','cost1');
+            $btn.find('span').html(btnTxt);
+            $('#filter-cost').append($btn);
+        }
+        btnTxt = '';
+        if(jsonFilter.cost.cost2.from.code != '' || jsonFilter.cost.cost2.to.code != ''){
+            btnTxt += '감정가 ' + jsonFilter.cost.cost2.from.txt + '~' + jsonFilter.cost.cost2.to.txt;
+            $btn = $btnFilter.clone();
+            $btn.attr('data-code','cost2');
+            $btn.find('span').html(btnTxt);
+            $('#filter-cost').append($btn);
+        }
+
+        // 물건상태
+        $('#filter-status').html('');
+        if(jsonFilter.status.code!=0){
+            $btn = $btnFilter.clone();
+            $btn.attr('data-code',jsonFilter.status.code);
+            $btn.find('span').html('상태-' + jsonFilter.status.txt);
+
+            $('#filter-status').append($btn);
+        }
     }
 
     // 필터 버튼 클릭
     $(document).on('click', '.selected-filter', function(){
         let code = $(this).data('code').toString();
         
+        // 지역
         for (let i = 0; i < jsonFilter.addr.length; i++) {
             const item = jsonFilter.addr[i];
             console.log(item.sub);
@@ -418,14 +676,50 @@
                 }
             }
         }
-
         if(jsonFilter.addr.length==0){
             jsonFilter.addr.push({'code':'26000', 'txt':'부산광역시 전체', sub:[{'code':'2600000000','txt':'부산 전체'}], 'selected':1});
         }
 
-        setFilterAddr1();
-        setFilterAddr2();
-        printFilterButton();
+        // 용도
+        for (let i = 0; i < jsonFilter.purpose.length; i++) {
+            const item = jsonFilter.purpose[i];
+            console.log(item.sub);
+            if(item.sub) {
+                const indexToRemove = item.sub.findIndex(subItem => subItem.code === code);
+                if(indexToRemove !== -1) {
+                item.sub.splice(indexToRemove, 1);
+                // item.sub 배열에서 요소를 삭제한 후, 배열 길이가 0인지 확인
+                if(item.sub.length === 0) {
+                    // 상위 요소도 jsonData 배열에서 삭제
+                    jsonFilter.purpose.splice(i, 1);
+                    // 인덱스 조정
+                    i--;
+                }
+                }
+            }
+        }
+        if(jsonFilter.purpose.length==0){
+            jsonFilter.purpose.push({'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1});
+        }
+
+        // 감정가, 최저가
+        if(code == 'cost1'){
+            jsonFilter.cost.cost1.from.code = '';
+            jsonFilter.cost.cost1.to.code = '';
+            jsonFilter.cost.cost1.from.txt = '최소';
+            jsonFilter.cost.cost1.to.txt = '최대';
+        }
+        if(code == 'cost2'){
+            jsonFilter.cost.cost2.from.code = '';
+            jsonFilter.cost.cost2.to.code = '';
+            jsonFilter.cost.cost2.from.txt = '최소';
+            jsonFilter.cost.cost2.to.txt = '최대';
+        }
+
+        // 물건상태
+        jsonFilter.status.code= '0';jsonFilter.status.txt= '진행중';
+
+        setFilterFromjsonFilter();
 
         return false;
     });
@@ -472,16 +766,16 @@
         if(idx>0){
             var data = jsonPurpos[idx-1].children;
             $ul = $("<ul></ul>");
-            $ul.append('<li><button type="button" class="btn" data-code="0" data-parent_code="'+data[0].parent_id+'">' + $(this).html().replace("건물","") + ' 전체</button></li>');
+            $ul.append('<li><button type="button" class="btn" data-code="'+data[0].parent_id+'_0" data-parent_code="'+data[0].parent_id+'">' + $(this).html().replace("건물","") + ' 전체</button></li>');
 
             data.forEach(function(item) {
 
-                $ul.append('<li><button type="button" class="btn" data-code="'+item.id+'" data-parent_code="'+item.parent_id+'">' + item.title + '</button></li>');
+                $ul.append('<li><button type="button" class="btn" data-code="'+item.parent_id+'_'+item.id+'" data-parent_code="'+item.parent_id+'">' + item.title + '</button></li>');
             });
             $('#ftPurpos div').eq(1).html($ul);
         }else{
             $ul = $("<ul></ul>");
-            $ul.append('<li><button type="button" class="btn" data-code="0" data-parent_code="0">전체</button></li>');
+            $ul.append('<li><button type="button" class="btn" data-code="0_0" data-parent_code="0">전체</button></li>');
             $('#ftPurpos div').eq(1).html($ul);
         }
 
@@ -500,14 +794,61 @@
         setFilterPurpos2();
     });
 
+    // 최저가 최소
+    $(document).on('change', '#fromPrice1_slider', function(){
+        let code = arrPriceRange[this.value].class;
+        let txt = arrPriceRange[this.value].title;
+
+        jsonFilter.cost.cost1.from.code = code;
+        jsonFilter.cost.cost1.from.txt = txt;
+
+        setFilterCost();
+        printFilterButton();
+    });
+    // 최저가 최대
+    $(document).on('change', '#toPrice1_slider', function(){
+        let code = arrPriceRange[this.value].class;
+        let txt = arrPriceRange[this.value].title;
+
+        jsonFilter.cost.cost1.to.code = code;
+        jsonFilter.cost.cost1.to.txt = txt;
+
+        setFilterCost();
+        printFilterButton();
+        
+    });
+    // 감정가 최소
+    $(document).on('change', '#fromPrice2_slider', function(){
+        let code = arrPriceRange[this.value].class;
+        let txt = arrPriceRange[this.value].title;
+
+        jsonFilter.cost.cost2.from.code = code;
+        jsonFilter.cost.cost2.from.txt = txt;
+
+        setFilterCost();
+        printFilterButton();
+    });
+    // 감정가 최대
+    $(document).on('change', '#toPrice2_slider', function(){
+        let code = arrPriceRange[this.value].class;
+        let txt = arrPriceRange[this.value].title;
+
+        jsonFilter.cost.cost2.to.code = code;
+        jsonFilter.cost.cost2.to.txt = txt;
+
+        setFilterCost();
+        printFilterButton();
+    });
+
     // 물건상태 선택
     $(document).on('click', '#ftStatus li button', function() {
-        var idx = ($("button", $(this).closest('ul')).index(this));
-        
-        $(this).closest('ul').find('button').removeClass('sel');
-        $(this).addClass('sel');
+        let code = $(this).data('code');
+        let txt = $(this).html();
+        jsonFilter.status.code = code;
+        jsonFilter.status.txt = txt;
 
-    
+        setFilterStatus();
+        printFilterButton();
     });
 
 
@@ -562,7 +903,9 @@
                     </ul>
                 </div>
                 <div class="n_filter_subbox overflow-auto">
-                    
+                    <ul>
+                        <li><button type="button" class="btn" data-code="0_0" data-parent_code="0">전체</button></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -640,142 +983,7 @@
                 </ul>
             </div>
 
-            <script>
-                var arrPriceRange = [
-                    {'title':'최소', 'class':''},
-                    {'title':'5천만', 'class':'5000'},
-                    {'title':'1억', 'class':'10000'},
-                    {'title':'2억', 'class':'20000'},
-                    {'title':'3억', 'class':'30000'},
-                    {'title':'5억', 'class':'50000'},
-                    {'title':'10억', 'class':'100000'},
-                    {'title':'20억', 'class':'200000'},
-                    {'title':'30억', 'class':'300000'},
-                    {'title':'50억', 'class':'500000'},
-                    {'title':'100억', 'class':'1000000'},
-                    {'title':'300억', 'class':'3000000'},
-                    {'title':'최대', 'class':''}, 
-                ];
-
-                function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
-                    const [from, to] = getParsed(fromInput, toInput);
-                    fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-                    if (from > to) {
-                        fromSlider.value = to;
-                        fromInput.value = comma(to);
-                    } else {
-                        fromSlider.value = from;
-                        fromInput.value = comma(from);
-                    }
-                }
-
-                function controlToInput(toSlider, fromInput, toInput, controlSlider) {
-                    const [from, to] = getParsed(fromInput, toInput);
-                    fillSlider(fromInput, toInput, '#D9D9D9', '#385f8d', controlSlider);
-                    setToggleAccessible(toInput, toSlider);
-                    if (from <= to) {
-                        toSlider.value = to;
-                        toInput.value = comma(to);
-                    } else {
-                        toInput.value = comma(from);
-                    }
-                }
-
-                function controlFromSlider(fromSlider, toSlider, fromInput) {
-                    const [from, to] = getParsed(fromSlider, toSlider);
-                    fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-                    var arrRange = arrPriceRange;
-
-                    if (from > to) {
-                        fromSlider.value = to;
-                        fromInput.value = arrRange[to]['class'];
-                        $(fromInput).next()[0].value = arrRange[to]['title'];
-                    } else {
-                        fromInput.value = arrRange[from]['class'];
-                        $(fromInput).next()[0].value = arrRange[from]['title'];
-                    }
-                }
-
-                function controlToSlider(fromSlider, toSlider, toInput) {
-                    const [from, to] = getParsed(fromSlider, toSlider);
-                    fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-                    var arrRange = arrPriceRange;
-
-                    setToggleAccessible(toSlider, toSlider);
-                    if (from <= to) {
-                        toSlider.value = to;
-                        toInput.value = arrRange[to]['class'];
-                        $(toInput).next()[0].value = arrRange[to]['title'];
-                    } else {
-                        toInput.value = arrRange[from]['class'];
-                        $(toInput).next()[0].value = arrRange[from]['title'];
-                        toSlider.value = from;
-                    }
-                }
-                
-                function getParsed(currentFrom, currentTo) {
-                    const from = parseInt(uncomma(currentFrom.value), 10);
-                    const to = parseInt(uncomma(currentTo.value), 10);
-                    return [from, to];
-                }
-
-                function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-                    const rangeDistance = to.max - to.min;
-                    const fromPosition = uncomma(from.value) - to.min;
-                    const toPosition = uncomma(to.value) - to.min;
-
-                    controlSlider.style.background = `linear-gradient(
-                    to right,
-                    ${sliderColor} 0%,
-                    ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-                    ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-                    ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-                    ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
-                    ${sliderColor} 100%)`;
-                }
-
-                function setToggleAccessible(currentTarget, toSlider) {
-                    // toSlider = document.querySelector('#toSlider');
-                    if (Number(uncomma(currentTarget.value)) <= 0) {
-                        toSlider.style.zIndex = 2;
-                    } else {
-                        toSlider.style.zIndex = 0;
-                    }
-                }
-
-
-
-                function initInputRange(){
-                    fromSlider = document.querySelector('#fromPrice1_slider');
-                    toSlider = document.querySelector('#toPrice1_slider');
-                    fromInput = document.querySelector('#fromPrice1');
-                    toInput = document.querySelector('#toPrice1');
-
-                    fromAreaSlider = document.querySelector('#fromPrice2_slider');
-                    toAreaSlider = document.querySelector('#toPrice2_slider');
-                    fromAreaInput = document.querySelector('#fromPrice2');
-                    toAreaInput = document.querySelector('#toPrice2');
-
-                    fillSlider(fromSlider, toSlider, '#D9D9D9', '#385f8d', toSlider);
-                    setToggleAccessible(toSlider, toSlider);
-
-                    fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
-                    toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
-                    // fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
-                    // toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
-
-                    fillSlider(fromAreaSlider, toAreaSlider, '#D9D9D9', '#385f8d', toAreaSlider);
-                    setToggleAccessible(toAreaSlider, toAreaSlider);
-
-                    fromAreaSlider.oninput = () => controlFromSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
-                    toAreaSlider.oninput = () => controlToSlider(fromAreaSlider, toAreaSlider, toAreaInput);
-                    // fromAreaInput.oninput = () => controlFromInput(fromAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-                    // toAreaInput.oninput = () => controlToInput(toAreaSlider, fromAreaInput, toAreaInput, toAreaSlider);
-
-                    console.log('initInputRange');
-                }
-    
-            </script>
+            
         </div>
 
         {{-- 물건상태 --}}
@@ -786,10 +994,10 @@
             </div>
             <div class="n_filter_subbox" id="ftStatus">
                 <ul>
-                    <li><button type="button" class="btn sel">진행중</button></li>
-                    <li><button type="button" class="btn">변경/연기</button></li>
-                    <li><button type="button" class="btn">낙찰</button></li>
-                    <li><button type="button" class="btn">기각/취하/취소</button></li>
+                    <li><button type="button" class="btn sel" data-code="0">진행중</button></li>
+                    <li><button type="button" class="btn" data-code="1">변경/연기</button></li>
+                    <li><button type="button" class="btn" data-code="2">낙찰</button></li>
+                    <li><button type="button" class="btn" data-code="3">기각/취하/취소</button></li>
                 </ul>
             </div>
         </div>

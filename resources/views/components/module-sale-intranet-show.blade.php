@@ -380,11 +380,13 @@ $(window).on('load', function() {
                                         <p>보증금 {{ number_format($printData['depPrice_st']) }}만원 / 월세
                                             {{ number_format($printData['monPrice_st']) }}만원</p>
                                     </li>
+                                    @if($printData['loanType']!="표시안함")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>융자금 :</p>
                                         <p>{{ (empty($printData['loanPrice']))?"없음":price_kor($printData['loanPrice'] * 10000)."원"; }}
                                         </p>
                                     </li>
+                                    @endif
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>예상 수익률 :</p>
                                         <p class="mont">{{ $printData['rate'] }}%</p>
