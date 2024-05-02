@@ -16614,6 +16614,9 @@ input[type="range"] {
 .filt_bt_wrap .search_option_button:first-child button { background: #fff; color: #385f8d; }
 .filt_bt_wrap .search_option_button:first-child button:hover { background: #385f8d; color: #fff; }
 
+.txt-blurred { 
+  filter: blur(3px);
+ }
 
 .select_w input { 
   border-radius: 3px; 
