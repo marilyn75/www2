@@ -16615,7 +16615,7 @@ input[type="range"] {
 .filt_bt_wrap .search_option_button:first-child button:hover { background: #385f8d; color: #fff; }
 
 .txt-blurred { 
-  filter: blur(3px);
+  filter: blur(6px);
  }
 
 .select_w input { 
