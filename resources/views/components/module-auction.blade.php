@@ -205,11 +205,9 @@
                         </div>
                     </div>
                 </div>
-                {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
-                @if (env('APP_ENV') == 'local')
+
+                {{-- 필터 --}}
                 <x-filter-auction />
-                @endif
-                {{-- 개발용 조건 코드 - 개발완료 후 @if, @endif 제거 --}}
 
                 <div class="col-md-12 col-lg-12 pl0 pr0">
 
