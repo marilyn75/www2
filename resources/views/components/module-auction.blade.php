@@ -249,13 +249,13 @@
                     <!-- 조회순 -->
                     <span class="dropdown-el down_filt">
                         <input type="radio" name="order" value="hit" id="order-hit"
-                            @if (@$_REQUEST['order'] == '' || @$_REQUEST['order'] == 'hit') {{ __('checked="checked"') }} @endif><label
+                            @if (@$_REQUEST['order'] == 'hit') {{ __('checked="checked"') }} @endif><label
                             for="order-hit">조회수 많은</label>
                         <input type="radio" name="order" value="fav" id="order-fav"
                             @if (@$_REQUEST['order'] == 'fav') {{ __('checked="checked"') }} @endif><label
                             for="order-fav">관심수 많은</label>
                         <input type="radio" name="order" value="date1" id="order-date1"
-                            @if (@$_REQUEST['order'] == 'date1') {{ __('checked="checked"') }} @endif><label
+                            @if (@$_REQUEST['order'] == '' || @$_REQUEST['order'] == 'date1') {{ __('checked="checked"') }} @endif><label
                             for="order-date1">매각기일 빠른</label>
                         <input type="radio" name="order" value="date2" id="order-date2"
                             @if (@$_REQUEST['order'] == 'date2') {{ __('checked="checked"') }} @endif><label
