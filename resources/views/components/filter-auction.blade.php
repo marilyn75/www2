@@ -148,18 +148,25 @@
     //     'cost':{},
     //     'status':{}};
 
-    var jsonFilter = {
-        // 'addr':{'26000':['2600000000'], '26110':['2611010100','대창동1가','중앙동3가']},
-        // 'addr':{'부산광역시 전체':['부산 전체'], '중구':['영주동','대창동1가','중앙동3가']},
-        // 'addr':[{'26110':'중구','sub':[{'2611010100':'영주동'},{'2611013300':'광복동1가'},{'2611010500':'중앙동2가'}]}],
-        'addr':[{'code':'26000','txt':'부산광역시 전체','sub':[{'code':'2600000000','txt':'부산 전체'}], 'selected':1}],
-        'purpose':[{'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1}],
-        'cost':{'cost1':{'from':{'code':'','txt':'최소'}, 'to':{'code':'','txt':'최대'}},'cost2':{'from':{'code':'','txt':'최소'}, 'to':{'code':'','txt':'최대'}}},
-        'status':{'code':'0', 'txt':'진행중'}};
+    var jsonFilter_base = {
+            // 'addr':{'26000':['2600000000'], '26110':['2611010100','대창동1가','중앙동3가']},
+            // 'addr':{'부산광역시 전체':['부산 전체'], '중구':['영주동','대창동1가','중앙동3가']},
+            // 'addr':[{'26110':'중구','sub':[{'2611010100':'영주동'},{'2611013300':'광복동1가'},{'2611010500':'중앙동2가'}]}],
+            'addr':[{'code':'26000','txt':'부산광역시 전체','sub':[{'code':'2600000000','txt':'부산 전체'}], 'selected':1}],
+            'purpose':[{'code':'0','txt':'전체','sub':[{'code':'0_0','txt':'전체'}], 'selected':1}],
+            'cost':{'cost1':{'from':{'code':'','txt':'최소'}, 'to':{'code':'','txt':'최대'}},'cost2':{'from':{'code':'','txt':'최소'}, 'to':{'code':'','txt':'최대'}}},
+            'status':{'code':'0', 'txt':'진행중'}};
+
+    var jsonFilter = jsonFilter_base;
     
     var $btnFilter = $('<button class="btn selected-filter"><span>선택필터</span><i class="ri-close-line"></i></button>');
 
     $(document).ready(function() {
+        let cookieFilterJson = getCookie('filter_json');
+        if(cookieFilterJson) jsonFilter = JSON.parse(cookieFilterJson);
+        
+        console.log('jsonFilter',jsonFilter);
+
         setGu();
         // $('#ftAddr button:eq(0)').click();
         let pnu = jsonFilter.addr[0].code;
@@ -256,7 +263,11 @@
         $('#fromPrice2_slider').val(from_idx);
         $('#toPrice2_slider').val(to_idx);
         
-        initInputRange();
+        controlFromSlider(fromSlider, toSlider, fromInput);
+        controlToSlider(fromSlider, toSlider, toInput);
+        controlFromSlider(fromAreaSlider, toAreaSlider, fromAreaInput);
+        controlToSlider(fromAreaSlider, toAreaSlider, toAreaInput);
+        // initInputRange();
     }
 
     function setFilterStatus(){
@@ -852,15 +863,28 @@
     });
 
 
+    $(document).on('click', '#searchButton', function(){
+        console.log('검색버튼', jsonFilter);
+        var jsonString = JSON.stringify(jsonFilter);
+        setCookie('filter_json', jsonString, 7);
+        frm.submit();
+    });
+
+    $(document).on('click', '#resetButton', function(){
+        
+        var jsonString = JSON.stringify(jsonFilter_base);
+        setCookie('filter_json', jsonString, 7);
+        frm.submit();
+        
+    });
 </script>
 
 
 
 {{-- new filter --}}
 
-
+<form name="frm" action="">
 <div class="col-md-12 pl0 pr0">
-    
     
     
     <div class="n_filter_w">
@@ -1028,3 +1052,4 @@
         </li>
     </div>
 </div>
+</form>

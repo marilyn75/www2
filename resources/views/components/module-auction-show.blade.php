@@ -226,32 +226,47 @@
                                         </div>
                                     </li>
                             @endif
+
+                            @if($data['최종기일결과'] == "종료")
+                                    <li>
+                                        <p></p>
+                                        <div class="fall_rst">
+                                            <p>{{ $data['사건항고정지여부'] }}</p>
+                                        </div>
+                                    </li>
+                            @endif
+
                             @foreach ($data['기일내역목록'] as $_i=>$_data)
-                                @if ($_data['최저매각가격'] > 0)
+                                
                                     <li>
                                     {{-- <li @if($_i>3){!! __('class="hidden"') !!}@endif> --}}
                                         <p>{{ $_data['기일'] }}</p>
                                         <div class="fall_rst">
 
-                                            @if($_data['기일결과']=="매각")
-                                            
-                                            <p class="row">최저가 <span style="text-decoration: line-through;">{{ price_kor($_data['최저매각가격']) }}원</span></p>
-                                            <p>{{ price_kor($_data['매각가격']) }}원</p>
-                                            @elseif($_data['기일결과'] != '변경')
-                                            <p>{{ price_kor($_data['최저매각가격']) }}원</p>
-                                            @endif
-                                            @if ($_data['기일결과'] == '유찰')
-                                                <p class="auc_bdg fall">유찰</p>
-                                            @elseif ($_data['기일결과'] == '변경')
-                                                <p class="">기일변경</p>
-                                            @elseif ($_data['기일결과'] == '매각')
-                                                <p class="auc_bdg sale">매각</p>
+                                            @if($_data['최저매각가격'] <= 0)
+                                                <p>{{ $_data['기일결과'] }}</p>
                                             @else
-                                                <p class="auc_bdg ing">진행</p>
+
+                                                @if($_data['기일결과']=="매각")
+                                                <p class="row">최저가 <span style="text-decoration: line-through;">{{ price_kor($_data['최저매각가격']) }}원</span></p>
+                                                @if($_data['매각가격'] > 0 )<p>{{ price_kor($_data['매각가격']) }}원</p>@endif
+                                                @elseif($_data['최저매각가격'] > 0)
+                                                <p>{{ price_kor($_data['최저매각가격']) }}원</p>
+                                                @endif
+                                                
+                                                @if ($_data['기일결과'] == '유찰')
+                                                    <p class="auc_bdg fall">유찰</p>
+                                                @elseif ($_data['기일결과'] == '변경')
+                                                    <p class="">기일변경</p>
+                                                @elseif ($_data['기일결과'] == '매각')
+                                                    <p class="auc_bdg sale">매각</p>
+                                                @else
+                                                    <p class="auc_bdg ing">진행</p>
+                                                @endif
                                             @endif
                                         </div>
                                     </li>
-                                @endif
+                              
                             @endforeach
                         </ul>
                         {{-- <button class="ac_more_btn fall_btn" onclick="showMoreFall()">더보기</button> --}}

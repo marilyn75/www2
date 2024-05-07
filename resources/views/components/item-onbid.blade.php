@@ -1,5 +1,5 @@
 <div class="col-sm-6 col-md-6 col-lg-4">
-    <a href="{{ env('MENU_LINK_AUCTION').'/'.$printData['view_link'] }}">
+    <a href="{{ env('MENU_LINK_AUCTION').'/'.$printData['view_link'] }}" target="_blank">
         <div class="feat_property home7 style4 bdrrn feat_property_w">
             <div class="thumb auction_thumb">
                 <img class="img-whp" src="{{ $printData['image'] }}" alt="{{ $printData['alt'] }}">
@@ -59,6 +59,11 @@
                         @endif
                     </p>
                 </div>
+
+                {{-- <div>
+                    {{ $printData['cate1'] }} - {{ $printData['cate2'] }}
+                </div> --}}
+
                 <ul class="auc_hash">
                     @foreach ($printData['해시태그'] as $_tag)
                         <li>

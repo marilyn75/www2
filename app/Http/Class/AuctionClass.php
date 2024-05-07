@@ -39,9 +39,11 @@ class AuctionClass{
             'gubun' => @$data['gubun'],
             'jibun' => @$data['jibun'],
             'order' => @$data['order'],
+            'filter' => @$_COOKIE["filter_json"],
         ];
 
-        $response = Http::get($this->url, $params);   
+        $response = Http::get($this->url, $params);  
+        debug($this->url . '?' . http_build_query($params)); 
         $this->data = $response->json();
 
         return $this->data;
@@ -89,7 +91,10 @@ class AuctionClass{
             }
         }
 
-        if($strState=="매각") $data['dday'] = "낙찰";
+        // if($strState=="매각") $data['dday'] = "낙찰";
+        if($strState=="매각" || strpos($strState,"매각허가결정")!==false || strpos($strState,"납부")!==false) $data['dday'] = "낙찰";
+        if($data['최종기일결과']=="종료") $data['dday'] = "종료";
+
         if(!empty($data['사건내역'][0]['종국일자'])){
             $data['dday'] = "종료";
 
@@ -341,7 +346,9 @@ class AuctionClass{
         }
 
         $data['기일내역목록'] = array_reverse($data['기일내역목록']);
-        if($strState=="매각") $data['진행상태'] = "낙찰";
+        if($strState=="매각" || strpos($strState,"매각허가결정")!==false || strpos($strState,"납부")!==false) $data['진행상태'] = "낙찰";
+
+        if(@$data['최종기일결과']=="종료") $data['진행상태'] = $data['최종기일결과'];
 
 
 
