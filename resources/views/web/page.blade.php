@@ -51,9 +51,13 @@
                 <div class="breadcrumb_content style2 breadcrumb_content_w">
                     <h2 class="breadcrumb_title breadcrumb_title_w">Home / {{ implode(" / ", $arrLocation) }}</h2>
                 </div>
-                @if($page->program_module=="SaleIntranet" && empty($_REQUEST['mode']))
+                @if(empty($_REQUEST['mode']))
                 <div>
+                    @if($page->program_module=="SaleIntranet")
                     <button id="open2" class="filter_btn mont  filter_open_btn filter_btn_w"><i class="ri-equalizer-line"></i>Filter</button>
+                    @elseif($page->program_module=="Auction")
+                    <button id="open2" class="filter_btn mont  filter_open_btn_ac filter_btn_w"><i class="ri-equalizer-line"></i>Filter</button>
+                    @endif
                 </div>
                 @endif
             </div>

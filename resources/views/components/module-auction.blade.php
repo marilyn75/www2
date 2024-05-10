@@ -1,6 +1,4 @@
-@extends('layout.layout')
 
-@section('content')
 
     <script>
         // // input 클릭 시 box 보이기
@@ -159,8 +157,7 @@
     <form name="frm" action="" method="post" class="col-md-12 pl0 pr0">
         @csrf
         <input type="hidden" name="page" value="1">
-        <section class="our-listing pb30-991">
-            <div class="container_w">
+            <div class="">
                 <div class="dn-smd dn-991">
                     <div class="n_filt_tit">
                         <h2>상세검색</h2>
@@ -213,25 +210,28 @@
                     {{-- 필터 --}}
                     <x-filter-auction />
 
-                    <x-filter-auction-m />
+                    
                     
                 </div>
-
-
-                <div>
-                    <button id="open_auction" class="filter_btn mont  filter_open_btn filter_btn_w"><i
-                            class="ri-equalizer-line"></i>Filter</button>
+                <!-- mobile filter -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="listing_sidebar dn db-991">
+                            <div class="sidebar_content_details style3">
+                                <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+                                <div class="closebtn_wrap">
+                                    <a class="filter_closed_btn_ac" href="#"><i class="ri-close-line"></i></a>
+                                </div>
+                                <div class="sidebar_listing_list style2 mobile_sytle_sidebar mb0" id="divFilterM">
+                                    필터
+                                    <x-filter-auction-m />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- mobile filter end -->
 
-                <!-- JavaScript 코드 -->
-<script>
-    $(document).ready(function () {
-        $("#open_auction").click(function () {
-            $(".sidebar_advanced_search_widget").toggle();
-            return false;
-        });
-    });
-</script>
 
                 <div class="col-md-12 col-lg-12 pl0 pr0">
 
@@ -342,7 +342,6 @@
                 </div>
                 <!-- 검색결과 end -->
             </div>
-        </section>
+
 
     </form>
-@endsection
