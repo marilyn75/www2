@@ -223,7 +223,7 @@
                                     <a class="filter_closed_btn_ac" href="#"><i class="ri-close-line"></i></a>
                                 </div>
                                 <div class="sidebar_listing_list style2 mobile_sytle_sidebar mb0" id="divFilterM">
-                                    필터
+                                    
                                     <x-filter-auction-m />
                                 </div>
                             </div>
