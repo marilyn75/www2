@@ -244,13 +244,13 @@
                                     <div class="form_control_container">
                                         <input class="form_price" type="hidden" name="toPrice1" id="toPrice1"
                                             value="" readonly="">
-                                        <input class="form_price" type="text" name="toPrice1_txt" id="toPrice1_txt"
-                                            value="최대" readonly="">
+                                        <input class="form_price" type="text" name="toPrice1_txt"
+                                            id="toPrice1_txt" value="최대" readonly="">
                                     </div>
                                 </div>
                                 <div class="sliders_control">
-                                    <input id="fromPrice1_slider" name="fromPrice1_slider" type="range" value="0"
-                                        min="0" max="12" step="1">
+                                    <input id="fromPrice1_slider" name="fromPrice1_slider" type="range"
+                                        value="0" min="0" max="12" step="1">
                                     <input id="toPrice1_slider" name="toPrice1_slider" type="range" value="12"
                                         min="0" max="12" step="1">
                                 </div>
@@ -279,30 +279,14 @@
                 </div>
             </div>
         </div>
-
-        <div class="n_filter_b">
-            <div class="btn_wrap">
-                <div id="filter-addr">
-
-                </div>
-                <div id="filter-purpose">
-
-                </div>
-                <div id="filter-cost">
-
-                </div>
-                <div id="filter-status">
-
-                </div>
+        <li class="filt_li filt_bt_wrap">
+            <div class="search_option_button">
+                <button type="submit" class="btn btn-block btn-thm btn-thm_w">초기화</button>
             </div>
-            <li class="filt_li filt_bt_wrap n_filt_bt_wrap">
-                <div class="search_option_button">
-                    <button type="button" id="resetButton" class="btn btn-block btn-thm btn-thm_w">초기화</button>
-                </div>
-                <div class="search_option_button">
-                    <button type="button" id="searchButton" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
-                </div>
-            </li>
-        </div>
+            <div class="search_option_button">
+                <button type="submit" class="btn btn-block btn-thm btn-thm_w">검색하기</button>
+            </div>
+        </li>
+
     </div>
 </form>
