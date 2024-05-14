@@ -56,7 +56,9 @@
                 <div class="m_filt_tit">
                     <p>지역</p>
                 </div>
+                <input type="text" class="loc_input" placeholder="지역: 전체">
                 <div class="n_filter_sub" id="ftAddr">
+                    
                     <div class="n_filter_subbox m_sub overflow-auto">
                         <ul>
                             <li>부산 전체</li>
