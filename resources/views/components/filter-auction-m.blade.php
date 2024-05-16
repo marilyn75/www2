@@ -90,20 +90,30 @@
 
     function printFilterButton_m(){
         // 지역
+        var loc_txt = "지역: ";
         $('#filter-addr_m').html('');
         jsonFilter.addr.forEach(function(item){
             item.sub.forEach(function(subItem){
                 $btn = $btnFilter.clone();
 
-                if(subItem.code=="2600000000") return false;
+                if(subItem.code=="2600000000"){
+                    loc_txt += "전체";
+                    $('.loc_input').val(loc_txt);
+                    return false;
+                } 
 
                 $btn.attr('data-code',subItem.code);
-                if(subItem.txt.includes('전체'))
+                if(subItem.txt.includes('전체')){
                     $btn.find('span').html(subItem.txt);
-                else
+                    loc_txt += subItem.txt + ",";
+                }else{
                     $btn.find('span').html(item.txt + '-' + subItem.txt);
+                    loc_txt += item.txt + '-' + subItem.txt + ",";
+                }
 
                 $('#filter-addr_m').append($btn);
+
+                $('.loc_input').val(loc_txt.substr(0, loc_txt.length - 1));
             });
         });
     }
@@ -382,7 +392,7 @@
 
 <form name="frm_m" action="">
     <div class="col-md-12 pl0 pr0">
-        <div class="n_filter_b">
+        <div class="n_filter_b d-none">
             <div class="btn_wrap">
                 <div id="filter-addr_m">
                     
@@ -396,7 +406,7 @@
                 <div class="m_filt_tit">
                     <p>지역</p>
                 </div>
-                <input type="text" class="loc_input" placeholder="지역: 전체">
+                <input type="text" class="loc_input" value="지역: 전체">
                 <div class="n_filter_sub" id="ftAddr_m">
                     
                     <div class="n_filter_subbox m_sub overflow-auto">
