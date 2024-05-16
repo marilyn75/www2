@@ -325,6 +325,8 @@
         });
 
         $('#ftPurpos div').eq(0).html($ul);
+
+        setPurpos_m();
     }
 
     function getListAddr(pnu) {
@@ -362,6 +364,7 @@
         });
 
         $('#ftAddr div').eq(0).html($ul);
+        $('#ftAddr_m div').eq(0).html($('#ftAddr div').eq(0).html());
     }
 
     function setDong(pnu) {
@@ -376,12 +379,14 @@
                 $ul.append('<li><button type="button" class="btn" data-code="' + item.locatjumin_cd + '">' + item.locallow_nm + '</button></li>');
         });
         $('#ftAddr div').eq(1).html($ul);
+        $('#ftAddr_m div').eq(1).html($('#ftAddr div').eq(1).html());
     }
 
     function changeJsonFilterAddr(obj, isRemove){
         let $obj = $(obj);
         let $parentDiv = $obj.closest('div');
         let level = $('#ftAddr div').index($parentDiv) + 1; // 1: 구군, 2: 동리
+        if(level == 0)  level = $('#ftAddr_m div').index($parentDiv) + 1; // 1: 구군, 2: 동리
         let idx = $('li button', $parentDiv).index($(obj)); // 선택한 버튼의 index
         let code = $obj.data('code').toString();
         let txt = $obj.html();
@@ -463,6 +468,7 @@
         }
 
         printFilterButton();
+        printFilterButton_m();
     }
 
     function changeJsonFilterPurpos(obj){
@@ -731,6 +737,7 @@
         jsonFilter.status.code= '0';jsonFilter.status.txt= '진행중';
 
         setFilterFromjsonFilter();
+        setFilterFromjsonFilter_m();
 
         return false;
     });
@@ -806,7 +813,7 @@
     });
 
     // 최저가 최소
-    $(document).on('change', '#fromPrice1_slider', function(){
+    $(document).on('change', '#fromPrice1_slider, #fromPrice1_slider_m', function(){
         let code = arrPriceRange[this.value].class;
         let txt = arrPriceRange[this.value].title;
 
@@ -817,7 +824,7 @@
         printFilterButton();
     });
     // 최저가 최대
-    $(document).on('change', '#toPrice1_slider', function(){
+    $(document).on('change', '#toPrice1_slider, #toPrice1_slider_m', function(){
         let code = arrPriceRange[this.value].class;
         let txt = arrPriceRange[this.value].title;
 
@@ -829,7 +836,7 @@
         
     });
     // 감정가 최소
-    $(document).on('change', '#fromPrice2_slider', function(){
+    $(document).on('change', '#fromPrice2_slider, #fromPrice2_slider_m', function(){
         let code = arrPriceRange[this.value].class;
         let txt = arrPriceRange[this.value].title;
 
@@ -840,7 +847,7 @@
         printFilterButton();
     });
     // 감정가 최대
-    $(document).on('change', '#toPrice2_slider', function(){
+    $(document).on('change', '#toPrice2_slider, #toPrice2_slider_m', function(){
         let code = arrPriceRange[this.value].class;
         let txt = arrPriceRange[this.value].title;
 
@@ -852,9 +859,9 @@
     });
 
     // 물건상태 선택
-    $(document).on('click', '#ftStatus li button', function() {
-        let code = $(this).data('code');
-        let txt = $(this).html();
+    $(document).on('click', '#ftStatus li button, .rdoStatus', function() {
+        let code = $(this).hasClass('rdoStatus') ? this.value : $(this).data('code');
+        let txt = $(this).hasClass('rdoStatus') ? $(this).data('txt') : $(this).html();
         jsonFilter.status.code = code;
         jsonFilter.status.txt = txt;
 
@@ -863,14 +870,14 @@
     });
 
 
-    $(document).on('click', '#searchButton', function(){
+    $(document).on('click', '#searchButton, #searchButton_m', function(){
         console.log('검색버튼', jsonFilter);
         var jsonString = JSON.stringify(jsonFilter);
         setCookie('filter_json', jsonString, 7);
         frm.submit();
     });
 
-    $(document).on('click', '#resetButton', function(){
+    $(document).on('click', '#resetButton, #resetButton_m', function(){
         
         var jsonString = JSON.stringify(jsonFilter_base);
         setCookie('filter_json', jsonString, 7);

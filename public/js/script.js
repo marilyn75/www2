@@ -1003,10 +1003,8 @@
 
         // 경매용 //////////////////////////////////////////
         $(".filter_open_btn_ac").on('click', function(){
-      
-            var filterHtml = $('#divFilter').html();
-           
 
+            setFilterFromjsonFilter_m();
 
             $(".sidebar_content_details.style3").addClass("sidebar_ml0");
             $("body").addClass("body_overlay");
@@ -1014,9 +1012,8 @@
 
         $(".filter_closed_btn_ac").on('click', function(){
         
-            var filterHtml = $('#divFilterM').html();
-            
-
+            initInputRange();
+            printFilterButton();
 
             $(".sidebar_content_details.style3").removeClass("sidebar_ml0");
             $("body").removeClass("body_overlay");
