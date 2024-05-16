@@ -16555,12 +16555,12 @@ input[type="range"] {
   z-index: 1;
   top: 4px;
 }
-#fromPrice1_slider {
+#fromPrice1_slider, #fromPrice1_slider_m {
   height: 0;
   z-index: 1;
   top: 4px;
 }
-#fromPrice2_slider {
+#fromPrice2_slider, #fromPrice2_slider_m {
   height: 0;
   z-index: 1;
   top: 4px;
