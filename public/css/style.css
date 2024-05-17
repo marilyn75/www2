@@ -18823,7 +18823,8 @@ tbody tr td .t_link:hover { color: #385f8d; text-decoration: underline; }
     width: auto;
   }
   .n_filt_bt_wrap .search_option_button button { 
-    padding: 8px 30px;
+    /* padding: 8px 30px; */
+    width: 130px;
    }
 
    .n_filter_b { 
