@@ -390,7 +390,7 @@
 
 {{-- new filter --}}
 
-<form name="frm_m" action="">
+<form name="frm_m" action="" method="POST">
     <div class="col-md-12 pl0 pr0">
         <div class="n_filter_b d-none">
             <div class="btn_wrap">

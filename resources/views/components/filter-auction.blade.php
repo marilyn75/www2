@@ -606,7 +606,7 @@
 
     function printFilterButton(){
         // 지역
-        $('#filter-addr').html('');
+        $('#filter-box').html('');
         jsonFilter.addr.forEach(function(item){
             item.sub.forEach(function(subItem){
                 $btn = $btnFilter.clone();
@@ -619,12 +619,12 @@
                 else
                     $btn.find('span').html(item.txt + '-' + subItem.txt);
 
-                $('#filter-addr').append($btn);
+                $('#filter-box').append($btn);
             });
         });
 
         // 용도
-        $('#filter-purpose').html('');
+        // $('#filter-box').html('');
         jsonFilter.purpose.forEach(function(item){
             item.sub.forEach(function(subItem){
                 $btn = $btnFilter.clone();
@@ -637,19 +637,19 @@
                 else
                     $btn.find('span').html(item.txt + '-' + subItem.txt);
 
-                $('#filter-purpose').append($btn);
+                $('#filter-box').append($btn);
             });
         });
 
         // 최저가, 감정가
-        $('#filter-cost').html('');
+        // $('#filter-box').html('');
         let btnTxt = '';
         if(jsonFilter.cost.cost1.from.code != '' || jsonFilter.cost.cost1.to.code != ''){
             btnTxt += '최저가 ' + jsonFilter.cost.cost1.from.txt + '~' + jsonFilter.cost.cost1.to.txt;
             $btn = $btnFilter.clone();
             $btn.attr('data-code','cost1');
             $btn.find('span').html(btnTxt);
-            $('#filter-cost').append($btn);
+            $('#filter-box').append($btn);
         }
         btnTxt = '';
         if(jsonFilter.cost.cost2.from.code != '' || jsonFilter.cost.cost2.to.code != ''){
@@ -657,17 +657,17 @@
             $btn = $btnFilter.clone();
             $btn.attr('data-code','cost2');
             $btn.find('span').html(btnTxt);
-            $('#filter-cost').append($btn);
+            $('#filter-box').append($btn);
         }
 
         // 물건상태
-        $('#filter-status').html('');
+        // $('#filter-status').html('');
         if(jsonFilter.status.code!=0){
             $btn = $btnFilter.clone();
             $btn.attr('data-code',jsonFilter.status.code);
             $btn.find('span').html('상태-' + jsonFilter.status.txt);
 
-            $('#filter-status').append($btn);
+            $('#filter-box').append($btn);
         }
     }
 
@@ -890,7 +890,7 @@
 
 {{-- new filter --}}
 
-<form name="frm" action="">
+<form name="frm" action="" method="post">
 <div class="col-md-12 pl0 pr0">
     
     
@@ -1036,7 +1036,9 @@
 
     <div class="n_filter_b">
         <div class="btn_wrap">
-            <div id="filter-addr">
+            <div id="filter-box">
+            </div>
+            {{-- <div id="filter-addr">
                 
             </div>
             <div id="filter-purpose">
@@ -1047,7 +1049,7 @@
             </div>
             <div id="filter-status">
                 
-            </div>
+            </div> --}}
         </div>
         <li class="filt_li filt_bt_wrap n_filt_bt_wrap"> 
             <div class="search_option_button">
