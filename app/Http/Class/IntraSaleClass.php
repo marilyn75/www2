@@ -570,7 +570,7 @@ class IntraSaleClass{
             ->whereHas('sale', function($query){
                 $query->whereRaw("instr(ifnull(_options,''),'COC') IS false");
             })
-            ->orderBy('done_date','desc')
+            ->orderBy('recom_date','desc')->orderBy('done_date','desc')
             ->limit(2)->get();
 
         return $model;
