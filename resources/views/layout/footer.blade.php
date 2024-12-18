@@ -8,8 +8,8 @@
                         <a href="#" class="btn flaticon-user login_head modal-button" id="a-login" data-url="modal.privacy">개인정보처리방침</a>
                         {{-- <a href="{{ route('page',40) }}">개인정보처리방침</a> --}}
                     </div>
-                    <p>주식회사 계모임 대표 송대훈</p>
-                    <p>부산 연제구 중앙대로 1091, 6F (연산동, 제세빌딩)</p>
+                    <p>NTO PARTNERS INC.</p>
+                    <p>부산 동래구 충렬대로 152, 4F (온천동)</p>
                     <div class="footer_info">
                         <p class="mont">051-791-8888</p>
                         <p class="mont">gyemoim.inc@gmail.com</p>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="footer_copy mt35">
-                    <p>ⓒ GYEMOIM INC. ALL RIGHTS RESERVED.</p>
+                    <p>ⓒ NTO PARTNERS INC. ALL RIGHTS RESERVED.</p>
                 </div>
             </div>
         </div>

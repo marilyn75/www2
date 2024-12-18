@@ -282,11 +282,18 @@ class IntraSaleClass{
         $return['sawon_office_line'] = ($return['sawon_chkcert']=='y')?@$data->sale->users->first()->sawon->info->office_line:"8840";
         $return['sawon_phone'] = @$data->sale->users->first()->sawon->mb_mobile;
 
-        // 개인정보 숨김설정인 경우
-        if(@$data->sale->users->first()->sawon->info->gmi_hide2=="1"){
+        // 개인정보 숨김설정인 경우 또는 중개보조원인경우우
+        if(@$data->sale->users->first()->sawon->info->gmi_hide2=="1" || $return['sawon_sosok']!="소속공인중개사사"){
             $return['sawon_photo'] = "/images/sawon-placeholder.png";
+
+            // 예외 10명
+            $arrException = [
+                '곽병수','권태희','김민성','노현수','문권철','박미자','손성곤','이철','장혜금','황태송',
+            ];
+            if(!in_array($return['sawon_name'], $arrException)){
+                $return['sawon_office_line'] = "8840";
+            }
             $return['sawon_name'] = "부동산중개법인개벽";
-            $return['sawon_office_line'] = "8840";
             $return['sawon_duty'] = "";
         }
 

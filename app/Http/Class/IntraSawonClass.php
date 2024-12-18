@@ -255,6 +255,7 @@ debug($result);
                 'mb_out'=>0, 
                 'auth_gr'=>'M01_D01'
             ])
+            ->where('sosok','=','소속공인중개사')
             // ->where('chkcert','=','y')
             ->where('pick_date','!=',null)
             ->orderBy('user_name', 'asc')

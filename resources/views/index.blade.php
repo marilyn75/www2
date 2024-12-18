@@ -241,7 +241,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="testimonial_grid_slider style2">
+                <div class="{{ count($agents)>3 ? __("testimonial_grid_slider"):"" }} style2">
                 @foreach ($agents as $_i=>$_sawon)
                 @php
                     $cls = new App\Http\Class\IntraSawonClass;

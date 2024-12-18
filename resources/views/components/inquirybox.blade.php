@@ -32,7 +32,11 @@
                     @if ($printData['sawon_chkcert']=='y')
                         <a href="tel:{{ $printData['sawon_phone'] }}">{{ $printData['sawon_phone'] }}</a>
                     @else
-                        1833-{{ $printData['sawon_office_line'] }}
+                        @if($printData['sawon_office_line']=="8840")
+                            1833-{{ $printData['sawon_office_line'] }}
+                        @else
+                            051-791-{{ $printData['sawon_office_line'] }}
+                        @endif
                     @endif
                     </p>
                 </div>
