@@ -15,7 +15,11 @@
 </ul> --}}
 
 <div class="row mt20">
-    @for ($i=0;$i<12;$i++)
+    <?php
+    $max = 12;
+    if(count($data)<12) $max=count($data);
+    ?>
+    @for ($i=0;$i<$max;$i++)
     <div class="col-sm-6 col-md-6 col-lg-4">
         <div class="news_w">
             <a href="https://www.busan.com/view/busan/view.php?code={{ $data[$i]['CODE'] }}" target="_blank">
