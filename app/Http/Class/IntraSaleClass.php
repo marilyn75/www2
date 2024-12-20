@@ -184,6 +184,8 @@ class IntraSaleClass{
         $arrAddr = explode("|",$data->addr);
         $arrAddress = explode(" ", $arrAddr[$return['mainAddr']]);  // 대표지번
         $addr = trim($arrAddress[0])." ".trim($arrAddress[1])." ".trim($arrAddress[2]);
+		if(substr($addr,-3)=="읍" || substr($addr,-3)=="면")		$addr .= " ".trim($arrAddress[3]);
+
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
 
@@ -283,7 +285,7 @@ class IntraSaleClass{
         $return['sawon_phone'] = @$data->sale->users->first()->sawon->mb_mobile;
 
         // 개인정보 숨김설정인 경우 또는 중개보조원인경우우
-        if(@$data->sale->users->first()->sawon->info->gmi_hide2=="1" || $return['sawon_sosok']!="소속공인중개사사"){
+        if(@$data->sale->users->first()->sawon->info->gmi_hide2=="1" || $return['sawon_sosok']!="소속공인중개사"){
             $return['sawon_photo'] = "/images/sawon-placeholder.png";
 
             // 예외 10명
