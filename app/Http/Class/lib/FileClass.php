@@ -150,7 +150,11 @@ class FileClass{
             }
 
             // 이미지 로드
-            $image = Image::make($imageContent);
+            try {
+                $image = Image::make($imageContent);
+            } catch (\Intervention\Image\Exception\NotReadableException $e) {
+                return "/images/noimg.jpg";
+            }
 
             // 이미지 방향을 올바르게 설정
             $image = $this->orientateImage($image, $imgUrl);

@@ -1,3 +1,4 @@
+@if(!empty($data))
 @if (empty($type))
 @php
     $agent = new Jenssegers\Agent\Agent();
@@ -113,3 +114,4 @@
         document.forms[0].submit();
     }
 </script>
+@endif

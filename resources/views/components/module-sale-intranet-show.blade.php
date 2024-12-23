@@ -100,7 +100,7 @@ $(window).on('load', function() {
                         <div class="detail_width">
                             <li><a href="#">토지면적
                                 <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span></a></li>
-                            @if (strpos($printData['category'],"토지")===false)
+                            @if (strpos($printData['category'],"토지")===false && strpos($printData['category'],"임야")===false)
                             <li><a href="#">연면적 <span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></a>
                             </li>
                         </div>
@@ -222,7 +222,7 @@ $(window).on('load', function() {
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>건물용도 :</p>
                                         {{-- <p>{{ printEmpty($printData['mainPurpsCdNm']) }}</p> --}}
-                                        <p>{{ printEmpty($printData['purps']) }}</p>
+                                        <p>{{ printEmpty($printData['mainPurpsCdNm']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>계약면적 :</p>
