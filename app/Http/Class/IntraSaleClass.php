@@ -184,7 +184,7 @@ class IntraSaleClass{
         $arrAddr = explode("|",$data->addr);
         $arrAddress = explode(" ", $arrAddr[$return['mainAddr']]);  // 대표지번
         $addr = trim($arrAddress[0])." ".trim($arrAddress[1])." ".trim($arrAddress[2]);
-		if(substr($addr,-3)=="읍" || substr($addr,-3)=="면")		$addr .= " ".trim($arrAddress[3]);
+		if(substr($addr,-3)=="읍" || substr($addr,-3)=="면" || substr($addr,-3)=="구")		$addr .= " ".trim($arrAddress[3]);
 
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
@@ -294,7 +294,9 @@ class IntraSaleClass{
             ];
             if(!in_array($return['sawon_name'], $arrException)){
                 $return['sawon_office_line'] = "8840";
-            }
+            }else{
+				$return['sawon_office_line'] = $data->sale->users->first()->sawon->info->office_line;
+			}
             $return['sawon_name'] = "부동산중개법인개벽";
             $return['sawon_duty'] = "";
         }

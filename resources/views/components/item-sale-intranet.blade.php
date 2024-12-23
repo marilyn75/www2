@@ -70,7 +70,7 @@
                     @if(!empty($printData['area_b']))
                     <div class="text-inf-w @if($printData['is_soldout']) {{ __('txt-blurred') }} @endif">
                         <p class="text-inf"><i class="ri-split-cells-horizontal"></i>
-                            공급<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>&nbsp;
+                            계약<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>&nbsp;
                             전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡</span>
                         </p>
                         <p class="text-inf"><i class="ri-building-line"></i>

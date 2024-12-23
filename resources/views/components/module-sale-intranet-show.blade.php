@@ -94,7 +94,7 @@ $(window).on('load', function() {
                         <li><a href="#">{{ $printData['prposAreaNm'] }}</a>
                         </li>
                         @if($printData['category_class']=="home" || $printData['category_class']=="mall")
-                        <li><a href="#">공급<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
+                        <li><a href="#">계약<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
                                 전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡ </span></a></li>
                         @else
                         <div class="detail_width">
@@ -225,7 +225,7 @@ $(window).on('load', function() {
                                         <p>{{ printEmpty($printData['purps']) }}</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
-                                        <p>공급면적 :</p>
+                                        <p>계약면적 :</p>
                                         <p class="mont">{{ $printData['area_b'] }}㎥ ({{ $printData['area_b_py'] }}p)</p>
                                     </li>
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
@@ -616,7 +616,7 @@ $(window).on('load', function() {
                 <p>(주)부동산중개법인 개벽</p>
             </li>
             <li>
-                <p>허가번호</p>
+                <p>등록번호</p>
                 <p>26260-2024-00119</p>
             </li>
             <li>

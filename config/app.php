@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
-return [
+$app = [
 
     /*
     |--------------------------------------------------------------------------
@@ -190,3 +190,10 @@ return [
     ])->toArray(),
 
 ];
+
+if (request()->ip() === '125.184.131.15') {
+	$app['env'] = "local";
+	$app['debug'] = true;
+}
+
+return $app;
