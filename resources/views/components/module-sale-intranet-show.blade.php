@@ -314,8 +314,26 @@ $(window).on('load', function() {
                             </div>
                             @if ($printData['noBuilding']!="1")
                             <div class="additional_details additional_w">
-                                <div class="col-lg-12 pl-0 pr-0">
-                                    <h4 class="mb10">추가설명</h4>
+                                <div class="col-lg-12 pl-0 pr-0 d-flex align-items-center">
+                                    <h4 class="mb10 mr-2">추가설명</h4>
+                                    @if(strpos($printData['bdOpt'],"불법건축물")!==false)
+                                    &nbsp;
+                                    <div class="text-white fs-6" style="background-color: #e24b3f; padding: 5px 5px 3px 5px; border-radius: 5px; font-size: 13px;">
+                                        불법건축물
+                                    </div>
+                                    @endif
+                                    @if(strpos($printData['bdOpt'],"무허가")!==false)
+                                    &nbsp;
+                                    <div class="text-white fs-6" style="background-color: #4f83c4; padding: 5px 5px 3px 5px; border-radius: 5px; font-size: 13px;">
+                                        무허가
+                                    </div>
+                                    @endif
+                                    @if(strpos($printData['bdOpt'],"미등기")!==false)
+                                    &nbsp;
+                                    <div class="text-white fs-6" style="background-color: #d8ac1d; padding: 5px 5px 3px 5px; border-radius: 5px; font-size: 13px;">
+                                        미등기
+                                    </div>
+                                    @endif
                                 </div>
                                 <ul class="list-inline-item detail_list row">
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
