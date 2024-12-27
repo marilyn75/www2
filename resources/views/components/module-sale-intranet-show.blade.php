@@ -243,7 +243,7 @@ $(window).on('load', function() {
                                     @if($printData['category_class']=="home")
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">
                                         <p>주차시설 :</p>
-                                        <p>세대당 {{ number_format($printData['ratePkngCnt']) }} 대 / 총 {{ number_format($printData['totPkngCnt']) }} 대</p>
+                                        <p>세대당 {{ $printData['ratePkngCnt'] }} 대 / 총 {{ $printData['totPkngCnt'] }} 대</p>
                                     </li>
                                     @else
                                     <li class="col-md-6 col-lg-6 col-xl-6 pl-0 pr-0">

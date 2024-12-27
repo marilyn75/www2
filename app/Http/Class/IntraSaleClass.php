@@ -140,25 +140,28 @@ class IntraSaleClass{
         $return['category'] = (strpos($data->category,">")!==false)?trim(explode(">",$data->category)[1]):$data->category;        
         $return['categoryFirst'] = (strpos($data->category,">")!==false)?trim(explode(">",$data->category)[0]):$data->category;  
 
-        $return['bdArea_py'] = (empty($return['bdArea']))?"":number_format(doubleval($return['bdArea']) * 0.3025 ,2);
+        $return['bdArea_py'] = (empty($return['bdArea']))?"":number_format(doubleval2($return['bdArea']) * 0.3025 ,2);
         $return['bdArea'] = (empty($return['bdArea']))?"":number_format($return['bdArea'],2);
         
-        $return['landArea_py'] = (empty($return['landArea']))?"":number_format(doubleval($return['landArea']) * 0.3025 ,2);
+        $return['landArea_py'] = (empty($return['landArea']))?"":number_format(doubleval2($return['landArea']) * 0.3025 ,2);
         $return['landArea_org'] = $return['landArea'];
         $return['landArea'] = (empty($return['landArea']))?"":number_format($return['landArea'],2);
         
 
-        $return['area_b_py'] = (empty($return['area_b']))?"":number_format(doubleval($return['area_b']) * 0.3025 ,2);
-        $return['area_j_py'] = (empty($return['area_j']))?"":number_format(doubleval($return['area_j']) * 0.3025 ,2);
+        $return['area_b_py'] = (empty($return['area_b']))?"":number_format(doubleval2($return['area_b']) * 0.3025 ,2);
+        $return['area_j_py'] = (empty($return['area_j']))?"":number_format(doubleval2($return['area_j']) * 0.3025 ,2);
 
-        if($return['area_j']) $return['areaRate'] = round((doubleval($return['area_j']) / doubleval($return['area_b'])) * 100,2);   //전용율
+        if($return['area_j']) $return['areaRate'] = round((doubleval2($return['area_j']) / doubleval2($return['area_b'])) * 100,2);   //전용율
+
+        $return['area_b'] = (empty($return['area_b']))?"":number_format(doubleval2($return['area_b']),2);
+        $return['area_j'] = (empty($return['area_j']))?"":number_format(doubleval2($return['area_j']),2);
 
         if($data->tradeType=="임대"){
             $return['price'] = price_kor($data->depPrice)." / ".price_kor($data->monPrice)."만";
         }else{
             // 평당가격
-            if(!empty($return['area_b'])) $return['price_py'] = price_kor(round(doubleval($data->salePrice) / (doubleval($return['area_b']) * 0.3025)) * 10000);
-            elseif(!empty($return['landArea_py'])) $return['price_py'] = price_kor(round(doubleval($data->salePrice) / (doubleval($return['landArea_org']) * 0.3025)) * 10000);
+            if(!empty($return['area_b'])) $return['price_py'] = price_kor(round(doubleval2($data->salePrice) / (doubleval2($return['area_b']) * 0.3025)) * 10000);
+            elseif(!empty($return['landArea_py'])) $return['price_py'] = price_kor(round(doubleval2($data->salePrice) / (doubleval2($return['landArea_org']) * 0.3025)) * 10000);
             $return['price'] = price_kor($data->salePrice * 10000);
         }
 
@@ -189,7 +192,7 @@ class IntraSaleClass{
         if(count($arrAddr)>1) $addr .= " 외 ".(count($arrAddr) -1)."필지";
         $return['address'] = $addr;
 
-        $return['parkingCnt'] = ($return['totPkngCnt']=="없음"||$return['totPkngCnt']=="")?"없음":number_format(intval($return['totPkngCnt']))." 대";
+        $return['parkingCnt'] = ($return['totPkngCnt']=="없음"||$return['totPkngCnt']=="")?"없음":$return['totPkngCnt']." 대";
         $return['ElvtCnt'] = ($return['rideUseElvtCnt']=="없음"||$return['rideUseElvtCnt']=="")?"없음":$return['rideUseElvtCnt']." 대";
 
         if(!$return['direction_gijun']) $return['direction_gijun'] = "출입구 기준";

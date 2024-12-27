@@ -261,3 +261,10 @@ if (!function_exists('calculateDDay')) {
         }
     }
 }
+
+// doubleval2
+if (!function_exists('doubleval2')) {
+    function doubleval2($val) {
+        return doubleval(str_replace(",","",$val));
+    }
+}
