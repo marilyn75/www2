@@ -16429,7 +16429,8 @@ button.gm-ui-hover-effect:focus {
   padding: 6px 10px; 
   position: relative;
   background: url(../images/resource/won.png) no-repeat;
-  background-position: 90px;
+  background-position: 10px;
+  text-align: right;
   content: '';
 }
 .range_container .form_control_container input[type="number"]::-webkit-outer-spin-button,
@@ -16448,6 +16449,7 @@ button.gm-ui-hover-effect:focus {
   background-position: 72px;
   content: '';
   background-size: 33px;
+  text-align: left;
 }
 .range_container .form_control_container .form_area.up{
   width: 100%;

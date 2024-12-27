@@ -293,7 +293,7 @@ class IntraSaleClass{
 
             // 예외 10명
             $arrException = [
-                '곽병수','권태희','김민성','노현수','문권철','박미자','손성곤','이철','장혜금','황태송',
+                '곽병수','권성희','김민성','노현수','문권철','박미자','손성곤','이철','장혜금','황태송',
             ];
             if(!in_array($return['sawon_name'], $arrException)){
                 $return['sawon_office_line'] = "8840";
