@@ -417,7 +417,8 @@ class IntraSaleClass{
         $response = $clsKkoApi->getLocalSearchCategory($r_data);
         $data['교육시설'] = $response['documents'];
 
-        $r_data['category'] = 'MT1,HP8';
+        // $r_data['category'] = 'MT1,HP8';
+        $r_data['category'] = 'MT1';
         $response = $clsKkoApi->getLocalSearchCategory($r_data);
         $data['주변시설'] = $response['documents'];
 
