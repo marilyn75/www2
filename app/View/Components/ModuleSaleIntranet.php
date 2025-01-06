@@ -68,6 +68,9 @@ class ModuleSaleIntranet extends Component
     public function show(){
 
         $data = $this->cls->getData($this->request->idx);
+        if(empty($data)){
+            return view('components.error');
+        }
         $printData = $this->cls->getPrintData($data);
 
         // 지도

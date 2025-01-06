@@ -115,13 +115,19 @@ class IntraSaleClass{
     }
 
     public function getData($idx){
-        $data = IntraSaleHomepage::find($idx);
+        // $data = IntraSaleHomepage::find($idx);
+        $data = IntraSaleHomepage::where([
+            'isDel'=>0, 
+            'isDone'=>1,
+            'idx'=>$idx
+        ])->first();
 
         return $data;
     }
 
     // 출력용 데이터 가공
     static public function getPrintData($data){
+        if(empty($data)) return null;
         $clsFile = new FileClass();
 
         $return = $data->toArray();
