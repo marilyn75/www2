@@ -1,53 +1,13 @@
-<div class="row">
 
-    <script>
-        function addFavorite(obj, id) {
-            var $child = $(obj).children();
-        
-            var flag = ($child.hasClass('fill_heart')) ? "remove" : "add";
-            var params = {
-                id: id,
-                flag: flag
-            };
-        
-            var r = doAjax('{{ route('common.ajax.addFavorite') }}', params);
-        
-            if (r.result) {
-                if (flag == "add") $child.removeClass('ri-heart-3-line').addClass('fill_heart').addClass('ri-heart-3-fill');
-                else $child.removeClass('ri-heart-3-fill').addClass('ri-heart-3-line').removeClass('fill_heart');
-        
-                // if(flag=="add") $child.addClass('on');
-                // else            $child.removeClass('on');
-                sbAlert(r.message);
-            }
-        
-            return false;
-        }
-        
-        $(document).on('click', '#transArea', function() {
-            if (!$(this).hasClass('py')) {
-                $('.area').each(function() {
-                    $(this).html($(this).data('py'));
-                });
-                $(this).addClass('py');
-            } else {
-                $('.area').each(function() {
-                    $(this).html($(this).data('m2'));
-                });
-                $(this).removeClass('py');
-            }
-        });
-        
-    </script>
     <style>
         td {border:0px;padding: 0px; }
         td span {font-size: 18px;color:#000;}
     </style>
-    <div class="col-lg-8">
+    
     
         <!-- 수정 -->
-        <div class="detail_img">
-            <div class="col-lg-12 single_product_grid row single_product_grid_w">
+        <div class="">
+            <div class="single_product_grid_w" style="background-color: #ffffff;border-radius: 8px; margin: 0; padding: 10px 0; position: relative;">
                
                 <div class="detail_info">
                     <div class="de_info_left" style="width: 100%;">
@@ -55,35 +15,45 @@
                         <h3>{{ $printData['address'] }}</h3>
                        
                                 <table table border="0" cellpadding="0" cellspacing="0" width="100%">
+       
+                      
+              
                                     <tr>
-                                        <td style="text-align:left"><span>{{ $printData['prposAreaNm'] }}</span></td>
+                                        <td style="text-align:left;">
+                                            <p>
+                                                {{ $printData['prposAreaNm'] }}
+                                            </p>
+                                            @if($printData['category_class']=="home" || $printData['category_class']=="mall")
+                                          
+                                                <p><span>계약<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
+                                                    전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡ </span></span>
+                                                </p>
+                                            
+                                            @else
+                                                <p>토지면적
+                                                <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span>
+                                                </p>
+                                                @if (strpos($printData['category'],"토지")===false && strpos($printData['category'],"임야")===false)
+                                        
+                                                <p>연면적 <span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></p>
+                                            
+                                        
+                                                @endif
+                                        </td>
+                                        <td style="text-align:right;">
+                                            <div style="display: grid;justify-items: end;align-content: space-between;">
+                                                <div class="price">
+                                                    <p style="line-height: normal;font-size: 24px !important;color: #385F8D !important;font-weight: 600 !important;">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}원</span></p>
+                                                    @if(!empty($printData['price_py']))<p><span class="mont">{{ $printData['price_py'] }}원</span> <span class="mont">(3.3㎡)</span></p>@endif
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    @if($printData['category_class']=="home" || $printData['category_class']=="mall")
-                                    <tr>
-                                        <td style="text-align:left"><span>계약<span class="area" data-m2="{{ $printData['area_b'] }}㎡" data-py="{{ $printData['area_b_py'] }}평">{{ $printData['area_b'] }}㎡</span>
-                                            전용<span class="area" data-m2="{{ $printData['area_j'] }}㎡" data-py="{{ $printData['area_j_py'] }}평">{{ $printData['area_j'] }}㎡ </span></span></td>
-                                    </tr>
-                                    @else
-                                    <div class="detail_width">
-                                        <tr>
-                                            <td style="text-align:left"><span>토지면적
-                                            <span class="area" data-m2="{{ $printData['landArea'] }}㎡" data-py="{{ $printData['landArea_py'] }}평">{{ $printData['landArea'] }}㎡</span></span></td>
-                                        </tr>
-                                        @if (strpos($printData['category'],"토지")===false && strpos($printData['category'],"임야")===false)
-                                        <tr>
-                                            <td style="text-align:left"><span>연면적 <span class="area" data-m2="{{ $printData['bdArea'] }}㎡" data-py="{{ $printData['bdArea_py'] }}평">{{ $printData['bdArea'] }}㎡</span></span></td>
-                                        </tr>
-                                    </div>
-                                    @endif
+                                        
                                     @endif
                                 </table>
             
-                        <div class="de_info_right">
-                            <div class="price">
-                                <p class="de_info_pr">{{ $printData['tradeType'] }} <span class="mont">{{ $printData['price'] }}원</span></p>
-                                @if(!empty($printData['price_py']))<p><span class="mont">{{ $printData['price_py'] }}원</span> <span class="mont">(3.3㎡)</span></p>@endif
-                            </div>
-                        </div>
+                        
                     </div>
                     
                 </div>
@@ -92,26 +62,12 @@
                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
                  
                         <div class="swiper-slide" role="group">
-                            <img src="https://www.gyemoim.co.kr{{ $printData['imgs'][0] }}" alt="">
+                            <img src="{{ url($printData['imgs'][0]) }}" alt="">
                         </div>
                  
                     </div>
                     
                 </div>
-    
-                <!-- Initialize Swiper -->
-                <script>
-                var swiper = new Swiper(".mySwiper", {
-                    pagination: {
-                        el: ".swiper-pagination",
-                        type: "fraction",
-                    },
-                    navigation: {
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
-                    },
-                });
-                </script>
     
             </div>
         </div>
@@ -133,7 +89,7 @@
                                 
                             </div>
                             <div class="col-lg-12 pl-0 pr-0">
-                                <div class="additional_details additional_w">
+                                <div class="additional_w" style="background-color: #ffffff;border-radius: 8px; margin: 0; padding: 10px 0; position: relative;">
                                     
                                         <h4 class="mb10">매물정보</h4>
                                     
@@ -212,7 +168,7 @@
                                 @endif
                                 </div>
                                 @if ($printData['noBuilding']!="1")
-                                <div class="additional_details additional_w">
+                                <div class="additional_w" style="background-color: #ffffff;border-radius: 8px; margin: 0; padding: 10px 0; position: relative;">
                                     
                                         <h4 class="mb10 mr-2">추가설명</h4>
                                         @if(strpos($printData['bdOpt'],"불법건축물")!==false)
@@ -282,7 +238,7 @@
                                     </table>
                                 </div>
                                 @endif
-                                <div class="additional_details additional_w">
+                                <div class=" additional_w" style="background-color: #ffffff;border-radius: 8px; margin: 0; padding: 10px 0; position: relative;">
                                     
                                         <h4 class="mb10">가격정보</h4>
                                     
@@ -454,7 +410,7 @@
     
                             @if(!empty($printData['infra']['교육시설']) || !empty($printData['infra']['주변시설']) || !empty($printData['infra']['교통정보']))
                             <div class="col-lg-12 pl-0 pr-0">
-                                <div class="whats_nearby mt30 nearby_w">
+                                <div class=" mt30 nearby_w" style="background-color: #ffffff;border-radius: 8px; margin: 0; padding: 10px 0; position: relative;">
                                     <h4 class="mb10">근처시설
                                     </h4>
             
@@ -545,7 +501,6 @@
                 </div>
             </div>
         </section>
-    </div>
+  
     
    
-    </div>
