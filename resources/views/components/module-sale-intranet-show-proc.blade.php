@@ -92,7 +92,7 @@
                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); transition-delay: 0ms;">
                  
                         <div class="swiper-slide" role="group">
-                            <img src="{{ $printData['imgs'][0] }}" alt="">
+                            <img src="https://www.gyemomi.co.kr{{ $printData['imgs'][0] }}" alt="">
                         </div>
                  
                     </div>
