@@ -91,6 +91,7 @@ class ModuleSaleIntranet extends Component
         $this->relatedSales = $this->cls->getRelatedSales($printData);
 
         $skin = 'components.module-sale-intranet-show';
+        if($this->request->prcCode=="proc") $skin = 'components.module-sale-intranet-show-proc';
         if(!empty($this->request->skin))    $skin .= $this->request->skin;
 
         $this->printData = $printData;

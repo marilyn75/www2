@@ -38,6 +38,8 @@ class PageController extends Controller
         $MenuClass = new MenuClass;
         $arrLocation = $MenuClass->getLocationArr($id);
         $bg = $MenuClass->getTopImage($id);
+
+        if($request->prcCode == "proc") return view('web.proc', compact('page', 'arrLocation', 'bg', 'request'));
         
         if($request->ajax())
             return view('web.ajax', compact('page', 'arrLocation', 'bg', 'request'));

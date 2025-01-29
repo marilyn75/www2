@@ -388,7 +388,7 @@ class IntraSaleClass{
         $x = intval($kko_xy["documents"][0]["x"]);
 		$y = intval($kko_xy["documents"][0]["y"]);
 
-        return env('INTRANET_DOMAIN')."?x=".$x."&y=".$y."&w=720&h=400";
+        return env('INTRANET_DOMAIN')."/Share/map.php?x=".$x."&y=".$y."&w=720&h=400";
     }
 
     // 근처시설
