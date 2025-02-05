@@ -97,71 +97,71 @@
                                 @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
                                     <table class="table table-borderless">
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">매물유형 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['category'] }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">건물용도 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['mainPurpsCdNm']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">매물유형 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['category'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">건물용도 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['mainPurpsCdNm']) }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">계약면적 :</td>
-                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['area_b'] }}㎥ ({{ $printData['area_b_py'] }}p)</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">전용면적 :</td>
-                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['area_j'] }}㎥ ({{ $printData['area_j_py'] }}p)</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">계약면적 :</td>
+                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['area_b'] }}㎥ ({{ $printData['area_b_py'] }}p)</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">전용면적 :</td>
+                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['area_j'] }}㎥ ({{ $printData['area_j_py'] }}p)</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">전용율 :</td>
-                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['areaRate'] }}%</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">주구조 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['strctCdNm']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">전용율 :</td>
+                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['areaRate'] }}%</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">주구조 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['strctCdNm']) }}</td>
                                         </tr>
                                         @if($printData['category_class']=="home")
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">주차시설 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">세대당 {{ $printData['ratePkngCnt'] }} 대 / 총 {{ $printData['totPkngCnt'] }} 대</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">승강기 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['ElvtCnt'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">주차시설 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">세대당 {{ $printData['ratePkngCnt'] }} 대 / 총 {{ $printData['totPkngCnt'] }} 대</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">승강기 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['ElvtCnt'] }}</td>
                                         </tr>
                                         @else
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">주차시설 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['parkingCnt'] }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">승강기 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['ElvtCnt'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">주차시설 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['parkingCnt'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">승강기 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['ElvtCnt'] }}</td>
                                         </tr>
                                         @endif
                                     </table>
                                 @else
                                     <table class="table table-borderless">
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">매물유형 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['category'] }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">대지면적 :</td>
-                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['landArea'] }}㎥ ({{ $printData['landArea_py'] }}p)</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">매물유형 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['category'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">대지면적 :</td>
+                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['landArea'] }}㎥ ({{ $printData['landArea_py'] }}p)</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">지목 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['lndcgrCodeNm']) }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">용도지역 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['prposAreaNm']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">지목 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['lndcgrCodeNm']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">용도지역 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['prposAreaNm']) }}</td>
                                         </tr>
                                         @if ($printData['noBuilding']!="1")
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">연면적 :</td>
-                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 15px;">@if(intval($printData['bdArea'])==0){{ __('-') }}@else{{ $printData['bdArea'] }}㎥ ({{ $printData['bdArea_py'] }}p)@endif</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">건물용도 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['mainPurpsCdNm']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">연면적 :</td>
+                                            <td class="mont" style="text-align:left !important; width: 35%; font-size: 16px;">@if(intval($printData['bdArea'])==0){{ __('-') }}@else{{ $printData['bdArea'] }}㎥ ({{ $printData['bdArea_py'] }}p)@endif</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">건물용도 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['mainPurpsCdNm']) }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">주구조 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['strctCdNm']) }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">규모 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">지하 {{ printEmpty($printData['ugrndFlrCnt']) }}층 / 지상 {{ printEmpty($printData['grndFlrCnt']) }}층</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">주구조 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['strctCdNm']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">규모 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">지하 {{ printEmpty($printData['ugrndFlrCnt']) }}층 / 지상 {{ printEmpty($printData['grndFlrCnt']) }}층</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">주차시설 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['parkingCnt'] }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">승강기 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['ElvtCnt'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">주차시설 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['parkingCnt'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">승강기 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['ElvtCnt'] }}</td>
                                         </tr>
                                         @endif
                                     </table>
@@ -192,47 +192,47 @@
                                     
                                     <table class="table table-borderless">
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">사용승인일 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['useAprDay'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">사용승인일 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['useAprDay'] }}</td>
                                         
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">방향 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['direction'] }} ({{ $printData['direction_gijun'] }})</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">방향 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['direction'] }} ({{ $printData['direction_gijun'] }})</td>
                                         </tr>
                                         @if($printData['category_class']=="home")
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">세대수 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['households'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">세대수 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['households'] }}</td>
                                         
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">발코니 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['balcony']) }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">발코니 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['balcony']) }}</td>
                                         </tr>
                                         @endif
                                         
                                     @if($printData['category_class']!="factory")
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">방/화장실 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['room_num'] }}개 / {{ $printData['restroom_num'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">방/화장실 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['room_num'] }}개 / {{ $printData['restroom_num'] }}</td>
                                         
                                         @if ($printData['category_class']=="mall" || $printData['category_class']=="home")
                                         
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">해당층@if(!empty($printData['totFloor'])){{ __('/전체층') }}@endif :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ printEmpty($printData['currFloor']) }} @if(!empty($printData['totFloor'])){{ __('/') }}@endif {{ $printData['totFloor'] .'층' }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">해당층@if(!empty($printData['totFloor'])){{ __('/전체층') }}@endif :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ printEmpty($printData['currFloor']) }} @if(!empty($printData['totFloor'])){{ __('/') }}@endif {{ $printData['totFloor'] .'층' }}</td>
                                         
                                         @else
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;"></td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;"></td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;"></td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;"></td>
                                         @endif
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">월관리비 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{!! $printData['print_mngPrice'] !!}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">월관리비 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{!! $printData['print_mngPrice'] !!}</td>
                                        
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">난방방식 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">@if(empty($printData['heat_type']) && empty($printData['heat_info'])){{ __('-') }}@else{{ $printData['heat_type'] }} ({{ $printData['heat_info'] }})@endif</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">난방방식 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">@if(empty($printData['heat_type']) && empty($printData['heat_info'])){{ __('-') }}@else{{ $printData['heat_type'] }} ({{ $printData['heat_info'] }})@endif</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">입주정보 :</td>
-                                            <td colspan="3" style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">입주정보 :</td>
+                                            <td colspan="3" style="text-align:left !important; width: 35%; font-size: 16px;">{{ $printData['movein'] }} {{ $printData['movein_nego'] }}</td>
                                         </tr>
                                     @endif
                                     </table>
@@ -247,17 +247,17 @@
     
                                     <table class="table table-borderless">
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">매매가격 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['price'] }}원</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">월세현황 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">보증금 {{ number_format($printData['depPrice_st']) }}만원 / 월세 {{ number_format($printData['monPrice_st']) }}만원</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 14%; font-size: 16px;">매매가격 :</td>
+                                            <td style="text-align:left !important; width: 31%; font-size: 16px;">{{ $printData['price'] }}원</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 16%; font-size: 16px;">월세현황 :</td>
+                                            <td style="text-align:left !important; width: 39%; font-size: 16px;">보증금 {{ number_format($printData['depPrice_st']) }}만원 / 월세 {{ number_format($printData['monPrice_st']) }}만원</td>
                                         </tr>
                                         @if($printData['loanType']!="표시안함")
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">융자금 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ (empty($printData['loanPrice']))?"없음":price_kor($printData['loanPrice'] * 10000)."원"; }}</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">예상 수익률 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ $printData['rate'] }}%</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 14%; font-size: 16px;">융자금 :</td>
+                                            <td style="text-align:left !important; width: 31%; font-size: 16px;">{{ (empty($printData['loanPrice']))?"없음":price_kor($printData['loanPrice'] * 10000)."원"; }}</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 16%; font-size: 16px;">예상 수익률 :</td>
+                                            <td style="text-align:left !important; width: 39%; font-size: 16px;">{{ $printData['rate'] }}%</td>
                                         </tr>
                                         @endif
                                     </table>
@@ -266,14 +266,14 @@
                                     @else
                                     <table class="table table-borderless">
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">보증금 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ number_format($printData['depPrice']) }} 만원</td>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">월세 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ number_format($printData['monPrice']) }} 만원</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">보증금 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ number_format($printData['depPrice']) }} 만원</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">월세 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ number_format($printData['monPrice']) }} 만원</td>
                                         </tr>
                                         <tr>
-                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 15px;">권리금 :</td>
-                                            <td style="text-align:left !important; width: 35%; font-size: 15px;">{{ number_format($printData['premPrice']) }} 만원</td>
+                                            <td class="font-weight-bold" style="text-align:left !important; width: 15%; font-size: 16px;">권리금 :</td>
+                                            <td style="text-align:left !important; width: 35%; font-size: 16px;">{{ number_format($printData['premPrice']) }} 만원</td>
                                         </tr>
                                     </table>
     
